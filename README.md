@@ -50,11 +50,12 @@ The first three foundation stages are complete and physically tested:
 - GPT-5.6 Sol text execution has run through the OpenAI Agents SDK on the physical R1.
 - The local MCP device-status tool has been exercised by the text agent.
 - Realtime 2.1 Mini has completed a live native WebRTC session using ChatGPT subscription access.
+- Native Voice has invoked the local MCP device-status tool and returned its real result through the same Realtime session.
 - Text and Realtime model selection, reasoning selection, and the owner's personalized Voice greeting are stored and managed through the real web interface.
 - The R1 Voice page uses the shared ReSono visual language and reports real `idle`, `connecting`, `live`, `listening`, `responding`, and failure states.
 - Display brightness controls, keep-screen-awake behavior, foreground runtime recovery, and same-LAN management access work on the current device candidate.
 
-The accepted physical working base is version 26. Version 28 is the current installed candidate and adds the tuned audio/VAD configuration and display controls. Its display and runtime behavior are physically verified; a complete live session using the updated VAD configuration is still an open acceptance check.
+The accepted physical working base is version 26. Version 28 is the current installed candidate and adds the tuned audio/VAD configuration and display controls. Its display/runtime behavior and a complete live VAD plus native MCP session are physically verified.
 
 The current APK is available as a prerelease: [JackRabbit v0.4.18 device candidate](https://github.com/ReSono-Labs/JackRabbit/releases/tag/v0.4.18-device-candidate).
 
@@ -66,8 +67,6 @@ Work is intentionally proceeding one real vertical slice at a time. Mockups, sim
 
 ### Finish the core Voice and text product
 
-- Complete physical validation of the current Realtime audio/VAD configuration.
-- Invoke an MCP tool from the native Voice session and show its truthful state in the interface.
 - Independently validate the OpenAI Platform API path for text and Realtime.
 - Complete supported `gpt-live-1` transport validation.
 - Resolve normal browser certificate trust for the local management site.
