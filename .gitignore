@@ -1,0 +1,26 @@
+**/build/
+**/.gradle/
+**/__pycache__/
+*.py[cod]
+android/runtime-host/src/main/assets/
+
+# Local Android configuration and credentials
+android/local.properties
+*.jks
+*.keystore
+*.pem
+*.key
+
+# Generated device binaries belong in releases, not Git history.
+*.apk
+*.img
+*.zip
+*.bin
+image/extracted/
+image/work/
+
+# Local editor/environment state
+.venv/
+.idea/
+.vscode/
+.DS_Store

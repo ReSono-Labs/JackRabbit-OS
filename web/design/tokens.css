@@ -1,0 +1,15 @@
+:root {
+  color-scheme: dark;
+  --resono-bg: #061629;
+  --resono-surface: #0a1c32;
+  --resono-surface-soft: #0c2139;
+  --resono-line: rgba(166, 199, 224, 0.2);
+  --resono-text: #edf6ff;
+  --resono-muted: #9fb3ca;
+  --resono-cyan: #35c9ff;
+  --resono-mint: #72efcf;
+  --resono-amber: #f3c969;
+  --resono-red: #ff7a7a;
+  --resono-radius-large: 24px;
+  --resono-radius-control: 14px;
+}

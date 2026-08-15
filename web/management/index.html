@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ReSono R1</title>
+    <link rel="stylesheet" href="/design/tokens.css">
+    <link rel="stylesheet" href="/design/base.css">
+    <link rel="stylesheet" href="/management/management.css">
+    <script src="/management/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="brand">
+        <div class="mark" aria-hidden="true"><span></span></div>
+        <div><p>ReSono Labs</p><h1>R1</h1></div>
+      </header>
+      <section id="checking" class="panel" aria-live="polite">
+        <p class="eyebrow">DEVICE CONNECTION</p>
+        <h2>Checking this R1…</h2>
+        <p class="support">The page is reading the live on-device runtime.</p>
+      </section>
+      <section id="pairing" class="panel" hidden>
+        <p class="eyebrow">PAIR THIS BROWSER</p>
+        <h2>Enter the code shown on your R1</h2>
+        <p class="support">The code expires quickly and works once.</p>
+        <form id="pair-form">
+          <label for="pair-code">Pairing code</label>
+          <input id="pair-code" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
+          <button type="submit">Connect to R1</button>
+        </form>
+        <p id="pair-error" class="error" role="alert" hidden></p>
+      </section>
+      <section id="status" class="panel" hidden>
+        <div class="status-head">
+          <div><p class="eyebrow">ON-DEVICE RUNTIME</p><h2>Runtime</h2></div>
+          <span id="runtime-state" class="state"><i></i><span>Checking</span></span>
+        </div>
+        <dl>
+          <div><dt>Service</dt><dd id="service">—</dd></div>
+          <div><dt>Contract</dt><dd id="contract">—</dd></div>
+          <div><dt>Database migration</dt><dd id="migration">—</dd></div>
+        </dl>
+        <form id="profile" class="provider-subsection">
+          <div><p class="eyebrow">VOICE GREETING</p><h3>Your name</h3></div>
+          <label for="display-name">Name Voice should use</label>
+          <input id="display-name" name="displayName" maxlength="80" autocomplete="name" placeholder="Christian">
+          <button type="submit">Save name</button>
+          <p id="profile-message" class="support" aria-live="polite"></p>
+        </form>
+        <div class="provider" aria-labelledby="openai-title">
+          <div class="provider-head">
+            <div><p class="eyebrow">VOICE PROVIDER</p><h3 id="openai-title">OpenAI</h3></div>
+            <span id="openai-state" class="state"><i></i><span>Not connected</span></span>
+          </div>
+          <form id="openai-connect" autocomplete="off">
+            <label for="openai-key">Platform API key</label>
+            <div class="inline">
+              <input id="openai-key" name="apiKey" type="password" autocomplete="new-password" placeholder="sk-…" required>
+              <button type="submit">Connect</button>
+            </div>
+            <p class="support">Stored only on this R1 using Android Keystore.</p>
+          </form>
+          <button id="openai-disconnect" class="secondary" type="button" hidden>Disconnect Platform API</button>
+          <div class="provider-subsection">
+            <div class="provider-head">
+              <div><p class="eyebrow">SUBSCRIPTION ACCESS</p><h3>ChatGPT / Codex</h3></div>
+              <span id="subscription-state" class="state"><i></i><span>Not connected</span></span>
+            </div>
+            <button id="subscription-connect" type="button">Connect ChatGPT</button>
+            <div id="subscription-auth" class="device-auth" hidden>
+              <p>Open the ChatGPT login page and enter:</p>
+              <strong id="subscription-code">—</strong>
+              <a id="subscription-link" class="button-link" href="https://auth.openai.com/codex/device" target="_blank" rel="noreferrer">Open ChatGPT login</a>
+              <p class="support">Waiting for authorization…</p>
+            </div>
+            <button id="subscription-disconnect" class="secondary" type="button" hidden>Disconnect ChatGPT</button>
+            <p id="subscription-message" class="support" aria-live="polite"></p>
+          </div>
+          <form id="openai-access" hidden>
+            <label for="access-path">Use for text and Voice</label>
+            <select id="access-path" name="accessPath" required></select>
+            <button type="submit">Use this connection</button>
+          </form>
+          <form id="openai-models" hidden>
+            <label for="realtime-model">Realtime voice model</label>
+            <select id="realtime-model" name="realtimeModel" required></select>
+            <label for="text-model">Text model</label>
+            <select id="text-model" name="textModel"></select>
+            <label for="reasoning-effort">Thinking / reasoning</label>
+            <select id="reasoning-effort" name="reasoningEffort">
+              <option value="none">Off</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <div class="actions">
+              <button type="submit">Save models</button>
+            </div>
+          </form>
+          <p id="openai-message" class="support" aria-live="polite"></p>
+          <form id="text-agent" hidden>
+            <label for="text-input">Text agent</label>
+            <textarea id="text-input" name="input" maxlength="16384" rows="4" placeholder="Ask this R1…" required></textarea>
+            <button type="submit">Send</button>
+            <div id="text-result" class="agent-result" aria-live="polite" hidden></div>
+          </form>
+        </div>
+        <button id="restart" class="secondary" type="button">Restart runtime</button>
+        <p id="status-message" class="support" aria-live="polite"></p>
+      </section>
+    </main>
+  </body>
+</html>
