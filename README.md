@@ -67,7 +67,7 @@ Work is intentionally proceeding one real vertical slice at a time. Mockups, sim
 
 ### Finish the core Voice and text product
 
-- Independently validate the OpenAI Platform API path for text and Realtime.
+- Independently validate the OpenAI Platform API path for text and Realtime. This proof is currently deferred; the key field and secure on-device storage are already implemented.
 - Complete supported `gpt-live-1` transport validation.
 - Resolve normal browser certificate trust for the local management site.
 - Finish the compact R1 Voice interface and its connected session views.
