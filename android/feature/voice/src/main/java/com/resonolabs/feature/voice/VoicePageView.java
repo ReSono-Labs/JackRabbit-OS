@@ -36,6 +36,7 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
     private String lastUserUtterance = "";
     private long userUtteranceId = 0;
     private boolean providerResponseInFlight;
+    private boolean pendingToolResponseCreate;
     private final Runnable openHandoff;
 
     public VoicePageView(Activity activity, Runnable openHandoff) {
@@ -86,6 +87,7 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
         lastUserUtterance = "";
         userUtteranceId = 0;
         providerResponseInFlight = false;
+        pendingToolResponseCreate = false;
         clearRecordedEntries();
         transcript = "Connecting to Voice…";
         sessionState.connecting();
@@ -140,7 +142,10 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
             String type = event.optString("type");
             sessionState.onRealtimeEvent(type);
             if ("response.created".equals(type)) providerResponseInFlight = true;
-            else if ("response.done".equals(type)) providerResponseInFlight = false;
+            else if ("response.done".equals(type)) {
+                providerResponseInFlight = false;
+                postDelayed(this::flushPendingToolResponseCreate, 150L);
+            }
             if ("input_audio_buffer.speech_started".equals(type)) {
                 transcript = "Listening…";
             } else if ("input_audio_buffer.speech_stopped".equals(type)) {
@@ -165,6 +170,7 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
             } else if ("response.function_call_arguments.done".equals(type)) {
                 callTool(event);
             } else if ("error".equals(type)) {
+                Log.w(LOG_TAG, "Realtime provider error: " + event.optJSONObject("error"));
                 fail("provider-error");
                 return;
             }
@@ -193,6 +199,7 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
         lastUserUtterance = "";
         userUtteranceId = 0;
         providerResponseInFlight = false;
+        pendingToolResponseCreate = false;
         assistantDraft.setLength(0);
         invalidate();
 
@@ -424,14 +431,28 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
                             .put("type", "function_call_output")
                             .put("call_id", callId)
                             .put("output", output)));
-            boolean responseSent = peer.sendRealtimeEvent(
-                    new JSONObject().put("type", "response.create"));
-            if (!outputSent || !responseSent) {
+            if (!outputSent) {
                 fail("event-invalid");
                 return;
             }
+            pendingToolResponseCreate = true;
+            flushPendingToolResponseCreate();
             sessionState.toolOutputSent();
             invalidate();
+        } catch (Exception ignored) {
+            fail("event-invalid");
+        }
+    }
+
+    private void flushPendingToolResponseCreate() {
+        if (!pendingToolResponseCreate || providerResponseInFlight || peer == null) return;
+        try {
+            if (!peer.sendRealtimeEvent(new JSONObject().put("type", "response.create"))) {
+                fail("event-invalid");
+                return;
+            }
+            pendingToolResponseCreate = false;
+            providerResponseInFlight = true;
         } catch (Exception ignored) {
             fail("event-invalid");
         }

@@ -314,8 +314,7 @@ class MailRepository:
                 """
                 SELECT folder_id, remote_name, delimiter, attributes_json, special_use,
                        uid_validity, uid_next, last_synced_at
-                FROM mail_folders WHERE account_id = ? ORDER BY remote_name
-                """,
+                FROM mail_folders f WHERE account_id = ? AND """ + _VOICE_VISIBLE_FOLDER + " ORDER BY remote_name",
                 (account_id,),
             ).fetchall()
         return tuple(
@@ -328,7 +327,7 @@ class MailRepository:
         )
 
     def list_messages(self, account_id: str, *, folder_id: str | None = None, query: str | None = None, unread_only: bool = False, limit: int = 25) -> tuple[dict[str, object], ...]:
-        clauses = ["m.account_id = ?"]
+        clauses = ["m.account_id = ?", _VOICE_VISIBLE_FOLDER, "m.flags_json NOT LIKE '%\\\\Deleted%'"]
         parameters: list[object] = [account_id]
         if folder_id:
             clauses.append("m.folder_id = ?")
@@ -362,8 +361,7 @@ class MailRepository:
                        m.sent_at, m.received_at, m.flags_json, m.body_text, m.body_html,
                        m.raw_size, m.synchronized_at
                 FROM mail_messages m JOIN mail_folders f ON f.folder_id = m.folder_id
-                WHERE m.account_id = ? AND m.message_id = ?
-                """,
+                WHERE m.account_id = ? AND m.message_id = ? AND """ + _VOICE_VISIBLE_FOLDER + " AND m.flags_json NOT LIKE '%\\\\Deleted%'",
                 (account_id, message_id),
             ).fetchone()
         return _message_view(row, include_body=True) if row is not None else None
@@ -374,8 +372,7 @@ class MailRepository:
                 """
                 SELECT f.remote_name, m.remote_uid
                 FROM mail_messages m JOIN mail_folders f ON f.folder_id = m.folder_id
-                WHERE m.account_id = ? AND m.message_id = ?
-                """,
+                WHERE m.account_id = ? AND m.message_id = ? AND """ + _VOICE_VISIBLE_FOLDER + " AND m.flags_json NOT LIKE '%\\\\Deleted%'",
                 (account_id, message_id),
             ).fetchone()
         return (str(row[0]), int(row[1])) if row is not None else None
@@ -386,9 +383,10 @@ class MailRepository:
                 """
                 SELECT a.attachment_id, a.message_id, a.part_id, a.filename,
                        a.content_type, a.content_disposition, a.content_id, a.byte_size
-                FROM mail_attachments a JOIN mail_messages m ON m.message_id = a.message_id
-                WHERE m.account_id = ? AND a.attachment_id = ?
-                """,
+                FROM mail_attachments a
+                JOIN mail_messages m ON m.message_id = a.message_id
+                JOIN mail_folders f ON f.folder_id = m.folder_id
+                WHERE m.account_id = ? AND a.attachment_id = ? AND """ + _VOICE_VISIBLE_FOLDER + " AND m.flags_json NOT LIKE '%\\\\Deleted%'",
                 (account_id, attachment_id),
             ).fetchone()
         if row is None:
@@ -403,8 +401,7 @@ class MailRepository:
                 FROM mail_attachments a
                 JOIN mail_messages m ON m.message_id = a.message_id
                 JOIN mail_folders f ON f.folder_id = m.folder_id
-                WHERE m.account_id = ? AND a.attachment_id = ?
-                """,
+                WHERE m.account_id = ? AND a.attachment_id = ? AND """ + _VOICE_VISIBLE_FOLDER + " AND m.flags_json NOT LIKE '%\\\\Deleted%'",
                 (account_id, attachment_id),
             ).fetchone()
         return (str(row[0]), int(row[1]), str(row[2]), int(row[3]), str(row[4])) if row else None
@@ -478,6 +475,14 @@ class MailRepository:
             ).fetchall()
         return tuple((str(row[0]), str(row[1]), bytes(row[2])) for row in rows)
 
+
+_VOICE_VISIBLE_FOLDER = """
+COALESCE(f.special_use, '') <> 'trash'
+AND LOWER(f.remote_name) NOT LIKE '%trash%'
+AND LOWER(f.remote_name) NOT LIKE '%deleted%'
+AND LOWER(f.remote_name) NOT LIKE '%/bin'
+AND LOWER(f.remote_name) NOT IN ('bin', 'recycle bin')
+"""
 
 _ACCOUNT_SELECT = """
 SELECT m.account_id, m.label, m.email_address, m.username,

@@ -31,6 +31,5 @@ def register_web_search(catalog: ToolCatalog, search: OpenAIWebSearch) -> None:
             handler=invoke,
             effect_class="read",
             audience_resource=WEB_SEARCH_TOOL_SET,
-            available_to=lambda _: search.available(),
         )
     )

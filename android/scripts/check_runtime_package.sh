@@ -43,6 +43,15 @@ unzip -l "$CHECK_DIR/requirements-common.zip" \
 
 unzip -p "$APK" assets/chaquopy/app.imy > "$CHECK_DIR/runtime-source.zip"
 unzip -l "$CHECK_DIR/runtime-source.zip" > "$CHECK_DIR/runtime-source.txt"
+unzip -q "$CHECK_DIR/runtime-source.zip" -d "$CHECK_DIR/runtime-source"
+
+RUNTIME_CHECK_PYTHON="${RESONO_BUILD_PYTHON:-/tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu/bin/python3.13}"
+if [[ ! -x "$RUNTIME_CHECK_PYTHON" ]]; then
+    echo "Python 3.13 runtime package checker not found: $RUNTIME_CHECK_PYTHON" >&2
+    exit 1
+fi
+PYTHONDONTWRITEBYTECODE=1 "$RUNTIME_CHECK_PYTHON" -m compileall -q \
+    "$CHECK_DIR/runtime-source/resono_runtime"
 
 for required_source in \
     'resono_runtime/plugins/bundled/resono-mail/plugin.json' \

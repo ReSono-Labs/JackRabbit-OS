@@ -118,7 +118,11 @@ public final class RuntimeVoiceClient implements AutoCloseable {
         try {
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(1500);
-            connection.setReadTimeout(10_000);
+            // Provider-backed MCP tools such as web_search can legitimately
+            // outlive a fast local-domain call. Keep one bounded tool-call
+            // window so Voice does not abandon the response while the runtime
+            // is still executing it.
+            connection.setReadTimeout(65_000);
             connection.setDoOutput(true);
             connection.setRequestProperty("Authorization", "Bearer " + token);
             connection.setRequestProperty("Content-Type", "application/json");

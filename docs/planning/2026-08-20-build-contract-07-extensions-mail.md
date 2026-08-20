@@ -3,7 +3,7 @@
 **Identity:** `R1-BUILD-CONTRACT-07-v0.7-audited-implementation`  
 **Grounding:** `GROUNDING-BASELINE-v0.5`  
 **Delivery slice:** 6  
-**Status:** Code implementation and host/build evidence complete. Physical Mail-provider, Voice-session, and on-device Creation acceptance remain open and must not be inferred from the build result.  
+**Status:** Code implementation and host/build evidence complete. Physical acceptance is partial; only the explicitly recorded device results below are accepted. Remaining provider, import-lifecycle, and on-device Creation evidence must not be inferred from build results.  
 **Opened:** 2026-08-20  
 **Authority added by owner on 2026-08-20:** the Mail and tool-surface decisions recorded in this contract.
 
@@ -2514,6 +2514,12 @@ Physical proof remains required for real multi-client Mail sync/Sent visibility,
 
 Mail tools never expose or request an internal account UUID from the user. With one available account, the runtime selects it automatically. With multiple accounts, the tool result names each configured account by label and email address and instructs Voice to ask which human-readable account the user wants; subsequent calls accept that label or email address as the optional `mailAccount` selector.
 
+### Deleted-message visibility correction
+
+Complete provider synchronization still retains remote mailbox state, but Trash/Deleted folders and messages carrying the IMAP `\\Deleted` flag are excluded at the canonical Voice repository boundary. They cannot enter folder listings, message lists, unread results, search, contact lookup, reads, attachment retrieval, or Voice mutations. The agent has no tool that can reveal or act on deleted mail.
+
+The first deployed form of this correction contained malformed Python SQL-string construction. Gradle packaged the source without compiling every embedded module, so Android assembly passed while runtime import failed before port 8765 bound. `android/scripts/check_runtime_package.sh` now extracts the exact packaged `app.imy` and compiles the complete `resono_runtime` tree with the production Python 3.13 build host. Any future embedded Python syntax failure now fails the canonical APK build before deployment.
+
 Physical preflight on 2026-08-20 returned an empty `adb devices -l` list and `adb: no devices/emulators found`. Therefore no candidate was installed and no physical claim was inferred. Real Mail credentials and both configured OpenAI access paths are also required for the remaining provider evidence.
 # Physical implementation finding: WebView provider selection
 
@@ -2687,3 +2693,34 @@ SHA-256 `86c6e1ee588e01d78aa2ef295ee256611c47b6191b9fa8a7deb79a7137c2614b`.
 The R1 was intentionally unplugged for owner review, so real QR import, remote
 rendering, persistent DOM storage, delete storage purge, and physical Cards
 refresh remain unaccepted device evidence.
+
+### Physical Voice web-search correction and acceptance
+
+Physical R1 testing on 2026-08-20 proved the subscription-backed `web_search`
+path through the canonical Voice Tool Catalog. The tool used the shared
+ChatGPT/Codex subscription access resolver, returned current search content to
+the live Realtime session, and the Voice session remained live after the
+answer.
+
+Two native bridge defects were found and corrected during that proof:
+
+- the Android MCP client abandoned a valid long-running search after 10
+  seconds, causing the runtime HTTP response to encounter `BrokenPipeError`;
+  the read deadline is now 65 seconds while the runtime provider retains its
+  bounded search deadline;
+- native Voice sent `response.create` while Realtime still owned an active
+  response. `VoicePageView` now follows the donor Browser Voice bridge: it
+  sends `function_call_output` immediately, coalesces a pending continuation,
+  waits for `response.done`, and defers the continuation flush by 150 ms so the
+  provider can release the previous response.
+
+The provider rejection was captured exactly as
+`conversation_already_has_active_response`; provider error payloads are now
+logged before the session enters its truthful error state. The rebuilt APK
+passed all 299 Android build tasks, standalone-boundary checks, and embedded
+runtime-package checks before deployment. Owner testing then confirmed no
+error, a returned search answer, and a surviving Voice session.
+
+This accepts only the ChatGPT/Codex subscription path. A separately selected
+OpenAI Platform credential search, citation/source presentation, revoked-access
+failure, and restart recovery remain required evidence.

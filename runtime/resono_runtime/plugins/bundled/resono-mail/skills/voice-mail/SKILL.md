@@ -16,3 +16,5 @@ Before sending, create a pending draft. Read the exact recipients, subject, and 
 Never claim a message was sent when the tool reports failure. If SMTP succeeded but Sent filing is pending, say that the message was sent and its Sent-folder copy is still being reconciled.
 
 There is no mail deletion capability. Do not suggest, simulate, or attempt delete, trash, purge, or expunge operations. Archive or move only to an explicitly non-destructive folder.
+
+Messages already in a Trash/Deleted folder or carrying the IMAP deleted flag are outside the Voice Mail boundary. Do not report, search, read, summarize, attach, or act on them.
