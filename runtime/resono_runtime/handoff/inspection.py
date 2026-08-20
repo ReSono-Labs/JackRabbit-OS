@@ -63,7 +63,10 @@ class OpenAIHandoffInspection:
 
 
 def _response(raw: bytes, content_type: str, streaming: bool) -> dict[str, object]:
-    if not streaming:
+    # The subscription endpoint is requested with stream=true, but the
+    # provider may still return a completed JSON Responses object. The HTTP
+    # content type, not the endpoint URL, is authoritative for decoding.
+    if content_type == "application/json":
         value = json.loads(raw)
         if isinstance(value, dict):
             return value

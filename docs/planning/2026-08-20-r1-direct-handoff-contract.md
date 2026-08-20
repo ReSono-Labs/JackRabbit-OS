@@ -214,3 +214,14 @@ Documentation does not authorize a disconnected control. Implementation order is
 6. Add `feature:handoff` review/coordinator behavior.
 7. Expose `Hand to Voice` only when the complete real path is connected.
 8. Complete physical acceptance before declaring the capability available.
+# Physical response-decoding correction, 2026-08-20
+
+Physical Direct Handoff returned `inspection_invalid: Image inspection returned
+an invalid stream` when the ChatGPT/Codex subscription endpoint returned a
+completed JSON Responses object despite accepting `stream=true`. The original
+R1 parser inferred response framing from the endpoint URL. It now treats the
+HTTP content type as authoritative and accepts either a valid completed JSON
+Responses object or a valid SSE `response.completed` event. Invalid content
+types, malformed JSON/SSE, missing completion events, empty output, and size
+limits remain rejected. Focused coverage lives in
+`tests/runtime/test_handoff_inspection.py`.
