@@ -117,8 +117,13 @@ public final class CameraHandoffPage extends FrameLayout implements AutoCloseabl
     private void send() {
         if (state != State.REVIEW || captured == null || !voice.isAvailable()) { fail("Voice session ended"); return; }
         state=State.SENDING; message="Sending image..."; controls.invalidate();
-        if (voice.submitImage(captured.bytes(), captured.mimeType(), captured.filename())) cancel();
-        else fail("Voice connection closed");
+        try {
+            byte[] realtimeImage = RealtimeImageEncoder.encode(captured.bytes());
+            if (voice.submitImage(realtimeImage, captured.mimeType(), captured.filename())) cancel();
+            else fail("Image could not be sent");
+        } catch (IllegalArgumentException error) {
+            fail(error.getMessage());
+        }
     }
 
     private void cancel() { stop(); returnToVoice.run(); }

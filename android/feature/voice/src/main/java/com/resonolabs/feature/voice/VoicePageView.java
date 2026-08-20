@@ -445,6 +445,7 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
 
     @Override public boolean submitImage(byte[] image, String mimeType, String filename) {
         if (!isAvailable() || image == null || image.length == 0
+                || image.length > 160 * 1024
                 || mimeType == null || !mimeType.startsWith("image/")) return false;
         try {
             String imageUrl = "data:" + mimeType + ";base64," +

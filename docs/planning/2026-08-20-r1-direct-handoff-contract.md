@@ -230,6 +230,17 @@ QR decoding is a separate camera/import responsibility. It may inspect frames
 for supported QR payloads outside Direct Handoff, but it must never become a
 prerequisite for sending a normal captured image into Voice.
 
+Physical raw-image testing showed that the camera's up-to-8-megapixel JPEG,
+after base64 expansion, exceeded the practical size of one WebRTC data-channel
+message and closed SCTP before Realtime could return a protocol error. The
+camera now has one dedicated `RealtimeImageEncoder`: it preserves aspect ratio,
+bounds the longest edge to 960 px, reduces JPEG quality in controlled steps,
+and enforces a 150 KiB payload ceiling. Voice independently rejects anything
+over 160 KiB before touching the data channel. This is still a direct
+`input_image` handoff; no image-to-text service or second model call is used.
+If a capture cannot meet the ceiling, the camera reports the failure while the
+existing Voice session remains open.
+
 # Superseded response-decoding investigation, 2026-08-20
 
 Physical Direct Handoff returned `inspection_invalid: Image inspection returned
