@@ -29,11 +29,13 @@ from .skills.archives import SkillArchiveInspector
 from .skills.lifecycle import SkillLifecycle
 from .api.skill_routes import SkillRoutes
 from .api.mail_routes import MailRoutes
+from .api.calendar_routes import CalendarRoutes
 from .api.mcp_routes import McpRoutes
 from .api.tool_routes import ToolRoutes
 from .api.plugin_routes import PluginRoutes
 from .plugins.archives import PluginArchiveInspector
 from .plugins.lifecycle import PluginLifecycle
+from .plugins.card_lifecycle import PluginCardLifecycle
 from .storage.plugins import PluginCatalogRepository
 from .storage.plugin_components import PluginComponentRepository
 from .imports import ImportRecovery
@@ -45,6 +47,14 @@ from .domains.mail.repository import MailRepository
 from .domains.mail.scheduler import MailSyncScheduler
 from .domains.mail.service import MailService
 from .domains.mail.tools import MAIL_TOOL_SET, register_mail_tools
+from .domains.calendar.repository import CalendarRepository
+from .domains.calendar.scheduler import CalendarSyncScheduler
+from .domains.calendar.service import CalendarService
+from .connectors.calendar import CaldavCalendarProviderClient, IcsCalendarProviderClient
+from .tools.calendar import CALENDAR_TOOL_SET, CalendarToolPackage
+from .domains.tasks import TaskRepository, TaskService
+from .tools.tasks import TASKS_TOOL_SET, TasksToolPackage
+from .api.task_routes import TaskRoutes
 from .storage.connection_credentials import ConnectionCredentialRepository
 from .storage.mcp_connections import McpConnectionRepository
 from .connections.records import ConnectionRepository
@@ -123,6 +133,21 @@ class RuntimeApplication:
         )
         self._mail_scheduler = MailSyncScheduler(self._mail_repository, self._mail_service)
         self._mail_routes = MailRoutes(self._mail_repository, self._mail_service)
+        self._calendar_repository = CalendarRepository(self._database)
+        self._calendar_service = CalendarService(
+            self._calendar_repository,
+            ConnectionCredentialRepository(self._database),
+            connection_envelopes,
+            IcsCalendarProviderClient(),
+            CaldavCalendarProviderClient(),
+        )
+        self._calendar_scheduler = CalendarSyncScheduler(self._calendar_repository, self._calendar_service)
+        self._calendar_routes = CalendarRoutes(self._calendar_repository, self._calendar_service)
+        CalendarToolPackage(self._calendar_service).register(self._tools)
+        self._task_repository = TaskRepository(self._database)
+        self._task_service = TaskService(self._task_repository)
+        self._task_routes = TaskRoutes(self._task_repository)
+        TasksToolPackage(self._task_service).register(self._tools)
         self._connections = ConnectionRepository(self._database)
         self._connection_routes = ConnectionRoutes(self._connections)
         register_mail_tools(self._tools, self._mail_repository, self._mail_service)
@@ -137,6 +162,8 @@ class RuntimeApplication:
         )
         self._mcp_routes = McpRoutes(self._outbound_mcp)
         self._tool_routes = ToolRoutes(self._tools)
+        self._card_catalog = CreationCatalogRepository(self._database)
+        self._plugin_cards = PluginCardLifecycle(self._card_catalog, self._plugin_components)
         self._plugin_lifecycle = PluginLifecycle(
             self._plugins,
             self._audience_router,
@@ -146,6 +173,7 @@ class RuntimeApplication:
             self._skills,
             self._outbound_mcp,
             import_recovery,
+            self._plugin_cards,
         )
         self._plugin_routes = PluginRoutes(
             self._plugin_lifecycle,
@@ -157,7 +185,7 @@ class RuntimeApplication:
             PluginArchiveInspector(config.plugin_quarantine_path),
         )
         self._creation_lifecycle = CreationLifecycle(
-            CreationCatalogRepository(self._database),
+            self._card_catalog,
             self._audience_router,
             config.creations_path,
             config.creation_rollback_path,
@@ -230,6 +258,18 @@ class RuntimeApplication:
         self._log.info("runtime.start.begin")
         self._releases.prepare()
         self._database.migrate()
+        if self._audience_router.binding_for(CALENDAR_TOOL_SET) is None:
+            self._audience_router.set_audience(
+                CALENDAR_TOOL_SET,
+                AgentAudience.BOTH,
+                changed_by="runtime-bootstrap",
+                reason="built-in Calendar is available to Voice and Text",
+            )
+        if self._audience_router.binding_for(TASKS_TOOL_SET) is None:
+            self._audience_router.set_audience(
+                TASKS_TOOL_SET, AgentAudience.VOICE, changed_by="runtime-bootstrap",
+                reason="enable the built-in Voice Tasks capability",
+            )
         if self._audience_router.binding_for(DEVICE_STATUS_TOOL_SET) is None:
             self._audience_router.set_audience(
                 DEVICE_STATUS_TOOL_SET,
@@ -289,6 +329,8 @@ class RuntimeApplication:
             restart_request=self._request_restart,
             skills=self._skill_routes,
             mail=self._mail_routes,
+            calendar=self._calendar_routes,
+            tasks=self._task_routes,
             outbound_mcp=self._mcp_routes,
             tools=self._tool_routes,
             plugins=self._plugin_routes,
@@ -298,6 +340,7 @@ class RuntimeApplication:
         )
         self._server.start()
         self._mail_scheduler.start()
+        self._calendar_scheduler.start()
         self._events.publish(
             "runtime.ready",
             {"status": "ready", "startCount": int(record.value)},
@@ -307,6 +350,7 @@ class RuntimeApplication:
     def stop(self) -> None:
         self._events.publish("runtime.stopping", {"status": "stopping"})
         self._mail_scheduler.stop()
+        self._calendar_scheduler.stop()
         if self._server is not None:
             self._server.stop()
             self._server = None

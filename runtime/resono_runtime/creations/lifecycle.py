@@ -29,6 +29,8 @@ class CreationLifecycle:
     def preflight(self, inspection: CreationInspection, *, audience: AgentAudience):
         digest = _hash_tree(inspection.content_root)
         current = self._catalog.get(inspection.creation_id)
+        if current is not None and current.source_type == "plugin_card":
+            raise CreationLifecycleError("This Card is owned by an installed Plugin.")
         return self._preflights.issue(identity=inspection.creation_id, candidate_hash=digest, current_hash=current.content_hash if current else None, audience=audience, payload=inspection)
 
     def confirm(self, token: str, *, replace: bool, changed_by: str, reason: str) -> StoredCreation:

@@ -27,7 +27,7 @@ public final class CreationCatalogClient implements AutoCloseable {
     public void load(Context context, Callback callback) {
         worker.execute(() -> {
             try {
-                Asset asset = request(context, "/v1/creations/catalog", 512 * 1024);
+                Asset asset = request(context, "/v1/cards/catalog", 512 * 1024);
                 JSONObject value = new JSONObject(new String(asset.body(), java.nio.charset.StandardCharsets.UTF_8));
                 main.post(() -> callback.onCatalog(value));
             } catch (Exception ignored) {

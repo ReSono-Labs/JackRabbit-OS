@@ -11,6 +11,7 @@ from resono_runtime.creations import CreationArchiveInspector, CreationDescripto
 from resono_runtime.imports import ImportRecovery
 from resono_runtime.storage.agent_audiences import AgentAudienceRepository
 from resono_runtime.storage.creations import CreationCatalogRepository
+from resono_runtime.storage.creations import StoredCreation
 from resono_runtime.storage.database import RuntimeDatabase
 
 
@@ -67,6 +68,15 @@ class CreationLifecycleTest(unittest.TestCase):
             inspector = CreationDescriptorInspector(Path(directory), host_validator=lambda host, port: host)
             with self.assertRaises(ValueError): inspector.inspect({"title": "Notes", "url": "http://example.com"})
             with self.assertRaises(ValueError): inspector.inspect({"title": "Notes", "url": "https://example.com", "extra": True})
+
+    def test_standalone_creation_cannot_replace_plugin_owned_card(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); database=RuntimeDatabase(root/"runtime.sqlite3"); database.migrate()
+            catalog=CreationCatalogRepository(database)
+            catalog.save(StoredCreation("quick-capture","Plugin Card","Owned", "hash",root/"plugin","enabled",0,source_type="plugin_card"),action="install",changed_by="test",reason="plugin")
+            lifecycle=CreationLifecycle(catalog,AgentAudienceRouter(AgentAudienceRepository(database)),root/"creations",root/"rollbacks",ImportRecovery(database))
+            with self.assertRaisesRegex(ValueError,"owned"):
+                lifecycle.preflight(CreationArchiveInspector(root/"quarantine").inspect(_zip("Replacement"),"quick-capture.zip"),audience=AgentAudience.BOTH)
 
 
 def _zip(title: str) -> bytes:

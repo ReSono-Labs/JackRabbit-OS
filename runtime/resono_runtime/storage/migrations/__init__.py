@@ -26,6 +26,10 @@ from .v023_import_recovery_phase import apply as apply_v023
 from .v024_mail_utterance_approval import apply as apply_v024
 from .v025_creation_sources import apply as apply_v025
 from .v026_direct_handoffs import apply as apply_v026
+from .v027_plugin_cards import apply as apply_v027
+from .v028_calendar import apply as apply_v028
+from .v029_tasks import apply as apply_v029
+from .v030_calendar_connection_kind import apply as apply_v030
 
 
 @dataclass(frozen=True, slots=True)
@@ -57,5 +61,9 @@ MIGRATIONS = (
     Migration(24, apply_v024),
     Migration(25, apply_v025),
     Migration(26, apply_v026),
+    Migration(27, apply_v027),
+    Migration(28, apply_v028),
+    Migration(29, apply_v029),
+    Migration(30, apply_v030),
 )
 LATEST_VERSION = MIGRATIONS[-1].version

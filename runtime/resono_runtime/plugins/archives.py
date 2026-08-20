@@ -22,6 +22,7 @@ from resono_runtime.plugins.specification import (
     parse_plugin_manifest,
 )
 from resono_runtime.skills.specification import SkillSpecificationError, parse_skill
+from .cards import PluginCardInspection, PluginCardRejected, inspect_plugin_card
 
 
 class PluginArchiveRejected(ValueError):
@@ -46,6 +47,7 @@ class PluginInspection:
     mcp_present: bool
     mcp_valid: bool
     mcp_issue: str | None
+    card: PluginCardInspection | None = None
 
 
 class PluginArchiveInspector:
@@ -67,7 +69,10 @@ class PluginArchiveInspector:
             manifest = _manifest(root / "plugin.json")
             skills, invalid = _skills(root)
             mcp_present, mcp_valid, mcp_issue = _mcp(root / "mcp.json")
-            return PluginInspection(candidate.name, root, manifest, skills, invalid, mcp_present, mcp_valid, mcp_issue)
+            card = inspect_plugin_card(root, manifest.name)
+            return PluginInspection(candidate.name, root, manifest, skills, invalid, mcp_present, mcp_valid, mcp_issue, card)
+        except PluginCardRejected as error:
+            raise PluginArchiveRejected(str(error)) from error
         except Exception:
             shutil.rmtree(candidate, ignore_errors=True)
             raise

@@ -21,6 +21,8 @@ from ..providers.openai import OpenAISubscription
 from ..storage.profile_settings import UserProfileRepository
 from .skill_routes import SkillRoutes
 from .mail_routes import MailRoutes
+from .calendar_routes import CalendarRoutes
+from .task_routes import TaskRoutes
 from .mcp_routes import McpRoutes
 from .connection_routes import ConnectionRoutes
 from .tool_routes import ToolRoutes
@@ -61,6 +63,8 @@ class RuntimeHttpServer:
         restart_request: RestartRequest | None = None,
         skills: SkillRoutes | None = None,
         mail: MailRoutes | None = None,
+        calendar: CalendarRoutes | None = None,
+        tasks: TaskRoutes | None = None,
         outbound_mcp: McpRoutes | None = None,
         tools: ToolRoutes | None = None,
         plugins: PluginRoutes | None = None,
@@ -85,6 +89,8 @@ class RuntimeHttpServer:
             restart_request=restart_request,
             skills=skills,
             mail=mail,
+            calendar=calendar,
+            tasks=tasks,
             outbound_mcp=outbound_mcp,
             tools=tools,
             plugins=plugins,

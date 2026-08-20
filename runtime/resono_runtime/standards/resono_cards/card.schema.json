@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://resono.local/schemas/cards/1.0/card.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "cardId", "title", "description", "entrypoint"],
+  "properties": {
+    "$schema": {"const": "https://resono.local/schemas/cards/1.0/card.schema.json"},
+    "schemaVersion": {"const": "1.0"},
+    "cardId": {"type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$"},
+    "title": {"type": "string", "minLength": 1, "maxLength": 100},
+    "description": {"type": "string", "minLength": 1, "maxLength": 240},
+    "entrypoint": {"type": "string", "minLength": 1, "maxLength": 240},
+    "accent": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+    "requiredTools": {"type": "array", "maxItems": 64, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 128}},
+    "optionalTools": {"type": "array", "maxItems": 64, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 128}}
+  }
+}

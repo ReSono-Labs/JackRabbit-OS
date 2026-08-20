@@ -24,6 +24,8 @@ include(
     ":feature:settings",
     ":feature:voice",
     ":feature:cards",
+    ":feature:calendar",
+    ":feature:tasks",
     ":feature:camera",
     ":runtime-host",
     ":system:motor-service",

@@ -17,6 +17,7 @@ from ..storage.plugins import PluginCatalogRepository, StoredPlugin
 from ..storage.skills import SkillCatalogRepository
 from .archives import PluginInspection
 from .specification import PluginSpecificationError, parse_mcp_document
+from .card_lifecycle import PluginCardLifecycle, PluginCardLifecycleError
 
 
 class PluginLifecycleError(ValueError):
@@ -34,7 +35,7 @@ class PluginPreflight:
 
 
 class PluginLifecycle:
-    def __init__(self, catalog: PluginCatalogRepository, audiences: AgentAudienceRouter, plugins_root: Path, rollback_root: Path, components: PluginComponentRepository, skills: SkillCatalogRepository | None = None, mcp: McpLifecycle | None = None, recovery: ImportRecovery | None = None) -> None:
+    def __init__(self, catalog: PluginCatalogRepository, audiences: AgentAudienceRouter, plugins_root: Path, rollback_root: Path, components: PluginComponentRepository, skills: SkillCatalogRepository | None = None, mcp: McpLifecycle | None = None, recovery: ImportRecovery | None = None, cards: PluginCardLifecycle | None = None) -> None:
         self._catalog = catalog
         self._audiences = audiences
         self._plugins_root = plugins_root
@@ -43,6 +44,7 @@ class PluginLifecycle:
         self._skills = skills
         self._mcp = mcp
         self._recovery = recovery
+        self._cards = cards
         self._preflights: ImportPreflightRegistry[PluginInspection] = ImportPreflightRegistry()
 
     def preflight(self, inspection: PluginInspection, *, audience: AgentAudience = AgentAudience.VOICE) -> PluginPreflight:
@@ -50,6 +52,11 @@ class PluginLifecycle:
             shutil.rmtree(expired.payload.root.parent, ignore_errors=True)
         digest = _hash_tree(inspection.root)
         current = self._catalog.get(inspection.manifest.name)
+        if self._cards is not None:
+            try:
+                self._cards.validate(inspection.manifest.name, inspection.card)
+            except PluginCardLifecycleError as error:
+                raise PluginLifecycleError(str(error)) from error
         for name in inspection.skills:
             if self._skills is not None and self._skills.get(name) is not None:
                 raise PluginLifecycleError(f"Plugin Skill '{name}' conflicts with an installed Skill.")
@@ -68,6 +75,7 @@ class PluginLifecycle:
         except ImportPreflightError as error:
             raise PluginLifecycleError(str(error)) from error
         inspection = record.payload
+        previous_card_ids = self._components.card_ids(inspection.manifest.name)
         previous_mcp_ids = set(self._mcp_ids(current)) if current is not None else set()
         target = self._plugins_root / inspection.manifest.name
         rollback = self._rollback_root / inspection.manifest.name
@@ -90,6 +98,8 @@ class PluginLifecycle:
                 self._recovery.mark_activated(operation)
             item = self._catalog.save(StoredPlugin(inspection.manifest.name, record.candidate_hash, target, "installed"), action="replace" if current else "install", changed_by=changed_by, reason=reason)
             self._components.replace_for_plugin(item.name, _components(item.name, inspection))
+            if self._cards is not None:
+                self._cards.replace(item.name, inspection.card, previous_card_ids, state=item.lifecycle_state, changed_by=changed_by, reason=reason)
             self._audiences.set_audience(_resource(item.name), record.audience, changed_by=changed_by, reason=reason)
             self._install_mcp(item, record.audience, changed_by, reason)
             if self._mcp:
@@ -123,6 +133,7 @@ class PluginLifecycle:
         binding = self._audiences.binding_for(_resource(name))
         if binding is None: raise PluginLifecycleError("Installed Plugin has no agent audience.")
         self._audiences.set_audience(_resource(name), binding.audience, changed_by=changed_by, reason=reason)
+        if self._cards is not None: self._cards.set_enabled(name, True, changed_by=changed_by, reason=reason)
         return self._catalog.save(StoredPlugin(name, item.content_hash, item.install_path, "enabled"), action="enable", changed_by=changed_by, reason=reason)
 
     def disable(self, name: str, *, changed_by: str, reason: str) -> StoredPlugin:
@@ -131,14 +142,17 @@ class PluginLifecycle:
         if self._mcp:
             for connection_id in self._mcp_ids(item):
                 if self._mcp.get(connection_id): self._mcp.set_enabled(connection_id, False, changed_by=changed_by, reason="Plugin disabled")
+        if self._cards is not None: self._cards.set_enabled(name, False, changed_by=changed_by, reason=reason)
         return self._catalog.save(StoredPlugin(name, item.content_hash, item.install_path, "disabled"), action="disable", changed_by=changed_by, reason=reason)
 
     def delete(self, name: str, *, changed_by: str, reason: str) -> StoredPlugin:
         item = self._required(name)
+        card_ids = self._components.card_ids(name)
         self.disable(name, changed_by=changed_by, reason="disable before delete")
         if self._mcp:
             for connection_id in self._mcp_ids(item): self._mcp.remove(connection_id, changed_by=changed_by, reason="Plugin removed")
         self._audiences.remove_resource(_resource(name), changed_by=changed_by, reason=reason)
+        if self._cards is not None: self._cards.remove(name, card_ids, changed_by=changed_by, reason=reason)
         shutil.rmtree(item.install_path, ignore_errors=True)
         shutil.rmtree(self._rollback_root / name, ignore_errors=True)
         removed = self._catalog.remove(name, changed_by=changed_by, reason=reason)
@@ -188,4 +202,5 @@ def _components(plugin: str, inspection: PluginInspection) -> tuple[PluginCompon
     records = [PluginComponent(plugin, "skill", name, "valid", None) for name in inspection.skills]
     records += [PluginComponent(plugin, "skill", name, "invalid", "Skill validation failed") for name in inspection.invalid_skills]
     if inspection.mcp_present: records.append(PluginComponent(plugin, "mcp", "mcp.json", "valid" if inspection.mcp_valid else "invalid", inspection.mcp_issue))
+    if inspection.card is not None: records.append(PluginComponent(plugin, "card", inspection.card.card_id, "valid", None))
     return tuple(records)

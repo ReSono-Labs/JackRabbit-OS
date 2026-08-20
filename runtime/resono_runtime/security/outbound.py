@@ -2,32 +2,71 @@ from __future__ import annotations
 
 import ipaddress
 import socket
+from urllib.parse import urlparse
 
 
-class UnsafeOutboundHost(ValueError):
-    pass
+_ALLOWED_SCHEMES = {"http", "https"}
+_METADATA_ADDRESSES = {ipaddress.ip_address("169.254.169.254")}
 
 
-def validate_public_host(host: str, port: int) -> str:
-    """Resolve a provider host and reject every non-public destination."""
-    normalized, _ = resolve_public_host(host, port)
-    return normalized
+def validate_public_url(raw_url: str, *, target: str = "url") -> str:
+    candidate = raw_url.strip()
+    parsed = urlparse(candidate)
+    if parsed.scheme not in _ALLOWED_SCHEMES or not parsed.hostname:
+        raise ValueError(f"{target} must use http or https with a valid host.")
+    validate_public_host(parsed.hostname, target=target)
+    return candidate
 
 
-def resolve_public_host(host: str, port: int) -> tuple[str, tuple[str, ...]]:
-    """Return only public resolved addresses so callers can pin their socket."""
-    normalized = host.strip().rstrip(".").casefold()
-    if not normalized or normalized == "localhost":
-        raise UnsafeOutboundHost("Provider host must resolve only to public addresses.")
+def validate_public_host(host: str, *, target: str = "host") -> str:
+    candidate = host.strip().strip("[]").casefold()
+    if not candidate:
+        raise ValueError(f"{target} is required.")
+    if candidate in {"localhost", "localhost.localdomain"} or candidate.endswith(".localhost"):
+        raise ValueError(f"{target} must not resolve to a local or private network.")
     try:
-        addresses = socket.getaddrinfo(normalized, port, type=socket.SOCK_STREAM)
+        literal = ipaddress.ip_address(candidate)
+    except ValueError:
+        literal = None
+    if literal is not None:
+        _reject_private(literal, target)
+        return candidate
+    try:
+        results = socket.getaddrinfo(candidate, None, type=socket.SOCK_STREAM)
     except socket.gaierror as error:
-        raise UnsafeOutboundHost("Provider host could not be resolved.") from error
+        raise ValueError(f"{target} could not be resolved.") from error
+    addresses = {item[4][0] for item in results if item and item[4]}
     if not addresses:
-        raise UnsafeOutboundHost("Provider host could not be resolved.")
-    resolved = tuple(sorted({item[4][0] for item in addresses}))
-    for address in resolved:
-        parsed = ipaddress.ip_address(address)
-        if not parsed.is_global:
-            raise UnsafeOutboundHost("Provider host must resolve only to public addresses.")
-    return normalized, resolved
+        raise ValueError(f"{target} could not be resolved.")
+    for address in addresses:
+        _reject_private(ipaddress.ip_address(address), target)
+    return candidate
+
+
+def assert_redirect_safe(
+    original_url: str,
+    redirect_url: str,
+    *,
+    allow_host_change: bool = True,
+    target: str = "url",
+) -> str:
+    safe_url = validate_public_url(redirect_url, target=target)
+    if not allow_host_change:
+        original = (urlparse(original_url).hostname or "").casefold()
+        redirected = (urlparse(safe_url).hostname or "").casefold()
+        if original != redirected:
+            raise ValueError(f"{target} redirect changed hosts.")
+    return safe_url
+
+
+def _reject_private(address: ipaddress.IPv4Address | ipaddress.IPv6Address, target: str) -> None:
+    if (
+        address in _METADATA_ADDRESSES
+        or address.is_loopback
+        or address.is_private
+        or address.is_link_local
+        or address.is_multicast
+        or address.is_reserved
+        or address.is_unspecified
+    ):
+        raise ValueError(f"{target} must not resolve to a local or private network.")

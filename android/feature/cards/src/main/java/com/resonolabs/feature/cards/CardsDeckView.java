@@ -14,7 +14,7 @@ import com.resonolabs.ui.input.UiInputIntent;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/** Native rolodex for the real Creation catalog. Imported HTML runs elsewhere. */
+/** Native rolodex for the real dynamic Card catalog. Imported HTML runs elsewhere. */
 final class CardsDeckView extends View {
     interface Activation { void open(JSONObject item); }
 
@@ -35,8 +35,12 @@ final class CardsDeckView extends View {
     }
 
     void showCatalog(JSONObject catalog) {
-        items = catalog.optJSONArray("creations");
-        if (items == null) items = new JSONArray();
+        JSONArray remote = catalog.optJSONArray("cards");
+        if (remote == null) remote = catalog.optJSONArray("creations");
+        items = new JSONArray();
+        try { items.put(new JSONObject().put("sourceType","builtin_calendar").put("title","Calendar").put("description","Upcoming events from your connected calendars.").put("accent","#ff5ca8")); } catch (Exception ignored) {}
+        try { items.put(new JSONObject().put("sourceType","builtin_tasks").put("title","Tasks").put("description","Your open tasks, available to Voice.").put("accent","#ffd166")); } catch (Exception ignored) {}
+        if (remote != null) for (int i=0;i<remote.length();i++) items.put(remote.opt(i));
         index = Math.min(index, Math.max(0, items.length() - 1));
         invalidate();
     }
@@ -81,10 +85,11 @@ final class CardsDeckView extends View {
         JSONObject item = items.optJSONObject(index);
         if (item == null) return;
         String source = item.optString("sourceType", "local_archive");
+        if ("builtin_calendar".equals(source) || "builtin_tasks".equals(source)) { activation.open(item); return; }
         String entry = "rabbit_qr_link".equals(source)
                 ? item.optString("entryUrl", "") : item.optString("entryAsset", "");
         if (("rabbit_qr_link".equals(source) && entry.startsWith("https://"))
-                || ("local_archive".equals(source) && entry.startsWith("/v1/creations/"))) {
+                || (("local_archive".equals(source) || "plugin_card".equals(source)) && entry.startsWith("/v1/creations/"))) {
             activation.open(item);
         }
     }
@@ -128,7 +133,9 @@ final class CardsDeckView extends View {
         paint.setColor(accent);
         canvas.drawRoundRect(new RectF(inset, top, inset + 6f, bottom), 6f, 6f, paint);
         if (depth != 0) return;
-        ReSonoTheme.text(canvas, paint, "CREATION", inset + 20f, top + 36f, 13f,
+        String sourceType = item.optString("sourceType");
+        String kind = "builtin_calendar".equals(sourceType) ? "CALENDAR" : "builtin_tasks".equals(sourceType) ? "TASKS" : "plugin_card".equals(sourceType) ? "APP" : "CREATION";
+        ReSonoTheme.text(canvas, paint, kind, inset + 20f, top + 36f, 13f,
                 accent, Paint.Align.LEFT, true);
         ReSonoTheme.text(canvas, paint, "READY", WIDTH - inset - 18f, top + 36f, 13f,
                 accent, Paint.Align.RIGHT, true);

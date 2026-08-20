@@ -53,7 +53,7 @@ class PluginRoutes:
                 request.respond_json(200, {
                     "state": result.state,
                     "preflightToken": result.token,
-                    "candidate": {"name": result.name, "contentHash": result.content_hash},
+                    "candidate": {"name": result.name, "contentHash": result.content_hash, "components": _inspection_components(inspection)},
                     "current": _view(result.current, self._lifecycle) if result.current else None,
                 })
                 return True
@@ -93,7 +93,7 @@ class PluginRoutes:
         except PluginLifecycleError as error:
             _error(request, 404, "plugin_not_found", str(error))
             return True
-        request.respond_json(200, {"name": name, "deleted": True})
+        request.respond_json(200, {"name": name, "deleted": True, "restartRequired": False})
         return True
 
 
@@ -107,6 +107,16 @@ def _view(item: object, lifecycle: PluginLifecycle) -> dict[str, object]:
             for component in lifecycle.components(item.name)
         ],
     }
+
+
+def _inspection_components(inspection: object) -> list[dict[str, object]]:
+    result = [{"type": "skill", "key": name, "state": "valid"} for name in inspection.skills]
+    result += [{"type": "skill", "key": name, "state": "invalid"} for name in inspection.invalid_skills]
+    if inspection.mcp_present:
+        result.append({"type": "mcp", "key": "mcp.json", "state": "valid" if inspection.mcp_valid else "invalid", "detail": inspection.mcp_issue})
+    if inspection.card is not None:
+        result.append({"type": "card", "key": inspection.card.card_id, "state": "valid", "title": inspection.card.title})
+    return result
 
 
 def _name_action(path: str) -> tuple[str, str]:

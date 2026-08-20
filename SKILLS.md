@@ -19,6 +19,49 @@ next person can resume quickly.
   - `/tmp/r1-android-sdk/platform-tools/adb`
   - `/tmp/r1-android-sdk/platform-tools/fastboot`
 
+## Global capability-package structure
+
+Every cohesive capability added from Build Contract 07 onward must have one
+explicit, versioned package boundary. Do not register a domain's tools,
+schemas, permissions, or UI projections piecemeal from application composition.
+
+Required ownership:
+
+```text
+domain/                 canonical data, policy, and use cases
+connectors/<domain>/    provider transport and provider capability discovery
+tools/<domain>/         one versioned agent-tool package
+api/<domain>_routes.py  narrow transport DTOs only
+feature/<domain>/       native presentation only, when applicable
+```
+
+For every built-in domain tool package:
+
+- Provide one public package object and one `register(ToolCatalog)` entry point.
+- Keep the complete public tool names, descriptions, JSON Schemas, effect
+  classes, and package version in one contract module.
+- Register the complete definition tuple together. The application must not
+  select or register individual tools from the package.
+- Use one stable `DOMAIN_TOOL_SET` audience resource for Voice/Text/Both
+  selection. Do not create separate Voice and Text implementations.
+- Keep provider permissions and record editability in domain/service handlers.
+  Stable tool vocabulary remains exposed after normal audience filtering; a
+  read-only provider returns a precise capability denial for a mutation.
+- Require explicit user confirmation for external writes even when the provider
+  permits them.
+- Do not expose the package in the live Tool Catalog until every advertised
+  handler has real implemented behavior. Placeholder or disconnected tools are
+  prohibited.
+- Keep credentials in the shared device-sealed connection credential owner.
+  Packages and connectors must never introduce their own secret store.
+- Keep canonical user data in the domain repository. Plugins, Skills,
+  Creations, Cards, connectors, and tool packages never own canonical data.
+
+Calendar is the first strict reference implementation at
+`runtime/resono_runtime/tools/calendar/`. Apply the same boundary to future
+Contacts, Reminders, Files, Tasks, and other multi-surface domains unless an
+accepted contract records a concrete reason not to.
+
 ## Required assumptions
 
 - `ANDROID_HOME`/SDK and JDK environment are set in your shell for Android tasks.
@@ -456,10 +499,41 @@ Python 3.13 (host provides 3.11) — unrelated to product behavior.
 
 ## Build Contract 07 — focused subphase testing
 
+### Built-in Calendar contract
+
+Run the focused Calendar host contract with:
+
+```bash
+PYTHONPATH=runtime python3 -m unittest tests.runtime.test_calendar_contract
+```
+
+It covers migration 28, the transactional two-connection limit,
+upcoming-only projection, read-only capability denial, and complete uniform
+Calendar tool-package registration. Connector tests must use fakes and must
+never target a user's real calendar.
+
+Calendar presentation is owned by `:feature:calendar`, entered through the
+built-in Calendar item in `:feature:cards`, and reads only
+`/v1/calendar/upcoming`. Management owns connection setup/status only through
+`/v1/management/calendar/accounts`; it must never render event content.
+
 Build Contract 07 is owner-gated by subphase. Run only the focused test group
 for the active subphase before updating its evidence record and requesting
 approval for the next one. Do not substitute repeated full repository, Android,
 or device runs for those focused checks.
+
+### Built-in Tasks contract
+
+Run the focused Tasks host contract with:
+
+```bash
+PYTHONPATH=runtime python3 -m unittest tests.runtime.test_tasks_contract
+```
+
+It covers the text-only Tasks schema and complete uniform Tasks tool
+package registration. Tasks has no due date, schedule, reminder, notification,
+connection, or management-page behavior. Its Card is owned by `:feature:tasks`,
+is entered through `:feature:cards`, and reads only `/v1/tasks/active`.
 
 ### Rabbit Creation QR host checks
 

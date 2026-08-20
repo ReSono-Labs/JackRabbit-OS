@@ -30,3 +30,19 @@ class PluginComponentRepository:
                 (skill_name, excluding_plugin),
             ).fetchone()
         return str(row[0]) if row else None
+
+    def card_owner(self, card_id: str) -> str | None:
+        with self._database.connect() as connection:
+            row = connection.execute(
+                "SELECT plugin_name FROM plugin_components WHERE component_type='card' AND component_key=? AND validation_state='valid' LIMIT 1",
+                (card_id,),
+            ).fetchone()
+        return str(row[0]) if row else None
+
+    def card_ids(self, plugin_name: str) -> tuple[str, ...]:
+        with self._database.connect() as connection:
+            rows = connection.execute(
+                "SELECT component_key FROM plugin_components WHERE plugin_name=? AND component_type='card' AND validation_state='valid' ORDER BY component_key",
+                (plugin_name,),
+            ).fetchall()
+        return tuple(str(row[0]) for row in rows)

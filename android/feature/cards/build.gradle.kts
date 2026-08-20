@@ -14,4 +14,6 @@ dependencies {
     implementation(project(":core:design"))
     implementation(project(":core:input"))
     implementation(project(":runtime-host"))
+    implementation(project(":feature:calendar"))
+    implementation(project(":feature:tasks"))
 }

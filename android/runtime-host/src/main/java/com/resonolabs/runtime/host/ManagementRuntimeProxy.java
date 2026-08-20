@@ -32,6 +32,7 @@ final class ManagementRuntimeProxy {
             "/v1/management/openai/subscription/poll",
             "/v1/management/openai/subscription/disconnect",
             "/v1/management/mail/accounts",
+            "/v1/management/calendar/accounts",
             "/v1/management/connections",
             "/v1/management/skills",
             "/v1/management/skills/preflight",
@@ -53,6 +54,7 @@ final class ManagementRuntimeProxy {
             "/v1/management/memory/sessions");
     private static final Set<String> ROUTE_PREFIXES = Set.of(
             "/v1/management/mail/accounts/",
+            "/v1/management/calendar/accounts/",
             "/v1/management/connections/",
             "/v1/management/skills/",
             "/v1/management/plugins/",
@@ -128,6 +130,7 @@ final class ManagementRuntimeProxy {
         if (path.endsWith("/finalize")) return 65_000;
         if (path.equals("/v1/management/memory/reindex")) return 35_000;
         if (path.startsWith("/v1/management/mail/accounts")) return 610_000;
+        if (path.startsWith("/v1/management/calendar/accounts")) return 65_000;
         if (path.equals("/v1/management/openai/subscription/start")
                 || path.equals("/v1/management/openai/subscription/poll")) return 35_000;
         if (path.equals("/v1/management/openai")

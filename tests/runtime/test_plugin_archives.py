@@ -25,6 +25,24 @@ class PluginArchiveInspectorTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, self.assertRaisesRegex(PluginArchiveRejected, "plugin.json"):
             PluginArchiveInspector(Path(directory)).inspect(_zip({"demo/file.txt": b"x"}), "demo.zip")
 
+    def test_discovers_namespaced_card_extension(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            result = PluginArchiveInspector(Path(directory)).inspect(_zip({
+                "demo/plugin.json": b'{"$schema":"https://agent-plugins.org/schemas/1.0.0/plugin.schema.json","name":"demo"}',
+                "demo/com.resonolabs.cards/card.json": b'{"$schema":"https://resono.local/schemas/cards/1.0/card.schema.json","schemaVersion":"1.0","cardId":"demo","title":"Demo","description":"Real demo data","entrypoint":"index.html","requiredTools":["demo.read"]}',
+                "demo/com.resonolabs.cards/index.html": b"<!doctype html><title>Demo</title>",
+            }), "demo.zip")
+        self.assertEqual("demo", result.card.card_id)
+        self.assertEqual(("demo.read",), result.card.required_tools)
+
+    def test_rejects_card_identity_that_differs_from_plugin(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, self.assertRaisesRegex(PluginArchiveRejected, "identity"):
+            PluginArchiveInspector(Path(directory)).inspect(_zip({
+                "demo/plugin.json": b'{"$schema":"https://agent-plugins.org/schemas/1.0.0/plugin.schema.json","name":"demo"}',
+                "demo/com.resonolabs.cards/card.json": b'{"$schema":"https://resono.local/schemas/cards/1.0/card.schema.json","schemaVersion":"1.0","cardId":"other","title":"Demo","description":"Real demo data","entrypoint":"index.html"}',
+                "demo/com.resonolabs.cards/index.html": b"<!doctype html>",
+            }), "demo.zip")
+
 
 def _zip(files: dict[str, bytes]) -> bytes:
     payload = BytesIO()

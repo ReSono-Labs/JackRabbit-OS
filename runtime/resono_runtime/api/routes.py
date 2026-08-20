@@ -17,6 +17,8 @@ from ..storage.sessions import SessionTranscriptRepository
 from .events import RuntimeEventStream
 from .skill_routes import SkillRoutes
 from .mail_routes import MailRoutes
+from .calendar_routes import CalendarRoutes
+from .task_routes import TaskRoutes
 from .mcp_routes import McpRoutes
 from .tool_routes import ToolRoutes
 from .plugin_routes import PluginRoutes
@@ -84,6 +86,8 @@ class RuntimeRoutes:
         restart_request: RestartRequest | None,
         skills: SkillRoutes | None = None,
         mail: MailRoutes | None = None,
+        calendar: CalendarRoutes | None = None,
+        tasks: TaskRoutes | None = None,
         outbound_mcp: McpRoutes | None = None,
         tools: ToolRoutes | None = None,
         plugins: PluginRoutes | None = None,
@@ -105,6 +109,8 @@ class RuntimeRoutes:
         self._restart_request = restart_request
         self._skills = skills
         self._mail = mail
+        self._calendar = calendar
+        self._tasks = tasks
         self._outbound_mcp = outbound_mcp
         self._tools = tools
         self._plugins = plugins
@@ -121,6 +127,8 @@ class RuntimeRoutes:
         memory = self._memory
         skills = self._skills
         mail = self._mail
+        calendar = self._calendar
+        tasks = self._tasks
         outbound_mcp = self._outbound_mcp
         tools = self._tools
         plugins = self._plugins
@@ -129,6 +137,10 @@ class RuntimeRoutes:
         if skills is not None and skills.handle_get(req, pairing):
             return
         if mail is not None and mail.handle_get(req, pairing):
+            return
+        if calendar is not None and calendar.handle_get(req, pairing):
+            return
+        if tasks is not None and tasks.handle_get(req):
             return
         if outbound_mcp is not None and outbound_mcp.handle_get(req, pairing):
             return
@@ -245,6 +257,7 @@ class RuntimeRoutes:
         memory = self._memory
         skills = self._skills
         mail = self._mail
+        calendar = self._calendar
         outbound_mcp = self._outbound_mcp
         plugins = self._plugins
         creations = self._creations
@@ -252,6 +265,8 @@ class RuntimeRoutes:
         if skills is not None and skills.handle_post(req, pairing):
             return
         if mail is not None and mail.handle_post(req, pairing):
+            return
+        if calendar is not None and calendar.handle_post(req, pairing):
             return
         if outbound_mcp is not None and outbound_mcp.handle_post(req, pairing):
             return
@@ -559,12 +574,15 @@ class RuntimeRoutes:
         memory = self._memory
         skills = self._skills
         mail = self._mail
+        calendar = self._calendar
         outbound_mcp = self._outbound_mcp
         plugins = self._plugins
         creations = self._creations
         if skills is not None and skills.handle_delete(req, pairing):
             return
         if mail is not None and mail.handle_delete(req, pairing):
+            return
+        if calendar is not None and calendar.handle_delete(req, pairing):
             return
         if outbound_mcp is not None and outbound_mcp.handle_delete(req, pairing):
             return
