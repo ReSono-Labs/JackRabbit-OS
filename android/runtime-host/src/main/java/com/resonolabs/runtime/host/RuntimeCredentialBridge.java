@@ -39,4 +39,12 @@ public final class RuntimeCredentialBridge {
     public void deleteOpenAiSubscriptionTokens() throws Exception {
         store.deleteOpenAiSubscriptionTokens();
     }
+
+    public String sealConnectionCredential(String recordName, String plaintext) throws Exception {
+        return store.sealConnectionCredential(recordName, plaintext);
+    }
+
+    public String openConnectionCredential(String recordName, String envelope) throws Exception {
+        return store.openConnectionCredential(recordName, envelope);
+    }
 }

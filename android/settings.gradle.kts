@@ -20,7 +20,11 @@ include(
     ":core:design",
     ":core:input",
     ":core:power",
+    ":core:motor",
     ":feature:settings",
     ":feature:voice",
+    ":feature:cards",
+    ":feature:camera",
     ":runtime-host",
+    ":system:motor-service",
 )

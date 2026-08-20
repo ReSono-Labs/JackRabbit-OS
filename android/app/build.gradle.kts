@@ -9,8 +9,8 @@ android {
         minSdk = 31
         targetSdk = 36
         ndk { abiFilters += listOf("arm64-v8a") }
-        versionCode = 28
-        versionName = "0.4.18-display-controls"
+        versionCode = 29
+        versionName = "0.4.24-openai-settings-controls"
     }
 
     buildTypes {
@@ -39,6 +39,9 @@ dependencies {
     implementation(project(":core:power"))
     implementation(project(":feature:settings"))
     implementation(project(":feature:voice"))
+    implementation(project(":feature:cards"))
+    implementation(project(":feature:camera"))
+    implementation(project(":core:motor"))
     implementation(project(":runtime-host"))
     testImplementation("junit:junit:4.13.2")
 }

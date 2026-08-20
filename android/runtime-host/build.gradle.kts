@@ -31,6 +31,7 @@ chaquopy {
             install("wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl")
             install("pydantic==2.12.2")
             install("jsonschema==4.25.1")
+            install("PyYAML==6.0.3")
             install("openai-agents==0.18.3")
         }
     }

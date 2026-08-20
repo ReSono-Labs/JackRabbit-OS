@@ -41,10 +41,26 @@ unzip -p "$APK" assets/chaquopy/requirements-common.imy \
 unzip -l "$CHECK_DIR/requirements-common.zip" \
     > "$CHECK_DIR/requirements-common.txt"
 
+unzip -p "$APK" assets/chaquopy/app.imy > "$CHECK_DIR/runtime-source.zip"
+unzip -l "$CHECK_DIR/runtime-source.zip" > "$CHECK_DIR/runtime-source.txt"
+
+for required_source in \
+    'resono_runtime/plugins/bundled/resono-mail/plugin.json' \
+    'resono_runtime/plugins/bundled/resono-mail/skills/voice-mail/SKILL.md' \
+    'resono_runtime/standards/agent_plugins/plugin.schema.json' \
+    'resono_runtime/standards/agent_plugins/mcp.schema.json'; do
+    if ! rg -Fq "$required_source" "$CHECK_DIR/runtime-source.txt"; then
+        echo "required Build 7 standard artifact missing: $required_source" >&2
+        exit 1
+    fi
+done
+
 for required_extension in \
     'jiter/jiter.cpython-313-aarch64-linux-android.so' \
     'pydantic_core/_pydantic_core.cpython-313-aarch64-linux-android.so' \
-    'rpds/rpds.cpython-313-aarch64-linux-android.so'; do
+    'rpds/rpds.cpython-313-aarch64-linux-android.so' \
+    'yaml/_yaml.so' \
+    'chaquopy_libyaml-0.2.5.dist-info/License'; do
     if ! rg -Fq "$required_extension" "$CHECK_DIR/requirements-common.txt"; then
         echo "required Android Python extension missing: $required_extension" >&2
         exit 1

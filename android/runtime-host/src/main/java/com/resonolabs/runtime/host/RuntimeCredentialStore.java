@@ -9,6 +9,7 @@ import android.util.Base64;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
+import java.util.UUID;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -70,22 +71,47 @@ final class RuntimeCredentialStore {
         deleteRecord(SUBSCRIPTION_RECORD);
     }
 
+    synchronized String sealConnectionCredential(String recordName, String plaintext)
+            throws GeneralSecurityException {
+        validateConnectionRecord(recordName);
+        String value = plaintext == null ? "" : plaintext;
+        if (value.isEmpty() || value.length() > 65536) {
+            throw new IllegalArgumentException("connection credential is invalid");
+        }
+        return seal(recordName, value);
+    }
+
+    synchronized String openConnectionCredential(String recordName, String envelope)
+            throws GeneralSecurityException {
+        validateConnectionRecord(recordName);
+        return open(recordName, envelope);
+    }
+
     private void putRecord(String record, String value) throws GeneralSecurityException {
-        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-        cipher.init(Cipher.ENCRYPT_MODE, key());
-        cipher.updateAAD(record.getBytes(StandardCharsets.UTF_8));
-        byte[] encrypted = cipher.doFinal(value.getBytes(StandardCharsets.UTF_8));
-        String sealed = VERSION + "."
-                + Base64.encodeToString(cipher.getIV(), Base64.NO_WRAP) + "."
-                + Base64.encodeToString(encrypted, Base64.NO_WRAP);
+        String sealed = seal(record, value);
         if (!records.edit().putString(record, sealed).commit()) {
             throw new GeneralSecurityException("credential persistence failed");
         }
     }
 
+    private String seal(String record, String value) throws GeneralSecurityException {
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        cipher.init(Cipher.ENCRYPT_MODE, key());
+        cipher.updateAAD(record.getBytes(StandardCharsets.UTF_8));
+        byte[] encrypted = cipher.doFinal(value.getBytes(StandardCharsets.UTF_8));
+        return VERSION + "."
+                + Base64.encodeToString(cipher.getIV(), Base64.NO_WRAP) + "."
+                + Base64.encodeToString(encrypted, Base64.NO_WRAP);
+    }
+
     private String getRecord(String record) throws GeneralSecurityException {
         String sealed = records.getString(record, null);
         if (sealed == null) return null;
+        return open(record, sealed);
+    }
+
+    private String open(String record, String sealed) throws GeneralSecurityException {
+        if (sealed == null) throw new GeneralSecurityException("credential envelope is missing");
         String[] pieces = sealed.split("\\.", -1);
         if (pieces.length != 3 || !VERSION.equals(pieces[0])) {
             throw new GeneralSecurityException("credential record is invalid");
@@ -105,6 +131,20 @@ final class RuntimeCredentialStore {
         cipher.init(Cipher.DECRYPT_MODE, key(), new GCMParameterSpec(128, iv));
         cipher.updateAAD(record.getBytes(StandardCharsets.UTF_8));
         return new String(cipher.doFinal(encrypted), StandardCharsets.UTF_8);
+    }
+
+    private static void validateConnectionRecord(String recordName) {
+        if (recordName == null || !recordName.startsWith("connection:")
+                || !recordName.endsWith(":credential")) {
+            throw new IllegalArgumentException("connection credential record name is invalid");
+        }
+        String id = recordName.substring("connection:".length(),
+                recordName.length() - ":credential".length());
+        try {
+            UUID.fromString(id);
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException("connection credential record name is invalid", exception);
+        }
     }
 
     private void deleteRecord(String record) throws GeneralSecurityException {

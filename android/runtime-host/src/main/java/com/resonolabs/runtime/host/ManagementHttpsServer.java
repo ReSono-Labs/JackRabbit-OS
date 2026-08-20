@@ -14,6 +14,7 @@ final class ManagementHttpsServer implements AutoCloseable {
     static final int PORT = 8443;
     private final ManagementAssetStore assets;
     private final ManagementRuntimeProxy runtime;
+    private final ManagementTlsIdentity tlsIdentity;
     private final ExecutorService acceptor = Executors.newSingleThreadExecutor();
     private final ExecutorService clients = Executors.newFixedThreadPool(4);
     private final AtomicBoolean closed = new AtomicBoolean();
@@ -22,10 +23,11 @@ final class ManagementHttpsServer implements AutoCloseable {
     ManagementHttpsServer(Context context, String localApiToken) {
         assets = new ManagementAssetStore(context.getAssets());
         runtime = new ManagementRuntimeProxy(localApiToken);
+        tlsIdentity = new ManagementTlsIdentity(context);
     }
 
     void start() throws Exception {
-        server = new ManagementTlsIdentity().openServerSocket(PORT);
+        server = tlsIdentity.openServerSocket(PORT);
         acceptor.execute(this::accept);
     }
 
@@ -36,7 +38,9 @@ final class ManagementHttpsServer implements AutoCloseable {
                 client.setSoTimeout(5000);
                 clients.execute(() -> handle(client));
             } catch (IOException exception) {
-                if (!closed.get()) close();
+                if (closed.get()) return;
+                // Keep management plane alive on transient socket/network issues.
+                // A malformed client connection or transient I/O error should not tear down the server.
             }
         }
     }
@@ -45,7 +49,16 @@ final class ManagementHttpsServer implements AutoCloseable {
         try (client) {
             ManagementHttpRequest request = ManagementHttpRequest.read(client.getInputStream());
             ManagementHttpResponse response;
-            if (request.path().startsWith("/v1/")) {
+            if ("/management/certificate.pem".equals(request.path())) {
+                if (!"GET".equals(request.method())) {
+                    response = ManagementHttpResponse.text(405, "Method not allowed.");
+                } else {
+                    response = ManagementHttpResponse.text(
+                            200,
+                            "application/x-pem-file; charset=utf-8",
+                            tlsIdentity.exportedCertificatePem());
+                }
+            } else if (request.path().startsWith("/v1/")) {
                 response = runtime.forward(request);
             } else if (!request.method().equals("GET")) {
                 response = ManagementHttpResponse.text(405, "Method not allowed.");

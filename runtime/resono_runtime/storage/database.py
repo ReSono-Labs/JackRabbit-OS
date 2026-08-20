@@ -6,8 +6,10 @@ from pathlib import Path
 import sqlite3
 import threading
 
+from .migrations import LATEST_VERSION, MIGRATIONS
 
-MIGRATION_VERSION = 2
+
+MIGRATION_VERSION = LATEST_VERSION
 
 
 class RuntimeDatabase:
@@ -33,21 +35,19 @@ class RuntimeDatabase:
                 "CREATE TABLE IF NOT EXISTS schema_migrations ("
                 "version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL)"
             )
-            connection.execute(
-                "CREATE TABLE IF NOT EXISTS lifecycle_records ("
-                "record_key TEXT PRIMARY KEY, record_value TEXT NOT NULL, "
-                "updated_at TEXT NOT NULL)"
-            )
-            connection.execute(
-                "CREATE TABLE IF NOT EXISTS provider_settings ("
-                "setting_key TEXT PRIMARY KEY, setting_value TEXT NOT NULL, "
-                "updated_at TEXT NOT NULL)"
-            )
-            connection.execute(
-                "INSERT OR IGNORE INTO schema_migrations(version, applied_at) "
-                "VALUES (?, strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))",
-                (MIGRATION_VERSION,),
-            )
+            row = connection.execute(
+                "SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1"
+            ).fetchone()
+            current_version = int(row["version"]) if row else 0
+            for migration in MIGRATIONS:
+                if migration.version <= current_version:
+                    continue
+                migration.apply(connection)
+                connection.execute(
+                    "INSERT OR REPLACE INTO schema_migrations(version, applied_at) "
+                    "VALUES (?, strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))",
+                    (migration.version,),
+                )
             connection.commit()
 
     def health(self) -> dict[str, object]:

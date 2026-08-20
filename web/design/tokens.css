@@ -1,15 +1,9 @@
 :root {
   color-scheme: dark;
-  --resono-bg: #061629;
-  --resono-surface: #0a1c32;
-  --resono-surface-soft: #0c2139;
-  --resono-line: rgba(166, 199, 224, 0.2);
-  --resono-text: #edf6ff;
-  --resono-muted: #9fb3ca;
-  --resono-cyan: #35c9ff;
-  --resono-mint: #72efcf;
-  --resono-amber: #f3c969;
-  --resono-red: #ff7a7a;
-  --resono-radius-large: 24px;
-  --resono-radius-control: 14px;
+  --resono-bg:#031426; --resono-bg-deep:#020d19; --resono-surface:#07182a;
+  --resono-surface-soft:#0b2035; --resono-line:#26384c; --resono-text:#f3f7fb;
+  --resono-muted:#a9b8d3; --resono-cyan:#79f2dd; --resono-amber:#ffd166;
+  --resono-purple:#c792ff; --resono-red:#ff6b6b;
+  --resono-control:11px; --resono-card:16px; --resono-panel:24px;
+  --resono-font:"Avenir Next","Century Gothic","Trebuchet MS",sans-serif;
 }

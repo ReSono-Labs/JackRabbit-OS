@@ -65,7 +65,7 @@ class ManagementPairingTest(unittest.TestCase):
             lifecycle.record_start()
             pairing = PairingAuthority()
             text_runner = SimpleNamespace(
-                run=lambda value: SimpleNamespace(text=f"Reply: {value}", model="gpt-5.4-mini")
+                run=lambda value, session_id=None: SimpleNamespace(text=f"Reply: {value}", model="gpt-5.4-mini")
             )
             server = RuntimeHttpServer(
                 host="127.0.0.1",

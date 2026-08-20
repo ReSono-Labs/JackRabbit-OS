@@ -29,9 +29,71 @@ class RuntimeConfig:
         return self.root / "workspace"
 
     @property
+    def logs_path(self) -> Path:
+        return self.root / "logs"
+
+    @property
+    def runtime_log_path(self) -> Path:
+        return self.logs_path / "resono-runtime.log"
+
+    @property
     def releases_path(self) -> Path:
         return self.root / "releases"
 
+    @property
+    def skills_path(self) -> Path:
+        return self.workspace_path / "skills"
+
+    @property
+    def skill_quarantine_path(self) -> Path:
+        return self.workspace_path / "skill-quarantine"
+
+    @property
+    def skill_rollback_path(self) -> Path:
+        return self.workspace_path / "skill-rollbacks"
+
+    @property
+    def plugins_path(self) -> Path:
+        return self.workspace_path / "plugins"
+
+    @property
+    def plugin_quarantine_path(self) -> Path:
+        return self.workspace_path / "plugin-quarantine"
+
+    @property
+    def plugin_rollback_path(self) -> Path:
+        return self.workspace_path / "plugin-rollbacks"
+
+    @property
+    def creations_path(self) -> Path:
+        return self.workspace_path / "creations"
+
+    @property
+    def creation_quarantine_path(self) -> Path:
+        return self.workspace_path / "creation-quarantine"
+
+    @property
+    def creation_rollback_path(self) -> Path:
+        return self.workspace_path / "creation-rollbacks"
+    @property
+    def direct_handoffs_path(self) -> Path:
+        return self.workspace_path / "direct-handoffs"
+
     def prepare_directories(self) -> None:
-        for path in (self.database_path.parent, self.workspace_path, self.releases_path):
+        for path in (
+            self.database_path.parent,
+            self.workspace_path,
+            self.logs_path,
+            self.releases_path,
+            self.skills_path,
+            self.skill_quarantine_path,
+            self.skill_rollback_path,
+            self.plugins_path,
+            self.plugin_quarantine_path,
+            self.plugin_rollback_path,
+            self.creations_path,
+            self.creation_quarantine_path,
+            self.creation_rollback_path,
+            self.direct_handoffs_path,
+        ):
             path.mkdir(parents=True, exist_ok=True)

@@ -49,15 +49,23 @@ The first three foundation stages are complete and physically tested:
 - ChatGPT/Codex subscription authorization works through OpenAI device-code OAuth, with encrypted credentials stored by the trusted device runtime.
 - GPT-5.6 Sol text execution has run through the OpenAI Agents SDK on the physical R1.
 - The local MCP device-status tool has been exercised by the text agent.
-- Realtime 2.1 Mini has completed a live native WebRTC session using ChatGPT subscription access.
+- Realtime 2.1 Mini is wired through the native WebRTC path using runtime-selected models; `gpt-live-1` support is implemented in the catalog and host-path but is currently owner-deferred for this release.
 - Native Voice has invoked the local MCP device-status tool and returned its real result through the same Realtime session.
-- Text and Realtime model selection, reasoning selection, and the owner's personalized Voice greeting are stored and managed through the real web interface.
-- The R1 Voice page uses the shared ReSono visual language and reports real `idle`, `connecting`, `live`, `listening`, `responding`, and failure states.
+- Text and Realtime model selection, provider/access selection, reasoning selection, and the owner's personalized Voice greeting are stored and managed through the real web interface.
+- The R1 Voice page uses the shared ReSono visual language and reports real `idle`, `connecting`, `live`, `responding`, and failure states.
 - Display brightness controls, keep-screen-awake behavior, foreground runtime recovery, and same-LAN management access work on the current device candidate.
 
 The accepted physical working base is version 26. Version 28 is the current installed candidate and adds the tuned audio/VAD configuration and display controls. Its display/runtime behavior and a complete live VAD plus native MCP session are physically verified.
 
-The current APK is available as a prerelease: [JackRabbit v0.4.18 device candidate](https://github.com/ReSono-Labs/JackRabbit/releases/tag/v0.4.18-device-candidate).
+Current local tree state (this workspace): runtime/provider model controls, OpenAI provider switching, gpt-live-1 catalog/build-path support, MCP tools, and session/memory capture/review infrastructure are implemented and wired in source.
+
+Latest local build/test state from this working directory:
+
+- Android local build and tests are currently passing in this workspace, including repository boundaries and runtime-package checks.
+- A fresh local debug candidate was generated at `artifacts/local-builds/ReSonoR1-debug-20260819T133123Z.apk` (SHA-256 `0ee7adef5de24ff8e5b1ee5f99c333857565a3611cf49ae384f05ea05d135d36`).
+- Existing preserved candidates remain the acceptance points: `artifacts/accepted-bases/v26/ReSonoR1-v26-physical-working-base.apk` (working baseline) and `artifacts/android-candidates/ReSonoR1-v0.4.25-openai-tls-hostname-match.apk` / `...v0.4.24-openai-settings-controls.apk`.
+
+The current APK is the local candidate above. A public prerelease is not required for this branch at this stage.
 
 > This build is intended for development R1 devices. It is not yet the final installer or consumer-ready system image.
 
@@ -68,8 +76,9 @@ Work is intentionally proceeding one real vertical slice at a time. Mockups, sim
 ### Finish the core Voice and text product
 
 - Independently validate the OpenAI Platform API path for text and Realtime. This proof is currently deferred; the key field and secure on-device storage are already implemented.
-- Complete supported `gpt-live-1` transport validation.
-- Resolve normal browser certificate trust for the local management site.
+- Complete supported `gpt-live-1` transport validation end-to-end on hardware.
+- Validate normal-browser TLS trust workflow for the local management site (`/management/certificate.pem`).
+  - `/management/certificate.pem` is now served from the same-LAN HTTPS management interface.
 - Finish the compact R1 Voice interface and its connected session views.
 
 ### Add local sessions and memory

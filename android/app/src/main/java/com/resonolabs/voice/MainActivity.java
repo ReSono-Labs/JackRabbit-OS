@@ -34,13 +34,20 @@ public final class MainActivity extends Activity {
                 android.util.Log.i("ReSonoRuntime", "HOME boundary status=" + health.status()));
         setShowWhenLocked(true);
         setTurnScreenOn(true);
-        root = new ProductRootView(this, this::confirmRestart, callback ->
-                runtimeManagement.loadPairing(this, pairing -> callback.accept(
-                        new ManagementPairingState(
-                                pairing.status(),
-                                pairing.code(),
-                                pairing.address(),
-                                pairing.expiresAt()))));
+        root = new ProductRootView(
+                this,
+                this::confirmRestart,
+                callback -> runtimeManagement.loadPairing(
+                        this,
+                        pairing -> callback.accept(
+                                new ManagementPairingState(
+                                        pairing.status(),
+                                        pairing.code(),
+                                        pairing.address(),
+                                        pairing.expiresAt())
+                        )
+                ),
+                runtimeManagement);
         setContentView(root);
         if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 41);

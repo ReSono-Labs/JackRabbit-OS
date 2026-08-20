@@ -14,6 +14,14 @@ record ManagementHttpResponse(int status, String contentType, Map<String, String
                 message.getBytes(StandardCharsets.UTF_8));
     }
 
+    static ManagementHttpResponse text(int status, String contentType, String message) {
+        return new ManagementHttpResponse(
+                status,
+                contentType,
+                Map.of(),
+                message.getBytes(StandardCharsets.UTF_8));
+    }
+
     void write(OutputStream output) throws IOException {
         StringBuilder head = new StringBuilder()
                 .append("HTTP/1.1 ").append(status).append(' ').append(reason(status)).append("\r\n")

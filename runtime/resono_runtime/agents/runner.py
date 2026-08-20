@@ -3,13 +3,13 @@ from __future__ import annotations
 import asyncio
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any
 
 from ..api.events import RuntimeEventStream
-from ..providers.openai import OpenAIProviderError
-from ..security.credentials import CredentialUnavailable, ProviderCredentials
-from ..storage.provider_settings import ProviderSettingsRepository
+from ..providers.openai import OpenAIProviderError, openai_provider_access
 from ..providers.openai.subscription import OpenAISubscription
+from ..security.credentials import ProviderCredentials
+from ..storage.provider_settings import ProviderSettingsRepository
+from .sdk_runner import run_agent_turn
 
 
 @dataclass(frozen=True, slots=True)
@@ -19,7 +19,14 @@ class TextTurnResult:
 
 
 class AgentsSdkTextRunner:
-    """One small text-agent path backed only by the OpenAI Agents SDK."""
+    """Conversational text agent backed only by the OpenAI Agents SDK.
+
+    This runner is intentionally memory-free. Memory work is owned by the
+    voice path (session-start context + the ``memory_lookup`` Realtime tool)
+    and by the post-session review agent (``MemoryReviewRunner``), which
+    summarizes a transcript into provenance-linked memories. The text agent
+    only answers the user's message and may call the device status MCP tool.
+    """
 
     def __init__(
         self,
@@ -45,19 +52,13 @@ class AgentsSdkTextRunner:
                 "invalid_text_input", "Enter a message between 1 and 16,384 characters.", status=400
             )
         selection = self._settings.selection()
-        if selection.access_path == "subscription":
-            if self._subscription is None:
-                raise OpenAIProviderError("credential_unavailable", "Connect ChatGPT first.", status=409)
-            api_key = self._subscription.access_token()
-            base_url = "https://chatgpt.com/backend-api/codex"
-        else:
-            try:
-                api_key = self._credentials.platform_key()
-            except CredentialUnavailable as error:
-                raise OpenAIProviderError(
-                    "credential_unavailable", "Connect OpenAI first.", status=409
-                ) from error
-            base_url = None
+        access = openai_provider_access(
+            credentials=self._credentials,
+            settings=self._settings,
+            subscription=self._subscription,
+        )
+        api_key = access.api_key
+        base_url = access.base_url
         model = selection.text_model
         if not model:
             raise OpenAIProviderError(
@@ -99,7 +100,7 @@ def _run_with_agents_sdk(
     reasoning_effort: str,
 ) -> str:
     return asyncio.run(
-        _run_with_agents_sdk_async(
+        _run_with_mcp(
             api_key=api_key,
             model=model,
             user_input=user_input,
@@ -110,7 +111,7 @@ def _run_with_agents_sdk(
     )
 
 
-async def _run_with_agents_sdk_async(
+async def _run_with_mcp(
     *,
     api_key: str,
     model: str,
@@ -119,13 +120,8 @@ async def _run_with_agents_sdk_async(
     base_url: str | None,
     reasoning_effort: str,
 ) -> str:
-    from agents import Agent, ModelSettings, RunConfig, Runner, set_tracing_disabled
     from agents.mcp import MCPServerStreamableHttp
-    from agents.models.openai_provider import OpenAIProvider
-    from openai.types.shared import Reasoning
 
-    set_tracing_disabled(True)
-    provider = OpenAIProvider(api_key=api_key, base_url=base_url, use_responses=True)
     mcp_server = MCPServerStreamableHttp(
         params={
             "url": "http://127.0.0.1:8765/v1/mcp",
@@ -139,35 +135,17 @@ async def _run_with_agents_sdk_async(
         use_structured_content=True,
     )
     async with mcp_server:
-        model_settings = ModelSettings(
-            reasoning=Reasoning(effort=reasoning_effort) if reasoning_effort != "none" else None,
-            store=False if base_url else None,
-        )
-        agent = Agent(
-            name="ReSono R1",
+        return await run_agent_turn(
+            api_key=api_key,
+            model=model,
             instructions=(
                 "You are the concise text assistant on a ReSono R1. Use the device MCP tool "
                 "when the user asks about this device or its runtime. Never invent device state."
             ),
-            model=model,
-            model_settings=model_settings,
-            mcp_servers=[mcp_server],
+            input_text=user_input,
+            base_url=base_url,
+            reasoning_effort=reasoning_effort,
+            max_turns=10,
+            agent_name="ReSono R1",
+            mcp_server=mcp_server,
         )
-        run_config = RunConfig(model_provider=provider)
-        if base_url:
-            result = Runner.run_streamed(
-                agent,
-                input=user_input,
-                run_config=run_config,
-                max_turns=4,
-            )
-            async for _event in result.stream_events():
-                pass
-        else:
-            result = await Runner.run(
-                agent,
-                input=user_input,
-                run_config=run_config,
-                max_turns=4,
-            )
-    return str(result.final_output)

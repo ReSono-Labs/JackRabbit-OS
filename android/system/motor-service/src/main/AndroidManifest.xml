@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries>
+        <package android:name="com.resonolabs.voice.engineering" />
+        <package android:name="com.resonolabs.voice" />
+    </queries>
+    <application
+        android:allowBackup="false"
+        android:label="ReSono R1 Hardware">
+        <service
+            android:name=".R1MotorService"
+            android:directBootAware="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.resonolabs.hardware.motor.R1_MOTOR_SERVICE" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

@@ -11,7 +11,8 @@ final class ManagementAssetStore {
             "/design/tokens.css", "design/tokens.css",
             "/design/base.css", "design/base.css",
             "/management/management.css", "management/management.css",
-            "/management/app.js", "management/app.js");
+            "/management/app.js", "management/app.js",
+            "/management/build07.js", "management/build07.js");
     private final AssetManager assets;
 
     ManagementAssetStore(AssetManager assets) {

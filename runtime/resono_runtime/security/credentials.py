@@ -12,6 +12,8 @@ class CredentialBridge(Protocol):
     def getOpenAiSubscriptionTokens(self) -> str | None: ...
     def putOpenAiSubscriptionTokens(self, value: str) -> None: ...
     def deleteOpenAiSubscriptionTokens(self) -> None: ...
+    def sealConnectionCredential(self, record_name: str, plaintext: str) -> str: ...
+    def openConnectionCredential(self, record_name: str, envelope: str) -> str: ...
 
 
 class ProviderCredentials:
@@ -51,3 +53,32 @@ class ProviderCredentials:
 
 class CredentialUnavailable(RuntimeError):
     pass
+
+
+class ConnectionCredentialEnvelopes:
+    """The only Python adapter allowed to seal or open connection credentials."""
+
+    def __init__(self, bridge: CredentialBridge) -> None:
+        self._bridge = bridge
+
+    def seal(self, connection_id: str, plaintext: str) -> str:
+        if not plaintext:
+            raise ValueError("Connection credential cannot be empty.")
+        return str(self._bridge.sealConnectionCredential(_record_name(connection_id), plaintext))
+
+    def open(self, connection_id: str, envelope: str) -> str:
+        if not envelope:
+            raise CredentialUnavailable("Connection credential is unavailable.")
+        value = self._bridge.openConnectionCredential(_record_name(connection_id), envelope)
+        if not value:
+            raise CredentialUnavailable("Connection credential is unavailable.")
+        return str(value)
+
+
+def _record_name(connection_id: str) -> str:
+    from uuid import UUID
+
+    normalized = str(UUID(connection_id))
+    if normalized != connection_id:
+        raise ValueError("Connection ID must be a canonical UUID.")
+    return f"connection:{normalized}:credential"

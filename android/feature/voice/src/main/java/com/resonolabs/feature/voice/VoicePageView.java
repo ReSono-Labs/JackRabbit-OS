@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.util.Log;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.view.MotionEvent;
 import android.view.View;
+import org.json.JSONArray;
 
 import com.resonolabs.runtime.host.RuntimeVoiceClient;
 import com.resonolabs.ui.design.ReSonoTheme;
@@ -16,24 +18,30 @@ import com.resonolabs.ui.input.UiInputIntent;
 import org.json.JSONObject;
 
 /** Real Voice page. Every visible state is driven by the native/provider session. */
-public final class VoicePageView extends View implements AutoCloseable {
+public final class VoicePageView extends View implements AutoCloseable, VoiceSessionHandoff {
+    private static final String LOG_TAG = "VoicePageView";
     private static final float WIDTH = 480f;
     private static final float HEIGHT = 640f;
     private final Activity activity;
-    private final Runnable openSettings;
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final StringBuilder assistantDraft = new StringBuilder();
+    private final JSONArray recordedEntries = new JSONArray();
     private final VoiceSessionStateTracker sessionState = new VoiceSessionStateTracker();
     private RuntimeVoiceClient runtimeClient;
     private NativeVoicePeer peer;
     private String transcript = "Tap to start a conversation";
     private String failure = "";
     private JSONObject pendingConnectGreeting;
+    private String sessionId = "";
+    private String lastUserUtterance = "";
+    private long userUtteranceId = 0;
+    private boolean providerResponseInFlight;
+    private final Runnable openHandoff;
 
-    public VoicePageView(Activity activity, Runnable openSettings) {
+    public VoicePageView(Activity activity, Runnable openHandoff) {
         super(activity);
         this.activity = activity;
-        this.openSettings = openSettings;
+        this.openHandoff = openHandoff;
         setContentDescription("ReSono Voice. Tap the center or press the side button to talk.");
         setFocusable(true);
         setFocusableInTouchMode(true);
@@ -48,10 +56,9 @@ public final class VoicePageView extends View implements AutoCloseable {
 
     @Override public boolean onTouchEvent(MotionEvent event) {
         if (event.getActionMasked() != MotionEvent.ACTION_UP) return true;
-        float x = event.getX() * WIDTH / Math.max(1f, getWidth());
         float y = event.getY() * HEIGHT / Math.max(1f, getHeight());
-        if (x >= 392f && y <= 94f) openSettings.run();
-        else if (y >= 150f && y <= 480f) toggle();
+        if (y >= 150f && y <= 480f) toggle();
+        else if (y >= 555f && isAvailable()) openHandoff.run();
         return true;
     }
 
@@ -75,6 +82,11 @@ public final class VoicePageView extends View implements AutoCloseable {
         }
         closeTransports();
         failure = "";
+        sessionId = "";
+        lastUserUtterance = "";
+        userUtteranceId = 0;
+        providerResponseInFlight = false;
+        clearRecordedEntries();
         transcript = "Connecting to Voice…";
         sessionState.connecting();
         invalidate();
@@ -110,7 +122,8 @@ public final class VoicePageView extends View implements AutoCloseable {
     private void requestAnswer(String offer) {
         if (runtimeClient == null) return;
         runtimeClient.createCall(activity, offer, new RuntimeVoiceClient.Callback() {
-            @Override public void onAnswer(String sdp, JSONObject connectGreetingEvent) {
+            @Override public void onAnswer(String sdp, String connectedSessionId, JSONObject connectGreetingEvent) {
+                sessionId = connectedSessionId;
                 pendingConnectGreeting = connectGreetingEvent;
                 if (peer != null) peer.applyAnswer(sdp);
             }
@@ -126,6 +139,8 @@ public final class VoicePageView extends View implements AutoCloseable {
             JSONObject event = new JSONObject(json);
             String type = event.optString("type");
             sessionState.onRealtimeEvent(type);
+            if ("response.created".equals(type)) providerResponseInFlight = true;
+            else if ("response.done".equals(type)) providerResponseInFlight = false;
             if ("input_audio_buffer.speech_started".equals(type)) {
                 transcript = "Listening…";
             } else if ("input_audio_buffer.speech_stopped".equals(type)) {
@@ -133,6 +148,9 @@ public final class VoicePageView extends View implements AutoCloseable {
             } else if ("conversation.item.input_audio_transcription.completed".equals(type)
                     || "conversation.item.input_audio_transcript.completed".equals(type)) {
                 String text = event.optString("transcript", "").trim();
+                lastUserUtterance = text;
+                if (!text.isEmpty()) userUtteranceId += 1;
+                recordTranscript("user", type, text);
                 if (!text.isEmpty()) transcript = text;
             } else if ("response.audio_transcript.delta".equals(type)
                     || "response.output_audio_transcript.delta".equals(type)) {
@@ -141,6 +159,7 @@ public final class VoicePageView extends View implements AutoCloseable {
             } else if ("response.audio_transcript.done".equals(type)
                     || "response.output_audio_transcript.done".equals(type)) {
                 String text = event.optString("transcript", assistantDraft.toString()).trim();
+                recordTranscript("assistant", type, text);
                 assistantDraft.setLength(0);
                 if (!text.isEmpty()) transcript = text;
             } else if ("response.function_call_arguments.done".equals(type)) {
@@ -156,20 +175,78 @@ public final class VoicePageView extends View implements AutoCloseable {
     }
 
     private void stopSession() {
-        closeTransports();
-        assistantDraft.setLength(0);
+        // Close WebRTC peer immediately for instant audio stop
+        if (peer != null) {
+            peer.close();
+            peer = null;
+        }
+
+        // Hand any captured transcript to the runtime for review before teardown.
+        dispatchPendingFinalize();
+
+        // Update UI immediately
         sessionState.idle();
         transcript = "Tap to start a conversation";
         failure = "";
+        pendingConnectGreeting = null;
+        sessionId = "";
+        lastUserUtterance = "";
+        userUtteranceId = 0;
+        providerResponseInFlight = false;
+        assistantDraft.setLength(0);
         invalidate();
+
+        if (runtimeClient != null) {
+            runtimeClient.close();
+            runtimeClient = null;
+        }
+    }
+
+    /**
+     * Posts the captured transcript to the runtime for the post-session review.
+     * Donor parity: finalization happens on every session end (explicit stop,
+     * provider/peer failure, or view teardown), not only on the stop button.
+     * No-op unless a connected session produced captured entries.
+     */
+    private void dispatchPendingFinalize() {
+        if (sessionId == null || sessionId.isBlank()
+                || recordedEntries.length() == 0 || runtimeClient == null) {
+            return;
+        }
+        final String sessionToFinalize = sessionId;
+        final RuntimeVoiceClient clientToFinalize = runtimeClient;
+        runtimeClient = null; // Ownership moves to the finalize request.
+        JSONArray entries = new JSONArray();
+        for (int i = 0; i < recordedEntries.length(); i++) {
+            entries.put(recordedEntries.opt(i));
+        }
+        clearRecordedEntries();
+        clientToFinalize.finalizeVoiceSession(activity, sessionToFinalize, entries, new RuntimeVoiceClient.FinalizeCallback() {
+            @Override public void onResult(JSONObject response) {
+                Log.i(LOG_TAG, "session finalized: " + response.optString("sessionId", ""));
+                clientToFinalize.close();
+            }
+
+            @Override public void onFailure(String reason) {
+                Log.w(LOG_TAG, "session finalize failed: " + reason);
+                clientToFinalize.close();
+            }
+        });
     }
 
     private void fail(String reason) {
+        dispatchPendingFinalize();
         closeTransports();
         sessionState.error();
         failure = messageFor(reason);
         transcript = failure;
         invalidate();
+    }
+
+    private void clearRecordedEntries() {
+        while (recordedEntries.length() > 0) {
+            recordedEntries.remove(0);
+        }
     }
 
     private void closeTransports() {
@@ -181,6 +258,7 @@ public final class VoicePageView extends View implements AutoCloseable {
     }
 
     @Override public void close() {
+        dispatchPendingFinalize();
         closeTransports();
     }
 
@@ -188,20 +266,6 @@ public final class VoicePageView extends View implements AutoCloseable {
         canvas.drawColor(ReSonoTheme.BACKGROUND);
         canvas.save();
         canvas.scale(getWidth() / WIDTH, getHeight() / HEIGHT);
-        drawVoiceMark(canvas);
-        ReSonoTheme.text(canvas, paint, "Voice", 74f, 57f, 29f,
-                ReSonoTheme.INK, Paint.Align.LEFT, false);
-        drawDeviceIcon(canvas);
-
-        ReSonoTheme.text(canvas, paint, "Voice", 96f, 119f, 20f,
-                ReSonoTheme.INK, Paint.Align.CENTER, false);
-        ReSonoTheme.text(canvas, paint, "Cards", 350f, 119f, 20f,
-                ReSonoTheme.MUTED, Paint.Align.CENTER, false);
-        paint.setColor(ReSonoTheme.LINE);
-        canvas.drawRect(0f, 140f, WIDTH, 142f, paint);
-        paint.setColor(ReSonoTheme.MINT);
-        canvas.drawRect(18f, 139f, 220f, 142f, paint);
-
         VoiceSessionStateTracker.State state = sessionState.state();
         int accent = state == VoiceSessionStateTracker.State.ERROR ? ReSonoTheme.RED
                 : state == VoiceSessionStateTracker.State.CONNECTING ? ReSonoTheme.AMBER
@@ -237,28 +301,13 @@ public final class VoicePageView extends View implements AutoCloseable {
                 ? "Press to start a voice session" : transcript;
         drawWrapped(canvas, detail, 52f, 480f, 376f, 17f,
                 state == VoiceSessionStateTracker.State.ERROR ? ReSonoTheme.RED : ReSonoTheme.MUTED);
-        canvas.restore();
-    }
-
-    private void drawVoiceMark(Canvas canvas) {
-        paint.setColor(ReSonoTheme.MINT);
-        paint.setStrokeWidth(4f);
-        paint.setStrokeCap(Paint.Cap.SQUARE);
-        float[] heights = {17f, 31f, 47f, 27f, 35f, 18f};
-        for (int index = 0; index < heights.length; index++) {
-            float x = 25f + index * 6f;
-            canvas.drawLine(x, 49f - heights[index] / 2f, x, 49f + heights[index] / 2f, paint);
+        if (isAvailable()) {
+            paint.setStyle(Paint.Style.STROKE); paint.setStrokeWidth(2f); paint.setColor(ReSonoTheme.LINE);
+            canvas.drawRoundRect(142f, 565f, 338f, 615f, 20f, 20f, paint);
+            ReSonoTheme.text(canvas, paint, "Hand to Voice", 240f, 597f, 17f,
+                    ReSonoTheme.MINT, Paint.Align.CENTER, true);
         }
-        paint.setStrokeCap(Paint.Cap.BUTT);
-    }
-
-    private void drawDeviceIcon(Canvas canvas) {
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(2.4f);
-        paint.setColor(ReSonoTheme.MUTED);
-        canvas.drawRoundRect(414f, 27f, 440f, 63f, 5f, 5f, paint);
-        canvas.drawLine(424f, 57f, 430f, 57f, paint);
-        paint.setStyle(Paint.Style.FILL);
+        canvas.restore();
     }
 
     private void drawMicrophone(Canvas canvas, float centerX, float centerY, int color) {
@@ -294,6 +343,32 @@ public final class VoicePageView extends View implements AutoCloseable {
     }
 
     private static String messageFor(String reason) {
+        int separator = reason.indexOf(":");
+        if (separator > 0) {
+            String code = reason.substring(0, separator);
+            String detail = reason.substring(separator + 1).trim();
+            if ("provider_unavailable".equals(code)) {
+                return "OpenAI is unavailable: " + detail;
+            }
+            if ("provider_rejected".equals(code)) {
+                return "OpenAI rejected this request: " + detail;
+            }
+            if ("credential_rejected".equals(code)) {
+                return "OpenAI credential issue: " + detail;
+            }
+            if ("unsupported_model".equals(code)) {
+                return "Model rejected: " + detail;
+            }
+            if ("invalid_answer".equals(code)) {
+                return "Provider returned an invalid response: " + detail;
+            }
+            if ("openai_error".equals(code)) {
+                return detail;
+            }
+            if (detail == null || detail.isBlank()) {
+                return messageFor(code);
+            }
+        }
         return switch (reason) {
             case "credential_unavailable" -> "Connect OpenAI in R1 settings.";
             case "model_required", "unsupported_model" -> "Choose a Realtime model in R1 settings.";
@@ -303,6 +378,18 @@ public final class VoicePageView extends View implements AutoCloseable {
             case "microphone-required" -> "Allow microphone access, then tap to try again.";
             default -> "Voice could not start. Tap to try again.";
         };
+    }
+
+    private void recordTranscript(String role, String eventType, String text) {
+        if (sessionId == null || sessionId.isBlank() || text == null || text.isBlank()) return;
+        try {
+            recordedEntries.put(new JSONObject()
+                    .put("role", role)
+                    .put("eventType", eventType)
+                    .put("text", text));
+        } catch (Exception ignored) {
+            // Keep event handling robust on malformed event payloads.
+        }
     }
 
     private void callTool(JSONObject event) {
@@ -316,7 +403,7 @@ public final class VoicePageView extends View implements AutoCloseable {
         } catch (Exception ignored) {
             arguments = new JSONObject();
         }
-        runtimeClient.callTool(activity, name, arguments, new RuntimeVoiceClient.ToolCallback() {
+        runtimeClient.callTool(activity, sessionId, callId, lastUserUtterance, userUtteranceId, name, arguments, new RuntimeVoiceClient.ToolCallback() {
             @Override public void onResult(String output) {
                 sendToolOutput(callId, output);
             }
@@ -348,5 +435,32 @@ public final class VoicePageView extends View implements AutoCloseable {
         } catch (Exception ignored) {
             fail("event-invalid");
         }
+    }
+
+    @Override public boolean isAvailable() {
+        VoiceSessionStateTracker.State state = sessionState.state();
+        return peer != null && sessionId != null && !sessionId.isBlank()
+                && (state == VoiceSessionStateTracker.State.LIVE || state == VoiceSessionStateTracker.State.RESPONDING);
+    }
+
+    @Override public String sessionId() { return sessionId; }
+
+    @Override public boolean submitInspected(String providerText, String transcriptText, String fileKey) {
+        if (!isAvailable() || providerText == null || providerText.isBlank()) return false;
+        try {
+            boolean sent = peer.sendRealtimeEvent(new JSONObject().put("type", "conversation.item.create")
+                    .put("item", new JSONObject().put("type", "message").put("role", "user")
+                            .put("content", new JSONArray().put(new JSONObject().put("type", "input_text").put("text", providerText)))));
+            if (!sent) return false;
+            if (!providerResponseInFlight) {
+                if (!peer.sendRealtimeEvent(new JSONObject().put("type", "response.create"))) return false;
+                providerResponseInFlight = true;
+            }
+            recordTranscript("user", "conversation.item.input_text.completed", transcriptText);
+            sessionState.toolOutputSent();
+            transcript = transcriptText;
+            invalidate();
+            return true;
+        } catch (Exception ignored) { return false; }
     }
 }

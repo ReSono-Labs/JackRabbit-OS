@@ -30,6 +30,8 @@ import android.widget.TextView;
 import com.resonolabs.ui.design.ReSonoTheme;
 import com.resonolabs.ui.input.UiInputIntent;
 import com.resonolabs.ui.input.UiInputTarget;
+import com.resonolabs.runtime.host.ManagementOpenAiSource;
+import com.resonolabs.runtime.host.ManagementOpenAiState;
 
 import java.util.List;
 
@@ -39,13 +41,25 @@ public final class SettingsPanelView extends View implements UiInputTarget {
     private static final float DESIGN_HEIGHT = 640f;
     private static final float ROW_TOP = 88f;
     private static final float ROW_STEP = 76f;
+    private static final float AI_PROVIDER_TOP = 100f;
+    private static final float AI_PROVIDER_BOTTOM = 180f;
+    private static final float AI_ACCESS_TOP = 196f;
+    private static final float AI_ACCESS_BOTTOM = 275f;
+    private static final float AI_VOICE_MODEL_TOP = 292f;
+    private static final float AI_VOICE_MODEL_BOTTOM = 370f;
+    private static final float AI_TEXT_MODEL_TOP = 386f;
+    private static final float AI_TEXT_MODEL_BOTTOM = 464f;
+    private static final float AI_REASONING_TOP = 480f;
+    private static final float AI_REASONING_BOTTOM = 540f;
+    private static final float AI_REFRESH_TOP = 556f;
     private static final List<String> ROWS = List.of(
-            "Wi-Fi", "Bluetooth", "Management", "Sound", "Display", "About");
+            "Wi-Fi", "Bluetooth", "Management", "AI", "Sound", "Display", "About");
 
     private final Activity activity;
     private final Runnable close;
     private final Runnable restart;
     private final ManagementPairingSource managementPairing;
+    private final ManagementOpenAiSource openAiSource;
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final WifiNetworkScanner wifiScanner;
     private int selected;
@@ -54,6 +68,8 @@ public final class SettingsPanelView extends View implements UiInputTarget {
     private List<WifiNetworkScanner.Network> wifiNetworks = List.of();
     private String bluetoothStatus = "Ready";
     private ManagementPairingState managementState = ManagementPairingState.loading();
+    private ManagementOpenAiState openAiState = ManagementOpenAiState.loading();
+    private String openAiMessage = "";
     private boolean bluetoothReceiverRegistered;
     private final BroadcastReceiver bluetoothReceiver = new BroadcastReceiver() {
         @Override public void onReceive(Context context, Intent intent) {
@@ -68,12 +84,14 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             Activity activity,
             Runnable close,
             Runnable restart,
-            ManagementPairingSource managementPairing) {
+            ManagementPairingSource managementPairing,
+            ManagementOpenAiSource openAiSource) {
         super(activity);
         this.activity = activity;
         this.close = close;
         this.restart = restart;
         this.managementPairing = managementPairing;
+        this.openAiSource = openAiSource;
         this.wifiScanner = new WifiNetworkScanner(activity, (state, networks) -> {
             wifiScanState = state;
             wifiNetworks = List.copyOf(networks);
@@ -128,6 +146,10 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             drawManagementPage(canvas);
             return;
         }
+        if ("AI".equals(openPage)) {
+            drawAiPage(canvas);
+            return;
+        }
         SettingValue[] values = statusValues(openPage);
         float top = 102f;
         for (SettingValue value : values) {
@@ -151,6 +173,8 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             button(canvas, isBluetoothEnabled() ? "TURN OFF" : "TURN ON", 20f, 494f, 460f);
         } else if ("About".equals(openPage)) {
             button(canvas, "RESTART DEVICE", 20f, 494f, 460f);
+        } else if ("AI".equals(openPage)) {
+            button(canvas, "REFRESH", 20f, 494f, 460f);
         } else {
             button(canvas, "REFRESH", 20f, 494f, 460f);
         }
@@ -206,6 +230,280 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         ReSonoTheme.text(canvas, paint, "HTTPS • SAME NETWORK", 44f, 417f, 16f,
                 ReSonoTheme.MUTED, Paint.Align.LEFT, true);
         button(canvas, "REFRESH", 20f, 494f, 460f);
+    }
+
+    private void drawAiPage(Canvas canvas) {
+        paint.setColor(ReSonoTheme.PANEL_RAISED);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawRoundRect(20f, 100f, 460f, 180f, 20f, 20f, paint);
+        ReSonoTheme.text(canvas, paint, "PROVIDER", 44f, 138f, 19f,
+                ReSonoTheme.MUTED, Paint.Align.LEFT, true);
+                ReSonoTheme.text(canvas, paint, openAiState.selectedProviderLabel(), 44f, 170f, 35f,
+                resonoAIColor(openAiState.connected() || openAiState.platformConnected() || openAiState.subscriptionConnected()),
+                Paint.Align.LEFT, true);
+
+        paint.setColor(ReSonoTheme.PANEL_RAISED);
+        canvas.drawRoundRect(20f, 196f, 460f, 275f, 20f, 20f, paint);
+        ReSonoTheme.text(canvas, paint, "ACCESS PATH", 44f, 233f, 19f,
+                resonoAIColor(openAiState.connected()), Paint.Align.LEFT, true);
+        ReSonoTheme.text(canvas, paint, openAiState.accessPath(), 44f, 265f, 32f,
+                ReSonoTheme.INK, Paint.Align.LEFT, true);
+
+        paint.setColor(ReSonoTheme.PANEL_RAISED);
+        canvas.drawRoundRect(20f, 292f, 460f, 370f, 20f, 20f, paint);
+        ReSonoTheme.text(canvas, paint, "VOICE MODEL", 44f, 329f, 19f,
+                ReSonoTheme.MUTED, Paint.Align.LEFT, true);
+        ReSonoTheme.text(canvas, paint,
+                openAiState.selectedRealtimeModel() == null || openAiState.selectedRealtimeModel().isBlank()
+                        ? "—"
+                        : openAiState.selectedRealtimeModel(),
+                44f, 361f, 32f, ReSonoTheme.INK, Paint.Align.LEFT, true);
+
+        paint.setColor(ReSonoTheme.PANEL_RAISED);
+        canvas.drawRoundRect(20f, 386f, 460f, 464f, 20f, 20f, paint);
+        ReSonoTheme.text(canvas, paint, "TEXT MODEL", 44f, 423f, 19f,
+                resonoAIColor(openAiState.selectedTextModel() != null),
+                Paint.Align.LEFT, true);
+        ReSonoTheme.text(canvas, paint,
+                openAiState.selectedTextModel() == null || openAiState.selectedTextModel().isBlank()
+                        ? "—"
+                        : openAiState.selectedTextModel(),
+                44f, 455f, 32f, ReSonoTheme.INK, Paint.Align.LEFT, true);
+
+        paint.setColor(ReSonoTheme.PANEL_RAISED);
+        canvas.drawRoundRect(20f, 480f, 460f, 540f, 20f, 20f, paint);
+        ReSonoTheme.text(canvas, paint, "REASONING", 44f, 517f, 19f,
+                ReSonoTheme.MUTED, Paint.Align.LEFT, true);
+        ReSonoTheme.text(canvas, paint, openAiState.reasoningEffort() == null ? "none" : openAiState.reasoningEffort(),
+                44f, 549f, 32f, resonoAIColor(), Paint.Align.LEFT, true);
+        if (openAiState.fallbackMessage() != null) {
+            paint.setColor(ReSonoTheme.PANEL);
+            canvas.drawRoundRect(20f, 560f, 460f, 602f, 18f, 18f, paint);
+            ReSonoTheme.text(canvas, paint, openAiState.fallbackMessage(), 44f, 594f, 16f,
+                    ReSonoTheme.MUTED, Paint.Align.LEFT, true);
+        }
+        ReSonoTheme.text(canvas, paint, openAiMessage, 44f, 621f, 16f,
+                ReSonoTheme.MUTED, Paint.Align.LEFT, true);
+        button(canvas, "REFRESH", 20f, AI_REFRESH_TOP, 460f);
+    }
+
+    private int resonoAIColor(boolean active) {
+        return active ? ReSonoTheme.CYAN : ReSonoTheme.MUTED;
+    }
+
+    private int resonoAIColor() {
+        return openAiState.error() ? 0xffe2a1a1 : ReSonoTheme.INK;
+    }
+
+    private void refreshOpenAi() {
+        openAiMessage = "Refreshing AI settings…";
+        openAiState = ManagementOpenAiState.loading();
+        invalidate();
+        openAiSource.refresh(activity, state -> {
+            openAiState = state;
+            openAiMessage = state.fallbackMessage() == null
+                    ? "" : state.fallbackMessage();
+            invalidate();
+        });
+    }
+
+    private void pickProvider() {
+        String[] ids = openAiState.providerIds();
+        if (ids.length == 0) {
+            openAiMessage = "No providers available.";
+            invalidate();
+            return;
+        }
+        int checked = 0;
+        String[] labels = new String[ids.length];
+        for (int i = 0; i < ids.length; i++) {
+            if (ids[i].equals(openAiState.provider())) checked = i;
+            labels[i] = openAiState.providerNames()[i] + " (" + ids[i] + ")";
+        }
+        new AlertDialog.Builder(activity)
+                .setTitle("Select provider")
+                .setSingleChoiceItems(labels, checked, (dialog, which) -> {
+                    dialog.dismiss();
+                    setProvider(ids[which]);
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void setProvider(String provider) {
+        openAiMessage = "Saving provider…";
+        invalidate();
+        openAiSource.setProvider(activity, provider, state -> {
+            openAiState = state;
+            openAiMessage = "Provider set.";
+            invalidate();
+        });
+    }
+
+    private void pickAccessPath() {
+        if (!openAiState.platformConnected() && !openAiState.subscriptionConnected()) {
+            openAiMessage = "Connect OpenAI first.";
+            invalidate();
+            return;
+        }
+        String[] options = new String[2];
+        String[] optionValues = new String[2];
+        int total = 0;
+        if (openAiState.platformConnected()) {
+            optionValues[total] = "platform";
+            options[total] = "OpenAI Platform API";
+            total++;
+        }
+        if (openAiState.subscriptionConnected()) {
+            optionValues[total] = "subscription";
+            options[total] = "ChatGPT / Codex";
+            total++;
+        }
+        String[] visible = new String[total];
+        String[] values = new String[total];
+        for (int i = 0; i < total; i++) {
+            visible[i] = options[i];
+            values[i] = optionValues[i];
+        }
+        if (total == 0) {
+            openAiMessage = "No access path is available.";
+            invalidate();
+            return;
+        }
+        int checked = 0;
+        for (int i = 0; i < total; i++) {
+            if (values[i].equals(openAiState.accessPath())) checked = i;
+        }
+        new AlertDialog.Builder(activity)
+                .setTitle("Use for text and Voice")
+                .setSingleChoiceItems(visible, checked, (dialog, which) -> {
+                    dialog.dismiss();
+                    setAccessPath(values[which]);
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void setAccessPath(String accessPath) {
+        openAiMessage = "Saving connection type…";
+        invalidate();
+        openAiSource.setAccessPath(activity, accessPath, state -> {
+            openAiState = state;
+            openAiMessage = "Connection updated.";
+            invalidate();
+        });
+    }
+
+    private void pickRealtimeModel() {
+        String[] options = openAiState.realtimeModels();
+        if (options.length == 0) {
+            openAiMessage = "Refresh after connecting to OpenAI.";
+            invalidate();
+            return;
+        }
+        showSingleChoice("Select voice model", options, openAiState.selectedRealtimeModel(), value ->
+                setModels(openAiState.selectedTextModel(), value, openAiState.reasoningEffort())
+        );
+    }
+
+    private void pickTextModel() {
+        String[] options = openAiState.textModels();
+        if (options.length == 0) {
+            openAiMessage = "Refresh after connecting to OpenAI.";
+            invalidate();
+            return;
+        }
+        showSingleChoice("Select text model", options, openAiState.selectedTextModel(), value ->
+                setModels(value, openAiState.selectedRealtimeModel(), openAiState.reasoningEffort())
+        );
+    }
+
+    private void pickReasoning() {
+        String[] options = new String[]{"none", "low", "medium", "high"};
+        showSingleChoice("Reasoning", options, openAiState.reasoningEffort(), value ->
+                setModels(openAiState.selectedTextModel(), openAiState.selectedRealtimeModel(), value)
+        );
+    }
+
+    private void showSingleChoice(String title, String[] values, String checkedValue, ChoiceHandler handler) {
+        int checked = 0;
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].equals(checkedValue)) checked = i;
+        }
+        new AlertDialog.Builder(activity)
+                .setTitle(title)
+                .setSingleChoiceItems(values, checked, (dialog, which) -> {
+                    dialog.dismiss();
+                    handler.onChoice(values[which]);
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void setModels(String textModel, String realtimeModel, String reasoningEffort) {
+        openAiMessage = "Saving models…";
+        openAiSource.setModels(activity, textModel, realtimeModel, reasoningEffort, state -> {
+            openAiState = state;
+            openAiMessage = "Model selection saved.";
+            invalidate();
+        });
+    }
+
+    private void connectOpenAiFromSettings() {
+        EditText key = new EditText(activity);
+        key.setSingleLine(true);
+        key.setHint("Platform API key");
+        key.setTextColor(ReSonoTheme.INK);
+        key.setHintTextColor(ReSonoTheme.MUTED);
+        key.setTextSize(20f);
+        key.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        key.setPadding(24, 18, 24, 18);
+        LinearLayout sheet = new LinearLayout(activity);
+        sheet.setOrientation(LinearLayout.VERTICAL);
+        sheet.setPadding(28, 24, 28, 12);
+        TextView title = new TextView(activity);
+        title.setText("Connect OpenAI Platform");
+        title.setTextColor(ReSonoTheme.INK);
+        title.setTextSize(24f);
+        title.setGravity(Gravity.START);
+        sheet.addView(title);
+        sheet.addView(key, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 76));
+        AlertDialog dialog = new AlertDialog.Builder(activity)
+                .setTitle("OpenAI Platform Key")
+                .setView(sheet)
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Save", (ignored, which) -> {
+                    String value = key.getText().toString();
+                    if (value == null || value.isBlank()) {
+                        openAiMessage = "Key cannot be empty.";
+                        invalidate();
+                        return;
+                    }
+                    openAiMessage = "Saving key…";
+                    invalidate();
+                    openAiSource.connect(activity, value.trim(), state -> {
+                        openAiState = state;
+                        openAiMessage = "OpenAI key connected.";
+                        invalidate();
+                    });
+                })
+                .create();
+        dialog.setOnShowListener(ignored -> {
+            if (dialog.getWindow() != null) dialog.getWindow().setSoftInputMode(
+                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+            key.requestFocus();
+            key.postDelayed(() -> {
+                InputMethodManager keyboard = activity.getSystemService(InputMethodManager.class);
+                if (keyboard != null) keyboard.showSoftInput(key, InputMethodManager.SHOW_IMPLICIT);
+            }, 160L);
+        });
+        dialog.show();
+    }
+
+    @FunctionalInterface
+    private interface ChoiceHandler {
+        void onChoice(String value);
     }
 
     private void refreshManagement() {
@@ -453,6 +751,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
                 openPage = ROWS.get(row);
                 if ("Wi-Fi".equals(openPage)) wifiScanner.refresh();
                 if ("Management".equals(openPage)) refreshManagement();
+                if ("AI".equals(openPage)) refreshOpenAi();
                 invalidate();
             }
         } else if ("Wi-Fi".equals(openPage)) {
@@ -463,6 +762,24 @@ public final class SettingsPanelView extends View implements UiInputTarget {
                 selectNetwork(wifiNetworks.get(row));
             } else if (y >= 520f && y <= 620f) {
                 wifiScanner.refresh();
+            }
+        } else if ("AI".equals(openPage)) {
+            if (y >= AI_PROVIDER_TOP && y <= AI_PROVIDER_BOTTOM) {
+                if (!openAiState.platformConnected() && !openAiState.subscriptionConnected()) {
+                    connectOpenAiFromSettings();
+                } else {
+                    pickProvider();
+                }
+            } else if (y >= AI_ACCESS_TOP && y <= AI_ACCESS_BOTTOM) {
+                pickAccessPath();
+            } else if (y >= AI_VOICE_MODEL_TOP && y <= AI_VOICE_MODEL_BOTTOM) {
+                pickRealtimeModel();
+            } else if (y >= AI_TEXT_MODEL_TOP && y <= AI_TEXT_MODEL_BOTTOM) {
+                pickTextModel();
+            } else if (y >= AI_REASONING_TOP && y <= AI_REASONING_BOTTOM) {
+                pickReasoning();
+            } else if (y >= AI_REFRESH_TOP && y <= AI_REFRESH_TOP + 72f) {
+                refreshOpenAi();
             }
         } else if (y >= 482f && y <= 584f) {
             if ("Sound".equals(openPage)) {
@@ -498,6 +815,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             openPage = ROWS.get(selected);
             if ("Wi-Fi".equals(openPage)) wifiScanner.refresh();
             if ("Management".equals(openPage)) refreshManagement();
+            if ("AI".equals(openPage)) refreshOpenAi();
             invalidate(); return true;
         }
         if ("Wi-Fi".equals(openPage) && intent == UiInputIntent.ACTIVATE) {
@@ -519,6 +837,14 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         }
         if ("Management".equals(openPage) && intent == UiInputIntent.ACTIVATE) {
             refreshManagement();
+            return true;
+        }
+        if ("AI".equals(openPage) && intent == UiInputIntent.ACTIVATE) {
+            if (!openAiState.platformConnected() && !openAiState.subscriptionConnected()) {
+                connectOpenAiFromSettings();
+            } else {
+                pickProvider();
+            }
             return true;
         }
         return false;

@@ -1,6 +1,8 @@
 package com.resonolabs.runtime.host;
 
 import android.content.Context;
+import android.util.Base64;
+import android.util.Log;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -17,14 +19,20 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /** Native Voice consumer of the private on-device session boundary. */
 public final class RuntimeVoiceClient implements AutoCloseable {
     private static final String MCP_VERSION = "2025-11-25";
+    private static final String LOG_TAG = "RuntimeVoiceClient";
 
     public interface Callback {
-        void onAnswer(String sdp, JSONObject connectGreetingEvent);
+        void onAnswer(String sdp, String sessionId, JSONObject connectGreetingEvent);
         void onFailure(String reason);
     }
 
     public interface ToolCallback {
         void onResult(String output);
+        void onFailure(String reason);
+    }
+
+    public interface FinalizeCallback {
+        void onResult(JSONObject response);
         void onFailure(String reason);
     }
 
@@ -41,12 +49,12 @@ public final class RuntimeVoiceClient implements AutoCloseable {
         worker.execute(() -> request(application, offerSdp, callback));
     }
 
-    public void callTool(Context context, String name, JSONObject arguments, ToolCallback callback) {
+    public void callTool(Context context, String voiceSessionId, String toolCallId, String userUtterance, long userUtteranceId, String name, JSONObject arguments, ToolCallback callback) {
         Context application = context.getApplicationContext();
-        worker.execute(() -> requestTool(application, name, arguments, callback));
+        worker.execute(() -> requestTool(application, voiceSessionId, toolCallId, userUtterance, userUtteranceId, name, arguments, callback));
     }
 
-    private void requestTool(Context context, String name, JSONObject arguments, ToolCallback callback) {
+    private void requestTool(Context context, String voiceSessionId, String toolCallId, String userUtterance, long userUtteranceId, String name, JSONObject arguments, ToolCallback callback) {
         try {
             String token = new RuntimeSecretStore(context).loadLocalApiToken();
             JSONObject initialized = new JSONObject()
@@ -74,7 +82,7 @@ public final class RuntimeVoiceClient implements AutoCloseable {
                     .put("params", new JSONObject()
                             .put("name", name)
                             .put("arguments", arguments == null ? new JSONObject() : arguments));
-            McpResponse response = postMcp(token, request, init.sessionId, false);
+            McpResponse response = postMcp(token, request, init.sessionId, false, voiceSessionId, toolCallId, userUtterance, userUtteranceId);
             JSONObject result = response.payload.optJSONObject("result");
             if (result == null) {
                 deliverToolFailure(callback, "mcp-call-failed");
@@ -92,6 +100,19 @@ public final class RuntimeVoiceClient implements AutoCloseable {
             String sessionId,
             boolean allowEmpty
     ) throws Exception {
+        return postMcp(token, message, sessionId, allowEmpty, null, null, null, 0);
+    }
+
+    private McpResponse postMcp(
+            String token,
+            JSONObject message,
+            String sessionId,
+            boolean allowEmpty,
+            String voiceSessionId,
+            String toolCallId,
+            String userUtterance,
+            long userUtteranceId
+    ) throws Exception {
         HttpURLConnection connection = (HttpURLConnection) new URL(
                 "http://127.0.0.1:8765/v1/mcp").openConnection();
         try {
@@ -104,6 +125,20 @@ public final class RuntimeVoiceClient implements AutoCloseable {
             if (sessionId != null) {
                 connection.setRequestProperty("Mcp-Session-Id", sessionId);
                 connection.setRequestProperty("MCP-Protocol-Version", MCP_VERSION);
+            }
+            if (voiceSessionId != null && !voiceSessionId.isBlank()) {
+                connection.setRequestProperty("X-ReSono-Voice-Session", voiceSessionId);
+            }
+            if (toolCallId != null && !toolCallId.isBlank()) {
+                connection.setRequestProperty("X-ReSono-Tool-Call", toolCallId);
+            }
+            if (userUtterance != null && !userUtterance.isBlank()) {
+                connection.setRequestProperty(
+                        "X-ReSono-Voice-Utterance-B64",
+                        Base64.encodeToString(userUtterance.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP));
+            }
+            if (userUtteranceId > 0) {
+                connection.setRequestProperty("X-ReSono-Voice-Utterance-Id", Long.toString(userUtteranceId));
             }
             connection.getOutputStream().write(message.toString().getBytes(StandardCharsets.UTF_8));
             int status = connection.getResponseCode();
@@ -142,7 +177,27 @@ public final class RuntimeVoiceClient implements AutoCloseable {
                     StandardCharsets.UTF_8));
             if (status != 200) {
                 JSONObject error = payload.optJSONObject("error");
-                deliverFailure(callback, error == null ? "session-failed" : error.optString("code", "session-failed"));
+                String code = error == null ? "session-failed" : error.optString("code", "session-failed");
+                String detail = error == null ? null : error.optString("message", null);
+                Log.w(LOG_TAG, "voice call rejected code=" + code + " detail=" + detail);
+                if (detail == null && error != null) {
+                    Object details = error.opt("details");
+                    if (details instanceof String) {
+                        detail = (String) details;
+                    } else if (details instanceof org.json.JSONObject) {
+                        JSONObject detailsObject = (JSONObject) details;
+                        detail = detailsObject.optString("message", null);
+                        if (detail == null) {
+                            detail = detailsObject.optString("code", null);
+                        }
+                    }
+                }
+                deliverFailure(
+                    callback,
+                    detail != null && !detail.isBlank()
+                            ? code + ":" + detail
+                            : code
+                );
                 return;
             }
             String answer = payload.optString("sdp", "");
@@ -151,9 +206,75 @@ public final class RuntimeVoiceClient implements AutoCloseable {
                 return;
             }
             JSONObject greeting = payload.optJSONObject("connectGreetingEvent");
-            if (!closed.get()) main.post(() -> callback.onAnswer(answer, greeting));
+            if (greeting == null) {
+                greeting = new JSONObject();
+            }
+            String sessionId = payload.optString("sessionId", "");
+            final String finalSessionId = sessionId;
+            final org.json.JSONObject finalGreeting = greeting;
+            if (!closed.get()) {
+                main.post(() -> callback.onAnswer(answer, finalSessionId, finalGreeting));
+            }
         } catch (Exception ignored) {
+            Log.w(LOG_TAG, "voice call request failed", ignored);
             deliverFailure(callback, "runtime-unavailable");
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
+    }
+
+    public void finalizeVoiceSession(
+            Context context,
+            String sessionId,
+            org.json.JSONArray entries,
+            FinalizeCallback callback
+    ) {
+        Context application = context.getApplicationContext();
+        worker.execute(() -> requestFinalize(application, sessionId, entries, callback));
+    }
+
+    private void requestFinalize(
+            Context context,
+            String sessionId,
+            org.json.JSONArray entries,
+            FinalizeCallback callback
+    ) {
+        HttpURLConnection connection = null;
+        try {
+            if (sessionId == null || sessionId.isBlank()) {
+                deliverFinalizeFailure(callback, "missing-session");
+                return;
+            }
+            String token = new RuntimeSecretStore(context).loadLocalApiToken();
+            connection = (HttpURLConnection) new URL(
+                    "http://127.0.0.1:8765/v1/voice/sessions/finalize").openConnection();
+            connection.setRequestMethod("POST");
+            connection.setConnectTimeout(1500);
+            // Finalize runs the full review agent + embeddings synchronously server-side;
+            // match the management proxy's long timeout for the same operation.
+            connection.setReadTimeout(65_000);
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+            connection.setRequestProperty("Content-Type", "application/json");
+            JSONObject body = new JSONObject()
+                    .put("sessionId", sessionId)
+                    .put("entries", entries == null ? new org.json.JSONArray() : entries);
+            connection.getOutputStream().write(body.toString().getBytes(StandardCharsets.UTF_8));
+            int status = connection.getResponseCode();
+            InputStream source = status >= 400 ? connection.getErrorStream() : connection.getInputStream();
+            byte[] bytes = source == null ? new byte[0] : source.readNBytes(65_536);
+            JSONObject response = new JSONObject(new String(bytes, StandardCharsets.UTF_8));
+            if (status >= 300) {
+                String message = response.optJSONObject("error") != null
+                        ? response.optJSONObject("error").optString("message", "")
+                        : "";
+                deliverFinalizeFailure(callback, "finalize-" + status + ":" + message);
+                return;
+            }
+            if (!closed.get()) main.post(() -> callback.onResult(response));
+        } catch (Exception error) {
+            Log.w(LOG_TAG, "finalize request failed", error);
+            if (!closed.get()) main.post(() -> callback.onFailure("finalize-failed"));
         } finally {
             if (connection != null) connection.disconnect();
         }
@@ -164,6 +285,10 @@ public final class RuntimeVoiceClient implements AutoCloseable {
     }
 
     private void deliverToolFailure(ToolCallback callback, String reason) {
+        if (!closed.get()) main.post(() -> callback.onFailure(reason));
+    }
+
+    private void deliverFinalizeFailure(FinalizeCallback callback, String reason) {
         if (!closed.get()) main.post(() -> callback.onFailure(reason));
     }
 

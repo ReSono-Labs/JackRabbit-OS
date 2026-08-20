@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "resono-mail",
+  "version": "1.0.0",
+  "description": "Voice-first guidance for the built-in ReSono Mail domain.",
+  "author": {
+    "name": "ReSono Labs"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["mail", "voice"]
+}

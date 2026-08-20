@@ -2,7 +2,8 @@
 set -euo pipefail
 
 export JAVA_HOME=/tmp/r1-jdk17
-export ANDROID_SDK_ROOT=/tmp/r1-android-sdk
+export ANDROID_HOME=/tmp/r1-android-sdk
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH="$JAVA_HOME/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
 export RESONO_BUILD_PYTHON="${RESONO_BUILD_PYTHON:-/tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu/bin/python3.13}"
 ANDROID_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -30,6 +31,7 @@ cp "$ANDROID_ROOT/../web/design/base.css" "$WEB_ASSETS/design/base.css"
 cp "$ANDROID_ROOT/../web/management/index.html" "$WEB_ASSETS/management/index.html"
 cp "$ANDROID_ROOT/../web/management/management.css" "$WEB_ASSETS/management/management.css"
 cp "$ANDROID_ROOT/../web/management/app.js" "$WEB_ASSETS/management/app.js"
+cp "$ANDROID_ROOT/../web/management/build07.js" "$WEB_ASSETS/management/build07.js"
 cd "$ANDROID_ROOT"
 
 /tmp/gradle-9.5.0/bin/gradle --no-daemon --no-configuration-cache testDebugUnitTest :app:assembleDebug

@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import tempfile
 import unittest
 from unittest.mock import patch
 
 from resono_runtime.api.events import RuntimeEventStream
 from resono_runtime.providers.controller import ProviderController
+from resono_runtime.providers.openai.platform import OpenAIPlatform
 from resono_runtime.providers.openai import ProviderModels
 from resono_runtime.security.credentials import ProviderCredentials
 from resono_runtime.storage.database import RuntimeDatabase
@@ -50,10 +52,30 @@ class _OpenAI:
     def list_models(self) -> ProviderModels:
         return ProviderModels(("gpt-5.4",), ("gpt-realtime-2.1",))
 
-    def create_realtime_call(self, *, offer_sdp: str, model: str) -> str:
+    def create_realtime_call(
+        self,
+        *,
+        offer_sdp: str,
+        model: str,
+        instructions_extra: str = "",
+        extra_tools: tuple = (),
+        tool_definitions: tuple | None = None,
+    ) -> str:
         if model not in ("gpt-realtime-2.1", "gpt-realtime-2.1-mini", "gpt-live-1"):
             raise AssertionError("unexpected model")
         return "v=0\r\nanswer"
+
+
+class _SkillOpenAI(_OpenAI):
+    instructions_extra = ""
+
+    def create_realtime_call(self, *, offer_sdp: str, model: str, instructions_extra: str = "", **_: object) -> str:
+        self.__class__.instructions_extra = instructions_extra
+        return super().create_realtime_call(
+            offer_sdp=offer_sdp,
+            model=model,
+            instructions_extra=instructions_extra,
+        )
 
 
 class OpenAIProviderTest(unittest.TestCase):
@@ -91,6 +113,22 @@ class OpenAIProviderTest(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "available Realtime"):
             self.controller.select_models(text_model=None, realtime_model="made-up")
 
+    @patch("resono_runtime.providers.controller.OpenAIPlatform", _SkillOpenAI)
+    def test_realtime_receives_skill_disclosure_not_full_skill_body(self) -> None:
+        controller = ProviderController(
+            credentials=ProviderCredentials(self.bridge),
+            settings=self.settings,
+            events=self.events,
+            safety_source="local-install",
+            voice_skill_instructions=lambda: "Enabled Agent Skills:\n- planning: Plan meetings.",
+        )
+        controller.connect_platform("sk-test-value-long-enough")
+
+        controller.create_realtime_call("v=0\r\noffer")
+
+        self.assertIn("planning: Plan meetings.", _SkillOpenAI.instructions_extra)
+        self.assertNotIn("Full private instructions", _SkillOpenAI.instructions_extra)
+
     @patch("resono_runtime.providers.controller.OpenAIPlatform", _OpenAI)
     def test_disconnect_removes_credential_and_selection(self) -> None:
         self.controller.connect_platform("sk-test-value-long-enough")
@@ -125,10 +163,10 @@ class OpenAIProviderTest(unittest.TestCase):
             status["models"]["text"],
         )
         self.assertEqual(
-            ["gpt-realtime-2.1-mini", "gpt-live-1"],
+            ["gpt-realtime-2.1", "gpt-realtime-2.1-mini", "gpt-live-1"],
             status["models"]["realtime"],
         )
-        self.assertEqual("gpt-realtime-2.1-mini", status["selection"]["realtime"])
+        self.assertEqual("gpt-realtime-2.1", status["selection"]["realtime"])
         self.assertEqual(
             "v=0\r\nanswer", controller.create_realtime_call("v=0\r\noffer").sdp
         )
@@ -153,7 +191,7 @@ class OpenAIProviderTest(unittest.TestCase):
         status = controller.status()
 
         self.assertEqual("gpt-5.6-sol", status["selection"]["text"])
-        self.assertEqual("gpt-realtime-2.1-mini", status["selection"]["realtime"])
+        self.assertEqual("gpt-realtime-2.1", status["selection"]["realtime"])
 
     @patch("resono_runtime.providers.controller.OpenAIPlatform", _OpenAI)
     def test_disconnect_selected_platform_falls_back_to_connected_subscription(self) -> None:
@@ -180,7 +218,7 @@ class OpenAIProviderTest(unittest.TestCase):
         self.assertTrue(status["connections"]["subscription"])
         self.assertEqual("subscription", status["accessPath"])
         self.assertEqual("gpt-5.6-sol", status["selection"]["text"])
-        self.assertEqual("gpt-realtime-2.1-mini", status["selection"]["realtime"])
+        self.assertEqual("gpt-realtime-2.1", status["selection"]["realtime"])
 
     @patch("resono_runtime.providers.controller.OpenAIPlatform", _OpenAI)
     def test_disconnect_selected_subscription_falls_back_to_connected_platform(self) -> None:
@@ -211,6 +249,31 @@ class OpenAIProviderTest(unittest.TestCase):
         self.assertTrue(status["connected"])
         self.assertEqual("gpt-5.4", status["selection"]["text"])
         self.assertEqual("gpt-realtime-2.1", status["selection"]["realtime"])
+
+
+class OpenAIPlatformTest(unittest.TestCase):
+    def test_platform_realtime_discovery_includes_live_realtime(self) -> None:
+        platform = OpenAIPlatform("sk-test", safety_source="local")
+
+        response = {
+            "data": [
+                {"id": "gpt-4o-mini"},
+                {"id": "gpt-realtime-2.1"},
+                {"id": "gpt-realtime-2.1-mini"},
+                {"id": "gpt-live-1"},
+                {"id": "text-embedding-3-small"},
+            ]
+        }
+
+        with patch("resono_runtime.providers.openai.platform.urlopen") as request:
+            request.return_value.__enter__.return_value.read.return_value = json.dumps(response).encode()
+            models = platform.list_models()
+
+        self.assertEqual(
+            ("gpt-live-1", "gpt-realtime-2.1", "gpt-realtime-2.1-mini"),
+            models.realtime,
+        )
+        self.assertEqual(("gpt-4o-mini",), models.text)
 
 
 if __name__ == "__main__":

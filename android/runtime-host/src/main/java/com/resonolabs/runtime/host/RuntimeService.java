@@ -52,7 +52,7 @@ public final class RuntimeService extends Service {
             Log.i(LOG_TAG, "runtime process ready");
         } catch (Exception exception) {
             startupLimiter.recordFailure(System.currentTimeMillis());
-            Log.e(LOG_TAG, "runtime startup failed type=" + exception.getClass().getSimpleName());
+            Log.e(LOG_TAG, "runtime startup failed", exception);
             stopForeground(STOP_FOREGROUND_REMOVE);
             stopSelf();
         }

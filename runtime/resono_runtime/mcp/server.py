@@ -5,6 +5,13 @@ from dataclasses import dataclass
 import json
 import secrets
 import threading
+from typing import TYPE_CHECKING
+
+from ..agents import AgentKind
+from ..tools import ToolCatalog, ToolInvocationContext, ToolInvocationResult, register_device_status, register_memory_lookup
+
+if TYPE_CHECKING:
+    from ..memory.tools import MemoryLookupTool
 
 
 PROTOCOL_VERSION = "2025-11-25"
@@ -23,10 +30,30 @@ class McpHttpResult:
 
 
 class LocalMcpServer:
-    """Minimal MCP Streamable HTTP server for trusted on-device clients."""
+    """Minimal MCP Streamable HTTP server for trusted on-device clients.
 
-    def __init__(self, health: Callable[[], dict[str, object]]) -> None:
+    Two tools may be granted: ``get_device_status`` (always) and
+    ``memory_lookup`` (when a ``MemoryLookupTool`` is wired in). The voice
+    Realtime model calls these via the Android peer's MCP ``tools/call``;
+    the text agent's MCP client filters to ``get_device_status`` only, so
+    ``memory_lookup`` is effectively voice-only.
+    """
+
+    def __init__(
+        self,
+        health: Callable[[], dict[str, object]],
+        *,
+        memory_lookup: "MemoryLookupTool | None" = None,
+        catalog: ToolCatalog | None = None,
+        agent: AgentKind = AgentKind.VOICE,
+    ) -> None:
         self._health = health
+        self._catalog = catalog or ToolCatalog()
+        self._agent = agent
+        if catalog is None:
+            register_device_status(self._catalog, health)
+            if memory_lookup is not None:
+                register_memory_lookup(self._catalog, memory_lookup)
         self._sessions: set[str] = set()
         self._lock = threading.Lock()
 
@@ -36,6 +63,10 @@ class LocalMcpServer:
         *,
         session_id: str | None,
         protocol_version: str | None,
+        voice_session_id: str | None = None,
+        tool_call_id: str | None = None,
+        user_utterance: str | None = None,
+        user_utterance_id: int | None = None,
     ) -> McpHttpResult:
         request_id = message.get("id")
         if message.get("jsonrpc") != "2.0" or not isinstance(message.get("method"), str):
@@ -48,9 +79,16 @@ class LocalMcpServer:
         if method == "notifications/initialized":
             return McpHttpResult(202, None)
         if method == "tools/list":
-            return self._result(request_id, {"tools": [DEVICE_STATUS_TOOL]})
+            return self._result(request_id, {"tools": self._listed_tools()})
         if method == "tools/call":
-            return self._call_tool(request_id, message.get("params"))
+            return self._call_tool(
+                request_id,
+                message.get("params"),
+                voice_session_id=voice_session_id,
+                tool_call_id=tool_call_id,
+                user_utterance=user_utterance,
+                user_utterance_id=user_utterance_id,
+            )
         return self._error(request_id, -32601, "Method not found")
 
     def _initialize(self, request_id: object, params: object) -> McpHttpResult:
@@ -75,33 +113,20 @@ class LocalMcpServer:
             session_id,
         )
 
-    def _call_tool(self, request_id: object, params: object) -> McpHttpResult:
+    def _listed_tools(self) -> list[dict[str, object]]:
+        return self._catalog.mcp_definitions(self._agent)
+
+    def _call_tool(self, request_id: object, params: object, *, voice_session_id: str | None, tool_call_id: str | None, user_utterance: str | None, user_utterance_id: int | None) -> McpHttpResult:
         values = params if isinstance(params, dict) else {}
         name = values.get("name")
         arguments = values.get("arguments", {})
-        if name != DEVICE_STATUS_TOOL["name"] or not isinstance(arguments, dict) or arguments:
-            return self._result(
-                request_id,
-                {
-                    "content": [{"type": "text", "text": "Tool is not granted."}],
-                    "isError": True,
-                },
-            )
-        status = self._health()
-        safe = {
-            "status": status.get("status", "not_ready"),
-            "service": status.get("service", "resono-runtime"),
-            "contractVersion": status.get("contractVersion"),
-        }
-        text = json.dumps(safe, separators=(",", ":"))
-        return self._result(
-            request_id,
-            {
-                "content": [{"type": "text", "text": text}],
-                "structuredContent": safe,
-                "isError": False,
-            },
+        result: ToolInvocationResult = self._catalog.invoke(
+            name,
+            arguments,
+            agent=self._agent,
+            context=ToolInvocationContext(self._agent, voice_session_id, tool_call_id, user_utterance, user_utterance_id),
         )
+        return self._result(request_id, result.mcp_result())
 
     def _authorized_session(self, session_id: str | None, version: str | None) -> bool:
         if version != PROTOCOL_VERSION or not session_id:
