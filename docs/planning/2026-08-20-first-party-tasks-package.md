@@ -134,3 +134,13 @@ without rebuilding or restarting the runtime.
 This is implementation/build/deployment evidence, not owner interaction or
 visual acceptance. Voice mutation behavior and the 480x640 Tasks Card remain
 subject to the planned physical acceptance pass.
+
+## Native-card startup correction
+
+Physical review found that the Cards deck initially showed an empty imported
+Creations state when the catalog request had not completed. Built-in Calendar
+and Tasks were incorrectly populated only from the catalog-success callback.
+`CardsDeckView` now initializes its native built-in entries immediately; later
+catalog responses append imported Cards without owning or gating first-party
+Cards. This keeps built-in navigation available even when the import catalog is
+empty or temporarily unavailable.

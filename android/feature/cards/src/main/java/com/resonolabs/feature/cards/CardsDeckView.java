@@ -32,6 +32,7 @@ final class CardsDeckView extends View {
         this.activation = activation;
         setFocusable(true);
         setContentDescription("Creation cards");
+        showCatalog(new JSONObject());
     }
 
     void showCatalog(JSONObject catalog) {
