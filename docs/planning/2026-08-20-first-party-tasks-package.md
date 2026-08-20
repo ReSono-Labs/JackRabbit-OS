@@ -150,3 +150,7 @@ display: 15 px category/status labels, 32 px titles, and 19 px descriptions
 with 28 px line spacing. This applies uniformly to built-in, Plugin, and
 Creation card faces without changing the persistent header, card dimensions,
 or activated content views.
+
+Main card titles are horizontally centered immediately below the top
+category/status row. Category, readiness state, and description alignment stay
+unchanged to preserve the shared information hierarchy.
