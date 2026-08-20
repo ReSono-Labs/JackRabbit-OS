@@ -155,3 +155,23 @@ Rolodex cards do not repeat a separate centered title. The colored top-left
 category is the card heading and the top-right readiness value is its state;
 both use 22 px text. The description begins directly below that row. This rule
 applies uniformly to built-in, Plugin, and Creation card faces.
+
+## Deployed migration recovery
+
+Physical version-29 review exposed a deployed-database-only failure in migration
+30. The migration runner had an active transaction from earlier migration
+version records, causing SQLite to ignore `PRAGMA foreign_keys = OFF` before the
+shared `connections` table rebuild. Existing Mail rows then prevented the drop,
+the runtime supervisor recorded three startup failures, and Voice correctly
+reported the loopback runtime unavailable. Migration 30 now commits the prior
+transaction first, disables foreign keys before rebuilding, removes a shadow
+table left by an interrupted attempt, checks foreign-key integrity, and then
+restores enforcement. No app data or credentials are cleared by this recovery.
+
+The same physical retry then exposed an import-contract regression in the
+shared outbound-security module before migrations ran. Its rewrite retained
+new URL/redirect checks but removed `UnsafeOutboundHost` and
+`resolve_public_host`, and changed `validate_public_host` incompatibly. MCP,
+Creation QR, and Mail still use those public contracts. The module now retains
+one SSRF-safe resolver while restoring all three APIs; MCP can pin the validated
+address, and Creation/Mail keep their existing exception and port contracts.

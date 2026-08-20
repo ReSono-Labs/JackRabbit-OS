@@ -9,38 +9,58 @@ _ALLOWED_SCHEMES = {"http", "https"}
 _METADATA_ADDRESSES = {ipaddress.ip_address("169.254.169.254")}
 
 
+class UnsafeOutboundHost(ValueError):
+    """Raised when an outbound destination is unresolved or non-public."""
+
+
 def validate_public_url(raw_url: str, *, target: str = "url") -> str:
     candidate = raw_url.strip()
     parsed = urlparse(candidate)
     if parsed.scheme not in _ALLOWED_SCHEMES or not parsed.hostname:
         raise ValueError(f"{target} must use http or https with a valid host.")
-    validate_public_host(parsed.hostname, target=target)
+    validate_public_host(
+        parsed.hostname,
+        parsed.port or (443 if parsed.scheme == "https" else 80),
+        target=target,
+    )
     return candidate
 
 
-def validate_public_host(host: str, *, target: str = "host") -> str:
-    candidate = host.strip().strip("[]").casefold()
+def validate_public_host(host: str, port: int | None = None, *, target: str = "host") -> str:
+    """Return a normalized host only when every resolved address is public."""
+    normalized, _ = resolve_public_host(host, port or 443, target=target)
+    return normalized
+
+
+def resolve_public_host(
+    host: str,
+    port: int,
+    *,
+    target: str = "host",
+) -> tuple[str, tuple[str, ...]]:
+    """Resolve and return public addresses for callers which pin the socket."""
+    candidate = host.strip().strip("[]").rstrip(".").casefold()
     if not candidate:
-        raise ValueError(f"{target} is required.")
+        raise UnsafeOutboundHost(f"{target} is required.")
     if candidate in {"localhost", "localhost.localdomain"} or candidate.endswith(".localhost"):
-        raise ValueError(f"{target} must not resolve to a local or private network.")
+        raise UnsafeOutboundHost(f"{target} must not resolve to a local or private network.")
     try:
         literal = ipaddress.ip_address(candidate)
     except ValueError:
         literal = None
     if literal is not None:
         _reject_private(literal, target)
-        return candidate
+        return candidate, (str(literal),)
     try:
-        results = socket.getaddrinfo(candidate, None, type=socket.SOCK_STREAM)
+        results = socket.getaddrinfo(candidate, port, type=socket.SOCK_STREAM)
     except socket.gaierror as error:
-        raise ValueError(f"{target} could not be resolved.") from error
-    addresses = {item[4][0] for item in results if item and item[4]}
+        raise UnsafeOutboundHost(f"{target} could not be resolved.") from error
+    addresses = tuple(sorted({item[4][0] for item in results if item and item[4]}))
     if not addresses:
-        raise ValueError(f"{target} could not be resolved.")
+        raise UnsafeOutboundHost(f"{target} could not be resolved.")
     for address in addresses:
         _reject_private(ipaddress.ip_address(address), target)
-    return candidate
+    return candidate, addresses
 
 
 def assert_redirect_safe(
@@ -69,4 +89,4 @@ def _reject_private(address: ipaddress.IPv4Address | ipaddress.IPv6Address, targ
         or address.is_reserved
         or address.is_unspecified
     ):
-        raise ValueError(f"{target} must not resolve to a local or private network.")
+        raise UnsafeOutboundHost(f"{target} must not resolve to a local or private network.")
