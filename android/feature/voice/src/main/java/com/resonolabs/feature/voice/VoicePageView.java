@@ -443,20 +443,24 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
                 && (state == VoiceSessionStateTracker.State.LIVE || state == VoiceSessionStateTracker.State.RESPONDING);
     }
 
-    @Override public String sessionId() { return sessionId; }
-
-    @Override public boolean submitInspected(String providerText, String transcriptText, String fileKey) {
-        if (!isAvailable() || providerText == null || providerText.isBlank()) return false;
+    @Override public boolean submitImage(byte[] image, String mimeType, String filename) {
+        if (!isAvailable() || image == null || image.length == 0
+                || mimeType == null || !mimeType.startsWith("image/")) return false;
         try {
+            String imageUrl = "data:" + mimeType + ";base64," +
+                    android.util.Base64.encodeToString(image, android.util.Base64.NO_WRAP);
             boolean sent = peer.sendRealtimeEvent(new JSONObject().put("type", "conversation.item.create")
                     .put("item", new JSONObject().put("type", "message").put("role", "user")
-                            .put("content", new JSONArray().put(new JSONObject().put("type", "input_text").put("text", providerText)))));
+                            .put("content", new JSONArray().put(new JSONObject()
+                                    .put("type", "input_image")
+                                    .put("image_url", imageUrl)))));
             if (!sent) return false;
             if (!providerResponseInFlight) {
                 if (!peer.sendRealtimeEvent(new JSONObject().put("type", "response.create"))) return false;
                 providerResponseInFlight = true;
             }
-            recordTranscript("user", "conversation.item.input_text.completed", transcriptText);
+            String transcriptText = "[Image handoff: " + (filename == null ? "camera.jpg" : filename) + "]";
+            recordTranscript("user", "conversation.item.input_image.completed", transcriptText);
             sessionState.toolOutputSent();
             transcript = transcriptText;
             invalidate();

@@ -15,7 +15,6 @@ import android.widget.FrameLayout;
 
 import com.resonolabs.feature.voice.VoiceSessionHandoff;
 import com.resonolabs.hardware.motor.MotorController;
-import com.resonolabs.runtime.host.RuntimeHandoffClient;
 import com.resonolabs.ui.design.ReSonoTheme;
 
 /** Full-screen capture/review/send composition. Voice and provider transport remain external owners. */
@@ -29,7 +28,6 @@ public final class CameraHandoffPage extends FrameLayout implements AutoCloseabl
     private final TextureView preview;
     private final Controls controls;
     private Camera2Producer producer;
-    private RuntimeHandoffClient handoffClient;
     private CapturedImage captured;
     private Bitmap reviewBitmap;
     private boolean handoffMode;
@@ -118,17 +116,9 @@ public final class CameraHandoffPage extends FrameLayout implements AutoCloseabl
 
     private void send() {
         if (state != State.REVIEW || captured == null || !voice.isAvailable()) { fail("Voice session ended"); return; }
-        state=State.SENDING; message="Reading image..."; controls.invalidate();
-        handoffClient = new RuntimeHandoffClient();
-        handoffClient.inspect(activity, voice.sessionId(), captured.filename(), captured.mimeType(), "",
-                captured.bytes(), new RuntimeHandoffClient.Callback() {
-                    @Override public void onInspected(org.json.JSONObject value) {
-                        boolean accepted = voice.submitInspected(value.optString("providerText"),
-                                value.optString("transcriptText"), value.optString("fileKey"));
-                        if (accepted) cancel(); else fail("Voice connection closed");
-                    }
-                    @Override public void onFailure(String code, String detail) { fail(detail); }
-                });
+        state=State.SENDING; message="Sending image..."; controls.invalidate();
+        if (voice.submitImage(captured.bytes(), captured.mimeType(), captured.filename())) cancel();
+        else fail("Voice connection closed");
     }
 
     private void cancel() { stop(); returnToVoice.run(); }
@@ -139,7 +129,6 @@ public final class CameraHandoffPage extends FrameLayout implements AutoCloseabl
         positionAfterClose = null;
         if (closingProducer != null) closingProducer.close();
         else { returnHomePending = false; motor.returnHome(); }
-        if (handoffClient != null) handoffClient.close(); handoffClient=null;
         clearReview();
     }
     private void clearReview() { captured=null; if (reviewBitmap != null) reviewBitmap.recycle(); reviewBitmap=null; }

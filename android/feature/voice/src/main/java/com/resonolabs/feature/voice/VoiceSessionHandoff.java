@@ -1,3 +1,6 @@
 package com.resonolabs.feature.voice;
-/** Sole boundary for injecting inspected context into the current Voice conversation. */
-public interface VoiceSessionHandoff { boolean isAvailable(); String sessionId(); boolean submitInspected(String providerText,String transcriptText,String fileKey); }
+/** Sole boundary for sending a captured image into the current Voice conversation. */
+public interface VoiceSessionHandoff {
+    boolean isAvailable();
+    boolean submitImage(byte[] image, String mimeType, String filename);
+}

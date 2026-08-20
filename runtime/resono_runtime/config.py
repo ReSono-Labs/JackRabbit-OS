@@ -75,9 +75,6 @@ class RuntimeConfig:
     @property
     def creation_rollback_path(self) -> Path:
         return self.workspace_path / "creation-rollbacks"
-    @property
-    def direct_handoffs_path(self) -> Path:
-        return self.workspace_path / "direct-handoffs"
 
     def prepare_directories(self) -> None:
         for path in (
@@ -94,6 +91,5 @@ class RuntimeConfig:
             self.creations_path,
             self.creation_quarantine_path,
             self.creation_rollback_path,
-            self.direct_handoffs_path,
         ):
             path.mkdir(parents=True, exist_ok=True)

@@ -214,7 +214,23 @@ Documentation does not authorize a disconnected control. Implementation order is
 6. Add `feature:handoff` review/coordinator behavior.
 7. Expose `Hand to Voice` only when the complete real path is connected.
 8. Complete physical acceptance before declaring the capability available.
-# Physical response-decoding correction, 2026-08-20
+# Owner correction: raw Realtime image handoff, 2026-08-20
+
+Direct Handoff does not perform server-side image inspection. The captured
+bytes are encoded as a data URL and sent directly to the already-open Realtime
+WebRTC data channel in a `conversation.item.create` user message containing
+`input_image`, followed by `response.create`. This preserves the same Voice
+session and requires no second OpenAI request.
+
+Removed from this path: the runtime upload endpoint, Responses image-inspection
+call, generated markdown, inspection cache/database, stored handoff file, and
+native runtime handoff client. Migration 31 removes the obsolete cache table.
+
+QR decoding is a separate camera/import responsibility. It may inspect frames
+for supported QR payloads outside Direct Handoff, but it must never become a
+prerequisite for sending a normal captured image into Voice.
+
+# Superseded response-decoding investigation, 2026-08-20
 
 Physical Direct Handoff returned `inspection_invalid: Image inspection returned
 an invalid stream` when the ChatGPT/Codex subscription endpoint returned a

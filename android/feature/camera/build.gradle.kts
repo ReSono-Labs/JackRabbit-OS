@@ -9,6 +9,5 @@ dependencies {
     implementation(project(":core:motor"))
     implementation(project(":core:design"))
     implementation(project(":feature:voice"))
-    implementation(project(":runtime-host"))
     testImplementation("junit:junit:4.13.2")
 }

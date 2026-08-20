@@ -24,7 +24,6 @@ from .tool_routes import ToolRoutes
 from .plugin_routes import PluginRoutes
 from .creation_routes import CreationRoutes
 from .connection_routes import ConnectionRoutes
-from .handoff_routes import HandoffRoutes
 
 if TYPE_CHECKING:
     from .http_server import HealthReader, RestartRequest
@@ -93,7 +92,6 @@ class RuntimeRoutes:
         plugins: PluginRoutes | None = None,
         creations: CreationRoutes | None = None,
         connections: ConnectionRoutes | None = None,
-        handoffs: HandoffRoutes | None = None,
     ) -> None:
         self._health = health
         self._lifecycle = lifecycle
@@ -116,7 +114,6 @@ class RuntimeRoutes:
         self._plugins = plugins
         self._creations = creations
         self._connections = connections
-        self._handoffs = handoffs
 
     def handle_get(self, req: RouteRequest) -> None:
         path = req.path.split("?", 1)[0]
@@ -261,7 +258,6 @@ class RuntimeRoutes:
         outbound_mcp = self._outbound_mcp
         plugins = self._plugins
         creations = self._creations
-        if self._handoffs is not None and self._handoffs.handle_post(req): return
         if skills is not None and skills.handle_post(req, pairing):
             return
         if mail is not None and mail.handle_post(req, pairing):

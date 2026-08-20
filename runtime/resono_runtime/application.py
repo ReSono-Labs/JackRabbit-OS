@@ -62,8 +62,6 @@ from .providers.openai.web_search import OpenAIWebSearch
 from .tools.web_search import WEB_SEARCH_TOOL_SET, register_web_search
 from .api.connection_routes import ConnectionRoutes
 from .plugins.bundled_install import BundledPluginInstaller
-from .handoff import DirectHandoffService, HandoffRepository, OpenAIHandoffInspection
-from .api.handoff_routes import HandoffRoutes
 
 
 class RuntimeApplication:
@@ -209,11 +207,6 @@ class RuntimeApplication:
             voice_tools=self._tools.realtime_definitions,
             voice_skill_instructions=self._skill_activation.voice_instructions,
         )
-        self._handoff_routes = HandoffRoutes(DirectHandoffService(
-            config.direct_handoffs_path, HandoffRepository(self._database),
-            OpenAIHandoffInspection(credentials, provider_settings, self._subscription), provider_settings,
-            self._providers.is_active_realtime_session,
-        ))
         self._text_runner = AgentsSdkTextRunner(
             credentials=credentials,
             settings=provider_settings,
@@ -336,7 +329,6 @@ class RuntimeApplication:
             plugins=self._plugin_routes,
             creations=self._creation_routes,
             connections=self._connection_routes,
-            handoffs=self._handoff_routes,
         )
         self._server.start()
         self._mail_scheduler.start()
