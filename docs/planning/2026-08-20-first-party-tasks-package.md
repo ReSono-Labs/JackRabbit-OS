@@ -114,3 +114,23 @@ The Card uses the established 480x640 R1 list/detail language:
 No reboot is required for task data changes. The Card polls the authenticated
 loopback projection every two seconds, so a confirmed Voice mutation appears
 without rebuilding or restarting the runtime.
+
+## 2026-08-20 build and deployment evidence
+
+- Focused host contracts: Tasks and Calendar, five tests passed.
+- Android build: `BUILD SUCCESSFUL`, 299 tasks.
+- Structural gates: `standalone Android boundaries: OK` and
+  `embedded runtime package: OK`.
+- Preserved candidate:
+  `artifacts/local-builds/ReSonoR1-build07-tasks-20260820T211345Z.apk`.
+- SHA-256:
+  `86f38aa4c0fefbbd848cb7729b50ac2954e43b42355a1f2d28bdb2414e5fe02b`.
+- Installed through the existing ADB transport on R1 serial
+  `919109A5P1600502814D`; streamed install returned `Success`.
+- Installed HOME package: `com.resonolabs.voice.engineering`, version code 29,
+  version name `0.4.24-openai-settings-controls-debug`.
+- `MainActivity` was explicitly brought to the foreground after installation.
+
+This is implementation/build/deployment evidence, not owner interaction or
+visual acceptance. Voice mutation behavior and the 480x640 Tasks Card remain
+subject to the planned physical acceptance pass.
