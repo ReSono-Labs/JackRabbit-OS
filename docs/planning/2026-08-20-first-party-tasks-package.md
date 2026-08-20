@@ -144,3 +144,9 @@ and Tasks were incorrectly populated only from the catalog-success callback.
 catalog responses append imported Cards without owning or gating first-party
 Cards. This keeps built-in navigation available even when the import catalog is
 empty or temporarily unavailable.
+
+The shared rolodex card face uses slightly enlarged typography for the 480x640
+display: 15 px category/status labels, 32 px titles, and 19 px descriptions
+with 28 px line spacing. This applies uniformly to built-in, Plugin, and
+Creation card faces without changing the persistent header, card dimensions,
+or activated content views.

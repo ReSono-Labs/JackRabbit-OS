@@ -136,18 +136,18 @@ final class CardsDeckView extends View {
         if (depth != 0) return;
         String sourceType = item.optString("sourceType");
         String kind = "builtin_calendar".equals(sourceType) ? "CALENDAR" : "builtin_tasks".equals(sourceType) ? "TASKS" : "plugin_card".equals(sourceType) ? "APP" : "CREATION";
-        ReSonoTheme.text(canvas, paint, kind, inset + 20f, top + 36f, 13f,
+        ReSonoTheme.text(canvas, paint, kind, inset + 20f, top + 38f, 15f,
                 accent, Paint.Align.LEFT, true);
-        ReSonoTheme.text(canvas, paint, "READY", WIDTH - inset - 18f, top + 36f, 13f,
+        ReSonoTheme.text(canvas, paint, "READY", WIDTH - inset - 18f, top + 38f, 15f,
                 accent, Paint.Align.RIGHT, true);
         ReSonoTheme.text(canvas, paint, item.optString("title", "Creation"), inset + 20f,
-                top + 79f, 29f, ReSonoTheme.INK, Paint.Align.LEFT, false);
-        drawDescription(canvas, item.optString("description", ""), inset + 20f, top + 113f,
+                top + 84f, 32f, ReSonoTheme.INK, Paint.Align.LEFT, false);
+        drawDescription(canvas, item.optString("description", ""), inset + 20f, top + 122f,
                 WIDTH - inset * 2f - 40f);
     }
 
     private void drawDescription(Canvas canvas, String value, float x, float y, float width) {
-        paint.setTextSize(17f);
+        paint.setTextSize(19f);
         String remaining = value == null ? "" : value.trim();
         for (int line = 0; line < 3 && !remaining.isEmpty(); line++) {
             int count = paint.breakText(remaining, true, width, null);
@@ -157,7 +157,7 @@ final class CardsDeckView extends View {
             }
             String text = remaining.substring(0, Math.max(1, count)).trim();
             if (line == 2 && count < remaining.length()) text += "…";
-            ReSonoTheme.text(canvas, paint, text, x, y + line * 25f, 17f,
+            ReSonoTheme.text(canvas, paint, text, x, y + line * 28f, 19f,
                     ReSonoTheme.MUTED, Paint.Align.LEFT, false);
             remaining = remaining.substring(Math.min(remaining.length(), Math.max(1, count))).trim();
         }
