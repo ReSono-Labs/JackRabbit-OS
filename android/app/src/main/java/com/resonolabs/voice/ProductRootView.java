@@ -25,6 +25,7 @@ final class ProductRootView extends FrameLayout {
     private boolean settingsOpen;
     private boolean cardsOpen;
     private boolean cameraOpen;
+    private boolean cardContentOpen;
     private float gestureDownX;
     private float gestureDownY;
     private boolean horizontalGesture;
@@ -103,6 +104,7 @@ final class ProductRootView extends FrameLayout {
     }
 
     private void showCreation(boolean visible) {
+        cardContentOpen = visible;
         chrome.setVisibility(visible ? GONE : VISIBLE);
     }
 
@@ -121,7 +123,7 @@ final class ProductRootView extends FrameLayout {
 
     private void returnFromCamera() {
         cameraOpen = false;
-        camera.setVisibility(GONE); chrome.setVisibility(VISIBLE);
+        camera.setVisibility(GONE); chrome.setVisibility(cardContentOpen ? GONE : VISIBLE);
         if (cardsOpen) {
             cards.setVisibility(VISIBLE); cards.start(); cards.requestFocus();
         } else {

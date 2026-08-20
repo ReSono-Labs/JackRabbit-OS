@@ -93,7 +93,6 @@ public final class TaskPageView extends View implements AutoCloseable {
     }
 
     private void header(Canvas c) {
-        ReSonoTheme.text(c,paint,detail?"‹":"",25,53,43,ReSonoTheme.INK,Paint.Align.LEFT,false);
         ReSonoTheme.text(c,paint,"Tasks",55,45,30,ReSonoTheme.INK,Paint.Align.LEFT,false);
         ReSonoTheme.text(c,paint,detail?"TASK DETAILS":"OPEN",56,67,16,ReSonoTheme.MUTED,Paint.Align.LEFT,true);
         paint.setColor(0xffffd166); c.drawCircle(372,40,5,paint);

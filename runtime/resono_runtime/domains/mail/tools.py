@@ -89,10 +89,13 @@ def _invoke(name: str, context: ToolInvocationContext, arguments: dict[str, obje
 
 
 def _schema(name: str) -> dict[str, object]:
-    properties: dict[str, object] = {"mailAccountId": {"type": "string"}}
+    properties: dict[str, object] = {
+        "mailAccount": {
+            "type": "string",
+            "description": "The account name or email address chosen by the user. Omit when only one Mail account is configured.",
+        }
+    }
     required: list[str] = []
-    if name not in {"email_account_status"}:
-        required.append("mailAccountId")
     fields = {
         "email_read": ("messageId",), "email_mark_read": ("messageId",), "email_mark_unread": ("messageId",),
         "email_archive": ("messageId",), "email_read_attachment": ("attachmentId",),
@@ -110,22 +113,38 @@ def _schema(name: str) -> dict[str, object]:
 
 
 def _description(name: str) -> str:
+    account_guidance = " If one Mail account is configured, use it automatically. If several are configured and the user has not named one, list their account names and ask which one to use. Never ask the user for an account ID."
     if name == "email_compose":
-        return "Create a pending email draft. Read the exact recipients, subject, and body to the user and ask whether it is okay to send. This does not send mail."
+        return "Create a pending email draft. Read the exact recipients, subject, and body to the user and ask whether it is okay to send. This does not send mail." + account_guidance
     if name == "email_send_pending":
         return "Send the exact pending email only after the user explicitly approves the reviewed draft in their latest Voice utterance."
-    return name.replace("email_", "").replace("_", " ").capitalize() + " using the local synchronized Mail service."
+    return name.replace("email_", "").replace("_", " ").capitalize() + " using the local synchronized Mail service." + account_guidance
 
 
 def _account(arguments: dict[str, object], repository: MailRepository) -> str:
-    value = arguments.get("mailAccountId")
-    if isinstance(value, str) and repository.get_account(value) is not None:
-        return value
-    if value is None:
-        accounts = repository.list_accounts()
-        if len(accounts) == 1:
-            return accounts[0].configuration.account_id
-    raise ValueError("A valid Mail account ID is required.")
+    accounts = [item for item in repository.list_accounts() if item.enabled and item.credential_present]
+    if len(accounts) == 1:
+        return accounts[0].configuration.account_id
+    value = arguments.get("mailAccount")
+    if isinstance(value, str) and value.strip():
+        selected = value.strip().casefold()
+        matches = [
+            item for item in accounts
+            if selected in {
+                item.configuration.label.strip().casefold(),
+                item.configuration.email_address.strip().casefold(),
+                item.configuration.account_id.casefold(),
+            }
+        ]
+        if len(matches) == 1:
+            return matches[0].configuration.account_id
+    if not accounts:
+        raise ValueError("No available Mail account is configured.")
+    choices = ", ".join(
+        f"{item.configuration.label} ({item.configuration.email_address})"
+        for item in accounts
+    )
+    raise ValueError(f"Several Mail accounts are available: {choices}. Ask the user which account name they want to use.")
 
 
 def _required(arguments: dict[str, object], key: str) -> str:
@@ -152,4 +171,4 @@ def _limit(arguments: dict[str, object]) -> int:
 
 def _account_view(item: object) -> dict[str, object]:
     configuration = item.configuration
-    return {"mailAccountId": configuration.account_id, "label": configuration.label, "emailAddress": configuration.email_address, "enabled": item.enabled, "syncState": item.last_sync_state, "lastSyncAt": item.last_sync_at, "nextSyncAt": item.next_sync_at}
+    return {"accountName": configuration.label, "emailAddress": configuration.email_address, "enabled": item.enabled, "syncState": item.last_sync_state, "lastSyncAt": item.last_sync_at, "nextSyncAt": item.next_sync_at}

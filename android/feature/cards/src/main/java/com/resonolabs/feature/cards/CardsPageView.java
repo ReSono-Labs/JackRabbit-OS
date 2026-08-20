@@ -20,6 +20,7 @@ public final class CardsPageView extends FrameLayout implements AutoCloseable {
     private final CreationCatalogClient client = new CreationCatalogClient();
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final CardsDeckView deck;
+    private final CardsBackButton back;
     private CreationWebViewHost creation;
     private CalendarPageView calendar;
     private TaskPageView tasks;
@@ -33,6 +34,9 @@ public final class CardsPageView extends FrameLayout implements AutoCloseable {
         this.creationVisibility = creationVisibility;
         deck = new CardsDeckView(activity, this::openCreation);
         addView(deck, match());
+        back = new CardsBackButton(activity, this::navigateBack);
+        back.setVisibility(GONE);
+        addView(back, new LayoutParams(58, 82));
     }
 
     public void start() {
@@ -49,12 +53,19 @@ public final class CardsPageView extends FrameLayout implements AutoCloseable {
     }
 
     public boolean onInput(UiInputIntent input) {
+        if (input == UiInputIntent.BACK) { navigateBack(); return true; }
         if (calendar != null) { boolean handled=calendar.onInput(input);if(input==UiInputIntent.BACK&&!handled)closeCalendar();return true; }
         if (tasks != null) { boolean handled=tasks.onInput(input);if(input==UiInputIntent.BACK&&!handled)closeTasks();return true; }
         if (creation != null) return creation.onInput(input);
-        if (input == UiInputIntent.BACK) openVoice.run();
-        else deck.onInput(input);
+        deck.onInput(input);
         return true;
+    }
+
+    private void navigateBack() {
+        if (calendar != null) { if (!calendar.onInput(UiInputIntent.BACK)) closeCalendar(); return; }
+        if (tasks != null) { if (!tasks.onInput(UiInputIntent.BACK)) closeTasks(); return; }
+        if (creation != null) { closeCreation(); return; }
+        openVoice.run();
     }
 
     private final Runnable refresh = new Runnable() {
@@ -84,31 +95,36 @@ public final class CardsPageView extends FrameLayout implements AutoCloseable {
         LayoutParams params = new LayoutParams(Math.round(240f * density), Math.round(282f * density));
         params.gravity = Gravity.CENTER;
         addView(creation, params);
+        back.setVisibility(VISIBLE);
+        back.bringToFront();
         creationVisibility.accept(true);
     }
 
     private void openCalendar() {
         if (calendar != null) return;
-        calendar = new CalendarPageView(activity, openVoice);
+        calendar = new CalendarPageView(activity, openVoice, this::closeCalendar);
         deck.setVisibility(GONE);
         addView(calendar, match());
+        back.setVisibility(VISIBLE);
+        back.bringToFront();
+        creationVisibility.accept(true);
         calendar.start(); calendar.requestFocus();
     }
 
     private void closeCalendar() {
         if (calendar == null) return;
-        removeView(calendar); calendar.close(); calendar=null; deck.setVisibility(VISIBLE);
+        removeView(calendar); calendar.close(); calendar=null; deck.setVisibility(VISIBLE); back.setVisibility(GONE); creationVisibility.accept(false);
     }
 
     private void openTasks() {
         if (tasks != null) return;
         tasks = new TaskPageView(activity, openVoice);
-        deck.setVisibility(GONE); addView(tasks, match()); tasks.start(); tasks.requestFocus();
+        deck.setVisibility(GONE); addView(tasks, match()); back.setVisibility(VISIBLE); back.bringToFront(); creationVisibility.accept(true); tasks.start(); tasks.requestFocus();
     }
 
     private void closeTasks() {
         if (tasks == null) return;
-        removeView(tasks); tasks.close(); tasks=null; deck.setVisibility(VISIBLE);
+        removeView(tasks); tasks.close(); tasks=null; deck.setVisibility(VISIBLE); back.setVisibility(GONE); creationVisibility.accept(false);
     }
 
     private void closeCreation() {
@@ -117,6 +133,7 @@ public final class CardsPageView extends FrameLayout implements AutoCloseable {
         creation.destroy();
         creation = null;
         deck.setVisibility(VISIBLE);
+        back.setVisibility(GONE);
         creationVisibility.accept(false);
     }
 

@@ -9,7 +9,7 @@ metadata:
 
 # Voice Mail
 
-Use the local synchronized Mail tools for mailbox questions. Identify the mailbox when more than one account could match.
+Use the local synchronized Mail tools for mailbox questions. When exactly one Mail account is available, use it automatically. When several accounts are available and the user did not name one, tell them the available account names and ask which one they want to use. Pass that human-readable account name or email address to the tool. Never ask the user for an internal account ID.
 
 Before sending, create a pending draft. Read the exact recipients, subject, and complete body aloud. Ask whether it is okay to send. Call the send tool only after a new, explicit affirmative answer from the user.
 

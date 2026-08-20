@@ -813,3 +813,9 @@ The scoped Calendar implementation is code-complete as of 2026-08-20:
 - Focused host contract tests are present.
 
 Code-complete does not mean physically accepted. Host tests, Android compilation, APK deployment, real ICS/CalDAV provider validation, and 480x640 hardware acceptance have not been executed in this implementation pass. They remain validation evidence, not missing Calendar architecture or feature code.
+
+## Owner physical test update - 2026-08-20
+
+- Tasks Voice behavior passed owner testing.
+- Calendar connection, synchronized Card list, detail navigation, and Voice behavior passed owner testing after the shared Cards Back and full-screen content corrections.
+- Mail Voice behavior remains under active owner testing and is not accepted by this update.

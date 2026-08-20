@@ -2510,6 +2510,10 @@ The SDK also documents privileged globals for LLM/journal messaging, native touc
 
 Physical proof remains required for real multi-client Mail sync/Sent visibility, Voice draft review and exact send confirmation, both web-search access paths, encrypted credentials on device, dynamic import/replace/delete, and native Cards rendering/input. No management UI import/setup surface is part of this contract.
 
+### Physical Voice account-selection correction
+
+Mail tools never expose or request an internal account UUID from the user. With one available account, the runtime selects it automatically. With multiple accounts, the tool result names each configured account by label and email address and instructs Voice to ask which human-readable account the user wants; subsequent calls accept that label or email address as the optional `mailAccount` selector.
+
 Physical preflight on 2026-08-20 returned an empty `adb devices -l` list and `adb: no devices/emulators found`. Therefore no candidate was installed and no physical claim was inferred. Real Mail credentials and both configured OpenAI access paths are also required for the remaining provider evidence.
 # Physical implementation finding: WebView provider selection
 
