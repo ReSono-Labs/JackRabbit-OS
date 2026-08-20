@@ -151,6 +151,7 @@ with 28 px line spacing. This applies uniformly to built-in, Plugin, and
 Creation card faces without changing the persistent header, card dimensions,
 or activated content views.
 
-Main card titles are horizontally centered immediately below the top
-category/status row. Category, readiness state, and description alignment stay
-unchanged to preserve the shared information hierarchy.
+Rolodex cards do not repeat a separate centered title. The colored top-left
+category is the card heading and the top-right readiness value is its state;
+both use 22 px text. The description begins directly below that row. This rule
+applies uniformly to built-in, Plugin, and Creation card faces.

@@ -136,13 +136,11 @@ final class CardsDeckView extends View {
         if (depth != 0) return;
         String sourceType = item.optString("sourceType");
         String kind = "builtin_calendar".equals(sourceType) ? "CALENDAR" : "builtin_tasks".equals(sourceType) ? "TASKS" : "plugin_card".equals(sourceType) ? "APP" : "CREATION";
-        ReSonoTheme.text(canvas, paint, kind, inset + 20f, top + 38f, 15f,
+        ReSonoTheme.text(canvas, paint, kind, inset + 20f, top + 48f, 22f,
                 accent, Paint.Align.LEFT, true);
-        ReSonoTheme.text(canvas, paint, "READY", WIDTH - inset - 18f, top + 38f, 15f,
+        ReSonoTheme.text(canvas, paint, "READY", WIDTH - inset - 18f, top + 48f, 22f,
                 accent, Paint.Align.RIGHT, true);
-        ReSonoTheme.text(canvas, paint, item.optString("title", "Creation"), WIDTH / 2f,
-                top + 84f, 32f, ReSonoTheme.INK, Paint.Align.CENTER, false);
-        drawDescription(canvas, item.optString("description", ""), inset + 20f, top + 122f,
+        drawDescription(canvas, item.optString("description", ""), inset + 20f, top + 92f,
                 WIDTH - inset * 2f - 40f);
     }
 
