@@ -7,6 +7,7 @@ import threading
 from resono_runtime.core.logging import runtime_logger
 
 from .openai import OpenAIPlatform, OpenAIProviderError, OpenAISubscription, ProviderModels
+from ..realtime.modes import PRIMARY_VOICE_INSTRUCTION
 from ..api.events import RuntimeEventStream
 from ..security.credentials import ProviderCredentials
 from ..storage.provider_catalog import ProviderCatalogRepository
@@ -16,6 +17,7 @@ from ..storage.sessions import SessionTranscriptRepository
 
 if TYPE_CHECKING:
     from ..memory.session_context import SessionContextBuilder
+    from ..realtime.modes import VoiceModeService
 
 
 @dataclass(frozen=True, slots=True)
@@ -45,7 +47,9 @@ class ProviderController:
         session_context: "SessionContextBuilder | None" = None,
         memory_lookup_tool_def: dict[str, object] | None = None,
         voice_tools: Callable[[], tuple[dict[str, object], ...]] | None = None,
+        goal_intake_tools: Callable[[], tuple[dict[str, object], ...]] | None = None,
         voice_skill_instructions: Callable[[], str] | None = None,
+        voice_modes: "VoiceModeService | None" = None,
     ) -> None:
         self._credentials = credentials
         self._settings = settings
@@ -58,7 +62,9 @@ class ProviderController:
         self._session_context = session_context
         self._memory_lookup_tool_def = memory_lookup_tool_def
         self._voice_tools = voice_tools
+        self._goal_intake_tools = goal_intake_tools
         self._voice_skill_instructions = voice_skill_instructions
+        self._voice_modes = voice_modes
         self._models = ProviderModels((), ())
         self._log = runtime_logger()
         self._active_sessions: set[str] = set()
@@ -323,6 +329,26 @@ class ProviderController:
             },
         )
         try:
+            if self._voice_modes is not None:
+                self._voice_modes.open_session(
+                    session_id,
+                    primary_instructions="\n\n".join(
+                        value for value in (
+                            PRIMARY_VOICE_INSTRUCTION,
+                            instructions_extra,
+                        ) if value
+                    ),
+                    primary_tools=(
+                        self._voice_tools
+                        if self._voice_tools is not None
+                        else lambda: extra_tools
+                    ),
+                    goal_intake_tools=(
+                        self._goal_intake_tools
+                        if self._goal_intake_tools is not None
+                        else lambda: ()
+                    ),
+                )
             answer = OpenAIPlatform(access_token, safety_source=self._safety_source).create_realtime_call(
                 offer_sdp=offer_sdp,
                 model=selection.realtime_model,
@@ -332,6 +358,8 @@ class ProviderController:
             )
             self._log.info("provider.realtime.success", extra={"provider": "openai", "model": selection.realtime_model})
         except OpenAIProviderError as error:
+            if self._voice_modes is not None:
+                self._voice_modes.close_session(session_id)
             self._log.warning(
                 "provider.realtime.failed provider=%s model=%s code=%s status=%s details=%s",
                 "openai",
@@ -365,6 +393,8 @@ class ProviderController:
 
     def close_realtime_session(self, session_id: str) -> None:
         with self._active_sessions_lock: self._active_sessions.discard(session_id)
+        if self._voice_modes is not None:
+            self._voice_modes.close_session(session_id)
 
     def _platform(self) -> OpenAIPlatform:
         return OpenAIPlatform(self._credentials.platform_key(), safety_source=self._safety_source)

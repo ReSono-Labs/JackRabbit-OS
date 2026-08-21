@@ -1,0 +1,2578 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 21,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "runtime/resono_runtime/agents/audience.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 30,
+      "classes": [
+        {
+          "name": "AgentKind",
+          "startLine": 9,
+          "endLine": 13,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "AgentAudience",
+          "startLine": 16,
+          "endLine": 24,
+          "methods": [
+            "includes"
+          ],
+          "properties": []
+        },
+        {
+          "name": "AudienceResourceKind",
+          "startLine": 27,
+          "endLine": 34,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "AudienceResource",
+          "startLine": 38,
+          "endLine": 46,
+          "methods": [
+            "__post_init__"
+          ],
+          "properties": [
+            "kind",
+            "stable_id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AgentKind",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "AgentAudience",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "AudienceResourceKind",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "AudienceResource",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "self.stable_id.strip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/agents/delegation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 35,
+      "classes": [
+        {
+          "name": "DelegationRequest",
+          "startLine": 10,
+          "endLine": 17,
+          "methods": [],
+          "properties": [
+            "origin_kind",
+            "origin_id",
+            "objective",
+            "success_criteria",
+            "result_schema",
+            "requested_resource_ids",
+            "recipe"
+          ]
+        },
+        {
+          "name": "DelegationRun",
+          "startLine": 21,
+          "endLine": 29,
+          "methods": [],
+          "properties": [
+            "run_id",
+            "origin_kind",
+            "origin_id",
+            "state",
+            "recipe",
+            "output",
+            "failure_code",
+            "failure_message"
+          ]
+        },
+        {
+          "name": "DelegationService",
+          "startLine": 32,
+          "endLine": 35,
+          "methods": [
+            "submit",
+            "inspect",
+            "cancel"
+          ],
+          "properties": []
+        },
+        {
+          "name": "DelegationUnavailable",
+          "startLine": 38,
+          "endLine": 48,
+          "methods": [
+            "submit",
+            "inspect",
+            "cancel"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "DelegationRequest",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "DelegationRun",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "DelegationService",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "DelegationUnavailable",
+          "line": 38,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "submit",
+          "callee": "RuntimeError",
+          "lineNumber": 42
+        },
+        {
+          "caller": "inspect",
+          "callee": "RuntimeError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "cancel",
+          "callee": "RuntimeError",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/agents/routing.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 116,
+      "nonEmptyLines": 93,
+      "classes": [
+        {
+          "name": "AudienceBinding",
+          "startLine": 12,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "resource",
+            "audience",
+            "active",
+            "changed_at",
+            "changed_by",
+            "change_reason"
+          ]
+        },
+        {
+          "name": "AudienceBindingStore",
+          "startLine": 21,
+          "endLine": 51,
+          "methods": [
+            "save",
+            "get",
+            "list_for",
+            "deactivate",
+            "remove"
+          ],
+          "properties": []
+        },
+        {
+          "name": "AgentAudienceRouter",
+          "startLine": 54,
+          "endLine": 115,
+          "methods": [
+            "__init__",
+            "set_audience",
+            "binding_for",
+            "is_exposed",
+            "list_for",
+            "deactivate",
+            "remove_resource",
+            "_require_actor_and_reason"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AudienceBinding",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "AudienceBindingStore",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "AgentAudienceRouter",
+          "line": 54,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "set_audience",
+          "callee": "self._require_actor_and_reason",
+          "lineNumber": 68
+        },
+        {
+          "caller": "set_audience",
+          "callee": "self._bindings.save",
+          "lineNumber": 69
+        },
+        {
+          "caller": "binding_for",
+          "callee": "self._bindings.get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "is_exposed",
+          "callee": "self._bindings.get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "is_exposed",
+          "callee": "bool",
+          "lineNumber": 81
+        },
+        {
+          "caller": "is_exposed",
+          "callee": "binding.audience.includes",
+          "lineNumber": 81
+        },
+        {
+          "caller": "list_for",
+          "callee": "self._bindings.list_for",
+          "lineNumber": 84
+        },
+        {
+          "caller": "deactivate",
+          "callee": "self._require_actor_and_reason",
+          "lineNumber": 93
+        },
+        {
+          "caller": "deactivate",
+          "callee": "self._bindings.deactivate",
+          "lineNumber": 94
+        },
+        {
+          "caller": "remove_resource",
+          "callee": "self._require_actor_and_reason",
+          "lineNumber": 107
+        },
+        {
+          "caller": "remove_resource",
+          "callee": "self._bindings.remove",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_require_actor_and_reason",
+          "callee": "changed_by.strip",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_require_actor_and_reason",
+          "callee": "ValueError",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_require_actor_and_reason",
+          "callee": "reason.strip",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_require_actor_and_reason",
+          "callee": "ValueError",
+          "lineNumber": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 36,
+      "classes": [
+        {
+          "name": "BackgroundMcpGateway",
+          "startLine": 14,
+          "endLine": 44,
+          "methods": [
+            "__init__",
+            "open",
+            "close",
+            "handle"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "BackgroundMcpGateway",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "threading.Lock",
+          "lineNumber": 20
+        },
+        {
+          "caller": "open",
+          "callee": "BackgroundToolSupply",
+          "lineNumber": 23
+        },
+        {
+          "caller": "open",
+          "callee": "BackgroundToolGrant",
+          "lineNumber": 25
+        },
+        {
+          "caller": "open",
+          "callee": "frozenset",
+          "lineNumber": 25
+        },
+        {
+          "caller": "open",
+          "callee": "self._allowed_names",
+          "lineNumber": 25
+        },
+        {
+          "caller": "open",
+          "callee": "LocalMcpServer",
+          "lineNumber": 28
+        },
+        {
+          "caller": "open",
+          "callee": "RuntimeError",
+          "lineNumber": 31
+        },
+        {
+          "caller": "close",
+          "callee": "self._servers.pop",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handle",
+          "callee": "self._servers.get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "handle",
+          "callee": "McpHttpResult",
+          "lineNumber": 43
+        },
+        {
+          "caller": "handle",
+          "callee": "server.handle",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/tool_supply.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 54,
+      "classes": [
+        {
+          "name": "ToolBudgetExceeded",
+          "startLine": 14,
+          "endLine": 15,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "BackgroundToolGrant",
+          "startLine": 19,
+          "endLine": 26,
+          "methods": [
+            "__post_init__"
+          ],
+          "properties": [
+            "autonomy",
+            "explicit_names",
+            "max_calls"
+          ]
+        },
+        {
+          "name": "BackgroundToolSupply",
+          "startLine": 29,
+          "endLine": 68,
+          "methods": [
+            "__init__",
+            "calls_used",
+            "mcp_definitions",
+            "invoke",
+            "_allowed"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ToolBudgetExceeded",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "BackgroundToolGrant",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "BackgroundToolSupply",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__post_init__",
+          "callee": "ValueError",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "tuple",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "catalog.definitions_for",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._allowed",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "frozenset",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "threading.Lock",
+          "lineNumber": 40
+        },
+        {
+          "caller": "mcp_definitions",
+          "callee": "item.mcp_definition",
+          "lineNumber": 48
+        },
+        {
+          "caller": "invoke",
+          "callee": "isinstance",
+          "lineNumber": 52
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 53
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolBudgetExceeded",
+          "lineNumber": 56
+        },
+        {
+          "caller": "invoke",
+          "callee": "self._catalog.invoke",
+          "lineNumber": 58
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationContext",
+          "lineNumber": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/server.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 146,
+      "nonEmptyLines": 128,
+      "classes": [
+        {
+          "name": "McpHttpResult",
+          "startLine": 26,
+          "endLine": 29,
+          "methods": [],
+          "properties": [
+            "status",
+            "payload",
+            "session_id"
+          ]
+        },
+        {
+          "name": "LocalMcpServer",
+          "startLine": 32,
+          "endLine": 146,
+          "methods": [
+            "__init__",
+            "handle",
+            "_initialize",
+            "_listed_tools",
+            "_call_tool",
+            "_authorized_session",
+            "_result",
+            "_error"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "McpHttpResult",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "LocalMcpServer",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "ToolCatalog",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "register_device_status",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "register_memory_lookup",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "set",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "threading.Lock",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handle",
+          "callee": "message.get",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handle",
+          "callee": "message.get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handle",
+          "callee": "isinstance",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handle",
+          "callee": "message.get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "handle",
+          "callee": "self._error",
+          "lineNumber": 73
+        },
+        {
+          "caller": "handle",
+          "callee": "str",
+          "lineNumber": 74
+        },
+        {
+          "caller": "handle",
+          "callee": "self._initialize",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handle",
+          "callee": "message.get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handle",
+          "callee": "self._authorized_session",
+          "lineNumber": 77
+        },
+        {
+          "caller": "handle",
+          "callee": "self._error",
+          "lineNumber": 78
+        },
+        {
+          "caller": "handle",
+          "callee": "McpHttpResult",
+          "lineNumber": 80
+        },
+        {
+          "caller": "handle",
+          "callee": "self._result",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handle",
+          "callee": "self._listed_tools",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handle",
+          "callee": "self._call_tool",
+          "lineNumber": 84
+        },
+        {
+          "caller": "handle",
+          "callee": "message.get",
+          "lineNumber": 86
+        },
+        {
+          "caller": "handle",
+          "callee": "self._error",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_initialize",
+          "callee": "isinstance",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_initialize",
+          "callee": "values.get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_initialize",
+          "callee": "self._error",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_initialize",
+          "callee": "secrets.token_urlsafe",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_initialize",
+          "callee": "self._sessions.add",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_initialize",
+          "callee": "McpHttpResult",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_listed_tools",
+          "callee": "self._catalog.mcp_definitions",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_call_tool",
+          "callee": "isinstance",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_call_tool",
+          "callee": "values.get",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_call_tool",
+          "callee": "values.get",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_call_tool",
+          "callee": "self._catalog.invoke",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_call_tool",
+          "callee": "ToolInvocationContext",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_call_tool",
+          "callee": "self._result",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_call_tool",
+          "callee": "result.mcp_result",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_result",
+          "callee": "McpHttpResult",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_error",
+          "callee": "McpHttpResult",
+          "lineNumber": 143
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/storage/agent_audiences.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 115,
+      "nonEmptyLines": 99,
+      "functions": [
+        {
+          "name": "_binding",
+          "startLine": 108,
+          "endLine": 111,
+          "params": [
+            "resource",
+            "row"
+          ]
+        },
+        {
+          "name": "_timestamp",
+          "startLine": 114,
+          "endLine": 115,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "AgentAudienceRepository",
+          "startLine": 13,
+          "endLine": 105,
+          "methods": [
+            "__init__",
+            "save",
+            "get",
+            "list_for",
+            "deactivate",
+            "remove",
+            "_audit"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AgentAudienceRepository",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "_binding",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "_timestamp",
+          "line": 114,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "save",
+          "callee": "self.get",
+          "lineNumber": 20
+        },
+        {
+          "caller": "save",
+          "callee": "_timestamp",
+          "lineNumber": 21
+        },
+        {
+          "caller": "save",
+          "callee": "self._database.connect",
+          "lineNumber": 22
+        },
+        {
+          "caller": "save",
+          "callee": "connection.execute",
+          "lineNumber": 23
+        },
+        {
+          "caller": "save",
+          "callee": "self._audit",
+          "lineNumber": 37
+        },
+        {
+          "caller": "save",
+          "callee": "connection.commit",
+          "lineNumber": 38
+        },
+        {
+          "caller": "save",
+          "callee": "AudienceBinding",
+          "lineNumber": 39
+        },
+        {
+          "caller": "get",
+          "callee": "self._database.connect",
+          "lineNumber": 42
+        },
+        {
+          "caller": "get",
+          "callee": "connection.execute(\n                \"SELECT audience, active, changed_at, changed_by, change_reason FROM agent_audience_bindings WHERE resource_kind = ? AND resource_id = ?\",\n                (resource.kind.value, resource.stable_id),\n            ).fetchone",
+          "lineNumber": 43
+        },
+        {
+          "caller": "get",
+          "callee": "connection.execute",
+          "lineNumber": 43
+        },
+        {
+          "caller": "get",
+          "callee": "_binding",
+          "lineNumber": 47
+        },
+        {
+          "caller": "list_for",
+          "callee": "self._database.connect",
+          "lineNumber": 50
+        },
+        {
+          "caller": "list_for",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT resource_kind, resource_id, audience, active, changed_at, changed_by, change_reason\n                FROM agent_audience_bindings\n                WHERE active = 1 AND audience IN (?, ?)\n                ORDER BY resource_kind, resource_id\n                \"\"\",\n                (agent.value, AgentAudience.BOTH.value),\n            ).fetchall",
+          "lineNumber": 51
+        },
+        {
+          "caller": "list_for",
+          "callee": "connection.execute",
+          "lineNumber": 51
+        },
+        {
+          "caller": "list_for",
+          "callee": "AudienceBinding",
+          "lineNumber": 61
+        },
+        {
+          "caller": "list_for",
+          "callee": "AudienceResource",
+          "lineNumber": 62
+        },
+        {
+          "caller": "list_for",
+          "callee": "AudienceResourceKind",
+          "lineNumber": 62
+        },
+        {
+          "caller": "list_for",
+          "callee": "AgentAudience",
+          "lineNumber": 63
+        },
+        {
+          "caller": "list_for",
+          "callee": "bool",
+          "lineNumber": 63
+        },
+        {
+          "caller": "deactivate",
+          "callee": "self.get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "deactivate",
+          "callee": "_timestamp",
+          "lineNumber": 72
+        },
+        {
+          "caller": "deactivate",
+          "callee": "self._database.connect",
+          "lineNumber": 73
+        },
+        {
+          "caller": "deactivate",
+          "callee": "connection.execute",
+          "lineNumber": 74
+        },
+        {
+          "caller": "deactivate",
+          "callee": "self._audit",
+          "lineNumber": 78
+        },
+        {
+          "caller": "deactivate",
+          "callee": "connection.commit",
+          "lineNumber": 79
+        },
+        {
+          "caller": "deactivate",
+          "callee": "AudienceBinding",
+          "lineNumber": 80
+        },
+        {
+          "caller": "remove",
+          "callee": "self.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "remove",
+          "callee": "_timestamp",
+          "lineNumber": 86
+        },
+        {
+          "caller": "remove",
+          "callee": "self._database.connect",
+          "lineNumber": 87
+        },
+        {
+          "caller": "remove",
+          "callee": "connection.execute",
+          "lineNumber": 88
+        },
+        {
+          "caller": "remove",
+          "callee": "self._audit",
+          "lineNumber": 92
+        },
+        {
+          "caller": "remove",
+          "callee": "connection.commit",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_audit",
+          "callee": "connection.execute",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_binding",
+          "callee": "AudienceBinding",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_binding",
+          "callee": "AgentAudience",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_binding",
+          "callee": "bool",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_timestamp",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_timestamp",
+          "callee": "datetime.now",
+          "lineNumber": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/builtins.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "register_device_status",
+          "startLine": 26,
+          "endLine": 48,
+          "params": [
+            "catalog",
+            "health"
+          ]
+        },
+        {
+          "name": "register_memory_lookup",
+          "startLine": 51,
+          "endLine": 61,
+          "params": [
+            "catalog",
+            "memory_lookup"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "register_device_status",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "register_memory_lookup",
+          "line": 51,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "handle",
+          "callee": "health",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handle",
+          "callee": "status.get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handle",
+          "callee": "status.get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handle",
+          "callee": "status.get",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handle",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handle",
+          "callee": "json.dumps",
+          "lineNumber": 35
+        },
+        {
+          "caller": "register_device_status",
+          "callee": "catalog.register",
+          "lineNumber": 39
+        },
+        {
+          "caller": "register_device_status",
+          "callee": "ToolDefinition",
+          "lineNumber": 40
+        },
+        {
+          "caller": "register_memory_lookup",
+          "callee": "catalog.register",
+          "lineNumber": 52
+        },
+        {
+          "caller": "register_memory_lookup",
+          "callee": "ToolDefinition",
+          "lineNumber": 53
+        },
+        {
+          "caller": "register_memory_lookup",
+          "callee": "memory_lookup.name",
+          "lineNumber": 55
+        },
+        {
+          "caller": "register_memory_lookup",
+          "callee": "memory_lookup.description",
+          "lineNumber": 56
+        },
+        {
+          "caller": "register_memory_lookup",
+          "callee": "memory_lookup.parameters",
+          "lineNumber": 57
+        },
+        {
+          "caller": "register_memory_lookup",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 58
+        },
+        {
+          "caller": "register_memory_lookup",
+          "callee": "memory_lookup.call",
+          "lineNumber": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/contract.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "contracts",
+          "startLine": 17,
+          "endLine": 63,
+          "params": []
+        },
+        {
+          "name": "_event_fields",
+          "startLine": 66,
+          "endLine": 72,
+          "params": []
+        },
+        {
+          "name": "_schema",
+          "startLine": 75,
+          "endLine": 82,
+          "params": [
+            "properties",
+            "required"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CalendarToolContract",
+          "startLine": 10,
+          "endLine": 14,
+          "methods": [],
+          "properties": [
+            "name",
+            "description",
+            "effect_class",
+            "input_schema"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CalendarToolContract",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "contracts",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "_event_fields",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "_schema",
+          "line": 75,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "contracts",
+          "callee": "CalendarToolContract",
+          "lineNumber": 21
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 25
+        },
+        {
+          "caller": "contracts",
+          "callee": "CalendarToolContract",
+          "lineNumber": 27
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 31
+        },
+        {
+          "caller": "contracts",
+          "callee": "CalendarToolContract",
+          "lineNumber": 33
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 37
+        },
+        {
+          "caller": "contracts",
+          "callee": "CalendarToolContract",
+          "lineNumber": 39
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 43
+        },
+        {
+          "caller": "contracts",
+          "callee": "_event_fields",
+          "lineNumber": 43
+        },
+        {
+          "caller": "contracts",
+          "callee": "CalendarToolContract",
+          "lineNumber": 45
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 49
+        },
+        {
+          "caller": "contracts",
+          "callee": "_event_fields",
+          "lineNumber": 49
+        },
+        {
+          "caller": "contracts",
+          "callee": "CalendarToolContract",
+          "lineNumber": 51
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 55
+        },
+        {
+          "caller": "contracts",
+          "callee": "CalendarToolContract",
+          "lineNumber": 57
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_schema",
+          "callee": "list",
+          "lineNumber": 81
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/handlers.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 21,
+      "classes": [
+        {
+          "name": "CalendarToolService",
+          "startLine": 8,
+          "endLine": 16,
+          "methods": [
+            "invoke_tool"
+          ],
+          "properties": []
+        },
+        {
+          "name": "CalendarToolHandlers",
+          "startLine": 19,
+          "endLine": 29,
+          "methods": [
+            "__init__",
+            "invoke"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CalendarToolService",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CalendarToolHandlers",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "invoke",
+          "callee": "self._service.invoke_tool",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/package.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 37,
+      "classes": [
+        {
+          "name": "CalendarToolPackage",
+          "startLine": 14,
+          "endLine": 46,
+          "methods": [
+            "__init__",
+            "definitions",
+            "register"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CalendarToolPackage",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "CalendarToolHandlers",
+          "lineNumber": 18
+        },
+        {
+          "caller": "definitions",
+          "callee": "contracts",
+          "lineNumber": 22
+        },
+        {
+          "caller": "definitions",
+          "callee": "result.append",
+          "lineNumber": 23
+        },
+        {
+          "caller": "definitions",
+          "callee": "ToolDefinition",
+          "lineNumber": 24
+        },
+        {
+          "caller": "definitions",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 29
+        },
+        {
+          "caller": "definitions",
+          "callee": "self._handlers.invoke",
+          "lineNumber": 32
+        },
+        {
+          "caller": "definitions",
+          "callee": "tuple",
+          "lineNumber": 39
+        },
+        {
+          "caller": "register",
+          "callee": "self.definitions",
+          "lineNumber": 42
+        },
+        {
+          "caller": "register",
+          "callee": "len",
+          "lineNumber": 43
+        },
+        {
+          "caller": "register",
+          "callee": "len",
+          "lineNumber": 43
+        },
+        {
+          "caller": "register",
+          "callee": "contracts",
+          "lineNumber": 43
+        },
+        {
+          "caller": "register",
+          "callee": "RuntimeError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "register",
+          "callee": "catalog.register",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/catalog.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 108,
+      "nonEmptyLines": 91,
+      "functions": [
+        {
+          "name": "_matches_schema",
+          "startLine": 102,
+          "endLine": 108,
+          "params": [
+            "arguments",
+            "schema"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ToolCatalog",
+          "startLine": 10,
+          "endLine": 99,
+          "methods": [
+            "__init__",
+            "register",
+            "replace_source",
+            "remove_source",
+            "mcp_definitions",
+            "definitions_for",
+            "realtime_definitions",
+            "management_projection",
+            "invoke",
+            "_definitions_for",
+            "_available_to"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ToolCatalog",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "_matches_schema",
+          "line": 102,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "register",
+          "callee": "ValueError",
+          "lineNumber": 21
+        },
+        {
+          "caller": "replace_source",
+          "callee": "ValueError",
+          "lineNumber": 28
+        },
+        {
+          "caller": "replace_source",
+          "callee": "self._source_tool_ids.get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "replace_source",
+          "callee": "set",
+          "lineNumber": 29
+        },
+        {
+          "caller": "replace_source",
+          "callee": "len",
+          "lineNumber": 33
+        },
+        {
+          "caller": "replace_source",
+          "callee": "len",
+          "lineNumber": 33
+        },
+        {
+          "caller": "replace_source",
+          "callee": "set",
+          "lineNumber": 33
+        },
+        {
+          "caller": "replace_source",
+          "callee": "len",
+          "lineNumber": 33
+        },
+        {
+          "caller": "replace_source",
+          "callee": "len",
+          "lineNumber": 33
+        },
+        {
+          "caller": "replace_source",
+          "callee": "set",
+          "lineNumber": 33
+        },
+        {
+          "caller": "replace_source",
+          "callee": "ValueError",
+          "lineNumber": 34
+        },
+        {
+          "caller": "replace_source",
+          "callee": "any",
+          "lineNumber": 35
+        },
+        {
+          "caller": "replace_source",
+          "callee": "ValueError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "replace_source",
+          "callee": "any",
+          "lineNumber": 37
+        },
+        {
+          "caller": "replace_source",
+          "callee": "ValueError",
+          "lineNumber": 38
+        },
+        {
+          "caller": "replace_source",
+          "callee": "self.remove_source",
+          "lineNumber": 39
+        },
+        {
+          "caller": "replace_source",
+          "callee": "self.register",
+          "lineNumber": 41
+        },
+        {
+          "caller": "replace_source",
+          "callee": "set",
+          "lineNumber": 42
+        },
+        {
+          "caller": "remove_source",
+          "callee": "self._source_tool_ids.pop",
+          "lineNumber": 45
+        },
+        {
+          "caller": "remove_source",
+          "callee": "set",
+          "lineNumber": 45
+        },
+        {
+          "caller": "remove_source",
+          "callee": "self._by_id.pop",
+          "lineNumber": 46
+        },
+        {
+          "caller": "remove_source",
+          "callee": "self._by_name.pop",
+          "lineNumber": 48
+        },
+        {
+          "caller": "mcp_definitions",
+          "callee": "definition.mcp_definition",
+          "lineNumber": 51
+        },
+        {
+          "caller": "mcp_definitions",
+          "callee": "self._definitions_for",
+          "lineNumber": 51
+        },
+        {
+          "caller": "definitions_for",
+          "callee": "self._definitions_for",
+          "lineNumber": 55
+        },
+        {
+          "caller": "realtime_definitions",
+          "callee": "tuple",
+          "lineNumber": 58
+        },
+        {
+          "caller": "realtime_definitions",
+          "callee": "definition.realtime_definition",
+          "lineNumber": 58
+        },
+        {
+          "caller": "realtime_definitions",
+          "callee": "self._definitions_for",
+          "lineNumber": 58
+        },
+        {
+          "caller": "management_projection",
+          "callee": "sorted",
+          "lineNumber": 62
+        },
+        {
+          "caller": "management_projection",
+          "callee": "self._by_name.values",
+          "lineNumber": 62
+        },
+        {
+          "caller": "management_projection",
+          "callee": "result.append",
+          "lineNumber": 63
+        },
+        {
+          "caller": "management_projection",
+          "callee": "self._available_to",
+          "lineNumber": 68
+        },
+        {
+          "caller": "management_projection",
+          "callee": "self._available_to",
+          "lineNumber": 69
+        },
+        {
+          "caller": "management_projection",
+          "callee": "tuple",
+          "lineNumber": 72
+        },
+        {
+          "caller": "invoke",
+          "callee": "self._by_name.get",
+          "lineNumber": 75
+        },
+        {
+          "caller": "invoke",
+          "callee": "isinstance",
+          "lineNumber": 75
+        },
+        {
+          "caller": "invoke",
+          "callee": "self._available_to",
+          "lineNumber": 76
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 77
+        },
+        {
+          "caller": "invoke",
+          "callee": "isinstance",
+          "lineNumber": 78
+        },
+        {
+          "caller": "invoke",
+          "callee": "_matches_schema",
+          "lineNumber": 78
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 79
+        },
+        {
+          "caller": "invoke",
+          "callee": "definition.context_handler",
+          "lineNumber": 81
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationContext",
+          "lineNumber": 81
+        },
+        {
+          "caller": "invoke",
+          "callee": "definition.agent_handler",
+          "lineNumber": 83
+        },
+        {
+          "caller": "invoke",
+          "callee": "definition.handler",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_definitions_for",
+          "callee": "tuple",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_definitions_for",
+          "callee": "self._by_name.values",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_definitions_for",
+          "callee": "self._available_to",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_available_to",
+          "callee": "definition.available_to",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_available_to",
+          "callee": "self._audience_router.is_exposed",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_matches_schema",
+          "callee": "Draft202012Validator.check_schema",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_matches_schema",
+          "callee": "Draft202012Validator(schema).validate",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_matches_schema",
+          "callee": "Draft202012Validator",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/definitions.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 54,
+      "classes": [
+        {
+          "name": "ToolInvocationContext",
+          "startLine": 15,
+          "endLine": 20,
+          "methods": [],
+          "properties": [
+            "agent",
+            "voice_session_id",
+            "tool_call_id",
+            "user_utterance",
+            "user_utterance_id"
+          ]
+        },
+        {
+          "name": "ToolInvocationResult",
+          "startLine": 27,
+          "endLine": 39,
+          "methods": [
+            "mcp_result"
+          ],
+          "properties": [
+            "text",
+            "structured_content",
+            "is_error"
+          ]
+        },
+        {
+          "name": "ToolDefinition",
+          "startLine": 43,
+          "endLine": 69,
+          "methods": [
+            "mcp_definition",
+            "realtime_definition"
+          ],
+          "properties": [
+            "tool_id",
+            "name",
+            "description",
+            "input_schema",
+            "handler",
+            "effect_class",
+            "voice_available",
+            "audience_resource",
+            "agent_handler",
+            "context_handler",
+            "available_to"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ToolInvocationContext",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "ToolInvocationResult",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "ToolDefinition",
+          "line": 42,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/delegation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "register_goal_tools",
+          "startLine": 14,
+          "endLine": 41,
+          "params": [
+            "catalog",
+            "service"
+          ]
+        },
+        {
+          "name": "_start",
+          "startLine": 44,
+          "endLine": 63,
+          "params": [
+            "service",
+            "context",
+            "args"
+          ]
+        },
+        {
+          "name": "_inspect",
+          "startLine": 66,
+          "endLine": 76,
+          "params": [
+            "service",
+            "args"
+          ]
+        },
+        {
+          "name": "_cancel",
+          "startLine": 79,
+          "endLine": 86,
+          "params": [
+            "service",
+            "args"
+          ]
+        },
+        {
+          "name": "_run_schema",
+          "startLine": 89,
+          "endLine": 91,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "register_goal_tools",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "_start",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "_inspect",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "_cancel",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "_run_schema",
+          "line": 89,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "register_goal_tools",
+          "callee": "catalog.register",
+          "lineNumber": 15
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "ToolDefinition",
+          "lineNumber": 15
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 23
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "_start",
+          "lineNumber": 24
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "catalog.register",
+          "lineNumber": 28
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "ToolDefinition",
+          "lineNumber": 28
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "_run_schema",
+          "lineNumber": 31
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "_inspect",
+          "lineNumber": 31
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "catalog.register",
+          "lineNumber": 35
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "ToolDefinition",
+          "lineNumber": 35
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "_run_schema",
+          "lineNumber": 38
+        },
+        {
+          "caller": "register_goal_tools",
+          "callee": "_cancel",
+          "lineNumber": 38
+        },
+        {
+          "caller": "_start",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 47
+        },
+        {
+          "caller": "_start",
+          "callee": "service.submit",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_start",
+          "callee": "DelegationRequest",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_start",
+          "callee": "str(args[\"objective\"]).strip",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_start",
+          "callee": "str",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_start",
+          "callee": "tuple",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_start",
+          "callee": "str(item).strip",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_start",
+          "callee": "str",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_start",
+          "callee": "str",
+          "lineNumber": 56
+        },
+        {
+          "caller": "_start",
+          "callee": "args.get",
+          "lineNumber": 56
+        },
+        {
+          "caller": "_start",
+          "callee": "args.get",
+          "lineNumber": 56
+        },
+        {
+          "caller": "_start",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_start",
+          "callee": "str",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_start",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_inspect",
+          "callee": "service.inspect",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_inspect",
+          "callee": "str",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_inspect",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_inspect",
+          "callee": "str",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_inspect",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_cancel",
+          "callee": "service.cancel",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_cancel",
+          "callee": "str",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_cancel",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_cancel",
+          "callee": "str",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_cancel",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/contract.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "contracts",
+          "startLine": 13,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "_schema",
+          "startLine": 25,
+          "endLine": 26,
+          "params": [
+            "properties",
+            "required"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TaskToolContract",
+          "startLine": 7,
+          "endLine": 11,
+          "methods": [],
+          "properties": [
+            "name",
+            "description",
+            "effect_class",
+            "input_schema"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TaskToolContract",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "contracts",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "_schema",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "contracts",
+          "callee": "TaskToolContract",
+          "lineNumber": 16
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 16
+        },
+        {
+          "caller": "contracts",
+          "callee": "TaskToolContract",
+          "lineNumber": 17
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 17
+        },
+        {
+          "caller": "contracts",
+          "callee": "TaskToolContract",
+          "lineNumber": 18
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 18
+        },
+        {
+          "caller": "contracts",
+          "callee": "TaskToolContract",
+          "lineNumber": 19
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 19
+        },
+        {
+          "caller": "contracts",
+          "callee": "TaskToolContract",
+          "lineNumber": 20
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 20
+        },
+        {
+          "caller": "contracts",
+          "callee": "TaskToolContract",
+          "lineNumber": 21
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 21
+        },
+        {
+          "caller": "contracts",
+          "callee": "TaskToolContract",
+          "lineNumber": 22
+        },
+        {
+          "caller": "contracts",
+          "callee": "_schema",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_schema",
+          "callee": "list",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/handlers.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 8,
+      "classes": [
+        {
+          "name": "TaskToolService",
+          "startLine": 4,
+          "endLine": 5,
+          "methods": [
+            "invoke_tool"
+          ],
+          "properties": []
+        },
+        {
+          "name": "TaskToolHandlers",
+          "startLine": 7,
+          "endLine": 10,
+          "methods": [
+            "__init__",
+            "invoke"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TaskToolService",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "TaskToolHandlers",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "invoke",
+          "callee": "self._service.invoke_tool",
+          "lineNumber": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/package.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 20,
+      "classes": [
+        {
+          "name": "TasksToolPackage",
+          "startLine": 9,
+          "endLine": 22,
+          "methods": [
+            "__init__",
+            "definitions",
+            "register"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TasksToolPackage",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "TaskToolHandlers",
+          "lineNumber": 11
+        },
+        {
+          "caller": "definitions",
+          "callee": "tuple",
+          "lineNumber": 13
+        },
+        {
+          "caller": "definitions",
+          "callee": "ToolDefinition",
+          "lineNumber": 13
+        },
+        {
+          "caller": "definitions",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 16
+        },
+        {
+          "caller": "definitions",
+          "callee": "self._handlers.invoke",
+          "lineNumber": 17
+        },
+        {
+          "caller": "definitions",
+          "callee": "contracts",
+          "lineNumber": 18
+        },
+        {
+          "caller": "register",
+          "callee": "self.definitions",
+          "lineNumber": 20
+        },
+        {
+          "caller": "register",
+          "callee": "len",
+          "lineNumber": 21
+        },
+        {
+          "caller": "register",
+          "callee": "len",
+          "lineNumber": 21
+        },
+        {
+          "caller": "register",
+          "callee": "contracts",
+          "lineNumber": 21
+        },
+        {
+          "caller": "register",
+          "callee": "RuntimeError",
+          "lineNumber": 21
+        },
+        {
+          "caller": "register",
+          "callee": "catalog.register",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/tools/web_search.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "register_web_search",
+          "startLine": 14,
+          "endLine": 35,
+          "params": [
+            "catalog",
+            "search"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "register_web_search",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "invoke",
+          "callee": "arguments.get",
+          "lineNumber": 16
+        },
+        {
+          "caller": "invoke",
+          "callee": "isinstance",
+          "lineNumber": 17
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 18
+        },
+        {
+          "caller": "invoke",
+          "callee": "search.search",
+          "lineNumber": 20
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 22
+        },
+        {
+          "caller": "invoke",
+          "callee": "str",
+          "lineNumber": 22
+        },
+        {
+          "caller": "invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 23
+        },
+        {
+          "caller": "invoke",
+          "callee": "json.dumps",
+          "lineNumber": 23
+        },
+        {
+          "caller": "register_web_search",
+          "callee": "catalog.register",
+          "lineNumber": 25
+        },
+        {
+          "caller": "register_web_search",
+          "callee": "ToolDefinition",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

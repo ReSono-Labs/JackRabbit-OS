@@ -31,6 +31,16 @@ from .v028_calendar import apply as apply_v028
 from .v029_tasks import apply as apply_v029
 from .v030_calendar_connection_kind import apply as apply_v030
 from .v031_remove_handoff_inspection import apply as apply_v031
+from .v032_background_agent_runs import apply as apply_v032
+from .v033_background_agent_settings import apply as apply_v033
+from .v034_background_agent_recipes import apply as apply_v034
+from .v035_background_agent_global_tools import apply as apply_v035
+from .v036_workspace import apply as apply_v036
+from .v037_workspace_tools import apply as apply_v037
+from .v038_goal_context import apply as apply_v038
+from .v039_agent_deliveries import apply as apply_v039
+from .v040_goal_provenance_and_delivery_lease import apply as apply_v040
+from .v041_goal_verification_contract import apply as apply_v041
 
 
 @dataclass(frozen=True, slots=True)
@@ -67,5 +77,15 @@ MIGRATIONS = (
     Migration(29, apply_v029),
     Migration(30, apply_v030),
     Migration(31, apply_v031),
+    Migration(32, apply_v032),
+    Migration(33, apply_v033),
+    Migration(34, apply_v034),
+    Migration(35, apply_v035),
+    Migration(36, apply_v036),
+    Migration(37, apply_v037),
+    Migration(38, apply_v038),
+    Migration(39, apply_v039),
+    Migration(40, apply_v040),
+    Migration(41, apply_v041),
 )
 LATEST_VERSION = MIGRATIONS[-1].version

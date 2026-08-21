@@ -12,7 +12,8 @@ final class ManagementAssetStore {
             "/design/base.css", "design/base.css",
             "/management/management.css", "management/management.css",
             "/management/app.js", "management/app.js",
-            "/management/build07.js", "management/build07.js");
+            "/management/build07.js", "management/build07.js",
+            "/management/background-agent.js", "management/background-agent.js");
     private final AssetManager assets;
 
     ManagementAssetStore(AssetManager assets) {

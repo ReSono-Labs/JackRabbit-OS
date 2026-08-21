@@ -19,6 +19,7 @@ from .storage.sessions import SessionTranscriptRepository
 from .storage.memory import MemoryRepository
 from .storage.skills import SkillCatalogRepository
 from .agents import AgentAudience, AgentAudienceRouter, AgentsSdkTextRunner, MemoryReviewRunner
+from .agents.context_builder import PrimaryContextBuilder
 from .memory import MemoryLookupTool, MemoryPipeline, MemoryService, SessionContextBuilder
 from .providers.openai import OpenAISubscription
 from .storage.provider_catalog import ProviderCatalogRepository
@@ -60,8 +61,22 @@ from .storage.mcp_connections import McpConnectionRepository
 from .connections.records import ConnectionRepository
 from .providers.openai.web_search import OpenAIWebSearch
 from .tools.web_search import WEB_SEARCH_TOOL_SET, register_web_search
+from .tools.delegation import GOAL_TOOL_SET, register_goal_tools
+from .realtime import VoiceModeService, register_voice_mode_tool
 from .api.connection_routes import ConnectionRoutes
 from .plugins.bundled_install import BundledPluginInstaller
+from .storage.agent_runs import AgentRunRepository
+from .storage.background_agent_settings import BackgroundAgentSettingsRepository
+from .api.background_agent_routes import BackgroundAgentRoutes
+from .background_agent.composition import BackgroundRunFactory
+from .background_agent.mcp_gateway import BackgroundMcpGateway
+from .background_agent.service import BackgroundAgentService
+from .background_agent.completion_dispatch import CompletionDispatcher
+from .storage.agent_deliveries import AgentRunDeliveryRepository
+from .background_agent.workspace import RunWorkspaceRegistry
+from .storage.workspace import WorkspaceRepository
+from .workspace.service import DurableWorkspace
+from .workspace.tools import WORKSPACE_TOOL_SET, register_workspace_tools
 
 
 class RuntimeApplication:
@@ -118,7 +133,9 @@ class RuntimeApplication:
             settings=provider_settings,
             subscription=self._subscription,
         )
+        self._voice_modes = VoiceModeService()
         self._tools = ToolCatalog(audience_router=self._audience_router)
+        self._tools.set_invocation_authorizer(self._voice_modes.allows)
         register_device_status(self._tools, self.health)
         register_memory_lookup(self._tools, self._memory_lookup_tool)
         self._tools.register(self._skill_activation.tool_definition())
@@ -150,6 +167,56 @@ class RuntimeApplication:
         self._connection_routes = ConnectionRoutes(self._connections)
         register_mail_tools(self._tools, self._mail_repository, self._mail_service)
         register_web_search(self._tools, OpenAIWebSearch(credentials, provider_settings, self._subscription))
+        self._background_agent_runs = AgentRunRepository(self._database)
+        self._background_agent_settings = BackgroundAgentSettingsRepository(self._database)
+        self._run_workspaces = RunWorkspaceRegistry(config.background_runs_path)
+        self._workspace = DurableWorkspace(
+            config.user_workspace_path,
+            WorkspaceRepository(self._database),
+        )
+        register_workspace_tools(self._tools, self._workspace, self._run_workspaces)
+        self._primary_contexts = PrimaryContextBuilder(
+            tools=self._tools, skills=self._skill_activation,
+            memory=self._session_context_builder,
+        )
+        self._agent_deliveries = AgentRunDeliveryRepository(self._database)
+        self._background_agent_routes = BackgroundAgentRoutes(
+            settings=self._background_agent_settings,
+            runs=self._background_agent_runs,
+            catalog=self._tools,
+            deliveries=self._agent_deliveries,
+        )
+        self._background_agent_gateway = BackgroundMcpGateway(
+            health=self.health,
+            catalog=self._tools,
+            allowed_names=lambda: self._background_agent_settings.get().allowed_tool_names,
+            runs=self._background_agent_runs,
+        )
+        self._background_agent_routes.attach_gateway(self._background_agent_gateway)
+        self._background_agent_factory = BackgroundRunFactory(
+            credentials=credentials,
+            provider_settings=provider_settings,
+            background_settings=self._background_agent_settings,
+            subscription=self._subscription,
+            runs=self._background_agent_runs,
+            gateway=self._background_agent_gateway,
+            local_api_url=f"http://{config.local_api_host}:{config.local_api_port}",
+            local_api_token=config.local_api_token,
+            workspaces=self._run_workspaces,
+            contexts=self._primary_contexts,
+        )
+        self._background_agent = BackgroundAgentService(
+            settings=self._background_agent_settings,
+            runs=self._background_agent_runs,
+            loop_factory=self._background_agent_factory.prepare,
+            completion_dispatcher=CompletionDispatcher(
+                deliveries=self._agent_deliveries,
+                voice_session_active=lambda session_id: self._providers.is_active_realtime_session(session_id),
+            ),
+            shutdown=self._background_agent_factory.close,
+        )
+        register_goal_tools(self._tools, self._background_agent, self._voice_modes)
+        register_voice_mode_tool(self._tools, self._voice_modes)
         self._outbound_mcp = McpLifecycle(
             McpConnectionRepository(self._database),
             self._connections,
@@ -204,8 +271,14 @@ class RuntimeApplication:
             catalog=self._catalog,
             sessions=self._sessions,
             session_context=self._session_context_builder,
-            voice_tools=self._tools.realtime_definitions,
+            voice_tools=lambda: self._tools.realtime_definitions(
+                exclude_names=frozenset({"goal_start"}),
+            ),
+            goal_intake_tools=lambda: self._tools.realtime_definitions(
+                include_names=frozenset({"voice_mode_switch", "goal_start"}),
+            ),
             voice_skill_instructions=self._skill_activation.voice_instructions,
+            voice_modes=self._voice_modes,
         )
         self._text_runner = AgentsSdkTextRunner(
             credentials=credentials,
@@ -260,8 +333,8 @@ class RuntimeApplication:
             )
         if self._audience_router.binding_for(TASKS_TOOL_SET) is None:
             self._audience_router.set_audience(
-                TASKS_TOOL_SET, AgentAudience.VOICE, changed_by="runtime-bootstrap",
-                reason="enable the built-in Voice Tasks capability",
+                TASKS_TOOL_SET, AgentAudience.BOTH, changed_by="runtime-bootstrap",
+                reason="enable built-in Tasks for Voice and Background Agent",
             )
         if self._audience_router.binding_for(DEVICE_STATUS_TOOL_SET) is None:
             self._audience_router.set_audience(
@@ -273,28 +346,43 @@ class RuntimeApplication:
         if self._audience_router.binding_for(MEMORY_TOOL_SET) is None:
             self._audience_router.set_audience(
                 MEMORY_TOOL_SET,
-                AgentAudience.VOICE,
+                AgentAudience.BOTH,
                 changed_by="runtime-bootstrap",
-                reason="preserve accepted Voice memory availability",
+                reason="enable built-in memory for Voice and Background Agent",
             )
         if self._audience_router.binding_for(MAIL_TOOL_SET) is None:
             self._audience_router.set_audience(
                 MAIL_TOOL_SET,
-                AgentAudience.VOICE,
+                AgentAudience.BOTH,
                 changed_by="runtime-bootstrap",
-                reason="enable the built-in Voice Mail capability",
+                reason="enable built-in Mail for Voice and Background Agent",
             )
         if self._audience_router.binding_for(WEB_SEARCH_TOOL_SET) is None:
             self._audience_router.set_audience(
                 WEB_SEARCH_TOOL_SET,
+                AgentAudience.BOTH,
+                changed_by="runtime-bootstrap",
+                reason="enable built-in web search for Voice and Background Agent",
+            )
+        if self._audience_router.binding_for(GOAL_TOOL_SET) is None:
+            self._audience_router.set_audience(
+                GOAL_TOOL_SET,
                 AgentAudience.VOICE,
                 changed_by="runtime-bootstrap",
-                reason="enable the built-in Voice web search capability",
+                reason="enable the built-in Voice goal delegation capability",
+            )
+        if self._audience_router.binding_for(WORKSPACE_TOOL_SET) is None:
+            self._audience_router.set_audience(
+                WORKSPACE_TOOL_SET,
+                AgentAudience.BOTH,
+                changed_by="runtime-bootstrap",
+                reason="enable read-only workspace access for Voice and bounded workspace access for Background Agent",
             )
         self._catalog.bootstrap_defaults()
         self._skill_lifecycle.recover()
         self._plugin_lifecycle.recover()
         self._creation_lifecycle.recover()
+        self._background_agent.recover_interrupted()
         self._bundled_plugins.install_once(
             Path(__file__).resolve().parent / "plugins" / "bundled" / "resono-mail"
         )
@@ -329,8 +417,10 @@ class RuntimeApplication:
             plugins=self._plugin_routes,
             creations=self._creation_routes,
             connections=self._connection_routes,
+            background_agent=self._background_agent_routes,
         )
         self._server.start()
+        self._background_agent.start()
         self._mail_scheduler.start()
         self._calendar_scheduler.start()
         self._events.publish(
@@ -341,6 +431,7 @@ class RuntimeApplication:
 
     def stop(self) -> None:
         self._events.publish("runtime.stopping", {"status": "stopping"})
+        self._background_agent.stop()
         self._mail_scheduler.stop()
         self._calendar_scheduler.stop()
         if self._server is not None:

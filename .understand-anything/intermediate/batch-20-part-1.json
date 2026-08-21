@@ -1,0 +1,857 @@
+{
+  "nodes": [
+    {
+      "id": "file:tests/runtime/test_openai_realtime_session.py",
+      "type": "file",
+      "name": "test_openai_realtime_session.py",
+      "filePath": "tests/runtime/test_openai_realtime_session.py",
+      "summary": "Automated tests for openai realtime session, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_openai_realtime_session.py:OpenAIRealtimeSessionTest",
+      "type": "class",
+      "name": "OpenAIRealtimeSessionTest",
+      "filePath": "tests/runtime/test_openai_realtime_session.py",
+      "lineRange": [
+        8,
+        34
+      ],
+      "summary": "Test fixture grouping assertions for open airealtime session, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_openai_subscription.py",
+      "type": "file",
+      "name": "test_openai_subscription.py",
+      "filePath": "tests/runtime/test_openai_subscription.py",
+      "summary": "Automated tests for openai subscription, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_openai_subscription.py:_CredentialBridge",
+      "type": "class",
+      "name": "_CredentialBridge",
+      "filePath": "tests/runtime/test_openai_subscription.py",
+      "lineRange": [
+        10,
+        37
+      ],
+      "summary": "Test fixture grouping assertions for credential bridge, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_openai_subscription.py:OpenAISubscriptionTest",
+      "type": "class",
+      "name": "OpenAISubscriptionTest",
+      "filePath": "tests/runtime/test_openai_subscription.py",
+      "lineRange": [
+        40,
+        88
+      ],
+      "summary": "Test fixture grouping assertions for open aisubscription, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_plugin_archives.py",
+      "type": "file",
+      "name": "test_plugin_archives.py",
+      "filePath": "tests/runtime/test_plugin_archives.py",
+      "summary": "Automated tests for plugin archives, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_plugin_archives.py:PluginArchiveInspectorTest",
+      "type": "class",
+      "name": "PluginArchiveInspectorTest",
+      "filePath": "tests/runtime/test_plugin_archives.py",
+      "lineRange": [
+        12,
+        44
+      ],
+      "summary": "Test fixture grouping assertions for plugin archive inspector, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/runtime/test_plugin_archives.py:_zip",
+      "type": "function",
+      "name": "_zip",
+      "filePath": "tests/runtime/test_plugin_archives.py",
+      "lineRange": [
+        47,
+        52
+      ],
+      "summary": "Test support routine that constructs or supplies zip data for deterministic assertions.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_plugin_lifecycle.py",
+      "type": "file",
+      "name": "test_plugin_lifecycle.py",
+      "filePath": "tests/runtime/test_plugin_lifecycle.py",
+      "summary": "Automated tests for plugin lifecycle, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_plugin_lifecycle.py:PluginLifecycleTest",
+      "type": "class",
+      "name": "PluginLifecycleTest",
+      "filePath": "tests/runtime/test_plugin_lifecycle.py",
+      "lineRange": [
+        19,
+        77
+      ],
+      "summary": "Test fixture grouping assertions for plugin lifecycle, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/runtime/test_plugin_lifecycle.py:_inspection",
+      "type": "function",
+      "name": "_inspection",
+      "filePath": "tests/runtime/test_plugin_lifecycle.py",
+      "lineRange": [
+        80,
+        90
+      ],
+      "summary": "Test support routine that constructs or supplies inspection data for deterministic assertions.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_profile_settings.py",
+      "type": "file",
+      "name": "test_profile_settings.py",
+      "filePath": "tests/runtime/test_profile_settings.py",
+      "summary": "Automated tests for profile settings, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_profile_settings.py:UserProfileRepositoryTest",
+      "type": "class",
+      "name": "UserProfileRepositoryTest",
+      "filePath": "tests/runtime/test_profile_settings.py",
+      "lineRange": [
+        13,
+        46
+      ],
+      "summary": "Test fixture grouping assertions for user profile repository, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_provider_catalog.py",
+      "type": "file",
+      "name": "test_provider_catalog.py",
+      "filePath": "tests/runtime/test_provider_catalog.py",
+      "summary": "Automated tests for provider catalog, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_provider_catalog.py:ProviderCatalogTest",
+      "type": "class",
+      "name": "ProviderCatalogTest",
+      "filePath": "tests/runtime/test_provider_catalog.py",
+      "lineRange": [
+        11,
+        30
+      ],
+      "summary": "Test fixture grouping assertions for provider catalog, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_release_supervisor.py",
+      "type": "file",
+      "name": "test_release_supervisor.py",
+      "filePath": "tests/runtime/test_release_supervisor.py",
+      "summary": "Automated tests for release supervisor, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_release_supervisor.py:ReleaseSupervisorTest",
+      "type": "class",
+      "name": "ReleaseSupervisorTest",
+      "filePath": "tests/runtime/test_release_supervisor.py",
+      "lineRange": [
+        10,
+        62
+      ],
+      "summary": "Test fixture grouping assertions for release supervisor, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/runtime/test_runtime_environment.py",
+      "type": "file",
+      "name": "test_runtime_environment.py",
+      "filePath": "tests/runtime/test_runtime_environment.py",
+      "summary": "Automated tests for runtime environment, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_runtime_environment.py:RuntimeEnvironmentTest",
+      "type": "class",
+      "name": "RuntimeEnvironmentTest",
+      "filePath": "tests/runtime/test_runtime_environment.py",
+      "lineRange": [
+        10,
+        34
+      ],
+      "summary": "Test fixture grouping assertions for runtime environment, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_runtime_http_finalize.py",
+      "type": "file",
+      "name": "test_runtime_http_finalize.py",
+      "filePath": "tests/runtime/test_runtime_http_finalize.py",
+      "summary": "Automated tests for runtime http finalize, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_runtime_http_finalize.py:_CredentialBridge",
+      "type": "class",
+      "name": "_CredentialBridge",
+      "filePath": "tests/runtime/test_runtime_http_finalize.py",
+      "lineRange": [
+        22,
+        48
+      ],
+      "summary": "Test fixture grouping assertions for credential bridge, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_runtime_http_finalize.py:_FakeEmbedder",
+      "type": "class",
+      "name": "_FakeEmbedder",
+      "filePath": "tests/runtime/test_runtime_http_finalize.py",
+      "lineRange": [
+        51,
+        56
+      ],
+      "summary": "Test fixture grouping assertions for fake embedder, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_runtime_http_finalize.py:_FakeReviewExecutor",
+      "type": "class",
+      "name": "_FakeReviewExecutor",
+      "filePath": "tests/runtime/test_runtime_http_finalize.py",
+      "lineRange": [
+        63,
+        68
+      ],
+      "summary": "Test fixture grouping assertions for fake review executor, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_runtime_http_finalize.py:RuntimeVoiceFinalizeApiTest",
+      "type": "class",
+      "name": "RuntimeVoiceFinalizeApiTest",
+      "filePath": "tests/runtime/test_runtime_http_finalize.py",
+      "lineRange": [
+        124,
+        179
+      ],
+      "summary": "Test fixture grouping assertions for runtime voice finalize api, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/runtime/test_runtime_http_finalize.py:_fake_embedding_factory",
+      "type": "function",
+      "name": "_fake_embedding_factory",
+      "filePath": "tests/runtime/test_runtime_http_finalize.py",
+      "lineRange": [
+        59,
+        60
+      ],
+      "summary": "Test support routine that constructs or supplies fake embedding factory data for deterministic assertions.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/runtime/test_runtime_http_finalize.py:_make_server",
+      "type": "function",
+      "name": "_make_server",
+      "filePath": "tests/runtime/test_runtime_http_finalize.py",
+      "lineRange": [
+        71,
+        121
+      ],
+      "summary": "Test support routine that constructs or supplies make server data for deterministic assertions.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/runtime/test_runtime_lifecycle.py",
+      "type": "file",
+      "name": "test_runtime_lifecycle.py",
+      "filePath": "tests/runtime/test_runtime_lifecycle.py",
+      "summary": "Automated tests for runtime lifecycle, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_runtime_lifecycle.py:RuntimeLifecycleTest",
+      "type": "class",
+      "name": "RuntimeLifecycleTest",
+      "filePath": "tests/runtime/test_runtime_lifecycle.py",
+      "lineRange": [
+        17,
+        189
+      ],
+      "summary": "Test fixture grouping assertions for runtime lifecycle, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/runtime/test_skill_activation.py",
+      "type": "file",
+      "name": "test_skill_activation.py",
+      "filePath": "tests/runtime/test_skill_activation.py",
+      "summary": "Automated tests for skill activation, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_skill_activation.py:SkillActivationTest",
+      "type": "class",
+      "name": "SkillActivationTest",
+      "filePath": "tests/runtime/test_skill_activation.py",
+      "lineRange": [
+        17,
+        59
+      ],
+      "summary": "Test fixture grouping assertions for skill activation, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_skill_archives.py",
+      "type": "file",
+      "name": "test_skill_archives.py",
+      "filePath": "tests/runtime/test_skill_archives.py",
+      "summary": "Automated tests for skill archives, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_skill_archives.py:SkillArchiveInspectorTest",
+      "type": "class",
+      "name": "SkillArchiveInspectorTest",
+      "filePath": "tests/runtime/test_skill_archives.py",
+      "lineRange": [
+        13,
+        68
+      ],
+      "summary": "Test fixture grouping assertions for skill archive inspector, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/runtime/test_skill_archives.py:_zip",
+      "type": "function",
+      "name": "_zip",
+      "filePath": "tests/runtime/test_skill_archives.py",
+      "lineRange": [
+        71,
+        76
+      ],
+      "summary": "Test support routine that constructs or supplies zip data for deterministic assertions.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_skill_catalog.py",
+      "type": "file",
+      "name": "test_skill_catalog.py",
+      "filePath": "tests/runtime/test_skill_catalog.py",
+      "summary": "Automated tests for skill catalog, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_skill_catalog.py:SkillCatalogRepositoryTest",
+      "type": "class",
+      "name": "SkillCatalogRepositoryTest",
+      "filePath": "tests/runtime/test_skill_catalog.py",
+      "lineRange": [
+        12,
+        60
+      ],
+      "summary": "Test fixture grouping assertions for skill catalog repository, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:tests/runtime/test_openai_realtime_session.py",
+      "target": "class:tests/runtime/test_openai_realtime_session.py:OpenAIRealtimeSessionTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_openai_realtime_session.py",
+      "target": "class:tests/runtime/test_openai_realtime_session.py:OpenAIRealtimeSessionTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_openai_subscription.py",
+      "target": "class:tests/runtime/test_openai_subscription.py:_CredentialBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_openai_subscription.py",
+      "target": "class:tests/runtime/test_openai_subscription.py:_CredentialBridge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_openai_subscription.py",
+      "target": "class:tests/runtime/test_openai_subscription.py:OpenAISubscriptionTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_openai_subscription.py",
+      "target": "class:tests/runtime/test_openai_subscription.py:OpenAISubscriptionTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_archives.py",
+      "target": "class:tests/runtime/test_plugin_archives.py:PluginArchiveInspectorTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_archives.py",
+      "target": "class:tests/runtime/test_plugin_archives.py:PluginArchiveInspectorTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_archives.py",
+      "target": "function:tests/runtime/test_plugin_archives.py:_zip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_archives.py",
+      "target": "function:tests/runtime/test_plugin_archives.py:_zip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_lifecycle.py",
+      "target": "class:tests/runtime/test_plugin_lifecycle.py:PluginLifecycleTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_lifecycle.py",
+      "target": "class:tests/runtime/test_plugin_lifecycle.py:PluginLifecycleTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_lifecycle.py",
+      "target": "function:tests/runtime/test_plugin_lifecycle.py:_inspection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_plugin_lifecycle.py",
+      "target": "function:tests/runtime/test_plugin_lifecycle.py:_inspection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_profile_settings.py",
+      "target": "class:tests/runtime/test_profile_settings.py:UserProfileRepositoryTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_profile_settings.py",
+      "target": "class:tests/runtime/test_profile_settings.py:UserProfileRepositoryTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_provider_catalog.py",
+      "target": "class:tests/runtime/test_provider_catalog.py:ProviderCatalogTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_provider_catalog.py",
+      "target": "class:tests/runtime/test_provider_catalog.py:ProviderCatalogTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_release_supervisor.py",
+      "target": "class:tests/runtime/test_release_supervisor.py:ReleaseSupervisorTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_release_supervisor.py",
+      "target": "class:tests/runtime/test_release_supervisor.py:ReleaseSupervisorTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_environment.py",
+      "target": "class:tests/runtime/test_runtime_environment.py:RuntimeEnvironmentTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_environment.py",
+      "target": "class:tests/runtime/test_runtime_environment.py:RuntimeEnvironmentTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:_CredentialBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:_CredentialBridge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:_FakeEmbedder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:_FakeEmbedder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:_FakeReviewExecutor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:_FakeReviewExecutor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:RuntimeVoiceFinalizeApiTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "class:tests/runtime/test_runtime_http_finalize.py:RuntimeVoiceFinalizeApiTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "function:tests/runtime/test_runtime_http_finalize.py:_fake_embedding_factory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "function:tests/runtime/test_runtime_http_finalize.py:_fake_embedding_factory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "function:tests/runtime/test_runtime_http_finalize.py:_make_server",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_http_finalize.py",
+      "target": "function:tests/runtime/test_runtime_http_finalize.py:_make_server",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_lifecycle.py",
+      "target": "class:tests/runtime/test_runtime_lifecycle.py:RuntimeLifecycleTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_runtime_lifecycle.py",
+      "target": "class:tests/runtime/test_runtime_lifecycle.py:RuntimeLifecycleTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_skill_activation.py",
+      "target": "class:tests/runtime/test_skill_activation.py:SkillActivationTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_activation.py",
+      "target": "class:tests/runtime/test_skill_activation.py:SkillActivationTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_skill_archives.py",
+      "target": "class:tests/runtime/test_skill_archives.py:SkillArchiveInspectorTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_archives.py",
+      "target": "class:tests/runtime/test_skill_archives.py:SkillArchiveInspectorTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_skill_archives.py",
+      "target": "function:tests/runtime/test_skill_archives.py:_zip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_archives.py",
+      "target": "function:tests/runtime/test_skill_archives.py:_zip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_skill_catalog.py",
+      "target": "class:tests/runtime/test_skill_catalog.py:SkillCatalogRepositoryTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_catalog.py",
+      "target": "class:tests/runtime/test_skill_catalog.py:SkillCatalogRepositoryTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

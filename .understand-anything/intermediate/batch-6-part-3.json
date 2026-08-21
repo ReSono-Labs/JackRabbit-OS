@@ -1,0 +1,824 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "type": "file",
+      "name": "subscription.py",
+      "filePath": "runtime/resono_runtime/providers/openai/subscription.py",
+      "summary": "Implements OpenAI provider responsibilities centered on subscription auth start, pending auth, open aisubscription. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:runtime/resono_runtime/providers/openai/subscription.py:_positive_int",
+      "type": "function",
+      "name": "_positive_int",
+      "filePath": "runtime/resono_runtime/providers/openai/subscription.py",
+      "lineRange": [
+        221,
+        226
+      ],
+      "summary": "Performs positive int behavior used by the OpenAI provider.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/providers/openai/subscription.py:_post_json_status",
+      "type": "function",
+      "name": "_post_json_status",
+      "filePath": "runtime/resono_runtime/providers/openai/subscription.py",
+      "lineRange": [
+        229,
+        244
+      ],
+      "summary": "Performs post json status behavior used by the OpenAI provider.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/providers/openai/subscription.py:_post_token",
+      "type": "function",
+      "name": "_post_token",
+      "filePath": "runtime/resono_runtime/providers/openai/subscription.py",
+      "lineRange": [
+        247,
+        268
+      ],
+      "summary": "Performs post token behavior used by the OpenAI provider.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/providers/openai/subscription.py:SubscriptionAuthStart",
+      "type": "class",
+      "name": "SubscriptionAuthStart",
+      "filePath": "runtime/resono_runtime/providers/openai/subscription.py",
+      "lineRange": [
+        27,
+        32
+      ],
+      "summary": "Represents the subscription auth start contract or immutable state used by the OpenAI provider.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/providers/openai/subscription.py:_PendingAuth",
+      "type": "class",
+      "name": "_PendingAuth",
+      "filePath": "runtime/resono_runtime/providers/openai/subscription.py",
+      "lineRange": [
+        36,
+        40
+      ],
+      "summary": "Represents the pending auth contract or immutable state used by the OpenAI provider.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/providers/openai/subscription.py:OpenAISubscription",
+      "type": "class",
+      "name": "OpenAISubscription",
+      "filePath": "runtime/resono_runtime/providers/openai/subscription.py",
+      "lineRange": [
+        43,
+        218
+      ],
+      "summary": "Owns open aisubscription behavior for the OpenAI provider, including status, start auth, poll auth, access token.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "type": "file",
+      "name": "web_search.py",
+      "filePath": "runtime/resono_runtime/providers/openai/web_search.py",
+      "summary": "Implements OpenAI provider responsibilities centered on open aiweb search, run search, citations from responses. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/providers/openai/web_search.py:_run_search",
+      "type": "function",
+      "name": "_run_search",
+      "filePath": "runtime/resono_runtime/providers/openai/web_search.py",
+      "lineRange": [
+        65,
+        99
+      ],
+      "summary": "Performs run search behavior used by the OpenAI provider.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/providers/openai/web_search.py:_citations_from_responses",
+      "type": "function",
+      "name": "_citations_from_responses",
+      "filePath": "runtime/resono_runtime/providers/openai/web_search.py",
+      "lineRange": [
+        102,
+        119
+      ],
+      "summary": "Performs citations from responses behavior used by the OpenAI provider.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/providers/openai/web_search.py:OpenAIWebSearch",
+      "type": "class",
+      "name": "OpenAIWebSearch",
+      "filePath": "runtime/resono_runtime/providers/openai/web_search.py",
+      "lineRange": [
+        18,
+        62
+      ],
+      "summary": "Owns open aiweb search behavior for the OpenAI provider, including available, search.",
+      "tags": [
+        "openai",
+        "provider-adapter",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "file",
+      "name": "credentials.py",
+      "filePath": "runtime/resono_runtime/security/credentials.py",
+      "summary": "Implements runtime security responsibilities centered on credential bridge, provider credentials, credential unavailable. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/security/credentials.py:_record_name",
+      "type": "function",
+      "name": "_record_name",
+      "filePath": "runtime/resono_runtime/security/credentials.py",
+      "lineRange": [
+        78,
+        84
+      ],
+      "summary": "Performs record name behavior used by the runtime security.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/security/credentials.py:CredentialBridge",
+      "type": "class",
+      "name": "CredentialBridge",
+      "filePath": "runtime/resono_runtime/security/credentials.py",
+      "lineRange": [
+        6,
+        16
+      ],
+      "summary": "Owns credential bridge behavior for the runtime security, including has open ai platform key, get open ai platform key, put open ai platform key, delete open ai platform key.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/security/credentials.py:ProviderCredentials",
+      "type": "class",
+      "name": "ProviderCredentials",
+      "filePath": "runtime/resono_runtime/security/credentials.py",
+      "lineRange": [
+        19,
+        51
+      ],
+      "summary": "Owns provider credentials behavior for the runtime security, including has platform key, platform key, connect platform, disconnect platform.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/security/credentials.py:CredentialUnavailable",
+      "type": "class",
+      "name": "CredentialUnavailable",
+      "filePath": "runtime/resono_runtime/security/credentials.py",
+      "lineRange": [
+        54,
+        55
+      ],
+      "summary": "Represents the credential unavailable contract or immutable state used by the runtime security.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/security/credentials.py:ConnectionCredentialEnvelopes",
+      "type": "class",
+      "name": "ConnectionCredentialEnvelopes",
+      "filePath": "runtime/resono_runtime/security/credentials.py",
+      "lineRange": [
+        58,
+        75
+      ],
+      "summary": "Owns connection credential envelopes behavior for the runtime security, including seal, open.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/memory.py",
+      "type": "file",
+      "name": "memory.py",
+      "filePath": "runtime/resono_runtime/storage/memory.py",
+      "summary": "Implements SQLite persistence responsibilities centered on memory record, memory embedding, memory repository. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/memory.py:_pack_format",
+      "type": "function",
+      "name": "_pack_format",
+      "filePath": "runtime/resono_runtime/storage/memory.py",
+      "lineRange": [
+        267,
+        268
+      ],
+      "summary": "Performs pack format behavior used by the SQLite persistence.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/memory.py:_record",
+      "type": "function",
+      "name": "_record",
+      "filePath": "runtime/resono_runtime/storage/memory.py",
+      "lineRange": [
+        271,
+        293
+      ],
+      "summary": "Performs record behavior used by the SQLite persistence.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/memory.py:_embedding",
+      "type": "function",
+      "name": "_embedding",
+      "filePath": "runtime/resono_runtime/storage/memory.py",
+      "lineRange": [
+        296,
+        308
+      ],
+      "summary": "Performs embedding behavior used by the SQLite persistence.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/storage/memory.py:MemoryRecord",
+      "type": "class",
+      "name": "MemoryRecord",
+      "filePath": "runtime/resono_runtime/storage/memory.py",
+      "lineRange": [
+        17,
+        28
+      ],
+      "summary": "Represents the memory record contract or immutable state used by the SQLite persistence.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/storage/memory.py:MemoryEmbedding",
+      "type": "class",
+      "name": "MemoryEmbedding",
+      "filePath": "runtime/resono_runtime/storage/memory.py",
+      "lineRange": [
+        32,
+        39
+      ],
+      "summary": "Represents the memory embedding contract or immutable state used by the SQLite persistence.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/storage/memory.py:MemoryRepository",
+      "type": "class",
+      "name": "MemoryRepository",
+      "filePath": "runtime/resono_runtime/storage/memory.py",
+      "lineRange": [
+        42,
+        264
+      ],
+      "summary": "Owns memory repository behavior for the SQLite persistence, including store memory, memory, list memories, store embedding.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "file",
+      "name": "provider_settings.py",
+      "filePath": "runtime/resono_runtime/storage/provider_settings.py",
+      "summary": "Implements SQLite persistence responsibilities centered on provider selection, provider settings repository. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "database",
+        "repository",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/storage/provider_settings.py:ProviderSelection",
+      "type": "class",
+      "name": "ProviderSelection",
+      "filePath": "runtime/resono_runtime/storage/provider_settings.py",
+      "lineRange": [
+        18,
+        23
+      ],
+      "summary": "Represents the provider selection contract or immutable state used by the SQLite persistence.",
+      "tags": [
+        "database",
+        "repository",
+        "persistence",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/storage/provider_settings.py:ProviderSettingsRepository",
+      "type": "class",
+      "name": "ProviderSettingsRepository",
+      "filePath": "runtime/resono_runtime/storage/provider_settings.py",
+      "lineRange": [
+        26,
+        104
+      ],
+      "summary": "Owns provider settings repository behavior for the SQLite persistence, including selection, save, save access path, clear.",
+      "tags": [
+        "database",
+        "repository",
+        "persistence",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "function:runtime/resono_runtime/providers/openai/subscription.py:_positive_int",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "function:runtime/resono_runtime/providers/openai/subscription.py:_positive_int",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "function:runtime/resono_runtime/providers/openai/subscription.py:_post_json_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "function:runtime/resono_runtime/providers/openai/subscription.py:_post_json_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "function:runtime/resono_runtime/providers/openai/subscription.py:_post_token",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "function:runtime/resono_runtime/providers/openai/subscription.py:_post_token",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "class:runtime/resono_runtime/providers/openai/subscription.py:SubscriptionAuthStart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "class:runtime/resono_runtime/providers/openai/subscription.py:SubscriptionAuthStart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "class:runtime/resono_runtime/providers/openai/subscription.py:_PendingAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "class:runtime/resono_runtime/providers/openai/subscription.py:_PendingAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "class:runtime/resono_runtime/providers/openai/subscription.py:OpenAISubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "class:runtime/resono_runtime/providers/openai/subscription.py:OpenAISubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "file:runtime/resono_runtime/providers/openai/platform.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "function:runtime/resono_runtime/providers/openai/web_search.py:_run_search",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "function:runtime/resono_runtime/providers/openai/web_search.py:_run_search",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "function:runtime/resono_runtime/providers/openai/web_search.py:_citations_from_responses",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "function:runtime/resono_runtime/providers/openai/web_search.py:_citations_from_responses",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "class:runtime/resono_runtime/providers/openai/web_search.py:OpenAIWebSearch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "class:runtime/resono_runtime/providers/openai/web_search.py:OpenAIWebSearch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "target": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "function:runtime/resono_runtime/security/credentials.py:_record_name",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "function:runtime/resono_runtime/security/credentials.py:_record_name",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:CredentialBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:CredentialBridge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:ProviderCredentials",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:ProviderCredentials",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:CredentialUnavailable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:CredentialUnavailable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:ConnectionCredentialEnvelopes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/security/credentials.py",
+      "target": "class:runtime/resono_runtime/security/credentials.py:ConnectionCredentialEnvelopes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "function:runtime/resono_runtime/storage/memory.py:_pack_format",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "function:runtime/resono_runtime/storage/memory.py:_pack_format",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "function:runtime/resono_runtime/storage/memory.py:_record",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "function:runtime/resono_runtime/storage/memory.py:_record",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "function:runtime/resono_runtime/storage/memory.py:_embedding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "function:runtime/resono_runtime/storage/memory.py:_embedding",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "class:runtime/resono_runtime/storage/memory.py:MemoryRecord",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "class:runtime/resono_runtime/storage/memory.py:MemoryRecord",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "class:runtime/resono_runtime/storage/memory.py:MemoryEmbedding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "class:runtime/resono_runtime/storage/memory.py:MemoryEmbedding",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "class:runtime/resono_runtime/storage/memory.py:MemoryRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "class:runtime/resono_runtime/storage/memory.py:MemoryRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/memory.py",
+      "target": "file:runtime/resono_runtime/storage/database.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "target": "class:runtime/resono_runtime/storage/provider_settings.py:ProviderSelection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "target": "class:runtime/resono_runtime/storage/provider_settings.py:ProviderSelection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "target": "class:runtime/resono_runtime/storage/provider_settings.py:ProviderSettingsRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "target": "class:runtime/resono_runtime/storage/provider_settings.py:ProviderSettingsRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "target": "file:runtime/resono_runtime/storage/database.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

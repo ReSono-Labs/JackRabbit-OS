@@ -1734,11 +1734,11 @@ Build 7 is structurally complete only when another developer can start at `runti
 
 # 07B.0 Agent Audience Router Foundation
 
-**Status:** active prerequisite. Skill import implementation is paused until this shared routing contract and its durable foundation are complete. The product is Voice-first today, but it will gain an on-device text agent in a later build. An imported capability must never be implicitly limited to Voice or silently exposed to future text chat.
+**Status:** implemented routing foundation. The product is Voice-first and Build 08 adds a delegated Background Agent, not a user-facing text-chat agent. An imported capability must never be implicitly limited to Voice or silently exposed to the Background Agent.
 
 ## Purpose
 
-The **Agent Audience Router** is the one global owner of the user-selected answer to: **which R1 agent may receive this capability?** Its only choices are `voice`, `text`, and `both`.
+The **Agent Audience Router** is the one global owner of the user-selected answer to: **which R1 agent may receive this capability?** User-facing choices are `Voice`, `Background Agent`, and `Both`. The persisted/internal `text` value means Background Agent for compatibility; it does not authorize or imply a text-chat UI.
 
 It is not an external-system connector. IMAP, SMTP, CalDAV, OAuth, and MCP transport remain Connections/Connectors. It is not a permission system, either. It cannot make a capability safe, grant a tool, start an agent, or execute a user action. It only projects a capability to the correct local agent audience after the normal lifecycle and permission checks succeed.
 
@@ -1748,13 +1748,13 @@ Every import or connection flow must ask for an intended agent audience before i
 
 | Build 07 element | User selects audience? | Router controls | Does not control |
 | --- | --- | --- | --- |
-| Imported Agent Skill | Yes | Whether its instructions may be disclosed/activated for Voice, text, or both | Tool grants, package validity, execution |
-| Imported Agent Plugin | Yes | Whether installed Skills and MCP components are projected to Voice, text, or both | Plugin decomposition, permissions, process lifetime |
-| Direct MCP connection | Yes | Whether discovered MCP tools enter Voice, text, or both filtered Tool Catalogs | OAuth, network transport, tool permission intersection |
-| Built-in Mail tools | Yes, during Mail agent-access setup | Whether approved Mail tools appear to Voice, text, or both | Mail sync, credentials, send confirmation, deletion prohibition |
-| Built-in `web_search` | Yes, during tool access setup | Whether the built-in tool appears to Voice, text, or both | Search provider behavior and permission policy |
-| Imported Creation | Yes, for agent-facing bridge access | Whether a compatible Creation may request an agent-facing bridge for Voice, text, or both | Cards rendering, sandbox, storage, hardware bridge, user data access |
-| Built-in Calendar, Contacts, and Reminders tools | Yes, when those domains land | Whether domain tools appear to Voice, text, or both | Connector sync and canonical domain data |
+| Imported Agent Skill | Yes | Whether its instructions may be disclosed/activated for Voice, Background Agent, or both | Tool grants, package validity, execution |
+| Imported Agent Plugin | Yes | Whether installed Skills and MCP components are projected to Voice, Background Agent, or both | Plugin decomposition, permissions, process lifetime |
+| Direct MCP connection | Yes | Whether discovered MCP tools enter Voice, Background Agent, or both filtered Tool Catalogs | OAuth, network transport, tool permission intersection |
+| Built-in Mail tools | Yes, during Mail agent-access setup | Whether approved Mail tools appear to Voice, Background Agent, or both | Mail sync, credentials, send confirmation, deletion prohibition |
+| Built-in `web_search` | Yes, during tool access setup | Whether the built-in tool appears to Voice, Background Agent, or both | Search provider behavior and permission policy |
+| Imported Creation | Yes, for agent-facing bridge access | Whether a compatible Creation may request an agent-facing bridge for Voice, Background Agent, or both | Cards rendering, sandbox, storage, hardware bridge, user data access |
+| Built-in Calendar, Contacts, and Reminders tools | Yes, when those domains land | Whether domain tools appear to Voice, Background Agent, or both | Connector sync and canonical domain data |
 
 No selection means **not exposed to either agent**. A Creation may still appear as a Cards artifact when it has no agent exposure; Cards presentation and agent access are independent settings.
 
@@ -1794,7 +1794,7 @@ remove_resource(resource, changed_by, reason)
 
 `kind` is a closed product vocabulary, initially: `skill`, `plugin`, `mcp_connection`, `domain_tool_set`, and `creation`. The router rejects unknown kinds rather than becoming a generic metadata bag. `stable_id` and `revision_id` are created by the owning catalog/lifecycle, not supplied as arbitrary browser paths.
 
-`both` is stored as one deliberate selection, not duplicated rows whose state can diverge. A later text agent consumes the same selected capability records as Voice; it does not receive a second, unreviewed import path.
+`both` is stored as one deliberate selection, not duplicated rows whose state can diverge. The Background Agent consumes the same selected capability records as Voice; it does not receive a second, unreviewed import path.
 
 ## Import and lifecycle sequencing
 
@@ -1810,13 +1810,13 @@ Changing audience is an auditable lifecycle action. It takes effect dynamically 
 
 ## Non-negotiable safeguards
 
-- The web management interface configures audience but never impersonates Voice or the future text agent to run a capability.
+- The web management interface configures audience but never impersonates Voice or the Background Agent to run a capability.
 - The router cannot bypass `ToolCatalog` permission intersection, explicit send confirmation, resource quarantine, or a domain's safety rules.
 - Mail retains no-delete enforcement regardless of its selected audience.
 - A Plugin's selected audience is an upper bound. Its individual components may be more restricted but never broader.
 - A Skill's `allowed-tools` remains a declaration only; choosing `both` does not grant those tools to either agent.
 - A Creation receives no new Android, filesystem, credential, Mail, Memory, or hardware authority through an audience selection.
-- The future text-agent build must consume this existing contract rather than add a second per-feature `text_enabled` flag.
+- Build 08 Background Agent execution must consume this existing contract rather than add a second per-feature `text_enabled` flag.
 
 ## Required evidence before 07B.1 resumes
 
@@ -1837,7 +1837,7 @@ This section is derived from the present product codebase, not a proposed parall
 | `runtime/resono_runtime/application.py` (`RuntimeApplication`) | The single Python runtime composition root. It starts storage, providers, local MCP, pairing, HTTP, and runtime lifecycle. | Construct one `AgentAudienceRouter` here, after database migrations and before providers/MCP are composed. Pass its narrow query interface to projections. Do not construct routers in route handlers, domain services, or Android. |
 | `runtime/resono_runtime/tools/catalog.py` (`ToolCatalog`) | The shared tool definition and projection boundary already used for MCP and Realtime Voice. | Add an agent-target projection method here, supplied with the Router query. The router says whether a resource may appear; Tool Catalog still applies schema and permission filtering. Do not put audience state in individual tool definitions. |
 | `runtime/resono_runtime/mcp/server.py` (`LocalMcpServer`) | Local MCP initialization, session validation, tool listing, and tool calls through the Tool Catalog. | Request the named agent projection when it supplies tools to an R1 agent. It must not directly read audience tables or decide permissions. |
-| `runtime/resono_runtime/providers/controller.py` (`ProviderController`) | Existing Agents SDK text turn and native Realtime Voice session creation. | Keep this as the two execution entry points. Realtime receives the `voice` projection now. The later device text agent receives the same projection contract with `text`; it does not create another tool/Skill registry. |
+| `runtime/resono_runtime/providers/controller.py` (`ProviderController`) | Existing Agents SDK proof turn and native Realtime Voice session creation. | Realtime receives the `voice` projection. Build 08 Background Agent execution receives the same projection contract through internal audience value `text`; it does not create another tool/Skill registry. The legacy proof turn is not a user-facing text agent. |
 | `runtime/resono_runtime/agents/runner.py` | The existing text-runner adapter. | The future device text-agent work wires its catalog and Skills request through `AgentAudienceRouter.is_exposed(..., "text")`. No text UI work belongs in the router checkpoint. |
 | `runtime/resono_runtime/storage/database.py` | Canonical SQLite connection and ordered, idempotent migration application. | Add `v006_agent_audiences.py`; the router repository receives the existing database owner rather than opening its own SQLite connection. |
 | `runtime/resono_runtime/api/routes.py` and `api/http_server.py` | Authenticated local management transport. | A later narrow route module accepts an audience choice and delegates to the owning lifecycle. It remains configuration-only. No agent-execution endpoint and no web UI work in this checkpoint. |
@@ -1905,18 +1905,18 @@ Management configuration API
     -> AgentAudienceRepository commits binding + audit entry
     -> owning lifecycle publishes its change event
 
-Realtime Voice or future text turn
+Realtime Voice or Background Agent run
     -> ToolCatalog / Skill activation asks AgentAudienceRouter
     -> only matching resources continue to normal permission filtering
     -> provider runner receives already-filtered Skills and tools
 ```
 
-For the present device, the app composes the `voice` query into the Realtime tool projection. Current built-in device-status behavior is preserved through an explicit bootstrap binding owned by the Tool Catalog migration, not an unrecorded default. The future text agent asks for `text` at exactly the same projection point. No live session changes mid-turn; the next new turn receives the revised catalog.
+For the present device, the app composes the `voice` query into the Realtime tool projection. Current built-in device-status behavior is preserved through an explicit bootstrap binding owned by the Tool Catalog migration, not an unrecorded default. The Background Agent asks for internal audience `text` at exactly the same projection point. No active run changes its immutable tool projection; the next run receives the revised catalog.
 
 ### Decisions that prevent drift
 
 - This is named **Agent Audience Router**, not Connector, because “Connector” already means a bridge to an external service or file format.
-- It routes *capabilities*, not agents themselves. Voice and future text execution remain owned by the existing provider/agent runtime.
+- It routes *capabilities*, not agents themselves. Voice and Background Agent execution remain owned by the existing provider/agent runtime.
 - It is global only for the one cross-cutting question of audience. Package validation, OAuth, file extraction, Mail sync, Cards rendering, and permissions stay with their existing/future domain owners.
 - Plugin selection is an upper limit; individual bundled components may be disabled or more narrowly routed, never broadened beyond the Plugin’s audience.
 - Imported Creation card visibility is separate from agent-bridge audience. A Creation can appear in Cards without access to either agent.
@@ -1947,7 +1947,7 @@ This finding keeps the code change contained and prevents a partially wired rout
 | `runtime/resono_runtime/application.py` | Creates exactly one router from the canonical runtime database after startup migration; explicitly bootstraps the current built-in tool set to `both` so accepted device-status behavior is retained. |
 | `runtime/resono_runtime/tools/catalog.py` | Projects tool definitions and calls for a named agent audience. The catalog still owns tool schemas and invocation checks. |
 | `runtime/resono_runtime/tools/definitions.py` and `tools/builtins.py` | Associate current built-in tools with one explicit `builtin-tools` resource rather than assuming Voice-only availability. |
-| `runtime/resono_runtime/mcp/server.py` | Passes its named agent audience into Tool Catalog listing and invocation. Future text-agent MCP composition uses `text`; current runtime composition keeps `voice`. |
+| `runtime/resono_runtime/mcp/server.py` | Passes its named agent audience into Tool Catalog listing and invocation. Build 08 Background Agent MCP composition uses internal audience `text`; Realtime Voice uses `voice`. |
 
 **Current behavioral boundary**
 
@@ -2183,7 +2183,7 @@ The first run exposed a missing reactivation path: `enable()` changed the catalo
 2. An `enabled` Skill is disclosed to only the selected audience as `name` and `description`.
 3. Full `SKILL.md` instructions are loaded just in time through `load_agent_skill({"name": "..."})`, not copied wholesale into the Realtime session prompt.
 4. The loader has no side effects and returns no permission grant. `allowed-tools` remains a standard declarative field; it does not add a tool to either agent.
-5. The same `SkillActivation.disclosures(AgentKind.TEXT)` and agent-scoped loader path are the only integration surface the future text-agent build needs. It does not create a second Skill registry.
+5. The same `SkillActivation.disclosures(AgentKind.TEXT)` and agent-scoped loader path are the integration surface Build 08 Background Agent execution uses. `TEXT` is the stable internal audience value; it does not create a user-facing text agent or a second Skill registry.
 6. The existing Voice Provider Controller appends only selected Voice disclosures to session instructions; when no Voice Skills are enabled, it appends nothing and the loader is absent from the Voice tool catalog.
 7. The management site still cannot invoke the loader or run a Skill.
 
@@ -2345,7 +2345,7 @@ Focused evidence: `PYTHONPATH=runtime python3 -m unittest tests.runtime.test_mcp
 ## Critical findings
 
 1. **Plugin completion was claimed without a complete Plugin lifecycle.** `PluginLifecycle` implements only preflight and confirm. It has no enable, disable, delete, rollback command, management API, application composition, health projection, or component activation/deactivation. The parent Plugin audience is recorded but is not enforced as an upper bound when bundled components are consumed.
-2. **MCP/Connections is not wired into the product runtime.** The new MCP connection repository, lifecycle, client, and tool adapter are not composed by `RuntimeApplication`, exposed through authenticated management routes, restored at startup, or connected to the shared Tool Catalog. Discovered remote tools cannot currently appear in Voice or the future text agent and cannot be invoked through the product.
+2. **Historical audit finding, since resolved: MCP/Connections was not wired into the product runtime.** At the time of this checkpoint, discovered remote tools could not appear in Voice or the future Background Agent. Later Build 07 implementation composed and projected MCP tools through the shared Tool Catalog; current implementation state is governed by the Build 08 execution ledger, not this historical finding.
 3. **MCP credential ownership is absent.** There is no generic Keystore-backed Connection credential envelope, OAuth flow, write-only secret API, rotation behavior, or redaction proof. Direct configured headers reject a few common secret names but that is not credential security and does not support authenticated MCP servers.
 4. **The MCP client is not a conformant Streamable HTTP implementation.** It assumes every response body is plain JSON, does not handle `text/event-stream`, does not send the initialized notification, does not fully negotiate protocol versions/capabilities, has no redirect-origin/header protection, and has no session termination/reconnect behavior. `sse` and `stdio` configurations are accepted even though no corresponding client runtime exists.
 5. **The direct MCP import contract is incomplete.** `validate_connection_configuration()` validates one server object, not a standard root `mcp.json` document with canonical `$schema` and `mcpServers`. Plugin `mcp.json` and direct MCP configuration therefore do not yet share one standards-based parser/failure boundary.
@@ -2360,7 +2360,7 @@ Focused evidence: `PYTHONPATH=runtime python3 -m unittest tests.runtime.test_mcp
 11. **Plugin component records can outlive their parent.** `plugin_components` has no foreign key/cascade to the Plugin catalog, no removal path, and no transactional replacement with the parent catalog row.
 12. **MCP configuration identity is incomplete.** Earlier hashes omit headers, environment, and working directory, so materially different connection configurations can compare as identical. The stored configuration path is not yet consistently populated by the lifecycle.
 13. **MCP tool identity/projection is unfinished.** Discovered tools have no collision-safe exposed-name policy, durable grant/permission intersection, Tool Catalog registration/removal, effect classification, health availability, or connection-scoped invocation dispatcher.
-14. **Built-in agent exposure is too coarse for the future text agent.** `builtin-tools` is bootstrapped to `both`, grouping device status and memory lookup under one audience binding. This can expose more than intended when the future text agent consumes the shared projection. Built-in tool sets need separate explicit resource identities/grants.
+14. **Historical audit finding: built-in agent exposure was too coarse for the Background Agent.** `builtin-tools` was bootstrapped to `both`, grouping device status and memory lookup under one audience binding. Later migrations separated built-in/domain resource identities. Current implementation state is governed by the Build 08 execution ledger.
 
 ## Structural and evidence findings
 
@@ -2402,7 +2402,7 @@ This map is the controlling implementation handoff for recovery. Earlier impleme
 | Skill archive layout | `skills/archives.py::_find_skill_document` accepts a root-level document and does not prove that every retained entry belongs to the one Skill root. It also preserves nested archives/scripts without the required compatibility/findings classification. | **Rewrite** layout validation on the shared archive owner. | `skills/archives.py` accepts the explicit standalone-document compatibility path or exactly one Skill directory. Installed output is canonical `SKILL.md`; scripts are inventoried and never executed. |
 | Skill replacement | `skills/lifecycle.py` moves files, then commits catalog and audience changes in independent database transactions. Failure or process death can split them. It leaves consumed quarantine and rollback content behind. | **Rewrite** as a recoverable operation, not a chain of best-effort calls. | `skills/lifecycle.py` owns a durable operation state, staged tree, prior catalog/audience snapshots, atomic active-path switch, commit/compensation, restart reconciliation, and bounded quarantine/rollback cleanup. Repositories must expose transaction-scoped operations rather than opening their own connections for every step. |
 | Skill API | `api/skill_routes.py` is correctly separated from execution, but audience is supplied only at confirmation and the body reader has no concern-specific read deadline. | **Keep transport separation; change contract.** | Preflight must receive and bind `voice`, `text`, or `both`; confirm supplies only the token and explicit replace decision. Stable errors distinguish invalid, expired, stale-current, identical, and ownership conflict. |
-| Built-in audience identities | `tools/builtins.py` binds device status and memory lookup to the same `builtin-tools` resource, which `application.py` bootstraps to `both`. | **Replace the shared identity.** | Each built-in/domain tool set gets its own stable source resource and explicit default. A future text agent receives only resources explicitly selected for text; Voice remains the current executable surface. |
+| Built-in audience identities | Historical checkpoint: `tools/builtins.py` bound device status and memory lookup to one `builtin-tools` resource. | **Resolved by later resource-specific migration; retain regression coverage.** | Each built-in/domain tool set has a stable source resource and explicit default. The Background Agent receives only resources selected for internal audience `text`; Voice uses `voice`. |
 | Tool Catalog | The catalog is the correct shared projection seam, but `voice_available` gates every agent and its hand-written schema check implements only a small JSON Schema subset. It has no durable imported-tool grant/effect model. | **Keep the seam; rewrite the availability/grant model.** | `tools/catalog.py` remains the only list/invoke owner. Source enabled state, source audience, per-tool grant, effect classification, health, and caller agent are intersected before listing or invocation. Standard JSON Schema validation is used for imported MCP input. |
 | Plugin inspection | `plugins/archives.py` checks only a small manifest subset, treats a Skill as valid when a file exists, and checks only the `mcp.json` top level. | **Rewrite against bundled pinned schemas.** | Split package intake from `plugins/specification.py` manifest/component validation. Reuse the Skill parser and the one MCP configuration parser. Report independent component failures without overstating validation. |
 | Plugin lifecycle | `plugins/lifecycle.py` implements only preflight/confirm, uses independent catalog/component/audience commits, and is not composed into the application or API. | **Rewrite and complete before composition.** | Plugin lifecycle owns install, enable, disable, delete, one private rollback, recovery, component handoff/withdrawal, source ownership, and parent-audience upper bound. Plugin components use a foreign key/cascade and are committed with their parent. |
@@ -2422,7 +2422,7 @@ This map is the controlling implementation handoff for recovery. Earlier impleme
 24. `McpConnectionLifecycle.confirm()` does not persist the validated full configuration: the positional `StoredMcpConnection` construction leaves `configuration` unset, and repository storage writes an empty object.
 25. The MCP configuration hash excludes headers, environment, and working directory. A materially changed server definition can be reported as identical and bypass the required comparison.
 26. `plugin_components` has no foreign key to `plugin_catalog`; replacing parent and components uses separate transactions. A component catalog can therefore describe a package state that was never successfully installed.
-27. The generic Tool Catalog's `voice_available` flag is misnamed and applied to text projections too. This is not a stable public contract for the future text agent.
+27. The generic Tool Catalog's `voice_available` flag remains internally misnamed and also participates in Background Agent projections. Build 08 must not expose that name as a public Background Agent contract; any cleanup must preserve behavior and focused coverage.
 28. The hand-written tool argument checker is not a JSON Schema implementation. Imported MCP schemas using arrays, nested objects, enums, unions, numeric constraints, or references would be listed but not validated correctly.
 29. Plugin-contained Skills are not source-owned Skill catalog records, so the required `409 source_owned` delete boundary and parent disable/uninstall withdrawal behavior cannot currently exist.
 30. No durable import-operation record exists. The runtime cannot reconcile a process death between filesystem switching and database/audience commits, so the current use of `os.replace` alone is not an atomic lifecycle proof.
@@ -2709,18 +2709,55 @@ Two native bridge defects were found and corrected during that proof:
   the read deadline is now 65 seconds while the runtime provider retains its
   bounded search deadline;
 - native Voice sent `response.create` while Realtime still owned an active
-  response. `VoicePageView` now follows the donor Browser Voice bridge: it
-  sends `function_call_output` immediately, coalesces a pending continuation,
-  waits for `response.done`, and defers the continuation flush by 150 ms so the
-  provider can release the previous response.
+  response. The first attempted correction added a 150 ms delay after
+  `response.done`; repeated physical sessions proved that change incomplete and
+  not donor-equivalent. The later correction assigns all client-originated
+  response creation to `RealtimeResponseCoordinator` and serializes tool
+  execution.
 
 The provider rejection was captured exactly as
 `conversation_already_has_active_response`; provider error payloads are now
 logged before the session enters its truthful error state. The rebuilt APK
 passed all 299 Android build tasks, standalone-boundary checks, and embedded
-runtime-package checks before deployment. Owner testing then confirmed no
-error, a returned search answer, and a surviving Voice session.
+runtime-package checks before deployment. One owner test returned a search
+answer and retained the session, but later sessions reproduced the
+active-response rejection. Web-search execution is proved; stable multi-session
+Voice continuation requires renewed acceptance.
 
 This accepts only the ChatGPT/Codex subscription path. A separately selected
 OpenAI Platform credential search, citation/source presentation, revoked-access
 failure, and restart recovery remain required evidence.
+
+### Global Voice approval authorization
+
+Tasks, Calendar, and Mail previously compared the latest transcription against
+separate exact English phrase lists. Physical Tasks transcripts proved that
+ordinary affirmative intent was rejected. Those lexical gates are removed.
+The Voice agent remains responsible for calling a confirmation tool only after
+the user approves the exact reviewed action. Runtime authorization remains
+fail-closed through the exact action or draft identity and content hash, same
+trusted Voice session, strictly newer native utterance sequence, expiry where
+defined, and one-use transactional claim. No confirmation tool accepts a model
+supplied approval flag.
+
+### Mail folder classification and Inbox-default reads
+
+Physical SQLite inspection found the provider returned `INBOX` with
+`["\\HasChildren"]` and no `\\Inbox` flag, leaving `special_use` empty. Sent
+was correctly labeled and contained a newer outgoing message, so time-only
+Mail queries selected Sent ahead of Inbox.
+
+Folder classification now runs for every synchronization and uses both
+provider special-use flags and canonical delimiter-aware folder names. Literal
+`INBOX` becomes `special_use=inbox` even when the provider omits the flag; the
+same fallback recognizes conventional Sent, Drafts, Archive, Junk, and Trash
+leaf names. The normal sync upsert repairs existing folder metadata on the next
+sync. Repository reads also recognize literal `INBOX`, so correct default
+selection does not depend on waiting for that repair.
+
+`email_check`, `email_get_unread`, `email_search`, and contact lookup now query
+Inbox by default. Sent, Drafts, Archive, Junk, or another folder is searched
+only when the user explicitly requests it and the agent supplies that folder's
+ID. Folder listing and explicit non-Inbox access remain available; destructive
+Mail capabilities remain absent. Focused coverage includes a provider that
+omits `\\Inbox` and a newer Sent message that must not outrank Inbox by default.

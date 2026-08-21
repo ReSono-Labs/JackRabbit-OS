@@ -1,0 +1,74 @@
+[
+  {
+    "order": 1,
+    "title": "Product Overview",
+    "description": "Start with the repository overview to understand the standalone R1 product, its physical Android spine, and its on-device Python runtime. Treat this as orientation only; the remaining stops trace the implementation that actually supplies those capabilities.",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "Runtime Composition",
+    "description": "The runtime entry point starts the service, while application.py is the central composition root that wires storage, providers, domains, extensions, tools, and APIs. Reading these together reveals ownership and dependency direction without mistaking individual route modules for the application architecture.",
+    "nodeIds": ["file:runtime/resono_runtime/entrypoint.py", "file:runtime/resono_runtime/application.py", "file:runtime/resono_runtime/api/http_server.py"]
+  },
+  {
+    "order": 3,
+    "title": "Tools and Audiences",
+    "description": "The tool definition contract and catalog form the canonical capability supply layer used by agent-facing runtimes. Audience routing filters that catalog deterministically for Voice or Text, so permissions and availability remain infrastructure rather than a second reasoning system.",
+    "nodeIds": ["file:runtime/resono_runtime/tools/definitions.py", "file:runtime/resono_runtime/tools/catalog.py", "file:runtime/resono_runtime/agents/routing.py", "file:runtime/resono_runtime/agents/audience.py"]
+  },
+  {
+    "order": 4,
+    "title": "Agent Execution Paths",
+    "description": "The shared SDK runner owns OpenAI Agents SDK execution, while the text runner and background-agent composition create distinct consumers of that execution boundary. The background tool gateway takes an immutable Text projection of the catalog, demonstrating that execution reuse does not yet mean one persistent unified agent object.",
+    "nodeIds": ["file:runtime/resono_runtime/agents/sdk_runner.py", "file:runtime/resono_runtime/agents/runner.py", "file:runtime/resono_runtime/background_agent/composition.py", "file:runtime/resono_runtime/background_agent/tool_supply.py", "file:runtime/resono_runtime/background_agent/mcp_gateway.py"]
+  },
+  {
+    "order": 5,
+    "title": "Delegated Goal Loop",
+    "description": "Goal submission crosses a small delegation port into the background service, which applies explicit run recipes and records state across its loop. Its workspace and sandbox are confined per run, making them safe execution scratch space rather than the durable user workspace proposed for broader agent artifacts.",
+    "nodeIds": ["file:runtime/resono_runtime/agents/delegation.py", "file:runtime/resono_runtime/background_agent/service.py", "file:runtime/resono_runtime/background_agent/run_loop.py", "file:runtime/resono_runtime/background_agent/workspace.py", "file:runtime/resono_runtime/background_agent/sandbox.py"]
+  },
+  {
+    "order": 6,
+    "title": "Memory Context",
+    "description": "Memory storage and retrieval remain separate from working files, and session_context.py prepares approved memories for live Voice sessions. This stop shows the current asymmetry: Voice receives session memory context, while other execution paths must be explicitly aligned rather than assumed to share it.",
+    "nodeIds": ["file:runtime/resono_runtime/memory/service.py", "file:runtime/resono_runtime/memory/retrieval.py", "file:runtime/resono_runtime/memory/session_context.py", "file:runtime/resono_runtime/storage/memory.py"]
+  },
+  {
+    "order": 7,
+    "title": "Domains and Packages",
+    "description": "Mail, Calendar, and Tasks keep canonical user data and business rules in domain services, then expose agent operations through uniform tool packages. This separation lets Voice, background execution, and future consumers share behavior without allowing plugins or UI code to own domain data.",
+    "nodeIds": ["file:runtime/resono_runtime/domains/mail/service.py", "file:runtime/resono_runtime/tools/calendar/package.py", "file:runtime/resono_runtime/tools/tasks/package.py", "file:runtime/resono_runtime/tools/builtins.py"]
+  },
+  {
+    "order": 8,
+    "title": "Extension Lifecycle",
+    "description": "Skills, plugins, creations, and MCP connections each have a focused lifecycle instead of a catch-all extension service. MCP lifecycle projects discovered tools into the canonical catalog, while the machine-readable plugin and MCP schemas preserve standards-based import boundaries.",
+    "nodeIds": ["file:runtime/resono_runtime/skills/lifecycle.py", "file:runtime/resono_runtime/plugins/lifecycle.py", "file:runtime/resono_runtime/creations/lifecycle.py", "file:runtime/resono_runtime/mcp/lifecycle.py", "config:runtime/resono_runtime/standards/agent_plugins/plugin.schema.json"]
+  },
+  {
+    "order": 9,
+    "title": "Data and Security",
+    "description": "SQLite migrations and repositories establish durable runtime state, while credential and pairing modules protect secrets and management access. These are shared foundations with high fan-in, so new agent or workspace capabilities should depend on them rather than create parallel persistence or authorization stores.",
+    "nodeIds": ["file:runtime/resono_runtime/storage/database.py", "file:runtime/resono_runtime/storage/migrations/__init__.py", "file:runtime/resono_runtime/security/credentials.py", "file:runtime/resono_runtime/security/pairing.py", "file:runtime/resono_runtime/security/outbound.py"]
+  },
+  {
+    "order": 10,
+    "title": "Android Runtime Bridge",
+    "description": "RuntimeService and RuntimePythonHost own the embedded Python process, while the management and Voice clients translate native requests into local runtime calls. Credential bridging keeps Android-backed secrets outside ordinary Python persistence and makes the platform boundary explicit.",
+    "nodeIds": ["file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java", "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java", "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementClient.java", "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeVoiceClient.java", "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java"]
+  },
+  {
+    "order": 11,
+    "title": "Native Product Experience",
+    "description": "MainActivity hosts the product root, which coordinates shared chrome, hardware input, Voice, and Cards rather than launching disconnected feature pages. The Voice page and native peer maintain the live Realtime interaction, while the Cards deck provides the small-screen surface for built-in and imported card content.",
+    "nodeIds": ["file:android/app/src/main/java/com/resonolabs/voice/MainActivity.java", "file:android/app/src/main/java/com/resonolabs/voice/ProductRootView.java", "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java", "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/NativeVoicePeer.java", "file:android/feature/cards/src/main/java/com/resonolabs/feature/cards/CardsDeckView.java"]
+  },
+  {
+    "order": 12,
+    "title": "Management and Verification",
+    "description": "The browser management controller consumes authenticated runtime APIs, and its background-agent module exposes settings and observability without becoming a usage surface. Finish with the operational guide and representative architecture tests to see how deployment and contract boundaries are checked against the implementation.",
+    "nodeIds": ["file:web/management/app.js", "file:web/management/background-agent.js", "document:SKILLS.md", "file:tests/runtime/test_tool_catalog.py", "file:tests/runtime/test_background_agent_global_tools.py"]
+  }
+]

@@ -1,0 +1,224 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "language": "python",
+      "sizeLines": 308,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/agents/runner.py",
+      "language": "python",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/agents/sdk_runner.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/__init__.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/embedding_access.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/pipeline.py",
+      "language": "python",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/retrieval.py",
+      "language": "python",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/service.py",
+      "language": "python",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/session_context.py",
+      "language": "python",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/tools.py",
+      "language": "python",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/__init__.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/access.py",
+      "language": "python",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/embeddings.py",
+      "language": "python",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/platform.py",
+      "language": "python",
+      "sizeLines": 257,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/subscription.py",
+      "language": "python",
+      "sizeLines": 268,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/web_search.py",
+      "language": "python",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/security/credentials.py",
+      "language": "python",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/memory.py",
+      "language": "python",
+      "sizeLines": 308,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/provider_settings.py",
+      "language": "python",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "runtime/resono_runtime/agents/memory_reviewer.py": [
+      "runtime/resono_runtime/agents/sdk_runner.py",
+      "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/providers/openai/subscription.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/provider_settings.py"
+    ],
+    "runtime/resono_runtime/agents/runner.py": [
+      "runtime/resono_runtime/agents/sdk_runner.py",
+      "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/providers/openai/subscription.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/provider_settings.py"
+    ],
+    "runtime/resono_runtime/agents/sdk_runner.py": [],
+    "runtime/resono_runtime/memory/__init__.py": [
+      "runtime/resono_runtime/memory/pipeline.py",
+      "runtime/resono_runtime/memory/retrieval.py",
+      "runtime/resono_runtime/memory/service.py",
+      "runtime/resono_runtime/memory/session_context.py",
+      "runtime/resono_runtime/memory/tools.py"
+    ],
+    "runtime/resono_runtime/memory/embedding_access.py": [
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/providers/openai/subscription.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/provider_settings.py"
+    ],
+    "runtime/resono_runtime/memory/pipeline.py": [
+      "runtime/resono_runtime/agents/memory_reviewer.py",
+      "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/memory/embedding_access.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/providers/openai/subscription.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/memory.py",
+      "runtime/resono_runtime/storage/provider_settings.py",
+      "runtime/resono_runtime/storage/sessions.py"
+    ],
+    "runtime/resono_runtime/memory/retrieval.py": [
+      "runtime/resono_runtime/storage/memory.py"
+    ],
+    "runtime/resono_runtime/memory/service.py": [
+      "runtime/resono_runtime/memory/embedding_access.py",
+      "runtime/resono_runtime/memory/pipeline.py",
+      "runtime/resono_runtime/memory/retrieval.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/providers/openai/subscription.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/memory.py",
+      "runtime/resono_runtime/storage/provider_settings.py",
+      "runtime/resono_runtime/storage/sessions.py"
+    ],
+    "runtime/resono_runtime/memory/session_context.py": [
+      "runtime/resono_runtime/storage/memory.py",
+      "runtime/resono_runtime/storage/sessions.py"
+    ],
+    "runtime/resono_runtime/memory/tools.py": [
+      "runtime/resono_runtime/memory/embedding_access.py",
+      "runtime/resono_runtime/memory/retrieval.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/providers/openai/subscription.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/memory.py",
+      "runtime/resono_runtime/storage/provider_settings.py"
+    ],
+    "runtime/resono_runtime/providers/openai/__init__.py": [
+      "runtime/resono_runtime/providers/openai/access.py",
+      "runtime/resono_runtime/providers/openai/embeddings.py",
+      "runtime/resono_runtime/providers/openai/platform.py",
+      "runtime/resono_runtime/providers/openai/subscription.py"
+    ],
+    "runtime/resono_runtime/providers/openai/access.py": [
+      "runtime/resono_runtime/providers/openai/platform.py",
+      "runtime/resono_runtime/providers/openai/subscription.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/provider_settings.py"
+    ],
+    "runtime/resono_runtime/providers/openai/embeddings.py": [
+      "runtime/resono_runtime/core/logging.py",
+      "runtime/resono_runtime/providers/openai/platform.py"
+    ],
+    "runtime/resono_runtime/providers/openai/platform.py": [
+      "runtime/resono_runtime/core/logging.py"
+    ],
+    "runtime/resono_runtime/providers/openai/subscription.py": [
+      "runtime/resono_runtime/providers/openai/platform.py",
+      "runtime/resono_runtime/security/credentials.py"
+    ],
+    "runtime/resono_runtime/providers/openai/web_search.py": [
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/provider_settings.py"
+    ],
+    "runtime/resono_runtime/security/credentials.py": [],
+    "runtime/resono_runtime/storage/memory.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/provider_settings.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ]
+  }
+}

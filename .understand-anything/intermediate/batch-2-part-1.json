@@ -1,0 +1,794 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/agents/__init__.py",
+      "summary": "Defines the public package surface for the agent execution, collecting the module's supported imports in one place.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "type": "file",
+      "name": "mcp_routes.py",
+      "filePath": "runtime/resono_runtime/api/mcp_routes.py",
+      "summary": "Implements runtime HTTP API responsibilities centered on mcp routes, view, required string. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mcp_routes.py:_view",
+      "type": "function",
+      "name": "_view",
+      "filePath": "runtime/resono_runtime/api/mcp_routes.py",
+      "lineRange": [
+        108,
+        124
+      ],
+      "summary": "Performs view behavior used by the runtime HTTP API.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mcp_routes.py:_required_string",
+      "type": "function",
+      "name": "_required_string",
+      "filePath": "runtime/resono_runtime/api/mcp_routes.py",
+      "lineRange": [
+        127,
+        131
+      ],
+      "summary": "Performs required string behavior used by the runtime HTTP API.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mcp_routes.py:_session",
+      "type": "function",
+      "name": "_session",
+      "filePath": "runtime/resono_runtime/api/mcp_routes.py",
+      "lineRange": [
+        134,
+        138
+      ],
+      "summary": "Performs session behavior used by the runtime HTTP API.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mcp_routes.py:_error",
+      "type": "function",
+      "name": "_error",
+      "filePath": "runtime/resono_runtime/api/mcp_routes.py",
+      "lineRange": [
+        141,
+        142
+      ],
+      "summary": "Performs error behavior used by the runtime HTTP API.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/mcp_routes.py:McpRoutes",
+      "type": "class",
+      "name": "McpRoutes",
+      "filePath": "runtime/resono_runtime/api/mcp_routes.py",
+      "lineRange": [
+        18,
+        105
+      ],
+      "summary": "Owns mcp routes behavior for the runtime HTTP API, including handle get, handle post, handle delete.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/api/skill_routes.py",
+      "type": "file",
+      "name": "skill_routes.py",
+      "filePath": "runtime/resono_runtime/api/skill_routes.py",
+      "summary": "Implements runtime HTTP API responsibilities centered on skill routes, preflight view, skill view. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/skill_routes.py:_preflight_view",
+      "type": "function",
+      "name": "_preflight_view",
+      "filePath": "runtime/resono_runtime/api/skill_routes.py",
+      "lineRange": [
+        114,
+        131
+      ],
+      "summary": "Performs preflight view behavior used by the runtime HTTP API.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/skill_routes.py:_skill_view",
+      "type": "function",
+      "name": "_skill_view",
+      "filePath": "runtime/resono_runtime/api/skill_routes.py",
+      "lineRange": [
+        134,
+        143
+      ],
+      "summary": "Performs skill view behavior used by the runtime HTTP API.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/skill_routes.py:_name_action",
+      "type": "function",
+      "name": "_name_action",
+      "filePath": "runtime/resono_runtime/api/skill_routes.py",
+      "lineRange": [
+        146,
+        150
+      ],
+      "summary": "Performs name action behavior used by the runtime HTTP API.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/skill_routes.py:_not_found",
+      "type": "function",
+      "name": "_not_found",
+      "filePath": "runtime/resono_runtime/api/skill_routes.py",
+      "lineRange": [
+        153,
+        154
+      ],
+      "summary": "Performs not found behavior used by the runtime HTTP API.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/skill_routes.py:_error",
+      "type": "function",
+      "name": "_error",
+      "filePath": "runtime/resono_runtime/api/skill_routes.py",
+      "lineRange": [
+        157,
+        158
+      ],
+      "summary": "Performs error behavior used by the runtime HTTP API.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/skill_routes.py:SkillRoutes",
+      "type": "class",
+      "name": "SkillRoutes",
+      "filePath": "runtime/resono_runtime/api/skill_routes.py",
+      "lineRange": [
+        17,
+        111
+      ],
+      "summary": "Owns skill routes behavior for the runtime HTTP API, including handle get, handle post, handle delete, session.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/connections/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/connections/__init__.py",
+      "summary": "Defines the public package surface for the connection management, collecting the module's supported imports in one place.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/connections/records.py",
+      "type": "file",
+      "name": "records.py",
+      "filePath": "runtime/resono_runtime/connections/records.py",
+      "summary": "Implements connection management responsibilities centered on connection record, connection repository. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/connections/records.py:ConnectionRecord",
+      "type": "class",
+      "name": "ConnectionRecord",
+      "filePath": "runtime/resono_runtime/connections/records.py",
+      "lineRange": [
+        11,
+        21
+      ],
+      "summary": "Represents the connection record contract or immutable state used by the connection management.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/connections/records.py:ConnectionRepository",
+      "type": "class",
+      "name": "ConnectionRepository",
+      "filePath": "runtime/resono_runtime/connections/records.py",
+      "lineRange": [
+        24,
+        121
+      ],
+      "summary": "Owns connection repository behavior for the connection management, including get, list, save, remove.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/imports/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/imports/__init__.py",
+      "summary": "Defines the public package surface for the safe import workflow, collecting the module's supported imports in one place.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/imports/preflight.py",
+      "type": "file",
+      "name": "preflight.py",
+      "filePath": "runtime/resono_runtime/imports/preflight.py",
+      "summary": "Implements safe import workflow responsibilities centered on import preflight error, import preflight, import preflight registry. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/imports/preflight.py:_utcnow",
+      "type": "function",
+      "name": "_utcnow",
+      "filePath": "runtime/resono_runtime/imports/preflight.py",
+      "lineRange": [
+        114,
+        115
+      ],
+      "summary": "Performs utcnow behavior used by the safe import workflow.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflightError",
+      "type": "class",
+      "name": "ImportPreflightError",
+      "filePath": "runtime/resono_runtime/imports/preflight.py",
+      "lineRange": [
+        18,
+        19
+      ],
+      "summary": "Represents the import preflight error contract or immutable state used by the safe import workflow.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflight",
+      "type": "class",
+      "name": "ImportPreflight",
+      "filePath": "runtime/resono_runtime/imports/preflight.py",
+      "lineRange": [
+        23,
+        31
+      ],
+      "summary": "Represents the import preflight contract or immutable state used by the safe import workflow.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflightRegistry",
+      "type": "class",
+      "name": "ImportPreflightRegistry",
+      "filePath": "runtime/resono_runtime/imports/preflight.py",
+      "lineRange": [
+        34,
+        111
+      ],
+      "summary": "Owns import preflight registry behavior for the safe import workflow, including issue, consume, peek, discard expired.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/agents/__init__.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/__init__.py",
+      "target": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/__init__.py",
+      "target": "file:runtime/resono_runtime/agents/routing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/__init__.py",
+      "target": "file:runtime/resono_runtime/agents/runner.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/__init__.py",
+      "target": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_required_string",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_required_string",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_session",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_session",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_error",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "function:runtime/resono_runtime/api/mcp_routes.py:_error",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "class:runtime/resono_runtime/api/mcp_routes.py:McpRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "class:runtime/resono_runtime/api/mcp_routes.py:McpRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "file:runtime/resono_runtime/mcp/client.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "file:runtime/resono_runtime/mcp/imports.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_preflight_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_preflight_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_skill_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_skill_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_name_action",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_name_action",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_not_found",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_not_found",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_error",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "function:runtime/resono_runtime/api/skill_routes.py:_error",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "class:runtime/resono_runtime/api/skill_routes.py:SkillRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "class:runtime/resono_runtime/api/skill_routes.py:SkillRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "file:runtime/resono_runtime/skills/archives.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "file:runtime/resono_runtime/skills/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/skill_routes.py",
+      "target": "file:runtime/resono_runtime/storage/skills.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/connections/__init__.py",
+      "target": "file:runtime/resono_runtime/connections/records.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/connections/records.py",
+      "target": "class:runtime/resono_runtime/connections/records.py:ConnectionRecord",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/connections/records.py",
+      "target": "class:runtime/resono_runtime/connections/records.py:ConnectionRecord",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/connections/records.py",
+      "target": "class:runtime/resono_runtime/connections/records.py:ConnectionRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/connections/records.py",
+      "target": "class:runtime/resono_runtime/connections/records.py:ConnectionRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/connections/records.py",
+      "target": "file:runtime/resono_runtime/storage/connection_credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/connections/records.py",
+      "target": "file:runtime/resono_runtime/storage/database.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/__init__.py",
+      "target": "file:runtime/resono_runtime/imports/preflight.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/__init__.py",
+      "target": "file:runtime/resono_runtime/imports/recovery.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "function:runtime/resono_runtime/imports/preflight.py:_utcnow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "function:runtime/resono_runtime/imports/preflight.py:_utcnow",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflightError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflightError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflightRegistry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "class:runtime/resono_runtime/imports/preflight.py:ImportPreflightRegistry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/preflight.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

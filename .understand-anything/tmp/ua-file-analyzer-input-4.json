@@ -1,0 +1,330 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "runtime/resono_runtime/api/calendar_routes.py",
+      "language": "python",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/connection_routes.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/creation_routes.py",
+      "language": "python",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/events.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/http_server.py",
+      "language": "python",
+      "sizeLines": 270,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/mail_routes.py",
+      "language": "python",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/plugin_routes.py",
+      "language": "python",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/routes.py",
+      "language": "python",
+      "sizeLines": 689,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/task_routes.py",
+      "language": "python",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/tool_routes.py",
+      "language": "python",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/application.py",
+      "language": "python",
+      "sizeLines": 418,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/config.py",
+      "language": "python",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/core/logging.py",
+      "language": "python",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/core/release_supervisor.py",
+      "language": "python",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/core/runtime_environment.py",
+      "language": "python",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/entrypoint.py",
+      "language": "python",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/__init__.py",
+      "language": "python",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/controller.py",
+      "language": "python",
+      "sizeLines": 435,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/security/pairing.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/lifecycle_repository.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/profile_settings.py",
+      "language": "python",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/provider_catalog.py",
+      "language": "python",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/sessions.py",
+      "language": "python",
+      "sizeLines": 203,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "runtime/resono_runtime/api/calendar_routes.py": [
+      "runtime/resono_runtime/domains/calendar/repository.py",
+      "runtime/resono_runtime/domains/calendar/service.py",
+      "runtime/resono_runtime/security/pairing.py"
+    ],
+    "runtime/resono_runtime/api/connection_routes.py": [
+      "runtime/resono_runtime/connections/__init__.py",
+      "runtime/resono_runtime/security/pairing.py"
+    ],
+    "runtime/resono_runtime/api/creation_routes.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/creations/__init__.py",
+      "runtime/resono_runtime/security/pairing.py"
+    ],
+    "runtime/resono_runtime/api/events.py": [],
+    "runtime/resono_runtime/api/http_server.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/api/background_agent_routes.py",
+      "runtime/resono_runtime/api/calendar_routes.py",
+      "runtime/resono_runtime/api/connection_routes.py",
+      "runtime/resono_runtime/api/creation_routes.py",
+      "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/api/mail_routes.py",
+      "runtime/resono_runtime/api/mcp_routes.py",
+      "runtime/resono_runtime/api/plugin_routes.py",
+      "runtime/resono_runtime/api/routes.py",
+      "runtime/resono_runtime/api/skill_routes.py",
+      "runtime/resono_runtime/api/task_routes.py",
+      "runtime/resono_runtime/api/tool_routes.py",
+      "runtime/resono_runtime/mcp/__init__.py",
+      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/providers/controller.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/security/pairing.py",
+      "runtime/resono_runtime/storage/lifecycle_repository.py",
+      "runtime/resono_runtime/storage/profile_settings.py",
+      "runtime/resono_runtime/storage/sessions.py"
+    ],
+    "runtime/resono_runtime/api/mail_routes.py": [
+      "runtime/resono_runtime/domains/mail/repository.py",
+      "runtime/resono_runtime/domains/mail/service.py",
+      "runtime/resono_runtime/security/pairing.py"
+    ],
+    "runtime/resono_runtime/api/plugin_routes.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/plugins/archives.py",
+      "runtime/resono_runtime/plugins/lifecycle.py",
+      "runtime/resono_runtime/security/pairing.py"
+    ],
+    "runtime/resono_runtime/api/routes.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/api/background_agent_routes.py",
+      "runtime/resono_runtime/api/calendar_routes.py",
+      "runtime/resono_runtime/api/connection_routes.py",
+      "runtime/resono_runtime/api/creation_routes.py",
+      "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/api/mail_routes.py",
+      "runtime/resono_runtime/api/mcp_routes.py",
+      "runtime/resono_runtime/api/plugin_routes.py",
+      "runtime/resono_runtime/api/skill_routes.py",
+      "runtime/resono_runtime/api/task_routes.py",
+      "runtime/resono_runtime/api/tool_routes.py",
+      "runtime/resono_runtime/core/logging.py",
+      "runtime/resono_runtime/mcp/__init__.py",
+      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/providers/controller.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/security/pairing.py",
+      "runtime/resono_runtime/storage/lifecycle_repository.py",
+      "runtime/resono_runtime/storage/profile_settings.py",
+      "runtime/resono_runtime/storage/sessions.py"
+    ],
+    "runtime/resono_runtime/api/task_routes.py": [
+      "runtime/resono_runtime/domains/tasks/__init__.py"
+    ],
+    "runtime/resono_runtime/api/tool_routes.py": [
+      "runtime/resono_runtime/security/pairing.py",
+      "runtime/resono_runtime/tools/__init__.py"
+    ],
+    "runtime/resono_runtime/application.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/api/background_agent_routes.py",
+      "runtime/resono_runtime/api/calendar_routes.py",
+      "runtime/resono_runtime/api/connection_routes.py",
+      "runtime/resono_runtime/api/creation_routes.py",
+      "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/api/http_server.py",
+      "runtime/resono_runtime/api/mail_routes.py",
+      "runtime/resono_runtime/api/mcp_routes.py",
+      "runtime/resono_runtime/api/plugin_routes.py",
+      "runtime/resono_runtime/api/skill_routes.py",
+      "runtime/resono_runtime/api/task_routes.py",
+      "runtime/resono_runtime/api/tool_routes.py",
+      "runtime/resono_runtime/background_agent/composition.py",
+      "runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "runtime/resono_runtime/background_agent/service.py",
+      "runtime/resono_runtime/config.py",
+      "runtime/resono_runtime/connections/records.py",
+      "runtime/resono_runtime/connectors/calendar/__init__.py",
+      "runtime/resono_runtime/core/logging.py",
+      "runtime/resono_runtime/core/release_supervisor.py",
+      "runtime/resono_runtime/core/runtime_environment.py",
+      "runtime/resono_runtime/creations/__init__.py",
+      "runtime/resono_runtime/domains/calendar/repository.py",
+      "runtime/resono_runtime/domains/calendar/scheduler.py",
+      "runtime/resono_runtime/domains/calendar/service.py",
+      "runtime/resono_runtime/domains/mail/connector.py",
+      "runtime/resono_runtime/domains/mail/repository.py",
+      "runtime/resono_runtime/domains/mail/scheduler.py",
+      "runtime/resono_runtime/domains/mail/service.py",
+      "runtime/resono_runtime/domains/mail/tools.py",
+      "runtime/resono_runtime/domains/tasks/__init__.py",
+      "runtime/resono_runtime/imports/__init__.py",
+      "runtime/resono_runtime/mcp/__init__.py",
+      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/plugins/archives.py",
+      "runtime/resono_runtime/plugins/bundled_install.py",
+      "runtime/resono_runtime/plugins/card_lifecycle.py",
+      "runtime/resono_runtime/plugins/lifecycle.py",
+      "runtime/resono_runtime/providers/controller.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/providers/openai/web_search.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/security/pairing.py",
+      "runtime/resono_runtime/skills/__init__.py",
+      "runtime/resono_runtime/skills/archives.py",
+      "runtime/resono_runtime/skills/lifecycle.py",
+      "runtime/resono_runtime/storage/agent_audiences.py",
+      "runtime/resono_runtime/storage/agent_runs.py",
+      "runtime/resono_runtime/storage/background_agent_settings.py",
+      "runtime/resono_runtime/storage/connection_credentials.py",
+      "runtime/resono_runtime/storage/creations.py",
+      "runtime/resono_runtime/storage/database.py",
+      "runtime/resono_runtime/storage/lifecycle_repository.py",
+      "runtime/resono_runtime/storage/mcp_connections.py",
+      "runtime/resono_runtime/storage/memory.py",
+      "runtime/resono_runtime/storage/plugin_components.py",
+      "runtime/resono_runtime/storage/plugins.py",
+      "runtime/resono_runtime/storage/profile_settings.py",
+      "runtime/resono_runtime/storage/provider_catalog.py",
+      "runtime/resono_runtime/storage/provider_settings.py",
+      "runtime/resono_runtime/storage/sessions.py",
+      "runtime/resono_runtime/storage/skills.py",
+      "runtime/resono_runtime/tools/__init__.py",
+      "runtime/resono_runtime/tools/calendar/__init__.py",
+      "runtime/resono_runtime/tools/delegation.py",
+      "runtime/resono_runtime/tools/tasks/__init__.py",
+      "runtime/resono_runtime/tools/web_search.py"
+    ],
+    "runtime/resono_runtime/config.py": [],
+    "runtime/resono_runtime/core/logging.py": [
+      "runtime/resono_runtime/core/logging.py"
+    ],
+    "runtime/resono_runtime/core/release_supervisor.py": [],
+    "runtime/resono_runtime/core/runtime_environment.py": [],
+    "runtime/resono_runtime/entrypoint.py": [
+      "runtime/resono_runtime/application.py",
+      "runtime/resono_runtime/config.py",
+      "runtime/resono_runtime/core/logging.py"
+    ],
+    "runtime/resono_runtime/mcp/__init__.py": [
+      "runtime/resono_runtime/mcp/lifecycle.py",
+      "runtime/resono_runtime/mcp/server.py"
+    ],
+    "runtime/resono_runtime/providers/controller.py": [
+      "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/core/logging.py",
+      "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/profile_settings.py",
+      "runtime/resono_runtime/storage/provider_catalog.py",
+      "runtime/resono_runtime/storage/provider_settings.py",
+      "runtime/resono_runtime/storage/sessions.py"
+    ],
+    "runtime/resono_runtime/security/pairing.py": [],
+    "runtime/resono_runtime/storage/lifecycle_repository.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/profile_settings.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/provider_catalog.py": [],
+    "runtime/resono_runtime/storage/sessions.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ]
+  }
+}

@@ -1,0 +1,393 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/domains/tasks/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/domains/tasks/__init__.py",
+      "summary": "Defines the public built-in Tasks domain surface by re-exporting task models, repository, service, and tool registration.",
+      "tags": [
+        "entry-point",
+        "barrel",
+        "type-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/domains/tasks/models.py",
+      "type": "file",
+      "name": "models.py",
+      "filePath": "runtime/resono_runtime/domains/tasks/models.py",
+      "summary": "Defines the immutable text-only task record used by storage, service, routes, tools, and Cards presentation.",
+      "tags": [
+        "tasks",
+        "data-model",
+        "type-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/domains/tasks/models.py:Task",
+      "type": "class",
+      "name": "Task",
+      "filePath": "runtime/resono_runtime/domains/tasks/models.py",
+      "lineRange": [
+        6,
+        12
+      ],
+      "summary": "Defines the task abstraction used by the task implementation.",
+      "tags": [
+        "tasks",
+        "data-model",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "type": "file",
+      "name": "repository.py",
+      "filePath": "runtime/resono_runtime/domains/tasks/repository.py",
+      "summary": "Owns SQLite persistence and ordered queries for the deliberately text-only Tasks domain, including creation, completion, reopening, deletion, and active-task listing.",
+      "tags": [
+        "tasks",
+        "repository",
+        "database"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/domains/tasks/repository.py:_task",
+      "type": "function",
+      "name": "_task",
+      "filePath": "runtime/resono_runtime/domains/tasks/repository.py",
+      "lineRange": [
+        109,
+        110
+      ],
+      "summary": "Implements task behavior for the task implementation.",
+      "tags": [
+        "tasks",
+        "repository",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/domains/tasks/repository.py:_text",
+      "type": "function",
+      "name": "_text",
+      "filePath": "runtime/resono_runtime/domains/tasks/repository.py",
+      "lineRange": [
+        113,
+        117
+      ],
+      "summary": "Implements text behavior for the task implementation.",
+      "tags": [
+        "tasks",
+        "repository",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/domains/tasks/repository.py:TaskRepository",
+      "type": "class",
+      "name": "TaskRepository",
+      "filePath": "runtime/resono_runtime/domains/tasks/repository.py",
+      "lineRange": [
+        14,
+        106
+      ],
+      "summary": "Defines the task repository abstraction used by the task implementation.",
+      "tags": [
+        "tasks",
+        "repository",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "type": "file",
+      "name": "service.py",
+      "filePath": "runtime/resono_runtime/domains/tasks/service.py",
+      "summary": "Provides the task application service and registers the uniform agent-facing task tool package over the repository.",
+      "tags": [
+        "tasks",
+        "service",
+        "agent-tools"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/domains/tasks/service.py:_view",
+      "type": "function",
+      "name": "_view",
+      "filePath": "runtime/resono_runtime/domains/tasks/service.py",
+      "lineRange": [
+        64,
+        67
+      ],
+      "summary": "Implements view behavior for the task implementation.",
+      "tags": [
+        "tasks",
+        "service",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/domains/tasks/service.py:_required",
+      "type": "function",
+      "name": "_required",
+      "filePath": "runtime/resono_runtime/domains/tasks/service.py",
+      "lineRange": [
+        70,
+        74
+      ],
+      "summary": "Implements required behavior for the task implementation.",
+      "tags": [
+        "tasks",
+        "service",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/domains/tasks/service.py:_optional",
+      "type": "function",
+      "name": "_optional",
+      "filePath": "runtime/resono_runtime/domains/tasks/service.py",
+      "lineRange": [
+        77,
+        79
+      ],
+      "summary": "Implements optional behavior for the task implementation.",
+      "tags": [
+        "tasks",
+        "service",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/domains/tasks/service.py:_limit",
+      "type": "function",
+      "name": "_limit",
+      "filePath": "runtime/resono_runtime/domains/tasks/service.py",
+      "lineRange": [
+        82,
+        84
+      ],
+      "summary": "Implements limit behavior for the task implementation.",
+      "tags": [
+        "tasks",
+        "service",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/domains/tasks/service.py:TaskService",
+      "type": "class",
+      "name": "TaskService",
+      "filePath": "runtime/resono_runtime/domains/tasks/service.py",
+      "lineRange": [
+        9,
+        61
+      ],
+      "summary": "Defines the task service abstraction used by the task implementation.",
+      "tags": [
+        "tasks",
+        "service",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/__init__.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/__init__.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/__init__.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/models.py",
+      "target": "class:runtime/resono_runtime/domains/tasks/models.py:Task",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/models.py",
+      "target": "class:runtime/resono_runtime/domains/tasks/models.py:Task",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/repository.py:_task",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/repository.py:_task",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/repository.py:_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/repository.py:_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "class:runtime/resono_runtime/domains/tasks/repository.py:TaskRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "class:runtime/resono_runtime/domains/tasks/repository.py:TaskRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "target": "file:runtime/resono_runtime/storage/database.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_required",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_required",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_optional",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_optional",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_limit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "function:runtime/resono_runtime/domains/tasks/service.py:_limit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "class:runtime/resono_runtime/domains/tasks/service.py:TaskService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "class:runtime/resono_runtime/domains/tasks/service.py:TaskService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/models.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/repository.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/domains/tasks/service.py",
+      "target": "file:runtime/resono_runtime/tools/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

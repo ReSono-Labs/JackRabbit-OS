@@ -1,0 +1,42 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "android/scripts/build_android_agent_wheels.sh",
+      "language": "shell",
+      "sizeLines": 78,
+      "fileCategory": "script"
+    },
+    {
+      "path": "android/scripts/build_debug.sh",
+      "language": "shell",
+      "sizeLines": 39,
+      "fileCategory": "script"
+    },
+    {
+      "path": "android/scripts/check_boundaries.sh",
+      "language": "shell",
+      "sizeLines": 75,
+      "fileCategory": "script"
+    },
+    {
+      "path": "android/scripts/check_runtime_package.sh",
+      "language": "shell",
+      "sizeLines": 84,
+      "fileCategory": "script"
+    },
+    {
+      "path": "android/scripts/sign_motor_service_for_r1.sh",
+      "language": "shell",
+      "sizeLines": 30,
+      "fileCategory": "script"
+    }
+  ],
+  "batchImportData": {
+    "android/scripts/build_android_agent_wheels.sh": [],
+    "android/scripts/build_debug.sh": [],
+    "android/scripts/check_boundaries.sh": [],
+    "android/scripts/check_runtime_package.sh": [],
+    "android/scripts/sign_motor_service_for_r1.sh": []
+  }
+}

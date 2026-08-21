@@ -819,3 +819,14 @@ Code-complete does not mean physically accepted. Host tests, Android compilation
 - Tasks Voice behavior passed owner testing.
 - Calendar connection, synchronized Card list, detail navigation, and Voice behavior passed owner testing after the shared Cards Back and full-screen content corrections.
 - Mail Voice behavior remains under active owner testing and is not accepted by this update.
+
+## Shared approval boundary correction
+
+Tasks, Calendar, and Mail no longer maintain domain-specific approval phrase
+allowlists. Confirmation intent is interpreted by the Voice agent, while the
+runtime authorizes execution only through structural evidence: unchanged
+content hash, same trusted Voice session, strictly later native utterance
+sequence, unexpired pending action, and single-use transactional claim.
+Calendar provider capability and event editability checks remain authoritative
+and unchanged. This avoids English-keyword coupling without turning approval
+into a model-supplied boolean.

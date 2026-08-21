@@ -1,0 +1,596 @@
+{
+  "nodes": [
+    {
+      "id": "file:tests/runtime/test_skill_lifecycle.py",
+      "type": "file",
+      "name": "test_skill_lifecycle.py",
+      "filePath": "tests/runtime/test_skill_lifecycle.py",
+      "summary": "Automated tests for skill lifecycle, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_skill_lifecycle.py:SkillLifecycleTest",
+      "type": "class",
+      "name": "SkillLifecycleTest",
+      "filePath": "tests/runtime/test_skill_lifecycle.py",
+      "lineRange": [
+        15,
+        84
+      ],
+      "summary": "Test fixture grouping assertions for skill lifecycle, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/runtime/test_skill_routes.py",
+      "type": "file",
+      "name": "test_skill_routes.py",
+      "filePath": "tests/runtime/test_skill_routes.py",
+      "summary": "Automated tests for skill routes, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_skill_routes.py:SkillRoutesTest",
+      "type": "class",
+      "name": "SkillRoutesTest",
+      "filePath": "tests/runtime/test_skill_routes.py",
+      "lineRange": [
+        17,
+        61
+      ],
+      "summary": "Test fixture grouping assertions for skill routes, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_skill_routes.py:_Request",
+      "type": "class",
+      "name": "_Request",
+      "filePath": "tests/runtime/test_skill_routes.py",
+      "lineRange": [
+        64,
+        93
+      ],
+      "summary": "Test fixture grouping assertions for request, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_skill_specification.py",
+      "type": "file",
+      "name": "test_skill_specification.py",
+      "filePath": "tests/runtime/test_skill_specification.py",
+      "summary": "Automated tests for skill specification, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_skill_specification.py:SkillSpecificationTest",
+      "type": "class",
+      "name": "SkillSpecificationTest",
+      "filePath": "tests/runtime/test_skill_specification.py",
+      "lineRange": [
+        10,
+        33
+      ],
+      "summary": "Test fixture grouping assertions for skill specification, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_tasks_contract.py",
+      "type": "file",
+      "name": "test_tasks_contract.py",
+      "filePath": "tests/runtime/test_tasks_contract.py",
+      "summary": "Automated tests for tasks contract, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_tasks_contract.py:TasksContractTest",
+      "type": "class",
+      "name": "TasksContractTest",
+      "filePath": "tests/runtime/test_tasks_contract.py",
+      "lineRange": [
+        11,
+        73
+      ],
+      "summary": "Test fixture grouping assertions for tasks contract, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_tasks_contract.py:_ToolService",
+      "type": "class",
+      "name": "_ToolService",
+      "filePath": "tests/runtime/test_tasks_contract.py",
+      "lineRange": [
+        76,
+        78
+      ],
+      "summary": "Test fixture grouping assertions for tool service, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_tool_catalog.py",
+      "type": "file",
+      "name": "test_tool_catalog.py",
+      "filePath": "tests/runtime/test_tool_catalog.py",
+      "summary": "Automated tests for tool catalog, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_tool_catalog.py:ToolCatalogTest",
+      "type": "class",
+      "name": "ToolCatalogTest",
+      "filePath": "tests/runtime/test_tool_catalog.py",
+      "lineRange": [
+        8,
+        27
+      ],
+      "summary": "Test fixture grouping assertions for tool catalog, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/runtime/test_web_search.py",
+      "type": "file",
+      "name": "test_web_search.py",
+      "filePath": "tests/runtime/test_web_search.py",
+      "summary": "Automated tests for web search, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:tests/runtime/test_web_search.py:WebSearchTest",
+      "type": "class",
+      "name": "WebSearchTest",
+      "filePath": "tests/runtime/test_web_search.py",
+      "lineRange": [
+        12,
+        48
+      ],
+      "summary": "Test fixture grouping assertions for web search, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_web_search.py:_Credentials",
+      "type": "class",
+      "name": "_Credentials",
+      "filePath": "tests/runtime/test_web_search.py",
+      "lineRange": [
+        51,
+        53
+      ],
+      "summary": "Test fixture grouping assertions for credentials, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_web_search.py:_Subscription",
+      "type": "class",
+      "name": "_Subscription",
+      "filePath": "tests/runtime/test_web_search.py",
+      "lineRange": [
+        56,
+        58
+      ],
+      "summary": "Test fixture grouping assertions for subscription, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_web_search.py:_Settings",
+      "type": "class",
+      "name": "_Settings",
+      "filePath": "tests/runtime/test_web_search.py",
+      "lineRange": [
+        61,
+        66
+      ],
+      "summary": "Test fixture grouping assertions for settings, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_web_search.py:_Headers",
+      "type": "class",
+      "name": "_Headers",
+      "filePath": "tests/runtime/test_web_search.py",
+      "lineRange": [
+        69,
+        74
+      ],
+      "summary": "Test fixture grouping assertions for headers, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/runtime/test_web_search.py:_Response",
+      "type": "class",
+      "name": "_Response",
+      "filePath": "tests/runtime/test_web_search.py",
+      "lineRange": [
+        77,
+        89
+      ],
+      "summary": "Test fixture grouping assertions for response, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/runtime/test_web_search.py:_completed",
+      "type": "function",
+      "name": "_completed",
+      "filePath": "tests/runtime/test_web_search.py",
+      "lineRange": [
+        92,
+        103
+      ],
+      "summary": "Test support routine that constructs or supplies completed data for deterministic assertions.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:web/design/base.css",
+      "type": "file",
+      "name": "base.css",
+      "filePath": "web/design/base.css",
+      "summary": "Stylesheet implementing base visual tokens, layout, responsive behavior, and component presentation for the management interface.",
+      "tags": [
+        "component",
+        "browser-voice",
+        "management-ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:web/design/tokens.css",
+      "type": "file",
+      "name": "tokens.css",
+      "filePath": "web/design/tokens.css",
+      "summary": "Stylesheet implementing tokens visual tokens, layout, responsive behavior, and component presentation for the management interface.",
+      "tags": [
+        "component",
+        "browser-voice",
+        "management-ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:web/management/app.js",
+      "type": "file",
+      "name": "app.js",
+      "filePath": "web/management/app.js",
+      "summary": "Browser-side controller for app, loading real runtime data and updating the management interface through authenticated APIs.",
+      "tags": [
+        "component",
+        "api-handler",
+        "management-ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:web/management/background-agent.js",
+      "type": "file",
+      "name": "background-agent.js",
+      "filePath": "web/management/background-agent.js",
+      "summary": "Browser-side controller for background agent, loading real runtime data and updating the management interface through authenticated APIs.",
+      "tags": [
+        "component",
+        "api-handler",
+        "management-ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:web/management/build07.js",
+      "type": "file",
+      "name": "build07.js",
+      "filePath": "web/management/build07.js",
+      "summary": "Browser-side controller for build07, loading real runtime data and updating the management interface through authenticated APIs.",
+      "tags": [
+        "component",
+        "api-handler",
+        "management-ui"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:web/management/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "web/management/index.html",
+      "summary": "Management-site document shell that loads the shared design styles and real management application controls.",
+      "tags": [
+        "component",
+        "browser-voice",
+        "management-ui"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:tests/runtime/test_skill_lifecycle.py",
+      "target": "class:tests/runtime/test_skill_lifecycle.py:SkillLifecycleTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_lifecycle.py",
+      "target": "class:tests/runtime/test_skill_lifecycle.py:SkillLifecycleTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_skill_routes.py",
+      "target": "class:tests/runtime/test_skill_routes.py:SkillRoutesTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_routes.py",
+      "target": "class:tests/runtime/test_skill_routes.py:SkillRoutesTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_skill_routes.py",
+      "target": "class:tests/runtime/test_skill_routes.py:_Request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_routes.py",
+      "target": "class:tests/runtime/test_skill_routes.py:_Request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_skill_specification.py",
+      "target": "class:tests/runtime/test_skill_specification.py:SkillSpecificationTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_skill_specification.py",
+      "target": "class:tests/runtime/test_skill_specification.py:SkillSpecificationTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_tasks_contract.py",
+      "target": "class:tests/runtime/test_tasks_contract.py:TasksContractTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_tasks_contract.py",
+      "target": "class:tests/runtime/test_tasks_contract.py:TasksContractTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_tasks_contract.py",
+      "target": "class:tests/runtime/test_tasks_contract.py:_ToolService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_tasks_contract.py",
+      "target": "class:tests/runtime/test_tasks_contract.py:_ToolService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_tool_catalog.py",
+      "target": "class:tests/runtime/test_tool_catalog.py:ToolCatalogTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_tool_catalog.py",
+      "target": "class:tests/runtime/test_tool_catalog.py:ToolCatalogTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:WebSearchTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:WebSearchTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Credentials",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Credentials",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Subscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Subscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Settings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Headers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Headers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Response",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "class:tests/runtime/test_web_search.py:_Response",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "function:tests/runtime/test_web_search.py:_completed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/runtime/test_web_search.py",
+      "target": "function:tests/runtime/test_web_search.py:_completed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

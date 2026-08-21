@@ -1,0 +1,265 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/planning/2026-08-14-build-contract-01-foundation.md",
+      "type": "document",
+      "name": "2026-08-14-build-contract-01-foundation.md",
+      "filePath": "docs/planning/2026-08-14-build-contract-01-foundation.md",
+      "summary": "Build Contract 01 — Existing Android Baseline Import and Reproduction records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-14-build-contract-02-early-resono-image.md",
+      "type": "document",
+      "name": "2026-08-14-build-contract-02-early-resono-image.md",
+      "filePath": "docs/planning/2026-08-14-build-contract-02-early-resono-image.md",
+      "summary": "Build Contract 02 — Early Reversible ReSono Image records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-14-build-contract-03-clean-home-apk.md",
+      "type": "document",
+      "name": "2026-08-14-build-contract-03-clean-home-apk.md",
+      "filePath": "docs/planning/2026-08-14-build-contract-03-clean-home-apk.md",
+      "summary": "Build Contract 03 — Clean Standalone HOME APK Baseline records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-14-build-contract-04-on-device-runtime.md",
+      "type": "document",
+      "name": "2026-08-14-build-contract-04-on-device-runtime.md",
+      "filePath": "docs/planning/2026-08-14-build-contract-04-on-device-runtime.md",
+      "summary": "Build Contract 04 — Minimal On-Device Runtime records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-14-build-contract-05-openai-voice-text.md",
+      "type": "document",
+      "name": "2026-08-14-build-contract-05-openai-voice-text.md",
+      "filePath": "docs/planning/2026-08-14-build-contract-05-openai-voice-text.md",
+      "summary": "Build Contract 05 — Working OpenAI Voice and Text records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-14-r1-standalone-delivery-plan.md",
+      "type": "document",
+      "name": "2026-08-14-r1-standalone-delivery-plan.md",
+      "filePath": "docs/planning/2026-08-14-r1-standalone-delivery-plan.md",
+      "summary": "ReSono Labs R1 Voice — Master Delivery Plan records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-16-build-contract-06-sessions-memory.md",
+      "type": "document",
+      "name": "2026-08-16-build-contract-06-sessions-memory.md",
+      "filePath": "docs/planning/2026-08-16-build-contract-06-sessions-memory.md",
+      "summary": "Build Contract 06 — Sessions, Memory, and Agents SDK Review records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-agent-network-tailscale-link-placement.md",
+      "type": "document",
+      "name": "2026-08-20-agent-network-tailscale-link-placement.md",
+      "filePath": "docs/planning/2026-08-20-agent-network-tailscale-link-placement.md",
+      "summary": "R1 Agent Network, Tailscale Transport, and Link Migration — Placement Review records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-build-contract-07-extensions-mail.md",
+      "type": "document",
+      "name": "2026-08-20-build-contract-07-extensions-mail.md",
+      "filePath": "docs/planning/2026-08-20-build-contract-07-extensions-mail.md",
+      "summary": "Build Contract 07 - Standard Extensions, Voice Mail, and Web Search records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-build-contract-07-management-ui.md",
+      "type": "document",
+      "name": "2026-08-20-build-contract-07-management-ui.md",
+      "filePath": "docs/planning/2026-08-20-build-contract-07-management-ui.md",
+      "summary": "Build Contract 07: Web Management UI Overhaul records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-build-contract-07-plugin-card-extensions.md",
+      "type": "document",
+      "name": "2026-08-20-build-contract-07-plugin-card-extensions.md",
+      "filePath": "docs/planning/2026-08-20-build-contract-07-plugin-card-extensions.md",
+      "summary": "Build Contract 07 Subphase - Agent Plugin Card Extensions records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-build-contract-07-plugin-storage.md",
+      "type": "document",
+      "name": "2026-08-20-build-contract-07-plugin-storage.md",
+      "filePath": "docs/planning/2026-08-20-build-contract-07-plugin-storage.md",
+      "summary": "Build Contract 07 Deferred Subphase - Isolated Plugin Storage records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-calendar-tasks-build-contract.md",
+      "type": "document",
+      "name": "2026-08-20-calendar-tasks-build-contract.md",
+      "filePath": "docs/planning/2026-08-20-calendar-tasks-build-contract.md",
+      "summary": "Calendar and Tasks Build Contract - Architecture Candidate records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-camera-recovery-contract.md",
+      "type": "document",
+      "name": "2026-08-20-camera-recovery-contract.md",
+      "filePath": "docs/planning/2026-08-20-camera-recovery-contract.md",
+      "summary": "R1 Camera Recovery Contract records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-creations-cards-architecture.md",
+      "type": "document",
+      "name": "2026-08-20-creations-cards-architecture.md",
+      "filePath": "docs/planning/2026-08-20-creations-cards-architecture.md",
+      "summary": "R1 Creations and Cards Architecture records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-final-diagnostics-trace-agent-contract.md",
+      "type": "document",
+      "name": "2026-08-20-final-diagnostics-trace-agent-contract.md",
+      "filePath": "docs/planning/2026-08-20-final-diagnostics-trace-agent-contract.md",
+      "summary": "Final Diagnostics and Read-Only Trace Agent Contract records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-first-build-deferrals.md",
+      "type": "document",
+      "name": "2026-08-20-first-build-deferrals.md",
+      "filePath": "docs/planning/2026-08-20-first-build-deferrals.md",
+      "summary": "First Build Product Deferrals records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-first-party-tasks-package.md",
+      "type": "document",
+      "name": "2026-08-20-first-party-tasks-package.md",
+      "filePath": "docs/planning/2026-08-20-first-party-tasks-package.md",
+      "summary": "First-Party Tasks Package Contract records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-primary-agent-delegation-placement.md",
+      "type": "document",
+      "name": "2026-08-20-primary-agent-delegation-placement.md",
+      "filePath": "docs/planning/2026-08-20-primary-agent-delegation-placement.md",
+      "summary": "Build Contract 08 - Primary ReSono Agent and Delegated Work records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-r1-direct-handoff-contract.md",
+      "type": "document",
+      "name": "2026-08-20-r1-direct-handoff-contract.md",
+      "filePath": "docs/planning/2026-08-20-r1-direct-handoff-contract.md",
+      "summary": "R1 Direct Handoff Contract records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

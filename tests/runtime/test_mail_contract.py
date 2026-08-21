@@ -7,7 +7,7 @@ import hashlib
 from contextlib import contextmanager
 from pathlib import Path
 
-from resono_runtime.domains.mail.connector import RemoteFolder, RemoteFolderIndex, RemoteFolderSnapshot, RemoteMessage
+from resono_runtime.domains.mail.connector import RemoteFolder, RemoteFolderIndex, RemoteFolderSnapshot, RemoteMessage, _parse_folder
 from resono_runtime.domains.mail.repository import MailAccountLimitError, MailRepository
 from resono_runtime.domains.mail.service import MailService
 from resono_runtime.domains.mail.tools import MAIL_TOOL_NAMES
@@ -48,6 +48,33 @@ class MailContractTest(unittest.TestCase):
         self.service.sync(accounts[0].configuration.account_id)
         self.assertEqual((), self.repository.list_folders(accounts[0].configuration.account_id))
 
+    def test_inbox_fallback_and_default_queries_exclude_sent(self) -> None:
+        inbox = _parse_folder(b'(\\HasChildren) "." "INBOX"')
+        sent = _parse_folder(b'(\\HasNoChildren \\Sent) "." "INBOX.Sent"')
+        self.assertIsNotNone(inbox)
+        self.assertEqual("inbox", inbox.special_use)
+        self.assertEqual("sent", sent.special_use)
+
+        account = self._connect(0)
+        inbox_message = RemoteMessage(
+            1, "<inbox@example.com>", "Inbox message", (("Sender", "sender@example.com"),),
+            (("User", "user@example.com"),), "2026-08-20T20:00:00+00:00",
+            "2026-08-20T20:00:00+00:00", (), "Inbox", None, 5, (),
+        )
+        sent_message = RemoteMessage(
+            1, "<sent@example.com>", "Newer sent message", (("User", "user@example.com"),),
+            (("Recipient", "recipient@example.com"),), "2026-08-20T21:00:00+00:00",
+            "2026-08-20T21:00:00+00:00", (), "Sent", None, 4, (),
+        )
+        self.repository.store_snapshot(account.configuration.account_id, RemoteFolderSnapshot(inbox, 1, 2, (inbox_message,)))
+        self.repository.store_snapshot(account.configuration.account_id, RemoteFolderSnapshot(sent, 1, 2, (sent_message,)))
+
+        default_messages = self.repository.list_messages(account.configuration.account_id)
+        self.assertEqual(["Inbox message"], [item["subject"] for item in default_messages])
+        sent_folder = next(item for item in self.repository.list_folders(account.configuration.account_id) if item["specialUse"] == "sent")
+        explicit_sent = self.repository.list_messages(account.configuration.account_id, folder_id=sent_folder["folderId"])
+        self.assertEqual(["Newer sent message"], [item["subject"] for item in explicit_sent])
+
     def test_sqlite_contains_only_an_opaque_credential_envelope(self) -> None:
         account = self._connect(0)
         with self.database.connect() as connection:
@@ -80,14 +107,14 @@ class MailContractTest(unittest.TestCase):
                 user_utterance="Yes, send it.",
                 user_utterance_id=1,
             )
-        with self.assertRaisesRegex(ValueError, "not explicitly approved"):
+        with self.assertRaisesRegex(ValueError, "stale, changed, or already used"):
             self.service.confirm_send(
                 account.configuration.account_id,
                 draft_id=draft["draftId"],
                 content_hash=draft["contentHash"],
                 voice_session_id="voice-session",
                 user_utterance="Please draft that message.",
-                user_utterance_id=2,
+                user_utterance_id=1,
             )
         self.connector.fail_first_append = True
         result = self.service.confirm_send(

@@ -32,6 +32,7 @@ cp "$ANDROID_ROOT/../web/management/index.html" "$WEB_ASSETS/management/index.ht
 cp "$ANDROID_ROOT/../web/management/management.css" "$WEB_ASSETS/management/management.css"
 cp "$ANDROID_ROOT/../web/management/app.js" "$WEB_ASSETS/management/app.js"
 cp "$ANDROID_ROOT/../web/management/build07.js" "$WEB_ASSETS/management/build07.js"
+cp "$ANDROID_ROOT/../web/management/background-agent.js" "$WEB_ASSETS/management/background-agent.js"
 cd "$ANDROID_ROOT"
 
 /tmp/gradle-9.5.0/bin/gradle --no-daemon --no-configuration-cache testDebugUnitTest :app:assembleDebug

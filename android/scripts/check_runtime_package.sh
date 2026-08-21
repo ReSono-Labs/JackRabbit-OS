@@ -22,6 +22,7 @@ for required in \
     'assets/chaquopy/app.imy' \
     'assets/management/index.html' \
     'assets/management/app.js' \
+    'assets/management/background-agent.js' \
     'assets/management/management.css' \
     'assets/design/tokens.css' \
     'assets/design/base.css'; do

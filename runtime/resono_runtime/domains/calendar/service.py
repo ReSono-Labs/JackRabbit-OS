@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import asdict
 from datetime import UTC, datetime, timedelta
 import json
-import re
 from uuid import NAMESPACE_URL, uuid4, uuid5
 
 from resono_runtime.connectors.calendar import (
@@ -112,8 +111,6 @@ class CalendarService:
         return value
 
     def _confirm(self, context: ToolInvocationContext, arguments: dict[str, object]) -> dict[str, object]:
-        if not _explicit_approval(context.user_utterance or ""):
-            raise ValueError("The user has not explicitly approved the reviewed Calendar change.")
         action_id = _required(arguments, "actionId")
         claim = self._repository.claim_pending_action(action_id=action_id, content_hash=_required(arguments, "contentHash"), voice_session_id=context.voice_session_id or "", approval_utterance_id=context.user_utterance_id or 0)
         try:
@@ -196,8 +193,3 @@ def _optional_date_time(value: dict[str, object], key: str) -> datetime | None:
 def _limit(arguments: dict[str, object]) -> int:
     value = arguments.get("limit", 25)
     return max(1, min(value, 50)) if isinstance(value, int) and not isinstance(value, bool) else 25
-
-
-def _explicit_approval(value: str) -> bool:
-    normalized = " ".join(re.sub(r"[^a-z0-9']+", " ", value.casefold()).split())
-    return normalized in {"yes", "yes do it", "go ahead", "that is correct", "that's correct", "make that change", "add it", "update it", "delete it"}

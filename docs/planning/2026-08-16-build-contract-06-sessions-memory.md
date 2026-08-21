@@ -577,3 +577,27 @@ Physical evaluation of the memory vertical found the agent side of the session-c
 - No schema changes; migration v4 is untouched. No new tables, no new dependencies, no donor modification. Boundary checks (`check_boundaries.sh`, `check_runtime_package.sh`) pass.
 - Rollback posture is unchanged: version 26 remains the accepted working product base.
 - Change index row: `docs/CHANGE-INDEX.md` (2026-08-20, "BC-06 memory finalize chain repaired").
+
+## Addendum 2026-08-20 - Native Realtime response ownership correction
+
+Repeated physical Voice sessions exposed `conversation_already_has_active_response`
+after asynchronous tool calls. The failure was not WebRTC, authorization, or the
+tool provider: native code had multiple independent producers of
+`response.create`, boolean-only provider state, and concurrent tool callbacks.
+The attempted 150 ms delay after `response.done` was not donor-equivalent and
+did not resolve the race.
+
+Source now assigns every client-originated `response.create` to
+`RealtimeResponseCoordinator`. Greeting, tool continuation, and Direct Handoff
+request a response through that owner; server VAD remains unchanged and may
+still create responses automatically. `RealtimeToolCallQueue` serializes native
+tool execution. The coordinator marks a client response active before sending,
+retains one pending continuation while a provider response is active, releases
+it from `response.done`, cancels pending work on session close, and treats the
+provider's active-response rejection as recoverable rather than terminating the
+Voice session.
+
+This source correction preserves the existing WebRTC, audio/VAD profile,
+greeting wording, tool APIs, image payload, transcript capture, and session
+finalization boundaries. Build and physical acceptance evidence must be
+recorded separately.

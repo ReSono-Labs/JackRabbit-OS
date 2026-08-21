@@ -1,0 +1,1139 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "file",
+      "name": "audience.py",
+      "filePath": "runtime/resono_runtime/agents/audience.py",
+      "summary": "Implements agent execution responsibilities centered on agent kind, agent audience, audience resource kind. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/audience.py:AgentKind",
+      "type": "class",
+      "name": "AgentKind",
+      "filePath": "runtime/resono_runtime/agents/audience.py",
+      "lineRange": [
+        9,
+        13
+      ],
+      "summary": "Represents the agent kind contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/audience.py:AgentAudience",
+      "type": "class",
+      "name": "AgentAudience",
+      "filePath": "runtime/resono_runtime/agents/audience.py",
+      "lineRange": [
+        16,
+        24
+      ],
+      "summary": "Owns agent audience behavior for the agent execution, including includes.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/audience.py:AudienceResourceKind",
+      "type": "class",
+      "name": "AudienceResourceKind",
+      "filePath": "runtime/resono_runtime/agents/audience.py",
+      "lineRange": [
+        27,
+        34
+      ],
+      "summary": "Represents the audience resource kind contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/audience.py:AudienceResource",
+      "type": "class",
+      "name": "AudienceResource",
+      "filePath": "runtime/resono_runtime/agents/audience.py",
+      "lineRange": [
+        38,
+        46
+      ],
+      "summary": "Represents the audience resource contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/agents/delegation.py",
+      "type": "file",
+      "name": "delegation.py",
+      "filePath": "runtime/resono_runtime/agents/delegation.py",
+      "summary": "Implements agent execution responsibilities centered on delegation request, delegation run, delegation service. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/delegation.py:DelegationRequest",
+      "type": "class",
+      "name": "DelegationRequest",
+      "filePath": "runtime/resono_runtime/agents/delegation.py",
+      "lineRange": [
+        10,
+        17
+      ],
+      "summary": "Represents the delegation request contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/delegation.py:DelegationRun",
+      "type": "class",
+      "name": "DelegationRun",
+      "filePath": "runtime/resono_runtime/agents/delegation.py",
+      "lineRange": [
+        21,
+        29
+      ],
+      "summary": "Represents the delegation run contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/delegation.py:DelegationService",
+      "type": "class",
+      "name": "DelegationService",
+      "filePath": "runtime/resono_runtime/agents/delegation.py",
+      "lineRange": [
+        32,
+        35
+      ],
+      "summary": "Owns delegation service behavior for the agent execution, including submit, inspect, cancel.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/delegation.py:DelegationUnavailable",
+      "type": "class",
+      "name": "DelegationUnavailable",
+      "filePath": "runtime/resono_runtime/agents/delegation.py",
+      "lineRange": [
+        38,
+        48
+      ],
+      "summary": "Owns delegation unavailable behavior for the agent execution, including submit, inspect, cancel.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/agents/routing.py",
+      "type": "file",
+      "name": "routing.py",
+      "filePath": "runtime/resono_runtime/agents/routing.py",
+      "summary": "Implements agent execution responsibilities centered on audience binding, audience binding store, agent audience router. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/routing.py:AudienceBinding",
+      "type": "class",
+      "name": "AudienceBinding",
+      "filePath": "runtime/resono_runtime/agents/routing.py",
+      "lineRange": [
+        12,
+        18
+      ],
+      "summary": "Represents the audience binding contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/routing.py:AudienceBindingStore",
+      "type": "class",
+      "name": "AudienceBindingStore",
+      "filePath": "runtime/resono_runtime/agents/routing.py",
+      "lineRange": [
+        21,
+        51
+      ],
+      "summary": "Owns audience binding store behavior for the agent execution, including save, get, list for, deactivate.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/routing.py:AgentAudienceRouter",
+      "type": "class",
+      "name": "AgentAudienceRouter",
+      "filePath": "runtime/resono_runtime/agents/routing.py",
+      "lineRange": [
+        54,
+        115
+      ],
+      "summary": "Owns agent audience router behavior for the agent execution, including set audience, binding for, is exposed, list for.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "type": "file",
+      "name": "mcp_gateway.py",
+      "filePath": "runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "summary": "Implements background agent responsibilities centered on background mcp gateway. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/mcp_gateway.py:BackgroundMcpGateway",
+      "type": "class",
+      "name": "BackgroundMcpGateway",
+      "filePath": "runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "lineRange": [
+        14,
+        44
+      ],
+      "summary": "Owns background mcp gateway behavior for the background agent, including open, close, handle.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "type": "file",
+      "name": "tool_supply.py",
+      "filePath": "runtime/resono_runtime/background_agent/tool_supply.py",
+      "summary": "Implements background agent responsibilities centered on tool budget exceeded, background tool grant, background tool supply. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/tool_supply.py:ToolBudgetExceeded",
+      "type": "class",
+      "name": "ToolBudgetExceeded",
+      "filePath": "runtime/resono_runtime/background_agent/tool_supply.py",
+      "lineRange": [
+        14,
+        15
+      ],
+      "summary": "Represents the tool budget exceeded contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/tool_supply.py:BackgroundToolGrant",
+      "type": "class",
+      "name": "BackgroundToolGrant",
+      "filePath": "runtime/resono_runtime/background_agent/tool_supply.py",
+      "lineRange": [
+        19,
+        26
+      ],
+      "summary": "Represents the background tool grant contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/tool_supply.py:BackgroundToolSupply",
+      "type": "class",
+      "name": "BackgroundToolSupply",
+      "filePath": "runtime/resono_runtime/background_agent/tool_supply.py",
+      "lineRange": [
+        29,
+        68
+      ],
+      "summary": "Owns background tool supply behavior for the background agent, including calls used, mcp definitions, invoke, allowed.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/mcp/server.py",
+      "type": "file",
+      "name": "server.py",
+      "filePath": "runtime/resono_runtime/mcp/server.py",
+      "summary": "Implements MCP integration responsibilities centered on mcp http result, local mcp server. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/server.py:McpHttpResult",
+      "type": "class",
+      "name": "McpHttpResult",
+      "filePath": "runtime/resono_runtime/mcp/server.py",
+      "lineRange": [
+        26,
+        29
+      ],
+      "summary": "Represents the mcp http result contract or immutable state used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/server.py:LocalMcpServer",
+      "type": "class",
+      "name": "LocalMcpServer",
+      "filePath": "runtime/resono_runtime/mcp/server.py",
+      "lineRange": [
+        32,
+        146
+      ],
+      "summary": "Owns local mcp server behavior for the MCP integration, including handle, initialize, listed tools, call tool.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "type": "file",
+      "name": "agent_audiences.py",
+      "filePath": "runtime/resono_runtime/storage/agent_audiences.py",
+      "summary": "Implements SQLite persistence responsibilities centered on agent audience repository, binding, timestamp. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "database",
+        "repository",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/agent_audiences.py:_binding",
+      "type": "function",
+      "name": "_binding",
+      "filePath": "runtime/resono_runtime/storage/agent_audiences.py",
+      "lineRange": [
+        108,
+        111
+      ],
+      "summary": "Performs binding behavior used by the SQLite persistence.",
+      "tags": [
+        "database",
+        "repository",
+        "persistence",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/agent_audiences.py:_timestamp",
+      "type": "function",
+      "name": "_timestamp",
+      "filePath": "runtime/resono_runtime/storage/agent_audiences.py",
+      "lineRange": [
+        114,
+        115
+      ],
+      "summary": "Performs timestamp behavior used by the SQLite persistence.",
+      "tags": [
+        "database",
+        "repository",
+        "persistence",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/storage/agent_audiences.py:AgentAudienceRepository",
+      "type": "class",
+      "name": "AgentAudienceRepository",
+      "filePath": "runtime/resono_runtime/storage/agent_audiences.py",
+      "lineRange": [
+        13,
+        105
+      ],
+      "summary": "Owns agent audience repository behavior for the SQLite persistence, including save, get, list for, deactivate.",
+      "tags": [
+        "database",
+        "repository",
+        "persistence",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/tools/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/tools/__init__.py",
+      "summary": "Defines the public package surface for the agent tool system, collecting the module's supported imports in one place.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/tools/builtins.py",
+      "type": "file",
+      "name": "builtins.py",
+      "filePath": "runtime/resono_runtime/tools/builtins.py",
+      "summary": "Implements agent tool system responsibilities centered on register device status, register memory lookup. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/tools/builtins.py:register_device_status",
+      "type": "function",
+      "name": "register_device_status",
+      "filePath": "runtime/resono_runtime/tools/builtins.py",
+      "lineRange": [
+        26,
+        48
+      ],
+      "summary": "Performs register device status behavior used by the agent tool system.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/tools/builtins.py:register_memory_lookup",
+      "type": "function",
+      "name": "register_memory_lookup",
+      "filePath": "runtime/resono_runtime/tools/builtins.py",
+      "lineRange": [
+        51,
+        61
+      ],
+      "summary": "Performs register memory lookup behavior used by the agent tool system.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/tools/calendar/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/tools/calendar/__init__.py",
+      "summary": "Defines the public package surface for the agent tool system, collecting the module's supported imports in one place.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "type": "file",
+      "name": "contract.py",
+      "filePath": "runtime/resono_runtime/tools/calendar/contract.py",
+      "summary": "Implements agent tool system responsibilities centered on calendar tool contract, contracts, event fields. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/tools/calendar/contract.py:contracts",
+      "type": "function",
+      "name": "contracts",
+      "filePath": "runtime/resono_runtime/tools/calendar/contract.py",
+      "lineRange": [
+        17,
+        63
+      ],
+      "summary": "Performs contracts behavior used by the agent tool system.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/tools/calendar/contract.py:_event_fields",
+      "type": "function",
+      "name": "_event_fields",
+      "filePath": "runtime/resono_runtime/tools/calendar/contract.py",
+      "lineRange": [
+        66,
+        72
+      ],
+      "summary": "Performs event fields behavior used by the agent tool system.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/tools/calendar/contract.py:_schema",
+      "type": "function",
+      "name": "_schema",
+      "filePath": "runtime/resono_runtime/tools/calendar/contract.py",
+      "lineRange": [
+        75,
+        82
+      ],
+      "summary": "Performs schema behavior used by the agent tool system.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/tools/calendar/contract.py:CalendarToolContract",
+      "type": "class",
+      "name": "CalendarToolContract",
+      "filePath": "runtime/resono_runtime/tools/calendar/contract.py",
+      "lineRange": [
+        10,
+        14
+      ],
+      "summary": "Represents the calendar tool contract contract or immutable state used by the agent tool system.",
+      "tags": [
+        "agent-tools",
+        "tool-catalog",
+        "mcp",
+        "data-model"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AgentKind",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AgentKind",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AgentAudience",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AgentAudience",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AudienceResourceKind",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AudienceResourceKind",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AudienceResource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/audience.py",
+      "target": "class:runtime/resono_runtime/agents/audience.py:AudienceResource",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationRun",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationRun",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationUnavailable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/delegation.py",
+      "target": "class:runtime/resono_runtime/agents/delegation.py:DelegationUnavailable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/routing.py",
+      "target": "class:runtime/resono_runtime/agents/routing.py:AudienceBinding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/routing.py",
+      "target": "class:runtime/resono_runtime/agents/routing.py:AudienceBinding",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/routing.py",
+      "target": "class:runtime/resono_runtime/agents/routing.py:AudienceBindingStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/routing.py",
+      "target": "class:runtime/resono_runtime/agents/routing.py:AudienceBindingStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/routing.py",
+      "target": "class:runtime/resono_runtime/agents/routing.py:AgentAudienceRouter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/routing.py",
+      "target": "class:runtime/resono_runtime/agents/routing.py:AgentAudienceRouter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/routing.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "target": "class:runtime/resono_runtime/background_agent/mcp_gateway.py:BackgroundMcpGateway",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "target": "class:runtime/resono_runtime/background_agent/mcp_gateway.py:BackgroundMcpGateway",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "target": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "target": "file:runtime/resono_runtime/mcp/server.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "target": "file:runtime/resono_runtime/tools/catalog.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "class:runtime/resono_runtime/background_agent/tool_supply.py:ToolBudgetExceeded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "class:runtime/resono_runtime/background_agent/tool_supply.py:ToolBudgetExceeded",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "class:runtime/resono_runtime/background_agent/tool_supply.py:BackgroundToolGrant",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "class:runtime/resono_runtime/background_agent/tool_supply.py:BackgroundToolGrant",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "class:runtime/resono_runtime/background_agent/tool_supply.py:BackgroundToolSupply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "class:runtime/resono_runtime/background_agent/tool_supply.py:BackgroundToolSupply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "file:runtime/resono_runtime/tools/catalog.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/tool_supply.py",
+      "target": "file:runtime/resono_runtime/tools/definitions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/server.py",
+      "target": "class:runtime/resono_runtime/mcp/server.py:McpHttpResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/server.py",
+      "target": "class:runtime/resono_runtime/mcp/server.py:McpHttpResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/server.py",
+      "target": "class:runtime/resono_runtime/mcp/server.py:LocalMcpServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/server.py",
+      "target": "class:runtime/resono_runtime/mcp/server.py:LocalMcpServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/server.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/server.py",
+      "target": "file:runtime/resono_runtime/tools/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "function:runtime/resono_runtime/storage/agent_audiences.py:_binding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "function:runtime/resono_runtime/storage/agent_audiences.py:_binding",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "function:runtime/resono_runtime/storage/agent_audiences.py:_timestamp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "function:runtime/resono_runtime/storage/agent_audiences.py:_timestamp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "class:runtime/resono_runtime/storage/agent_audiences.py:AgentAudienceRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "class:runtime/resono_runtime/storage/agent_audiences.py:AgentAudienceRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "file:runtime/resono_runtime/agents/routing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "target": "file:runtime/resono_runtime/storage/database.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/__init__.py",
+      "target": "file:runtime/resono_runtime/tools/builtins.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/__init__.py",
+      "target": "file:runtime/resono_runtime/tools/catalog.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/__init__.py",
+      "target": "file:runtime/resono_runtime/tools/definitions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/builtins.py",
+      "target": "function:runtime/resono_runtime/tools/builtins.py:register_device_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/builtins.py",
+      "target": "function:runtime/resono_runtime/tools/builtins.py:register_device_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/builtins.py",
+      "target": "function:runtime/resono_runtime/tools/builtins.py:register_memory_lookup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/builtins.py",
+      "target": "function:runtime/resono_runtime/tools/builtins.py:register_memory_lookup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/builtins.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/builtins.py",
+      "target": "file:runtime/resono_runtime/tools/catalog.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/builtins.py",
+      "target": "file:runtime/resono_runtime/tools/definitions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/__init__.py",
+      "target": "file:runtime/resono_runtime/tools/calendar/package.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "function:runtime/resono_runtime/tools/calendar/contract.py:contracts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "function:runtime/resono_runtime/tools/calendar/contract.py:contracts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "function:runtime/resono_runtime/tools/calendar/contract.py:_event_fields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "function:runtime/resono_runtime/tools/calendar/contract.py:_event_fields",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "function:runtime/resono_runtime/tools/calendar/contract.py:_schema",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "function:runtime/resono_runtime/tools/calendar/contract.py:_schema",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "class:runtime/resono_runtime/tools/calendar/contract.py:CalendarToolContract",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/tools/calendar/contract.py",
+      "target": "class:runtime/resono_runtime/tools/calendar/contract.py:CalendarToolContract",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

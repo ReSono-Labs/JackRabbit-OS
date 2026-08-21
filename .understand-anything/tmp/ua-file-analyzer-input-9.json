@@ -1,0 +1,64 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "android/app/src/main/java/com/resonolabs/voice/MainActivity.java",
+      "language": "java",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/app/src/main/java/com/resonolabs/voice/ReSonoBootReceiver.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/power/src/main/java/com/resonolabs/ui/power/DisplayPolicy.java",
+      "language": "java",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingState.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealthClient.java",
+      "language": "java",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementClient.java",
+      "language": "java",
+      "sizeLines": 261,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java",
+      "language": "java",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "android/app/src/main/java/com/resonolabs/voice/MainActivity.java": [
+      "android/core/power/src/main/java/com/resonolabs/ui/power/DisplayPolicy.java",
+      "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingState.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealthClient.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementClient.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java"
+    ],
+    "android/app/src/main/java/com/resonolabs/voice/ReSonoBootReceiver.java": [
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java"
+    ],
+    "android/core/power/src/main/java/com/resonolabs/ui/power/DisplayPolicy.java": [],
+    "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingState.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealthClient.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementClient.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java": []
+  }
+}

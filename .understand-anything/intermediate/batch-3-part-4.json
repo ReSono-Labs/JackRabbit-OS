@@ -1,0 +1,1470 @@
+{
+  "nodes": [
+    {
+      "id": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "type": "file",
+      "name": "SettingsInputPolicyTest.java",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "summary": "Implements native settings interface responsibilities centered on settings input policy test, bluetooth transitions remain visible until final state, display wheel never changes backlight. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:bluetoothTransitionsRemainVisibleUntilFinalState",
+      "type": "function",
+      "name": "bluetoothTransitionsRemainVisibleUntilFinalState",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "lineRange": [
+        14,
+        19
+      ],
+      "summary": "Performs bluetooth transitions remain visible until final state behavior used by the native settings interface.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:displayWheelNeverChangesBacklight",
+      "type": "function",
+      "name": "displayWheelNeverChangesBacklight",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "lineRange": [
+        21,
+        26
+      ],
+      "summary": "Performs display wheel never changes backlight behavior used by the native settings interface.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:displayActivationNeverRequestsAdjustment",
+      "type": "function",
+      "name": "displayActivationNeverRequestsAdjustment",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "lineRange": [
+        28,
+        31
+      ],
+      "summary": "Performs display activation never requests adjustment behavior used by the native settings interface.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:brightnessStepsAreBoundedAwayFromAnUnusableBlackScreen",
+      "type": "function",
+      "name": "brightnessStepsAreBoundedAwayFromAnUnusableBlackScreen",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "lineRange": [
+        33,
+        38
+      ],
+      "summary": "Performs brightness steps are bounded away from an unusable black screen behavior used by the native settings interface.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:soundWheelNeverChangesVolume",
+      "type": "function",
+      "name": "soundWheelNeverChangesVolume",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "lineRange": [
+        40,
+        45
+      ],
+      "summary": "Performs sound wheel never changes volume behavior used by the native settings interface.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:policyDoesNotConsumeActivationOrOtherPages",
+      "type": "function",
+      "name": "policyDoesNotConsumeActivationOrOtherPages",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "lineRange": [
+        47,
+        52
+      ],
+      "summary": "Performs policy does not consume activation or other pages behavior used by the native settings interface.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:SettingsInputPolicyTest",
+      "type": "class",
+      "name": "SettingsInputPolicyTest",
+      "filePath": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "lineRange": [
+        13,
+        53
+      ],
+      "summary": "Owns settings input policy test behavior for the native settings interface, including bluetooth transitions remain visible until final state, display wheel never changes backlight, display activation never requests adjustment, brightness steps are bounded away from an unusable black screen.",
+      "tags": [
+        "test",
+        "validation",
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "type": "file",
+      "name": "TaskPageView.java",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "summary": "Implements native tasks interface responsibilities centered on task page view, task page view, start. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:TaskPageView",
+      "type": "function",
+      "name": "TaskPageView",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        30,
+        33
+      ],
+      "summary": "Performs task page view behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:start",
+      "type": "function",
+      "name": "start",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        34,
+        34
+      ],
+      "summary": "Performs start behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:stop",
+      "type": "function",
+      "name": "stop",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        35,
+        35
+      ],
+      "summary": "Performs stop behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:onInput",
+      "type": "function",
+      "name": "onInput",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        52,
+        63
+      ],
+      "summary": "Performs on input behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:onTouchEvent",
+      "type": "function",
+      "name": "onTouchEvent",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        71,
+        87
+      ],
+      "summary": "Performs on touch event behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:drawList",
+      "type": "function",
+      "name": "drawList",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        102,
+        119
+      ],
+      "summary": "Performs draw list behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:line",
+      "type": "function",
+      "name": "line",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        121,
+        131
+      ],
+      "summary": "Performs line behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:close",
+      "type": "function",
+      "name": "close",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        150,
+        150
+      ],
+      "summary": "Performs close behavior used by the native tasks interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:TaskPageView",
+      "type": "class",
+      "name": "TaskPageView",
+      "filePath": "android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "lineRange": [
+        18,
+        151
+      ],
+      "summary": "Owns task page view behavior for the native tasks interface, including task page view, start, stop, on input.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "type": "file",
+      "name": "VoicePageView.java",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "summary": "Implements native Voice interface responsibilities centered on voice page view, voice page view, on input. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:VoicePageView",
+      "type": "function",
+      "name": "VoicePageView",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        42,
+        61
+      ],
+      "summary": "Performs voice page view behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onInput",
+      "type": "function",
+      "name": "onInput",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        63,
+        68
+      ],
+      "summary": "Performs on input behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onTouchEvent",
+      "type": "function",
+      "name": "onTouchEvent",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        70,
+        76
+      ],
+      "summary": "Performs on touch event behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:toggle",
+      "type": "function",
+      "name": "toggle",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        78,
+        87
+      ],
+      "summary": "Performs toggle behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:startSession",
+      "type": "function",
+      "name": "startSession",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        89,
+        134
+      ],
+      "summary": "Performs start session behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:requestAnswer",
+      "type": "function",
+      "name": "requestAnswer",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        136,
+        149
+      ],
+      "summary": "Performs request answer behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:handleRealtimeEvent",
+      "type": "function",
+      "name": "handleRealtimeEvent",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        151,
+        201
+      ],
+      "summary": "Performs handle realtime event behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:stopSession",
+      "type": "function",
+      "name": "stopSession",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        203,
+        228
+      ],
+      "summary": "Performs stop session behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:dispatchPendingFinalize",
+      "type": "function",
+      "name": "dispatchPendingFinalize",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        236,
+        260
+      ],
+      "summary": "Performs dispatch pending finalize behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:close",
+      "type": "function",
+      "name": "close",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        287,
+        290
+      ],
+      "summary": "Performs close behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onDraw",
+      "type": "function",
+      "name": "onDraw",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        292,
+        338
+      ],
+      "summary": "Performs on draw behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:drawMicrophone",
+      "type": "function",
+      "name": "drawMicrophone",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        340,
+        353
+      ],
+      "summary": "Performs draw microphone behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:drawWrapped",
+      "type": "function",
+      "name": "drawWrapped",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        355,
+        370
+      ],
+      "summary": "Performs draw wrapped behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:messageFor",
+      "type": "function",
+      "name": "messageFor",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        372,
+        408
+      ],
+      "summary": "Performs message for behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:recordTranscript",
+      "type": "function",
+      "name": "recordTranscript",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        410,
+        420
+      ],
+      "summary": "Performs record transcript behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:callTool",
+      "type": "function",
+      "name": "callTool",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        422,
+        452
+      ],
+      "summary": "Performs call tool behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:sendToolOutput",
+      "type": "function",
+      "name": "sendToolOutput",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        454,
+        473
+      ],
+      "summary": "Performs send tool output behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:isAvailable",
+      "type": "function",
+      "name": "isAvailable",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        475,
+        479
+      ],
+      "summary": "Performs is available behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:submitImage",
+      "type": "function",
+      "name": "submitImage",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        481,
+        502
+      ],
+      "summary": "Performs submit image behavior used by the native Voice interface.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:VoicePageView",
+      "type": "class",
+      "name": "VoicePageView",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "lineRange": [
+        21,
+        503
+      ],
+      "summary": "Owns voice page view behavior for the native Voice interface, including voice page view, on input, on touch event, toggle.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java",
+      "type": "file",
+      "name": "VoiceSessionHandoff.java",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java",
+      "summary": "Implements native Voice interface responsibilities centered on voice session handoff. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java:VoiceSessionHandoff",
+      "type": "class",
+      "name": "VoiceSessionHandoff",
+      "filePath": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java",
+      "lineRange": [
+        3,
+        6
+      ],
+      "summary": "Owns voice session handoff behavior for the native Voice interface, including is available, submit image.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "type": "file",
+      "name": "CalendarEventClient.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "summary": "Implements Android runtime host responsibilities centered on calendar event client, load upcoming, failure. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:loadUpcoming",
+      "type": "function",
+      "name": "loadUpcoming",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "lineRange": [
+        22,
+        39
+      ],
+      "summary": "Performs load upcoming behavior used by the Android runtime host.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:close",
+      "type": "function",
+      "name": "close",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "lineRange": [
+        42,
+        42
+      ],
+      "summary": "Performs close behavior used by the Android runtime host.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:CalendarEventClient",
+      "type": "class",
+      "name": "CalendarEventClient",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "lineRange": [
+        16,
+        43
+      ],
+      "summary": "Owns calendar event client behavior for the Android runtime host, including load upcoming, failure, close.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "type": "file",
+      "name": "CreationCatalogClient.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "summary": "Implements Android runtime host responsibilities centered on creation catalog client, load, asset. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:load",
+      "type": "function",
+      "name": "load",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "lineRange": [
+        27,
+        37
+      ],
+      "summary": "Performs load behavior used by the Android runtime host.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:asset",
+      "type": "function",
+      "name": "asset",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "lineRange": [
+        39,
+        44
+      ],
+      "summary": "Performs asset behavior used by the Android runtime host.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:request",
+      "type": "function",
+      "name": "request",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "lineRange": [
+        46,
+        62
+      ],
+      "summary": "Performs request behavior used by the Android runtime host.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:close",
+      "type": "function",
+      "name": "close",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "lineRange": [
+        64,
+        66
+      ],
+      "summary": "Performs close behavior used by the Android runtime host.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:CreationCatalogClient",
+      "type": "class",
+      "name": "CreationCatalogClient",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "lineRange": [
+        16,
+        67
+      ],
+      "summary": "Owns creation catalog client behavior for the Android runtime host, including load, asset, request, close.",
+      "tags": [
+        "android",
+        "native-ui",
+        "device-integration",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:bluetoothTransitionsRemainVisibleUntilFinalState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:bluetoothTransitionsRemainVisibleUntilFinalState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:displayWheelNeverChangesBacklight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:displayWheelNeverChangesBacklight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:displayActivationNeverRequestsAdjustment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:displayActivationNeverRequestsAdjustment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:brightnessStepsAreBoundedAwayFromAnUnusableBlackScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:brightnessStepsAreBoundedAwayFromAnUnusableBlackScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:soundWheelNeverChangesVolume",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:soundWheelNeverChangesVolume",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:policyDoesNotConsumeActivationOrOtherPages",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "function:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:policyDoesNotConsumeActivationOrOtherPages",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "class:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:SettingsInputPolicyTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "class:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java:SettingsInputPolicyTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
+      "target": "file:android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:TaskPageView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:TaskPageView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:start",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:start",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:stop",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:stop",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:onInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:onInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:onTouchEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:onTouchEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:drawList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:line",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:close",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "function:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:close",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "class:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:TaskPageView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "class:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java:TaskPageView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "file:android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "file:android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:android/feature/tasks/src/main/java/com/resonolabs/feature/tasks/TaskPageView.java",
+      "target": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/TaskClient.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:VoicePageView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:VoicePageView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onTouchEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onTouchEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:toggle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:startSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:requestAnswer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:handleRealtimeEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:stopSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:dispatchPendingFinalize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:close",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:close",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:onDraw",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:drawMicrophone",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:drawWrapped",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:messageFor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:recordTranscript",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:callTool",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:sendToolOutput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:isAvailable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:isAvailable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:submitImage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "function:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:submitImage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "class:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:VoicePageView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "class:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java:VoicePageView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "file:android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "file:android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
+      "target": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeVoiceClient.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java",
+      "target": "class:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java:VoiceSessionHandoff",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java",
+      "target": "class:android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionHandoff.java:VoiceSessionHandoff",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:loadUpcoming",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:loadUpcoming",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:close",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:close",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:CalendarEventClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java:CalendarEventClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:load",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:load",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:asset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:asset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:close",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:close",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:CreationCatalogClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java:CreationCatalogClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

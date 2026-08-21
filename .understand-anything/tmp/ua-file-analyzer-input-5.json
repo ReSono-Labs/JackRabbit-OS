@@ -1,0 +1,218 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "runtime/resono_runtime/agents/audience.py",
+      "language": "python",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/agents/delegation.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/agents/routing.py",
+      "language": "python",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "language": "python",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/tool_supply.py",
+      "language": "python",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/server.py",
+      "language": "python",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/agent_audiences.py",
+      "language": "python",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/__init__.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/builtins.py",
+      "language": "python",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/__init__.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/contract.py",
+      "language": "python",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/handlers.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/calendar/package.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/catalog.py",
+      "language": "python",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/definitions.py",
+      "language": "python",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/delegation.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/__init__.py",
+      "language": "python",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/contract.py",
+      "language": "python",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/handlers.py",
+      "language": "python",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/tasks/package.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/tools/web_search.py",
+      "language": "python",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "runtime/resono_runtime/agents/audience.py": [],
+    "runtime/resono_runtime/agents/delegation.py": [],
+    "runtime/resono_runtime/agents/routing.py": [
+      "runtime/resono_runtime/agents/audience.py"
+    ],
+    "runtime/resono_runtime/background_agent/mcp_gateway.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/background_agent/run_contract.py",
+      "runtime/resono_runtime/background_agent/tool_supply.py",
+      "runtime/resono_runtime/mcp/server.py",
+      "runtime/resono_runtime/tools/catalog.py"
+    ],
+    "runtime/resono_runtime/background_agent/tool_supply.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/background_agent/run_contract.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
+    "runtime/resono_runtime/mcp/server.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/tools/__init__.py"
+    ],
+    "runtime/resono_runtime/storage/agent_audiences.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/agents/routing.py",
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/tools/__init__.py": [
+      "runtime/resono_runtime/tools/builtins.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
+    "runtime/resono_runtime/tools/builtins.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
+    "runtime/resono_runtime/tools/calendar/__init__.py": [
+      "runtime/resono_runtime/tools/calendar/package.py"
+    ],
+    "runtime/resono_runtime/tools/calendar/contract.py": [],
+    "runtime/resono_runtime/tools/calendar/handlers.py": [
+      "runtime/resono_runtime/tools/__init__.py"
+    ],
+    "runtime/resono_runtime/tools/calendar/package.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/tools/calendar/contract.py",
+      "runtime/resono_runtime/tools/calendar/handlers.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
+    "runtime/resono_runtime/tools/catalog.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/agents/routing.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
+    "runtime/resono_runtime/tools/definitions.py": [
+      "runtime/resono_runtime/agents/audience.py"
+    ],
+    "runtime/resono_runtime/tools/delegation.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/agents/delegation.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
+    "runtime/resono_runtime/tools/tasks/__init__.py": [
+      "runtime/resono_runtime/tools/tasks/package.py"
+    ],
+    "runtime/resono_runtime/tools/tasks/contract.py": [],
+    "runtime/resono_runtime/tools/tasks/handlers.py": [
+      "runtime/resono_runtime/tools/__init__.py"
+    ],
+    "runtime/resono_runtime/tools/tasks/package.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py",
+      "runtime/resono_runtime/tools/tasks/contract.py",
+      "runtime/resono_runtime/tools/tasks/handlers.py"
+    ],
+    "runtime/resono_runtime/tools/web_search.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/providers/openai/web_search.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ]
+  }
+}

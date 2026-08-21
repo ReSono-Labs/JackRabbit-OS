@@ -1,0 +1,1227 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "type": "file",
+      "name": "bundled_install.py",
+      "filePath": "runtime/resono_runtime/plugins/bundled_install.py",
+      "summary": "Implements plugin lifecycle responsibilities centered on bundled plugin installer, archive. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/bundled_install.py:_archive",
+      "type": "function",
+      "name": "_archive",
+      "filePath": "runtime/resono_runtime/plugins/bundled_install.py",
+      "lineRange": [
+        45,
+        51
+      ],
+      "summary": "Performs archive behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/bundled_install.py:BundledPluginInstaller",
+      "type": "class",
+      "name": "BundledPluginInstaller",
+      "filePath": "runtime/resono_runtime/plugins/bundled_install.py",
+      "lineRange": [
+        15,
+        42
+      ],
+      "summary": "Owns bundled plugin installer behavior for the plugin lifecycle, including install once.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "type": "file",
+      "name": "card_lifecycle.py",
+      "filePath": "runtime/resono_runtime/plugins/card_lifecycle.py",
+      "summary": "Implements plugin lifecycle responsibilities centered on plugin card lifecycle error, plugin card lifecycle, hash tree. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/card_lifecycle.py:_hash_tree",
+      "type": "function",
+      "name": "_hash_tree",
+      "filePath": "runtime/resono_runtime/plugins/card_lifecycle.py",
+      "lineRange": [
+        78,
+        84
+      ],
+      "summary": "Performs hash tree behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/card_lifecycle.py:PluginCardLifecycleError",
+      "type": "class",
+      "name": "PluginCardLifecycleError",
+      "filePath": "runtime/resono_runtime/plugins/card_lifecycle.py",
+      "lineRange": [
+        12,
+        13
+      ],
+      "summary": "Represents the plugin card lifecycle error contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/card_lifecycle.py:PluginCardLifecycle",
+      "type": "class",
+      "name": "PluginCardLifecycle",
+      "filePath": "runtime/resono_runtime/plugins/card_lifecycle.py",
+      "lineRange": [
+        16,
+        75
+      ],
+      "summary": "Owns plugin card lifecycle behavior for the plugin lifecycle, including validate, replace, set enabled, remove.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/plugins/cards.py",
+      "type": "file",
+      "name": "cards.py",
+      "filePath": "runtime/resono_runtime/plugins/cards.py",
+      "summary": "Implements plugin lifecycle responsibilities centered on plugin card rejected, plugin card inspection, inspect plugin card. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/cards.py:inspect_plugin_card",
+      "type": "function",
+      "name": "inspect_plugin_card",
+      "filePath": "runtime/resono_runtime/plugins/cards.py",
+      "lineRange": [
+        36,
+        82
+      ],
+      "summary": "Performs inspect plugin card behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/cards.py:PluginCardRejected",
+      "type": "class",
+      "name": "PluginCardRejected",
+      "filePath": "runtime/resono_runtime/plugins/cards.py",
+      "lineRange": [
+        20,
+        21
+      ],
+      "summary": "Represents the plugin card rejected contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/cards.py:PluginCardInspection",
+      "type": "class",
+      "name": "PluginCardInspection",
+      "filePath": "runtime/resono_runtime/plugins/cards.py",
+      "lineRange": [
+        25,
+        33
+      ],
+      "summary": "Represents the plugin card inspection contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "type": "file",
+      "name": "lifecycle.py",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "summary": "Implements plugin lifecycle responsibilities centered on plugin lifecycle error, plugin preflight, plugin lifecycle. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/lifecycle.py:_resource",
+      "type": "function",
+      "name": "_resource",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "lineRange": [
+        190,
+        190
+      ],
+      "summary": "Performs resource behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/lifecycle.py:_mcp_id",
+      "type": "function",
+      "name": "_mcp_id",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "lineRange": [
+        191,
+        191
+      ],
+      "summary": "Performs mcp id behavior used by the plugin lifecycle.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/lifecycle.py:_hash_tree",
+      "type": "function",
+      "name": "_hash_tree",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "lineRange": [
+        194,
+        198
+      ],
+      "summary": "Performs hash tree behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/lifecycle.py:_components",
+      "type": "function",
+      "name": "_components",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "lineRange": [
+        201,
+        206
+      ],
+      "summary": "Performs components behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginLifecycleError",
+      "type": "class",
+      "name": "PluginLifecycleError",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "lineRange": [
+        23,
+        24
+      ],
+      "summary": "Represents the plugin lifecycle error contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginPreflight",
+      "type": "class",
+      "name": "PluginPreflight",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "lineRange": [
+        28,
+        34
+      ],
+      "summary": "Represents the plugin preflight contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginLifecycle",
+      "type": "class",
+      "name": "PluginLifecycle",
+      "filePath": "runtime/resono_runtime/plugins/lifecycle.py",
+      "lineRange": [
+        37,
+        187
+      ],
+      "summary": "Owns plugin lifecycle behavior for the plugin lifecycle, including preflight, confirm, list, inspect.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/plugins/specification.py",
+      "type": "file",
+      "name": "specification.py",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "summary": "Implements plugin lifecycle responsibilities centered on plugin specification error, standard plugin manifest, standard mcp server. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/specification.py:parse_plugin_manifest",
+      "type": "function",
+      "name": "parse_plugin_manifest",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        40,
+        47
+      ],
+      "summary": "Performs parse plugin manifest behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_document",
+      "type": "function",
+      "name": "parse_mcp_document",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        50,
+        52
+      ],
+      "summary": "Performs parse mcp document behavior used by the plugin lifecycle.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_bytes",
+      "type": "function",
+      "name": "parse_mcp_bytes",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        55,
+        62
+      ],
+      "summary": "Performs parse mcp bytes behavior used by the plugin lifecycle.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_value",
+      "type": "function",
+      "name": "parse_mcp_value",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        65,
+        90
+      ],
+      "summary": "Performs parse mcp value behavior used by the plugin lifecycle.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/specification.py:_read_object",
+      "type": "function",
+      "name": "_read_object",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        93,
+        100
+      ],
+      "summary": "Performs read object behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/specification.py:_schema",
+      "type": "function",
+      "name": "_schema",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        103,
+        110
+      ],
+      "summary": "Performs schema behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/specification.py:_validate",
+      "type": "function",
+      "name": "_validate",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        113,
+        116
+      ],
+      "summary": "Performs validate behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/specification.py:PluginSpecificationError",
+      "type": "class",
+      "name": "PluginSpecificationError",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        17,
+        18
+      ],
+      "summary": "Represents the plugin specification error contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/specification.py:StandardPluginManifest",
+      "type": "class",
+      "name": "StandardPluginManifest",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        22,
+        25
+      ],
+      "summary": "Represents the standard plugin manifest contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/specification.py:StandardMcpServer",
+      "type": "class",
+      "name": "StandardMcpServer",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        29,
+        31
+      ],
+      "summary": "Represents the standard mcp server contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/specification.py:StandardMcpDocument",
+      "type": "class",
+      "name": "StandardMcpDocument",
+      "filePath": "runtime/resono_runtime/plugins/specification.py",
+      "lineRange": [
+        35,
+        37
+      ],
+      "summary": "Represents the standard mcp document contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/skills/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/skills/__init__.py",
+      "summary": "Defines the public package surface for the skill lifecycle, collecting the module's supported imports in one place.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/skills/activation.py",
+      "type": "file",
+      "name": "activation.py",
+      "filePath": "runtime/resono_runtime/skills/activation.py",
+      "summary": "Implements skill lifecycle responsibilities centered on skill disclosure, skill activation, resource. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/skills/activation.py:_resource",
+      "type": "function",
+      "name": "_resource",
+      "filePath": "runtime/resono_runtime/skills/activation.py",
+      "lineRange": [
+        110,
+        111
+      ],
+      "summary": "Performs resource behavior used by the skill lifecycle.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/skills/activation.py:_plugin_resource",
+      "type": "function",
+      "name": "_plugin_resource",
+      "filePath": "runtime/resono_runtime/skills/activation.py",
+      "lineRange": [
+        114,
+        115
+      ],
+      "summary": "Performs plugin resource behavior used by the skill lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/skills/activation.py:SkillDisclosure",
+      "type": "class",
+      "name": "SkillDisclosure",
+      "filePath": "runtime/resono_runtime/skills/activation.py",
+      "lineRange": [
+        19,
+        21
+      ],
+      "summary": "Represents the skill disclosure contract or immutable state used by the skill lifecycle.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/skills/activation.py:SkillActivation",
+      "type": "class",
+      "name": "SkillActivation",
+      "filePath": "runtime/resono_runtime/skills/activation.py",
+      "lineRange": [
+        24,
+        107
+      ],
+      "summary": "Owns skill activation behavior for the skill lifecycle, including disclosures, has enabled, load, tool definition.",
+      "tags": [
+        "agent-skill",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "function:runtime/resono_runtime/plugins/bundled_install.py:_archive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "function:runtime/resono_runtime/plugins/bundled_install.py:_archive",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "class:runtime/resono_runtime/plugins/bundled_install.py:BundledPluginInstaller",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "class:runtime/resono_runtime/plugins/bundled_install.py:BundledPluginInstaller",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "file:runtime/resono_runtime/plugins/archives.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "target": "file:runtime/resono_runtime/storage/plugins.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/card_lifecycle.py:_hash_tree",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/card_lifecycle.py:_hash_tree",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/card_lifecycle.py:PluginCardLifecycleError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/card_lifecycle.py:PluginCardLifecycleError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/card_lifecycle.py:PluginCardLifecycle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/card_lifecycle.py:PluginCardLifecycle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "file:runtime/resono_runtime/plugins/cards.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "file:runtime/resono_runtime/storage/creations.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "target": "file:runtime/resono_runtime/storage/plugin_components.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/cards.py",
+      "target": "function:runtime/resono_runtime/plugins/cards.py:inspect_plugin_card",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/cards.py",
+      "target": "function:runtime/resono_runtime/plugins/cards.py:inspect_plugin_card",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/cards.py",
+      "target": "class:runtime/resono_runtime/plugins/cards.py:PluginCardRejected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/cards.py",
+      "target": "class:runtime/resono_runtime/plugins/cards.py:PluginCardRejected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/cards.py",
+      "target": "class:runtime/resono_runtime/plugins/cards.py:PluginCardInspection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/cards.py",
+      "target": "class:runtime/resono_runtime/plugins/cards.py:PluginCardInspection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_resource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_resource",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_mcp_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_mcp_id",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_hash_tree",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_hash_tree",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_components",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "function:runtime/resono_runtime/plugins/lifecycle.py:_components",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginLifecycleError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginLifecycleError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginPreflight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginPreflight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginLifecycle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "class:runtime/resono_runtime/plugins/lifecycle.py:PluginLifecycle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/imports/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/plugins/archives.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/plugins/specification.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/storage/plugin_components.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/storage/plugins.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "target": "file:runtime/resono_runtime/storage/skills.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_plugin_manifest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_plugin_manifest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_document",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_document",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_bytes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_bytes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_value",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:parse_mcp_value",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:_read_object",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:_read_object",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:_schema",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:_schema",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:_validate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "function:runtime/resono_runtime/plugins/specification.py:_validate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:PluginSpecificationError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:PluginSpecificationError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:StandardPluginManifest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:StandardPluginManifest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:StandardMcpServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:StandardMcpServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:StandardMcpDocument",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/specification.py",
+      "target": "class:runtime/resono_runtime/plugins/specification.py:StandardMcpDocument",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/__init__.py",
+      "target": "file:runtime/resono_runtime/skills/activation.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/__init__.py",
+      "target": "file:runtime/resono_runtime/skills/specification.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "function:runtime/resono_runtime/skills/activation.py:_resource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "function:runtime/resono_runtime/skills/activation.py:_resource",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "function:runtime/resono_runtime/skills/activation.py:_plugin_resource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "function:runtime/resono_runtime/skills/activation.py:_plugin_resource",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "class:runtime/resono_runtime/skills/activation.py:SkillDisclosure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "class:runtime/resono_runtime/skills/activation.py:SkillDisclosure",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "class:runtime/resono_runtime/skills/activation.py:SkillActivation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "class:runtime/resono_runtime/skills/activation.py:SkillActivation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "file:runtime/resono_runtime/skills/specification.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "file:runtime/resono_runtime/storage/plugin_components.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "file:runtime/resono_runtime/storage/plugins.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "file:runtime/resono_runtime/storage/skills.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/skills/activation.py",
+      "target": "file:runtime/resono_runtime/tools/definitions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

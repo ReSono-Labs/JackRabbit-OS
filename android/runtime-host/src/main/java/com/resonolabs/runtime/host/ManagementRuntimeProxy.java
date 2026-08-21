@@ -47,6 +47,7 @@ final class ManagementRuntimeProxy {
             "/v1/management/creations/preflight",
             "/v1/management/creations/confirm",
             "/v1/management/tools",
+            "/v1/management/background-agent",
             "/v1/management/text/turns",
             "/v1/management/memory",
             "/v1/management/memory/search",
@@ -60,6 +61,7 @@ final class ManagementRuntimeProxy {
             "/v1/management/plugins/",
             "/v1/management/mcp/connections/",
             "/v1/management/creations/",
+            "/v1/management/background-agent/",
             "/v1/management/memory/",
             "/v1/management/memory/sessions/");
     private final String localApiToken;

@@ -2,9 +2,9 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 from resono_runtime.agents import AgentKind
-from resono_runtime.domains.tasks import TaskRepository
+from resono_runtime.domains.tasks import TaskRepository, TaskService
 from resono_runtime.storage.database import RuntimeDatabase
-from resono_runtime.tools import ToolCatalog, ToolInvocationResult
+from resono_runtime.tools import ToolCatalog, ToolInvocationContext, ToolInvocationResult
 from resono_runtime.tools.tasks import TasksToolPackage
 
 
@@ -34,6 +34,43 @@ class TasksContractTest(unittest.TestCase):
             {"task_id", "task_text", "status", "created_at", "updated_at", "completed_at"},
             columns,
         )
+
+    def test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist(self) -> None:
+        for index, approval in enumerate((
+            "Yeah, go ahead and save that.",
+            "Yes, approved.",
+            "Yeah, it's, yes.",
+            "OK, good.",
+            "Approved.",
+        )):
+            service = TaskService(self.repository)
+            prepared = service.invoke_tool(
+                "tasks_add",
+                ToolInvocationContext(AgentKind.VOICE, "voice-session", f"prepare-{index}", "Create it", 1),
+                {"text": f"Task {index}"},
+            )
+            action = prepared.structured_content["result"]
+            confirmed = service.invoke_tool(
+                "tasks_confirm_action",
+                ToolInvocationContext(AgentKind.VOICE, "voice-session", f"confirm-{index}", approval, 2),
+                {"actionId": action["actionId"], "contentHash": action["contentHash"]},
+            )
+            self.assertFalse(confirmed.is_error, approval)
+
+    def test_confirmation_still_rejects_the_prepare_utterance(self) -> None:
+        service = TaskService(self.repository)
+        prepared = service.invoke_tool(
+            "tasks_add",
+            ToolInvocationContext(AgentKind.VOICE, "voice-session", "prepare", "Create it", 4),
+            {"text": "Unapproved task"},
+        )
+        action = prepared.structured_content["result"]
+        confirmed = service.invoke_tool(
+            "tasks_confirm_action",
+            ToolInvocationContext(AgentKind.VOICE, "voice-session", "confirm", "Approved", 4),
+            {"actionId": action["actionId"], "contentHash": action["contentHash"]},
+        )
+        self.assertTrue(confirmed.is_error)
 
 
 class _ToolService:

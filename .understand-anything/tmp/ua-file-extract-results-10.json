@@ -1,0 +1,3987 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "runtime/resono_runtime/domains/mail/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 4,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/mail/connector.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 419,
+      "nonEmptyLines": 365,
+      "functions": [
+        {
+          "name": "_parse_folder",
+          "startLine": 301,
+          "endLine": 330,
+          "params": [
+            "raw"
+          ]
+        },
+        {
+          "name": "_parse_fetch",
+          "startLine": 333,
+          "endLine": 357,
+          "params": [
+            "uid",
+            "status",
+            "payload"
+          ]
+        },
+        {
+          "name": "_parts",
+          "startLine": 360,
+          "endLine": 374,
+          "params": [
+            "message"
+          ]
+        },
+        {
+          "name": "_header",
+          "startLine": 377,
+          "endLine": 378,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_addresses",
+          "startLine": 381,
+          "endLine": 382,
+          "params": [
+            "values"
+          ]
+        },
+        {
+          "name": "_date",
+          "startLine": 385,
+          "endLine": 394,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_response_int",
+          "startLine": 397,
+          "endLine": 402,
+          "params": [
+            "client",
+            "name"
+          ]
+        },
+        {
+          "name": "_select_mutable",
+          "startLine": 405,
+          "endLine": 408,
+          "params": [
+            "client",
+            "folder"
+          ]
+        },
+        {
+          "name": "_safe_destination",
+          "startLine": 411,
+          "endLine": 414,
+          "params": [
+            "name"
+          ]
+        },
+        {
+          "name": "_within_sync_limit",
+          "startLine": 417,
+          "endLine": 419,
+          "params": [
+            "started_at"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MailCredentials",
+          "startLine": 29,
+          "endLine": 38,
+          "methods": [],
+          "properties": [
+            "email_address",
+            "username",
+            "password",
+            "imap_host",
+            "imap_port",
+            "imap_security",
+            "smtp_host",
+            "smtp_port",
+            "smtp_security"
+          ]
+        },
+        {
+          "name": "RemoteFolder",
+          "startLine": 42,
+          "endLine": 46,
+          "methods": [],
+          "properties": [
+            "name",
+            "delimiter",
+            "attributes",
+            "special_use"
+          ]
+        },
+        {
+          "name": "RemoteAttachment",
+          "startLine": 50,
+          "endLine": 56,
+          "methods": [],
+          "properties": [
+            "part_id",
+            "filename",
+            "content_type",
+            "content_disposition",
+            "content_id",
+            "byte_size"
+          ]
+        },
+        {
+          "name": "RemoteMessage",
+          "startLine": 60,
+          "endLine": 72,
+          "methods": [],
+          "properties": [
+            "uid",
+            "rfc_message_id",
+            "subject",
+            "sender",
+            "recipients",
+            "sent_at",
+            "received_at",
+            "flags",
+            "body_text",
+            "body_html",
+            "raw_size",
+            "attachments"
+          ]
+        },
+        {
+          "name": "RemoteFolderSnapshot",
+          "startLine": 76,
+          "endLine": 80,
+          "methods": [],
+          "properties": [
+            "folder",
+            "uid_validity",
+            "uid_next",
+            "messages"
+          ]
+        },
+        {
+          "name": "RemoteFolderIndex",
+          "startLine": 84,
+          "endLine": 88,
+          "methods": [],
+          "properties": [
+            "folder",
+            "uid_validity",
+            "uid_next",
+            "uids"
+          ]
+        },
+        {
+          "name": "MailProviderError",
+          "startLine": 91,
+          "endLine": 92,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ImapSmtpConnector",
+          "startLine": 95,
+          "endLine": 298,
+          "methods": [
+            "validate",
+            "imap_session",
+            "smtp_session",
+            "list_folders",
+            "snapshot_folder",
+            "index_folder",
+            "fetch_page",
+            "set_read_state",
+            "move",
+            "create_folder",
+            "rename_folder",
+            "send_smtp",
+            "append_sent",
+            "fetch_attachment"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MailCredentials",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "RemoteFolder",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "RemoteAttachment",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "RemoteMessage",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "RemoteFolderSnapshot",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "RemoteFolderIndex",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "MailProviderError",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "ImapSmtpConnector",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "_parse_folder",
+          "line": 301,
+          "isDefault": false
+        },
+        {
+          "name": "_parse_fetch",
+          "line": 333,
+          "isDefault": false
+        },
+        {
+          "name": "_parts",
+          "line": 360,
+          "isDefault": false
+        },
+        {
+          "name": "_header",
+          "line": 377,
+          "isDefault": false
+        },
+        {
+          "name": "_addresses",
+          "line": 381,
+          "isDefault": false
+        },
+        {
+          "name": "_date",
+          "line": 385,
+          "isDefault": false
+        },
+        {
+          "name": "_response_int",
+          "line": 397,
+          "isDefault": false
+        },
+        {
+          "name": "_select_mutable",
+          "line": 405,
+          "isDefault": false
+        },
+        {
+          "name": "_safe_destination",
+          "line": 411,
+          "isDefault": false
+        },
+        {
+          "name": "_within_sync_limit",
+          "line": 417,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate",
+          "callee": "self.imap_session",
+          "lineNumber": 99
+        },
+        {
+          "caller": "validate",
+          "callee": "self.smtp_session",
+          "lineNumber": 101
+        },
+        {
+          "caller": "imap_session",
+          "callee": "validate_public_host",
+          "lineNumber": 106
+        },
+        {
+          "caller": "imap_session",
+          "callee": "ssl.create_default_context",
+          "lineNumber": 107
+        },
+        {
+          "caller": "imap_session",
+          "callee": "imaplib.IMAP4_SSL",
+          "lineNumber": 109
+        },
+        {
+          "caller": "imap_session",
+          "callee": "imaplib.IMAP4",
+          "lineNumber": 113
+        },
+        {
+          "caller": "imap_session",
+          "callee": "client.starttls",
+          "lineNumber": 114
+        },
+        {
+          "caller": "imap_session",
+          "callee": "MailProviderError",
+          "lineNumber": 116
+        },
+        {
+          "caller": "imap_session",
+          "callee": "client.login",
+          "lineNumber": 118
+        },
+        {
+          "caller": "imap_session",
+          "callee": "client.logout",
+          "lineNumber": 122
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "validate_public_host",
+          "lineNumber": 128
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "ssl.create_default_context",
+          "lineNumber": 129
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "smtplib.SMTP_SSL",
+          "lineNumber": 131
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "smtplib.SMTP",
+          "lineNumber": 135
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "client.ehlo",
+          "lineNumber": 136
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "client.starttls",
+          "lineNumber": 137
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "client.ehlo",
+          "lineNumber": 138
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "MailProviderError",
+          "lineNumber": 140
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "client.login",
+          "lineNumber": 142
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "client.quit",
+          "lineNumber": 146
+        },
+        {
+          "caller": "smtp_session",
+          "callee": "client.close",
+          "lineNumber": 148
+        },
+        {
+          "caller": "list_folders",
+          "callee": "client.list",
+          "lineNumber": 151
+        },
+        {
+          "caller": "list_folders",
+          "callee": "MailProviderError",
+          "lineNumber": 153
+        },
+        {
+          "caller": "list_folders",
+          "callee": "tuple",
+          "lineNumber": 154
+        },
+        {
+          "caller": "list_folders",
+          "callee": "_parse_folder",
+          "lineNumber": 154
+        },
+        {
+          "caller": "list_folders",
+          "callee": "tuple",
+          "lineNumber": 155
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "_within_sync_limit",
+          "lineNumber": 164
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "client.select",
+          "lineNumber": 165
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "MailProviderError",
+          "lineNumber": 167
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "_response_int",
+          "lineNumber": 168
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "_response_int",
+          "lineNumber": 169
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "client.uid",
+          "lineNumber": 170
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "MailProviderError",
+          "lineNumber": 172
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "tuple",
+          "lineNumber": 173
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "int",
+          "lineNumber": 173
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "values[0].split",
+          "lineNumber": 173
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "_within_sync_limit",
+          "lineNumber": 176
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "client.uid",
+          "lineNumber": 177
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "str",
+          "lineNumber": 177
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "_parse_fetch",
+          "lineNumber": 178
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "messages.append",
+          "lineNumber": 180
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "RemoteFolderSnapshot",
+          "lineNumber": 181
+        },
+        {
+          "caller": "snapshot_folder",
+          "callee": "tuple",
+          "lineNumber": 181
+        },
+        {
+          "caller": "index_folder",
+          "callee": "client.select",
+          "lineNumber": 184
+        },
+        {
+          "caller": "index_folder",
+          "callee": "MailProviderError",
+          "lineNumber": 186
+        },
+        {
+          "caller": "index_folder",
+          "callee": "_response_int",
+          "lineNumber": 187
+        },
+        {
+          "caller": "index_folder",
+          "callee": "_response_int",
+          "lineNumber": 188
+        },
+        {
+          "caller": "index_folder",
+          "callee": "client.uid",
+          "lineNumber": 189
+        },
+        {
+          "caller": "index_folder",
+          "callee": "MailProviderError",
+          "lineNumber": 191
+        },
+        {
+          "caller": "index_folder",
+          "callee": "tuple",
+          "lineNumber": 192
+        },
+        {
+          "caller": "index_folder",
+          "callee": "int",
+          "lineNumber": 192
+        },
+        {
+          "caller": "index_folder",
+          "callee": "values[0].split",
+          "lineNumber": 192
+        },
+        {
+          "caller": "index_folder",
+          "callee": "RemoteFolderIndex",
+          "lineNumber": 193
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "client.select",
+          "lineNumber": 196
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "MailProviderError",
+          "lineNumber": 198
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "monotonic",
+          "lineNumber": 201
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "TimeoutError",
+          "lineNumber": 204
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "client.uid",
+          "lineNumber": 205
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "str",
+          "lineNumber": 205
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "_parse_fetch",
+          "lineNumber": 206
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "messages.append",
+          "lineNumber": 208
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "RemoteFolderSnapshot",
+          "lineNumber": 209
+        },
+        {
+          "caller": "fetch_page",
+          "callee": "tuple",
+          "lineNumber": 209
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "self.imap_session",
+          "lineNumber": 212
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "_select_mutable",
+          "lineNumber": 213
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "client.uid",
+          "lineNumber": 215
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "str",
+          "lineNumber": 215
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "MailProviderError",
+          "lineNumber": 217
+        },
+        {
+          "caller": "move",
+          "callee": "_safe_destination",
+          "lineNumber": 220
+        },
+        {
+          "caller": "move",
+          "callee": "self.imap_session",
+          "lineNumber": 221
+        },
+        {
+          "caller": "move",
+          "callee": "_select_mutable",
+          "lineNumber": 222
+        },
+        {
+          "caller": "move",
+          "callee": "value.decode().upper",
+          "lineNumber": 223
+        },
+        {
+          "caller": "move",
+          "callee": "value.decode",
+          "lineNumber": 223
+        },
+        {
+          "caller": "move",
+          "callee": "isinstance",
+          "lineNumber": 223
+        },
+        {
+          "caller": "move",
+          "callee": "str(value).upper",
+          "lineNumber": 223
+        },
+        {
+          "caller": "move",
+          "callee": "str",
+          "lineNumber": 223
+        },
+        {
+          "caller": "move",
+          "callee": "MailProviderError",
+          "lineNumber": 225
+        },
+        {
+          "caller": "move",
+          "callee": "client.uid",
+          "lineNumber": 226
+        },
+        {
+          "caller": "move",
+          "callee": "str",
+          "lineNumber": 226
+        },
+        {
+          "caller": "move",
+          "callee": "MailProviderError",
+          "lineNumber": 228
+        },
+        {
+          "caller": "create_folder",
+          "callee": "_safe_destination",
+          "lineNumber": 231
+        },
+        {
+          "caller": "create_folder",
+          "callee": "self.imap_session",
+          "lineNumber": 232
+        },
+        {
+          "caller": "create_folder",
+          "callee": "client.create",
+          "lineNumber": 233
+        },
+        {
+          "caller": "create_folder",
+          "callee": "MailProviderError",
+          "lineNumber": 235
+        },
+        {
+          "caller": "rename_folder",
+          "callee": "_safe_destination",
+          "lineNumber": 238
+        },
+        {
+          "caller": "rename_folder",
+          "callee": "_safe_destination",
+          "lineNumber": 239
+        },
+        {
+          "caller": "rename_folder",
+          "callee": "self.imap_session",
+          "lineNumber": 240
+        },
+        {
+          "caller": "rename_folder",
+          "callee": "client.rename",
+          "lineNumber": 241
+        },
+        {
+          "caller": "rename_folder",
+          "callee": "MailProviderError",
+          "lineNumber": 243
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "EmailMessage",
+          "lineNumber": 246
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "\", \".join",
+          "lineNumber": 248
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "format_datetime",
+          "lineNumber": 250
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "datetime.now",
+          "lineNumber": 250
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "make_msgid",
+          "lineNumber": 251
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "credentials.email_address.partition",
+          "lineNumber": 251
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "message.set_content",
+          "lineNumber": 253
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "message.as_bytes",
+          "lineNumber": 254
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "self.smtp_session",
+          "lineNumber": 255
+        },
+        {
+          "caller": "send_smtp",
+          "callee": "client.send_message",
+          "lineNumber": 256
+        },
+        {
+          "caller": "append_sent",
+          "callee": "BytesParser(policy=default).parsebytes(wire).get",
+          "lineNumber": 260
+        },
+        {
+          "caller": "append_sent",
+          "callee": "BytesParser(policy=default).parsebytes",
+          "lineNumber": 260
+        },
+        {
+          "caller": "append_sent",
+          "callee": "BytesParser",
+          "lineNumber": 260
+        },
+        {
+          "caller": "append_sent",
+          "callee": "MailProviderError",
+          "lineNumber": 262
+        },
+        {
+          "caller": "append_sent",
+          "callee": "self.imap_session",
+          "lineNumber": 263
+        },
+        {
+          "caller": "append_sent",
+          "callee": "next",
+          "lineNumber": 264
+        },
+        {
+          "caller": "append_sent",
+          "callee": "self.list_folders",
+          "lineNumber": 264
+        },
+        {
+          "caller": "append_sent",
+          "callee": "MailProviderError",
+          "lineNumber": 266
+        },
+        {
+          "caller": "append_sent",
+          "callee": "client.select",
+          "lineNumber": 267
+        },
+        {
+          "caller": "append_sent",
+          "callee": "MailProviderError",
+          "lineNumber": 269
+        },
+        {
+          "caller": "append_sent",
+          "callee": "client.uid",
+          "lineNumber": 270
+        },
+        {
+          "caller": "append_sent",
+          "callee": "str",
+          "lineNumber": 270
+        },
+        {
+          "caller": "append_sent",
+          "callee": "any",
+          "lineNumber": 271
+        },
+        {
+          "caller": "append_sent",
+          "callee": "part.strip",
+          "lineNumber": 271
+        },
+        {
+          "caller": "append_sent",
+          "callee": "isinstance",
+          "lineNumber": 271
+        },
+        {
+          "caller": "append_sent",
+          "callee": "client.append",
+          "lineNumber": 273
+        },
+        {
+          "caller": "append_sent",
+          "callee": "imaplib.Time2Internaldate",
+          "lineNumber": 273
+        },
+        {
+          "caller": "append_sent",
+          "callee": "datetime.now",
+          "lineNumber": 273
+        },
+        {
+          "caller": "append_sent",
+          "callee": "MailProviderError",
+          "lineNumber": 275
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "MailProviderError",
+          "lineNumber": 279
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "content_type.casefold",
+          "lineNumber": 280
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "MailProviderError",
+          "lineNumber": 281
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "self.imap_session",
+          "lineNumber": 282
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "client.select",
+          "lineNumber": 283
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "MailProviderError",
+          "lineNumber": 285
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "client.uid",
+          "lineNumber": 286
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "str",
+          "lineNumber": 286
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "next",
+          "lineNumber": 287
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "isinstance",
+          "lineNumber": 287
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "len",
+          "lineNumber": 287
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "isinstance",
+          "lineNumber": 287
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "MailProviderError",
+          "lineNumber": 289
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "BytesParser(policy=default).parsebytes",
+          "lineNumber": 290
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "BytesParser",
+          "lineNumber": 290
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "tuple",
+          "lineNumber": 291
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "message.walk",
+          "lineNumber": 291
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "message.is_multipart",
+          "lineNumber": 291
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "parts[int(part_id)].get_payload",
+          "lineNumber": 293
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "int",
+          "lineNumber": 293
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "MailProviderError",
+          "lineNumber": 295
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "len",
+          "lineNumber": 296
+        },
+        {
+          "caller": "fetch_attachment",
+          "callee": "MailProviderError",
+          "lineNumber": 297
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "raw.decode",
+          "lineNumber": 302
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "re.match",
+          "lineNumber": 303
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "match.group(\"name\").strip().strip",
+          "lineNumber": 306
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "match.group(\"name\").strip",
+          "lineNumber": 306
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "match.group",
+          "lineNumber": 306
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "tuple",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "match.group(\"flags\").split",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "match.group",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "value.casefold",
+          "lineNumber": 308
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "next",
+          "lineNumber": 309
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "match.group",
+          "lineNumber": 310
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "delimiter_value.strip",
+          "lineNumber": 311
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "name.rsplit(delimiter, 1)[-1].strip().casefold",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "name.rsplit(delimiter, 1)[-1].strip",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "name.rsplit",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "name.strip().casefold",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "name.strip",
+          "lineNumber": 312
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "{\n            \"inbox\": \"inbox\",\n            \"sent\": \"sent\",\n            \"sent items\": \"sent\",\n            \"sent messages\": \"sent\",\n            \"drafts\": \"drafts\",\n            \"archive\": \"archive\",\n            \"archives\": \"archive\",\n            \"junk\": \"junk\",\n            \"spam\": \"junk\",\n            \"trash\": \"trash\",\n            \"deleted\": \"trash\",\n            \"deleted items\": \"trash\",\n            \"bin\": \"trash\",\n            \"recycle bin\": \"trash\",\n        }.get",
+          "lineNumber": 314
+        },
+        {
+          "caller": "_parse_folder",
+          "callee": "RemoteFolder",
+          "lineNumber": 330
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "isinstance",
+          "lineNumber": 334
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "next",
+          "lineNumber": 336
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "isinstance",
+          "lineNumber": 336
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "len",
+          "lineNumber": 336
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "isinstance",
+          "lineNumber": 336
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "\" \".join",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "item[0].decode",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "isinstance",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "isinstance",
+          "lineNumber": 339
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "re.search",
+          "lineNumber": 340
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "tuple",
+          "lineNumber": 341
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "flag_match.group(1).split",
+          "lineNumber": 341
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "flag_match.group",
+          "lineNumber": 341
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "BytesParser(policy=default).parsebytes",
+          "lineNumber": 342
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "BytesParser",
+          "lineNumber": 342
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "_parts",
+          "lineNumber": 343
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "RemoteMessage",
+          "lineNumber": 344
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get",
+          "lineNumber": 346
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "_header",
+          "lineNumber": 347
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get",
+          "lineNumber": 347
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "_addresses",
+          "lineNumber": 348
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get_all",
+          "lineNumber": 348
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "_addresses",
+          "lineNumber": 349
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get_all",
+          "lineNumber": 349
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get_all",
+          "lineNumber": 349
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get_all",
+          "lineNumber": 349
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "_date",
+          "lineNumber": 350
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get",
+          "lineNumber": 350
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "_date",
+          "lineNumber": 351
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "parsed.get",
+          "lineNumber": 351
+        },
+        {
+          "caller": "_parse_fetch",
+          "callee": "len",
+          "lineNumber": 355
+        },
+        {
+          "caller": "_parts",
+          "callee": "enumerate",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_parts",
+          "callee": "message.walk",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_parts",
+          "callee": "message.is_multipart",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get_content_disposition",
+          "lineNumber": 365
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get_content_type",
+          "lineNumber": 366
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get_payload",
+          "lineNumber": 367
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get_filename",
+          "lineNumber": 368
+        },
+        {
+          "caller": "_parts",
+          "callee": "attachments.append",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_parts",
+          "callee": "RemoteAttachment",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_parts",
+          "callee": "str",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_parts",
+          "callee": "_header",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get_filename",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_parts",
+          "callee": "len",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get_content",
+          "lineNumber": 371
+        },
+        {
+          "caller": "_parts",
+          "callee": "part.get_content",
+          "lineNumber": 373
+        },
+        {
+          "caller": "_parts",
+          "callee": "tuple",
+          "lineNumber": 374
+        },
+        {
+          "caller": "_header",
+          "callee": "str",
+          "lineNumber": 378
+        },
+        {
+          "caller": "_header",
+          "callee": "make_header",
+          "lineNumber": 378
+        },
+        {
+          "caller": "_header",
+          "callee": "decode_header",
+          "lineNumber": 378
+        },
+        {
+          "caller": "_addresses",
+          "callee": "tuple",
+          "lineNumber": 382
+        },
+        {
+          "caller": "_addresses",
+          "callee": "_header",
+          "lineNumber": 382
+        },
+        {
+          "caller": "_addresses",
+          "callee": "address.casefold",
+          "lineNumber": 382
+        },
+        {
+          "caller": "_addresses",
+          "callee": "getaddresses",
+          "lineNumber": 382
+        },
+        {
+          "caller": "_date",
+          "callee": "parsedate_to_datetime",
+          "lineNumber": 389
+        },
+        {
+          "caller": "_date",
+          "callee": "parsed.replace",
+          "lineNumber": 391
+        },
+        {
+          "caller": "_date",
+          "callee": "parsed.astimezone(UTC).isoformat",
+          "lineNumber": 392
+        },
+        {
+          "caller": "_date",
+          "callee": "parsed.astimezone",
+          "lineNumber": 392
+        },
+        {
+          "caller": "_response_int",
+          "callee": "client.response",
+          "lineNumber": 398
+        },
+        {
+          "caller": "_response_int",
+          "callee": "int",
+          "lineNumber": 400
+        },
+        {
+          "caller": "_select_mutable",
+          "callee": "client.select",
+          "lineNumber": 406
+        },
+        {
+          "caller": "_select_mutable",
+          "callee": "MailProviderError",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_safe_destination",
+          "callee": "name.strip",
+          "lineNumber": 412
+        },
+        {
+          "caller": "_safe_destination",
+          "callee": "any",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_safe_destination",
+          "callee": "normalized.casefold().replace(\"-\", \" \").replace(\"_\", \" \").split",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_safe_destination",
+          "callee": "normalized.casefold().replace(\"-\", \" \").replace",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_safe_destination",
+          "callee": "normalized.casefold().replace",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_safe_destination",
+          "callee": "normalized.casefold",
+          "lineNumber": 413
+        },
+        {
+          "caller": "_safe_destination",
+          "callee": "MailProviderError",
+          "lineNumber": 414
+        },
+        {
+          "caller": "_within_sync_limit",
+          "callee": "monotonic",
+          "lineNumber": 418
+        },
+        {
+          "caller": "_within_sync_limit",
+          "callee": "TimeoutError",
+          "lineNumber": 419
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 18,
+        "functionCount": 10,
+        "classCount": 8
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/mail/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 25,
+      "classes": [
+        {
+          "name": "MailAccountConfiguration",
+          "startLine": 7,
+          "endLine": 17,
+          "methods": [],
+          "properties": [
+            "account_id",
+            "label",
+            "email_address",
+            "username",
+            "imap_host",
+            "imap_port",
+            "imap_security",
+            "smtp_host",
+            "smtp_port",
+            "smtp_security"
+          ]
+        },
+        {
+          "name": "MailAccount",
+          "startLine": 21,
+          "endLine": 30,
+          "methods": [],
+          "properties": [
+            "configuration",
+            "enabled",
+            "credential_present",
+            "next_sync_at",
+            "last_sync_at",
+            "last_sync_state",
+            "last_sync_detail",
+            "created_at",
+            "updated_at"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MailAccountConfiguration",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "MailAccount",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/mail/repository.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 526,
+      "nonEmptyLines": 486,
+      "functions": [
+        {
+          "name": "_account",
+          "startLine": 501,
+          "endLine": 513,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_message_view",
+          "startLine": 516,
+          "endLine": 526,
+          "params": [
+            "row",
+            "include_body"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MailAccountLimitError",
+          "startLine": 17,
+          "endLine": 18,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "MailRepository",
+          "startLine": 21,
+          "endLine": 478,
+          "methods": [
+            "__init__",
+            "create_account",
+            "ensure_capacity",
+            "get_account",
+            "list_accounts",
+            "remove_account_local",
+            "due_accounts",
+            "begin_sync",
+            "store_snapshot",
+            "folder_progress",
+            "complete_folder",
+            "reconcile_folders",
+            "finish_sync",
+            "list_folders",
+            "list_messages",
+            "read_message",
+            "message_target",
+            "attachment",
+            "attachment_target",
+            "create_draft",
+            "claim_draft",
+            "finish_draft",
+            "record_smtp_sent",
+            "record_sent_append",
+            "pending_sent_appends"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MailAccountLimitError",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "MailRepository",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "_account",
+          "line": 501,
+          "isDefault": false
+        },
+        {
+          "name": "_message_view",
+          "line": 516,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create_account",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 28
+        },
+        {
+          "caller": "create_account",
+          "callee": "datetime.now",
+          "lineNumber": 28
+        },
+        {
+          "caller": "create_account",
+          "callee": "self._database.connect",
+          "lineNumber": 29
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 30
+        },
+        {
+          "caller": "create_account",
+          "callee": "int",
+          "lineNumber": 31
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute(\"SELECT COUNT(*) FROM mail_accounts\").fetchone",
+          "lineNumber": 31
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 31
+        },
+        {
+          "caller": "create_account",
+          "callee": "MailAccountLimitError",
+          "lineNumber": 33
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 34
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 43
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 47
+        },
+        {
+          "caller": "create_account",
+          "callee": "configuration.email_address.casefold",
+          "lineNumber": 59
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.commit",
+          "lineNumber": 72
+        },
+        {
+          "caller": "create_account",
+          "callee": "self.get_account",
+          "lineNumber": 73
+        },
+        {
+          "caller": "create_account",
+          "callee": "RuntimeError",
+          "lineNumber": 75
+        },
+        {
+          "caller": "ensure_capacity",
+          "callee": "self._database.connect",
+          "lineNumber": 79
+        },
+        {
+          "caller": "ensure_capacity",
+          "callee": "int",
+          "lineNumber": 80
+        },
+        {
+          "caller": "ensure_capacity",
+          "callee": "connection.execute(\"SELECT COUNT(*) FROM mail_accounts\").fetchone",
+          "lineNumber": 80
+        },
+        {
+          "caller": "ensure_capacity",
+          "callee": "connection.execute",
+          "lineNumber": 80
+        },
+        {
+          "caller": "ensure_capacity",
+          "callee": "MailAccountLimitError",
+          "lineNumber": 82
+        },
+        {
+          "caller": "get_account",
+          "callee": "self._database.connect",
+          "lineNumber": 85
+        },
+        {
+          "caller": "get_account",
+          "callee": "connection.execute(_ACCOUNT_SELECT + \" WHERE m.account_id = ?\", (account_id,)).fetchone",
+          "lineNumber": 86
+        },
+        {
+          "caller": "get_account",
+          "callee": "connection.execute",
+          "lineNumber": 86
+        },
+        {
+          "caller": "get_account",
+          "callee": "_account",
+          "lineNumber": 87
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "self._database.connect",
+          "lineNumber": 90
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "connection.execute(_ACCOUNT_SELECT + \" ORDER BY m.label, m.account_id\").fetchall",
+          "lineNumber": 91
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "connection.execute",
+          "lineNumber": 91
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "tuple",
+          "lineNumber": 92
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "_account",
+          "lineNumber": 92
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "self._database.connect",
+          "lineNumber": 95
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.execute",
+          "lineNumber": 96
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.execute",
+          "lineNumber": 97
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 99
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "datetime.now",
+          "lineNumber": 99
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.execute",
+          "lineNumber": 101
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.execute",
+          "lineNumber": 102
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.commit",
+          "lineNumber": 103
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "self._database.connect",
+          "lineNumber": 107
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "connection.execute(\n                _ACCOUNT_SELECT\n                + \" WHERE c.enabled = 1 AND (m.next_sync_at IS NULL OR m.next_sync_at <= ?) ORDER BY m.next_sync_at, m.account_id\",\n                (now,),\n            ).fetchall",
+          "lineNumber": 108
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "connection.execute",
+          "lineNumber": 108
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "tuple",
+          "lineNumber": 113
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "_account",
+          "lineNumber": 113
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "str",
+          "lineNumber": 116
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "uuid4",
+          "lineNumber": 116
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 117
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "datetime.now",
+          "lineNumber": 117
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "self._database.connect",
+          "lineNumber": 118
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute",
+          "lineNumber": 119
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute(\n                \"SELECT last_sync_state, sync_lease_until FROM mail_accounts WHERE account_id = ?\",\n                (account_id,),\n            ).fetchone",
+          "lineNumber": 120
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute",
+          "lineNumber": 120
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "ValueError",
+          "lineNumber": 125
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute",
+          "lineNumber": 126
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "(datetime.now(UTC) + timedelta(minutes=10)).isoformat",
+          "lineNumber": 128
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "datetime.now",
+          "lineNumber": 128
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "timedelta",
+          "lineNumber": 128
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute",
+          "lineNumber": 130
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.commit",
+          "lineNumber": 134
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "str",
+          "lineNumber": 138
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "uuid5",
+          "lineNumber": 138
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 139
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "datetime.now",
+          "lineNumber": 139
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "self._database.connect",
+          "lineNumber": 140
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "connection.execute",
+          "lineNumber": 141
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "connection.execute",
+          "lineNumber": 142
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "json.dumps",
+          "lineNumber": 163
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "str",
+          "lineNumber": 169
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "uuid5",
+          "lineNumber": 169
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "remote_keys.append",
+          "lineNumber": 170
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "connection.execute",
+          "lineNumber": 171
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "json.dumps",
+          "lineNumber": 193
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "json.dumps",
+          "lineNumber": 194
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "json.dumps",
+          "lineNumber": 195
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "connection.execute",
+          "lineNumber": 199
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "connection.executemany",
+          "lineNumber": 200
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "str",
+          "lineNumber": 209
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "uuid5",
+          "lineNumber": 209
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "connection.execute",
+          "lineNumber": 217
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "max",
+          "lineNumber": 219
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "connection.commit",
+          "lineNumber": 221
+        },
+        {
+          "caller": "store_snapshot",
+          "callee": "len",
+          "lineNumber": 222
+        },
+        {
+          "caller": "folder_progress",
+          "callee": "self._database.connect",
+          "lineNumber": 225
+        },
+        {
+          "caller": "folder_progress",
+          "callee": "connection.execute(\n                \"SELECT sync_cursor_uid, uid_validity FROM mail_folders WHERE account_id = ? AND remote_name = ?\",\n                (account_id, remote_name),\n            ).fetchone",
+          "lineNumber": 226
+        },
+        {
+          "caller": "folder_progress",
+          "callee": "connection.execute",
+          "lineNumber": 226
+        },
+        {
+          "caller": "folder_progress",
+          "callee": "int",
+          "lineNumber": 230
+        },
+        {
+          "caller": "folder_progress",
+          "callee": "int",
+          "lineNumber": 230
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "str",
+          "lineNumber": 233
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "uuid5",
+          "lineNumber": 233
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "self._database.connect",
+          "lineNumber": 234
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.execute",
+          "lineNumber": 235
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.execute",
+          "lineNumber": 237
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.executemany",
+          "lineNumber": 238
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.execute",
+          "lineNumber": 242
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.execute",
+          "lineNumber": 255
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.execute",
+          "lineNumber": 257
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.execute",
+          "lineNumber": 258
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 260
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "datetime.now",
+          "lineNumber": 260
+        },
+        {
+          "caller": "complete_folder",
+          "callee": "connection.commit",
+          "lineNumber": 262
+        },
+        {
+          "caller": "reconcile_folders",
+          "callee": "self._database.connect",
+          "lineNumber": 266
+        },
+        {
+          "caller": "reconcile_folders",
+          "callee": "connection.execute",
+          "lineNumber": 267
+        },
+        {
+          "caller": "reconcile_folders",
+          "callee": "connection.execute",
+          "lineNumber": 268
+        },
+        {
+          "caller": "reconcile_folders",
+          "callee": "connection.executemany",
+          "lineNumber": 269
+        },
+        {
+          "caller": "reconcile_folders",
+          "callee": "connection.execute",
+          "lineNumber": 273
+        },
+        {
+          "caller": "reconcile_folders",
+          "callee": "connection.execute",
+          "lineNumber": 283
+        },
+        {
+          "caller": "reconcile_folders",
+          "callee": "connection.commit",
+          "lineNumber": 284
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "datetime.now",
+          "lineNumber": 287
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "(now + timedelta(seconds=300 if state == \"ready\" else 15)).isoformat",
+          "lineNumber": 288
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "timedelta",
+          "lineNumber": 288
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "self._database.connect",
+          "lineNumber": 291
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.execute",
+          "lineNumber": 292
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.execute",
+          "lineNumber": 293
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 295
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.execute",
+          "lineNumber": 297
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 303
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 303
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.execute",
+          "lineNumber": 305
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 307
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.commit",
+          "lineNumber": 309
+        },
+        {
+          "caller": "list_folders",
+          "callee": "self._database.connect",
+          "lineNumber": 312
+        },
+        {
+          "caller": "list_folders",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT folder_id, remote_name, delimiter, attributes_json, special_use,\n                       uid_validity, uid_next, last_synced_at\n                FROM mail_folders f WHERE account_id = ? AND \"\"\" + _VOICE_VISIBLE_FOLDER + \" ORDER BY remote_name\",\n                (account_id,),\n            ).fetchall",
+          "lineNumber": 313
+        },
+        {
+          "caller": "list_folders",
+          "callee": "connection.execute",
+          "lineNumber": 313
+        },
+        {
+          "caller": "list_folders",
+          "callee": "tuple",
+          "lineNumber": 320
+        },
+        {
+          "caller": "list_folders",
+          "callee": "json.loads",
+          "lineNumber": 323
+        },
+        {
+          "caller": "list_messages",
+          "callee": "clauses.append",
+          "lineNumber": 333
+        },
+        {
+          "caller": "list_messages",
+          "callee": "parameters.append",
+          "lineNumber": 334
+        },
+        {
+          "caller": "list_messages",
+          "callee": "clauses.append",
+          "lineNumber": 336
+        },
+        {
+          "caller": "list_messages",
+          "callee": "clauses.append",
+          "lineNumber": 338
+        },
+        {
+          "caller": "list_messages",
+          "callee": "parameters.extend",
+          "lineNumber": 340
+        },
+        {
+          "caller": "list_messages",
+          "callee": "clauses.append",
+          "lineNumber": 342
+        },
+        {
+          "caller": "list_messages",
+          "callee": "parameters.append",
+          "lineNumber": 343
+        },
+        {
+          "caller": "list_messages",
+          "callee": "max",
+          "lineNumber": 343
+        },
+        {
+          "caller": "list_messages",
+          "callee": "min",
+          "lineNumber": 343
+        },
+        {
+          "caller": "list_messages",
+          "callee": "self._database.connect",
+          "lineNumber": 344
+        },
+        {
+          "caller": "list_messages",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT m.message_id, m.folder_id, f.remote_name, m.remote_uid,\n                       m.rfc_message_id, m.subject, m.sender_json, m.recipients_json,\n                       m.sent_at, m.received_at, m.flags_json, m.body_text, m.body_html,\n                       m.raw_size, m.synchronized_at\n                FROM mail_messages m JOIN mail_folders f ON f.folder_id = m.folder_id\n                WHERE \"\"\" + \" AND \".join(clauses) + \" ORDER BY COALESCE(m.received_at, m.sent_at) DESC LIMIT ?\",\n                parameters,\n            ).fetchall",
+          "lineNumber": 345
+        },
+        {
+          "caller": "list_messages",
+          "callee": "connection.execute",
+          "lineNumber": 345
+        },
+        {
+          "caller": "list_messages",
+          "callee": "\" AND \".join",
+          "lineNumber": 352
+        },
+        {
+          "caller": "list_messages",
+          "callee": "tuple",
+          "lineNumber": 355
+        },
+        {
+          "caller": "list_messages",
+          "callee": "_message_view",
+          "lineNumber": 355
+        },
+        {
+          "caller": "read_message",
+          "callee": "self._database.connect",
+          "lineNumber": 358
+        },
+        {
+          "caller": "read_message",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT m.message_id, m.folder_id, f.remote_name, m.remote_uid,\n                       m.rfc_message_id, m.subject, m.sender_json, m.recipients_json,\n                       m.sent_at, m.received_at, m.flags_json, m.body_text, m.body_html,\n                       m.raw_size, m.synchronized_at\n                FROM mail_messages m JOIN mail_folders f ON f.folder_id = m.folder_id\n                WHERE m.account_id = ? AND m.message_id = ? AND \"\"\" + _VOICE_VISIBLE_FOLDER + \" AND m.flags_json NOT LIKE '%\\\\\\\\Deleted%'\",\n                (account_id, message_id),\n            ).fetchone",
+          "lineNumber": 359
+        },
+        {
+          "caller": "read_message",
+          "callee": "connection.execute",
+          "lineNumber": 359
+        },
+        {
+          "caller": "read_message",
+          "callee": "_message_view",
+          "lineNumber": 369
+        },
+        {
+          "caller": "message_target",
+          "callee": "self._database.connect",
+          "lineNumber": 372
+        },
+        {
+          "caller": "message_target",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT f.remote_name, m.remote_uid\n                FROM mail_messages m JOIN mail_folders f ON f.folder_id = m.folder_id\n                WHERE m.account_id = ? AND m.message_id = ? AND \"\"\" + _VOICE_VISIBLE_FOLDER + \" AND m.flags_json NOT LIKE '%\\\\\\\\Deleted%'\",\n                (account_id, message_id),\n            ).fetchone",
+          "lineNumber": 373
+        },
+        {
+          "caller": "message_target",
+          "callee": "connection.execute",
+          "lineNumber": 373
+        },
+        {
+          "caller": "message_target",
+          "callee": "str",
+          "lineNumber": 380
+        },
+        {
+          "caller": "message_target",
+          "callee": "int",
+          "lineNumber": 380
+        },
+        {
+          "caller": "attachment",
+          "callee": "self._database.connect",
+          "lineNumber": 383
+        },
+        {
+          "caller": "attachment",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT a.attachment_id, a.message_id, a.part_id, a.filename,\n                       a.content_type, a.content_disposition, a.content_id, a.byte_size\n                FROM mail_attachments a\n                JOIN mail_messages m ON m.message_id = a.message_id\n                JOIN mail_folders f ON f.folder_id = m.folder_id\n                WHERE m.account_id = ? AND a.attachment_id = ? AND \"\"\" + _VOICE_VISIBLE_FOLDER + \" AND m.flags_json NOT LIKE '%\\\\\\\\Deleted%'\",\n                (account_id, attachment_id),\n            ).fetchone",
+          "lineNumber": 384
+        },
+        {
+          "caller": "attachment",
+          "callee": "connection.execute",
+          "lineNumber": 384
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "self._database.connect",
+          "lineNumber": 399
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT f.remote_name, m.remote_uid, a.part_id, a.byte_size, a.content_type\n                FROM mail_attachments a\n                JOIN mail_messages m ON m.message_id = a.message_id\n                JOIN mail_folders f ON f.folder_id = m.folder_id\n                WHERE m.account_id = ? AND a.attachment_id = ? AND \"\"\" + _VOICE_VISIBLE_FOLDER + \" AND m.flags_json NOT LIKE '%\\\\\\\\Deleted%'\",\n                (account_id, attachment_id),\n            ).fetchone",
+          "lineNumber": 400
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "connection.execute",
+          "lineNumber": 400
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "str",
+          "lineNumber": 409
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "int",
+          "lineNumber": 409
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "str",
+          "lineNumber": 409
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "int",
+          "lineNumber": 409
+        },
+        {
+          "caller": "attachment_target",
+          "callee": "str",
+          "lineNumber": 409
+        },
+        {
+          "caller": "create_draft",
+          "callee": "str",
+          "lineNumber": 412
+        },
+        {
+          "caller": "create_draft",
+          "callee": "uuid4",
+          "lineNumber": 412
+        },
+        {
+          "caller": "create_draft",
+          "callee": "json.dumps",
+          "lineNumber": 413
+        },
+        {
+          "caller": "create_draft",
+          "callee": "hashlib.sha256(canonical.encode()).hexdigest",
+          "lineNumber": 414
+        },
+        {
+          "caller": "create_draft",
+          "callee": "hashlib.sha256",
+          "lineNumber": 414
+        },
+        {
+          "caller": "create_draft",
+          "callee": "canonical.encode",
+          "lineNumber": 414
+        },
+        {
+          "caller": "create_draft",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 415
+        },
+        {
+          "caller": "create_draft",
+          "callee": "datetime.now",
+          "lineNumber": 415
+        },
+        {
+          "caller": "create_draft",
+          "callee": "self._database.connect",
+          "lineNumber": 416
+        },
+        {
+          "caller": "create_draft",
+          "callee": "connection.execute",
+          "lineNumber": 417
+        },
+        {
+          "caller": "create_draft",
+          "callee": "json.dumps",
+          "lineNumber": 425
+        },
+        {
+          "caller": "create_draft",
+          "callee": "connection.commit",
+          "lineNumber": 427
+        },
+        {
+          "caller": "create_draft",
+          "callee": "list",
+          "lineNumber": 428
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 431
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "datetime.now",
+          "lineNumber": 431
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "self._database.connect",
+          "lineNumber": 432
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "connection.execute",
+          "lineNumber": 433
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "connection.execute(\n                \"\"\"\n                SELECT recipients_json, subject, body_text, content_hash, state, voice_session_id, compose_utterance_id\n                FROM mail_drafts WHERE draft_id = ? AND account_id = ?\n                \"\"\",\n                (draft_id, account_id),\n            ).fetchone",
+          "lineNumber": 434
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "connection.execute",
+          "lineNumber": 434
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "int",
+          "lineNumber": 441
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "connection.rollback",
+          "lineNumber": 442
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "connection.execute",
+          "lineNumber": 444
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "connection.commit",
+          "lineNumber": 445
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "tuple",
+          "lineNumber": 446
+        },
+        {
+          "caller": "claim_draft",
+          "callee": "json.loads",
+          "lineNumber": 446
+        },
+        {
+          "caller": "finish_draft",
+          "callee": "self._database.connect",
+          "lineNumber": 449
+        },
+        {
+          "caller": "finish_draft",
+          "callee": "connection.execute",
+          "lineNumber": 450
+        },
+        {
+          "caller": "finish_draft",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 452
+        },
+        {
+          "caller": "finish_draft",
+          "callee": "datetime.now",
+          "lineNumber": 452
+        },
+        {
+          "caller": "finish_draft",
+          "callee": "connection.commit",
+          "lineNumber": 454
+        },
+        {
+          "caller": "record_smtp_sent",
+          "callee": "self._database.connect",
+          "lineNumber": 457
+        },
+        {
+          "caller": "record_smtp_sent",
+          "callee": "connection.execute",
+          "lineNumber": 458
+        },
+        {
+          "caller": "record_smtp_sent",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 460
+        },
+        {
+          "caller": "record_smtp_sent",
+          "callee": "datetime.now",
+          "lineNumber": 460
+        },
+        {
+          "caller": "record_smtp_sent",
+          "callee": "connection.commit",
+          "lineNumber": 462
+        },
+        {
+          "caller": "record_sent_append",
+          "callee": "self._database.connect",
+          "lineNumber": 465
+        },
+        {
+          "caller": "record_sent_append",
+          "callee": "connection.execute",
+          "lineNumber": 466
+        },
+        {
+          "caller": "record_sent_append",
+          "callee": "int",
+          "lineNumber": 468
+        },
+        {
+          "caller": "record_sent_append",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 468
+        },
+        {
+          "caller": "record_sent_append",
+          "callee": "datetime.now",
+          "lineNumber": 468
+        },
+        {
+          "caller": "record_sent_append",
+          "callee": "connection.commit",
+          "lineNumber": 470
+        },
+        {
+          "caller": "pending_sent_appends",
+          "callee": "self._database.connect",
+          "lineNumber": 473
+        },
+        {
+          "caller": "pending_sent_appends",
+          "callee": "connection.execute(\n                \"SELECT draft_id, account_id, sent_mime FROM mail_drafts WHERE state='sent' AND sent_append_state IN ('pending','failed') AND sent_mime IS NOT NULL ORDER BY updated_at LIMIT ?\",\n                (limit,),\n            ).fetchall",
+          "lineNumber": 474
+        },
+        {
+          "caller": "pending_sent_appends",
+          "callee": "connection.execute",
+          "lineNumber": 474
+        },
+        {
+          "caller": "pending_sent_appends",
+          "callee": "tuple",
+          "lineNumber": 478
+        },
+        {
+          "caller": "pending_sent_appends",
+          "callee": "str",
+          "lineNumber": 478
+        },
+        {
+          "caller": "pending_sent_appends",
+          "callee": "str",
+          "lineNumber": 478
+        },
+        {
+          "caller": "pending_sent_appends",
+          "callee": "bytes",
+          "lineNumber": 478
+        },
+        {
+          "caller": "_account",
+          "callee": "MailAccount",
+          "lineNumber": 504
+        },
+        {
+          "caller": "_account",
+          "callee": "MailAccountConfiguration",
+          "lineNumber": 505
+        },
+        {
+          "caller": "_account",
+          "callee": "bool",
+          "lineNumber": 510
+        },
+        {
+          "caller": "_account",
+          "callee": "bool",
+          "lineNumber": 510
+        },
+        {
+          "caller": "_message_view",
+          "callee": "json.loads",
+          "lineNumber": 519
+        },
+        {
+          "caller": "_message_view",
+          "callee": "json.loads",
+          "lineNumber": 520
+        },
+        {
+          "caller": "_message_view",
+          "callee": "json.loads",
+          "lineNumber": 521
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/mail/scheduler.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 35,
+      "classes": [
+        {
+          "name": "MailSyncScheduler",
+          "startLine": 10,
+          "endLine": 43,
+          "methods": [
+            "__init__",
+            "start",
+            "stop",
+            "_run"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MailSyncScheduler",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "threading.Event",
+          "lineNumber": 16
+        },
+        {
+          "caller": "start",
+          "callee": "self._stop.clear",
+          "lineNumber": 22
+        },
+        {
+          "caller": "start",
+          "callee": "threading.Thread",
+          "lineNumber": 23
+        },
+        {
+          "caller": "start",
+          "callee": "self._thread.start",
+          "lineNumber": 24
+        },
+        {
+          "caller": "stop",
+          "callee": "self._stop.set",
+          "lineNumber": 27
+        },
+        {
+          "caller": "stop",
+          "callee": "thread.join",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_run",
+          "callee": "self._stop.is_set",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_run",
+          "callee": "self._service.retry_sent_appends",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_run",
+          "callee": "self._repository.due_accounts",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_run",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_run",
+          "callee": "datetime.now",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_run",
+          "callee": "self._stop.is_set",
+          "lineNumber": 37
+        },
+        {
+          "caller": "_run",
+          "callee": "self._service.sync",
+          "lineNumber": 40
+        },
+        {
+          "caller": "_run",
+          "callee": "self._stop.wait",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/mail/service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 175,
+      "nonEmptyLines": 156,
+      "classes": [
+        {
+          "name": "MailService",
+          "startLine": 20,
+          "endLine": 175,
+          "methods": [
+            "__init__",
+            "connect_account",
+            "credentials",
+            "sync",
+            "prepare_send",
+            "confirm_send",
+            "retry_sent_appends",
+            "set_read_state",
+            "read_attachment",
+            "move_message",
+            "archive_message",
+            "create_folder",
+            "rename_folder",
+            "_required_target"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MailService",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "connect_account",
+          "callee": "self._repository.ensure_capacity",
+          "lineNumber": 34
+        },
+        {
+          "caller": "connect_account",
+          "callee": "str",
+          "lineNumber": 35
+        },
+        {
+          "caller": "connect_account",
+          "callee": "uuid4",
+          "lineNumber": 35
+        },
+        {
+          "caller": "connect_account",
+          "callee": "MailCredentials",
+          "lineNumber": 36
+        },
+        {
+          "caller": "connect_account",
+          "callee": "email_address.casefold",
+          "lineNumber": 36
+        },
+        {
+          "caller": "connect_account",
+          "callee": "self._connector.validate",
+          "lineNumber": 37
+        },
+        {
+          "caller": "connect_account",
+          "callee": "self._envelopes.seal",
+          "lineNumber": 38
+        },
+        {
+          "caller": "connect_account",
+          "callee": "json.dumps",
+          "lineNumber": 38
+        },
+        {
+          "caller": "connect_account",
+          "callee": "asdict",
+          "lineNumber": 38
+        },
+        {
+          "caller": "connect_account",
+          "callee": "MailAccountConfiguration",
+          "lineNumber": 39
+        },
+        {
+          "caller": "connect_account",
+          "callee": "label.strip",
+          "lineNumber": 39
+        },
+        {
+          "caller": "connect_account",
+          "callee": "email_address.casefold",
+          "lineNumber": 39
+        },
+        {
+          "caller": "connect_account",
+          "callee": "self._repository.create_account",
+          "lineNumber": 40
+        },
+        {
+          "caller": "credentials",
+          "callee": "self._credential_store.get_envelope",
+          "lineNumber": 43
+        },
+        {
+          "caller": "credentials",
+          "callee": "ValueError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "credentials",
+          "callee": "json.loads",
+          "lineNumber": 46
+        },
+        {
+          "caller": "credentials",
+          "callee": "self._envelopes.open",
+          "lineNumber": 46
+        },
+        {
+          "caller": "credentials",
+          "callee": "MailCredentials",
+          "lineNumber": 47
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.begin_sync",
+          "lineNumber": 50
+        },
+        {
+          "caller": "sync",
+          "callee": "monotonic",
+          "lineNumber": 53
+        },
+        {
+          "caller": "sync",
+          "callee": "self.credentials",
+          "lineNumber": 55
+        },
+        {
+          "caller": "sync",
+          "callee": "self._connector.imap_session",
+          "lineNumber": 56
+        },
+        {
+          "caller": "sync",
+          "callee": "self._connector.list_folders",
+          "lineNumber": 57
+        },
+        {
+          "caller": "sync",
+          "callee": "self._connector.index_folder",
+          "lineNumber": 59
+        },
+        {
+          "caller": "sync",
+          "callee": "self._connector.fetch_page",
+          "lineNumber": 60
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.store_snapshot",
+          "lineNumber": 66
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.folder_progress",
+          "lineNumber": 67
+        },
+        {
+          "caller": "sync",
+          "callee": "tuple",
+          "lineNumber": 68
+        },
+        {
+          "caller": "sync",
+          "callee": "self._connector.fetch_page",
+          "lineNumber": 70
+        },
+        {
+          "caller": "sync",
+          "callee": "TimeoutError",
+          "lineNumber": 77
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.store_snapshot",
+          "lineNumber": 78
+        },
+        {
+          "caller": "sync",
+          "callee": "tuple",
+          "lineNumber": 80
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.complete_folder",
+          "lineNumber": 81
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.reconcile_folders",
+          "lineNumber": 87
+        },
+        {
+          "caller": "sync",
+          "callee": "tuple",
+          "lineNumber": 89
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.finish_sync",
+          "lineNumber": 91
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.finish_sync",
+          "lineNumber": 93
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.finish_sync",
+          "lineNumber": 95
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "ValueError",
+          "lineNumber": 100
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "any",
+          "lineNumber": 101
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "ValueError",
+          "lineNumber": 102
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "subject.strip",
+          "lineNumber": 103
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "body.strip",
+          "lineNumber": 103
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "ValueError",
+          "lineNumber": 104
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "self._repository.create_draft",
+          "lineNumber": 105
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "subject.strip",
+          "lineNumber": 105
+        },
+        {
+          "caller": "prepare_send",
+          "callee": "body.strip",
+          "lineNumber": 105
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "ValueError",
+          "lineNumber": 109
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self._repository.claim_draft",
+          "lineNumber": 110
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "ValueError",
+          "lineNumber": 112
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self.credentials",
+          "lineNumber": 114
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self._connector.send_smtp",
+          "lineNumber": 115
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self._repository.finish_draft",
+          "lineNumber": 117
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self._repository.record_smtp_sent",
+          "lineNumber": 119
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self._connector.append_sent",
+          "lineNumber": 121
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self._repository.record_sent_append",
+          "lineNumber": 123
+        },
+        {
+          "caller": "confirm_send",
+          "callee": "self._repository.record_sent_append",
+          "lineNumber": 125
+        },
+        {
+          "caller": "retry_sent_appends",
+          "callee": "self._repository.pending_sent_appends",
+          "lineNumber": 129
+        },
+        {
+          "caller": "retry_sent_appends",
+          "callee": "self._connector.append_sent",
+          "lineNumber": 131
+        },
+        {
+          "caller": "retry_sent_appends",
+          "callee": "self.credentials",
+          "lineNumber": 131
+        },
+        {
+          "caller": "retry_sent_appends",
+          "callee": "self._repository.record_sent_append",
+          "lineNumber": 133
+        },
+        {
+          "caller": "retry_sent_appends",
+          "callee": "self._repository.record_sent_append",
+          "lineNumber": 135
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "self._required_target",
+          "lineNumber": 138
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "self._connector.set_read_state",
+          "lineNumber": 139
+        },
+        {
+          "caller": "set_read_state",
+          "callee": "self.credentials",
+          "lineNumber": 139
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "self._repository.attachment",
+          "lineNumber": 142
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "self._repository.attachment_target",
+          "lineNumber": 143
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "ValueError",
+          "lineNumber": 145
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "self._connector.fetch_attachment",
+          "lineNumber": 147
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "self.credentials",
+          "lineNumber": 147
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "dict",
+          "lineNumber": 148
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "content_type.casefold",
+          "lineNumber": 149
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "content.decode",
+          "lineNumber": 150
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "base64.b64encode(content).decode",
+          "lineNumber": 152
+        },
+        {
+          "caller": "read_attachment",
+          "callee": "base64.b64encode",
+          "lineNumber": 152
+        },
+        {
+          "caller": "move_message",
+          "callee": "self._required_target",
+          "lineNumber": 156
+        },
+        {
+          "caller": "move_message",
+          "callee": "self._connector.move",
+          "lineNumber": 157
+        },
+        {
+          "caller": "move_message",
+          "callee": "self.credentials",
+          "lineNumber": 157
+        },
+        {
+          "caller": "archive_message",
+          "callee": "next",
+          "lineNumber": 160
+        },
+        {
+          "caller": "archive_message",
+          "callee": "self._repository.list_folders",
+          "lineNumber": 160
+        },
+        {
+          "caller": "archive_message",
+          "callee": "ValueError",
+          "lineNumber": 162
+        },
+        {
+          "caller": "archive_message",
+          "callee": "self.move_message",
+          "lineNumber": 163
+        },
+        {
+          "caller": "archive_message",
+          "callee": "str",
+          "lineNumber": 163
+        },
+        {
+          "caller": "create_folder",
+          "callee": "self._connector.create_folder",
+          "lineNumber": 166
+        },
+        {
+          "caller": "create_folder",
+          "callee": "self.credentials",
+          "lineNumber": 166
+        },
+        {
+          "caller": "rename_folder",
+          "callee": "self._connector.rename_folder",
+          "lineNumber": 169
+        },
+        {
+          "caller": "rename_folder",
+          "callee": "self.credentials",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_required_target",
+          "callee": "self._repository.message_target",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_required_target",
+          "callee": "ValueError",
+          "lineNumber": 174
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/mail/tools.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 180,
+      "nonEmptyLines": 155,
+      "functions": [
+        {
+          "name": "register_mail_tools",
+          "startLine": 21,
+          "endLine": 35,
+          "params": [
+            "catalog",
+            "repository",
+            "service"
+          ]
+        },
+        {
+          "name": "_invoke",
+          "startLine": 38,
+          "endLine": 88,
+          "params": [
+            "name",
+            "context",
+            "arguments",
+            "repository",
+            "service"
+          ]
+        },
+        {
+          "name": "_schema",
+          "startLine": 91,
+          "endLine": 112,
+          "params": [
+            "name"
+          ]
+        },
+        {
+          "name": "_description",
+          "startLine": 115,
+          "endLine": 127,
+          "params": [
+            "name"
+          ]
+        },
+        {
+          "name": "_account",
+          "startLine": 130,
+          "endLine": 153,
+          "params": [
+            "arguments",
+            "repository"
+          ]
+        },
+        {
+          "name": "_required",
+          "startLine": 156,
+          "endLine": 159,
+          "params": [
+            "arguments",
+            "key"
+          ]
+        },
+        {
+          "name": "_optional",
+          "startLine": 162,
+          "endLine": 164,
+          "params": [
+            "arguments",
+            "key"
+          ]
+        },
+        {
+          "name": "_string_list",
+          "startLine": 167,
+          "endLine": 170,
+          "params": [
+            "arguments",
+            "key"
+          ]
+        },
+        {
+          "name": "_limit",
+          "startLine": 173,
+          "endLine": 175,
+          "params": [
+            "arguments"
+          ]
+        },
+        {
+          "name": "_account_view",
+          "startLine": 178,
+          "endLine": 180,
+          "params": [
+            "item"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "register_mail_tools",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "_invoke",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "_schema",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "_description",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "_account",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "_required",
+          "line": 156,
+          "isDefault": false
+        },
+        {
+          "name": "_optional",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "_string_list",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "_limit",
+          "line": 173,
+          "isDefault": false
+        },
+        {
+          "name": "_account_view",
+          "line": 178,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "register_mail_tools",
+          "callee": "catalog.register",
+          "lineNumber": 23
+        },
+        {
+          "caller": "register_mail_tools",
+          "callee": "ToolDefinition",
+          "lineNumber": 24
+        },
+        {
+          "caller": "register_mail_tools",
+          "callee": "_description",
+          "lineNumber": 27
+        },
+        {
+          "caller": "register_mail_tools",
+          "callee": "_schema",
+          "lineNumber": 28
+        },
+        {
+          "caller": "register_mail_tools",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 29
+        },
+        {
+          "caller": "register_mail_tools",
+          "callee": "_invoke",
+          "lineNumber": 30
+        },
+        {
+          "caller": "register_mail_tools",
+          "callee": "any",
+          "lineNumber": 33
+        },
+        {
+          "caller": "register_mail_tools",
+          "callee": "repository.list_accounts",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_account_view",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_invoke",
+          "callee": "repository.list_accounts",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 42
+        },
+        {
+          "caller": "_invoke",
+          "callee": "json.dumps",
+          "lineNumber": 42
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_account",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_invoke",
+          "callee": "list",
+          "lineNumber": 46
+        },
+        {
+          "caller": "_invoke",
+          "callee": "repository.list_folders",
+          "lineNumber": 46
+        },
+        {
+          "caller": "_invoke",
+          "callee": "list",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_invoke",
+          "callee": "repository.list_messages",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_optional",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_optional",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_limit",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_invoke",
+          "callee": "repository.read_message",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.read_attachment",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_invoke",
+          "callee": "repository.list_messages",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_limit",
+          "lineNumber": 54
+        },
+        {
+          "caller": "_invoke",
+          "callee": "seen.setdefault",
+          "lineNumber": 58
+        },
+        {
+          "caller": "_invoke",
+          "callee": "list",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_invoke",
+          "callee": "seen.values",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.set_read_state",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.set_read_state",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.archive_message",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.move_message",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.create_folder",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.rename_folder",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.prepare_send",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_invoke",
+          "callee": "tuple",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_string_list",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_invoke",
+          "callee": "service.confirm_send",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_invoke",
+          "callee": "_required",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_invoke",
+          "callee": "ValueError",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_invoke",
+          "callee": "json.dumps",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_invoke",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_invoke",
+          "callee": "str",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_schema",
+          "callee": "fields.get",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_schema",
+          "callee": "required.append",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_schema",
+          "callee": "properties.update",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_description",
+          "callee": "name.replace(\"email_\", \"\").replace(\"_\", \" \").capitalize",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_description",
+          "callee": "name.replace(\"email_\", \"\").replace",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_description",
+          "callee": "name.replace",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_description",
+          "callee": "name.replace(\"email_\", \"\").replace(\"_\", \" \").capitalize",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_description",
+          "callee": "name.replace(\"email_\", \"\").replace",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_description",
+          "callee": "name.replace",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_account",
+          "callee": "repository.list_accounts",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_account",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_account",
+          "callee": "arguments.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_account",
+          "callee": "isinstance",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_account",
+          "callee": "value.strip",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_account",
+          "callee": "value.strip().casefold",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_account",
+          "callee": "value.strip",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_account",
+          "callee": "item.configuration.label.strip().casefold",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_account",
+          "callee": "item.configuration.label.strip",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_account",
+          "callee": "item.configuration.email_address.strip().casefold",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_account",
+          "callee": "item.configuration.email_address.strip",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_account",
+          "callee": "item.configuration.account_id.casefold",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_account",
+          "callee": "len",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_account",
+          "callee": "ValueError",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_account",
+          "callee": "\", \".join",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_account",
+          "callee": "ValueError",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_required",
+          "callee": "arguments.get",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_required",
+          "callee": "isinstance",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_required",
+          "callee": "value.strip",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_required",
+          "callee": "ValueError",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_required",
+          "callee": "value.strip",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_optional",
+          "callee": "arguments.get",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_optional",
+          "callee": "value.strip",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_optional",
+          "callee": "isinstance",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_optional",
+          "callee": "value.strip",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_string_list",
+          "callee": "arguments.get",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_string_list",
+          "callee": "isinstance",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_string_list",
+          "callee": "any",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_string_list",
+          "callee": "isinstance",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_string_list",
+          "callee": "item.strip",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_string_list",
+          "callee": "ValueError",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_string_list",
+          "callee": "item.strip",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_limit",
+          "callee": "arguments.get",
+          "lineNumber": 174
+        },
+        {
+          "caller": "_limit",
+          "callee": "max",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_limit",
+          "callee": "min",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_limit",
+          "callee": "isinstance",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_limit",
+          "callee": "isinstance",
+          "lineNumber": 175
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    }
+  ]
+}

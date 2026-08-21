@@ -332,6 +332,8 @@ class MailRepository:
         if folder_id:
             clauses.append("m.folder_id = ?")
             parameters.append(folder_id)
+        else:
+            clauses.append("(f.special_use = 'inbox' OR UPPER(f.remote_name) = 'INBOX')")
         if query:
             clauses.append("(m.subject LIKE ? OR m.body_text LIKE ? OR m.sender_json LIKE ?)")
             pattern = f"%{query}%"

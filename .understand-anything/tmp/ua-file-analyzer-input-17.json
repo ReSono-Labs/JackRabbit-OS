@@ -1,0 +1,182 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "android/feature/tasks/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/tasks/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/feature/voice/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/NativeVoicePeer.java",
+      "language": "java",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/RealtimeResponseCoordinator.java",
+      "language": "java",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/RealtimeToolCallQueue.java",
+      "language": "java",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionStateTracker.java",
+      "language": "java",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/voice/src/test/java/com/resonolabs/feature/voice/VoiceSessionStateTrackerTest.java",
+      "language": "java",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/gradle.properties",
+      "language": "properties",
+      "sizeLines": 5,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/README.md",
+      "language": "markdown",
+      "sizeLines": 9,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "android/runtime-host/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementAssetStore.java",
+      "language": "java",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpRequest.java",
+      "language": "java",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpResponse.java",
+      "language": "java",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "language": "java",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "language": "java",
+      "sizeLines": 157,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "language": "java",
+      "sizeLines": 186,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "language": "java",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "language": "java",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "language": "java",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealth.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementPairing.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java",
+      "language": "java",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "language": "java",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "android/feature/tasks/build.gradle.kts": [],
+    "android/feature/tasks/src/main/AndroidManifest.xml": [],
+    "android/feature/voice/build.gradle.kts": [],
+    "android/feature/voice/src/main/java/com/resonolabs/feature/voice/NativeVoicePeer.java": [],
+    "android/feature/voice/src/main/java/com/resonolabs/feature/voice/RealtimeResponseCoordinator.java": [],
+    "android/feature/voice/src/main/java/com/resonolabs/feature/voice/RealtimeToolCallQueue.java": [],
+    "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoiceSessionStateTracker.java": [],
+    "android/feature/voice/src/test/java/com/resonolabs/feature/voice/VoiceSessionStateTrackerTest.java": [],
+    "android/gradle.properties": [],
+    "android/README.md": [],
+    "android/runtime-host/build.gradle.kts": [],
+    "android/runtime-host/src/main/AndroidManifest.xml": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementAssetStore.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpRequest.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpResponse.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealth.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementPairing.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java": []
+  }
+}

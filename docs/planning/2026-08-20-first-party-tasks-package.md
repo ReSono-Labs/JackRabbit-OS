@@ -54,6 +54,12 @@ The full set is registered through one `TasksToolPackage.register(ToolCatalog)` 
 
 Reads execute immediately. Add, edit, mark completed, and remove prepare an immutable action. Voice reads the exact change to the user and asks for approval. `tasks_confirm_action` executes the unchanged action only after a later explicit approval in the same trusted Voice session, within ten minutes, and only once.
 
+Tasks never interpret date or future wording as a schedule. If the user says a
+phrase such as "tomorrow," Voice preserves that wording in the plain task text,
+explains that Tasks cannot schedule the item or send a reminder, reads the exact
+prepared text back, and requests confirmation normally. Voice must not silently
+drop the date wording or claim that a timed reminder was created.
+
 Task removal permanently deletes the local task after confirmation. Marking completed is not deletion.
 
 ## Native Card
@@ -175,3 +181,20 @@ new URL/redirect checks but removed `UnsafeOutboundHost` and
 Creation QR, and Mail still use those public contracts. The module now retains
 one SSRF-safe resolver while restoring all three APIs; MCP can pin the validated
 address, and Creation/Mail keep their existing exception and port contracts.
+
+## Global Voice approval correction
+
+Physical transcripts proved that valid approvals including `Yeah, go ahead and
+save that`, `Yes, approved`, `Yeah, it's, yes`, `OK, good`, and `Approved` were
+rejected. Tasks compared the complete normalized utterance with a small English
+phrase allowlist. Calendar and Mail duplicated the same defect.
+
+Approval is now language-independent at the domain boundary. The Voice agent
+may call the confirm tool after interpreting explicit approval intent; the
+runtime does not second-guess that intent with keywords. Runtime authorization
+still requires the immutable pending action, exact content hash, same trusted
+Voice session, a strictly newer native utterance sequence, validity window, and
+single-use claim. The model has no `approved` argument and cannot bypass those
+structural controls. The focused Tasks contract includes the physically
+rejected phrases and proves that a preparation utterance cannot confirm its own
+action.

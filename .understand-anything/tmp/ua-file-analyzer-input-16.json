@@ -1,0 +1,182 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/intermediate/scan-result.json",
+      "language": "json",
+      "sizeLines": 1141,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/app/proguard-rules.pro",
+      "language": "pro",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 72,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/java/com/resonolabs/voice/SystemSetupState.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "language": "xml",
+      "sizeLines": 16,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/xml/network_security_config.xml",
+      "language": "xml",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/design/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/input/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/input/src/test/java/com/resonolabs/ui/input/HardwareInputRouterTest.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/motor/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/motor/src/main/aidl/com/resonolabs/hardware/motor/IR1MotorCallback.aidl",
+      "language": "aidl",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/motor/src/main/aidl/com/resonolabs/hardware/motor/IR1MotorService.aidl",
+      "language": "aidl",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/power/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/core/power/src/test/java/com/resonolabs/ui/power/DisplayPolicyTest.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/calendar/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/camera/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CapturedImage.java",
+      "language": "java",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/camera/src/main/java/com/resonolabs/feature/camera/RealtimeImageEncoder.java",
+      "language": "java",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/cards/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/cards/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/feature/settings/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/settings/src/main/java/com/resonolabs/feature/settings/WifiNetworkScanner.java",
+      "language": "java",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    ".understand-anything/.understandignore": [],
+    ".understand-anything/intermediate/scan-result.json": [],
+    "android/app/build.gradle.kts": [],
+    "android/app/proguard-rules.pro": [],
+    "android/app/src/main/AndroidManifest.xml": [],
+    "android/app/src/main/java/com/resonolabs/voice/SystemSetupState.java": [],
+    "android/app/src/main/res/values/styles.xml": [],
+    "android/app/src/main/res/xml/network_security_config.xml": [],
+    "android/build.gradle.kts": [],
+    "android/core/design/build.gradle.kts": [],
+    "android/core/input/build.gradle.kts": [],
+    "android/core/input/src/test/java/com/resonolabs/ui/input/HardwareInputRouterTest.java": [],
+    "android/core/motor/build.gradle.kts": [],
+    "android/core/motor/src/main/aidl/com/resonolabs/hardware/motor/IR1MotorCallback.aidl": [],
+    "android/core/motor/src/main/aidl/com/resonolabs/hardware/motor/IR1MotorService.aidl": [],
+    "android/core/power/build.gradle.kts": [],
+    "android/core/power/src/test/java/com/resonolabs/ui/power/DisplayPolicyTest.java": [],
+    "android/feature/calendar/build.gradle.kts": [],
+    "android/feature/camera/build.gradle.kts": [],
+    "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CapturedImage.java": [],
+    "android/feature/camera/src/main/java/com/resonolabs/feature/camera/RealtimeImageEncoder.java": [],
+    "android/feature/cards/build.gradle.kts": [],
+    "android/feature/cards/src/main/AndroidManifest.xml": [],
+    "android/feature/settings/build.gradle.kts": [],
+    "android/feature/settings/src/main/java/com/resonolabs/feature/settings/WifiNetworkScanner.java": []
+  }
+}

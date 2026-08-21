@@ -27,13 +27,75 @@ public final class RuntimeVoiceClient implements AutoCloseable {
     }
 
     public interface ToolCallback {
-        void onResult(String output);
+        void onResult(String output, JSONObject sessionUpdate);
         void onFailure(String reason);
     }
 
     public interface FinalizeCallback {
         void onResult(JSONObject response);
         void onFailure(String reason);
+    }
+
+    public interface CompletionCallback {
+        void onResult(JSONObject completion);
+        void onFailure(String reason);
+    }
+
+    public void pollCompletion(Context context, String voiceSessionId, CompletionCallback callback) {
+        Context application = context.getApplicationContext();
+        worker.execute(() -> requestCompletion(application, voiceSessionId, callback));
+    }
+
+    public void acknowledgeCompletion(Context context, String voiceSessionId, String runId) {
+        Context application = context.getApplicationContext();
+        worker.execute(() -> requestCompletionAck(application, voiceSessionId, runId));
+    }
+
+    private void requestCompletion(Context context, String voiceSessionId, CompletionCallback callback) {
+        HttpURLConnection connection = null;
+        try {
+            String token = new RuntimeSecretStore(context).loadLocalApiToken();
+            connection = (HttpURLConnection) new URL(
+                    "http://127.0.0.1:8765/v1/voice/completions/next").openConnection();
+            connection.setConnectTimeout(1500);
+            connection.setReadTimeout(3000);
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+            connection.setRequestProperty("X-ReSono-Voice-Session", voiceSessionId);
+            int status = connection.getResponseCode();
+            InputStream source = status >= 400 ? connection.getErrorStream() : connection.getInputStream();
+            JSONObject payload = new JSONObject(new String(
+                    source == null ? new byte[0] : source.readNBytes(65_536), StandardCharsets.UTF_8));
+            if (status != 200) throw new IllegalStateException("completion-" + status);
+            JSONObject completion = payload.optJSONObject("completion");
+            if (!closed.get()) main.post(() -> callback.onResult(completion));
+        } catch (Exception error) {
+            if (!closed.get()) main.post(() -> callback.onFailure("completion-unavailable"));
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
+    }
+
+    private void requestCompletionAck(Context context, String voiceSessionId, String runId) {
+        HttpURLConnection connection = null;
+        try {
+            String token = new RuntimeSecretStore(context).loadLocalApiToken();
+            connection = (HttpURLConnection) new URL(
+                    "http://127.0.0.1:8765/v1/voice/completions/ack").openConnection();
+            connection.setRequestMethod("POST");
+            connection.setConnectTimeout(1500);
+            connection.setReadTimeout(3000);
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("X-ReSono-Voice-Session", voiceSessionId);
+            connection.getOutputStream().write(
+                    new JSONObject().put("runId", runId).toString().getBytes(StandardCharsets.UTF_8));
+            connection.getResponseCode();
+        } catch (Exception error) {
+            Log.w(LOG_TAG, "completion acknowledgement failed", error);
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
     }
 
     private final ExecutorService worker = Executors.newSingleThreadExecutor(runnable -> {
@@ -88,7 +150,10 @@ public final class RuntimeVoiceClient implements AutoCloseable {
                 deliverToolFailure(callback, "mcp-call-failed");
                 return;
             }
-            if (!closed.get()) main.post(() -> callback.onResult(result.toString()));
+            JSONObject sessionUpdate = result.optJSONObject("resonoSessionUpdate");
+            result.remove("resonoSessionUpdate");
+            JSONObject finalSessionUpdate = sessionUpdate;
+            if (!closed.get()) main.post(() -> callback.onResult(result.toString(), finalSessionUpdate));
         } catch (Exception ignored) {
             deliverToolFailure(callback, "mcp-unavailable");
         }

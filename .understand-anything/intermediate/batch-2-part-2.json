@@ -1,0 +1,1197 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/imports/recovery.py",
+      "type": "file",
+      "name": "recovery.py",
+      "filePath": "runtime/resono_runtime/imports/recovery.py",
+      "summary": "Implements safe import workflow responsibilities centered on import operation, import recovery. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/imports/recovery.py:ImportOperation",
+      "type": "class",
+      "name": "ImportOperation",
+      "filePath": "runtime/resono_runtime/imports/recovery.py",
+      "lineRange": [
+        17,
+        25
+      ],
+      "summary": "Represents the import operation contract or immutable state used by the safe import workflow.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/imports/recovery.py:ImportRecovery",
+      "type": "class",
+      "name": "ImportRecovery",
+      "filePath": "runtime/resono_runtime/imports/recovery.py",
+      "lineRange": [
+        28,
+        89
+      ],
+      "summary": "Owns import recovery behavior for the safe import workflow, including begin, complete, mark backup secured, mark activated.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/mcp/client.py",
+      "type": "file",
+      "name": "client.py",
+      "filePath": "runtime/resono_runtime/mcp/client.py",
+      "summary": "Implements MCP integration responsibilities centered on mcp connection error, streamable http mcp client, pinned https connection. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/client.py:_sse_json",
+      "type": "function",
+      "name": "_sse_json",
+      "filePath": "runtime/resono_runtime/mcp/client.py",
+      "lineRange": [
+        136,
+        145
+      ],
+      "summary": "Performs sse json behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/client.py:McpConnectionError",
+      "type": "class",
+      "name": "McpConnectionError",
+      "filePath": "runtime/resono_runtime/mcp/client.py",
+      "lineRange": [
+        20,
+        21
+      ],
+      "summary": "Represents the mcp connection error contract or immutable state used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/client.py:StreamableHttpMcpClient",
+      "type": "class",
+      "name": "StreamableHttpMcpClient",
+      "filePath": "runtime/resono_runtime/mcp/client.py",
+      "lineRange": [
+        24,
+        133
+      ],
+      "summary": "Owns streamable http mcp client behavior for the MCP integration, including initialize, discover tools, call tool, close.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/client.py:_PinnedHttpsConnection",
+      "type": "class",
+      "name": "_PinnedHttpsConnection",
+      "filePath": "runtime/resono_runtime/mcp/client.py",
+      "lineRange": [
+        148,
+        163
+      ],
+      "summary": "Owns pinned https connection behavior for the MCP integration, including connect.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/mcp/connections.py",
+      "type": "file",
+      "name": "connections.py",
+      "filePath": "runtime/resono_runtime/mcp/connections.py",
+      "summary": "Implements MCP integration responsibilities centered on mcp connection configuration error, mcp connection configuration, validate connection configuration. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/connections.py:validate_connection_configuration",
+      "type": "function",
+      "name": "validate_connection_configuration",
+      "filePath": "runtime/resono_runtime/mcp/connections.py",
+      "lineRange": [
+        24,
+        70
+      ],
+      "summary": "Performs validate connection configuration behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/connections.py:_remote_url",
+      "type": "function",
+      "name": "_remote_url",
+      "filePath": "runtime/resono_runtime/mcp/connections.py",
+      "lineRange": [
+        73,
+        80
+      ],
+      "summary": "Performs remote url behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/connections.py:_string_map",
+      "type": "function",
+      "name": "_string_map",
+      "filePath": "runtime/resono_runtime/mcp/connections.py",
+      "lineRange": [
+        83,
+        84
+      ],
+      "summary": "Performs string map behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/connections.py:McpConnectionConfigurationError",
+      "type": "class",
+      "name": "McpConnectionConfigurationError",
+      "filePath": "runtime/resono_runtime/mcp/connections.py",
+      "lineRange": [
+        9,
+        10
+      ],
+      "summary": "Represents the mcp connection configuration error contract or immutable state used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/connections.py:McpConnectionConfiguration",
+      "type": "class",
+      "name": "McpConnectionConfiguration",
+      "filePath": "runtime/resono_runtime/mcp/connections.py",
+      "lineRange": [
+        14,
+        21
+      ],
+      "summary": "Represents the mcp connection configuration contract or immutable state used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/mcp/imports.py",
+      "type": "file",
+      "name": "imports.py",
+      "filePath": "runtime/resono_runtime/mcp/imports.py",
+      "summary": "Implements MCP integration responsibilities centered on mcp document import, connection id, document hash. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/imports.py:_connection_id",
+      "type": "function",
+      "name": "_connection_id",
+      "filePath": "runtime/resono_runtime/mcp/imports.py",
+      "lineRange": [
+        57,
+        58
+      ],
+      "summary": "Performs connection id behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/imports.py:_document_hash",
+      "type": "function",
+      "name": "_document_hash",
+      "filePath": "runtime/resono_runtime/mcp/imports.py",
+      "lineRange": [
+        61,
+        69
+      ],
+      "summary": "Performs document hash behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/imports.py:McpDocumentImport",
+      "type": "class",
+      "name": "McpDocumentImport",
+      "filePath": "runtime/resono_runtime/mcp/imports.py",
+      "lineRange": [
+        14,
+        54
+      ],
+      "summary": "Owns mcp document import behavior for the MCP integration, including preflight, confirm, current hash.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "type": "file",
+      "name": "lifecycle.py",
+      "filePath": "runtime/resono_runtime/mcp/lifecycle.py",
+      "summary": "Implements MCP integration responsibilities centered on mcp lifecycle, canonical, exposed name. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/lifecycle.py:_canonical",
+      "type": "function",
+      "name": "_canonical",
+      "filePath": "runtime/resono_runtime/mcp/lifecycle.py",
+      "lineRange": [
+        269,
+        270
+      ],
+      "summary": "Performs canonical behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/lifecycle.py:_exposed_name",
+      "type": "function",
+      "name": "_exposed_name",
+      "filePath": "runtime/resono_runtime/mcp/lifecycle.py",
+      "lineRange": [
+        273,
+        275
+      ],
+      "summary": "Performs exposed name behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/lifecycle.py:_tool_result",
+      "type": "function",
+      "name": "_tool_result",
+      "filePath": "runtime/resono_runtime/mcp/lifecycle.py",
+      "lineRange": [
+        278,
+        284
+      ],
+      "summary": "Performs tool result behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/lifecycle.py:_credential_headers",
+      "type": "function",
+      "name": "_credential_headers",
+      "filePath": "runtime/resono_runtime/mcp/lifecycle.py",
+      "lineRange": [
+        287,
+        298
+      ],
+      "summary": "Performs credential headers behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/lifecycle.py:McpLifecycle",
+      "type": "class",
+      "name": "McpLifecycle",
+      "filePath": "runtime/resono_runtime/mcp/lifecycle.py",
+      "lineRange": [
+        24,
+        266
+      ],
+      "summary": "Owns mcp lifecycle behavior for the MCP integration, including restore, list, get, tools.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:runtime/resono_runtime/mcp/tool_adapter.py",
+      "type": "file",
+      "name": "tool_adapter.py",
+      "filePath": "runtime/resono_runtime/mcp/tool_adapter.py",
+      "summary": "Implements MCP integration responsibilities centered on discovered mcp tool, normalize tools. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/mcp/tool_adapter.py:normalize_tools",
+      "type": "function",
+      "name": "normalize_tools",
+      "filePath": "runtime/resono_runtime/mcp/tool_adapter.py",
+      "lineRange": [
+        17,
+        29
+      ],
+      "summary": "Performs normalize tools behavior used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/mcp/tool_adapter.py:DiscoveredMcpTool",
+      "type": "class",
+      "name": "DiscoveredMcpTool",
+      "filePath": "runtime/resono_runtime/mcp/tool_adapter.py",
+      "lineRange": [
+        9,
+        14
+      ],
+      "summary": "Represents the discovered mcp tool contract or immutable state used by the MCP integration.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/plugins/archives.py",
+      "type": "file",
+      "name": "archives.py",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "summary": "Implements plugin lifecycle responsibilities centered on plugin archive rejected, plugin manifest, plugin inspection. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/archives.py:_entries",
+      "type": "function",
+      "name": "_entries",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        81,
+        118
+      ],
+      "summary": "Performs entries behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/archives.py:_root",
+      "type": "function",
+      "name": "_root",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        121,
+        128
+      ],
+      "summary": "Performs root behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/archives.py:_manifest",
+      "type": "function",
+      "name": "_manifest",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        131,
+        136
+      ],
+      "summary": "Performs manifest behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/archives.py:_skills",
+      "type": "function",
+      "name": "_skills",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        139,
+        155
+      ],
+      "summary": "Performs skills behavior used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/plugins/archives.py:_mcp",
+      "type": "function",
+      "name": "_mcp",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        158,
+        170
+      ],
+      "summary": "Performs mcp behavior used by the plugin lifecycle.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/archives.py:PluginArchiveRejected",
+      "type": "class",
+      "name": "PluginArchiveRejected",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        28,
+        29
+      ],
+      "summary": "Represents the plugin archive rejected contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/archives.py:PluginManifest",
+      "type": "class",
+      "name": "PluginManifest",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        33,
+        37
+      ],
+      "summary": "Represents the plugin manifest contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/archives.py:PluginInspection",
+      "type": "class",
+      "name": "PluginInspection",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        41,
+        50
+      ],
+      "summary": "Represents the plugin inspection contract or immutable state used by the plugin lifecycle.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/plugins/archives.py:PluginArchiveInspector",
+      "type": "class",
+      "name": "PluginArchiveInspector",
+      "filePath": "runtime/resono_runtime/plugins/archives.py",
+      "lineRange": [
+        53,
+        78
+      ],
+      "summary": "Owns plugin archive inspector behavior for the plugin lifecycle, including inspect.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/imports/recovery.py",
+      "target": "class:runtime/resono_runtime/imports/recovery.py:ImportOperation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/recovery.py",
+      "target": "class:runtime/resono_runtime/imports/recovery.py:ImportOperation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/recovery.py",
+      "target": "class:runtime/resono_runtime/imports/recovery.py:ImportRecovery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/recovery.py",
+      "target": "class:runtime/resono_runtime/imports/recovery.py:ImportRecovery",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/imports/recovery.py",
+      "target": "file:runtime/resono_runtime/storage/database.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "function:runtime/resono_runtime/mcp/client.py:_sse_json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "function:runtime/resono_runtime/mcp/client.py:_sse_json",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "class:runtime/resono_runtime/mcp/client.py:McpConnectionError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "class:runtime/resono_runtime/mcp/client.py:McpConnectionError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "class:runtime/resono_runtime/mcp/client.py:StreamableHttpMcpClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "class:runtime/resono_runtime/mcp/client.py:StreamableHttpMcpClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "class:runtime/resono_runtime/mcp/client.py:_PinnedHttpsConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "class:runtime/resono_runtime/mcp/client.py:_PinnedHttpsConnection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "file:runtime/resono_runtime/mcp/connections.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/client.py",
+      "target": "file:runtime/resono_runtime/security/outbound.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "function:runtime/resono_runtime/mcp/connections.py:validate_connection_configuration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "function:runtime/resono_runtime/mcp/connections.py:validate_connection_configuration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "function:runtime/resono_runtime/mcp/connections.py:_remote_url",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "function:runtime/resono_runtime/mcp/connections.py:_remote_url",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "function:runtime/resono_runtime/mcp/connections.py:_string_map",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "function:runtime/resono_runtime/mcp/connections.py:_string_map",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "class:runtime/resono_runtime/mcp/connections.py:McpConnectionConfigurationError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "class:runtime/resono_runtime/mcp/connections.py:McpConnectionConfigurationError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "class:runtime/resono_runtime/mcp/connections.py:McpConnectionConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/connections.py",
+      "target": "class:runtime/resono_runtime/mcp/connections.py:McpConnectionConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "function:runtime/resono_runtime/mcp/imports.py:_connection_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "function:runtime/resono_runtime/mcp/imports.py:_connection_id",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "function:runtime/resono_runtime/mcp/imports.py:_document_hash",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "function:runtime/resono_runtime/mcp/imports.py:_document_hash",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "class:runtime/resono_runtime/mcp/imports.py:McpDocumentImport",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "class:runtime/resono_runtime/mcp/imports.py:McpDocumentImport",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "file:runtime/resono_runtime/imports/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/imports.py",
+      "target": "file:runtime/resono_runtime/plugins/specification.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_canonical",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_canonical",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_exposed_name",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_exposed_name",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_tool_result",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_tool_result",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_credential_headers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "function:runtime/resono_runtime/mcp/lifecycle.py:_credential_headers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "class:runtime/resono_runtime/mcp/lifecycle.py:McpLifecycle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "class:runtime/resono_runtime/mcp/lifecycle.py:McpLifecycle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/connections/records.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/mcp/client.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/mcp/connections.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/mcp/tool_adapter.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/storage/connection_credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/storage/mcp_connections.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/lifecycle.py",
+      "target": "file:runtime/resono_runtime/tools/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/tool_adapter.py",
+      "target": "function:runtime/resono_runtime/mcp/tool_adapter.py:normalize_tools",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/tool_adapter.py",
+      "target": "function:runtime/resono_runtime/mcp/tool_adapter.py:normalize_tools",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/tool_adapter.py",
+      "target": "class:runtime/resono_runtime/mcp/tool_adapter.py:DiscoveredMcpTool",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/mcp/tool_adapter.py",
+      "target": "class:runtime/resono_runtime/mcp/tool_adapter.py:DiscoveredMcpTool",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_entries",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_entries",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_root",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_root",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_manifest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_manifest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_skills",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_skills",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_mcp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "function:runtime/resono_runtime/plugins/archives.py:_mcp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginArchiveRejected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginArchiveRejected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginManifest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginManifest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginInspection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginInspection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginArchiveInspector",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "class:runtime/resono_runtime/plugins/archives.py:PluginArchiveInspector",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "file:runtime/resono_runtime/plugins/cards.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "file:runtime/resono_runtime/plugins/specification.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/plugins/archives.py",
+      "target": "file:runtime/resono_runtime/skills/specification.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

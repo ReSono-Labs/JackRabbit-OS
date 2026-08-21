@@ -18,6 +18,7 @@ class ToolInvocationContext:
     tool_call_id: str | None = None
     user_utterance: str | None = None
     user_utterance_id: int | None = None
+    execution_id: str | None = None
 
 
 ContextToolHandler = Callable[[ToolInvocationContext, dict[str, object]], "ToolInvocationResult"]
@@ -28,6 +29,7 @@ class ToolInvocationResult:
     text: str
     structured_content: dict[str, object] | None = None
     is_error: bool = False
+    provider_session_update: dict[str, object] | None = None
 
     def mcp_result(self) -> dict[str, object]:
         result: dict[str, object] = {
@@ -36,6 +38,8 @@ class ToolInvocationResult:
         }
         if self.structured_content is not None:
             result["structuredContent"] = self.structured_content
+        if self.provider_session_update is not None:
+            result["resonoSessionUpdate"] = self.provider_session_update
         return result
 
 

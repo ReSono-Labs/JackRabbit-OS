@@ -1,0 +1,182 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "runtime/resono_runtime/standards/agent_plugins/plugin.schema.json",
+      "language": "json",
+      "sizeLines": 65,
+      "fileCategory": "config"
+    },
+    {
+      "path": "runtime/resono_runtime/standards/resono_cards/card.schema.json",
+      "language": "json",
+      "sizeLines": 18,
+      "fileCategory": "config"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_agent_audiences.py",
+      "language": "python",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_agents_sdk_runner.py",
+      "language": "python",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_background_agent_contract.py",
+      "language": "python",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_background_agent_global_tools.py",
+      "language": "python",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_background_agent_observability.py",
+      "language": "python",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_background_agent_recipes.py",
+      "language": "python",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_background_agent_service.py",
+      "language": "python",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_build07_api_auth.py",
+      "language": "python",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_calendar_contract.py",
+      "language": "python",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_connection_routes.py",
+      "language": "python",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_creations.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_import_preflight.py",
+      "language": "python",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_import_recovery.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_mail_contract.py",
+      "language": "python",
+      "sizeLines": 225,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_management_pairing.py",
+      "language": "python",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_mcp_client.py",
+      "language": "python",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_mcp_connections.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_mcp_lifecycle.py",
+      "language": "python",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_mcp_server.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_mcp_tool_adapter.py",
+      "language": "python",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_memory_sessions.py",
+      "language": "python",
+      "sizeLines": 638,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_openai_provider.py",
+      "language": "python",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "runtime/resono_runtime/standards/agent_plugins/plugin.schema.json": [],
+    "runtime/resono_runtime/standards/resono_cards/card.schema.json": [],
+    "runtime/resono_runtime/storage/__init__.py": [],
+    "tests/runtime/test_agent_audiences.py": [],
+    "tests/runtime/test_agents_sdk_runner.py": [],
+    "tests/runtime/test_background_agent_contract.py": [],
+    "tests/runtime/test_background_agent_global_tools.py": [],
+    "tests/runtime/test_background_agent_observability.py": [],
+    "tests/runtime/test_background_agent_recipes.py": [],
+    "tests/runtime/test_background_agent_service.py": [],
+    "tests/runtime/test_build07_api_auth.py": [],
+    "tests/runtime/test_calendar_contract.py": [],
+    "tests/runtime/test_connection_routes.py": [],
+    "tests/runtime/test_creations.py": [],
+    "tests/runtime/test_import_preflight.py": [],
+    "tests/runtime/test_import_recovery.py": [],
+    "tests/runtime/test_mail_contract.py": [],
+    "tests/runtime/test_management_pairing.py": [],
+    "tests/runtime/test_mcp_client.py": [],
+    "tests/runtime/test_mcp_connections.py": [],
+    "tests/runtime/test_mcp_lifecycle.py": [],
+    "tests/runtime/test_mcp_server.py": [],
+    "tests/runtime/test_mcp_tool_adapter.py": [],
+    "tests/runtime/test_memory_sessions.py": [],
+    "tests/runtime/test_openai_provider.py": []
+  }
+}

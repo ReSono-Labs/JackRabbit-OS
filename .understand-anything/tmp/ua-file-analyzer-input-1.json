@@ -1,0 +1,263 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "runtime/resono_runtime/storage/migrations/__init__.py",
+      "language": "python",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v005_runtime_foundation.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v006_agent_audiences.py",
+      "language": "python",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v007_skill_catalog.py",
+      "language": "python",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v008_plugin_catalog.py",
+      "language": "python",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v009_plugin_components.py",
+      "language": "python",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v010_mcp_connections.py",
+      "language": "python",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v011_mcp_tools.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v012_mcp_configuration.py",
+      "language": "python",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v013_connection_credentials.py",
+      "language": "python",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v014_connections.py",
+      "language": "python",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v015_mail.py",
+      "language": "python",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v016_mail_confirmation.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v017_mcp_lifecycle.py",
+      "language": "python",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v018_import_recovery.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v019_mail_sync_progress.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v021_creations.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py",
+      "language": "python",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py",
+      "language": "python",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v025_creation_sources.py",
+      "language": "python",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py",
+      "language": "python",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v027_plugin_cards.py",
+      "language": "python",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v028_calendar.py",
+      "language": "python",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v029_tasks.py",
+      "language": "python",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py",
+      "language": "python",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py",
+      "language": "python",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
+      "language": "python",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
+      "language": "python",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "runtime/resono_runtime/storage/migrations/__init__.py": [
+      "runtime/resono_runtime/storage/migrations/v005_runtime_foundation.py",
+      "runtime/resono_runtime/storage/migrations/v006_agent_audiences.py",
+      "runtime/resono_runtime/storage/migrations/v007_skill_catalog.py",
+      "runtime/resono_runtime/storage/migrations/v008_plugin_catalog.py",
+      "runtime/resono_runtime/storage/migrations/v009_plugin_components.py",
+      "runtime/resono_runtime/storage/migrations/v010_mcp_connections.py",
+      "runtime/resono_runtime/storage/migrations/v011_mcp_tools.py",
+      "runtime/resono_runtime/storage/migrations/v012_mcp_configuration.py",
+      "runtime/resono_runtime/storage/migrations/v013_connection_credentials.py",
+      "runtime/resono_runtime/storage/migrations/v014_connections.py",
+      "runtime/resono_runtime/storage/migrations/v015_mail.py",
+      "runtime/resono_runtime/storage/migrations/v016_mail_confirmation.py",
+      "runtime/resono_runtime/storage/migrations/v017_mcp_lifecycle.py",
+      "runtime/resono_runtime/storage/migrations/v018_import_recovery.py",
+      "runtime/resono_runtime/storage/migrations/v019_mail_sync_progress.py",
+      "runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py",
+      "runtime/resono_runtime/storage/migrations/v021_creations.py",
+      "runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py",
+      "runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py",
+      "runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py",
+      "runtime/resono_runtime/storage/migrations/v025_creation_sources.py",
+      "runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py",
+      "runtime/resono_runtime/storage/migrations/v027_plugin_cards.py",
+      "runtime/resono_runtime/storage/migrations/v028_calendar.py",
+      "runtime/resono_runtime/storage/migrations/v029_tasks.py",
+      "runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py",
+      "runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py",
+      "runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
+      "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
+      "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
+      "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py"
+    ],
+    "runtime/resono_runtime/storage/migrations/v005_runtime_foundation.py": [],
+    "runtime/resono_runtime/storage/migrations/v006_agent_audiences.py": [],
+    "runtime/resono_runtime/storage/migrations/v007_skill_catalog.py": [],
+    "runtime/resono_runtime/storage/migrations/v008_plugin_catalog.py": [],
+    "runtime/resono_runtime/storage/migrations/v009_plugin_components.py": [],
+    "runtime/resono_runtime/storage/migrations/v010_mcp_connections.py": [],
+    "runtime/resono_runtime/storage/migrations/v011_mcp_tools.py": [],
+    "runtime/resono_runtime/storage/migrations/v012_mcp_configuration.py": [],
+    "runtime/resono_runtime/storage/migrations/v013_connection_credentials.py": [],
+    "runtime/resono_runtime/storage/migrations/v014_connections.py": [],
+    "runtime/resono_runtime/storage/migrations/v015_mail.py": [],
+    "runtime/resono_runtime/storage/migrations/v016_mail_confirmation.py": [],
+    "runtime/resono_runtime/storage/migrations/v017_mcp_lifecycle.py": [],
+    "runtime/resono_runtime/storage/migrations/v018_import_recovery.py": [],
+    "runtime/resono_runtime/storage/migrations/v019_mail_sync_progress.py": [],
+    "runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py": [],
+    "runtime/resono_runtime/storage/migrations/v021_creations.py": [],
+    "runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py": [],
+    "runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py": [],
+    "runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py": [],
+    "runtime/resono_runtime/storage/migrations/v025_creation_sources.py": [],
+    "runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py": [],
+    "runtime/resono_runtime/storage/migrations/v027_plugin_cards.py": [],
+    "runtime/resono_runtime/storage/migrations/v028_calendar.py": [],
+    "runtime/resono_runtime/storage/migrations/v029_tasks.py": [],
+    "runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py": [],
+    "runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py": [],
+    "runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py": [],
+    "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py": [],
+    "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py": [],
+    "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py": []
+  }
+}

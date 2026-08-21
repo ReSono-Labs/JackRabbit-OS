@@ -159,6 +159,12 @@ polling window.
 /tmp/r1-android-sdk/platform-tools/adb devices -l
 ```
 
+After every ADB server restart, the user **must physically unplug and reconnect
+the R1 before device discovery is retried**. Do not silently poll or proceed to
+install immediately after `adb start-server`; tell the user to reconnect the
+device, wait for that action, and then run `adb devices -l`. The transport may
+remain empty until this physical reconnect occurs.
+
 Expected output should show:
 
 ```
@@ -498,7 +504,6 @@ Known environment failure on this host: `test_runtime_environment` expects
 Python 3.13 (host provides 3.11) — unrelated to product behavior.
 
 ## Build Contract 07 — focused subphase testing
-
 ### Built-in Calendar contract
 
 Run the focused Calendar host contract with:
@@ -631,3 +636,159 @@ and `embedded runtime package: OK`. The recorded candidate is
 `artifacts/local-builds/ReSonoR1-build07-final-audit2-20260820T180000Z.apk`, SHA-256
 `f26407acc926be0a3c1842f6033d49ad529f7b3ecfdcf8864f96ae5dcbcfe5b2`.
 Build evidence does not replace the physical acceptance in Build Contract 07.
+
+## Build Contract 08 - Background Agent focused testing
+
+The repository may not have a root `.venv`. Use the pinned ephemeral test
+environment and include transitive dependencies required by the runtime route
+graph:
+
+```bash
+PYTHONPATH=runtime uv run --with jsonschema --with pytest -- \
+  python -m pytest -q \
+  tests/runtime/test_background_agent_contract.py \
+  tests/runtime/test_background_agent_observability.py \
+  tests/runtime/test_background_agent_execution.py \
+  tests/runtime/test_background_agent_service.py \
+  tests/runtime/test_background_agent_global_tools.py \
+  tests/runtime/test_agents_sdk_runner.py \
+  tests/runtime/test_background_completion_delivery.py
+
+PYTHONPATH=runtime uv run --with PyYAML --with jsonschema --with pytest --with httpx -- \
+  python -m pytest -q \
+  tests/runtime/test_build07_api_auth.py \
+  tests/runtime/test_runtime_lifecycle.py \
+  tests/runtime/test_agents_sdk_runner.py \
+  tests/runtime/test_mcp_server.py \
+  tests/runtime/test_openai_realtime_session.py
+
+node --check web/management/background-agent.js
+```
+
+Recorded 2026-08-21 result: 12 tests passed in the Background Agent contract,
+observability, recipes, service, and tool group; 14 tests and 20 subtests passed
+in the management/runtime/SDK integration group; JavaScript syntax passed.
+The Android build also passed with 299 actionable tasks, standalone boundaries
+OK, and embedded runtime packaging OK. The resulting
+`android/app/build/outputs/apk/debug/app-debug.apk` has SHA-256
+`726084841ded4a3cb0f7351ed88d31f86ca37470aa62abcc5dff7b4516e26c40`.
+At the initial host checkpoint no device was visible to ADB. The later final
+deployment evidence below supersedes that transport state. Host tests alone do
+not accept live provider execution, Voice delegation, or physical R1 behavior.
+
+### Build 08 final deployment corrections
+
+The final deployed candidate is
+`android/app/build/outputs/apk/debug/app-debug.apk`, SHA-256
+`38273f53a6a5a0252610e724b1cb5239de606b16994a8baa7126cc240c61f23a`.
+It fixes three package/startup boundaries discovered only during physical
+deployment: the workspace package circular import, omission of
+`background-agent.js` from Android assets, and omission of
+`/v1/management/background-agent` plus its nested routes from the Java HTTPS
+proxy allowlist. The package check now requires the Agent script.
+
+Final device evidence on serial `919109A5P1600502814D`:
+
+- runtime process ready;
+- `127.0.0.1:8765` listening;
+- management HTTPS `8443` listening;
+- `/management/background-agent.js` returns HTTP 200 and passes `node --check`;
+- unauthenticated `/v1/management/background-agent` returns the expected 403
+  `browser_session_denied`, proving the HTTPS proxy reaches the Python route;
+- Primary Voice workspace contract passes: durable workspace list/read and
+  named run-workspace list/read are available, while write and publish are
+  denied.
+
+Refresh an already-open management browser after installing this candidate so
+it loads the newly packaged Agent script. A paired browser should populate
+settings and tools; Save is handled in JavaScript and remains on
+`#background-agent`.
+
+### Build 08 Agents SDK runtime correction
+
+The Background Agent has one execution loop: OpenAI Agents SDK `Agent` and
+`Runner`. Do not restore `background_agent/run_loop.py`, a reviewer/repair loop,
+arbitrary JSON result parsing, or host-side completion reinterpretation.
+Compatibility recipe values all map to the same typed SDK execution.
+
+Run the focused correction gate with the actual Agents SDK dependency:
+
+```bash
+PYTHONPATH=runtime uv run \
+  --with openai-agents==0.18.3 \
+  --with PyYAML \
+  --with jsonschema \
+  --with pytest \
+  -- python -m pytest \
+  tests/runtime/test_background_agent_execution.py \
+  tests/runtime/test_background_agent_observability.py \
+  tests/runtime/test_background_agent_service.py \
+  tests/runtime/test_background_agent_contract.py \
+  tests/runtime/test_background_agent_global_tools.py \
+  tests/runtime/test_agents_sdk_runner.py \
+  tests/runtime/test_background_completion_delivery.py
+
+node --check web/management/background-agent.js
+```
+
+Recorded 2026-08-21 correction result: 19 Python tests passed and JavaScript
+syntax passed. Run Logs are projections of durable lifecycle/model/tool events.
+Reasoning Logs contain provider-returned reasoning summaries and explicit typed
+agent evidence only; never synthesize or expose private chain-of-thought.
+
+Corrected deployed artifact:
+
+```text
+android/app/build/outputs/apk/debug/app-debug.apk
+SHA-256 e0ecafa19f270b94fb2223bb2d31d9459c4724904e9c9c024cfd922f9781a7ff
+package com.resonolabs.voice.engineering
+activity com.resonolabs.voice.MainActivity
+```
+
+Recorded physical startup evidence on `919109A5P1600502814D`: install succeeded,
+PID `13800` owns the running app, runtime port `8765` and management port `8443`
+listen, and the inspected startup log has no matching fatal runtime error. Do
+not use the obsolete package name `com.resonolabs.r1` when launching this build.
+
+Physical run `e26aba74634f96e48f7f8d29` failed after active tool use with `Event
+loop is closed`. It failed after about 74 seconds, not at the 300-second runtime
+limit. A later request proved subscription streaming is mandatory with HTTP 400
+`stream must be set to true`. The final contract uses `Runner.run_streamed` for
+subscription, `Runner.run` for Platform, a fresh `AsyncExecutionRuntime` per
+Background Agent goal, reasoning `summary="auto"`, and
+`RunHooks.on_llm_end`. Do not reuse one factory-wide loop across goal MCP
+sessions or defer model observation until final completion. Recorded correction
+gate: 20 tests passed.
+
+Deployed correction APK SHA-256:
+`d5bbe6025070fb9badb87464fc34cb3f144cb98375afc6fe4bd2fe10ce1c8645`.
+Recorded device evidence: install succeeded, PID `16638`, runtime ready, and
+ports `8765` and `8443` listening. Historical runs cannot gain reasoning
+summaries retroactively; validate with a new reasoning-enabled goal.
+
+Final subscription-compatible deployment SHA-256:
+`a486c31a8c8e8c53c0b400eaa8b9f22ba96f066332d0c557eed84d5e8ebc2e0b`.
+Recorded device evidence: install succeeded, PID `17435`, runtime ready, and
+ports `8765` and `8443` listening.
+
+### Background Agent constraint audit
+
+Do not rely on `MCPServerStreamableHttp` defaults. Its HTTP `timeout` and
+`client_session_timeout_seconds` are separate; the latter defaults to five
+seconds and caused abandoned web-search requests, provider `Connection error`,
+late tool completions, and broken pipes. Background runs must propagate the
+remaining configured run window to both fields.
+
+Normal run workspaces use the visible total workspace-size setting as their
+effective quota. Do not reintroduce hidden 128-file or 8 MB-per-file sublimits.
+Path confinement, symlink rejection, and atomic writes remain security rules.
+
+Reasoning Logs receive safe entries in the run-list projection. Polling must
+compare the response signature, preserve expanded run IDs, and avoid replacing
+the DOM when nothing changed. Recorded audit gate: 24 Python tests and
+management JavaScript syntax passed.
+
+Deployed reviewed constraint/UI candidate SHA-256:
+`08be0d29ba474411a02992b36c4445a14b3684e913e08b63a995e7c319e39e7f`.
+Recorded device evidence: install succeeded, PID `20916`, runtime ready, and
+ports `8765` and `8443` listening.

@@ -24,6 +24,7 @@ from .tool_routes import ToolRoutes
 from .plugin_routes import PluginRoutes
 from .creation_routes import CreationRoutes
 from .connection_routes import ConnectionRoutes
+from .background_agent_routes import BackgroundAgentRoutes
 
 if TYPE_CHECKING:
     from .http_server import HealthReader, RestartRequest
@@ -92,6 +93,7 @@ class RuntimeRoutes:
         plugins: PluginRoutes | None = None,
         creations: CreationRoutes | None = None,
         connections: ConnectionRoutes | None = None,
+        background_agent: BackgroundAgentRoutes | None = None,
     ) -> None:
         self._health = health
         self._lifecycle = lifecycle
@@ -114,6 +116,7 @@ class RuntimeRoutes:
         self._plugins = plugins
         self._creations = creations
         self._connections = connections
+        self._background_agent = background_agent
 
     def handle_get(self, req: RouteRequest) -> None:
         path = req.path.split("?", 1)[0]
@@ -131,6 +134,8 @@ class RuntimeRoutes:
         plugins = self._plugins
         creations = self._creations
         connections = self._connections
+        background_agent = self._background_agent
+        if background_agent is not None and background_agent.handle_get(req, pairing): return
         if skills is not None and skills.handle_get(req, pairing):
             return
         if mail is not None and mail.handle_get(req, pairing):
@@ -258,6 +263,8 @@ class RuntimeRoutes:
         outbound_mcp = self._outbound_mcp
         plugins = self._plugins
         creations = self._creations
+        background_agent = self._background_agent
+        if background_agent is not None and background_agent.handle_post(req, pairing): return
         if skills is not None and skills.handle_post(req, pairing):
             return
         if mail is not None and mail.handle_post(req, pairing):
@@ -574,6 +581,8 @@ class RuntimeRoutes:
         outbound_mcp = self._outbound_mcp
         plugins = self._plugins
         creations = self._creations
+        background_agent = self._background_agent
+        if background_agent is not None and background_agent.handle_delete(req, pairing): return
         if skills is not None and skills.handle_delete(req, pairing):
             return
         if mail is not None and mail.handle_delete(req, pairing):

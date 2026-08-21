@@ -1,0 +1,1358 @@
+{
+  "nodes": [
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpRequest.java",
+      "type": "file",
+      "name": "ManagementHttpRequest.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpRequest.java",
+      "summary": "ManagementHttpRequest.java implements management http request behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpResponse.java",
+      "type": "file",
+      "name": "ManagementHttpResponse.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpResponse.java",
+      "summary": "ManagementHttpResponse.java implements management http response behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "type": "file",
+      "name": "ManagementHttpsServer.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "summary": "ManagementHttpsServer.java implements management https server behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:ManagementHttpsServer",
+      "type": "class",
+      "name": "ManagementHttpsServer",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "lineRange": [
+        13,
+        83
+      ],
+      "summary": "ManagementHttpsServer owns management https server behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:accept",
+      "type": "function",
+      "name": "accept",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "lineRange": [
+        34,
+        46
+      ],
+      "summary": "Implements accept as part of ManagementHttpsServer.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:handle",
+      "type": "function",
+      "name": "handle",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "lineRange": [
+        48,
+        72
+      ],
+      "summary": "Implements handle as part of ManagementHttpsServer.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:close",
+      "type": "function",
+      "name": "close",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "lineRange": [
+        74,
+        82
+      ],
+      "summary": "Implements close as part of ManagementHttpsServer.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "type": "file",
+      "name": "ManagementRuntimeProxy.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "summary": "ManagementRuntimeProxy.java implements management runtime proxy behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java:ManagementRuntimeProxy",
+      "type": "class",
+      "name": "ManagementRuntimeProxy",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "lineRange": [
+        10,
+        157
+      ],
+      "summary": "ManagementRuntimeProxy owns management runtime proxy behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java:forward",
+      "type": "function",
+      "name": "forward",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "lineRange": [
+        71,
+        117
+      ],
+      "summary": "Implements forward as part of ManagementRuntimeProxy.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java:readTimeoutMillis",
+      "type": "function",
+      "name": "readTimeoutMillis",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "lineRange": [
+        128,
+        148
+      ],
+      "summary": "Implements read timeout millis as part of ManagementRuntimeProxy.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "type": "file",
+      "name": "ManagementTlsIdentity.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "summary": "ManagementTlsIdentity.java implements management tls identity behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:ManagementTlsIdentity",
+      "type": "class",
+      "name": "ManagementTlsIdentity",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "lineRange": [
+        31,
+        186
+      ],
+      "summary": "ManagementTlsIdentity owns management tls identity behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:openServerSocket",
+      "type": "function",
+      "name": "openServerSocket",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "lineRange": [
+        44,
+        69
+      ],
+      "summary": "Implements open server socket as part of ManagementTlsIdentity.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:exportedCertificatePem",
+      "type": "function",
+      "name": "exportedCertificatePem",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "lineRange": [
+        71,
+        96
+      ],
+      "summary": "Implements exported certificate pem as part of ManagementTlsIdentity.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:preferredCertificateHost",
+      "type": "function",
+      "name": "preferredCertificateHost",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "lineRange": [
+        98,
+        129
+      ],
+      "summary": "Implements preferred certificate host as part of ManagementTlsIdentity.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:ensureIdentityMatchesHost",
+      "type": "function",
+      "name": "ensureIdentityMatchesHost",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "lineRange": [
+        131,
+        149
+      ],
+      "summary": "Implements ensure identity matches host as part of ManagementTlsIdentity.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:certificateCommonName",
+      "type": "function",
+      "name": "certificateCommonName",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "lineRange": [
+        151,
+        160
+      ],
+      "summary": "Implements certificate common name as part of ManagementTlsIdentity.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:createIdentity",
+      "type": "function",
+      "name": "createIdentity",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "lineRange": [
+        162,
+        185
+      ],
+      "summary": "Implements create identity as part of ManagementTlsIdentity.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "type": "file",
+      "name": "ManagementTlsKeyManager.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "summary": "ManagementTlsKeyManager.java implements management tls key manager behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:ManagementTlsKeyManager",
+      "type": "class",
+      "name": "ManagementTlsKeyManager",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        11,
+        65
+      ],
+      "summary": "ManagementTlsKeyManager owns management tls key manager behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getClientAliases",
+      "type": "function",
+      "name": "getClientAliases",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        25,
+        27
+      ],
+      "summary": "Implements get client aliases as part of ManagementTlsKeyManager.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseClientAlias",
+      "type": "function",
+      "name": "chooseClientAlias",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        29,
+        34
+      ],
+      "summary": "Implements choose client alias as part of ManagementTlsKeyManager.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getServerAliases",
+      "type": "function",
+      "name": "getServerAliases",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        36,
+        38
+      ],
+      "summary": "Implements get server aliases as part of ManagementTlsKeyManager.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseServerAlias",
+      "type": "function",
+      "name": "chooseServerAlias",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        40,
+        45
+      ],
+      "summary": "Implements choose server alias as part of ManagementTlsKeyManager.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseEngineServerAlias",
+      "type": "function",
+      "name": "chooseEngineServerAlias",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        47,
+        52
+      ],
+      "summary": "Implements choose engine server alias as part of ManagementTlsKeyManager.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getCertificateChain",
+      "type": "function",
+      "name": "getCertificateChain",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        54,
+        56
+      ],
+      "summary": "Implements get certificate chain as part of ManagementTlsKeyManager.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getPrivateKey",
+      "type": "function",
+      "name": "getPrivateKey",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "lineRange": [
+        58,
+        60
+      ],
+      "summary": "Implements get private key as part of ManagementTlsKeyManager.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "type": "file",
+      "name": "RuntimeCredentialBridge.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "summary": "RuntimeCredentialBridge.java implements runtime credential bridge behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:RuntimeCredentialBridge",
+      "type": "class",
+      "name": "RuntimeCredentialBridge",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        4,
+        50
+      ],
+      "summary": "RuntimeCredentialBridge owns runtime credential bridge behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:RuntimeCredentialBridge",
+      "type": "function",
+      "name": "RuntimeCredentialBridge",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        7,
+        9
+      ],
+      "summary": "Implements runtime credential bridge as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:hasOpenAiPlatformKey",
+      "type": "function",
+      "name": "hasOpenAiPlatformKey",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        11,
+        13
+      ],
+      "summary": "Implements has open ai platform key as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:getOpenAiPlatformKey",
+      "type": "function",
+      "name": "getOpenAiPlatformKey",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        15,
+        17
+      ],
+      "summary": "Implements get open ai platform key as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:putOpenAiPlatformKey",
+      "type": "function",
+      "name": "putOpenAiPlatformKey",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        19,
+        21
+      ],
+      "summary": "Implements put open ai platform key as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:deleteOpenAiPlatformKey",
+      "type": "function",
+      "name": "deleteOpenAiPlatformKey",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        23,
+        25
+      ],
+      "summary": "Implements delete open ai platform key as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:hasOpenAiSubscriptionTokens",
+      "type": "function",
+      "name": "hasOpenAiSubscriptionTokens",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        27,
+        29
+      ],
+      "summary": "Implements has open ai subscription tokens as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:getOpenAiSubscriptionTokens",
+      "type": "function",
+      "name": "getOpenAiSubscriptionTokens",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        31,
+        33
+      ],
+      "summary": "Implements get open ai subscription tokens as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:putOpenAiSubscriptionTokens",
+      "type": "function",
+      "name": "putOpenAiSubscriptionTokens",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        35,
+        37
+      ],
+      "summary": "Implements put open ai subscription tokens as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:deleteOpenAiSubscriptionTokens",
+      "type": "function",
+      "name": "deleteOpenAiSubscriptionTokens",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        39,
+        41
+      ],
+      "summary": "Implements delete open ai subscription tokens as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:sealConnectionCredential",
+      "type": "function",
+      "name": "sealConnectionCredential",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        43,
+        45
+      ],
+      "summary": "Implements seal connection credential as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:openConnectionCredential",
+      "type": "function",
+      "name": "openConnectionCredential",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "lineRange": [
+        47,
+        49
+      ],
+      "summary": "Implements open connection credential as part of RuntimeCredentialBridge.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "type": "file",
+      "name": "RuntimeCredentialStore.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "summary": "RuntimeCredentialStore.java implements runtime credential store behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:RuntimeCredentialStore",
+      "type": "class",
+      "name": "RuntimeCredentialStore",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "lineRange": [
+        20,
+        177
+      ],
+      "summary": "RuntimeCredentialStore owns runtime credential store behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:open",
+      "type": "function",
+      "name": "open",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "lineRange": [
+        113,
+        134
+      ],
+      "summary": "Implements open as part of RuntimeCredentialStore.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:validateConnectionRecord",
+      "type": "function",
+      "name": "validateConnectionRecord",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "lineRange": [
+        136,
+        148
+      ],
+      "summary": "Implements validate connection record as part of RuntimeCredentialStore.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:key",
+      "type": "function",
+      "name": "key",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "lineRange": [
+        156,
+        176
+      ],
+      "summary": "Implements key as part of RuntimeCredentialStore.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealth.java",
+      "type": "file",
+      "name": "RuntimeHealth.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealth.java",
+      "summary": "RuntimeHealth.java implements runtime health behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementPairing.java",
+      "type": "file",
+      "name": "RuntimeManagementPairing.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementPairing.java",
+      "summary": "RuntimeManagementPairing.java implements runtime management pairing behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java",
+      "type": "file",
+      "name": "RuntimePythonHost.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java",
+      "summary": "RuntimePythonHost.java implements runtime python host behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java:RuntimePythonHost",
+      "type": "class",
+      "name": "RuntimePythonHost",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java",
+      "lineRange": [
+        8,
+        30
+      ],
+      "summary": "RuntimePythonHost owns runtime python host behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java:start",
+      "type": "function",
+      "name": "start",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java",
+      "lineRange": [
+        11,
+        23
+      ],
+      "summary": "Implements start as part of RuntimePythonHost.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "type": "file",
+      "name": "RuntimeSecretStore.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "summary": "RuntimeSecretStore.java implements runtime secret store behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:RuntimeSecretStore",
+      "type": "class",
+      "name": "RuntimeSecretStore",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "lineRange": [
+        19,
+        97
+      ],
+      "summary": "RuntimeSecretStore owns runtime secret store behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:loadOrCreateLocalApiToken",
+      "type": "function",
+      "name": "loadOrCreateLocalApiToken",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "lineRange": [
+        29,
+        58
+      ],
+      "summary": "Implements load or create local api token as part of RuntimeSecretStore.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:decrypt",
+      "type": "function",
+      "name": "decrypt",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "lineRange": [
+        68,
+        78
+      ],
+      "summary": "Implements decrypt as part of RuntimeSecretStore.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:loadOrCreateKey",
+      "type": "function",
+      "name": "loadOrCreateKey",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "lineRange": [
+        80,
+        96
+      ],
+      "summary": "Implements load or create key as part of RuntimeSecretStore.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:ManagementHttpsServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:accept",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:handle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:close",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementHttpsServer.java:close",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java:ManagementRuntimeProxy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java:forward",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java:readTimeoutMillis",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:ManagementTlsIdentity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:openServerSocket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:exportedCertificatePem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:preferredCertificateHost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:ensureIdentityMatchesHost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:certificateCommonName",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java:createIdentity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:ManagementTlsKeyManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getClientAliases",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getClientAliases",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseClientAlias",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseClientAlias",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getServerAliases",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getServerAliases",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseServerAlias",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseServerAlias",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseEngineServerAlias",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:chooseEngineServerAlias",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getCertificateChain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getCertificateChain",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getPrivateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java:getPrivateKey",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:RuntimeCredentialBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:RuntimeCredentialBridge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:RuntimeCredentialBridge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:RuntimeCredentialBridge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:hasOpenAiPlatformKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:hasOpenAiPlatformKey",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:getOpenAiPlatformKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:getOpenAiPlatformKey",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:putOpenAiPlatformKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:putOpenAiPlatformKey",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:deleteOpenAiPlatformKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:deleteOpenAiPlatformKey",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:hasOpenAiSubscriptionTokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:hasOpenAiSubscriptionTokens",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:getOpenAiSubscriptionTokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:getOpenAiSubscriptionTokens",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:putOpenAiSubscriptionTokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:putOpenAiSubscriptionTokens",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:deleteOpenAiSubscriptionTokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:deleteOpenAiSubscriptionTokens",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:sealConnectionCredential",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:sealConnectionCredential",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:openConnectionCredential",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java:openConnectionCredential",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:RuntimeCredentialStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:open",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:validateConnectionRecord",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java:key",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java:RuntimePythonHost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimePythonHost.java:start",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:RuntimeSecretStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:loadOrCreateLocalApiToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:decrypt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeSecretStore.java:loadOrCreateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

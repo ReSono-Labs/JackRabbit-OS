@@ -8,6 +8,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from resono_runtime.core.logging import runtime_logger
+from resono_runtime.realtime.modes import PRIMARY_VOICE_INSTRUCTION
 
 
 _LOG = runtime_logger()
@@ -196,7 +197,7 @@ def _realtime_session(
     (the ``memory_lookup`` semantic-search tool is granted here so the voice
     agent can recall prior context mid-session).
     """
-    instructions = "You are ReSono Voice. Be concise, natural, and helpful."
+    instructions = PRIMARY_VOICE_INSTRUCTION
     if instructions_extra:
         instructions = instructions + "\n\n" + instructions_extra
     tools = list(tool_definitions) if tool_definitions is not None else [

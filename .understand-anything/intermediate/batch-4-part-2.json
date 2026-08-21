@@ -1,0 +1,1088 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/api/mail_routes.py",
+      "type": "file",
+      "name": "mail_routes.py",
+      "filePath": "runtime/resono_runtime/api/mail_routes.py",
+      "summary": "Implements runtime HTTP API responsibilities centered on mail routes, view, string. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mail_routes.py:_view",
+      "type": "function",
+      "name": "_view",
+      "filePath": "runtime/resono_runtime/api/mail_routes.py",
+      "lineRange": [
+        91,
+        93
+      ],
+      "summary": "Performs view behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mail_routes.py:_string",
+      "type": "function",
+      "name": "_string",
+      "filePath": "runtime/resono_runtime/api/mail_routes.py",
+      "lineRange": [
+        96,
+        99
+      ],
+      "summary": "Performs string behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mail_routes.py:_port",
+      "type": "function",
+      "name": "_port",
+      "filePath": "runtime/resono_runtime/api/mail_routes.py",
+      "lineRange": [
+        102,
+        105
+      ],
+      "summary": "Performs port behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mail_routes.py:_security",
+      "type": "function",
+      "name": "_security",
+      "filePath": "runtime/resono_runtime/api/mail_routes.py",
+      "lineRange": [
+        108,
+        111
+      ],
+      "summary": "Performs security behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/mail_routes.py:_error",
+      "type": "function",
+      "name": "_error",
+      "filePath": "runtime/resono_runtime/api/mail_routes.py",
+      "lineRange": [
+        114,
+        115
+      ],
+      "summary": "Performs error behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/mail_routes.py:MailRoutes",
+      "type": "class",
+      "name": "MailRoutes",
+      "filePath": "runtime/resono_runtime/api/mail_routes.py",
+      "lineRange": [
+        13,
+        88
+      ],
+      "summary": "Owns mail routes behavior for the runtime HTTP API, including handle get, handle post, handle delete, session.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "type": "file",
+      "name": "plugin_routes.py",
+      "filePath": "runtime/resono_runtime/api/plugin_routes.py",
+      "summary": "Implements runtime HTTP API responsibilities centered on plugin routes, view, inspection components. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/plugin_routes.py:_view",
+      "type": "function",
+      "name": "_view",
+      "filePath": "runtime/resono_runtime/api/plugin_routes.py",
+      "lineRange": [
+        100,
+        109
+      ],
+      "summary": "Performs view behavior used by the runtime HTTP API.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/plugin_routes.py:_inspection_components",
+      "type": "function",
+      "name": "_inspection_components",
+      "filePath": "runtime/resono_runtime/api/plugin_routes.py",
+      "lineRange": [
+        112,
+        119
+      ],
+      "summary": "Performs inspection components behavior used by the runtime HTTP API.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/plugin_routes.py:_name_action",
+      "type": "function",
+      "name": "_name_action",
+      "filePath": "runtime/resono_runtime/api/plugin_routes.py",
+      "lineRange": [
+        122,
+        124
+      ],
+      "summary": "Performs name action behavior used by the runtime HTTP API.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/plugin_routes.py:_session",
+      "type": "function",
+      "name": "_session",
+      "filePath": "runtime/resono_runtime/api/plugin_routes.py",
+      "lineRange": [
+        127,
+        131
+      ],
+      "summary": "Performs session behavior used by the runtime HTTP API.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/plugin_routes.py:_error",
+      "type": "function",
+      "name": "_error",
+      "filePath": "runtime/resono_runtime/api/plugin_routes.py",
+      "lineRange": [
+        134,
+        135
+      ],
+      "summary": "Performs error behavior used by the runtime HTTP API.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/plugin_routes.py:PluginRoutes",
+      "type": "class",
+      "name": "PluginRoutes",
+      "filePath": "runtime/resono_runtime/api/plugin_routes.py",
+      "lineRange": [
+        16,
+        97
+      ],
+      "summary": "Owns plugin routes behavior for the runtime HTTP API, including handle get, handle post, handle delete.",
+      "tags": [
+        "plugin",
+        "lifecycle",
+        "validation",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/api/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "summary": "Implements runtime HTTP API responsibilities centered on route request, runtime routes, optional string. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_optional_string",
+      "type": "function",
+      "name": "_optional_string",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        616,
+        620
+      ],
+      "summary": "Performs optional string behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_decoded_header",
+      "type": "function",
+      "name": "_decoded_header",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        623,
+        630
+      ],
+      "summary": "Performs decoded header behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_positive_integer_header",
+      "type": "function",
+      "name": "_positive_integer_header",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        633,
+        638
+      ],
+      "summary": "Performs positive integer header behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_finalize_view",
+      "type": "function",
+      "name": "_finalize_view",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        641,
+        649
+      ],
+      "summary": "Performs finalize view behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_entry_view",
+      "type": "function",
+      "name": "_entry_view",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        652,
+        659
+      ],
+      "summary": "Performs entry view behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_summary_view",
+      "type": "function",
+      "name": "_summary_view",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        662,
+        671
+      ],
+      "summary": "Performs summary view behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_session_view",
+      "type": "function",
+      "name": "_session_view",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        674,
+        675
+      ],
+      "summary": "Performs session view behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/routes.py:_memory_view",
+      "type": "function",
+      "name": "_memory_view",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        678,
+        689
+      ],
+      "summary": "Performs memory view behavior used by the runtime HTTP API.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/routes.py:RouteRequest",
+      "type": "class",
+      "name": "RouteRequest",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        35,
+        60
+      ],
+      "summary": "Owns route request behavior for the runtime HTTP API, including respond json, respond empty, respond bytes, stream events.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/routes.py:RuntimeRoutes",
+      "type": "class",
+      "name": "RuntimeRoutes",
+      "filePath": "runtime/resono_runtime/api/routes.py",
+      "lineRange": [
+        63,
+        613
+      ],
+      "summary": "Owns runtime routes behavior for the runtime HTTP API, including handle get, handle post, handle delete.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:runtime/resono_runtime/api/task_routes.py",
+      "type": "file",
+      "name": "task_routes.py",
+      "filePath": "runtime/resono_runtime/api/task_routes.py",
+      "summary": "Implements runtime HTTP API responsibilities centered on task routes, view. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/task_routes.py:_view",
+      "type": "function",
+      "name": "_view",
+      "filePath": "runtime/resono_runtime/api/task_routes.py",
+      "lineRange": [
+        22,
+        23
+      ],
+      "summary": "Performs view behavior used by the runtime HTTP API.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/task_routes.py:TaskRoutes",
+      "type": "class",
+      "name": "TaskRoutes",
+      "filePath": "runtime/resono_runtime/api/task_routes.py",
+      "lineRange": [
+        7,
+        20
+      ],
+      "summary": "Owns task routes behavior for the runtime HTTP API, including handle get.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/api/tool_routes.py",
+      "type": "file",
+      "name": "tool_routes.py",
+      "filePath": "runtime/resono_runtime/api/tool_routes.py",
+      "summary": "Implements runtime HTTP API responsibilities centered on tool routes. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/tool_routes.py:ToolRoutes",
+      "type": "class",
+      "name": "ToolRoutes",
+      "filePath": "runtime/resono_runtime/api/tool_routes.py",
+      "lineRange": [
+        14,
+        26
+      ],
+      "summary": "Owns tool routes behavior for the runtime HTTP API, including handle get.",
+      "tags": [
+        "api-handler",
+        "http",
+        "runtime",
+        "data-model"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_string",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_string",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_port",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_port",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_security",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_security",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_error",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "function:runtime/resono_runtime/api/mail_routes.py:_error",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "class:runtime/resono_runtime/api/mail_routes.py:MailRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "class:runtime/resono_runtime/api/mail_routes.py:MailRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "file:runtime/resono_runtime/domains/mail/repository.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "file:runtime/resono_runtime/domains/mail/service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/mail_routes.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_inspection_components",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_inspection_components",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_name_action",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_name_action",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_session",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_session",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_error",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "function:runtime/resono_runtime/api/plugin_routes.py:_error",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "class:runtime/resono_runtime/api/plugin_routes.py:PluginRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "class:runtime/resono_runtime/api/plugin_routes.py:PluginRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "file:runtime/resono_runtime/plugins/archives.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_optional_string",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_optional_string",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_decoded_header",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_decoded_header",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_positive_integer_header",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_positive_integer_header",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_finalize_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_finalize_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_entry_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_entry_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_summary_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_summary_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_session_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_session_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_memory_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "function:runtime/resono_runtime/api/routes.py:_memory_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "class:runtime/resono_runtime/api/routes.py:RouteRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "class:runtime/resono_runtime/api/routes.py:RouteRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "class:runtime/resono_runtime/api/routes.py:RuntimeRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "class:runtime/resono_runtime/api/routes.py:RuntimeRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/calendar_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/connection_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/creation_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/events.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/mail_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/skill_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/task_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/api/tool_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/core/logging.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/mcp/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/memory/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/providers/controller.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/storage/lifecycle_repository.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/storage/profile_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/routes.py",
+      "target": "file:runtime/resono_runtime/storage/sessions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/task_routes.py",
+      "target": "function:runtime/resono_runtime/api/task_routes.py:_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/task_routes.py",
+      "target": "function:runtime/resono_runtime/api/task_routes.py:_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/task_routes.py",
+      "target": "class:runtime/resono_runtime/api/task_routes.py:TaskRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/task_routes.py",
+      "target": "class:runtime/resono_runtime/api/task_routes.py:TaskRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/task_routes.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/tool_routes.py",
+      "target": "class:runtime/resono_runtime/api/tool_routes.py:ToolRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/tool_routes.py",
+      "target": "class:runtime/resono_runtime/api/tool_routes.py:ToolRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/tool_routes.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/tool_routes.py",
+      "target": "file:runtime/resono_runtime/tools/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

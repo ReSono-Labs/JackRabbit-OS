@@ -1,0 +1,14 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 1,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Raw batch and assembled totals matched exactly (1,250 nodes and 2,160 edges before review); no dropped nodes or edges were detected.",
+    "No missing IDs, unknown node types, unknown complexity values, or dangling assembled edges were detected.",
+    "Checked 508 import-map relationships across 359 scanned files.",
+    "The dispatch did not include captured merge stderr; fixed-section sanity was inferred from the exact raw/assembled count match and clean normalized fields."
+  ]
+}

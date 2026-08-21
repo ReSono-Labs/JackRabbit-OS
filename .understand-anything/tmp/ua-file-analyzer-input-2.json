@@ -1,0 +1,326 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "runtime/resono_runtime/agents/__init__.py",
+      "language": "python",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/mcp_routes.py",
+      "language": "python",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/skill_routes.py",
+      "language": "python",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/connections/__init__.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/connections/records.py",
+      "language": "python",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/imports/__init__.py",
+      "language": "python",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/imports/preflight.py",
+      "language": "python",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/imports/recovery.py",
+      "language": "python",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/client.py",
+      "language": "python",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/connections.py",
+      "language": "python",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/imports.py",
+      "language": "python",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/lifecycle.py",
+      "language": "python",
+      "sizeLines": 298,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/mcp/tool_adapter.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/archives.py",
+      "language": "python",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/bundled_install.py",
+      "language": "python",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/card_lifecycle.py",
+      "language": "python",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/cards.py",
+      "language": "python",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/lifecycle.py",
+      "language": "python",
+      "sizeLines": 206,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/specification.py",
+      "language": "python",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/skills/__init__.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/skills/activation.py",
+      "language": "python",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/skills/archives.py",
+      "language": "python",
+      "sizeLines": 265,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/skills/lifecycle.py",
+      "language": "python",
+      "sizeLines": 273,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/skills/specification.py",
+      "language": "python",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/connection_credentials.py",
+      "language": "python",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/creations.py",
+      "language": "python",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/database.py",
+      "language": "python",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/mcp_connections.py",
+      "language": "python",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/plugin_components.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/plugins.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/skills.py",
+      "language": "python",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "runtime/resono_runtime/agents/__init__.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/agents/memory_reviewer.py",
+      "runtime/resono_runtime/agents/routing.py",
+      "runtime/resono_runtime/agents/runner.py",
+      "runtime/resono_runtime/agents/sdk_runner.py"
+    ],
+    "runtime/resono_runtime/api/mcp_routes.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/mcp/client.py",
+      "runtime/resono_runtime/mcp/imports.py",
+      "runtime/resono_runtime/mcp/lifecycle.py",
+      "runtime/resono_runtime/security/pairing.py"
+    ],
+    "runtime/resono_runtime/api/skill_routes.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/security/pairing.py",
+      "runtime/resono_runtime/skills/archives.py",
+      "runtime/resono_runtime/skills/lifecycle.py",
+      "runtime/resono_runtime/storage/skills.py"
+    ],
+    "runtime/resono_runtime/connections/__init__.py": [
+      "runtime/resono_runtime/connections/records.py"
+    ],
+    "runtime/resono_runtime/connections/records.py": [
+      "runtime/resono_runtime/storage/connection_credentials.py",
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/imports/__init__.py": [
+      "runtime/resono_runtime/imports/preflight.py",
+      "runtime/resono_runtime/imports/recovery.py"
+    ],
+    "runtime/resono_runtime/imports/preflight.py": [
+      "runtime/resono_runtime/agents/__init__.py"
+    ],
+    "runtime/resono_runtime/imports/recovery.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/mcp/client.py": [
+      "runtime/resono_runtime/mcp/connections.py",
+      "runtime/resono_runtime/security/outbound.py"
+    ],
+    "runtime/resono_runtime/mcp/connections.py": [],
+    "runtime/resono_runtime/mcp/imports.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/imports/__init__.py",
+      "runtime/resono_runtime/mcp/lifecycle.py",
+      "runtime/resono_runtime/plugins/specification.py"
+    ],
+    "runtime/resono_runtime/mcp/lifecycle.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/connections/records.py",
+      "runtime/resono_runtime/mcp/client.py",
+      "runtime/resono_runtime/mcp/connections.py",
+      "runtime/resono_runtime/mcp/tool_adapter.py",
+      "runtime/resono_runtime/security/credentials.py",
+      "runtime/resono_runtime/storage/connection_credentials.py",
+      "runtime/resono_runtime/storage/mcp_connections.py",
+      "runtime/resono_runtime/tools/__init__.py"
+    ],
+    "runtime/resono_runtime/mcp/tool_adapter.py": [],
+    "runtime/resono_runtime/plugins/archives.py": [
+      "runtime/resono_runtime/plugins/cards.py",
+      "runtime/resono_runtime/plugins/specification.py",
+      "runtime/resono_runtime/skills/specification.py"
+    ],
+    "runtime/resono_runtime/plugins/bundled_install.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/plugins/archives.py",
+      "runtime/resono_runtime/plugins/lifecycle.py",
+      "runtime/resono_runtime/storage/plugins.py"
+    ],
+    "runtime/resono_runtime/plugins/card_lifecycle.py": [
+      "runtime/resono_runtime/plugins/cards.py",
+      "runtime/resono_runtime/storage/creations.py",
+      "runtime/resono_runtime/storage/plugin_components.py"
+    ],
+    "runtime/resono_runtime/plugins/cards.py": [],
+    "runtime/resono_runtime/plugins/lifecycle.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/imports/__init__.py",
+      "runtime/resono_runtime/mcp/lifecycle.py",
+      "runtime/resono_runtime/plugins/archives.py",
+      "runtime/resono_runtime/plugins/card_lifecycle.py",
+      "runtime/resono_runtime/plugins/specification.py",
+      "runtime/resono_runtime/storage/plugin_components.py",
+      "runtime/resono_runtime/storage/plugins.py",
+      "runtime/resono_runtime/storage/skills.py"
+    ],
+    "runtime/resono_runtime/plugins/specification.py": [],
+    "runtime/resono_runtime/skills/__init__.py": [
+      "runtime/resono_runtime/skills/activation.py",
+      "runtime/resono_runtime/skills/specification.py"
+    ],
+    "runtime/resono_runtime/skills/activation.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/skills/specification.py",
+      "runtime/resono_runtime/storage/plugin_components.py",
+      "runtime/resono_runtime/storage/plugins.py",
+      "runtime/resono_runtime/storage/skills.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
+    "runtime/resono_runtime/skills/archives.py": [],
+    "runtime/resono_runtime/skills/lifecycle.py": [
+      "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/imports/__init__.py",
+      "runtime/resono_runtime/skills/archives.py",
+      "runtime/resono_runtime/skills/specification.py",
+      "runtime/resono_runtime/storage/skills.py"
+    ],
+    "runtime/resono_runtime/skills/specification.py": [],
+    "runtime/resono_runtime/storage/connection_credentials.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/creations.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/database.py": [
+      "runtime/resono_runtime/storage/migrations/__init__.py"
+    ],
+    "runtime/resono_runtime/storage/mcp_connections.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/plugin_components.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/plugins.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/skills.py": [
+      "runtime/resono_runtime/storage/database.py"
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "projectRoot": "/home/christian/Documents/Projects/ReSono-Labs-R1-Voice",
+  "batchFiles": [
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "language": "java",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/wheels/jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl",
+      "language": "whl",
+      "sizeLines": 1074,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/wheels/pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl",
+      "language": "whl",
+      "sizeLines": 5531,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl",
+      "language": "whl",
+      "sizeLines": 1147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/settings.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/system/motor-service/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/system/motor-service/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 19,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "language": "java",
+      "sizeLines": 233,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "language": "java",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/planning/2026-08-20-slice-06-extensions-mail-orientation.md",
+      "language": "markdown",
+      "sizeLines": 103,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md",
+      "language": "markdown",
+      "sizeLines": 339,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "runtime/README.md",
+      "language": "markdown",
+      "sizeLines": 25,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "runtime/resono_runtime/__init__.py",
+      "language": "python",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/api/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/connectors/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/core/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/domains/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/bundled/resono-mail/plugin.json",
+      "language": "json",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/bundled/resono-mail/skills/voice-mail/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "runtime/resono_runtime/providers/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/security/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/standards/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/standards/agent_plugins/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/standards/agent_plugins/mcp.schema.json",
+      "language": "json",
+      "sizeLines": 120,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java": [],
+    "android/runtime-host/wheels/jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl": [],
+    "android/runtime-host/wheels/pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl": [],
+    "android/runtime-host/wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl": [],
+    "android/settings.gradle.kts": [],
+    "android/system/motor-service/build.gradle.kts": [],
+    "android/system/motor-service/src/main/AndroidManifest.xml": [],
+    "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java": [],
+    "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java": [],
+    "docs/planning/2026-08-20-slice-06-extensions-mail-orientation.md": [],
+    "docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md": [],
+    "runtime/README.md": [],
+    "runtime/resono_runtime/__init__.py": [],
+    "runtime/resono_runtime/api/__init__.py": [],
+    "runtime/resono_runtime/connectors/__init__.py": [],
+    "runtime/resono_runtime/core/__init__.py": [],
+    "runtime/resono_runtime/domains/__init__.py": [],
+    "runtime/resono_runtime/plugins/__init__.py": [],
+    "runtime/resono_runtime/plugins/bundled/resono-mail/plugin.json": [],
+    "runtime/resono_runtime/plugins/bundled/resono-mail/skills/voice-mail/SKILL.md": [],
+    "runtime/resono_runtime/providers/__init__.py": [],
+    "runtime/resono_runtime/security/__init__.py": [],
+    "runtime/resono_runtime/standards/__init__.py": [],
+    "runtime/resono_runtime/standards/agent_plugins/__init__.py": [],
+    "runtime/resono_runtime/standards/agent_plugins/mcp.schema.json": []
+  }
+}

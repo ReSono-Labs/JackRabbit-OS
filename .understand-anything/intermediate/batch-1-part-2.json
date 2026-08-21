@@ -1,0 +1,726 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py",
+      "type": "file",
+      "name": "v020_mail_sent_parity.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py",
+      "summary": "Applies the versioned SQLite migration for mail sent parity, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py",
+      "lineRange": [
+        6,
+        14
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v021_creations.py",
+      "type": "file",
+      "name": "v021_creations.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v021_creations.py",
+      "summary": "Applies the versioned SQLite migration for creations, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v021_creations.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v021_creations.py",
+      "lineRange": [
+        6,
+        55
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py",
+      "type": "file",
+      "name": "v022_plugin_component_ownership.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py",
+      "summary": "Applies the versioned SQLite migration for plugin component ownership, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py",
+      "lineRange": [
+        6,
+        25
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py",
+      "type": "file",
+      "name": "v023_import_recovery_phase.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py",
+      "summary": "Applies the versioned SQLite migration for import recovery phase, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py",
+      "lineRange": [
+        6,
+        12
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py",
+      "type": "file",
+      "name": "v024_mail_utterance_approval.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py",
+      "summary": "Applies the versioned SQLite migration for mail utterance approval, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py",
+      "lineRange": [
+        6,
+        11
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v025_creation_sources.py",
+      "type": "file",
+      "name": "v025_creation_sources.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v025_creation_sources.py",
+      "summary": "Applies the versioned SQLite migration for creation sources, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v025_creation_sources.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v025_creation_sources.py",
+      "lineRange": [
+        6,
+        15
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py",
+      "type": "file",
+      "name": "v026_direct_handoffs.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py",
+      "summary": "Applies the versioned SQLite migration for direct handoffs, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py",
+      "lineRange": [
+        3,
+        5
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v027_plugin_cards.py",
+      "type": "file",
+      "name": "v027_plugin_cards.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v027_plugin_cards.py",
+      "summary": "Applies the versioned SQLite migration for plugin cards, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v027_plugin_cards.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v027_plugin_cards.py",
+      "lineRange": [
+        6,
+        41
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v028_calendar.py",
+      "type": "file",
+      "name": "v028_calendar.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v028_calendar.py",
+      "summary": "Applies the versioned SQLite migration for calendar, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v028_calendar.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v028_calendar.py",
+      "lineRange": [
+        6,
+        76
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v029_tasks.py",
+      "type": "file",
+      "name": "v029_tasks.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v029_tasks.py",
+      "summary": "Applies the versioned SQLite migration for tasks, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v029_tasks.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v029_tasks.py",
+      "lineRange": [
+        5,
+        34
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py",
+      "type": "file",
+      "name": "v030_calendar_connection_kind.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py",
+      "summary": "Applies the versioned SQLite migration for calendar connection kind, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py",
+      "lineRange": [
+        6,
+        42
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py",
+      "type": "file",
+      "name": "v031_remove_handoff_inspection.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py",
+      "summary": "Applies the versioned SQLite migration for remove handoff inspection, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py",
+      "lineRange": [
+        6,
+        13
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
+      "type": "file",
+      "name": "v032_background_agent_runs.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
+      "summary": "Applies the versioned SQLite migration for background agent runs, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
+      "lineRange": [
+        6,
+        40
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
+      "type": "file",
+      "name": "v033_background_agent_settings.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
+      "summary": "Applies the versioned SQLite migration for background agent settings, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
+      "lineRange": [
+        6,
+        33
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
+      "type": "file",
+      "name": "v034_background_agent_recipes.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
+      "summary": "Applies the versioned SQLite migration for background agent recipes, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
+      "lineRange": [
+        6,
+        12
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "type": "file",
+      "name": "v035_background_agent_global_tools.py",
+      "filePath": "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "summary": "Applies the versioned SQLite migration for background agent global tools, evolving the on-device runtime schema in a deterministic order.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py:apply",
+      "type": "function",
+      "name": "apply",
+      "filePath": "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "lineRange": [
+        21,
+        48
+      ],
+      "summary": "Applies this schema revision to the active SQLite connection.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "utility"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v020_mail_sent_parity.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v021_creations.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v021_creations.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v021_creations.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v021_creations.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v022_plugin_component_ownership.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v023_import_recovery_phase.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v024_mail_utterance_approval.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v025_creation_sources.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v025_creation_sources.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v025_creation_sources.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v025_creation_sources.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v026_direct_handoffs.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v027_plugin_cards.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v027_plugin_cards.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v027_plugin_cards.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v027_plugin_cards.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v028_calendar.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v028_calendar.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v028_calendar.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v028_calendar.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v029_tasks.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v029_tasks.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v029_tasks.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v029_tasks.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v030_calendar_connection_kind.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v031_remove_handoff_inspection.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py:apply",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "target": "function:runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py:apply",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

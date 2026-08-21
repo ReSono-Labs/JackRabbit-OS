@@ -1,0 +1,1063 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "type": "file",
+      "name": "background_agent_routes.py",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "summary": "Implements background agent responsibilities centered on background agent routes, settings view, tool view. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/background_agent_routes.py:_settings_view",
+      "type": "function",
+      "name": "_settings_view",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "lineRange": [
+        148,
+        154
+      ],
+      "summary": "Performs settings view behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/background_agent_routes.py:_tool_view",
+      "type": "function",
+      "name": "_tool_view",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "lineRange": [
+        157,
+        160
+      ],
+      "summary": "Performs tool view behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/background_agent_routes.py:_run_view",
+      "type": "function",
+      "name": "_run_view",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "lineRange": [
+        163,
+        170
+      ],
+      "summary": "Performs run view behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/background_agent_routes.py:_event_view",
+      "type": "function",
+      "name": "_event_view",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "lineRange": [
+        173,
+        175
+      ],
+      "summary": "Performs event view behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/background_agent_routes.py:_session",
+      "type": "function",
+      "name": "_session",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "lineRange": [
+        178,
+        182
+      ],
+      "summary": "Performs session behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/api/background_agent_routes.py:_not_found",
+      "type": "function",
+      "name": "_not_found",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "lineRange": [
+        185,
+        187
+      ],
+      "summary": "Performs not found behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/api/background_agent_routes.py:BackgroundAgentRoutes",
+      "type": "class",
+      "name": "BackgroundAgentRoutes",
+      "filePath": "runtime/resono_runtime/api/background_agent_routes.py",
+      "lineRange": [
+        20,
+        145
+      ],
+      "summary": "Owns background agent routes behavior for the background agent, including attach gateway, handle get, handle post, handle delete.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/background_agent/__init__.py",
+      "summary": "Defines the public package surface for the background agent, collecting the module's supported imports in one place.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "type": "file",
+      "name": "adapters.py",
+      "filePath": "runtime/resono_runtime/background_agent/adapters.py",
+      "summary": "Implements background agent responsibilities centered on goal task, from goal, request. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/background_agent/adapters.py:from_goal",
+      "type": "function",
+      "name": "from_goal",
+      "filePath": "runtime/resono_runtime/background_agent/adapters.py",
+      "lineRange": [
+        22,
+        33
+      ],
+      "summary": "Performs from goal behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/background_agent/adapters.py:_request",
+      "type": "function",
+      "name": "_request",
+      "filePath": "runtime/resono_runtime/background_agent/adapters.py",
+      "lineRange": [
+        36,
+        48
+      ],
+      "summary": "Performs request behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/background_agent/adapters.py:_required",
+      "type": "function",
+      "name": "_required",
+      "filePath": "runtime/resono_runtime/background_agent/adapters.py",
+      "lineRange": [
+        51,
+        54
+      ],
+      "summary": "Performs required behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/adapters.py:GoalTask",
+      "type": "class",
+      "name": "GoalTask",
+      "filePath": "runtime/resono_runtime/background_agent/adapters.py",
+      "lineRange": [
+        13,
+        19
+      ],
+      "summary": "Represents the goal task contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/composition.py",
+      "type": "file",
+      "name": "composition.py",
+      "filePath": "runtime/resono_runtime/background_agent/composition.py",
+      "summary": "Implements background agent responsibilities centered on background run factory. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/composition.py:BackgroundRunFactory",
+      "type": "class",
+      "name": "BackgroundRunFactory",
+      "filePath": "runtime/resono_runtime/background_agent/composition.py",
+      "lineRange": [
+        17,
+        68
+      ],
+      "summary": "Owns background run factory behavior for the background agent, including prepare.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "type": "file",
+      "name": "instructions.py",
+      "filePath": "runtime/resono_runtime/background_agent/instructions.py",
+      "summary": "Implements background agent responsibilities centered on worker instructions, worker input, reviewer instructions. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/background_agent/instructions.py:worker_instructions",
+      "type": "function",
+      "name": "worker_instructions",
+      "filePath": "runtime/resono_runtime/background_agent/instructions.py",
+      "lineRange": [
+        10,
+        21
+      ],
+      "summary": "Performs worker instructions behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/background_agent/instructions.py:worker_input",
+      "type": "function",
+      "name": "worker_input",
+      "filePath": "runtime/resono_runtime/background_agent/instructions.py",
+      "lineRange": [
+        24,
+        40
+      ],
+      "summary": "Performs worker input behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/background_agent/instructions.py:reviewer_instructions",
+      "type": "function",
+      "name": "reviewer_instructions",
+      "filePath": "runtime/resono_runtime/background_agent/instructions.py",
+      "lineRange": [
+        43,
+        48
+      ],
+      "summary": "Performs reviewer instructions behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/background_agent/instructions.py:reviewer_input",
+      "type": "function",
+      "name": "reviewer_input",
+      "filePath": "runtime/resono_runtime/background_agent/instructions.py",
+      "lineRange": [
+        51,
+        55
+      ],
+      "summary": "Performs reviewer input behavior used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "file",
+      "name": "run_contract.py",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "summary": "Implements background agent responsibilities centered on invocation type, autonomy profile, execution recipe. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_contract.py:InvocationType",
+      "type": "class",
+      "name": "InvocationType",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "lineRange": [
+        9,
+        10
+      ],
+      "summary": "Represents the invocation type contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_contract.py:AutonomyProfile",
+      "type": "class",
+      "name": "AutonomyProfile",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "lineRange": [
+        13,
+        16
+      ],
+      "summary": "Represents the autonomy profile contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_contract.py:ExecutionRecipe",
+      "type": "class",
+      "name": "ExecutionRecipe",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "lineRange": [
+        19,
+        22
+      ],
+      "summary": "Represents the execution recipe contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunState",
+      "type": "class",
+      "name": "AgentRunState",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "lineRange": [
+        25,
+        33
+      ],
+      "summary": "Represents the agent run state contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_contract.py:RunLimits",
+      "type": "class",
+      "name": "RunLimits",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "lineRange": [
+        37,
+        57
+      ],
+      "summary": "Represents the run limits contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunRequest",
+      "type": "class",
+      "name": "AgentRunRequest",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "lineRange": [
+        61,
+        92
+      ],
+      "summary": "Represents the agent run request contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunResult",
+      "type": "class",
+      "name": "AgentRunResult",
+      "filePath": "runtime/resono_runtime/background_agent/run_contract.py",
+      "lineRange": [
+        96,
+        114
+      ],
+      "summary": "Represents the agent run result contract or immutable state used by the background agent.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "type": "file",
+      "name": "run_loop.py",
+      "filePath": "runtime/resono_runtime/background_agent/run_loop.py",
+      "summary": "Implements background agent responsibilities centered on background run loop. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/background_agent/run_loop.py:BackgroundRunLoop",
+      "type": "class",
+      "name": "BackgroundRunLoop",
+      "filePath": "runtime/resono_runtime/background_agent/run_loop.py",
+      "lineRange": [
+        14,
+        94
+      ],
+      "summary": "Owns background run loop behavior for the background agent, including execute, worker candidate, review, validate candidate.",
+      "tags": [
+        "background-agent",
+        "agent-execution",
+        "lifecycle",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_settings_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_settings_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_tool_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_tool_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_run_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_run_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_event_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_event_view",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_session",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_session",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_not_found",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "function:runtime/resono_runtime/api/background_agent_routes.py:_not_found",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "class:runtime/resono_runtime/api/background_agent_routes.py:BackgroundAgentRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "class:runtime/resono_runtime/api/background_agent_routes.py:BackgroundAgentRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/agents/audience.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_state.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/storage/agent_runs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/storage/background_agent_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "target": "file:runtime/resono_runtime/tools/catalog.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/__init__.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/__init__.py",
+      "target": "file:runtime/resono_runtime/background_agent/sandbox.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "function:runtime/resono_runtime/background_agent/adapters.py:from_goal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "function:runtime/resono_runtime/background_agent/adapters.py:from_goal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "function:runtime/resono_runtime/background_agent/adapters.py:_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "function:runtime/resono_runtime/background_agent/adapters.py:_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "function:runtime/resono_runtime/background_agent/adapters.py:_required",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "function:runtime/resono_runtime/background_agent/adapters.py:_required",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "class:runtime/resono_runtime/background_agent/adapters.py:GoalTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "class:runtime/resono_runtime/background_agent/adapters.py:GoalTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/adapters.py",
+      "target": "file:runtime/resono_runtime/storage/background_agent_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "class:runtime/resono_runtime/background_agent/composition.py:BackgroundRunFactory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "class:runtime/resono_runtime/background_agent/composition.py:BackgroundRunFactory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/background_agent/sdk_executor.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/background_agent/service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/storage/agent_runs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/storage/background_agent_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/composition.py",
+      "target": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:worker_instructions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:worker_instructions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:worker_input",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:worker_input",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:reviewer_instructions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:reviewer_instructions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:reviewer_input",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "function:runtime/resono_runtime/background_agent/instructions.py:reviewer_input",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:InvocationType",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:InvocationType",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AutonomyProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AutonomyProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:ExecutionRecipe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:ExecutionRecipe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:RunLimits",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:RunLimits",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_contract.py:AgentRunResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_loop.py:BackgroundRunLoop",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "target": "class:runtime/resono_runtime/background_agent/run_loop.py:BackgroundRunLoop",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "target": "file:runtime/resono_runtime/background_agent/instructions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_contract.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "target": "file:runtime/resono_runtime/background_agent/run_state.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "target": "file:runtime/resono_runtime/background_agent/sdk_executor.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/background_agent/run_loop.py",
+      "target": "file:runtime/resono_runtime/storage/agent_runs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

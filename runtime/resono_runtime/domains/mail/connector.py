@@ -307,10 +307,26 @@ def _parse_folder(raw: bytes) -> RemoteFolder | None:
     flags = tuple(value for value in match.group("flags").split() if value)
     lowered = {value.casefold() for value in flags}
     special = next((kind for token, kind in (("\\inbox", "inbox"), ("\\sent", "sent"), ("\\archive", "archive"), ("\\drafts", "drafts"), ("\\trash", "trash"), ("\\junk", "junk")) if token in lowered), None)
-    if special is None and name.rsplit("/", 1)[-1].strip().casefold() in {"trash", "deleted", "deleted items", "bin", "recycle bin"}:
-        special = "trash"
     delimiter_value = match.group("delimiter")
     delimiter = None if delimiter_value == "NIL" else delimiter_value.strip('"')
+    leaf = name.rsplit(delimiter, 1)[-1].strip().casefold() if delimiter else name.strip().casefold()
+    if special is None:
+        special = {
+            "inbox": "inbox",
+            "sent": "sent",
+            "sent items": "sent",
+            "sent messages": "sent",
+            "drafts": "drafts",
+            "archive": "archive",
+            "archives": "archive",
+            "junk": "junk",
+            "spam": "junk",
+            "trash": "trash",
+            "deleted": "trash",
+            "deleted items": "trash",
+            "bin": "trash",
+            "recycle bin": "trash",
+        }.get(leaf)
     return RemoteFolder(name, delimiter, flags, special)
 
 

@@ -1,0 +1,803 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/application.py",
+      "type": "file",
+      "name": "application.py",
+      "filePath": "runtime/resono_runtime/application.py",
+      "summary": "Implements runtime application responsibilities centered on runtime application. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:runtime/resono_runtime/application.py:RuntimeApplication",
+      "type": "class",
+      "name": "RuntimeApplication",
+      "filePath": "runtime/resono_runtime/application.py",
+      "lineRange": [
+        74,
+        418
+      ],
+      "summary": "Owns runtime application behavior for the runtime application, including start, stop, health, request restart.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:runtime/resono_runtime/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "runtime/resono_runtime/config.py",
+      "summary": "Implements runtime application responsibilities centered on runtime config. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/config.py:RuntimeConfig",
+      "type": "class",
+      "name": "RuntimeConfig",
+      "filePath": "runtime/resono_runtime/config.py",
+      "lineRange": [
+        8,
+        95
+      ],
+      "summary": "Owns runtime config behavior for the runtime application, including create, database path, workspace path, logs path.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:runtime/resono_runtime/core/logging.py",
+      "type": "file",
+      "name": "logging.py",
+      "filePath": "runtime/resono_runtime/core/logging.py",
+      "summary": "Implements runtime application responsibilities centered on configure runtime logging, runtime logger. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/core/logging.py:configure_runtime_logging",
+      "type": "function",
+      "name": "configure_runtime_logging",
+      "filePath": "runtime/resono_runtime/core/logging.py",
+      "lineRange": [
+        12,
+        37
+      ],
+      "summary": "Performs configure runtime logging behavior used by the runtime application.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/core/logging.py:runtime_logger",
+      "type": "function",
+      "name": "runtime_logger",
+      "filePath": "runtime/resono_runtime/core/logging.py",
+      "lineRange": [
+        40,
+        41
+      ],
+      "summary": "Performs runtime logger behavior used by the runtime application.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/core/release_supervisor.py",
+      "type": "file",
+      "name": "release_supervisor.py",
+      "filePath": "runtime/resono_runtime/core/release_supervisor.py",
+      "summary": "Implements runtime application responsibilities centered on runtime release, release supervisor. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/core/release_supervisor.py:RuntimeRelease",
+      "type": "class",
+      "name": "RuntimeRelease",
+      "filePath": "runtime/resono_runtime/core/release_supervisor.py",
+      "lineRange": [
+        15,
+        17
+      ],
+      "summary": "Represents the runtime release contract or immutable state used by the runtime application.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/core/release_supervisor.py:ReleaseSupervisor",
+      "type": "class",
+      "name": "ReleaseSupervisor",
+      "filePath": "runtime/resono_runtime/core/release_supervisor.py",
+      "lineRange": [
+        20,
+        101
+      ],
+      "summary": "Owns release supervisor behavior for the runtime application, including prepare, active, activate, read pointer.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/core/runtime_environment.py",
+      "type": "file",
+      "name": "runtime_environment.py",
+      "filePath": "runtime/resono_runtime/core/runtime_environment.py",
+      "summary": "Implements runtime application responsibilities centered on standard library status, agent runtime status. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/core/runtime_environment.py:standard_library_status",
+      "type": "function",
+      "name": "standard_library_status",
+      "filePath": "runtime/resono_runtime/core/runtime_environment.py",
+      "lineRange": [
+        16,
+        23
+      ],
+      "summary": "Performs standard library status behavior used by the runtime application.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/core/runtime_environment.py:agent_runtime_status",
+      "type": "function",
+      "name": "agent_runtime_status",
+      "filePath": "runtime/resono_runtime/core/runtime_environment.py",
+      "lineRange": [
+        26,
+        36
+      ],
+      "summary": "Performs agent runtime status behavior used by the runtime application.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "class:runtime/resono_runtime/application.py:RuntimeApplication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "class:runtime/resono_runtime/application.py:RuntimeApplication",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/agents/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/background_agent_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/calendar_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/connection_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/creation_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/events.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/http_server.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/mail_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/mcp_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/plugin_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/skill_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/task_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/api/tool_routes.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/background_agent/composition.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/background_agent/service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/config.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/connections/records.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/connectors/calendar/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/core/logging.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/core/release_supervisor.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/core/runtime_environment.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/creations/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/calendar/repository.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/calendar/scheduler.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/calendar/service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/mail/connector.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/mail/repository.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/mail/scheduler.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/mail/service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/mail/tools.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/domains/tasks/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/imports/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/mcp/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/memory/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/plugins/archives.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/plugins/bundled_install.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/plugins/card_lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/plugins/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/providers/controller.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/providers/openai/web_search.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/security/pairing.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/skills/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/skills/archives.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/skills/lifecycle.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/agent_audiences.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/agent_runs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/background_agent_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/connection_credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/creations.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/database.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/lifecycle_repository.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/mcp_connections.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/memory.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/plugin_components.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/plugins.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/profile_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/provider_catalog.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/sessions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/storage/skills.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/tools/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/tools/calendar/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/tools/delegation.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/tools/tasks/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/application.py",
+      "target": "file:runtime/resono_runtime/tools/web_search.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/config.py",
+      "target": "class:runtime/resono_runtime/config.py:RuntimeConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/config.py",
+      "target": "class:runtime/resono_runtime/config.py:RuntimeConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/logging.py",
+      "target": "function:runtime/resono_runtime/core/logging.py:configure_runtime_logging",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/logging.py",
+      "target": "function:runtime/resono_runtime/core/logging.py:configure_runtime_logging",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/logging.py",
+      "target": "function:runtime/resono_runtime/core/logging.py:runtime_logger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/logging.py",
+      "target": "function:runtime/resono_runtime/core/logging.py:runtime_logger",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/release_supervisor.py",
+      "target": "class:runtime/resono_runtime/core/release_supervisor.py:RuntimeRelease",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/release_supervisor.py",
+      "target": "class:runtime/resono_runtime/core/release_supervisor.py:RuntimeRelease",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/release_supervisor.py",
+      "target": "class:runtime/resono_runtime/core/release_supervisor.py:ReleaseSupervisor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/release_supervisor.py",
+      "target": "class:runtime/resono_runtime/core/release_supervisor.py:ReleaseSupervisor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/runtime_environment.py",
+      "target": "function:runtime/resono_runtime/core/runtime_environment.py:standard_library_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/runtime_environment.py",
+      "target": "function:runtime/resono_runtime/core/runtime_environment.py:standard_library_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/runtime_environment.py",
+      "target": "function:runtime/resono_runtime/core/runtime_environment.py:agent_runtime_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/core/runtime_environment.py",
+      "target": "function:runtime/resono_runtime/core/runtime_environment.py:agent_runtime_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

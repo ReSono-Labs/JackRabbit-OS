@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Introduces JackRabbit as the standalone ReSono R1 Voice product and documents scope, architecture, security boundaries, setup, build flow, current acceptance state, and non-commercial licensing.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "architecture",
+        "setup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SKILLS.md",
+      "type": "document",
+      "name": "SKILLS.md",
+      "filePath": "SKILLS.md",
+      "summary": "Provides operational build, deployment, focused-test, recovery, and physical-device verification commands across accepted and active delivery contracts.",
+      "tags": [
+        "documentation",
+        "build-system",
+        "deployment",
+        "device-testing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:skills.md",
+      "type": "document",
+      "name": "skills.md",
+      "filePath": "skills.md",
+      "summary": "Redirects readers to the canonical uppercase SKILLS.md deployment, build, and ADB verification guide.",
+      "tags": [
+        "documentation",
+        "redirect",
+        "build-system"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

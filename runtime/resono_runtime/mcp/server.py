@@ -67,6 +67,7 @@ class LocalMcpServer:
         tool_call_id: str | None = None,
         user_utterance: str | None = None,
         user_utterance_id: int | None = None,
+        execution_id: str | None = None,
     ) -> McpHttpResult:
         request_id = message.get("id")
         if message.get("jsonrpc") != "2.0" or not isinstance(message.get("method"), str):
@@ -88,6 +89,7 @@ class LocalMcpServer:
                 tool_call_id=tool_call_id,
                 user_utterance=user_utterance,
                 user_utterance_id=user_utterance_id,
+                execution_id=execution_id,
             )
         return self._error(request_id, -32601, "Method not found")
 
@@ -116,7 +118,7 @@ class LocalMcpServer:
     def _listed_tools(self) -> list[dict[str, object]]:
         return self._catalog.mcp_definitions(self._agent)
 
-    def _call_tool(self, request_id: object, params: object, *, voice_session_id: str | None, tool_call_id: str | None, user_utterance: str | None, user_utterance_id: int | None) -> McpHttpResult:
+    def _call_tool(self, request_id: object, params: object, *, voice_session_id: str | None, tool_call_id: str | None, user_utterance: str | None, user_utterance_id: int | None, execution_id: str | None) -> McpHttpResult:
         values = params if isinstance(params, dict) else {}
         name = values.get("name")
         arguments = values.get("arguments", {})
@@ -124,7 +126,7 @@ class LocalMcpServer:
             name,
             arguments,
             agent=self._agent,
-            context=ToolInvocationContext(self._agent, voice_session_id, tool_call_id, user_utterance, user_utterance_id),
+            context=ToolInvocationContext(self._agent, voice_session_id, tool_call_id, user_utterance, user_utterance_id, execution_id),
         )
         return self._result(request_id, result.mcp_result())
 

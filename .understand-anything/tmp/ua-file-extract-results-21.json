@@ -1,0 +1,36 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "web/management/management.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 32,
+      "nonEmptyLines": 31,
+      "metrics": {}
+    },
+    {
+      "path": "web/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 8,
+      "nonEmptyLines": 5,
+      "sections": [
+        {
+          "heading": "Web",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    }
+  ]
+}

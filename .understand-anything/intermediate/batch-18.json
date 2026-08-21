@@ -1,0 +1,754 @@
+{
+  "nodes": [
+    {
+      "id": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "type": "file",
+      "name": "RuntimeStartupLimiter.java",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "summary": "RuntimeStartupLimiter.java implements runtime startup limiter behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java:RuntimeStartupLimiter",
+      "type": "class",
+      "name": "RuntimeStartupLimiter",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "lineRange": [
+        6,
+        45
+      ],
+      "summary": "RuntimeStartupLimiter owns runtime startup limiter behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java:recordFailure",
+      "type": "function",
+      "name": "recordFailure",
+      "filePath": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "lineRange": [
+        29,
+        40
+      ],
+      "summary": "Implements record failure as part of RuntimeStartupLimiter.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/runtime-host/wheels/jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl",
+      "type": "file",
+      "name": "jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl",
+      "filePath": "android/runtime-host/wheels/jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl",
+      "summary": "Prebuilt Android arm64 Python wheel for jiter 0 16 0 cp313 cp313 android 31 arm64 v8a whl, embedded into the on-device runtime host.",
+      "tags": [
+        "runtime-dependency",
+        "android",
+        "python-package"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:android/runtime-host/wheels/pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl",
+      "type": "file",
+      "name": "pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl",
+      "filePath": "android/runtime-host/wheels/pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl",
+      "summary": "Prebuilt Android arm64 Python wheel for pydantic core 2 41 4 cp313 cp313 android 31 arm64 v8a whl, embedded into the on-device runtime host.",
+      "tags": [
+        "runtime-dependency",
+        "android",
+        "python-package"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:android/runtime-host/wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl",
+      "type": "file",
+      "name": "rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl",
+      "filePath": "android/runtime-host/wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl",
+      "summary": "Prebuilt Android arm64 Python wheel for rpds py 0 25 1 cp313 cp313 android 31 arm64 v8a whl, embedded into the on-device runtime host.",
+      "tags": [
+        "runtime-dependency",
+        "android",
+        "python-package"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:android/settings.gradle.kts",
+      "type": "file",
+      "name": "settings.gradle.kts",
+      "filePath": "android/settings.gradle.kts",
+      "summary": "Gradle settings for the Android project, registering the clean application, core, feature, runtime-host, and system modules.",
+      "tags": [
+        "configuration",
+        "android",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/system/motor-service/build.gradle.kts",
+      "type": "file",
+      "name": "build.gradle.kts",
+      "filePath": "android/system/motor-service/build.gradle.kts",
+      "summary": "Gradle module configuration for build gradle, declaring its Android build settings and module dependencies.",
+      "tags": [
+        "configuration",
+        "android",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/system/motor-service/src/main/AndroidManifest.xml",
+      "type": "config",
+      "name": "AndroidManifest.xml",
+      "filePath": "android/system/motor-service/src/main/AndroidManifest.xml",
+      "summary": "Android manifest declaring the components, permissions, and process metadata for android manifest.",
+      "tags": [
+        "configuration",
+        "runtime-config",
+        "android-manifest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "type": "file",
+      "name": "R1MotorService.java",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "summary": "R1MotorService.java implements r1 motor service behavior within the Android product.",
+      "tags": [
+        "service",
+        "android",
+        "product-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:R1MotorService",
+      "type": "class",
+      "name": "R1MotorService",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        28,
+        233
+      ],
+      "summary": "R1MotorService owns r1 motor service behavior and keeps its related state and operations within one focused component.",
+      "tags": [
+        "service",
+        "encapsulation",
+        "product-code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onCreate",
+      "type": "function",
+      "name": "onCreate",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        58,
+        61
+      ],
+      "summary": "Implements on create as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:enforceAuthorizedCaller",
+      "type": "function",
+      "name": "enforceAuthorizedCaller",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        85,
+        97
+      ],
+      "summary": "Implements enforce authorized caller as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:packageCertificateSha256",
+      "type": "function",
+      "name": "packageCertificateSha256",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        99,
+        116
+      ],
+      "summary": "Implements package certificate sha256 as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:performMove",
+      "type": "function",
+      "name": "performMove",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        127,
+        157
+      ],
+      "summary": "Implements perform move as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:awaitReportedPosition",
+      "type": "function",
+      "name": "awaitReportedPosition",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        184,
+        193
+      ],
+      "summary": "Implements await reported position as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onBind",
+      "type": "function",
+      "name": "onBind",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        221,
+        221
+      ],
+      "summary": "Implements on bind as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onTaskRemoved",
+      "type": "function",
+      "name": "onTaskRemoved",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        223,
+        226
+      ],
+      "summary": "Implements on task removed as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onDestroy",
+      "type": "function",
+      "name": "onDestroy",
+      "filePath": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "lineRange": [
+        228,
+        232
+      ],
+      "summary": "Implements on destroy as part of R1MotorService.java.",
+      "tags": [
+        "function",
+        "runtime-logic",
+        "product-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "type": "file",
+      "name": "R1MotorServiceTest.java",
+      "filePath": "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "summary": "Automated tests for r1 motor service, covering its positive behavior, rejection paths, and persistence or lifecycle invariants.",
+      "tags": [
+        "test",
+        "validation",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:R1MotorServiceTest",
+      "type": "class",
+      "name": "R1MotorServiceTest",
+      "filePath": "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "lineRange": [
+        9,
+        29
+      ],
+      "summary": "Test fixture grouping assertions for r1 motor service, including success and failure-path behavior.",
+      "tags": [
+        "test",
+        "validation",
+        "test-fixture"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:namedPositionsMatchPhysicallyObservedProductStates",
+      "type": "function",
+      "name": "namedPositionsMatchPhysicallyObservedProductStates",
+      "filePath": "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "lineRange": [
+        10,
+        15
+      ],
+      "summary": "Implements named positions match physically observed product states as part of R1MotorServiceTest.java.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:exposedDirectionChangesRequireClosedWaypoint",
+      "type": "function",
+      "name": "exposedDirectionChangesRequireClosedWaypoint",
+      "filePath": "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "lineRange": [
+        17,
+        22
+      ],
+      "summary": "Implements exposed direction changes require closed waypoint as part of R1MotorServiceTest.java.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:reportedPositionRequiresExactConfirmedValue",
+      "type": "function",
+      "name": "reportedPositionRequiresExactConfirmedValue",
+      "filePath": "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "lineRange": [
+        24,
+        28
+      ],
+      "summary": "Implements reported position requires exact confirmed value as part of R1MotorServiceTest.java.",
+      "tags": [
+        "test",
+        "validation",
+        "test-case"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/planning/2026-08-20-slice-06-extensions-mail-orientation.md",
+      "type": "document",
+      "name": "2026-08-20-slice-06-extensions-mail-orientation.md",
+      "filePath": "docs/planning/2026-08-20-slice-06-extensions-mail-orientation.md",
+      "summary": "Slice 6 Orientation — Standard Extensions and Real Mail (pre-contract research) records the scoped outcome, decision gates, dependency order, evidence, and rollback conditions for its delivery concern.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md",
+      "type": "document",
+      "name": "R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md",
+      "filePath": "docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md",
+      "summary": "Research record for r1 camera motor and preview recovery, documenting observed hardware behavior, recovery constraints, and evidence relevant to implementation decisions.",
+      "tags": [
+        "documentation",
+        "planning",
+        "hardware-research"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:runtime/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "runtime/README.md",
+      "summary": "Concise entry-point documentation for the runtime portion of the project and its ownership boundaries.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/__init__.py",
+      "summary": "Python package marker establishing the resono_runtime runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/api/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/api/__init__.py",
+      "summary": "Python package marker establishing the api runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/connectors/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/connectors/__init__.py",
+      "summary": "Python package marker establishing the connectors runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/core/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/core/__init__.py",
+      "summary": "Python package marker establishing the core runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/domains/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/domains/__init__.py",
+      "summary": "Python package marker establishing the domains runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/plugins/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/plugins/__init__.py",
+      "summary": "Python package marker establishing the plugins runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:runtime/resono_runtime/plugins/bundled/resono-mail/plugin.json",
+      "type": "config",
+      "name": "plugin.json",
+      "filePath": "runtime/resono_runtime/plugins/bundled/resono-mail/plugin.json",
+      "summary": "Manifest for the bundled ReSono Mail plugin, declaring its identity, version, and standard components.",
+      "tags": [
+        "configuration",
+        "runtime-config",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:runtime/resono_runtime/plugins/bundled/resono-mail/skills/voice-mail/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": "runtime/resono_runtime/plugins/bundled/resono-mail/skills/voice-mail/SKILL.md",
+      "summary": "Agent Skill instructions that constrain Voice Mail behavior, tool use, and user-facing interaction.",
+      "tags": [
+        "documentation",
+        "planning",
+        "delivery-contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/providers/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/providers/__init__.py",
+      "summary": "Python package marker establishing the providers runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/security/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/security/__init__.py",
+      "summary": "Python package marker establishing the security runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/standards/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/standards/__init__.py",
+      "summary": "Python package marker establishing the standards runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/standards/agent_plugins/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/standards/agent_plugins/__init__.py",
+      "summary": "Python package marker establishing the agent_plugins runtime namespace.",
+      "tags": [
+        "entry-point",
+        "python-package",
+        "runtime"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:runtime/resono_runtime/standards/agent_plugins/mcp.schema.json",
+      "type": "config",
+      "name": "mcp.schema.json",
+      "filePath": "runtime/resono_runtime/standards/agent_plugins/mcp.schema.json",
+      "summary": "JSON Schema defining and validating the standard mcp schema document contract.",
+      "tags": [
+        "configuration",
+        "schema-definition",
+        "validation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "target": "class:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java:RuntimeStartupLimiter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "target": "function:android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java:recordFailure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "class:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:R1MotorService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "class:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:R1MotorService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onCreate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onCreate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:enforceAuthorizedCaller",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:packageCertificateSha256",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:performMove",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:awaitReportedPosition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onBind",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onBind",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onTaskRemoved",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onTaskRemoved",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onDestroy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "target": "function:android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java:onDestroy",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "class:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:R1MotorServiceTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "class:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:R1MotorServiceTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:namedPositionsMatchPhysicallyObservedProductStates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:namedPositionsMatchPhysicallyObservedProductStates",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:exposedDirectionChangesRequireClosedWaypoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:exposedDirectionChangesRequireClosedWaypoint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:reportedPositionRequiresExactConfirmedValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "target": "function:android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java:reportedPositionRequiresExactConfirmedValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

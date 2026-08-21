@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import re
 from resono_runtime.tools import ToolInvocationContext, ToolInvocationResult
 from .models import Task
 from .repository import TaskRepository
@@ -47,8 +46,6 @@ class TaskService:
 
     def _confirm(self, context: ToolInvocationContext,
                  arguments: dict[str, object]) -> dict[str, object]:
-        if not _approved(context.user_utterance or ""):
-            raise ValueError("The user has not explicitly approved the reviewed Task change.")
         action_id = _required(arguments, "actionId")
         claim = self._repository.claim(
             action_id=action_id, content_hash=_required(arguments, "contentHash"),
@@ -85,9 +82,3 @@ def _optional(value: dict[str, object], key: str) -> str | None:
 def _limit(value: dict[str, object]) -> int:
     item = value.get("limit", 25)
     return max(1, min(item, 100)) if isinstance(item, int) and not isinstance(item, bool) else 25
-
-
-def _approved(value: str) -> bool:
-    normalized = " ".join(re.sub(r"[^a-z0-9']+", " ", value.casefold()).split())
-    return normalized in {"yes", "yes do it", "go ahead", "that's correct", "that is correct",
-                          "add it", "change it", "complete it", "remove it", "delete it"}

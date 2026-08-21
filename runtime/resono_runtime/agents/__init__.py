@@ -2,6 +2,7 @@ from .audience import AgentAudience, AgentKind, AudienceResource, AudienceResour
 from .routing import AgentAudienceRouter, AudienceBinding
 from .memory_reviewer import MemoryCandidate, MemoryReviewRunner, ReviewResult
 from .runner import AgentsSdkTextRunner, TextTurnResult
+from .primary_context import ExecutionKind, PrimaryAgentContext, WorkspaceGrant
 from .sdk_runner import run_agent_turn, run_agent_turn_sync
 
 __all__ = [
@@ -9,6 +10,9 @@ __all__ = [
     "AgentAudienceRouter",
     "AgentKind",
     "AgentsSdkTextRunner",
+    "ExecutionKind",
+    "PrimaryAgentContext",
+    "WorkspaceGrant",
     "AudienceBinding",
     "AudienceResource",
     "AudienceResourceKind",

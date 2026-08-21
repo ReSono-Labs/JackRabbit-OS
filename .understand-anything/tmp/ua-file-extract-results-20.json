@@ -1,0 +1,5742 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "tests/runtime/test_openai_realtime_session.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 31,
+      "classes": [
+        {
+          "name": "OpenAIRealtimeSessionTest",
+          "startLine": 8,
+          "endLine": 34,
+          "methods": [
+            "test_session_matches_proven_r1_voice_audio_contract"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "OpenAIRealtimeSessionTest",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "_realtime_session",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_session_matches_proven_r1_voice_audio_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_openai_subscription.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 70,
+      "classes": [
+        {
+          "name": "_CredentialBridge",
+          "startLine": 10,
+          "endLine": 37,
+          "methods": [
+            "__init__",
+            "hasOpenAiPlatformKey",
+            "getOpenAiPlatformKey",
+            "putOpenAiPlatformKey",
+            "deleteOpenAiPlatformKey",
+            "hasOpenAiSubscriptionTokens",
+            "getOpenAiSubscriptionTokens",
+            "putOpenAiSubscriptionTokens",
+            "deleteOpenAiSubscriptionTokens"
+          ],
+          "properties": []
+        },
+        {
+          "name": "OpenAISubscriptionTest",
+          "startLine": 40,
+          "endLine": 88,
+          "methods": [
+            "test_device_flow_pending_completion_refresh_and_disconnect"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_CredentialBridge",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "OpenAISubscriptionTest",
+          "line": 40,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "_CredentialBridge",
+          "lineNumber": 43
+        },
+        {
+          "caller": "device_transport",
+          "callee": "url.endswith",
+          "lineNumber": 51
+        },
+        {
+          "caller": "device_transport",
+          "callee": "self.assertEqual",
+          "lineNumber": 52
+        },
+        {
+          "caller": "device_transport",
+          "callee": "token_polls.pop",
+          "lineNumber": 54
+        },
+        {
+          "caller": "token_transport",
+          "callee": "self.assertEqual",
+          "lineNumber": 57
+        },
+        {
+          "caller": "token_transport",
+          "callee": "token_requests.append",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "OpenAISubscription",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "ProviderCredentials",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "subscription.start_auth",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertEqual",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertEqual",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertEqual",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "subscription.poll_auth",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "subscription.poll_auth",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertEqual",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertTrue",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "subscription.status",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertNotIn",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "str",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "subscription.status",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertFalse",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertEqual",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertEqual",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "subscription.access_token",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "json.loads",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertEqual",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertTrue",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertFalse",
+          "lineNumber": 87
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "subscription.disconnect",
+          "lineNumber": 87
+        },
+        {
+          "caller": "test_device_flow_pending_completion_refresh_and_disconnect",
+          "callee": "self.assertIsNone",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "tests/runtime/test_plugin_archives.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "_zip",
+          "startLine": 47,
+          "endLine": 52,
+          "params": [
+            "files"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PluginArchiveInspectorTest",
+          "startLine": 12,
+          "endLine": 44,
+          "methods": [
+            "test_discovers_standard_components_without_execution",
+            "test_rejects_missing_root_manifest",
+            "test_discovers_namespaced_card_extension",
+            "test_rejects_card_identity_that_differs_from_plugin"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PluginArchiveInspectorTest",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "_zip",
+          "line": 47,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "PluginArchiveInspector(Path(directory)).inspect",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "PluginArchiveInspector",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "Path",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "_zip",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "self.assertEqual",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "self.assertEqual",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_discovers_standard_components_without_execution",
+          "callee": "self.assertTrue",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_rejects_missing_root_manifest",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_rejects_missing_root_manifest",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_rejects_missing_root_manifest",
+          "callee": "PluginArchiveInspector(Path(directory)).inspect",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_rejects_missing_root_manifest",
+          "callee": "PluginArchiveInspector",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_rejects_missing_root_manifest",
+          "callee": "Path",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_rejects_missing_root_manifest",
+          "callee": "_zip",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_discovers_namespaced_card_extension",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_discovers_namespaced_card_extension",
+          "callee": "PluginArchiveInspector(Path(directory)).inspect",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_discovers_namespaced_card_extension",
+          "callee": "PluginArchiveInspector",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_discovers_namespaced_card_extension",
+          "callee": "Path",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_discovers_namespaced_card_extension",
+          "callee": "_zip",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_discovers_namespaced_card_extension",
+          "callee": "self.assertEqual",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_discovers_namespaced_card_extension",
+          "callee": "self.assertEqual",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_rejects_card_identity_that_differs_from_plugin",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_rejects_card_identity_that_differs_from_plugin",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_rejects_card_identity_that_differs_from_plugin",
+          "callee": "PluginArchiveInspector(Path(directory)).inspect",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_rejects_card_identity_that_differs_from_plugin",
+          "callee": "PluginArchiveInspector",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_rejects_card_identity_that_differs_from_plugin",
+          "callee": "Path",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_rejects_card_identity_that_differs_from_plugin",
+          "callee": "_zip",
+          "lineNumber": 40
+        },
+        {
+          "caller": "_zip",
+          "callee": "BytesIO",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_zip",
+          "callee": "zipfile.ZipFile",
+          "lineNumber": 49
+        },
+        {
+          "caller": "_zip",
+          "callee": "files.items",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_zip",
+          "callee": "archive.writestr",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_zip",
+          "callee": "payload.getvalue",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_plugin_lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "_inspection",
+          "startLine": 80,
+          "endLine": 90,
+          "params": [
+            "root",
+            "value",
+            "card"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PluginLifecycleTest",
+          "startLine": 19,
+          "endLine": 77,
+          "methods": [
+            "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+            "test_same_name_replacement_keeps_one_catalog_item",
+            "test_plugin_card_follows_enable_disable_replace_and_delete"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PluginLifecycleTest",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "_inspection",
+          "line": 80,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "Path",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "database.migrate",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "PluginCatalogRepository",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "PluginComponentRepository",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "PluginLifecycle",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "AgentAudienceRouter",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "AgentAudienceRepository",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "BundledPluginInstaller",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "PluginArchiveInspector",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "Path(__file__).resolve",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "Path",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "installer.install_once",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "self.assertEqual",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "catalog.get",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "self.assertEqual",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "tuple",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "components.list_for_plugin",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "lifecycle.delete",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "installer.install_once",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "self.assertIsNone",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_bundled_mail_plugin_uses_standard_lifecycle_and_respects_delete",
+          "callee": "catalog.get",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "Path",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "db.migrate",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "PluginComponentRepository",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "PluginLifecycle",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "PluginCatalogRepository",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "AgentAudienceRouter",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "AgentAudienceRepository",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "life.preflight",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "_inspection",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "life.confirm",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "life.preflight",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "_inspection",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "self.assertEqual",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "life.confirm",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "self.assertEqual",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "self.assertIn",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "(item.install_path/\"data.txt\").read_text",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "self.assertEqual",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "tuple",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_same_name_replacement_keeps_one_catalog_item",
+          "callee": "components.list_for_plugin",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "Path",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "db.migrate",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "PluginComponentRepository",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "CreationCatalogRepository",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "PluginLifecycle",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "PluginCatalogRepository",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "AgentAudienceRouter",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "AgentAudienceRepository",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "PluginCardLifecycle",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "life.preflight",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "_inspection",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "life.confirm",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "self.assertEqual",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "cards.get",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "life.enable",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "self.assertEqual",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "cards.get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "life.disable",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "self.assertEqual",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "cards.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "life.preflight",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "_inspection",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "life.confirm",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "self.assertIsNone",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "cards.get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_plugin_card_follows_enable_disable_replace_and_delete",
+          "callee": "life.delete",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_inspection",
+          "callee": "io.BytesIO",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_inspection",
+          "callee": "zipfile.ZipFile",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_inspection",
+          "callee": "archive.writestr",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_inspection",
+          "callee": "archive.writestr",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_inspection",
+          "callee": "archive.writestr",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_inspection",
+          "callee": "archive.writestr",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_inspection",
+          "callee": "archive.writestr",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_inspection",
+          "callee": "PluginArchiveInspector(root/\"quarantine\").inspect",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_inspection",
+          "callee": "PluginArchiveInspector",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_inspection",
+          "callee": "raw.getvalue",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_profile_settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 40,
+      "classes": [
+        {
+          "name": "UserProfileRepositoryTest",
+          "startLine": 13,
+          "endLine": 46,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_name_persists_and_can_be_cleared",
+            "test_connect_greeting_matches_browser_voice_contract",
+            "test_invalid_name_is_rejected"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "UserProfileRepositoryTest",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setUp",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setUp",
+          "callee": "database.migrate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "setUp",
+          "callee": "UserProfileRepository",
+          "lineNumber": 18
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self.temporary.cleanup",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_name_persists_and_can_be_cleared",
+          "callee": "self.assertIsNone",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_name_persists_and_can_be_cleared",
+          "callee": "self.profile.profile",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_name_persists_and_can_be_cleared",
+          "callee": "self.assertEqual",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_name_persists_and_can_be_cleared",
+          "callee": "self.profile.save",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_name_persists_and_can_be_cleared",
+          "callee": "self.assertIsNone",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_name_persists_and_can_be_cleared",
+          "callee": "self.profile.save",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_connect_greeting_matches_browser_voice_contract",
+          "callee": "self.profile.save",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_connect_greeting_matches_browser_voice_contract",
+          "callee": "datetime.now().astimezone().replace",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_connect_greeting_matches_browser_voice_contract",
+          "callee": "datetime.now().astimezone",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_connect_greeting_matches_browser_voice_contract",
+          "callee": "datetime.now",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_connect_greeting_matches_browser_voice_contract",
+          "callee": "patch",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_connect_greeting_matches_browser_voice_contract",
+          "callee": "self.profile.connect_greeting_event",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_connect_greeting_matches_browser_voice_contract",
+          "callee": "self.assertEqual",
+          "lineNumber": 34
+        },
+        {
+          "caller": "test_invalid_name_is_rejected",
+          "callee": "self.assertRaises",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_invalid_name_is_rejected",
+          "callee": "self.profile.save",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_provider_catalog.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 24,
+      "classes": [
+        {
+          "name": "ProviderCatalogTest",
+          "startLine": 11,
+          "endLine": 30,
+          "methods": [
+            "test_bootstrap_creates_openai_defaults"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProviderCatalogTest",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "Path",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "database.migrate",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "ProviderCatalogRepository",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "repository.bootstrap_defaults",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "repository.providers",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "self.assertEqual",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "len",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "self.assertEqual",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "self.assertEqual",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "repository.models",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "repository.models",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "self.assertEqual",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "self.assertEqual",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_bootstrap_creates_openai_defaults",
+          "callee": "temporary.cleanup",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_release_supervisor.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 51,
+      "classes": [
+        {
+          "name": "ReleaseSupervisorTest",
+          "startLine": 10,
+          "endLine": 62,
+          "methods": [
+            "test_healthy_activation_becomes_last_good",
+            "test_unhealthy_activation_rolls_back",
+            "test_interrupted_activation_recovers_last_good",
+            "test_release_identifier_cannot_escape_release_root",
+            "test_truncated_active_pointer_recovers_last_good"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ReleaseSupervisorTest",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "Path",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "supervisor.prepare",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "RuntimeRelease",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "self.assertTrue",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "supervisor.activate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "self.assertEqual",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "supervisor.active",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "Path",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "self.assertEqual",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_healthy_activation_becomes_last_good",
+          "callee": "restarted.prepare",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "Path",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "supervisor.prepare",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "self.assertFalse",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "supervisor.activate",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "RuntimeRelease",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "self.assertEqual",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_unhealthy_activation_rolls_back",
+          "callee": "supervisor.active",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "Path",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "supervisor.prepare",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "(root / \"active.json\").write_text",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "self.assertEqual",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "ReleaseSupervisor(root).prepare",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "self.assertEqual",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "ReleaseSupervisor(root).active",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_interrupted_activation_recovers_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_release_identifier_cannot_escape_release_root",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_release_identifier_cannot_escape_release_root",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_release_identifier_cannot_escape_release_root",
+          "callee": "Path",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_release_identifier_cannot_escape_release_root",
+          "callee": "supervisor.prepare",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_release_identifier_cannot_escape_release_root",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_release_identifier_cannot_escape_release_root",
+          "callee": "supervisor.activate",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_release_identifier_cannot_escape_release_root",
+          "callee": "RuntimeRelease",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "Path",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "supervisor.prepare",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "(root / \"active.json\").write_text",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "self.assertEqual",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "ReleaseSupervisor(root).prepare",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "self.assertEqual",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "ReleaseSupervisor(root).active",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_truncated_active_pointer_recovers_last_good",
+          "callee": "ReleaseSupervisor",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_runtime_environment.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 24,
+      "classes": [
+        {
+          "name": "RuntimeEnvironmentTest",
+          "startLine": 10,
+          "endLine": 34,
+          "methods": [
+            "test_required_standard_library_modules_import",
+            "test_agent_runtime_requires_every_packaged_module"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "RuntimeEnvironmentTest",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_required_standard_library_modules_import",
+          "callee": "standard_library_status",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_required_standard_library_modules_import",
+          "callee": "self.assertEqual",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_required_standard_library_modules_import",
+          "callee": "self.assertEqual",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_required_standard_library_modules_import",
+          "callee": "self.assertTrue",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_required_standard_library_modules_import",
+          "callee": "status[\"pythonVersion\"].startswith",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_required_standard_library_modules_import",
+          "callee": "self.assertTrue",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_required_standard_library_modules_import",
+          "callee": "self.assertIn",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_agent_runtime_requires_every_packaged_module",
+          "callee": "ModuleType",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_agent_runtime_requires_every_packaged_module",
+          "callee": "agent_runtime_status",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_agent_runtime_requires_every_packaged_module",
+          "callee": "self.assertEqual",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_agent_runtime_requires_every_packaged_module",
+          "callee": "self.assertEqual",
+          "lineNumber": 25
+        },
+        {
+          "caller": "missing",
+          "callee": "ImportError",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_agent_runtime_requires_every_packaged_module",
+          "callee": "agent_runtime_status",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_agent_runtime_requires_every_packaged_module",
+          "callee": "self.assertEqual",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_agent_runtime_requires_every_packaged_module",
+          "callee": "self.assertEqual",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_runtime_http_finalize.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 183,
+      "nonEmptyLines": 151,
+      "functions": [
+        {
+          "name": "_fake_embedding_factory",
+          "startLine": 59,
+          "endLine": 60,
+          "params": [
+            "_credentials",
+            "_safety_source"
+          ]
+        },
+        {
+          "name": "_make_server",
+          "startLine": 71,
+          "endLine": 121,
+          "params": [
+            "temp_dir"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "_CredentialBridge",
+          "startLine": 22,
+          "endLine": 48,
+          "methods": [
+            "__init__",
+            "hasOpenAiPlatformKey",
+            "getOpenAiPlatformKey",
+            "putOpenAiPlatformKey",
+            "deleteOpenAiPlatformKey",
+            "hasOpenAiSubscriptionTokens",
+            "getOpenAiSubscriptionTokens",
+            "putOpenAiSubscriptionTokens",
+            "deleteOpenAiSubscriptionTokens"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_FakeEmbedder",
+          "startLine": 51,
+          "endLine": 56,
+          "methods": [
+            "embed"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_FakeReviewExecutor",
+          "startLine": 63,
+          "endLine": 68,
+          "methods": [
+            "__init__",
+            "__call__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "RuntimeVoiceFinalizeApiTest",
+          "startLine": 124,
+          "endLine": 179,
+          "methods": [
+            "test_finalize_endpoint_accepts_transcript_entries",
+            "test_finalize_endpoint_rejects_empty_transcript"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_CredentialBridge",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "_FakeEmbedder",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "_fake_embedding_factory",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "_FakeReviewExecutor",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "_make_server",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "RuntimeVoiceFinalizeApiTest",
+          "line": 124,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_fake_embedding_factory",
+          "callee": "_FakeEmbedder",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__call__",
+          "callee": "json.dumps",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_make_server",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_make_server",
+          "callee": "database.migrate",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_make_server",
+          "callee": "RuntimeEventStream",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_make_server",
+          "callee": "LifecycleRepository",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_make_server",
+          "callee": "ProviderCredentials",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_make_server",
+          "callee": "_CredentialBridge",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_make_server",
+          "callee": "ProviderSettingsRepository",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_make_server",
+          "callee": "settings.save",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_make_server",
+          "callee": "SessionTranscriptRepository",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_make_server",
+          "callee": "MemoryRepository",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_make_server",
+          "callee": "MemoryReviewRunner",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_make_server",
+          "callee": "_FakeReviewExecutor",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_make_server",
+          "callee": "MemoryPipeline",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_make_server",
+          "callee": "MemoryService",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_make_server",
+          "callee": "RuntimeHttpServer",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_make_server",
+          "callee": "database.health",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_make_server",
+          "callee": "server.start",
+          "lineNumber": 120
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 126
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "_make_server",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "Path",
+          "lineNumber": 127
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "Request",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "json.dumps(payload).encode",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "json.dumps",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "urlopen",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "self.assertEqual",
+          "lineNumber": 153
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "json.loads",
+          "lineNumber": 154
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "response.read",
+          "lineNumber": 154
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "self.assertEqual",
+          "lineNumber": 155
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "self.assertEqual",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "self.assertEqual",
+          "lineNumber": 157
+        },
+        {
+          "caller": "test_finalize_endpoint_accepts_transcript_entries",
+          "callee": "server.stop",
+          "lineNumber": 159
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 162
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "_make_server",
+          "lineNumber": 163
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "Path",
+          "lineNumber": 163
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "Request",
+          "lineNumber": 168
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "json.dumps(payload).encode",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "json.dumps",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "self.assertRaises",
+          "lineNumber": 174
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "urlopen",
+          "lineNumber": 175
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "self.assertEqual",
+          "lineNumber": 177
+        },
+        {
+          "caller": "test_finalize_endpoint_rejects_empty_transcript",
+          "callee": "server.stop",
+          "lineNumber": 179
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 2,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "tests/runtime/test_runtime_lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 193,
+      "nonEmptyLines": 169,
+      "classes": [
+        {
+          "name": "RuntimeLifecycleTest",
+          "startLine": 17,
+          "endLine": 189,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_start_count_persists_across_repository_instances",
+            "test_authenticated_health_and_unknown_route",
+            "test_event_stream_preserves_order",
+            "test_authenticated_mcp_http_lifecycle_and_tool_call",
+            "test_corrupt_database_reports_not_ready_without_details",
+            "test_private_server_rejects_non_loopback_bind"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "RuntimeLifecycleTest",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 19
+        },
+        {
+          "caller": "setUp",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setUp",
+          "callee": "database.migrate",
+          "lineNumber": 21
+        },
+        {
+          "caller": "setUp",
+          "callee": "LifecycleRepository",
+          "lineNumber": 23
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self.temporary.cleanup",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_start_count_persists_across_repository_instances",
+          "callee": "self.assertEqual",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_start_count_persists_across_repository_instances",
+          "callee": "self.lifecycle.record_start",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_start_count_persists_across_repository_instances",
+          "callee": "LifecycleRepository",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_start_count_persists_across_repository_instances",
+          "callee": "self.assertEqual",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_start_count_persists_across_repository_instances",
+          "callee": "second.record_start",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.lifecycle.record_start",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "RuntimeHttpServer",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.database.health",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "RuntimeEventStream",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "server.start",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertRaises",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "urlopen",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertEqual",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "Request",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertRaises",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "urlopen",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertEqual",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "Request",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "urlopen",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "json.loads",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "response.read",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertEqual",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "Request",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertRaises",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "urlopen",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertEqual",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "Request",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "urlopen",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "json.loads",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "response.read",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertEqual",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "self.assertEqual",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_authenticated_health_and_unknown_route",
+          "callee": "server.stop",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "RuntimeEventStream",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "events.subscribe",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "self.assertEqual",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "events.publish",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "events.publish",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "self.assertEqual",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "events.next_event",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "self.assertEqual",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "events.next_event",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "self.assertLess",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_event_stream_preserves_order",
+          "callee": "events.unsubscribe",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "RuntimeHttpServer",
+          "lineNumber": 95
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "RuntimeEventStream",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "LocalMcpServer",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "server.start",
+          "lineNumber": 114
+        },
+        {
+          "caller": "post",
+          "callee": "Request",
+          "lineNumber": 126
+        },
+        {
+          "caller": "post",
+          "callee": "json.dumps(message).encode",
+          "lineNumber": 128
+        },
+        {
+          "caller": "post",
+          "callee": "json.dumps",
+          "lineNumber": 128
+        },
+        {
+          "caller": "post",
+          "callee": "urlopen",
+          "lineNumber": 132
+        },
+        {
+          "caller": "post",
+          "callee": "response.read",
+          "lineNumber": 133
+        },
+        {
+          "caller": "post",
+          "callee": "json.loads",
+          "lineNumber": 135
+        },
+        {
+          "caller": "post",
+          "callee": "response.headers.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "post",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "self.assertEqual",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "self.assertTrue",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "post",
+          "lineNumber": 154
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "post",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "self.assertFalse",
+          "lineNumber": 167
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "self.assertEqual",
+          "lineNumber": 168
+        },
+        {
+          "caller": "test_authenticated_mcp_http_lifecycle_and_tool_call",
+          "callee": "server.stop",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_corrupt_database_reports_not_ready_without_details",
+          "callee": "Path",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_corrupt_database_reports_not_ready_without_details",
+          "callee": "path.write_bytes",
+          "lineNumber": 174
+        },
+        {
+          "caller": "test_corrupt_database_reports_not_ready_without_details",
+          "callee": "RuntimeDatabase(path).health",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_corrupt_database_reports_not_ready_without_details",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_corrupt_database_reports_not_ready_without_details",
+          "callee": "self.assertEqual",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_private_server_rejects_non_loopback_bind",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_private_server_rejects_non_loopback_bind",
+          "callee": "RuntimeHttpServer",
+          "lineNumber": 182
+        },
+        {
+          "caller": "test_private_server_rejects_non_loopback_bind",
+          "callee": "RuntimeEventStream",
+          "lineNumber": 188
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_skill_activation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 53,
+      "classes": [
+        {
+          "name": "SkillActivationTest",
+          "startLine": 17,
+          "endLine": 59,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_voice_gets_disclosure_and_can_load_full_instructions",
+            "test_text_cannot_list_or_load_a_voice_skill"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SkillActivationTest",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 19
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setUp",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 21
+        },
+        {
+          "caller": "setUp",
+          "callee": "database.migrate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillCatalogRepository",
+          "lineNumber": 23
+        },
+        {
+          "caller": "setUp",
+          "callee": "AgentAudienceRouter",
+          "lineNumber": 24
+        },
+        {
+          "caller": "setUp",
+          "callee": "AgentAudienceRepository",
+          "lineNumber": 24
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillArchiveInspector",
+          "lineNumber": 25
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillLifecycle",
+          "lineNumber": 26
+        },
+        {
+          "caller": "setUp",
+          "callee": "inspector.inspect",
+          "lineNumber": 32
+        },
+        {
+          "caller": "setUp",
+          "callee": "lifecycle.preflight",
+          "lineNumber": 36
+        },
+        {
+          "caller": "setUp",
+          "callee": "lifecycle.confirm",
+          "lineNumber": 37
+        },
+        {
+          "caller": "setUp",
+          "callee": "lifecycle.enable",
+          "lineNumber": 38
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillActivation",
+          "lineNumber": 39
+        },
+        {
+          "caller": "setUp",
+          "callee": "ToolCatalog",
+          "lineNumber": 40
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.tools.register",
+          "lineNumber": 41
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.activation.tool_definition",
+          "lineNumber": 41
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self._temporary.cleanup",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.assertEqual",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "tuple",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.activation.disclosures",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.assertEqual",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.activation.disclosures",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.assertIn",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.activation.voice_instructions",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.assertNotIn",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.activation.voice_instructions",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.tools.invoke",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.assertFalse",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_voice_gets_disclosure_and_can_load_full_instructions",
+          "callee": "self.assertEqual",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_text_cannot_list_or_load_a_voice_skill",
+          "callee": "self.assertEqual",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_text_cannot_list_or_load_a_voice_skill",
+          "callee": "self.tools.mcp_definitions",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_text_cannot_list_or_load_a_voice_skill",
+          "callee": "self.tools.invoke",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_text_cannot_list_or_load_a_voice_skill",
+          "callee": "self.assertTrue",
+          "lineNumber": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_skill_archives.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "_zip",
+          "startLine": 71,
+          "endLine": 76,
+          "params": [
+            "files"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SkillArchiveInspectorTest",
+          "startLine": 13,
+          "endLine": 68,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_accepts_standalone_compatibility_filename",
+            "test_accepts_one_skill_document_in_zip",
+            "test_rejects_path_traversal",
+            "test_rejects_multiple_skill_documents",
+            "test_rejects_unrelated_sibling_root",
+            "test_rejects_nested_archive",
+            "test_rejects_tar_link"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SkillArchiveInspectorTest",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "_zip",
+          "line": 71,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillArchiveInspector",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 16
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self._temporary.cleanup",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_accepts_standalone_compatibility_filename",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_accepts_standalone_compatibility_filename",
+          "callee": "self.assertEqual",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_accepts_standalone_compatibility_filename",
+          "callee": "self.assertEqual",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_accepts_standalone_compatibility_filename",
+          "callee": "self.assertEqual",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_accepts_one_skill_document_in_zip",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_accepts_one_skill_document_in_zip",
+          "callee": "_zip",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_accepts_one_skill_document_in_zip",
+          "callee": "self.assertEqual",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_accepts_one_skill_document_in_zip",
+          "callee": "self.assertTrue",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_accepts_one_skill_document_in_zip",
+          "callee": "result.source_document.is_file",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_rejects_path_traversal",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_rejects_path_traversal",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_rejects_path_traversal",
+          "callee": "_zip",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_rejects_multiple_skill_documents",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_rejects_multiple_skill_documents",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_rejects_multiple_skill_documents",
+          "callee": "_zip",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_rejects_unrelated_sibling_root",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_rejects_unrelated_sibling_root",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_rejects_unrelated_sibling_root",
+          "callee": "_zip",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_rejects_nested_archive",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_rejects_nested_archive",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_rejects_nested_archive",
+          "callee": "_zip",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_rejects_tar_link",
+          "callee": "BytesIO",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_rejects_tar_link",
+          "callee": "tarfile.open",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_rejects_tar_link",
+          "callee": "tarfile.TarInfo",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_rejects_tar_link",
+          "callee": "archive.addfile",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_rejects_tar_link",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_rejects_tar_link",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_rejects_tar_link",
+          "callee": "payload.getvalue",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_zip",
+          "callee": "BytesIO",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_zip",
+          "callee": "zipfile.ZipFile",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_zip",
+          "callee": "files.items",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_zip",
+          "callee": "archive.writestr",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_zip",
+          "callee": "payload.getvalue",
+          "lineNumber": 76
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_skill_catalog.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 52,
+      "classes": [
+        {
+          "name": "SkillCatalogRepositoryTest",
+          "startLine": 12,
+          "endLine": 60,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_standalone_document_parses_before_install_directory_exists",
+            "test_catalog_replaces_one_canonical_skill_row"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SkillCatalogRepositoryTest",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 14
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setUp",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.database.migrate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillCatalogRepository",
+          "lineNumber": 18
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self._temporary.cleanup",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_standalone_document_parses_before_install_directory_exists",
+          "callee": "Path",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_standalone_document_parses_before_install_directory_exists",
+          "callee": "document_path.write_text",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_standalone_document_parses_before_install_directory_exists",
+          "callee": "parse_skill_document",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_standalone_document_parses_before_install_directory_exists",
+          "callee": "self.assertEqual",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.catalog.save_current",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "Path",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.catalog.save_current",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "Path",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.catalog.get",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.assertEqual",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.assertEqual",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "len",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.catalog.list",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.database.connect",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "connection.execute(\"SELECT COUNT(*) FROM skill_catalog_audit\").fetchone",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "connection.execute",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_catalog_replaces_one_canonical_skill_row",
+          "callee": "self.assertEqual",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_skill_lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 88,
+      "nonEmptyLines": 70,
+      "classes": [
+        {
+          "name": "SkillLifecycleTest",
+          "startLine": 15,
+          "endLine": 84,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_new_skill_installs_one_canonical_directory_and_audience",
+            "test_conflict_requires_explicit_replace_and_keeps_one_item",
+            "test_disable_then_delete_removes_projection_and_catalog_item",
+            "_candidate"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SkillLifecycleTest",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 17
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 18
+        },
+        {
+          "caller": "setUp",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 19
+        },
+        {
+          "caller": "setUp",
+          "callee": "database.migrate",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillCatalogRepository",
+          "lineNumber": 21
+        },
+        {
+          "caller": "setUp",
+          "callee": "AgentAudienceRouter",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setUp",
+          "callee": "AgentAudienceRepository",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillArchiveInspector",
+          "lineNumber": 23
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillLifecycle",
+          "lineNumber": 24
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self._temporary.cleanup",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.lifecycle.preflight",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self._candidate",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.assertEqual",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.lifecycle.confirm",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.assertEqual",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.assertTrue",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "(stored.install_path / \"SKILL.md\").is_file",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "AudienceResource",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.assertTrue",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.router.is_exposed",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.assertTrue",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_new_skill_installs_one_canonical_directory_and_audience",
+          "callee": "self.router.is_exposed",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.lifecycle.preflight",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self._candidate",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.lifecycle.confirm",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.lifecycle.preflight",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self._candidate",
+          "lineNumber": 54
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.assertEqual",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.lifecycle.confirm",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.lifecycle.confirm",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.assertEqual",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "len",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.catalog.list",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.assertIn",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "(stored.install_path / \"SKILL.md\").read_text",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "self.assertIn",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_conflict_requires_explicit_replace_and_keeps_one_item",
+          "callee": "(self.root / \"rollbacks\" / \"planning\" / \"SKILL.md\").read_text",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.lifecycle.preflight",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self._candidate",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.lifecycle.confirm",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.lifecycle.disable",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "AudienceResource",
+          "lineNumber": 71
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.assertFalse",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.router.is_exposed",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.lifecycle.enable",
+          "lineNumber": 73
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.assertTrue",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.router.is_exposed",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.lifecycle.disable",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.lifecycle.delete",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.assertIsNone",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.catalog.get",
+          "lineNumber": 78
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.assertFalse",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "(self.root / \"skills\" / \"planning\").exists",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "self.assertFalse",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_disable_then_delete_removes_projection_and_catalog_item",
+          "callee": "(self.root / \"rollbacks\" / \"planning\").exists",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_candidate",
+          "callee": "f\"---\\nname: planning\\ndescription: Plan meetings.\\n---\\n{instructions}\".encode",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_candidate",
+          "callee": "self.inspector.inspect",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_skill_routes.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 93,
+      "nonEmptyLines": 75,
+      "classes": [
+        {
+          "name": "SkillRoutesTest",
+          "startLine": 17,
+          "endLine": 61,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_preflight_and_confirm_are_management_configuration_only",
+            "test_unknown_route_is_not_claimed"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_Request",
+          "startLine": 64,
+          "endLine": 93,
+          "methods": [
+            "__init__",
+            "respond_json",
+            "respond_empty",
+            "stream_events",
+            "browser_session",
+            "request_json",
+            "request_bytes",
+            "provider_error"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SkillRoutesTest",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "_Request",
+          "line": 64,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 19
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setUp",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 21
+        },
+        {
+          "caller": "setUp",
+          "callee": "database.migrate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillLifecycle",
+          "lineNumber": 23
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillCatalogRepository",
+          "lineNumber": 24
+        },
+        {
+          "caller": "setUp",
+          "callee": "AgentAudienceRouter",
+          "lineNumber": 25
+        },
+        {
+          "caller": "setUp",
+          "callee": "AgentAudienceRepository",
+          "lineNumber": 25
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillRoutes",
+          "lineNumber": 29
+        },
+        {
+          "caller": "setUp",
+          "callee": "SkillArchiveInspector",
+          "lineNumber": 29
+        },
+        {
+          "caller": "setUp",
+          "callee": "PairingAuthority",
+          "lineNumber": 30
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self._temporary.cleanup",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "_Request",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.assertTrue",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.routes.handle_post",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.assertEqual",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.assertEqual",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.assertNotIn",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "str",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "_Request",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.routes.handle_post",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.assertEqual",
+          "lineNumber": 56
+        },
+        {
+          "caller": "test_preflight_and_confirm_are_management_configuration_only",
+          "callee": "self.assertEqual",
+          "lineNumber": 57
+        },
+        {
+          "caller": "test_unknown_route_is_not_claimed",
+          "callee": "_Request",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_unknown_route_is_not_claimed",
+          "callee": "self.assertFalse",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_unknown_route_is_not_claimed",
+          "callee": "self.routes.handle_get",
+          "lineNumber": 61
+        },
+        {
+          "caller": "stream_events",
+          "callee": "AssertionError",
+          "lineNumber": 81
+        },
+        {
+          "caller": "browser_session",
+          "callee": "object",
+          "lineNumber": 84
+        },
+        {
+          "caller": "provider_error",
+          "callee": "AssertionError",
+          "lineNumber": 93
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "tests/runtime/test_skill_specification.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 30,
+      "classes": [
+        {
+          "name": "SkillSpecificationTest",
+          "startLine": 10,
+          "endLine": 33,
+          "methods": [
+            "test_parses_standard_skill_without_granting_allowed_tools",
+            "test_rejects_name_mismatch"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SkillSpecificationTest",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "Path",
+          "lineNumber": 13
+        },
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "root.mkdir",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "(root / \"SKILL.md\").write_text",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "parse_skill",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "self.assertEqual",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "self.assertEqual",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_parses_standard_skill_without_granting_allowed_tools",
+          "callee": "self.assertEqual",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_rejects_name_mismatch",
+          "callee": "tempfile.TemporaryDirectory",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_rejects_name_mismatch",
+          "callee": "Path",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_rejects_name_mismatch",
+          "callee": "root.mkdir",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_rejects_name_mismatch",
+          "callee": "(root / \"SKILL.md\").write_text",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_rejects_name_mismatch",
+          "callee": "self.assertRaises",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_rejects_name_mismatch",
+          "callee": "parse_skill",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_tasks_contract.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 71,
+      "classes": [
+        {
+          "name": "TasksContractTest",
+          "startLine": 11,
+          "endLine": 73,
+          "methods": [
+            "setUp",
+            "tearDown",
+            "test_complete_uniform_voice_package",
+            "test_task_schema_has_no_schedule_fields",
+            "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+            "test_confirmation_still_rejects_the_prepare_utterance"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_ToolService",
+          "startLine": 76,
+          "endLine": 78,
+          "methods": [
+            "invoke_tool"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TasksContractTest",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "_ToolService",
+          "line": 76,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "TemporaryDirectory",
+          "lineNumber": 13
+        },
+        {
+          "caller": "setUp",
+          "callee": "RuntimeDatabase",
+          "lineNumber": 14
+        },
+        {
+          "caller": "setUp",
+          "callee": "Path",
+          "lineNumber": 14
+        },
+        {
+          "caller": "setUp",
+          "callee": "self.database.migrate",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setUp",
+          "callee": "TaskRepository",
+          "lineNumber": 16
+        },
+        {
+          "caller": "tearDown",
+          "callee": "self.temp.cleanup",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_complete_uniform_voice_package",
+          "callee": "ToolCatalog",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_complete_uniform_voice_package",
+          "callee": "TasksToolPackage(_ToolService()).register",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_complete_uniform_voice_package",
+          "callee": "TasksToolPackage",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_complete_uniform_voice_package",
+          "callee": "_ToolService",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_complete_uniform_voice_package",
+          "callee": "self.assertEqual",
+          "lineNumber": 24
+        },
+        {
+          "caller": "test_complete_uniform_voice_package",
+          "callee": "catalog.mcp_definitions",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_task_schema_has_no_schedule_fields",
+          "callee": "self.database.connect",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_task_schema_has_no_schedule_fields",
+          "callee": "connection.execute",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_task_schema_has_no_schedule_fields",
+          "callee": "self.assertEqual",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+          "callee": "enumerate",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+          "callee": "TaskService",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+          "callee": "service.invoke_tool",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+          "callee": "ToolInvocationContext",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+          "callee": "service.invoke_tool",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+          "callee": "ToolInvocationContext",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_confirmation_uses_trusted_turn_order_not_a_phrase_allowlist",
+          "callee": "self.assertFalse",
+          "lineNumber": 58
+        },
+        {
+          "caller": "test_confirmation_still_rejects_the_prepare_utterance",
+          "callee": "TaskService",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_confirmation_still_rejects_the_prepare_utterance",
+          "callee": "service.invoke_tool",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_confirmation_still_rejects_the_prepare_utterance",
+          "callee": "ToolInvocationContext",
+          "lineNumber": 64
+        },
+        {
+          "caller": "test_confirmation_still_rejects_the_prepare_utterance",
+          "callee": "service.invoke_tool",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_confirmation_still_rejects_the_prepare_utterance",
+          "callee": "ToolInvocationContext",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_confirmation_still_rejects_the_prepare_utterance",
+          "callee": "self.assertTrue",
+          "lineNumber": 73
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "tests/runtime/test_tool_catalog.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 22,
+      "classes": [
+        {
+          "name": "ToolCatalogTest",
+          "startLine": 8,
+          "endLine": 27,
+          "methods": [
+            "setUp",
+            "test_one_definition_projects_to_mcp_and_realtime",
+            "test_rejects_unknown_tool_and_invalid_arguments",
+            "test_invokes_valid_builtin"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ToolCatalogTest",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setUp",
+          "callee": "ToolCatalog",
+          "lineNumber": 10
+        },
+        {
+          "caller": "setUp",
+          "callee": "register_device_status",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_one_definition_projects_to_mcp_and_realtime",
+          "callee": "self.assertEqual",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_one_definition_projects_to_mcp_and_realtime",
+          "callee": "self.catalog.mcp_definitions",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_one_definition_projects_to_mcp_and_realtime",
+          "callee": "self.assertEqual",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_one_definition_projects_to_mcp_and_realtime",
+          "callee": "self.catalog.realtime_definitions",
+          "lineNumber": 18
+        },
+        {
+          "caller": "test_rejects_unknown_tool_and_invalid_arguments",
+          "callee": "self.assertTrue",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_rejects_unknown_tool_and_invalid_arguments",
+          "callee": "self.catalog.invoke",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_rejects_unknown_tool_and_invalid_arguments",
+          "callee": "self.assertTrue",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_rejects_unknown_tool_and_invalid_arguments",
+          "callee": "self.catalog.invoke",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_invokes_valid_builtin",
+          "callee": "self.catalog.invoke",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_invokes_valid_builtin",
+          "callee": "self.assertFalse",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_invokes_valid_builtin",
+          "callee": "self.assertEqual",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "tests/runtime/test_web_search.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "_completed",
+          "startLine": 92,
+          "endLine": 103,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "WebSearchTest",
+          "startLine": 12,
+          "endLine": 48,
+          "methods": [
+            "test_platform_uses_json_responses_with_citations",
+            "test_subscription_uses_codex_streaming_responses",
+            "test_timeout_or_network_failure_is_truthful",
+            "test_revoked_or_denied_credential_is_truthful",
+            "test_missing_model_is_unavailable"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_Credentials",
+          "startLine": 51,
+          "endLine": 53,
+          "methods": [
+            "platform_key"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_Subscription",
+          "startLine": 56,
+          "endLine": 58,
+          "methods": [
+            "access_token"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_Settings",
+          "startLine": 61,
+          "endLine": 66,
+          "methods": [
+            "__init__",
+            "selection"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_Headers",
+          "startLine": 69,
+          "endLine": 74,
+          "methods": [
+            "__init__",
+            "get_content_type"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_Response",
+          "startLine": 77,
+          "endLine": 89,
+          "methods": [
+            "__init__",
+            "__enter__",
+            "__exit__",
+            "read"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "WebSearchTest",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "_Credentials",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "_Subscription",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "_Settings",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "_Headers",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "_Response",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "_completed",
+          "line": 92,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "_Response",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "json.dumps(_completed()).encode",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "json.dumps",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "_completed",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "OpenAIWebSearch",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "_Credentials",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "_Settings",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "search.search",
+          "lineNumber": 17
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "self.assertEqual",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "self.assertNotIn",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "json.loads",
+          "lineNumber": 20
+        },
+        {
+          "caller": "test_platform_uses_json_responses_with_citations",
+          "callee": "self.assertEqual",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "_completed",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "_Response",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "f\"data: {json.dumps(event)}\\n\\ndata: [DONE]\\n\\n\".encode",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "json.dumps",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "OpenAIWebSearch",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "_Credentials",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "_Settings",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "_Subscription",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "search.search",
+          "lineNumber": 28
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "self.assertEqual",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "self.assertTrue",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "json.loads",
+          "lineNumber": 31
+        },
+        {
+          "caller": "test_subscription_uses_codex_streaming_responses",
+          "callee": "self.assertEqual",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_timeout_or_network_failure_is_truthful",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_timeout_or_network_failure_is_truthful",
+          "callee": "OpenAIWebSearch(_Credentials(), _Settings(\"platform\"), None).search",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_timeout_or_network_failure_is_truthful",
+          "callee": "OpenAIWebSearch",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_timeout_or_network_failure_is_truthful",
+          "callee": "_Credentials",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_timeout_or_network_failure_is_truthful",
+          "callee": "_Settings",
+          "lineNumber": 37
+        },
+        {
+          "caller": "test_revoked_or_denied_credential_is_truthful",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_revoked_or_denied_credential_is_truthful",
+          "callee": "OpenAIWebSearch(_Credentials(), _Settings(\"platform\"), None).search",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_revoked_or_denied_credential_is_truthful",
+          "callee": "OpenAIWebSearch",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_revoked_or_denied_credential_is_truthful",
+          "callee": "_Credentials",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_revoked_or_denied_credential_is_truthful",
+          "callee": "_Settings",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_missing_model_is_unavailable",
+          "callee": "OpenAIWebSearch",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_missing_model_is_unavailable",
+          "callee": "_Credentials",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_missing_model_is_unavailable",
+          "callee": "_Settings",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_missing_model_is_unavailable",
+          "callee": "self.assertFalse",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_missing_model_is_unavailable",
+          "callee": "search.available",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_missing_model_is_unavailable",
+          "callee": "self.assertRaisesRegex",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_missing_model_is_unavailable",
+          "callee": "search.search",
+          "lineNumber": 48
+        },
+        {
+          "caller": "__init__",
+          "callee": "SimpleNamespace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "_Headers",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 1,
+        "classCount": 6
+      }
+    },
+    {
+      "path": "web/design/base.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 4,
+      "nonEmptyLines": 4,
+      "metrics": {}
+    },
+    {
+      "path": "web/design/tokens.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 9,
+      "nonEmptyLines": 9,
+      "metrics": {}
+    },
+    {
+      "path": "web/management/app.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 26,
+      "callGraph": [
+        {
+          "caller": "api",
+          "callee": "fetch",
+          "lineNumber": 3
+        },
+        {
+          "caller": "api",
+          "callee": "response.json().catch",
+          "lineNumber": 3
+        },
+        {
+          "caller": "api",
+          "callee": "response.json",
+          "lineNumber": 3
+        },
+        {
+          "caller": "setState",
+          "callee": "document.querySelector",
+          "lineNumber": 5
+        },
+        {
+          "caller": "setState",
+          "callee": "el.querySelector",
+          "lineNumber": 5
+        },
+        {
+          "caller": "boot",
+          "callee": "api",
+          "lineNumber": 6
+        },
+        {
+          "caller": "boot",
+          "callee": "renderStatus",
+          "lineNumber": 6
+        },
+        {
+          "caller": "boot",
+          "callee": "show",
+          "lineNumber": 6
+        },
+        {
+          "caller": "boot",
+          "callee": "setState",
+          "lineNumber": 6
+        },
+        {
+          "caller": "boot",
+          "callee": "show",
+          "lineNumber": 6
+        },
+        {
+          "caller": "boot",
+          "callee": "checking.querySelector",
+          "lineNumber": 6
+        },
+        {
+          "caller": "boot",
+          "callee": "setState",
+          "lineNumber": 6
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "show",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "setState",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "setState",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "document.querySelector",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "document.querySelector",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "document.querySelector",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "loadProfile",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "loadOpenAI",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "loadSubscription",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderStatus",
+          "callee": "loadMemory",
+          "lineNumber": 7
+        },
+        {
+          "caller": "loadProfile",
+          "callee": "api",
+          "lineNumber": 9
+        },
+        {
+          "caller": "loadProfile",
+          "callee": "document.querySelector",
+          "lineNumber": 9
+        },
+        {
+          "caller": "loadProfile",
+          "callee": "document.querySelector",
+          "lineNumber": 9
+        },
+        {
+          "caller": "options",
+          "callee": "select.replaceChildren",
+          "lineNumber": 13
+        },
+        {
+          "caller": "options",
+          "callee": "select.add",
+          "lineNumber": 13
+        },
+        {
+          "caller": "options",
+          "callee": "values.forEach",
+          "lineNumber": 13
+        },
+        {
+          "caller": "options",
+          "callee": "select.add",
+          "lineNumber": 13
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "api",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "setState",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "access.replaceChildren",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "access.add",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "access.add",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "options",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "options",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadOpenAI",
+          "callee": "document.querySelector",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadSubscription",
+          "callee": "api",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadSubscription",
+          "callee": "setState",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadSubscription",
+          "callee": "document.querySelector",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadSubscription",
+          "callee": "document.querySelector",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadSubscription",
+          "callee": "document.querySelector",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadSubscription",
+          "callee": "document.querySelector",
+          "lineNumber": 18
+        },
+        {
+          "caller": "pollSubscription",
+          "callee": "api",
+          "lineNumber": 20
+        },
+        {
+          "caller": "pollSubscription",
+          "callee": "loadSubscription",
+          "lineNumber": 20
+        },
+        {
+          "caller": "pollSubscription",
+          "callee": "loadOpenAI",
+          "lineNumber": 20
+        },
+        {
+          "caller": "pollSubscription",
+          "callee": "document.querySelector",
+          "lineNumber": 20
+        },
+        {
+          "caller": "pollSubscription",
+          "callee": "setTimeout",
+          "lineNumber": 20
+        },
+        {
+          "caller": "loadMemory",
+          "callee": "document.querySelector",
+          "lineNumber": 22
+        },
+        {
+          "caller": "loadMemory",
+          "callee": "Promise.all",
+          "lineNumber": 22
+        },
+        {
+          "caller": "loadMemory",
+          "callee": "api",
+          "lineNumber": 22
+        },
+        {
+          "caller": "loadMemory",
+          "callee": "api",
+          "lineNumber": 22
+        },
+        {
+          "caller": "loadMemory",
+          "callee": "document.querySelector",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "web/management/background-agent.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 16,
+      "callGraph": [
+        {
+          "caller": "api",
+          "callee": "fetch",
+          "lineNumber": 4
+        },
+        {
+          "caller": "api",
+          "callee": "response.json().catch",
+          "lineNumber": 4
+        },
+        {
+          "caller": "api",
+          "callee": "response.json",
+          "lineNumber": 4
+        },
+        {
+          "caller": "state",
+          "callee": "document.querySelector",
+          "lineNumber": 5
+        },
+        {
+          "caller": "state",
+          "callee": "target.querySelector",
+          "lineNumber": 5
+        },
+        {
+          "caller": "fill",
+          "callee": "renderTools",
+          "lineNumber": 6
+        },
+        {
+          "caller": "fill",
+          "callee": "state",
+          "lineNumber": 6
+        },
+        {
+          "caller": "renderTools",
+          "callee": "tools.replaceChildren",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "items.reduce",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "(all[item.group||\"other\"]??=[]).push",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "Object.keys(groups).sort",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "Object.keys",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "(labels[a]||a).localeCompare",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "nav.querySelectorAll(\"button\").forEach",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "nav.querySelectorAll",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "button.classList.toggle",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "detail.replaceChildren",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "key.replaceAll",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "groups[key].every",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "groups[key].some",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "toggle.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createTextNode",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "heading.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "detail.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "groups[key].forEach",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "groups[key].every",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "groups[key].some",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "item.name.replaceAll",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "item.effect.replaceAll",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "copy.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "label.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "detail.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "groups[key].forEach",
+          "lineNumber": 7
+        },
+        {
+          "caller": "show",
+          "callee": "show",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "keys.forEach",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "document.createElement",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "button.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "document.createTextNode",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "key.replaceAll",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "String",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "show",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "nav.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "tools.append",
+          "lineNumber": 7
+        },
+        {
+          "caller": "renderTools",
+          "callee": "show",
+          "lineNumber": 7
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "rail.style.setProperty",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "new Date(item.createdAt).toLocaleString",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "status.querySelector",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "item.state.replaceAll",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "copy.append",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "copy.append",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "[\"accepted\",\"queued\",\"running\",\"reviewing\",\"repairing\"].includes",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "act",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "encodeURIComponent",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "actions.append",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "document.createElement",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "act",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "encodeURIComponent",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "actions.append",
+          "lineNumber": 8
+        },
+        {
+          "caller": "runRow",
+          "callee": "row.append",
+          "lineNumber": 8
+        },
+        {
+          "caller": "load",
+          "callee": "fill",
+          "lineNumber": 9
+        },
+        {
+          "caller": "load",
+          "callee": "api",
+          "lineNumber": 9
+        },
+        {
+          "caller": "load",
+          "callee": "loadRuns",
+          "lineNumber": 9
+        },
+        {
+          "caller": "load",
+          "callee": "state",
+          "lineNumber": 9
+        },
+        {
+          "caller": "loadRuns",
+          "callee": "api",
+          "lineNumber": 10
+        },
+        {
+          "caller": "loadRuns",
+          "callee": "runs.replaceChildren",
+          "lineNumber": 10
+        },
+        {
+          "caller": "loadRuns",
+          "callee": "items.forEach",
+          "lineNumber": 10
+        },
+        {
+          "caller": "loadRuns",
+          "callee": "runs.append",
+          "lineNumber": 10
+        },
+        {
+          "caller": "loadRuns",
+          "callee": "runRow",
+          "lineNumber": 10
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "api",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "reasoning.replaceChildren",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "api",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "encodeURIComponent",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "(detail.events||[]).filter",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "document.createElement",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "document.createElement",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "document.createElement",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "new Date(item.createdAt).toLocaleString",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "section.append",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "document.createElement",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "section.append",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "events.forEach",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "document.createElement",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "document.createElement",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "document.createElement",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "new Date(event.createdAt).toLocaleString",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "String",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "entry.append",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "section.append",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadReasoning",
+          "callee": "reasoning.append",
+          "lineNumber": 11
+        },
+        {
+          "caller": "act",
+          "callee": "api",
+          "lineNumber": 12
+        },
+        {
+          "caller": "act",
+          "callee": "loadRuns",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "web/management/build07.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 35,
+      "callGraph": [
+        {
+          "caller": "api",
+          "callee": "fetch",
+          "lineNumber": 10
+        },
+        {
+          "caller": "api",
+          "callee": "response.json().catch",
+          "lineNumber": 10
+        },
+        {
+          "caller": "api",
+          "callee": "response.json",
+          "lineNumber": 10
+        },
+        {
+          "caller": "plain",
+          "callee": "String(value||\"Available\").replaceAll(\"_\",\" \").replace",
+          "lineNumber": 14
+        },
+        {
+          "caller": "plain",
+          "callee": "String(value||\"Available\").replaceAll",
+          "lineNumber": 14
+        },
+        {
+          "caller": "plain",
+          "callee": "String",
+          "lineNumber": 14
+        },
+        {
+          "caller": "plain",
+          "callee": "c.toUpperCase",
+          "lineNumber": 14
+        },
+        {
+          "caller": "detail",
+          "callee": "plain",
+          "lineNumber": 15
+        },
+        {
+          "caller": "base",
+          "callee": "encodeURIComponent",
+          "lineNumber": 16
+        },
+        {
+          "caller": "base",
+          "callee": "id",
+          "lineNumber": 16
+        },
+        {
+          "caller": "row",
+          "callee": "document.createElement",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "plain",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "el.querySelector",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "name",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "el.querySelector",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "detail",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "document.createElement",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "api",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "base",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "loadLibrary",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "show",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "document.createElement",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "askDelete",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "el.querySelector(\".row-actions\").append",
+          "lineNumber": 17
+        },
+        {
+          "caller": "row",
+          "callee": "el.querySelector",
+          "lineNumber": 17
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "pick",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "api",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "panel.replaceChildren",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "document.createElement",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "plain",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "document.createElement",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "head.append",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "panel.append",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "document.createElement",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "list.forEach",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "catalog.append",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "row",
+          "lineNumber": 18
+        },
+        {
+          "caller": "loadLibrary",
+          "callee": "panel.append",
+          "lineNumber": 18
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "form.reset",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "kind.replaceChildren",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.createElement",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "document.querySelector",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "kind.append",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openImport",
+          "callee": "importDialog.showModal",
+          "lineNumber": 21
+        },
+        {
+          "caller": "askDelete",
+          "callee": "document.querySelector",
+          "lineNumber": 23
+        },
+        {
+          "caller": "askDelete",
+          "callee": "name",
+          "lineNumber": 23
+        },
+        {
+          "caller": "askDelete",
+          "callee": "document.querySelector",
+          "lineNumber": 23
+        },
+        {
+          "caller": "askDelete",
+          "callee": "api",
+          "lineNumber": 23
+        },
+        {
+          "caller": "askDelete",
+          "callee": "base",
+          "lineNumber": 23
+        },
+        {
+          "caller": "askDelete",
+          "callee": "loadLibrary",
+          "lineNumber": 23
+        },
+        {
+          "caller": "askDelete",
+          "callee": "loadConnections",
+          "lineNumber": 23
+        },
+        {
+          "caller": "askDelete",
+          "callee": "confirmDialog.showModal",
+          "lineNumber": 23
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "document.querySelector",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "pick(await api(\"/v1/management/connections\")).filter",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "pick",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "api",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "target.replaceChildren",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "list.forEach",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "target.append",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadConnections",
+          "callee": "row",
+          "lineNumber": 25
+        },
+        {
+          "caller": "loadMail",
+          "callee": "document.querySelector",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "pick",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "api",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "target.replaceChildren",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "list.forEach",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "row",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "document.createElement",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "document.querySelector",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "name",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "document.querySelector",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "api",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "encodeURIComponent",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "id",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "loadMail",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "confirmDialog.showModal",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "el.querySelector(\".row-actions\").append",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "el.querySelector",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadMail",
+          "callee": "target.append",
+          "lineNumber": 26
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "document.querySelector",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "pick",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "api",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "target.replaceChildren",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "list.forEach",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "row",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "document.createElement",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "document.querySelector",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "name",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "document.querySelector",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "api",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "encodeURIComponent",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "id",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "loadCalendars",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "loadConnections",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "confirmDialog.showModal",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "el.querySelector(\".row-actions\").append",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "el.querySelector",
+          "lineNumber": 29
+        },
+        {
+          "caller": "loadCalendars",
+          "callee": "target.append",
+          "lineNumber": 29
+        },
+        {
+          "caller": "showCalendarFields",
+          "callee": "document.querySelector",
+          "lineNumber": 32
+        },
+        {
+          "caller": "showCalendarFields",
+          "callee": "document.querySelector",
+          "lineNumber": 32
+        },
+        {
+          "caller": "showCalendarFields",
+          "callee": "document.querySelector",
+          "lineNumber": 32
+        },
+        {
+          "caller": "showCalendarFields",
+          "callee": "document.querySelector",
+          "lineNumber": 32
+        },
+        {
+          "caller": "show",
+          "callee": "document.querySelector",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "web/management/index.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 15,
+      "nonEmptyLines": 15,
+      "metrics": {}
+    }
+  ]
+}

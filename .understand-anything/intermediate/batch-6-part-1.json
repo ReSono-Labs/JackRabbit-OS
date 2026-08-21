@@ -1,0 +1,1340 @@
+{
+  "nodes": [
+    {
+      "id": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "type": "file",
+      "name": "memory_reviewer.py",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "summary": "Implements agent execution responsibilities centered on memory candidate, review result, memory review runner. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_review_failure",
+      "type": "function",
+      "name": "_review_failure",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        134,
+        157
+      ],
+      "summary": "Performs review failure behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_summarizer_instructions",
+      "type": "function",
+      "name": "_summarizer_instructions",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        160,
+        174
+      ],
+      "summary": "Performs summarizer instructions behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_parse_summary_payload",
+      "type": "function",
+      "name": "_parse_summary_payload",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        177,
+        192
+      ],
+      "summary": "Performs parse summary payload behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_parse_review",
+      "type": "function",
+      "name": "_parse_review",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        195,
+        219
+      ],
+      "summary": "Performs parse review behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_finalization_candidate",
+      "type": "function",
+      "name": "_normalize_finalization_candidate",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        222,
+        238
+      ],
+      "summary": "Performs normalize finalization candidate behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_memory_class",
+      "type": "function",
+      "name": "_normalize_memory_class",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        241,
+        245
+      ],
+      "summary": "Performs normalize memory class behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_memory_key",
+      "type": "function",
+      "name": "_normalize_memory_key",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        248,
+        254
+      ],
+      "summary": "Performs normalize memory key behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_confidence",
+      "type": "function",
+      "name": "_normalize_confidence",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        257,
+        261
+      ],
+      "summary": "Performs normalize confidence behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_sensitivity",
+      "type": "function",
+      "name": "_normalize_sensitivity",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        264,
+        268
+      ],
+      "summary": "Performs normalize sensitivity behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_text",
+      "type": "function",
+      "name": "_normalize_text",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        271,
+        275
+      ],
+      "summary": "Performs normalize text behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_bounded_normalized_text",
+      "type": "function",
+      "name": "_bounded_normalized_text",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        278,
+        282
+      ],
+      "summary": "Performs bounded normalized text behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_contains_forbidden_memory_marker",
+      "type": "function",
+      "name": "_contains_forbidden_memory_marker",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        285,
+        287
+      ],
+      "summary": "Performs contains forbidden memory marker behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/memory_reviewer.py:_run_review_with_agents_sdk",
+      "type": "function",
+      "name": "_run_review_with_agents_sdk",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        290,
+        308
+      ],
+      "summary": "Performs run review with agents sdk behavior used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/memory_reviewer.py:MemoryCandidate",
+      "type": "class",
+      "name": "MemoryCandidate",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        42,
+        47
+      ],
+      "summary": "Represents the memory candidate contract or immutable state used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/memory_reviewer.py:ReviewResult",
+      "type": "class",
+      "name": "ReviewResult",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        51,
+        54
+      ],
+      "summary": "Represents the review result contract or immutable state used by the agent execution.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/memory_reviewer.py:MemoryReviewRunner",
+      "type": "class",
+      "name": "MemoryReviewRunner",
+      "filePath": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "lineRange": [
+        60,
+        131
+      ],
+      "summary": "Owns memory review runner behavior for the agent execution, including review.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/agents/runner.py",
+      "type": "file",
+      "name": "runner.py",
+      "filePath": "runtime/resono_runtime/agents/runner.py",
+      "summary": "Implements agent execution responsibilities centered on text turn result, agents sdk text runner, run with agents sdk. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/runner.py:_run_with_agents_sdk",
+      "type": "function",
+      "name": "_run_with_agents_sdk",
+      "filePath": "runtime/resono_runtime/agents/runner.py",
+      "lineRange": [
+        93,
+        111
+      ],
+      "summary": "Performs run with agents sdk behavior used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/runner.py:_run_with_mcp",
+      "type": "function",
+      "name": "_run_with_mcp",
+      "filePath": "runtime/resono_runtime/agents/runner.py",
+      "lineRange": [
+        114,
+        151
+      ],
+      "summary": "Performs run with mcp behavior used by the agent execution.",
+      "tags": [
+        "mcp",
+        "tool-protocol",
+        "integration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/runner.py:TextTurnResult",
+      "type": "class",
+      "name": "TextTurnResult",
+      "filePath": "runtime/resono_runtime/agents/runner.py",
+      "lineRange": [
+        16,
+        18
+      ],
+      "summary": "Represents the text turn result contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/runner.py:AgentsSdkTextRunner",
+      "type": "class",
+      "name": "AgentsSdkTextRunner",
+      "filePath": "runtime/resono_runtime/agents/runner.py",
+      "lineRange": [
+        21,
+        90
+      ],
+      "summary": "Owns agents sdk text runner behavior for the agent execution, including run.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "type": "file",
+      "name": "sdk_runner.py",
+      "filePath": "runtime/resono_runtime/agents/sdk_runner.py",
+      "summary": "Implements agent execution responsibilities centered on agent turn observation, run agent turn, run agent turn sync. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "runtime",
+        "service",
+        "application"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/sdk_runner.py:run_agent_turn",
+      "type": "function",
+      "name": "run_agent_turn",
+      "filePath": "runtime/resono_runtime/agents/sdk_runner.py",
+      "lineRange": [
+        14,
+        70
+      ],
+      "summary": "Performs run agent turn behavior used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/sdk_runner.py:run_agent_turn_sync",
+      "type": "function",
+      "name": "run_agent_turn_sync",
+      "filePath": "runtime/resono_runtime/agents/sdk_runner.py",
+      "lineRange": [
+        73,
+        75
+      ],
+      "summary": "Performs run agent turn sync behavior used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/agents/sdk_runner.py:_observe",
+      "type": "function",
+      "name": "_observe",
+      "filePath": "runtime/resono_runtime/agents/sdk_runner.py",
+      "lineRange": [
+        78,
+        91
+      ],
+      "summary": "Performs observe behavior used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/agents/sdk_runner.py:AgentTurnObservation",
+      "type": "class",
+      "name": "AgentTurnObservation",
+      "filePath": "runtime/resono_runtime/agents/sdk_runner.py",
+      "lineRange": [
+        9,
+        11
+      ],
+      "summary": "Represents the agent turn observation contract or immutable state used by the agent execution.",
+      "tags": [
+        "runtime",
+        "service",
+        "application",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/memory/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "runtime/resono_runtime/memory/__init__.py",
+      "summary": "Defines the public package surface for the memory pipeline, collecting the module's supported imports in one place.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "barrel",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "type": "file",
+      "name": "embedding_access.py",
+      "filePath": "runtime/resono_runtime/memory/embedding_access.py",
+      "summary": "Implements memory pipeline responsibilities centered on embedding api key, default embedding factory. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/memory/embedding_access.py:embedding_api_key",
+      "type": "function",
+      "name": "embedding_api_key",
+      "filePath": "runtime/resono_runtime/memory/embedding_access.py",
+      "lineRange": [
+        13,
+        44
+      ],
+      "summary": "Performs embedding api key behavior used by the memory pipeline.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:runtime/resono_runtime/memory/embedding_access.py:default_embedding_factory",
+      "type": "function",
+      "name": "default_embedding_factory",
+      "filePath": "runtime/resono_runtime/memory/embedding_access.py",
+      "lineRange": [
+        47,
+        48
+      ],
+      "summary": "Performs default embedding factory behavior used by the memory pipeline.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:runtime/resono_runtime/memory/pipeline.py",
+      "type": "file",
+      "name": "pipeline.py",
+      "filePath": "runtime/resono_runtime/memory/pipeline.py",
+      "summary": "Implements memory pipeline responsibilities centered on finalize result, memory pipeline. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:runtime/resono_runtime/memory/pipeline.py:FinalizeResult",
+      "type": "class",
+      "name": "FinalizeResult",
+      "filePath": "runtime/resono_runtime/memory/pipeline.py",
+      "lineRange": [
+        17,
+        23
+      ],
+      "summary": "Represents the finalize result contract or immutable state used by the memory pipeline.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/memory/pipeline.py:MemoryPipeline",
+      "type": "class",
+      "name": "MemoryPipeline",
+      "filePath": "runtime/resono_runtime/memory/pipeline.py",
+      "lineRange": [
+        26,
+        144
+      ],
+      "summary": "Owns memory pipeline behavior for the memory pipeline, including finalize.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:runtime/resono_runtime/memory/retrieval.py",
+      "type": "file",
+      "name": "retrieval.py",
+      "filePath": "runtime/resono_runtime/memory/retrieval.py",
+      "summary": "Implements memory pipeline responsibilities centered on query embedder, retrieval match, memory retriever. It provides the concrete behavior represented by this module within the standalone R1 runtime.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:runtime/resono_runtime/memory/retrieval.py:cosine_similarity",
+      "type": "function",
+      "name": "cosine_similarity",
+      "filePath": "runtime/resono_runtime/memory/retrieval.py",
+      "lineRange": [
+        74,
+        83
+      ],
+      "summary": "Performs cosine similarity behavior used by the memory pipeline.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/memory/retrieval.py:QueryEmbedder",
+      "type": "class",
+      "name": "QueryEmbedder",
+      "filePath": "runtime/resono_runtime/memory/retrieval.py",
+      "lineRange": [
+        15,
+        17
+      ],
+      "summary": "Owns query embedder behavior for the memory pipeline, including embed.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/memory/retrieval.py:RetrievalMatch",
+      "type": "class",
+      "name": "RetrievalMatch",
+      "filePath": "runtime/resono_runtime/memory/retrieval.py",
+      "lineRange": [
+        21,
+        23
+      ],
+      "summary": "Represents the retrieval match contract or immutable state used by the memory pipeline.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:runtime/resono_runtime/memory/retrieval.py:MemoryRetriever",
+      "type": "class",
+      "name": "MemoryRetriever",
+      "filePath": "runtime/resono_runtime/memory/retrieval.py",
+      "lineRange": [
+        26,
+        71
+      ],
+      "summary": "Owns memory retriever behavior for the memory pipeline, including retrieve.",
+      "tags": [
+        "memory",
+        "retrieval",
+        "data-pipeline",
+        "data-model"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_review_failure",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_review_failure",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_summarizer_instructions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_summarizer_instructions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_parse_summary_payload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_parse_summary_payload",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_parse_review",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_parse_review",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_finalization_candidate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_finalization_candidate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_memory_class",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_memory_class",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_memory_key",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_memory_key",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_confidence",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_confidence",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_sensitivity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_sensitivity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_normalize_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_bounded_normalized_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_bounded_normalized_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_contains_forbidden_memory_marker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_contains_forbidden_memory_marker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_run_review_with_agents_sdk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "function:runtime/resono_runtime/agents/memory_reviewer.py:_run_review_with_agents_sdk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "class:runtime/resono_runtime/agents/memory_reviewer.py:MemoryCandidate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "class:runtime/resono_runtime/agents/memory_reviewer.py:MemoryCandidate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "class:runtime/resono_runtime/agents/memory_reviewer.py:ReviewResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "class:runtime/resono_runtime/agents/memory_reviewer.py:ReviewResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "class:runtime/resono_runtime/agents/memory_reviewer.py:MemoryReviewRunner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "class:runtime/resono_runtime/agents/memory_reviewer.py:MemoryReviewRunner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "file:runtime/resono_runtime/api/events.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "target": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "function:runtime/resono_runtime/agents/runner.py:_run_with_agents_sdk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "function:runtime/resono_runtime/agents/runner.py:_run_with_agents_sdk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "function:runtime/resono_runtime/agents/runner.py:_run_with_mcp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "function:runtime/resono_runtime/agents/runner.py:_run_with_mcp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "class:runtime/resono_runtime/agents/runner.py:TextTurnResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "class:runtime/resono_runtime/agents/runner.py:TextTurnResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "class:runtime/resono_runtime/agents/runner.py:AgentsSdkTextRunner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "class:runtime/resono_runtime/agents/runner.py:AgentsSdkTextRunner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "file:runtime/resono_runtime/api/events.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/runner.py",
+      "target": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "function:runtime/resono_runtime/agents/sdk_runner.py:run_agent_turn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "function:runtime/resono_runtime/agents/sdk_runner.py:run_agent_turn",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "function:runtime/resono_runtime/agents/sdk_runner.py:run_agent_turn_sync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "function:runtime/resono_runtime/agents/sdk_runner.py:run_agent_turn_sync",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "function:runtime/resono_runtime/agents/sdk_runner.py:_observe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "function:runtime/resono_runtime/agents/sdk_runner.py:_observe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "class:runtime/resono_runtime/agents/sdk_runner.py:AgentTurnObservation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/agents/sdk_runner.py",
+      "target": "class:runtime/resono_runtime/agents/sdk_runner.py:AgentTurnObservation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/__init__.py",
+      "target": "file:runtime/resono_runtime/memory/pipeline.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/__init__.py",
+      "target": "file:runtime/resono_runtime/memory/retrieval.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/__init__.py",
+      "target": "file:runtime/resono_runtime/memory/service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/__init__.py",
+      "target": "file:runtime/resono_runtime/memory/session_context.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/__init__.py",
+      "target": "file:runtime/resono_runtime/memory/tools.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "function:runtime/resono_runtime/memory/embedding_access.py:embedding_api_key",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "function:runtime/resono_runtime/memory/embedding_access.py:embedding_api_key",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "function:runtime/resono_runtime/memory/embedding_access.py:default_embedding_factory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "function:runtime/resono_runtime/memory/embedding_access.py:default_embedding_factory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "target": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "class:runtime/resono_runtime/memory/pipeline.py:FinalizeResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "class:runtime/resono_runtime/memory/pipeline.py:FinalizeResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "class:runtime/resono_runtime/memory/pipeline.py:MemoryPipeline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "class:runtime/resono_runtime/memory/pipeline.py:MemoryPipeline",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/agents/memory_reviewer.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/api/events.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/memory/embedding_access.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/providers/openai/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/providers/openai/subscription.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/security/credentials.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/storage/memory.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/storage/provider_settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/pipeline.py",
+      "target": "file:runtime/resono_runtime/storage/sessions.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "function:runtime/resono_runtime/memory/retrieval.py:cosine_similarity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "function:runtime/resono_runtime/memory/retrieval.py:cosine_similarity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "class:runtime/resono_runtime/memory/retrieval.py:QueryEmbedder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "class:runtime/resono_runtime/memory/retrieval.py:QueryEmbedder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "class:runtime/resono_runtime/memory/retrieval.py:RetrievalMatch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "class:runtime/resono_runtime/memory/retrieval.py:RetrievalMatch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "class:runtime/resono_runtime/memory/retrieval.py:MemoryRetriever",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "class:runtime/resono_runtime/memory/retrieval.py:MemoryRetriever",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:runtime/resono_runtime/memory/retrieval.py",
+      "target": "file:runtime/resono_runtime/storage/memory.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,4917 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 13,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "runtime/resono_runtime/connectors/calendar/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/connectors/calendar/caldav.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 500,
+      "nonEmptyLines": 461,
+      "classes": [
+        {
+          "name": "CaldavCalendarCredentials",
+          "startLine": 22,
+          "endLine": 25,
+          "methods": [],
+          "properties": [
+            "username",
+            "password",
+            "calendar_url"
+          ]
+        },
+        {
+          "name": "CaldavDiscoveredCalendar",
+          "startLine": 29,
+          "endLine": 31,
+          "methods": [],
+          "properties": [
+            "calendar_url",
+            "display_name"
+          ]
+        },
+        {
+          "name": "CaldavCalendarCreateRequest",
+          "startLine": 35,
+          "endLine": 41,
+          "methods": [],
+          "properties": [
+            "title",
+            "starts_at",
+            "ends_at",
+            "all_day",
+            "description",
+            "location"
+          ]
+        },
+        {
+          "name": "CaldavCalendarProviderClient",
+          "startLine": 44,
+          "endLine": 500,
+          "methods": [
+            "__init__",
+            "discover_calendars",
+            "validate_calendar",
+            "discover_capabilities",
+            "fetch_events",
+            "create_event",
+            "update_event",
+            "delete_event",
+            "_discover_principal_url",
+            "_discover_calendar_home_url",
+            "_discover_calendar_collection_urls",
+            "_fetch_calendar_bodies",
+            "_send_request",
+            "_extract_calendar_data",
+            "_extract_first_href",
+            "_extract_calendar_collections",
+            "_build_report_xml",
+            "_build_event_ics",
+            "_resource_url",
+            "_auth_username_candidates",
+            "_absolute_url",
+            "_format_utc",
+            "_format_event_datetime",
+            "_escape_ics_text"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CaldavCalendarCredentials",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "CaldavDiscoveredCalendar",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "CaldavCalendarCreateRequest",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "CaldavCalendarProviderClient",
+          "line": 44,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "IcsCalendarProviderClient",
+          "lineNumber": 49
+        },
+        {
+          "caller": "discover_calendars",
+          "callee": "CaldavDiscoveredCalendar",
+          "lineNumber": 53
+        },
+        {
+          "caller": "discover_calendars",
+          "callee": "self._discover_principal_url",
+          "lineNumber": 55
+        },
+        {
+          "caller": "discover_calendars",
+          "callee": "self._discover_calendar_home_url",
+          "lineNumber": 56
+        },
+        {
+          "caller": "discover_calendars",
+          "callee": "self._discover_calendar_collection_urls",
+          "lineNumber": 57
+        },
+        {
+          "caller": "discover_calendars",
+          "callee": "ValueError",
+          "lineNumber": 62
+        },
+        {
+          "caller": "validate_calendar",
+          "callee": "self.discover_calendars",
+          "lineNumber": 66
+        },
+        {
+          "caller": "validate_calendar",
+          "callee": "self._fetch_calendar_bodies",
+          "lineNumber": 68
+        },
+        {
+          "caller": "validate_calendar",
+          "callee": "CaldavCalendarCredentials",
+          "lineNumber": 69
+        },
+        {
+          "caller": "validate_calendar",
+          "callee": "ValueError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "discover_capabilities",
+          "callee": "ValueError",
+          "lineNumber": 82
+        },
+        {
+          "caller": "discover_capabilities",
+          "callee": "self._send_request",
+          "lineNumber": 86
+        },
+        {
+          "caller": "discover_capabilities",
+          "callee": "ET.fromstring",
+          "lineNumber": 93
+        },
+        {
+          "caller": "discover_capabilities",
+          "callee": "root.findall",
+          "lineNumber": 96
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "ValueError",
+          "lineNumber": 109
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "self._fetch_calendar_bodies",
+          "lineNumber": 110
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "events.extend",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "list",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "self._ics._parse_ics",
+          "lineNumber": 117
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "events.sort",
+          "lineNumber": 122
+        },
+        {
+          "caller": "create_event",
+          "callee": "ValueError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "create_event",
+          "callee": "uuid.uuid4",
+          "lineNumber": 135
+        },
+        {
+          "caller": "create_event",
+          "callee": "_CALDAV_EVENT_ID_PATTERN.fullmatch",
+          "lineNumber": 136
+        },
+        {
+          "caller": "create_event",
+          "callee": "ValueError",
+          "lineNumber": 137
+        },
+        {
+          "caller": "create_event",
+          "callee": "self._resource_url",
+          "lineNumber": 138
+        },
+        {
+          "caller": "create_event",
+          "callee": "self._send_request",
+          "lineNumber": 139
+        },
+        {
+          "caller": "create_event",
+          "callee": "self._build_event_ics",
+          "lineNumber": 143
+        },
+        {
+          "caller": "create_event",
+          "callee": "response.raise_for_status",
+          "lineNumber": 149
+        },
+        {
+          "caller": "create_event",
+          "callee": "IcsCalendarEvent",
+          "lineNumber": 150
+        },
+        {
+          "caller": "update_event",
+          "callee": "ValueError",
+          "lineNumber": 171
+        },
+        {
+          "caller": "update_event",
+          "callee": "_CALDAV_EVENT_ID_PATTERN.fullmatch",
+          "lineNumber": 172
+        },
+        {
+          "caller": "update_event",
+          "callee": "ValueError",
+          "lineNumber": 173
+        },
+        {
+          "caller": "update_event",
+          "callee": "self._send_request",
+          "lineNumber": 174
+        },
+        {
+          "caller": "update_event",
+          "callee": "self._resource_url",
+          "lineNumber": 177
+        },
+        {
+          "caller": "update_event",
+          "callee": "self._build_event_ics",
+          "lineNumber": 178
+        },
+        {
+          "caller": "update_event",
+          "callee": "response.raise_for_status",
+          "lineNumber": 181
+        },
+        {
+          "caller": "update_event",
+          "callee": "IcsCalendarEvent",
+          "lineNumber": 182
+        },
+        {
+          "caller": "delete_event",
+          "callee": "ValueError",
+          "lineNumber": 191
+        },
+        {
+          "caller": "delete_event",
+          "callee": "_CALDAV_EVENT_ID_PATTERN.fullmatch",
+          "lineNumber": 192
+        },
+        {
+          "caller": "delete_event",
+          "callee": "ValueError",
+          "lineNumber": 193
+        },
+        {
+          "caller": "delete_event",
+          "callee": "self._send_request",
+          "lineNumber": 194
+        },
+        {
+          "caller": "delete_event",
+          "callee": "self._resource_url",
+          "lineNumber": 197
+        },
+        {
+          "caller": "delete_event",
+          "callee": "response.raise_for_status",
+          "lineNumber": 200
+        },
+        {
+          "caller": "_discover_principal_url",
+          "callee": "self._send_request",
+          "lineNumber": 215
+        },
+        {
+          "caller": "_discover_principal_url",
+          "callee": "self._extract_first_href",
+          "lineNumber": 224
+        },
+        {
+          "caller": "_discover_principal_url",
+          "callee": "self._absolute_url",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_discover_principal_url",
+          "callee": "str",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_discover_principal_url",
+          "callee": "ValueError",
+          "lineNumber": 229
+        },
+        {
+          "caller": "_discover_calendar_home_url",
+          "callee": "self._send_request",
+          "lineNumber": 238
+        },
+        {
+          "caller": "_discover_calendar_home_url",
+          "callee": "response.raise_for_status",
+          "lineNumber": 245
+        },
+        {
+          "caller": "_discover_calendar_home_url",
+          "callee": "self._extract_first_href",
+          "lineNumber": 246
+        },
+        {
+          "caller": "_discover_calendar_home_url",
+          "callee": "ValueError",
+          "lineNumber": 248
+        },
+        {
+          "caller": "_discover_calendar_home_url",
+          "callee": "self._absolute_url",
+          "lineNumber": 249
+        },
+        {
+          "caller": "_discover_calendar_home_url",
+          "callee": "str",
+          "lineNumber": 249
+        },
+        {
+          "caller": "_discover_calendar_collection_urls",
+          "callee": "self._send_request",
+          "lineNumber": 263
+        },
+        {
+          "caller": "_discover_calendar_collection_urls",
+          "callee": "response.raise_for_status",
+          "lineNumber": 270
+        },
+        {
+          "caller": "_discover_calendar_collection_urls",
+          "callee": "self._extract_calendar_collections",
+          "lineNumber": 271
+        },
+        {
+          "caller": "_discover_calendar_collection_urls",
+          "callee": "str",
+          "lineNumber": 271
+        },
+        {
+          "caller": "_fetch_calendar_bodies",
+          "callee": "ValueError",
+          "lineNumber": 281
+        },
+        {
+          "caller": "_fetch_calendar_bodies",
+          "callee": "self._build_report_xml",
+          "lineNumber": 282
+        },
+        {
+          "caller": "_fetch_calendar_bodies",
+          "callee": "self._send_request",
+          "lineNumber": 283
+        },
+        {
+          "caller": "_fetch_calendar_bodies",
+          "callee": "self._extract_calendar_data",
+          "lineNumber": 294
+        },
+        {
+          "caller": "_fetch_calendar_bodies",
+          "callee": "self._send_request",
+          "lineNumber": 298
+        },
+        {
+          "caller": "_fetch_calendar_bodies",
+          "callee": "get_response.raise_for_status",
+          "lineNumber": 303
+        },
+        {
+          "caller": "_send_request",
+          "callee": "validate_public_url",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_send_request",
+          "callee": "self._auth_username_candidates",
+          "lineNumber": 320
+        },
+        {
+          "caller": "_send_request",
+          "callee": "httpx.request",
+          "lineNumber": 322
+        },
+        {
+          "caller": "_send_request",
+          "callee": "httpx.BasicAuth",
+          "lineNumber": 327
+        },
+        {
+          "caller": "_send_request",
+          "callee": "response.headers.get",
+          "lineNumber": 331
+        },
+        {
+          "caller": "_send_request",
+          "callee": "str",
+          "lineNumber": 332
+        },
+        {
+          "caller": "_send_request",
+          "callee": "httpx.URL(str(response.url)).join",
+          "lineNumber": 332
+        },
+        {
+          "caller": "_send_request",
+          "callee": "httpx.URL",
+          "lineNumber": 332
+        },
+        {
+          "caller": "_send_request",
+          "callee": "str",
+          "lineNumber": 332
+        },
+        {
+          "caller": "_send_request",
+          "callee": "httpx.request",
+          "lineNumber": 333
+        },
+        {
+          "caller": "_send_request",
+          "callee": "assert_redirect_safe",
+          "lineNumber": 335
+        },
+        {
+          "caller": "_send_request",
+          "callee": "str",
+          "lineNumber": 336
+        },
+        {
+          "caller": "_send_request",
+          "callee": "httpx.BasicAuth",
+          "lineNumber": 343
+        },
+        {
+          "caller": "_send_request",
+          "callee": "RuntimeError",
+          "lineNumber": 357
+        },
+        {
+          "caller": "_extract_calendar_data",
+          "callee": "ET.fromstring",
+          "lineNumber": 361
+        },
+        {
+          "caller": "_extract_calendar_data",
+          "callee": "root.iter",
+          "lineNumber": 366
+        },
+        {
+          "caller": "_extract_calendar_data",
+          "callee": "isinstance",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_extract_calendar_data",
+          "callee": "output.append",
+          "lineNumber": 370
+        },
+        {
+          "caller": "_extract_first_href",
+          "callee": "ET.fromstring",
+          "lineNumber": 375
+        },
+        {
+          "caller": "_extract_first_href",
+          "callee": "root.iter",
+          "lineNumber": 378
+        },
+        {
+          "caller": "_extract_first_href",
+          "callee": "node.find",
+          "lineNumber": 381
+        },
+        {
+          "caller": "_extract_first_href",
+          "callee": "isinstance",
+          "lineNumber": 382
+        },
+        {
+          "caller": "_extract_first_href",
+          "callee": "href_node.text.strip",
+          "lineNumber": 382
+        },
+        {
+          "caller": "_extract_first_href",
+          "callee": "href_node.text.strip",
+          "lineNumber": 383
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "ET.fromstring",
+          "lineNumber": 388
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "root.findall",
+          "lineNumber": 397
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "response.find",
+          "lineNumber": 398
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "isinstance",
+          "lineNumber": 399
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "href_node.text.strip",
+          "lineNumber": 399
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "response.find",
+          "lineNumber": 401
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "resource_type.find",
+          "lineNumber": 402
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "response.find",
+          "lineNumber": 404
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "display_name_node.text.strip",
+          "lineNumber": 405
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "isinstance",
+          "lineNumber": 405
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "display_name_node.text.strip",
+          "lineNumber": 405
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "calendars.append",
+          "lineNumber": 406
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "CaldavDiscoveredCalendar",
+          "lineNumber": 407
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "self._absolute_url",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_extract_calendar_collections",
+          "callee": "href_node.text.strip",
+          "lineNumber": 408
+        },
+        {
+          "caller": "_build_report_xml",
+          "callee": "self._format_utc",
+          "lineNumber": 422
+        },
+        {
+          "caller": "_build_report_xml",
+          "callee": "datetime",
+          "lineNumber": 422
+        },
+        {
+          "caller": "_build_report_xml",
+          "callee": "self._format_utc",
+          "lineNumber": 423
+        },
+        {
+          "caller": "_build_report_xml",
+          "callee": "datetime",
+          "lineNumber": 423
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "self._format_utc",
+          "lineNumber": 436
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "datetime.now",
+          "lineNumber": 436
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "self._format_event_datetime",
+          "lineNumber": 437
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "self._format_event_datetime",
+          "lineNumber": 440
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "lines.append",
+          "lineNumber": 452
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "lines.append",
+          "lineNumber": 453
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "self._escape_ics_text",
+          "lineNumber": 453
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "lines.append",
+          "lineNumber": 455
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "self._escape_ics_text",
+          "lineNumber": 455
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "lines.append",
+          "lineNumber": 457
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "self._escape_ics_text",
+          "lineNumber": 457
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "lines.extend",
+          "lineNumber": 458
+        },
+        {
+          "caller": "_build_event_ics",
+          "callee": "\"\\r\\n\".join",
+          "lineNumber": 459
+        },
+        {
+          "caller": "_resource_url",
+          "callee": "calendar_url.rstrip",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_auth_username_candidates",
+          "callee": "username.strip",
+          "lineNumber": 467
+        },
+        {
+          "caller": "_auth_username_candidates",
+          "callee": "normalized.partition",
+          "lineNumber": 470
+        },
+        {
+          "caller": "_auth_username_candidates",
+          "callee": "domain.lower",
+          "lineNumber": 471
+        },
+        {
+          "caller": "_auth_username_candidates",
+          "callee": "candidates.append",
+          "lineNumber": 472
+        },
+        {
+          "caller": "_auth_username_candidates",
+          "callee": "deduped.append",
+          "lineNumber": 476
+        },
+        {
+          "caller": "_absolute_url",
+          "callee": "urljoin",
+          "lineNumber": 481
+        },
+        {
+          "caller": "_format_utc",
+          "callee": "value.astimezone(UTC).strftime",
+          "lineNumber": 485
+        },
+        {
+          "caller": "_format_utc",
+          "callee": "value.astimezone",
+          "lineNumber": 485
+        },
+        {
+          "caller": "_format_event_datetime",
+          "callee": "value.astimezone(UTC).strftime",
+          "lineNumber": 490
+        },
+        {
+          "caller": "_format_event_datetime",
+          "callee": "value.astimezone",
+          "lineNumber": 490
+        },
+        {
+          "caller": "_format_event_datetime",
+          "callee": "value.astimezone(UTC).strftime",
+          "lineNumber": 491
+        },
+        {
+          "caller": "_format_event_datetime",
+          "callee": "value.astimezone",
+          "lineNumber": 491
+        },
+        {
+          "caller": "_escape_ics_text",
+          "callee": "value.replace(\"\\\\\", \"\\\\\\\\\")\n            .replace(\"\\n\", \"\\\\n\")\n            .replace(\",\", \"\\\\,\")\n            .replace",
+          "lineNumber": 496
+        },
+        {
+          "caller": "_escape_ics_text",
+          "callee": "value.replace(\"\\\\\", \"\\\\\\\\\")\n            .replace(\"\\n\", \"\\\\n\")\n            .replace",
+          "lineNumber": 496
+        },
+        {
+          "caller": "_escape_ics_text",
+          "callee": "value.replace(\"\\\\\", \"\\\\\\\\\")\n            .replace",
+          "lineNumber": 496
+        },
+        {
+          "caller": "_escape_ics_text",
+          "callee": "value.replace",
+          "lineNumber": 496
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/connectors/calendar/ics.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 179,
+      "nonEmptyLines": 159,
+      "classes": [
+        {
+          "name": "IcsCalendarCredentials",
+          "startLine": 14,
+          "endLine": 15,
+          "methods": [],
+          "properties": [
+            "feed_url"
+          ]
+        },
+        {
+          "name": "IcsCalendarEvent",
+          "startLine": 19,
+          "endLine": 30,
+          "methods": [],
+          "properties": [
+            "provider_event_id",
+            "title",
+            "starts_at",
+            "ends_at",
+            "all_day",
+            "recurrence_id",
+            "status",
+            "description",
+            "location",
+            "organizer",
+            "calendar_label"
+          ]
+        },
+        {
+          "name": "IcsCalendarProviderClient",
+          "startLine": 33,
+          "endLine": 179,
+          "methods": [
+            "parse",
+            "validate_feed",
+            "fetch_events",
+            "_get_public_url",
+            "_parse_ics",
+            "_unfold_lines",
+            "_build_event",
+            "_first_matching_key",
+            "_parse_datetime",
+            "_normalize_organizer",
+            "_decode_value",
+            "_optional_decoded"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "IcsCalendarCredentials",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "IcsCalendarEvent",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "IcsCalendarProviderClient",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parse",
+          "callee": "ValueError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "parse",
+          "callee": "list",
+          "lineNumber": 37
+        },
+        {
+          "caller": "parse",
+          "callee": "self._parse_ics",
+          "lineNumber": 37
+        },
+        {
+          "caller": "validate_feed",
+          "callee": "self._get_public_url",
+          "lineNumber": 40
+        },
+        {
+          "caller": "validate_feed",
+          "callee": "response.raise_for_status",
+          "lineNumber": 41
+        },
+        {
+          "caller": "validate_feed",
+          "callee": "ValueError",
+          "lineNumber": 43
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "self._get_public_url",
+          "lineNumber": 53
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "response.raise_for_status",
+          "lineNumber": 54
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "self.parse",
+          "lineNumber": 55
+        },
+        {
+          "caller": "fetch_events",
+          "callee": "events.sort",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "validate_public_url",
+          "lineNumber": 64
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "range",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "httpx.get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "response.headers.get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "assert_redirect_safe",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "str",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "httpx.URL(current_url).join",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "httpx.URL",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_get_public_url",
+          "callee": "ValueError",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "self._unfold_lines",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "body.splitlines",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "raw_line.strip",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "self._build_event",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "line.startswith",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "self._decode_value",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "line.partition",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_parse_ics",
+          "callee": "line.partition",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_unfold_lines",
+          "callee": "line.startswith",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_unfold_lines",
+          "callee": "unfolded.append",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._first_matching_key",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._first_matching_key",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._parse_datetime",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._parse_datetime",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._normalize_organizer",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._first_matching_key",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_build_event",
+          "callee": "IcsCalendarEvent",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._decode_value",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._optional_decoded",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._first_matching_key",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get(\"STATUS\", \"CONFIRMED\").strip().casefold",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get(\"STATUS\", \"CONFIRMED\").strip",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get(\"STATUS\", \"CONFIRMED\").strip().casefold",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get(\"STATUS\", \"CONFIRMED\").strip",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._optional_decoded",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_build_event",
+          "callee": "self._optional_decoded",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_build_event",
+          "callee": "current.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_first_matching_key",
+          "callee": "key.startswith",
+          "lineNumber": 144
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "self._decode_value",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "datetime.strptime(decoded, \"%Y%m%d\").date",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "datetime.strptime",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "datetime.combine",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "datetime.min.time",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "decoded.endswith",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "datetime.strptime(decoded, \"%Y%m%dT%H%M%SZ\").replace",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "datetime.strptime",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "datetime.strptime",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_parse_datetime",
+          "callee": "parsed.replace",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_normalize_organizer",
+          "callee": "parseaddr",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_normalize_organizer",
+          "callee": "value.replace",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_decode_value",
+          "callee": "value.replace(\"\\\\n\", \"\\n\")\n            .replace(\"\\\\,\", \",\")\n            .replace(\"\\\\;\", \";\")\n            .replace(\"\\\\\\\\\", \"\\\\\")\n            .strip",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_decode_value",
+          "callee": "value.replace(\"\\\\n\", \"\\n\")\n            .replace(\"\\\\,\", \",\")\n            .replace(\"\\\\;\", \";\")\n            .replace",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_decode_value",
+          "callee": "value.replace(\"\\\\n\", \"\\n\")\n            .replace(\"\\\\,\", \",\")\n            .replace",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_decode_value",
+          "callee": "value.replace(\"\\\\n\", \"\\n\")\n            .replace",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_decode_value",
+          "callee": "value.replace",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_optional_decoded",
+          "callee": "self._decode_value",
+          "lineNumber": 178
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/creations/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/creations/archives.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 140,
+      "nonEmptyLines": 118,
+      "functions": [
+        {
+          "name": "_entries",
+          "startLine": 69,
+          "endLine": 98,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "_prefix",
+          "startLine": 101,
+          "endLine": 110,
+          "params": [
+            "entries"
+          ]
+        },
+        {
+          "name": "creation_slug",
+          "startLine": 113,
+          "endLine": 117,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CreationArchiveRejected",
+          "startLine": 23,
+          "endLine": 24,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "CreationInspection",
+          "startLine": 28,
+          "endLine": 37,
+          "methods": [],
+          "properties": [
+            "creation_id",
+            "title",
+            "description",
+            "candidate_root",
+            "content_root",
+            "source_type",
+            "entry_url",
+            "icon_url",
+            "theme_color"
+          ]
+        },
+        {
+          "name": "CreationArchiveInspector",
+          "startLine": 40,
+          "endLine": 66,
+          "methods": [
+            "__init__",
+            "inspect"
+          ],
+          "properties": []
+        },
+        {
+          "name": "_Metadata",
+          "startLine": 120,
+          "endLine": 140,
+          "methods": [
+            "__init__",
+            "handle_starttag",
+            "handle_endtag",
+            "handle_data"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CreationArchiveRejected",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "CreationInspection",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "CreationArchiveInspector",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "_entries",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "_prefix",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "creation_slug",
+          "line": 113,
+          "isDefault": false
+        },
+        {
+          "name": "_Metadata",
+          "line": 120,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "inspect",
+          "callee": "filename.casefold().endswith",
+          "lineNumber": 45
+        },
+        {
+          "caller": "inspect",
+          "callee": "filename.casefold",
+          "lineNumber": 45
+        },
+        {
+          "caller": "inspect",
+          "callee": "Path",
+          "lineNumber": 45
+        },
+        {
+          "caller": "inspect",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 46
+        },
+        {
+          "caller": "inspect",
+          "callee": "len",
+          "lineNumber": 47
+        },
+        {
+          "caller": "inspect",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 48
+        },
+        {
+          "caller": "inspect",
+          "callee": "_entries",
+          "lineNumber": 49
+        },
+        {
+          "caller": "inspect",
+          "callee": "_prefix",
+          "lineNumber": 50
+        },
+        {
+          "caller": "inspect",
+          "callee": "creation_slug",
+          "lineNumber": 51
+        },
+        {
+          "caller": "inspect",
+          "callee": "Path",
+          "lineNumber": 51
+        },
+        {
+          "caller": "inspect",
+          "callee": "uuid4",
+          "lineNumber": 52
+        },
+        {
+          "caller": "inspect",
+          "callee": "content.mkdir",
+          "lineNumber": 54
+        },
+        {
+          "caller": "inspect",
+          "callee": "PurePosixPath",
+          "lineNumber": 57
+        },
+        {
+          "caller": "inspect",
+          "callee": "content.joinpath",
+          "lineNumber": 58
+        },
+        {
+          "caller": "inspect",
+          "callee": "target.parent.mkdir",
+          "lineNumber": 59
+        },
+        {
+          "caller": "inspect",
+          "callee": "target.write_bytes",
+          "lineNumber": 60
+        },
+        {
+          "caller": "inspect",
+          "callee": "_Metadata",
+          "lineNumber": 61
+        },
+        {
+          "caller": "inspect",
+          "callee": "metadata.feed",
+          "lineNumber": 62
+        },
+        {
+          "caller": "inspect",
+          "callee": "(content / \"index.html\").read_text",
+          "lineNumber": 62
+        },
+        {
+          "caller": "inspect",
+          "callee": "CreationInspection",
+          "lineNumber": 63
+        },
+        {
+          "caller": "inspect",
+          "callee": "creation_id.replace(\"-\", \" \").title",
+          "lineNumber": 63
+        },
+        {
+          "caller": "inspect",
+          "callee": "creation_id.replace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "inspect",
+          "callee": "shutil.rmtree",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_entries",
+          "callee": "zipfile.ZipFile",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_entries",
+          "callee": "BytesIO",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_entries",
+          "callee": "archive.infolist",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_entries",
+          "callee": "info.is_dir",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_entries",
+          "callee": "PurePosixPath",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_entries",
+          "callee": "len",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_entries",
+          "callee": "path.is_absolute",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_entries",
+          "callee": "any",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_entries",
+          "callee": "stat.S_ISLNK",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_entries",
+          "callee": "path.suffix.casefold",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_entries",
+          "callee": "archive.read",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_entries",
+          "callee": "len",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_entries",
+          "callee": "result.append",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_entries",
+          "callee": "len",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_entries",
+          "callee": "path.as_posix().casefold",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_entries",
+          "callee": "path.as_posix",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_entries",
+          "callee": "len",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_entries",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_entries",
+          "callee": "tuple",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_prefix",
+          "callee": "any",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_prefix",
+          "callee": "PurePosixPath",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_prefix",
+          "callee": "len",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_prefix",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_prefix",
+          "callee": "next",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_prefix",
+          "callee": "iter",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_prefix",
+          "callee": "any",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_prefix",
+          "callee": "PurePosixPath",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_prefix",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 109
+        },
+        {
+          "caller": "creation_slug",
+          "callee": "re.sub(r\"[^a-z0-9]+\", \"-\", value.casefold()).strip",
+          "lineNumber": 114
+        },
+        {
+          "caller": "creation_slug",
+          "callee": "re.sub",
+          "lineNumber": 114
+        },
+        {
+          "caller": "creation_slug",
+          "callee": "value.casefold",
+          "lineNumber": 114
+        },
+        {
+          "caller": "creation_slug",
+          "callee": "len",
+          "lineNumber": 115
+        },
+        {
+          "caller": "creation_slug",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 116
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 122
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 122
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "dict",
+          "lineNumber": 128
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "tag.casefold",
+          "lineNumber": 129
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "tag.casefold",
+          "lineNumber": 131
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "values.get(\"name\", \"\").casefold",
+          "lineNumber": 131
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "values.get",
+          "lineNumber": 131
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "(values.get(\"content\") or \"\")[:240].strip",
+          "lineNumber": 132
+        },
+        {
+          "caller": "handle_starttag",
+          "callee": "values.get",
+          "lineNumber": 132
+        },
+        {
+          "caller": "handle_endtag",
+          "callee": "tag.casefold",
+          "lineNumber": 135
+        },
+        {
+          "caller": "handle_data",
+          "callee": "(self.title + data)[:100].strip",
+          "lineNumber": 140
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 3,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/creations/descriptors.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 69,
+      "functions": [
+        {
+          "name": "_text",
+          "startLine": 71,
+          "endLine": 79,
+          "params": [
+            "raw",
+            "field",
+            "required",
+            "limit"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CreationDescriptorInspector",
+          "startLine": 19,
+          "endLine": 68,
+          "methods": [
+            "__init__",
+            "inspect",
+            "_url"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CreationDescriptorInspector",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "_text",
+          "line": 71,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "inspect",
+          "callee": "isinstance",
+          "lineNumber": 25
+        },
+        {
+          "caller": "inspect",
+          "callee": "set",
+          "lineNumber": 25
+        },
+        {
+          "caller": "inspect",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 26
+        },
+        {
+          "caller": "inspect",
+          "callee": "_text",
+          "lineNumber": 27
+        },
+        {
+          "caller": "inspect",
+          "callee": "value.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "inspect",
+          "callee": "_text",
+          "lineNumber": 28
+        },
+        {
+          "caller": "inspect",
+          "callee": "value.get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "inspect",
+          "callee": "self._url",
+          "lineNumber": 29
+        },
+        {
+          "caller": "inspect",
+          "callee": "value.get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "inspect",
+          "callee": "self._url",
+          "lineNumber": 30
+        },
+        {
+          "caller": "inspect",
+          "callee": "value.get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "inspect",
+          "callee": "_text",
+          "lineNumber": 31
+        },
+        {
+          "caller": "inspect",
+          "callee": "value.get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "inspect",
+          "callee": "_COLOR.fullmatch",
+          "lineNumber": 32
+        },
+        {
+          "caller": "inspect",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 33
+        },
+        {
+          "caller": "inspect",
+          "callee": "color.casefold",
+          "lineNumber": 37
+        },
+        {
+          "caller": "inspect",
+          "callee": "json.dumps(normalized, sort_keys=True, separators=(\",\", \":\"), ensure_ascii=True).encode",
+          "lineNumber": 41
+        },
+        {
+          "caller": "inspect",
+          "callee": "json.dumps",
+          "lineNumber": 41
+        },
+        {
+          "caller": "inspect",
+          "callee": "uuid4",
+          "lineNumber": 42
+        },
+        {
+          "caller": "inspect",
+          "callee": "content.mkdir",
+          "lineNumber": 45
+        },
+        {
+          "caller": "inspect",
+          "callee": "(content / \"creation.json\").write_bytes",
+          "lineNumber": 46
+        },
+        {
+          "caller": "inspect",
+          "callee": "CreationInspection",
+          "lineNumber": 47
+        },
+        {
+          "caller": "inspect",
+          "callee": "creation_slug",
+          "lineNumber": 48
+        },
+        {
+          "caller": "inspect",
+          "callee": "color.casefold",
+          "lineNumber": 50
+        },
+        {
+          "caller": "inspect",
+          "callee": "shutil.rmtree",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_url",
+          "callee": "_text",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_url",
+          "callee": "urlsplit",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_url",
+          "callee": "parsed.scheme.casefold",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_url",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_url",
+          "callee": "self._host_validator",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_url",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_url",
+          "callee": "urlunsplit",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_text",
+          "callee": "isinstance",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_text",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_text",
+          "callee": "raw.strip",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_text",
+          "callee": "len",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_text",
+          "callee": "CreationArchiveRejected",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/creations/lifecycle.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 112,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "_resource",
+          "startLine": 105,
+          "endLine": 105,
+          "params": [
+            "creation_id"
+          ]
+        },
+        {
+          "name": "_hash_tree",
+          "startLine": 108,
+          "endLine": 112,
+          "params": [
+            "root"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CreationLifecycleError",
+          "startLine": 16,
+          "endLine": 17,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "CreationLifecycle",
+          "startLine": 20,
+          "endLine": 102,
+          "methods": [
+            "__init__",
+            "preflight",
+            "confirm",
+            "list",
+            "get",
+            "generation",
+            "set_enabled",
+            "delete",
+            "recover",
+            "_required"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CreationLifecycleError",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "CreationLifecycle",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "_resource",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "_hash_tree",
+          "line": 108,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "ImportPreflightRegistry",
+          "lineNumber": 27
+        },
+        {
+          "caller": "preflight",
+          "callee": "_hash_tree",
+          "lineNumber": 30
+        },
+        {
+          "caller": "preflight",
+          "callee": "self._catalog.get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "preflight",
+          "callee": "CreationLifecycleError",
+          "lineNumber": 33
+        },
+        {
+          "caller": "preflight",
+          "callee": "self._preflights.issue",
+          "lineNumber": 34
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._preflights.peek",
+          "lineNumber": 38
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._catalog.get",
+          "lineNumber": 39
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._preflights.consume",
+          "lineNumber": 40
+        },
+        {
+          "caller": "confirm",
+          "callee": "CreationLifecycleError",
+          "lineNumber": 42
+        },
+        {
+          "caller": "confirm",
+          "callee": "str",
+          "lineNumber": 42
+        },
+        {
+          "caller": "confirm",
+          "callee": "secrets.token_hex",
+          "lineNumber": 46
+        },
+        {
+          "caller": "confirm",
+          "callee": "staged.parent.mkdir",
+          "lineNumber": 47
+        },
+        {
+          "caller": "confirm",
+          "callee": "shutil.copytree",
+          "lineNumber": 48
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._recovery.begin",
+          "lineNumber": 49
+        },
+        {
+          "caller": "confirm",
+          "callee": "target.exists",
+          "lineNumber": 52
+        },
+        {
+          "caller": "confirm",
+          "callee": "shutil.rmtree",
+          "lineNumber": 53
+        },
+        {
+          "caller": "confirm",
+          "callee": "backup.parent.mkdir",
+          "lineNumber": 54
+        },
+        {
+          "caller": "confirm",
+          "callee": "os.replace",
+          "lineNumber": 55
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._recovery.mark_backup_secured",
+          "lineNumber": 57
+        },
+        {
+          "caller": "confirm",
+          "callee": "os.replace",
+          "lineNumber": 58
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._recovery.mark_activated",
+          "lineNumber": 59
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._catalog.save",
+          "lineNumber": 60
+        },
+        {
+          "caller": "confirm",
+          "callee": "StoredCreation",
+          "lineNumber": 60
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._audiences.set_audience",
+          "lineNumber": 61
+        },
+        {
+          "caller": "confirm",
+          "callee": "_resource",
+          "lineNumber": 61
+        },
+        {
+          "caller": "confirm",
+          "callee": "self._recovery.complete",
+          "lineNumber": 62
+        },
+        {
+          "caller": "confirm",
+          "callee": "target.exists",
+          "lineNumber": 65
+        },
+        {
+          "caller": "confirm",
+          "callee": "shutil.rmtree",
+          "lineNumber": 66
+        },
+        {
+          "caller": "confirm",
+          "callee": "os.replace",
+          "lineNumber": 67
+        },
+        {
+          "caller": "confirm",
+          "callee": "shutil.rmtree",
+          "lineNumber": 70
+        },
+        {
+          "caller": "confirm",
+          "callee": "shutil.rmtree",
+          "lineNumber": 71
+        },
+        {
+          "caller": "list",
+          "callee": "self._catalog.list",
+          "lineNumber": 73
+        },
+        {
+          "caller": "get",
+          "callee": "self._catalog.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "generation",
+          "callee": "self._catalog.generation",
+          "lineNumber": 75
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "self._required",
+          "lineNumber": 78
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "self._audiences.binding_for",
+          "lineNumber": 79
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "_resource",
+          "lineNumber": 79
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "CreationLifecycleError",
+          "lineNumber": 80
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "self._audiences.set_audience",
+          "lineNumber": 82
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "_resource",
+          "lineNumber": 82
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "self._audiences.deactivate",
+          "lineNumber": 84
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "_resource",
+          "lineNumber": 84
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "self._catalog.save",
+          "lineNumber": 85
+        },
+        {
+          "caller": "set_enabled",
+          "callee": "StoredCreation",
+          "lineNumber": 85
+        },
+        {
+          "caller": "delete",
+          "callee": "self._required",
+          "lineNumber": 88
+        },
+        {
+          "caller": "delete",
+          "callee": "self._audiences.remove_resource",
+          "lineNumber": 89
+        },
+        {
+          "caller": "delete",
+          "callee": "_resource",
+          "lineNumber": 89
+        },
+        {
+          "caller": "delete",
+          "callee": "shutil.rmtree",
+          "lineNumber": 90
+        },
+        {
+          "caller": "delete",
+          "callee": "shutil.rmtree",
+          "lineNumber": 91
+        },
+        {
+          "caller": "delete",
+          "callee": "self._catalog.remove",
+          "lineNumber": 92
+        },
+        {
+          "caller": "delete",
+          "callee": "CreationLifecycleError",
+          "lineNumber": 93
+        },
+        {
+          "caller": "recover",
+          "callee": "self._recovery.recover",
+          "lineNumber": 97
+        },
+        {
+          "caller": "recover",
+          "callee": "self._catalog.get",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_required",
+          "callee": "self._catalog.get",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_required",
+          "callee": "CreationLifecycleError",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_resource",
+          "callee": "AudienceResource",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "hashlib.sha256",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "sorted",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "root.rglob",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "path.is_file",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "digest.update",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "path.relative_to(root).as_posix().encode",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "path.relative_to(root).as_posix",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "path.relative_to",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "digest.update",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "path.read_bytes",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_hash_tree",
+          "callee": "digest.hexdigest",
+          "lineNumber": 112
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/calendar/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/calendar/models.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 45,
+      "classes": [
+        {
+          "name": "CalendarAccountConfiguration",
+          "startLine": 7,
+          "endLine": 12,
+          "methods": [],
+          "properties": [
+            "account_id",
+            "provider_type",
+            "label",
+            "endpoint",
+            "calendar_path"
+          ]
+        },
+        {
+          "name": "CalendarCapabilities",
+          "startLine": 16,
+          "endLine": 19,
+          "methods": [],
+          "properties": [
+            "can_create",
+            "can_update",
+            "can_delete"
+          ]
+        },
+        {
+          "name": "CalendarAccount",
+          "startLine": 23,
+          "endLine": 33,
+          "methods": [],
+          "properties": [
+            "configuration",
+            "capabilities",
+            "enabled",
+            "credential_present",
+            "next_sync_at",
+            "last_sync_at",
+            "last_sync_state",
+            "last_sync_detail",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        {
+          "name": "CalendarEvent",
+          "startLine": 37,
+          "endLine": 54,
+          "methods": [],
+          "properties": [
+            "event_id",
+            "account_id",
+            "provider_event_id",
+            "recurrence_id",
+            "title",
+            "starts_at",
+            "ends_at",
+            "timezone",
+            "all_day",
+            "location",
+            "calendar_name",
+            "organizer",
+            "description",
+            "status",
+            "editable",
+            "source_etag",
+            "synchronized_at"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CalendarAccountConfiguration",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "CalendarCapabilities",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "CalendarAccount",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "CalendarEvent",
+          "line": 36,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/calendar/repository.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 371,
+      "nonEmptyLines": 333,
+      "functions": [
+        {
+          "name": "_validate_configuration",
+          "startLine": 301,
+          "endLine": 309,
+          "params": [
+            "configuration"
+          ]
+        },
+        {
+          "name": "_account",
+          "startLine": 312,
+          "endLine": 330,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_store_event",
+          "startLine": 333,
+          "endLine": 356,
+          "params": [
+            "connection",
+            "event"
+          ]
+        },
+        {
+          "name": "_event",
+          "startLine": 359,
+          "endLine": 371,
+          "params": [
+            "row"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CalendarAccountLimitError",
+          "startLine": 20,
+          "endLine": 21,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "CalendarCapabilityDenied",
+          "startLine": 24,
+          "endLine": 25,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "CalendarRepository",
+          "startLine": 28,
+          "endLine": 281,
+          "methods": [
+            "__init__",
+            "create_account",
+            "get_account",
+            "list_accounts",
+            "remove_account_local",
+            "set_capabilities",
+            "require_capability",
+            "get_event",
+            "due_accounts",
+            "begin_sync",
+            "finish_sync",
+            "search_upcoming",
+            "create_pending_action",
+            "claim_pending_action",
+            "finish_pending_action",
+            "replace_account_events",
+            "upcoming_events"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CalendarAccountLimitError",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "CalendarCapabilityDenied",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "CalendarRepository",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "_validate_configuration",
+          "line": 301,
+          "isDefault": false
+        },
+        {
+          "name": "_account",
+          "line": 312,
+          "isDefault": false
+        },
+        {
+          "name": "_store_event",
+          "line": 333,
+          "isDefault": false
+        },
+        {
+          "name": "_event",
+          "line": 359,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create_account",
+          "callee": "_validate_configuration",
+          "lineNumber": 39
+        },
+        {
+          "caller": "create_account",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 40
+        },
+        {
+          "caller": "create_account",
+          "callee": "datetime.now",
+          "lineNumber": 40
+        },
+        {
+          "caller": "create_account",
+          "callee": "self._database.connect",
+          "lineNumber": 41
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 42
+        },
+        {
+          "caller": "create_account",
+          "callee": "int",
+          "lineNumber": 43
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute(\"SELECT COUNT(*) FROM calendar_accounts\").fetchone",
+          "lineNumber": 43
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 43
+        },
+        {
+          "caller": "create_account",
+          "callee": "CalendarAccountLimitError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 46
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 56
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.execute",
+          "lineNumber": 63
+        },
+        {
+          "caller": "create_account",
+          "callee": "connection.commit",
+          "lineNumber": 81
+        },
+        {
+          "caller": "create_account",
+          "callee": "self.get_account",
+          "lineNumber": 82
+        },
+        {
+          "caller": "create_account",
+          "callee": "RuntimeError",
+          "lineNumber": 84
+        },
+        {
+          "caller": "get_account",
+          "callee": "self._database.connect",
+          "lineNumber": 88
+        },
+        {
+          "caller": "get_account",
+          "callee": "connection.execute(_ACCOUNT_SELECT + \" WHERE a.account_id = ?\", (account_id,)).fetchone",
+          "lineNumber": 89
+        },
+        {
+          "caller": "get_account",
+          "callee": "connection.execute",
+          "lineNumber": 89
+        },
+        {
+          "caller": "get_account",
+          "callee": "_account",
+          "lineNumber": 90
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "self._database.connect",
+          "lineNumber": 93
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "connection.execute(_ACCOUNT_SELECT + \" ORDER BY a.label, a.account_id\").fetchall",
+          "lineNumber": 94
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "connection.execute",
+          "lineNumber": 94
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "tuple",
+          "lineNumber": 95
+        },
+        {
+          "caller": "list_accounts",
+          "callee": "_account",
+          "lineNumber": 95
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "self._database.connect",
+          "lineNumber": 98
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.execute",
+          "lineNumber": 99
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.execute",
+          "lineNumber": 100
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.execute",
+          "lineNumber": 104
+        },
+        {
+          "caller": "remove_account_local",
+          "callee": "connection.commit",
+          "lineNumber": 108
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 116
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "datetime.now",
+          "lineNumber": 116
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "self._database.connect",
+          "lineNumber": 117
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "connection.execute",
+          "lineNumber": 118
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "int",
+          "lineNumber": 125
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "int",
+          "lineNumber": 125
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "int",
+          "lineNumber": 126
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "connection.commit",
+          "lineNumber": 129
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "ValueError",
+          "lineNumber": 131
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "self.get_account",
+          "lineNumber": 132
+        },
+        {
+          "caller": "set_capabilities",
+          "callee": "RuntimeError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "require_capability",
+          "callee": "self.get_account",
+          "lineNumber": 144
+        },
+        {
+          "caller": "require_capability",
+          "callee": "ValueError",
+          "lineNumber": 146
+        },
+        {
+          "caller": "require_capability",
+          "callee": "{\n            \"create\": account.capabilities.can_create,\n            \"update\": account.capabilities.can_update,\n            \"delete\": account.capabilities.can_delete,\n        }.get",
+          "lineNumber": 147
+        },
+        {
+          "caller": "require_capability",
+          "callee": "ValueError",
+          "lineNumber": 153
+        },
+        {
+          "caller": "require_capability",
+          "callee": "CalendarCapabilityDenied",
+          "lineNumber": 155
+        },
+        {
+          "caller": "require_capability",
+          "callee": "self.get_event",
+          "lineNumber": 157
+        },
+        {
+          "caller": "require_capability",
+          "callee": "ValueError",
+          "lineNumber": 159
+        },
+        {
+          "caller": "require_capability",
+          "callee": "CalendarCapabilityDenied",
+          "lineNumber": 161
+        },
+        {
+          "caller": "get_event",
+          "callee": "self._database.connect",
+          "lineNumber": 165
+        },
+        {
+          "caller": "get_event",
+          "callee": "connection.execute(_EVENT_SELECT + \" WHERE event_id = ?\", (event_id,)).fetchone",
+          "lineNumber": 166
+        },
+        {
+          "caller": "get_event",
+          "callee": "connection.execute",
+          "lineNumber": 166
+        },
+        {
+          "caller": "get_event",
+          "callee": "_event",
+          "lineNumber": 167
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "self._database.connect",
+          "lineNumber": 170
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "connection.execute(\n                _ACCOUNT_SELECT + \" WHERE c.enabled = 1 AND (a.next_sync_at IS NULL OR a.next_sync_at <= ?) ORDER BY a.next_sync_at, a.account_id\",\n                (now,),\n            ).fetchall",
+          "lineNumber": 171
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "connection.execute",
+          "lineNumber": 171
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "tuple",
+          "lineNumber": 175
+        },
+        {
+          "caller": "due_accounts",
+          "callee": "_account",
+          "lineNumber": 175
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "datetime.now",
+          "lineNumber": 178
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "self._database.connect",
+          "lineNumber": 179
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute",
+          "lineNumber": 180
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute(\"SELECT last_sync_state, sync_lease_until FROM calendar_accounts WHERE account_id = ?\", (account_id,)).fetchone",
+          "lineNumber": 181
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute",
+          "lineNumber": 181
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 182
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "ValueError",
+          "lineNumber": 183
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.execute",
+          "lineNumber": 184
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "(now + timedelta(minutes=10)).isoformat",
+          "lineNumber": 184
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "timedelta",
+          "lineNumber": 184
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 184
+        },
+        {
+          "caller": "begin_sync",
+          "callee": "connection.commit",
+          "lineNumber": 185
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "datetime.now",
+          "lineNumber": 188
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "self._database.connect",
+          "lineNumber": 190
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.execute",
+          "lineNumber": 191
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.execute",
+          "lineNumber": 192
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 192
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "(now + timedelta(minutes=5 if ready else 1)).isoformat",
+          "lineNumber": 192
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "timedelta",
+          "lineNumber": 192
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 192
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.execute",
+          "lineNumber": 193
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "now.isoformat",
+          "lineNumber": 193
+        },
+        {
+          "caller": "finish_sync",
+          "callee": "connection.commit",
+          "lineNumber": 194
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "query.strip",
+          "lineNumber": 197
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "self._database.connect",
+          "lineNumber": 198
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "connection.execute(\n                _EVENT_SELECT + \" WHERE status != 'cancelled' AND CASE WHEN ends_at IS NULL THEN starts_at >= ? ELSE ends_at >= ? END AND (title LIKE ? OR location LIKE ? OR description LIKE ?) ORDER BY starts_at, event_id LIMIT ?\",\n                (now, now, pattern, pattern, pattern, max(1, min(limit, 50))),\n            ).fetchall",
+          "lineNumber": 199
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "connection.execute",
+          "lineNumber": 199
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "max",
+          "lineNumber": 201
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "min",
+          "lineNumber": 201
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "tuple",
+          "lineNumber": 203
+        },
+        {
+          "caller": "search_upcoming",
+          "callee": "_event",
+          "lineNumber": 203
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "self.require_capability",
+          "lineNumber": 207
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "ValueError",
+          "lineNumber": 209
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "json.dumps",
+          "lineNumber": 210
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "hashlib.sha256(canonical.encode()).hexdigest",
+          "lineNumber": 211
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "hashlib.sha256",
+          "lineNumber": 211
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "canonical.encode",
+          "lineNumber": 211
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "str",
+          "lineNumber": 212
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "uuid4",
+          "lineNumber": 212
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "datetime.now",
+          "lineNumber": 213
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "timedelta",
+          "lineNumber": 214
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "self._database.connect",
+          "lineNumber": 215
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "connection.execute",
+          "lineNumber": 216
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "expires.isoformat",
+          "lineNumber": 216
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "now.isoformat",
+          "lineNumber": 216
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "now.isoformat",
+          "lineNumber": 216
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "connection.commit",
+          "lineNumber": 217
+        },
+        {
+          "caller": "create_pending_action",
+          "callee": "expires.isoformat",
+          "lineNumber": 218
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 221
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "datetime.now",
+          "lineNumber": 221
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "self._database.connect",
+          "lineNumber": 222
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "connection.execute",
+          "lineNumber": 223
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "connection.execute(\"SELECT account_id, event_id, operation, payload_json FROM calendar_pending_actions WHERE action_id = ? AND content_hash = ? AND voice_session_id = ? AND state = 'pending_review' AND expires_at >= ? AND prepared_utterance_id < ?\", (action_id, content_hash, voice_session_id, now, approval_utterance_id)).fetchone",
+          "lineNumber": 224
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "connection.execute",
+          "lineNumber": 224
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "connection.rollback",
+          "lineNumber": 226
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "ValueError",
+          "lineNumber": 227
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "connection.execute",
+          "lineNumber": 228
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "connection.commit",
+          "lineNumber": 229
+        },
+        {
+          "caller": "claim_pending_action",
+          "callee": "json.loads",
+          "lineNumber": 230
+        },
+        {
+          "caller": "finish_pending_action",
+          "callee": "self._database.connect",
+          "lineNumber": 233
+        },
+        {
+          "caller": "finish_pending_action",
+          "callee": "connection.execute",
+          "lineNumber": 234
+        },
+        {
+          "caller": "finish_pending_action",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 234
+        },
+        {
+          "caller": "finish_pending_action",
+          "callee": "datetime.now",
+          "lineNumber": 234
+        },
+        {
+          "caller": "finish_pending_action",
+          "callee": "connection.commit",
+          "lineNumber": 235
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "self._database.connect",
+          "lineNumber": 242
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.execute",
+          "lineNumber": 243
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.execute(\n                \"SELECT 1 FROM calendar_accounts WHERE account_id = ?\", (account_id,)\n            ).fetchone",
+          "lineNumber": 244
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.execute",
+          "lineNumber": 244
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "ValueError",
+          "lineNumber": 247
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.execute",
+          "lineNumber": 248
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "ValueError",
+          "lineNumber": 251
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "_store_event",
+          "lineNumber": 252
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.execute",
+          "lineNumber": 253
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.execute",
+          "lineNumber": 256
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.execute",
+          "lineNumber": 266
+        },
+        {
+          "caller": "replace_account_events",
+          "callee": "connection.commit",
+          "lineNumber": 267
+        },
+        {
+          "caller": "upcoming_events",
+          "callee": "self._database.connect",
+          "lineNumber": 270
+        },
+        {
+          "caller": "upcoming_events",
+          "callee": "connection.execute(\n                \"\"\"\n                \"\"\" + _EVENT_SELECT + \"\"\"\n                WHERE status != 'cancelled'\n                  AND CASE WHEN ends_at IS NULL THEN starts_at >= ? ELSE ends_at >= ? END\n                ORDER BY starts_at, event_id\n                LIMIT ?\n                \"\"\",\n                (now, now, max(1, min(limit, 200))),\n            ).fetchall",
+          "lineNumber": 271
+        },
+        {
+          "caller": "upcoming_events",
+          "callee": "connection.execute",
+          "lineNumber": 271
+        },
+        {
+          "caller": "upcoming_events",
+          "callee": "max",
+          "lineNumber": 279
+        },
+        {
+          "caller": "upcoming_events",
+          "callee": "min",
+          "lineNumber": 279
+        },
+        {
+          "caller": "upcoming_events",
+          "callee": "tuple",
+          "lineNumber": 281
+        },
+        {
+          "caller": "upcoming_events",
+          "callee": "_event",
+          "lineNumber": 281
+        },
+        {
+          "caller": "_validate_configuration",
+          "callee": "ValueError",
+          "lineNumber": 303
+        },
+        {
+          "caller": "_validate_configuration",
+          "callee": "configuration.label.strip",
+          "lineNumber": 304
+        },
+        {
+          "caller": "_validate_configuration",
+          "callee": "len",
+          "lineNumber": 304
+        },
+        {
+          "caller": "_validate_configuration",
+          "callee": "ValueError",
+          "lineNumber": 305
+        },
+        {
+          "caller": "_validate_configuration",
+          "callee": "ValueError",
+          "lineNumber": 307
+        },
+        {
+          "caller": "_validate_configuration",
+          "callee": "ValueError",
+          "lineNumber": 309
+        },
+        {
+          "caller": "_account",
+          "callee": "CalendarAccount",
+          "lineNumber": 315
+        },
+        {
+          "caller": "_account",
+          "callee": "CalendarAccountConfiguration",
+          "lineNumber": 316
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 318
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 319
+        },
+        {
+          "caller": "_account",
+          "callee": "CalendarCapabilities",
+          "lineNumber": 321
+        },
+        {
+          "caller": "_account",
+          "callee": "bool",
+          "lineNumber": 322
+        },
+        {
+          "caller": "_account",
+          "callee": "bool",
+          "lineNumber": 322
+        },
+        {
+          "caller": "_account",
+          "callee": "bool",
+          "lineNumber": 322
+        },
+        {
+          "caller": "_account",
+          "callee": "bool",
+          "lineNumber": 324
+        },
+        {
+          "caller": "_account",
+          "callee": "bool",
+          "lineNumber": 324
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 325
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 326
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 327
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 328
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 329
+        },
+        {
+          "caller": "_account",
+          "callee": "str",
+          "lineNumber": 329
+        },
+        {
+          "caller": "_store_event",
+          "callee": "connection.execute",
+          "lineNumber": 334
+        },
+        {
+          "caller": "_store_event",
+          "callee": "int",
+          "lineNumber": 352
+        },
+        {
+          "caller": "_store_event",
+          "callee": "int",
+          "lineNumber": 354
+        },
+        {
+          "caller": "_event",
+          "callee": "CalendarEvent",
+          "lineNumber": 360
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 361
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 361
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 361
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 362
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 362
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 362
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 363
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 363
+        },
+        {
+          "caller": "_event",
+          "callee": "bool",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 364
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 365
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 366
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 367
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 368
+        },
+        {
+          "caller": "_event",
+          "callee": "bool",
+          "lineNumber": 368
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 369
+        },
+        {
+          "caller": "_event",
+          "callee": "str",
+          "lineNumber": 370
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 4,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/calendar/scheduler.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 27,
+      "classes": [
+        {
+          "name": "CalendarSyncScheduler",
+          "startLine": 10,
+          "endLine": 34,
+          "methods": [
+            "__init__",
+            "start",
+            "stop",
+            "_run"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CalendarSyncScheduler",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "threading.Event",
+          "lineNumber": 14
+        },
+        {
+          "caller": "start",
+          "callee": "self._stop.clear",
+          "lineNumber": 19
+        },
+        {
+          "caller": "start",
+          "callee": "threading.Thread",
+          "lineNumber": 20
+        },
+        {
+          "caller": "start",
+          "callee": "self._thread.start",
+          "lineNumber": 21
+        },
+        {
+          "caller": "stop",
+          "callee": "self._stop.set",
+          "lineNumber": 24
+        },
+        {
+          "caller": "stop",
+          "callee": "self._thread.join",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_run",
+          "callee": "self._stop.is_set",
+          "lineNumber": 29
+        },
+        {
+          "caller": "_run",
+          "callee": "self._repository.due_accounts",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_run",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_run",
+          "callee": "datetime.now",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_run",
+          "callee": "self._stop.is_set",
+          "lineNumber": 31
+        },
+        {
+          "caller": "_run",
+          "callee": "self._service.sync",
+          "lineNumber": 32
+        },
+        {
+          "caller": "_run",
+          "callee": "self._stop.wait",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/calendar/service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 195,
+      "nonEmptyLines": 168,
+      "functions": [
+        {
+          "name": "_required",
+          "startLine": 172,
+          "endLine": 175,
+          "params": [
+            "value",
+            "key"
+          ]
+        },
+        {
+          "name": "_optional",
+          "startLine": 178,
+          "endLine": 180,
+          "params": [
+            "value",
+            "key"
+          ]
+        },
+        {
+          "name": "_date_time",
+          "startLine": 183,
+          "endLine": 186,
+          "params": [
+            "value",
+            "key"
+          ]
+        },
+        {
+          "name": "_optional_date_time",
+          "startLine": 189,
+          "endLine": 190,
+          "params": [
+            "value",
+            "key"
+          ]
+        },
+        {
+          "name": "_limit",
+          "startLine": 193,
+          "endLine": 195,
+          "params": [
+            "arguments"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CalendarService",
+          "startLine": 23,
+          "endLine": 169,
+          "methods": [
+            "__init__",
+            "connect_ics_subscription",
+            "connect_ics_file",
+            "connect_caldav",
+            "sync",
+            "invoke_tool",
+            "_mutation",
+            "_confirm",
+            "_execute",
+            "_store",
+            "_credential_value",
+            "_caldav_credentials",
+            "_required_account",
+            "_event_view"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CalendarService",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "_required",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "_optional",
+          "line": 178,
+          "isDefault": false
+        },
+        {
+          "name": "_date_time",
+          "line": 183,
+          "isDefault": false
+        },
+        {
+          "name": "_optional_date_time",
+          "line": 189,
+          "isDefault": false
+        },
+        {
+          "name": "_limit",
+          "line": 193,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "self._ics.validate_feed",
+          "lineNumber": 32
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "IcsCalendarCredentials",
+          "lineNumber": 32
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "self._repository.create_account",
+          "lineNumber": 33
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "CalendarAccountConfiguration",
+          "lineNumber": 33
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "str",
+          "lineNumber": 33
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "uuid4",
+          "lineNumber": 33
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "label.strip",
+          "lineNumber": 33
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "self._repository.set_capabilities",
+          "lineNumber": 34
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "CalendarCapabilities",
+          "lineNumber": 34
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "self.sync",
+          "lineNumber": 35
+        },
+        {
+          "caller": "connect_ics_subscription",
+          "callee": "self._required_account",
+          "lineNumber": 36
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "self._ics.parse",
+          "lineNumber": 39
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "str",
+          "lineNumber": 40
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "uuid4",
+          "lineNumber": 40
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "self._envelopes.seal",
+          "lineNumber": 41
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "json.dumps",
+          "lineNumber": 41
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "self._repository.create_account",
+          "lineNumber": 42
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "CalendarAccountConfiguration",
+          "lineNumber": 42
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "label.strip",
+          "lineNumber": 42
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "self._repository.set_capabilities",
+          "lineNumber": 43
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "CalendarCapabilities",
+          "lineNumber": 43
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "self._store",
+          "lineNumber": 44
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "self._repository.finish_sync",
+          "lineNumber": 45
+        },
+        {
+          "caller": "connect_ics_file",
+          "callee": "self._required_account",
+          "lineNumber": 46
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "CaldavCalendarCredentials",
+          "lineNumber": 49
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "username.strip",
+          "lineNumber": 49
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "calendar_url.strip",
+          "lineNumber": 49
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "self._caldav.validate_calendar",
+          "lineNumber": 50
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "CalendarCapabilities",
+          "lineNumber": 51
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "self._caldav.discover_capabilities",
+          "lineNumber": 51
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "str",
+          "lineNumber": 52
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "uuid4",
+          "lineNumber": 52
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "self._envelopes.seal",
+          "lineNumber": 53
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "json.dumps",
+          "lineNumber": 53
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "asdict",
+          "lineNumber": 53
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "self._repository.create_account",
+          "lineNumber": 54
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "CalendarAccountConfiguration",
+          "lineNumber": 54
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "label.strip",
+          "lineNumber": 54
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "calendar_url.strip",
+          "lineNumber": 54
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "calendar_url.strip",
+          "lineNumber": 54
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "self._repository.set_capabilities",
+          "lineNumber": 55
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "self.sync",
+          "lineNumber": 56
+        },
+        {
+          "caller": "connect_caldav",
+          "callee": "self._required_account",
+          "lineNumber": 57
+        },
+        {
+          "caller": "sync",
+          "callee": "self._required_account",
+          "lineNumber": 60
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.begin_sync",
+          "lineNumber": 61
+        },
+        {
+          "caller": "sync",
+          "callee": "datetime.now",
+          "lineNumber": 63
+        },
+        {
+          "caller": "sync",
+          "callee": "self._ics.fetch_events",
+          "lineNumber": 65
+        },
+        {
+          "caller": "sync",
+          "callee": "IcsCalendarCredentials",
+          "lineNumber": 65
+        },
+        {
+          "caller": "sync",
+          "callee": "timedelta",
+          "lineNumber": 65
+        },
+        {
+          "caller": "sync",
+          "callee": "timedelta",
+          "lineNumber": 65
+        },
+        {
+          "caller": "sync",
+          "callee": "self._ics.parse",
+          "lineNumber": 67
+        },
+        {
+          "caller": "sync",
+          "callee": "str",
+          "lineNumber": 67
+        },
+        {
+          "caller": "sync",
+          "callee": "self._credential_value",
+          "lineNumber": 67
+        },
+        {
+          "caller": "sync",
+          "callee": "self._caldav_credentials",
+          "lineNumber": 69
+        },
+        {
+          "caller": "sync",
+          "callee": "CalendarCapabilities",
+          "lineNumber": 70
+        },
+        {
+          "caller": "sync",
+          "callee": "self._caldav.discover_capabilities",
+          "lineNumber": 70
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.set_capabilities",
+          "lineNumber": 71
+        },
+        {
+          "caller": "sync",
+          "callee": "self._caldav.fetch_events",
+          "lineNumber": 72
+        },
+        {
+          "caller": "sync",
+          "callee": "timedelta",
+          "lineNumber": 72
+        },
+        {
+          "caller": "sync",
+          "callee": "timedelta",
+          "lineNumber": 72
+        },
+        {
+          "caller": "sync",
+          "callee": "self._store",
+          "lineNumber": 73
+        },
+        {
+          "caller": "sync",
+          "callee": "self._required_account",
+          "lineNumber": 73
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.finish_sync",
+          "lineNumber": 75
+        },
+        {
+          "caller": "sync",
+          "callee": "self._repository.finish_sync",
+          "lineNumber": 77
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._event_view",
+          "lineNumber": 82
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._repository.upcoming_events",
+          "lineNumber": 82
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 82
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "datetime.now",
+          "lineNumber": 82
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "_limit",
+          "lineNumber": 82
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._event_view",
+          "lineNumber": 84
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._repository.search_upcoming",
+          "lineNumber": 84
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 84
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "datetime.now",
+          "lineNumber": 84
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "_required",
+          "lineNumber": 84
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "_limit",
+          "lineNumber": 84
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._repository.get_event",
+          "lineNumber": 86
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "_required",
+          "lineNumber": 86
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "ValueError",
+          "lineNumber": 87
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._event_view",
+          "lineNumber": 88
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._confirm",
+          "lineNumber": 90
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "self._mutation",
+          "lineNumber": 92
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "ValueError",
+          "lineNumber": 94
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 95
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "json.dumps",
+          "lineNumber": 95
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "ToolInvocationResult",
+          "lineNumber": 97
+        },
+        {
+          "caller": "invoke_tool",
+          "callee": "str",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_mutation",
+          "callee": "name.removeprefix(\"calendar_\").removesuffix",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_mutation",
+          "callee": "name.removeprefix",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_mutation",
+          "callee": "_required",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_mutation",
+          "callee": "_optional",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_mutation",
+          "callee": "arguments.items",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_mutation",
+          "callee": "self._repository.get_event",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_mutation",
+          "callee": "ValueError",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_mutation",
+          "callee": "{**original, **payload}.items",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_mutation",
+          "callee": "self._repository.create_pending_action",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_confirm",
+          "callee": "_required",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_confirm",
+          "callee": "self._repository.claim_pending_action",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_confirm",
+          "callee": "_required",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_confirm",
+          "callee": "self._execute",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_confirm",
+          "callee": "self._repository.finish_pending_action",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_confirm",
+          "callee": "self._repository.finish_pending_action",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_confirm",
+          "callee": "self.sync",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_confirm",
+          "callee": "str",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_execute",
+          "callee": "self._required_account",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_execute",
+          "callee": "str",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_execute",
+          "callee": "self._caldav_credentials",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_execute",
+          "callee": "isinstance",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_execute",
+          "callee": "ValueError",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_execute",
+          "callee": "str",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_execute",
+          "callee": "self._repository.get_event",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_execute",
+          "callee": "str",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_execute",
+          "callee": "ValueError",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_execute",
+          "callee": "self._caldav.delete_event",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_execute",
+          "callee": "CaldavCalendarCreateRequest",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "_required",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "_date_time",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "_optional_date_time",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "bool",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "payload.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "_optional",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "_optional",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_execute",
+          "callee": "self._caldav.create_event",
+          "lineNumber": 138
+        },
+        {
+          "caller": "_execute",
+          "callee": "self._repository.get_event",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_execute",
+          "callee": "str",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_execute",
+          "callee": "ValueError",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_execute",
+          "callee": "self._caldav.update_event",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_store",
+          "callee": "datetime.now(UTC).isoformat",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_store",
+          "callee": "datetime.now",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_store",
+          "callee": "tuple",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "CalendarEvent",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "str",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "uuid5",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "item.starts_at.astimezone(UTC).isoformat",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "item.starts_at.astimezone",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "item.ends_at.astimezone(UTC).isoformat",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "item.ends_at.astimezone",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_store",
+          "callee": "self._repository.replace_account_events",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_credential_value",
+          "callee": "self._credentials.get_envelope",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_credential_value",
+          "callee": "ValueError",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_credential_value",
+          "callee": "json.loads",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_credential_value",
+          "callee": "self._envelopes.open",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_credential_value",
+          "callee": "isinstance",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_credential_value",
+          "callee": "ValueError",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_caldav_credentials",
+          "callee": "PermissionError",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_caldav_credentials",
+          "callee": "self._credential_value",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_caldav_credentials",
+          "callee": "CaldavCalendarCredentials",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_caldav_credentials",
+          "callee": "str",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_caldav_credentials",
+          "callee": "str",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_caldav_credentials",
+          "callee": "str",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_required_account",
+          "callee": "self._repository.get_account",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_required_account",
+          "callee": "ValueError",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_required",
+          "callee": "value.get",
+          "lineNumber": 173
+        },
+        {
+          "caller": "_required",
+          "callee": "isinstance",
+          "lineNumber": 174
+        },
+        {
+          "caller": "_required",
+          "callee": "item.strip",
+          "lineNumber": 174
+        },
+        {
+          "caller": "_required",
+          "callee": "ValueError",
+          "lineNumber": 174
+        },
+        {
+          "caller": "_required",
+          "callee": "item.strip",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_optional",
+          "callee": "value.get",
+          "lineNumber": 179
+        },
+        {
+          "caller": "_optional",
+          "callee": "item.strip",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_optional",
+          "callee": "isinstance",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_optional",
+          "callee": "item.strip",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_date_time",
+          "callee": "datetime.fromisoformat",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_date_time",
+          "callee": "_required(value, key).replace",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_date_time",
+          "callee": "_required",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_date_time",
+          "callee": "ValueError",
+          "lineNumber": 185
+        },
+        {
+          "caller": "_optional_date_time",
+          "callee": "_date_time",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_optional_date_time",
+          "callee": "_optional",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_limit",
+          "callee": "arguments.get",
+          "lineNumber": 194
+        },
+        {
+          "caller": "_limit",
+          "callee": "max",
+          "lineNumber": 195
+        },
+        {
+          "caller": "_limit",
+          "callee": "min",
+          "lineNumber": 195
+        },
+        {
+          "caller": "_limit",
+          "callee": "isinstance",
+          "lineNumber": 195
+        },
+        {
+          "caller": "_limit",
+          "callee": "isinstance",
+          "lineNumber": 195
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/security/outbound.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "validate_public_url",
+          "startLine": 16,
+          "endLine": 26,
+          "params": [
+            "raw_url",
+            "target"
+          ]
+        },
+        {
+          "name": "validate_public_host",
+          "startLine": 29,
+          "endLine": 32,
+          "params": [
+            "host",
+            "port",
+            "target"
+          ]
+        },
+        {
+          "name": "resolve_public_host",
+          "startLine": 35,
+          "endLine": 63,
+          "params": [
+            "host",
+            "port",
+            "target"
+          ]
+        },
+        {
+          "name": "assert_redirect_safe",
+          "startLine": 66,
+          "endLine": 79,
+          "params": [
+            "original_url",
+            "redirect_url",
+            "allow_host_change",
+            "target"
+          ]
+        },
+        {
+          "name": "_reject_private",
+          "startLine": 82,
+          "endLine": 92,
+          "params": [
+            "address",
+            "target"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "UnsafeOutboundHost",
+          "startLine": 12,
+          "endLine": 13,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "UnsafeOutboundHost",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "validate_public_url",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "validate_public_host",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "resolve_public_host",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "assert_redirect_safe",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "_reject_private",
+          "line": 82,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_public_url",
+          "callee": "raw_url.strip",
+          "lineNumber": 17
+        },
+        {
+          "caller": "validate_public_url",
+          "callee": "urlparse",
+          "lineNumber": 18
+        },
+        {
+          "caller": "validate_public_url",
+          "callee": "ValueError",
+          "lineNumber": 20
+        },
+        {
+          "caller": "validate_public_url",
+          "callee": "validate_public_host",
+          "lineNumber": 21
+        },
+        {
+          "caller": "validate_public_host",
+          "callee": "resolve_public_host",
+          "lineNumber": 31
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "host.strip().strip(\"[]\").rstrip(\".\").casefold",
+          "lineNumber": 42
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "host.strip().strip(\"[]\").rstrip",
+          "lineNumber": 42
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "host.strip().strip",
+          "lineNumber": 42
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "host.strip",
+          "lineNumber": 42
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "UnsafeOutboundHost",
+          "lineNumber": 44
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "candidate.endswith",
+          "lineNumber": 45
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "UnsafeOutboundHost",
+          "lineNumber": 46
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "ipaddress.ip_address",
+          "lineNumber": 48
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "_reject_private",
+          "lineNumber": 52
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "str",
+          "lineNumber": 53
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "socket.getaddrinfo",
+          "lineNumber": 55
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "UnsafeOutboundHost",
+          "lineNumber": 57
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "tuple",
+          "lineNumber": 58
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "sorted",
+          "lineNumber": 58
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "UnsafeOutboundHost",
+          "lineNumber": 60
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "_reject_private",
+          "lineNumber": 62
+        },
+        {
+          "caller": "resolve_public_host",
+          "callee": "ipaddress.ip_address",
+          "lineNumber": 62
+        },
+        {
+          "caller": "assert_redirect_safe",
+          "callee": "validate_public_url",
+          "lineNumber": 73
+        },
+        {
+          "caller": "assert_redirect_safe",
+          "callee": "(urlparse(original_url).hostname or \"\").casefold",
+          "lineNumber": 75
+        },
+        {
+          "caller": "assert_redirect_safe",
+          "callee": "urlparse",
+          "lineNumber": 75
+        },
+        {
+          "caller": "assert_redirect_safe",
+          "callee": "(urlparse(safe_url).hostname or \"\").casefold",
+          "lineNumber": 76
+        },
+        {
+          "caller": "assert_redirect_safe",
+          "callee": "urlparse",
+          "lineNumber": 76
+        },
+        {
+          "caller": "assert_redirect_safe",
+          "callee": "ValueError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_reject_private",
+          "callee": "UnsafeOutboundHost",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    }
+  ]
+}

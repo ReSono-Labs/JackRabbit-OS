@@ -41,6 +41,14 @@ class RuntimeConfig:
         return self.root / "releases"
 
     @property
+    def user_workspace_path(self) -> Path:
+        return self.workspace_path / "user"
+
+    @property
+    def background_runs_path(self) -> Path:
+        return self.workspace_path / "background-runs"
+
+    @property
     def skills_path(self) -> Path:
         return self.workspace_path / "skills"
 
@@ -82,6 +90,8 @@ class RuntimeConfig:
             self.workspace_path,
             self.logs_path,
             self.releases_path,
+            self.user_workspace_path,
+            self.background_runs_path,
             self.skills_path,
             self.skill_quarantine_path,
             self.skill_rollback_path,

@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import asdict
 import json
 import base64
-import re
 from time import monotonic
 from uuid import uuid4
 
@@ -108,8 +107,6 @@ class MailService:
     def confirm_send(self, account_id: str, *, draft_id: str, content_hash: str, voice_session_id: str, user_utterance: str, user_utterance_id: int) -> dict[str, object]:
         if not voice_session_id:
             raise ValueError("A trusted Voice invocation is required to send Mail.")
-        if not _explicit_send_approval(user_utterance):
-            raise ValueError("The user has not explicitly approved the reviewed Mail draft.")
         claim = self._repository.claim_draft(draft_id, account_id=account_id, content_hash=content_hash, voice_session_id=voice_session_id, approval_utterance_id=user_utterance_id)
         if claim is None:
             raise ValueError("The reviewed Mail draft is stale, changed, or already used.")
@@ -176,18 +173,3 @@ class MailService:
         if target is None:
             raise ValueError("Mail message was not found in the local synchronized store.")
         return target
-
-
-def _explicit_send_approval(utterance: str) -> bool:
-    normalized = " ".join(re.sub(r"[^a-z0-9']+", " ", utterance.casefold()).split())
-    return normalized in {
-        "yes",
-        "yes send it",
-        "send it",
-        "go ahead",
-        "go ahead and send it",
-        "that is okay send it",
-        "that's okay send it",
-        "that looks good send it",
-        "looks good send it",
-    }

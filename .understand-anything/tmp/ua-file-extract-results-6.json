@@ -1,0 +1,4795 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 19,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "runtime/resono_runtime/agents/memory_reviewer.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 308,
+      "nonEmptyLines": 262,
+      "functions": [
+        {
+          "name": "_review_failure",
+          "startLine": 134,
+          "endLine": 157,
+          "params": [
+            "error"
+          ]
+        },
+        {
+          "name": "_summarizer_instructions",
+          "startLine": 160,
+          "endLine": 174,
+          "params": []
+        },
+        {
+          "name": "_parse_summary_payload",
+          "startLine": 177,
+          "endLine": 192,
+          "params": [
+            "output_text"
+          ]
+        },
+        {
+          "name": "_parse_review",
+          "startLine": 195,
+          "endLine": 219,
+          "params": [
+            "output_text",
+            "model"
+          ]
+        },
+        {
+          "name": "_normalize_finalization_candidate",
+          "startLine": 222,
+          "endLine": 238,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_normalize_memory_class",
+          "startLine": 241,
+          "endLine": 245,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_normalize_memory_key",
+          "startLine": 248,
+          "endLine": 254,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_normalize_confidence",
+          "startLine": 257,
+          "endLine": 261,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_normalize_sensitivity",
+          "startLine": 264,
+          "endLine": 268,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_normalize_text",
+          "startLine": 271,
+          "endLine": 275,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_bounded_normalized_text",
+          "startLine": 278,
+          "endLine": 282,
+          "params": [
+            "value",
+            "max_characters"
+          ]
+        },
+        {
+          "name": "_contains_forbidden_memory_marker",
+          "startLine": 285,
+          "endLine": 287,
+          "params": [
+            "text"
+          ]
+        },
+        {
+          "name": "_run_review_with_agents_sdk",
+          "startLine": 290,
+          "endLine": 308,
+          "params": [
+            "api_key",
+            "model",
+            "transcript",
+            "local_api_token",
+            "base_url",
+            "reasoning_effort"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MemoryCandidate",
+          "startLine": 42,
+          "endLine": 47,
+          "methods": [],
+          "properties": [
+            "memory_class",
+            "memory_key",
+            "content_text",
+            "confidence",
+            "sensitivity"
+          ]
+        },
+        {
+          "name": "ReviewResult",
+          "startLine": 51,
+          "endLine": 54,
+          "methods": [],
+          "properties": [
+            "summary",
+            "memories",
+            "model"
+          ]
+        },
+        {
+          "name": "MemoryReviewRunner",
+          "startLine": 60,
+          "endLine": 131,
+          "methods": [
+            "__init__",
+            "review"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MemoryCandidate",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "ReviewResult",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "MemoryReviewRunner",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "_review_failure",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "_summarizer_instructions",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "_parse_summary_payload",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "_parse_review",
+          "line": 195,
+          "isDefault": false
+        },
+        {
+          "name": "_normalize_finalization_candidate",
+          "line": 222,
+          "isDefault": false
+        },
+        {
+          "name": "_normalize_memory_class",
+          "line": 241,
+          "isDefault": false
+        },
+        {
+          "name": "_normalize_memory_key",
+          "line": 248,
+          "isDefault": false
+        },
+        {
+          "name": "_normalize_confidence",
+          "line": 257,
+          "isDefault": false
+        },
+        {
+          "name": "_normalize_sensitivity",
+          "line": 264,
+          "isDefault": false
+        },
+        {
+          "name": "_normalize_text",
+          "line": 271,
+          "isDefault": false
+        },
+        {
+          "name": "_bounded_normalized_text",
+          "line": 278,
+          "isDefault": false
+        },
+        {
+          "name": "_contains_forbidden_memory_marker",
+          "line": 285,
+          "isDefault": false
+        },
+        {
+          "name": "_run_review_with_agents_sdk",
+          "line": 290,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "review",
+          "callee": "transcript.strip",
+          "lineNumber": 88
+        },
+        {
+          "caller": "review",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 90
+        },
+        {
+          "caller": "review",
+          "callee": "self._settings.selection",
+          "lineNumber": 94
+        },
+        {
+          "caller": "review",
+          "callee": "openai_provider_access",
+          "lineNumber": 95
+        },
+        {
+          "caller": "review",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 104
+        },
+        {
+          "caller": "review",
+          "callee": "self._events.publish",
+          "lineNumber": 106
+        },
+        {
+          "caller": "review",
+          "callee": "self._executor",
+          "lineNumber": 108
+        },
+        {
+          "caller": "review",
+          "callee": "_review_failure",
+          "lineNumber": 119
+        },
+        {
+          "caller": "review",
+          "callee": "self._events.publish",
+          "lineNumber": 120
+        },
+        {
+          "caller": "review",
+          "callee": "_parse_review",
+          "lineNumber": 126
+        },
+        {
+          "caller": "review",
+          "callee": "self._events.publish",
+          "lineNumber": 127
+        },
+        {
+          "caller": "review",
+          "callee": "len",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_review_failure",
+          "callee": "str",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_review_failure",
+          "callee": "getattr",
+          "lineNumber": 143
+        },
+        {
+          "caller": "_review_failure",
+          "callee": "re.search",
+          "lineNumber": 146
+        },
+        {
+          "caller": "_review_failure",
+          "callee": "int",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_review_failure",
+          "callee": "reset_match.group",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_review_failure",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_review_failure",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "output_text.strip",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "cleaned.startswith",
+          "lineNumber": 181
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "re.sub",
+          "lineNumber": 182
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "re.sub",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "cleaned.strip",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "json.loads",
+          "lineNumber": 186
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "isinstance",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_parse_summary_payload",
+          "callee": "parsed.setdefault",
+          "lineNumber": 191
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "_parse_summary_payload",
+          "lineNumber": 196
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "_bounded_normalized_text",
+          "lineNumber": 197
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "parsed.get",
+          "lineNumber": 198
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "_bounded_normalized_text",
+          "lineNumber": 199
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "(output_text or \"\").strip",
+          "lineNumber": 200
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 203
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "parsed.get",
+          "lineNumber": 204
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "isinstance",
+          "lineNumber": 207
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 208
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "_normalize_finalization_candidate",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "_contains_forbidden_memory_marker",
+          "lineNumber": 216
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "memories.append",
+          "lineNumber": 218
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "ReviewResult",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_parse_review",
+          "callee": "tuple",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "isinstance",
+          "lineNumber": 223
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "value.get",
+          "lineNumber": 223
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "_normalize_memory_class",
+          "lineNumber": 225
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "value.get",
+          "lineNumber": 225
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "_normalize_memory_key",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "value.get",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "_bounded_normalized_text",
+          "lineNumber": 227
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "value.get",
+          "lineNumber": 228
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "MemoryCandidate",
+          "lineNumber": 232
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "_normalize_confidence",
+          "lineNumber": 236
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "value.get",
+          "lineNumber": 236
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "_normalize_sensitivity",
+          "lineNumber": 237
+        },
+        {
+          "caller": "_normalize_finalization_candidate",
+          "callee": "value.get",
+          "lineNumber": 237
+        },
+        {
+          "caller": "_normalize_memory_class",
+          "callee": "isinstance",
+          "lineNumber": 242
+        },
+        {
+          "caller": "_normalize_memory_class",
+          "callee": "value.strip().lower",
+          "lineNumber": 244
+        },
+        {
+          "caller": "_normalize_memory_class",
+          "callee": "value.strip",
+          "lineNumber": 244
+        },
+        {
+          "caller": "_normalize_memory_key",
+          "callee": "isinstance",
+          "lineNumber": 249
+        },
+        {
+          "caller": "_normalize_memory_key",
+          "callee": "re.sub(r\"[^a-z0-9._-]+\", \"-\", value.strip().lower()).strip",
+          "lineNumber": 251
+        },
+        {
+          "caller": "_normalize_memory_key",
+          "callee": "re.sub",
+          "lineNumber": 251
+        },
+        {
+          "caller": "_normalize_memory_key",
+          "callee": "value.strip().lower",
+          "lineNumber": 251
+        },
+        {
+          "caller": "_normalize_memory_key",
+          "callee": "value.strip",
+          "lineNumber": 251
+        },
+        {
+          "caller": "_normalize_memory_key",
+          "callee": "len",
+          "lineNumber": 252
+        },
+        {
+          "caller": "_normalize_confidence",
+          "callee": "isinstance",
+          "lineNumber": 258
+        },
+        {
+          "caller": "_normalize_confidence",
+          "callee": "value.strip().lower",
+          "lineNumber": 260
+        },
+        {
+          "caller": "_normalize_confidence",
+          "callee": "value.strip",
+          "lineNumber": 260
+        },
+        {
+          "caller": "_normalize_sensitivity",
+          "callee": "isinstance",
+          "lineNumber": 265
+        },
+        {
+          "caller": "_normalize_sensitivity",
+          "callee": "value.strip().lower",
+          "lineNumber": 267
+        },
+        {
+          "caller": "_normalize_sensitivity",
+          "callee": "value.strip",
+          "lineNumber": 267
+        },
+        {
+          "caller": "_normalize_text",
+          "callee": "isinstance",
+          "lineNumber": 272
+        },
+        {
+          "caller": "_normalize_text",
+          "callee": "value.strip",
+          "lineNumber": 274
+        },
+        {
+          "caller": "_bounded_normalized_text",
+          "callee": "_normalize_text",
+          "lineNumber": 279
+        },
+        {
+          "caller": "_contains_forbidden_memory_marker",
+          "callee": "text.lower",
+          "lineNumber": 286
+        },
+        {
+          "caller": "_contains_forbidden_memory_marker",
+          "callee": "any",
+          "lineNumber": 287
+        },
+        {
+          "caller": "_run_review_with_agents_sdk",
+          "callee": "run_agent_turn_sync",
+          "lineNumber": 299
+        },
+        {
+          "caller": "_run_review_with_agents_sdk",
+          "callee": "_summarizer_instructions",
+          "lineNumber": 302
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 16,
+        "functionCount": 13,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/agents/runner.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 151,
+      "nonEmptyLines": 136,
+      "functions": [
+        {
+          "name": "_run_with_agents_sdk",
+          "startLine": 93,
+          "endLine": 111,
+          "params": [
+            "api_key",
+            "model",
+            "user_input",
+            "local_api_token",
+            "base_url",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "_run_with_mcp",
+          "startLine": 114,
+          "endLine": 151,
+          "params": [
+            "api_key",
+            "model",
+            "user_input",
+            "local_api_token",
+            "base_url",
+            "reasoning_effort"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TextTurnResult",
+          "startLine": 16,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "text",
+            "model"
+          ]
+        },
+        {
+          "name": "AgentsSdkTextRunner",
+          "startLine": 21,
+          "endLine": 90,
+          "methods": [
+            "__init__",
+            "run"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TextTurnResult",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "AgentsSdkTextRunner",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "_run_with_agents_sdk",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "_run_with_mcp",
+          "line": 114,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "user_input.strip",
+          "lineNumber": 49
+        },
+        {
+          "caller": "run",
+          "callee": "len",
+          "lineNumber": 50
+        },
+        {
+          "caller": "run",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "run",
+          "callee": "self._settings.selection",
+          "lineNumber": 54
+        },
+        {
+          "caller": "run",
+          "callee": "openai_provider_access",
+          "lineNumber": 55
+        },
+        {
+          "caller": "run",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 64
+        },
+        {
+          "caller": "run",
+          "callee": "self._events.publish",
+          "lineNumber": 68
+        },
+        {
+          "caller": "run",
+          "callee": "self._executor(\n                api_key=api_key,\n                model=model,\n                user_input=prompt,\n                local_api_token=self._local_api_token,\n                base_url=base_url,\n                reasoning_effort=selection.reasoning_effort,\n            ).strip",
+          "lineNumber": 70
+        },
+        {
+          "caller": "run",
+          "callee": "self._executor",
+          "lineNumber": 70
+        },
+        {
+          "caller": "run",
+          "callee": "self._events.publish",
+          "lineNumber": 81
+        },
+        {
+          "caller": "run",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 82
+        },
+        {
+          "caller": "run",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 86
+        },
+        {
+          "caller": "run",
+          "callee": "self._events.publish",
+          "lineNumber": 89
+        },
+        {
+          "caller": "run",
+          "callee": "TextTurnResult",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_run_with_agents_sdk",
+          "callee": "asyncio.run",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_run_with_agents_sdk",
+          "callee": "_run_with_mcp",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_run_with_mcp",
+          "callee": "MCPServerStreamableHttp",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_run_with_mcp",
+          "callee": "run_agent_turn",
+          "lineNumber": 138
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/agents/sdk_runner.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "run_agent_turn",
+          "startLine": 14,
+          "endLine": 70,
+          "params": [
+            "api_key",
+            "model",
+            "instructions",
+            "input_text",
+            "base_url",
+            "reasoning_effort",
+            "max_turns",
+            "agent_name",
+            "mcp_server",
+            "observation_sink"
+          ]
+        },
+        {
+          "name": "run_agent_turn_sync",
+          "startLine": 73,
+          "endLine": 75,
+          "params": [
+            "**kwargs"
+          ]
+        },
+        {
+          "name": "_observe",
+          "startLine": 78,
+          "endLine": 91,
+          "params": [
+            "raw_responses",
+            "sink"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "AgentTurnObservation",
+          "startLine": 9,
+          "endLine": 11,
+          "methods": [],
+          "properties": [
+            "model_turns",
+            "reasoning_summaries"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AgentTurnObservation",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "run_agent_turn",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "run_agent_turn_sync",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "_observe",
+          "line": 78,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run_agent_turn",
+          "callee": "set_tracing_disabled",
+          "lineNumber": 39
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "OpenAIProvider",
+          "lineNumber": 40
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "ModelSettings",
+          "lineNumber": 41
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "Reasoning",
+          "lineNumber": 42
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "Agent",
+          "lineNumber": 45
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "RunConfig",
+          "lineNumber": 52
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "Runner.run_streamed",
+          "lineNumber": 55
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "streamed.stream_events",
+          "lineNumber": 58
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "_observe",
+          "lineNumber": 60
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "str",
+          "lineNumber": 61
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "Runner.run",
+          "lineNumber": 62
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "_observe",
+          "lineNumber": 65
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "str",
+          "lineNumber": 66
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "getattr",
+          "lineNumber": 68
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "_observe",
+          "lineNumber": 69
+        },
+        {
+          "caller": "run_agent_turn",
+          "callee": "getattr",
+          "lineNumber": 69
+        },
+        {
+          "caller": "run_agent_turn_sync",
+          "callee": "asyncio.run",
+          "lineNumber": 75
+        },
+        {
+          "caller": "run_agent_turn_sync",
+          "callee": "run_agent_turn",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_observe",
+          "callee": "tuple",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_observe",
+          "callee": "isinstance",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_observe",
+          "callee": "getattr",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_observe",
+          "callee": "getattr",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_observe",
+          "callee": "getattr",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_observe",
+          "callee": "str(getattr(summary, \"text\", \"\")).strip",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_observe",
+          "callee": "str",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_observe",
+          "callee": "getattr",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_observe",
+          "callee": "summaries.append",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_observe",
+          "callee": "sink",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_observe",
+          "callee": "AgentTurnObservation",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_observe",
+          "callee": "len",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_observe",
+          "callee": "tuple",
+          "lineNumber": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/memory/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/memory/embedding_access.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "embedding_api_key",
+          "startLine": 13,
+          "endLine": 44,
+          "params": [
+            "credentials",
+            "settings",
+            "subscription"
+          ]
+        },
+        {
+          "name": "default_embedding_factory",
+          "startLine": 47,
+          "endLine": 48,
+          "params": [
+            "api_key",
+            "safety_source"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "embedding_api_key",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "default_embedding_factory",
+          "line": 47,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "embedding_api_key",
+          "callee": "openai_provider_access",
+          "lineNumber": 30
+        },
+        {
+          "caller": "embedding_api_key",
+          "callee": "credentials.has_platform_key",
+          "lineNumber": 37
+        },
+        {
+          "caller": "embedding_api_key",
+          "callee": "credentials.platform_key",
+          "lineNumber": 38
+        },
+        {
+          "caller": "embedding_api_key",
+          "callee": "credentials.has_subscription",
+          "lineNumber": 39
+        },
+        {
+          "caller": "embedding_api_key",
+          "callee": "subscription.access_token",
+          "lineNumber": 41
+        },
+        {
+          "caller": "default_embedding_factory",
+          "callee": "OpenAIEmbeddings",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/memory/pipeline.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 144,
+      "nonEmptyLines": 132,
+      "classes": [
+        {
+          "name": "FinalizeResult",
+          "startLine": 17,
+          "endLine": 23,
+          "methods": [],
+          "properties": [
+            "session_id",
+            "summary",
+            "memory_count",
+            "embedded_count",
+            "model",
+            "embeddings_available"
+          ]
+        },
+        {
+          "name": "MemoryPipeline",
+          "startLine": 26,
+          "endLine": 144,
+          "methods": [
+            "__init__",
+            "finalize"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "FinalizeResult",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "MemoryPipeline",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "finalize",
+          "callee": "self._sessions.transcript_text",
+          "lineNumber": 60
+        },
+        {
+          "caller": "finalize",
+          "callee": "transcript.strip",
+          "lineNumber": 61
+        },
+        {
+          "caller": "finalize",
+          "callee": "ValueError",
+          "lineNumber": 62
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._reviewer.review",
+          "lineNumber": 63
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._sessions.store_summary",
+          "lineNumber": 64
+        },
+        {
+          "caller": "finalize",
+          "callee": "len",
+          "lineNumber": 70
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._memories.store_memory",
+          "lineNumber": 74
+        },
+        {
+          "caller": "finalize",
+          "callee": "stored_memory_ids.append",
+          "lineNumber": 83
+        },
+        {
+          "caller": "finalize",
+          "callee": "embedding_api_key",
+          "lineNumber": 86
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._embedding_factory",
+          "lineNumber": 93
+        },
+        {
+          "caller": "finalize",
+          "callee": "review.summary.strip",
+          "lineNumber": 96
+        },
+        {
+          "caller": "finalize",
+          "callee": "embedder.embed",
+          "lineNumber": 98
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._memories.store_embedding",
+          "lineNumber": 99
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._memories.memory",
+          "lineNumber": 113
+        },
+        {
+          "caller": "finalize",
+          "callee": "embedder.embed",
+          "lineNumber": 117
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._memories.store_embedding",
+          "lineNumber": 120
+        },
+        {
+          "caller": "finalize",
+          "callee": "self._events.publish",
+          "lineNumber": 129
+        },
+        {
+          "caller": "finalize",
+          "callee": "len",
+          "lineNumber": 133
+        },
+        {
+          "caller": "finalize",
+          "callee": "FinalizeResult",
+          "lineNumber": 137
+        },
+        {
+          "caller": "finalize",
+          "callee": "len",
+          "lineNumber": 140
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/memory/retrieval.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 68,
+      "functions": [
+        {
+          "name": "cosine_similarity",
+          "startLine": 74,
+          "endLine": 83,
+          "params": [
+            "left",
+            "right"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "QueryEmbedder",
+          "startLine": 15,
+          "endLine": 17,
+          "methods": [
+            "embed"
+          ],
+          "properties": []
+        },
+        {
+          "name": "RetrievalMatch",
+          "startLine": 21,
+          "endLine": 23,
+          "methods": [],
+          "properties": [
+            "memory",
+            "score"
+          ]
+        },
+        {
+          "name": "MemoryRetriever",
+          "startLine": 26,
+          "endLine": 71,
+          "methods": [
+            "__init__",
+            "retrieve"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "QueryEmbedder",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "RetrievalMatch",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "MemoryRetriever",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "cosine_similarity",
+          "line": 74,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "retrieve",
+          "callee": "max",
+          "lineNumber": 49
+        },
+        {
+          "caller": "retrieve",
+          "callee": "min",
+          "lineNumber": 49
+        },
+        {
+          "caller": "retrieve",
+          "callee": "int",
+          "lineNumber": 49
+        },
+        {
+          "caller": "retrieve",
+          "callee": "self._embedder.embed",
+          "lineNumber": 50
+        },
+        {
+          "caller": "retrieve",
+          "callee": "self._memories.embeddings_for",
+          "lineNumber": 51
+        },
+        {
+          "caller": "retrieve",
+          "callee": "getattr",
+          "lineNumber": 53
+        },
+        {
+          "caller": "retrieve",
+          "callee": "len",
+          "lineNumber": 57
+        },
+        {
+          "caller": "retrieve",
+          "callee": "len",
+          "lineNumber": 57
+        },
+        {
+          "caller": "retrieve",
+          "callee": "getattr",
+          "lineNumber": 59
+        },
+        {
+          "caller": "retrieve",
+          "callee": "cosine_similarity",
+          "lineNumber": 61
+        },
+        {
+          "caller": "retrieve",
+          "callee": "ranked.append",
+          "lineNumber": 64
+        },
+        {
+          "caller": "retrieve",
+          "callee": "ranked.sort",
+          "lineNumber": 65
+        },
+        {
+          "caller": "retrieve",
+          "callee": "self._memories.memory",
+          "lineNumber": 68
+        },
+        {
+          "caller": "retrieve",
+          "callee": "matches.append",
+          "lineNumber": 70
+        },
+        {
+          "caller": "retrieve",
+          "callee": "RetrievalMatch",
+          "lineNumber": 70
+        },
+        {
+          "caller": "retrieve",
+          "callee": "round",
+          "lineNumber": 70
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "len",
+          "lineNumber": 76
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "len",
+          "lineNumber": 76
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "sum",
+          "lineNumber": 78
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "zip",
+          "lineNumber": 78
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "sqrt",
+          "lineNumber": 79
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "sum",
+          "lineNumber": 79
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "sqrt",
+          "lineNumber": 80
+        },
+        {
+          "caller": "cosine_similarity",
+          "callee": "sum",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 1,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/memory/service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 111,
+      "functions": [
+        {
+          "name": "_match_payload",
+          "startLine": 118,
+          "endLine": 130,
+          "params": [
+            "match"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SearchResult",
+          "startLine": 18,
+          "endLine": 20,
+          "methods": [],
+          "properties": [
+            "matches",
+            "embeddings_available"
+          ]
+        },
+        {
+          "name": "MemoryService",
+          "startLine": 23,
+          "endLine": 115,
+          "methods": [
+            "__init__",
+            "finalize",
+            "list_sessions",
+            "session_entries",
+            "session_summary",
+            "list_memories",
+            "memory",
+            "delete_memory",
+            "delete_session",
+            "search",
+            "reindex"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SearchResult",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "MemoryService",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "_match_payload",
+          "line": 118,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "finalize",
+          "callee": "self._pipeline.finalize",
+          "lineNumber": 48
+        },
+        {
+          "caller": "list_sessions",
+          "callee": "self._sessions.list_sessions",
+          "lineNumber": 51
+        },
+        {
+          "caller": "session_entries",
+          "callee": "self._sessions.entries",
+          "lineNumber": 54
+        },
+        {
+          "caller": "session_summary",
+          "callee": "self._sessions.summary",
+          "lineNumber": 57
+        },
+        {
+          "caller": "list_memories",
+          "callee": "self._memories.list_memories",
+          "lineNumber": 60
+        },
+        {
+          "caller": "memory",
+          "callee": "self._memories.memory",
+          "lineNumber": 63
+        },
+        {
+          "caller": "delete_memory",
+          "callee": "self._memories.delete_memory",
+          "lineNumber": 66
+        },
+        {
+          "caller": "delete_session",
+          "callee": "self._memories.delete_session_memories",
+          "lineNumber": 69
+        },
+        {
+          "caller": "delete_session",
+          "callee": "self._memories.delete_session_summary_embedding",
+          "lineNumber": 70
+        },
+        {
+          "caller": "delete_session",
+          "callee": "self._sessions.delete_session",
+          "lineNumber": 71
+        },
+        {
+          "caller": "search",
+          "callee": "embedding_api_key",
+          "lineNumber": 75
+        },
+        {
+          "caller": "search",
+          "callee": "SearchResult",
+          "lineNumber": 81
+        },
+        {
+          "caller": "search",
+          "callee": "self._embedding_factory",
+          "lineNumber": 82
+        },
+        {
+          "caller": "search",
+          "callee": "MemoryRetriever",
+          "lineNumber": 83
+        },
+        {
+          "caller": "search",
+          "callee": "retriever.retrieve",
+          "lineNumber": 84
+        },
+        {
+          "caller": "search",
+          "callee": "SearchResult",
+          "lineNumber": 85
+        },
+        {
+          "caller": "search",
+          "callee": "tuple",
+          "lineNumber": 86
+        },
+        {
+          "caller": "search",
+          "callee": "_match_payload",
+          "lineNumber": 86
+        },
+        {
+          "caller": "reindex",
+          "callee": "embedding_api_key",
+          "lineNumber": 92
+        },
+        {
+          "caller": "reindex",
+          "callee": "self._embedding_factory",
+          "lineNumber": 99
+        },
+        {
+          "caller": "reindex",
+          "callee": "self._memories.list_memories",
+          "lineNumber": 101
+        },
+        {
+          "caller": "reindex",
+          "callee": "embedder.embed",
+          "lineNumber": 103
+        },
+        {
+          "caller": "reindex",
+          "callee": "self._memories.store_embedding",
+          "lineNumber": 106
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/memory/session_context.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 85,
+      "functions": [
+        {
+          "name": "startup_context_dict",
+          "startLine": 97,
+          "endLine": 102,
+          "params": [
+            "context"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SessionContext",
+          "startLine": 21,
+          "endLine": 56,
+          "methods": [
+            "render"
+          ],
+          "properties": [
+            "memories",
+            "previous_summary"
+          ]
+        },
+        {
+          "name": "SessionContextBuilder",
+          "startLine": 59,
+          "endLine": 94,
+          "methods": [
+            "__init__",
+            "build",
+            "_previous_completed_summary"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SessionContext",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "SessionContextBuilder",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "startup_context_dict",
+          "line": 97,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "render",
+          "callee": "record.content_text.strip",
+          "lineNumber": 37
+        },
+        {
+          "caller": "render",
+          "callee": "len",
+          "lineNumber": 38
+        },
+        {
+          "caller": "render",
+          "callee": "lines.append",
+          "lineNumber": 40
+        },
+        {
+          "caller": "render",
+          "callee": "sections.append",
+          "lineNumber": 44
+        },
+        {
+          "caller": "render",
+          "callee": "\"\\n\".join",
+          "lineNumber": 44
+        },
+        {
+          "caller": "render",
+          "callee": "self.previous_summary.summary_text.strip",
+          "lineNumber": 46
+        },
+        {
+          "caller": "render",
+          "callee": "len",
+          "lineNumber": 47
+        },
+        {
+          "caller": "render",
+          "callee": "sections.append",
+          "lineNumber": 49
+        },
+        {
+          "caller": "render",
+          "callee": "\"\\n\\n\".join",
+          "lineNumber": 55
+        },
+        {
+          "caller": "build",
+          "callee": "self._memories.list_memories",
+          "lineNumber": 80
+        },
+        {
+          "caller": "build",
+          "callee": "self._previous_completed_summary",
+          "lineNumber": 81
+        },
+        {
+          "caller": "build",
+          "callee": "SessionContext",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_previous_completed_summary",
+          "callee": "self._sessions.list_finalized_sessions",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_previous_completed_summary",
+          "callee": "self._sessions.summary",
+          "lineNumber": 91
+        },
+        {
+          "caller": "startup_context_dict",
+          "callee": "len",
+          "lineNumber": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/memory/tools.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 167,
+      "nonEmptyLines": 147,
+      "functions": [
+        {
+          "name": "_match_payload",
+          "startLine": 151,
+          "endLine": 159,
+          "params": [
+            "match"
+          ]
+        },
+        {
+          "name": "_coerce_limit",
+          "startLine": 162,
+          "endLine": 167,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MemoryLookupTool",
+          "startLine": 65,
+          "endLine": 148,
+          "methods": [
+            "__init__",
+            "name",
+            "description",
+            "parameters",
+            "realtime_tool",
+            "mcp_tool",
+            "call"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MemoryLookupTool",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "_match_payload",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "_coerce_limit",
+          "line": 162,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "call",
+          "callee": "isinstance",
+          "lineNumber": 114
+        },
+        {
+          "caller": "call",
+          "callee": "json.loads",
+          "lineNumber": 115
+        },
+        {
+          "caller": "call",
+          "callee": "arguments.strip",
+          "lineNumber": 115
+        },
+        {
+          "caller": "call",
+          "callee": "str(arguments.get(\"query\", \"\")).strip",
+          "lineNumber": 116
+        },
+        {
+          "caller": "call",
+          "callee": "str",
+          "lineNumber": 116
+        },
+        {
+          "caller": "call",
+          "callee": "arguments.get",
+          "lineNumber": 116
+        },
+        {
+          "caller": "call",
+          "callee": "json.dumps",
+          "lineNumber": 118
+        },
+        {
+          "caller": "call",
+          "callee": "embedding_api_key",
+          "lineNumber": 119
+        },
+        {
+          "caller": "call",
+          "callee": "json.dumps",
+          "lineNumber": 125
+        },
+        {
+          "caller": "call",
+          "callee": "_coerce_limit",
+          "lineNumber": 128
+        },
+        {
+          "caller": "call",
+          "callee": "arguments.get",
+          "lineNumber": 128
+        },
+        {
+          "caller": "call",
+          "callee": "self._embedding_factory",
+          "lineNumber": 130
+        },
+        {
+          "caller": "call",
+          "callee": "json.dumps",
+          "lineNumber": 132
+        },
+        {
+          "caller": "call",
+          "callee": "MemoryRetriever",
+          "lineNumber": 135
+        },
+        {
+          "caller": "call",
+          "callee": "retriever.retrieve",
+          "lineNumber": 137
+        },
+        {
+          "caller": "call",
+          "callee": "json.dumps",
+          "lineNumber": 139
+        },
+        {
+          "caller": "call",
+          "callee": "json.dumps",
+          "lineNumber": 142
+        },
+        {
+          "caller": "call",
+          "callee": "_match_payload",
+          "lineNumber": 144
+        },
+        {
+          "caller": "call",
+          "callee": "len",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_coerce_limit",
+          "callee": "int",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_coerce_limit",
+          "callee": "max",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_coerce_limit",
+          "callee": "min",
+          "lineNumber": 167
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/access.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "openai_provider_access",
+          "startLine": 21,
+          "endLine": 52,
+          "params": [
+            "credentials",
+            "settings",
+            "subscription"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ProviderAccess",
+          "startLine": 14,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "api_key",
+            "base_url"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProviderAccess",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "openai_provider_access",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "openai_provider_access",
+          "callee": "settings.selection",
+          "lineNumber": 36
+        },
+        {
+          "caller": "openai_provider_access",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 39
+        },
+        {
+          "caller": "openai_provider_access",
+          "callee": "ProviderAccess",
+          "lineNumber": 42
+        },
+        {
+          "caller": "openai_provider_access",
+          "callee": "subscription.access_token",
+          "lineNumber": 43
+        },
+        {
+          "caller": "openai_provider_access",
+          "callee": "credentials.platform_key",
+          "lineNumber": 47
+        },
+        {
+          "caller": "openai_provider_access",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 49
+        },
+        {
+          "caller": "openai_provider_access",
+          "callee": "ProviderAccess",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/embeddings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 110,
+      "functions": [
+        {
+          "name": "_validate_vectors",
+          "startLine": 120,
+          "endLine": 131,
+          "params": [
+            "vectors",
+            "expected_dimensions"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "EmbeddingUnavailable",
+          "startLine": 22,
+          "endLine": 23,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "OpenAIEmbeddings",
+          "startLine": 26,
+          "endLine": 117,
+          "methods": [
+            "__init__",
+            "model_key",
+            "dimensions",
+            "embed",
+            "embed_many",
+            "_http_embed"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "EmbeddingUnavailable",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "OpenAIEmbeddings",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "_validate_vectors",
+          "line": 120,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "hashlib.sha256(\n            f\"resono-r1:{safety_source}\".encode()\n        ).hexdigest",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "hashlib.sha256",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "f\"resono-r1:{safety_source}\".encode",
+          "lineNumber": 48
+        },
+        {
+          "caller": "__init__",
+          "callee": "int",
+          "lineNumber": 51
+        },
+        {
+          "caller": "embed",
+          "callee": "self.embed_many",
+          "lineNumber": 63
+        },
+        {
+          "caller": "embed_many",
+          "callee": "item.strip",
+          "lineNumber": 66
+        },
+        {
+          "caller": "embed_many",
+          "callee": "item.strip",
+          "lineNumber": 66
+        },
+        {
+          "caller": "embed_many",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 68
+        },
+        {
+          "caller": "embed_many",
+          "callee": "any",
+          "lineNumber": 69
+        },
+        {
+          "caller": "embed_many",
+          "callee": "len",
+          "lineNumber": 69
+        },
+        {
+          "caller": "embed_many",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 70
+        },
+        {
+          "caller": "embed_many",
+          "callee": "self._executor",
+          "lineNumber": 72
+        },
+        {
+          "caller": "embed_many",
+          "callee": "self._http_embed",
+          "lineNumber": 78
+        },
+        {
+          "caller": "embed_many",
+          "callee": "_validate_vectors",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "json.dumps(\n            {\"model\": self._model, \"input\": texts, \"dimensions\": self._dimensions},\n            separators=(\",\", \":\"),\n        ).encode",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "json.dumps",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "Request",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "urlopen",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "json.loads",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "response.read(8_388_608).decode",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "response.read",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "int",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "_LOG.warning",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "_LOG.error",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "payload.get",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "isinstance",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "isinstance",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "len",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "len",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "sorted",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "isinstance",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "int",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "item.get",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "list",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_http_embed",
+          "callee": "item.get",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "isinstance",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "len",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "isinstance",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "len",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "validated.append",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "float",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_validate_vectors",
+          "callee": "EmbeddingUnavailable",
+          "lineNumber": 130
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/platform.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 257,
+      "nonEmptyLines": 235,
+      "functions": [
+        {
+          "name": "_read_http_error_details",
+          "startLine": 152,
+          "endLine": 174,
+          "params": [
+            "error"
+          ]
+        },
+        {
+          "name": "_is_text_model",
+          "startLine": 177,
+          "endLine": 181,
+          "params": [
+            "identifier"
+          ]
+        },
+        {
+          "name": "_realtime_session",
+          "startLine": 184,
+          "endLine": 242,
+          "params": [
+            "model",
+            "instructions_extra",
+            "extra_tools",
+            "tool_definitions"
+          ]
+        },
+        {
+          "name": "_multipart",
+          "startLine": 245,
+          "endLine": 257,
+          "params": [
+            "boundary",
+            "fields"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ProviderModels",
+          "startLine": 16,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "text",
+            "realtime"
+          ]
+        },
+        {
+          "name": "OpenAIProviderError",
+          "startLine": 21,
+          "endLine": 33,
+          "methods": [
+            "__init__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "OpenAIPlatform",
+          "startLine": 36,
+          "endLine": 149,
+          "methods": [
+            "__init__",
+            "list_models",
+            "create_realtime_call",
+            "_request"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProviderModels",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "OpenAIProviderError",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "OpenAIPlatform",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "_read_http_error_details",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "_is_text_model",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "_realtime_session",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "_multipart",
+          "line": 245,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "hashlib.sha256(\n            f\"resono-r1:{safety_source}\".encode()\n        ).hexdigest",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "hashlib.sha256",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "f\"resono-r1:{safety_source}\".encode",
+          "lineNumber": 42
+        },
+        {
+          "caller": "list_models",
+          "callee": "_LOG.info",
+          "lineNumber": 46
+        },
+        {
+          "caller": "list_models",
+          "callee": "json.loads",
+          "lineNumber": 47
+        },
+        {
+          "caller": "list_models",
+          "callee": "self._request(\"GET\", \"/models\").decode",
+          "lineNumber": 47
+        },
+        {
+          "caller": "list_models",
+          "callee": "self._request",
+          "lineNumber": 47
+        },
+        {
+          "caller": "list_models",
+          "callee": "_LOG.info",
+          "lineNumber": 48
+        },
+        {
+          "caller": "list_models",
+          "callee": "sorted",
+          "lineNumber": 49
+        },
+        {
+          "caller": "list_models",
+          "callee": "str",
+          "lineNumber": 50
+        },
+        {
+          "caller": "list_models",
+          "callee": "item.get",
+          "lineNumber": 50
+        },
+        {
+          "caller": "list_models",
+          "callee": "payload.get",
+          "lineNumber": 51
+        },
+        {
+          "caller": "list_models",
+          "callee": "isinstance",
+          "lineNumber": 52
+        },
+        {
+          "caller": "list_models",
+          "callee": "item.get",
+          "lineNumber": 52
+        },
+        {
+          "caller": "list_models",
+          "callee": "tuple",
+          "lineNumber": 54
+        },
+        {
+          "caller": "list_models",
+          "callee": "item.startswith",
+          "lineNumber": 57
+        },
+        {
+          "caller": "list_models",
+          "callee": "tuple",
+          "lineNumber": 59
+        },
+        {
+          "caller": "list_models",
+          "callee": "_is_text_model",
+          "lineNumber": 59
+        },
+        {
+          "caller": "list_models",
+          "callee": "ProviderModels",
+          "lineNumber": 60
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "_LOG.info",
+          "lineNumber": 71
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "len",
+          "lineNumber": 73
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "offer_sdp.startswith",
+          "lineNumber": 75
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "len",
+          "lineNumber": 75
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "model.startswith",
+          "lineNumber": 77
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "len",
+          "lineNumber": 77
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 78
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "secrets.token_hex",
+          "lineNumber": 79
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "json.dumps",
+          "lineNumber": 80
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "_realtime_session",
+          "lineNumber": 81
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "_multipart",
+          "lineNumber": 89
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "self._request(\n            \"POST\",\n            \"/realtime/calls\",\n            body=body,\n            content_type=f\"multipart/form-data; boundary={boundary}\",\n        ).decode",
+          "lineNumber": 90
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "self._request",
+          "lineNumber": 90
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "_LOG.info",
+          "lineNumber": 96
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "len",
+          "lineNumber": 96
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "answer.startswith",
+          "lineNumber": 97
+        },
+        {
+          "caller": "create_realtime_call",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_request",
+          "callee": "_LOG.debug",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_request",
+          "callee": "bool",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_request",
+          "callee": "Request",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_request",
+          "callee": "urlopen",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_request",
+          "callee": "_LOG.info",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_request",
+          "callee": "response.read",
+          "lineNumber": 124
+        },
+        {
+          "caller": "_request",
+          "callee": "int",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_request",
+          "callee": "_read_http_error_details",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_request",
+          "callee": "_LOG.warning",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_request",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_request",
+          "callee": "_LOG.error",
+          "lineNumber": 143
+        },
+        {
+          "caller": "_request",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "error.read",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "json.loads",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "body.decode",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "body.decode",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "isinstance",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "payload.get",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "isinstance",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "openai_error.get",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "isinstance",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "value.strip",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "value.strip",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "payload.get",
+          "lineNumber": 171
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "isinstance",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "response.strip",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_read_http_error_details",
+          "callee": "response.strip",
+          "lineNumber": 173
+        },
+        {
+          "caller": "_is_text_model",
+          "callee": "identifier.startswith",
+          "lineNumber": 178
+        },
+        {
+          "caller": "_is_text_model",
+          "callee": "any",
+          "lineNumber": 181
+        },
+        {
+          "caller": "_realtime_session",
+          "callee": "list",
+          "lineNumber": 202
+        },
+        {
+          "caller": "_realtime_session",
+          "callee": "tools.extend",
+          "lineNumber": 215
+        },
+        {
+          "caller": "_multipart",
+          "callee": "chunks.extend",
+          "lineNumber": 248
+        },
+        {
+          "caller": "_multipart",
+          "callee": "f\"--{boundary}\\r\\n\".encode",
+          "lineNumber": 250
+        },
+        {
+          "caller": "_multipart",
+          "callee": "f'Content-Disposition: form-data; name=\"{name}\"\\r\\n\\r\\n'.encode",
+          "lineNumber": 251
+        },
+        {
+          "caller": "_multipart",
+          "callee": "value.encode",
+          "lineNumber": 252
+        },
+        {
+          "caller": "_multipart",
+          "callee": "chunks.append",
+          "lineNumber": 256
+        },
+        {
+          "caller": "_multipart",
+          "callee": "f\"--{boundary}--\\r\\n\".encode",
+          "lineNumber": 256
+        },
+        {
+          "caller": "_multipart",
+          "callee": "b\"\".join",
+          "lineNumber": 257
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 7,
+        "functionCount": 4,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/subscription.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 268,
+      "nonEmptyLines": 241,
+      "functions": [
+        {
+          "name": "_positive_int",
+          "startLine": 221,
+          "endLine": 226,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_post_json_status",
+          "startLine": 229,
+          "endLine": 244,
+          "params": [
+            "url",
+            "payload"
+          ]
+        },
+        {
+          "name": "_post_token",
+          "startLine": 247,
+          "endLine": 268,
+          "params": [
+            "url",
+            "payload",
+            "refresh"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SubscriptionAuthStart",
+          "startLine": 27,
+          "endLine": 32,
+          "methods": [],
+          "properties": [
+            "auth_session_id",
+            "verification_url",
+            "user_code",
+            "expires_at",
+            "poll_interval_seconds"
+          ]
+        },
+        {
+          "name": "_PendingAuth",
+          "startLine": 36,
+          "endLine": 40,
+          "methods": [],
+          "properties": [
+            "device_auth_id",
+            "user_code",
+            "expires_at",
+            "poll_interval_seconds"
+          ]
+        },
+        {
+          "name": "OpenAISubscription",
+          "startLine": 43,
+          "endLine": 218,
+          "methods": [
+            "__init__",
+            "status",
+            "start_auth",
+            "poll_auth",
+            "access_token",
+            "disconnect",
+            "_store_tokens",
+            "_discard_expired"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "SubscriptionAuthStart",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "_PendingAuth",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "OpenAISubscription",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "_positive_int",
+          "line": 221,
+          "isDefault": false
+        },
+        {
+          "name": "_post_json_status",
+          "line": 229,
+          "isDefault": false
+        },
+        {
+          "name": "_post_token",
+          "line": 247,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "threading.Lock",
+          "lineNumber": 59
+        },
+        {
+          "caller": "status",
+          "callee": "self._credentials.has_subscription",
+          "lineNumber": 62
+        },
+        {
+          "caller": "status",
+          "callee": "json.loads",
+          "lineNumber": 66
+        },
+        {
+          "caller": "status",
+          "callee": "self._credentials.subscription_tokens",
+          "lineNumber": 66
+        },
+        {
+          "caller": "status",
+          "callee": "_positive_int",
+          "lineNumber": 67
+        },
+        {
+          "caller": "status",
+          "callee": "payload.get",
+          "lineNumber": 67
+        },
+        {
+          "caller": "start_auth",
+          "callee": "self._device_transport",
+          "lineNumber": 78
+        },
+        {
+          "caller": "start_auth",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 82
+        },
+        {
+          "caller": "start_auth",
+          "callee": "payload.get",
+          "lineNumber": 85
+        },
+        {
+          "caller": "start_auth",
+          "callee": "payload.get",
+          "lineNumber": 86
+        },
+        {
+          "caller": "start_auth",
+          "callee": "payload.get",
+          "lineNumber": 86
+        },
+        {
+          "caller": "start_auth",
+          "callee": "isinstance",
+          "lineNumber": 87
+        },
+        {
+          "caller": "start_auth",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 88
+        },
+        {
+          "caller": "start_auth",
+          "callee": "isinstance",
+          "lineNumber": 91
+        },
+        {
+          "caller": "start_auth",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 92
+        },
+        {
+          "caller": "start_auth",
+          "callee": "min",
+          "lineNumber": 95
+        },
+        {
+          "caller": "start_auth",
+          "callee": "max",
+          "lineNumber": 95
+        },
+        {
+          "caller": "start_auth",
+          "callee": "_positive_int",
+          "lineNumber": 95
+        },
+        {
+          "caller": "start_auth",
+          "callee": "payload.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "start_auth",
+          "callee": "int",
+          "lineNumber": 96
+        },
+        {
+          "caller": "start_auth",
+          "callee": "self._clock",
+          "lineNumber": 96
+        },
+        {
+          "caller": "start_auth",
+          "callee": "secrets.token_urlsafe",
+          "lineNumber": 97
+        },
+        {
+          "caller": "start_auth",
+          "callee": "self._discard_expired",
+          "lineNumber": 99
+        },
+        {
+          "caller": "start_auth",
+          "callee": "_PendingAuth",
+          "lineNumber": 100
+        },
+        {
+          "caller": "start_auth",
+          "callee": "SubscriptionAuthStart",
+          "lineNumber": 106
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self._discard_expired",
+          "lineNumber": 116
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self._pending.get",
+          "lineNumber": 117
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 119
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self._device_transport",
+          "lineNumber": 122
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self._pending.pop",
+          "lineNumber": 130
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 131
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "payload.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "payload.get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "isinstance",
+          "lineNumber": 136
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 137
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "isinstance",
+          "lineNumber": 140
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 141
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self._token_transport",
+          "lineNumber": 144
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self._store_tokens",
+          "lineNumber": 155
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self._pending.pop",
+          "lineNumber": 157
+        },
+        {
+          "caller": "poll_auth",
+          "callee": "self.status",
+          "lineNumber": 161
+        },
+        {
+          "caller": "access_token",
+          "callee": "json.loads",
+          "lineNumber": 166
+        },
+        {
+          "caller": "access_token",
+          "callee": "self._credentials.subscription_tokens",
+          "lineNumber": 166
+        },
+        {
+          "caller": "access_token",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 168
+        },
+        {
+          "caller": "access_token",
+          "callee": "_positive_int",
+          "lineNumber": 171
+        },
+        {
+          "caller": "access_token",
+          "callee": "payload.get",
+          "lineNumber": 171
+        },
+        {
+          "caller": "access_token",
+          "callee": "int",
+          "lineNumber": 172
+        },
+        {
+          "caller": "access_token",
+          "callee": "self._clock",
+          "lineNumber": 172
+        },
+        {
+          "caller": "access_token",
+          "callee": "payload.get",
+          "lineNumber": 173
+        },
+        {
+          "caller": "access_token",
+          "callee": "isinstance",
+          "lineNumber": 174
+        },
+        {
+          "caller": "access_token",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 175
+        },
+        {
+          "caller": "access_token",
+          "callee": "self._token_transport",
+          "lineNumber": 178
+        },
+        {
+          "caller": "access_token",
+          "callee": "self._store_tokens",
+          "lineNumber": 185
+        },
+        {
+          "caller": "access_token",
+          "callee": "payload.get",
+          "lineNumber": 187
+        },
+        {
+          "caller": "access_token",
+          "callee": "isinstance",
+          "lineNumber": 188
+        },
+        {
+          "caller": "access_token",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 189
+        },
+        {
+          "caller": "disconnect",
+          "callee": "self._credentials.disconnect_subscription",
+          "lineNumber": 195
+        },
+        {
+          "caller": "disconnect",
+          "callee": "self._pending.clear",
+          "lineNumber": 197
+        },
+        {
+          "caller": "disconnect",
+          "callee": "self.status",
+          "lineNumber": 198
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "payload.get",
+          "lineNumber": 201
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "isinstance",
+          "lineNumber": 202
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 203
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "dict",
+          "lineNumber": 206
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "_positive_int",
+          "lineNumber": 207
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "stored.get",
+          "lineNumber": 207
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "int",
+          "lineNumber": 209
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "self._clock",
+          "lineNumber": 209
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "self._credentials.connect_subscription",
+          "lineNumber": 210
+        },
+        {
+          "caller": "_store_tokens",
+          "callee": "json.dumps",
+          "lineNumber": 210
+        },
+        {
+          "caller": "_discard_expired",
+          "callee": "int",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_discard_expired",
+          "callee": "self._clock",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_discard_expired",
+          "callee": "self._pending.items",
+          "lineNumber": 216
+        },
+        {
+          "caller": "_positive_int",
+          "callee": "int",
+          "lineNumber": 223
+        },
+        {
+          "caller": "_post_json_status",
+          "callee": "httpx.post",
+          "lineNumber": 233
+        },
+        {
+          "caller": "_post_json_status",
+          "callee": "response.json",
+          "lineNumber": 239
+        },
+        {
+          "caller": "_post_json_status",
+          "callee": "int",
+          "lineNumber": 240
+        },
+        {
+          "caller": "_post_json_status",
+          "callee": "isinstance",
+          "lineNumber": 240
+        },
+        {
+          "caller": "_post_json_status",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 242
+        },
+        {
+          "caller": "_post_token",
+          "callee": "httpx.post",
+          "lineNumber": 252
+        },
+        {
+          "caller": "_post_token",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 254
+        },
+        {
+          "caller": "_post_token",
+          "callee": "int",
+          "lineNumber": 257
+        },
+        {
+          "caller": "_post_token",
+          "callee": "response.json",
+          "lineNumber": 259
+        },
+        {
+          "caller": "_post_token",
+          "callee": "isinstance",
+          "lineNumber": 260
+        },
+        {
+          "caller": "_post_token",
+          "callee": "ValueError",
+          "lineNumber": 261
+        },
+        {
+          "caller": "_post_token",
+          "callee": "OpenAIProviderError",
+          "lineNumber": 266
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 3,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/providers/openai/web_search.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 119,
+      "nonEmptyLines": 104,
+      "functions": [
+        {
+          "name": "_run_search",
+          "startLine": 65,
+          "endLine": 99,
+          "params": [
+            "query",
+            "api_key",
+            "base_url"
+          ]
+        },
+        {
+          "name": "_citations_from_responses",
+          "startLine": 102,
+          "endLine": 119,
+          "params": [
+            "responses"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "OpenAIWebSearch",
+          "startLine": 18,
+          "endLine": 62,
+          "methods": [
+            "__init__",
+            "available",
+            "search"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "OpenAIWebSearch",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "_run_search",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "_citations_from_responses",
+          "line": 102,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "available",
+          "callee": "openai_provider_access",
+          "lineNumber": 33
+        },
+        {
+          "caller": "available",
+          "callee": "bool",
+          "lineNumber": 38
+        },
+        {
+          "caller": "search",
+          "callee": "\" \".join",
+          "lineNumber": 43
+        },
+        {
+          "caller": "search",
+          "callee": "query.split",
+          "lineNumber": 43
+        },
+        {
+          "caller": "search",
+          "callee": "len",
+          "lineNumber": 44
+        },
+        {
+          "caller": "search",
+          "callee": "ValueError",
+          "lineNumber": 45
+        },
+        {
+          "caller": "search",
+          "callee": "openai_provider_access",
+          "lineNumber": 46
+        },
+        {
+          "caller": "search",
+          "callee": "asyncio.run",
+          "lineNumber": 52
+        },
+        {
+          "caller": "search",
+          "callee": "_run_search",
+          "lineNumber": 53
+        },
+        {
+          "caller": "search",
+          "callee": "getattr",
+          "lineNumber": 60
+        },
+        {
+          "caller": "search",
+          "callee": "isinstance",
+          "lineNumber": 61
+        },
+        {
+          "caller": "search",
+          "callee": "RuntimeError",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_run_search",
+          "callee": "set_tracing_disabled",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_run_search",
+          "callee": "OpenAIProvider",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_run_search",
+          "callee": "Agent",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_run_search",
+          "callee": "ModelSettings",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_run_search",
+          "callee": "WebSearchTool",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_run_search",
+          "callee": "RunConfig",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_run_search",
+          "callee": "Runner.run_streamed",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_run_search",
+          "callee": "result.stream_events",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_run_search",
+          "callee": "Runner.run",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_run_search",
+          "callee": "str(result.final_output or \"\").strip",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_run_search",
+          "callee": "str",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_run_search",
+          "callee": "_citations_from_responses",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_run_search",
+          "callee": "RuntimeError",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_run_search",
+          "callee": "RuntimeError",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "set",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "getattr",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "getattr",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "isinstance",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "getattr",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "isinstance",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "getattr",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "isinstance",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "url.startswith",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "seen.add",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "getattr",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "citations.append",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "isinstance",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_citations_from_responses",
+          "callee": "len",
+          "lineNumber": 117
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/security/credentials.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "_record_name",
+          "startLine": 78,
+          "endLine": 84,
+          "params": [
+            "connection_id"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CredentialBridge",
+          "startLine": 6,
+          "endLine": 16,
+          "methods": [
+            "hasOpenAiPlatformKey",
+            "getOpenAiPlatformKey",
+            "putOpenAiPlatformKey",
+            "deleteOpenAiPlatformKey",
+            "hasOpenAiSubscriptionTokens",
+            "getOpenAiSubscriptionTokens",
+            "putOpenAiSubscriptionTokens",
+            "deleteOpenAiSubscriptionTokens",
+            "sealConnectionCredential",
+            "openConnectionCredential"
+          ],
+          "properties": []
+        },
+        {
+          "name": "ProviderCredentials",
+          "startLine": 19,
+          "endLine": 51,
+          "methods": [
+            "__init__",
+            "has_platform_key",
+            "platform_key",
+            "connect_platform",
+            "disconnect_platform",
+            "has_subscription",
+            "subscription_tokens",
+            "connect_subscription",
+            "disconnect_subscription"
+          ],
+          "properties": []
+        },
+        {
+          "name": "CredentialUnavailable",
+          "startLine": 54,
+          "endLine": 55,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ConnectionCredentialEnvelopes",
+          "startLine": 58,
+          "endLine": 75,
+          "methods": [
+            "__init__",
+            "seal",
+            "open"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CredentialBridge",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "ProviderCredentials",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "CredentialUnavailable",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "ConnectionCredentialEnvelopes",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "_record_name",
+          "line": 78,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "has_platform_key",
+          "callee": "bool",
+          "lineNumber": 24
+        },
+        {
+          "caller": "has_platform_key",
+          "callee": "self._bridge.hasOpenAiPlatformKey",
+          "lineNumber": 24
+        },
+        {
+          "caller": "platform_key",
+          "callee": "self._bridge.getOpenAiPlatformKey",
+          "lineNumber": 27
+        },
+        {
+          "caller": "platform_key",
+          "callee": "CredentialUnavailable",
+          "lineNumber": 29
+        },
+        {
+          "caller": "platform_key",
+          "callee": "str",
+          "lineNumber": 30
+        },
+        {
+          "caller": "connect_platform",
+          "callee": "self._bridge.putOpenAiPlatformKey",
+          "lineNumber": 33
+        },
+        {
+          "caller": "disconnect_platform",
+          "callee": "self._bridge.deleteOpenAiPlatformKey",
+          "lineNumber": 36
+        },
+        {
+          "caller": "has_subscription",
+          "callee": "bool",
+          "lineNumber": 39
+        },
+        {
+          "caller": "has_subscription",
+          "callee": "self._bridge.hasOpenAiSubscriptionTokens",
+          "lineNumber": 39
+        },
+        {
+          "caller": "subscription_tokens",
+          "callee": "self._bridge.getOpenAiSubscriptionTokens",
+          "lineNumber": 42
+        },
+        {
+          "caller": "subscription_tokens",
+          "callee": "CredentialUnavailable",
+          "lineNumber": 44
+        },
+        {
+          "caller": "subscription_tokens",
+          "callee": "str",
+          "lineNumber": 45
+        },
+        {
+          "caller": "connect_subscription",
+          "callee": "self._bridge.putOpenAiSubscriptionTokens",
+          "lineNumber": 48
+        },
+        {
+          "caller": "disconnect_subscription",
+          "callee": "self._bridge.deleteOpenAiSubscriptionTokens",
+          "lineNumber": 51
+        },
+        {
+          "caller": "seal",
+          "callee": "ValueError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "seal",
+          "callee": "str",
+          "lineNumber": 67
+        },
+        {
+          "caller": "seal",
+          "callee": "self._bridge.sealConnectionCredential",
+          "lineNumber": 67
+        },
+        {
+          "caller": "seal",
+          "callee": "_record_name",
+          "lineNumber": 67
+        },
+        {
+          "caller": "open",
+          "callee": "CredentialUnavailable",
+          "lineNumber": 71
+        },
+        {
+          "caller": "open",
+          "callee": "self._bridge.openConnectionCredential",
+          "lineNumber": 72
+        },
+        {
+          "caller": "open",
+          "callee": "_record_name",
+          "lineNumber": 72
+        },
+        {
+          "caller": "open",
+          "callee": "CredentialUnavailable",
+          "lineNumber": 74
+        },
+        {
+          "caller": "open",
+          "callee": "str",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_record_name",
+          "callee": "str",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_record_name",
+          "callee": "UUID",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_record_name",
+          "callee": "ValueError",
+          "lineNumber": 83
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 1,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/storage/memory.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 308,
+      "nonEmptyLines": 282,
+      "functions": [
+        {
+          "name": "_pack_format",
+          "startLine": 267,
+          "endLine": 268,
+          "params": [
+            "dimensions"
+          ]
+        },
+        {
+          "name": "_record",
+          "startLine": 271,
+          "endLine": 293,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_embedding",
+          "startLine": 296,
+          "endLine": 308,
+          "params": [
+            "row"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MemoryRecord",
+          "startLine": 17,
+          "endLine": 28,
+          "methods": [],
+          "properties": [
+            "memory_id",
+            "session_id",
+            "memory_class",
+            "memory_key",
+            "content_text",
+            "confidence",
+            "sensitivity",
+            "status",
+            "metadata",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        {
+          "name": "MemoryEmbedding",
+          "startLine": 32,
+          "endLine": 39,
+          "methods": [],
+          "properties": [
+            "source_id",
+            "source_type",
+            "embedding_model_key",
+            "dimensions",
+            "embedding",
+            "content_text",
+            "created_at"
+          ]
+        },
+        {
+          "name": "MemoryRepository",
+          "startLine": 42,
+          "endLine": 264,
+          "methods": [
+            "__init__",
+            "store_memory",
+            "memory",
+            "list_memories",
+            "store_embedding",
+            "embeddings_for",
+            "embedding",
+            "delete_memory",
+            "delete_session_memories",
+            "delete_session_summary_embedding"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MemoryRecord",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "MemoryEmbedding",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "MemoryRepository",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "_pack_format",
+          "line": 267,
+          "isDefault": false
+        },
+        {
+          "name": "_record",
+          "line": 271,
+          "isDefault": false
+        },
+        {
+          "name": "_embedding",
+          "line": 296,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "store_memory",
+          "callee": "memory_class.strip().lower",
+          "lineNumber": 59
+        },
+        {
+          "caller": "store_memory",
+          "callee": "memory_class.strip",
+          "lineNumber": 59
+        },
+        {
+          "caller": "store_memory",
+          "callee": "memory_key.strip().lower",
+          "lineNumber": 60
+        },
+        {
+          "caller": "store_memory",
+          "callee": "memory_key.strip",
+          "lineNumber": 60
+        },
+        {
+          "caller": "store_memory",
+          "callee": "content_text.strip",
+          "lineNumber": 61
+        },
+        {
+          "caller": "store_memory",
+          "callee": "ValueError",
+          "lineNumber": 63
+        },
+        {
+          "caller": "store_memory",
+          "callee": "len",
+          "lineNumber": 64
+        },
+        {
+          "caller": "store_memory",
+          "callee": "ValueError",
+          "lineNumber": 65
+        },
+        {
+          "caller": "store_memory",
+          "callee": "confidence.strip().lower",
+          "lineNumber": 66
+        },
+        {
+          "caller": "store_memory",
+          "callee": "confidence.strip",
+          "lineNumber": 66
+        },
+        {
+          "caller": "store_memory",
+          "callee": "ValueError",
+          "lineNumber": 68
+        },
+        {
+          "caller": "store_memory",
+          "callee": "sensitivity.strip().lower",
+          "lineNumber": 69
+        },
+        {
+          "caller": "store_memory",
+          "callee": "sensitivity.strip",
+          "lineNumber": 69
+        },
+        {
+          "caller": "store_memory",
+          "callee": "ValueError",
+          "lineNumber": 71
+        },
+        {
+          "caller": "store_memory",
+          "callee": "json.dumps",
+          "lineNumber": 72
+        },
+        {
+          "caller": "store_memory",
+          "callee": "secrets.token_hex",
+          "lineNumber": 73
+        },
+        {
+          "caller": "store_memory",
+          "callee": "self._database.connect",
+          "lineNumber": 74
+        },
+        {
+          "caller": "store_memory",
+          "callee": "connection.execute",
+          "lineNumber": 75
+        },
+        {
+          "caller": "store_memory",
+          "callee": "connection.execute(\n                \"SELECT memory_id FROM memory_records \"\n                \"WHERE session_id IS ? AND memory_class = ? AND memory_key = ?\",\n                (session_id, normalized_class, normalized_key),\n            ).fetchone",
+          "lineNumber": 76
+        },
+        {
+          "caller": "store_memory",
+          "callee": "connection.execute",
+          "lineNumber": 76
+        },
+        {
+          "caller": "store_memory",
+          "callee": "str",
+          "lineNumber": 82
+        },
+        {
+          "caller": "store_memory",
+          "callee": "connection.execute",
+          "lineNumber": 83
+        },
+        {
+          "caller": "store_memory",
+          "callee": "connection.execute",
+          "lineNumber": 91
+        },
+        {
+          "caller": "store_memory",
+          "callee": "connection.commit",
+          "lineNumber": 108
+        },
+        {
+          "caller": "store_memory",
+          "callee": "self.memory",
+          "lineNumber": 109
+        },
+        {
+          "caller": "memory",
+          "callee": "self._database.connect",
+          "lineNumber": 114
+        },
+        {
+          "caller": "memory",
+          "callee": "connection.execute(\n                \"SELECT memory_id, session_id, memory_class, memory_key, content_text, \"\n                \"confidence, sensitivity, status, metadata_json, created_at, updated_at \"\n                \"FROM memory_records WHERE memory_id = ?\",\n                (memory_id,),\n            ).fetchone",
+          "lineNumber": 115
+        },
+        {
+          "caller": "memory",
+          "callee": "connection.execute",
+          "lineNumber": 115
+        },
+        {
+          "caller": "memory",
+          "callee": "_record",
+          "lineNumber": 121
+        },
+        {
+          "caller": "list_memories",
+          "callee": "self._database.connect",
+          "lineNumber": 124
+        },
+        {
+          "caller": "list_memories",
+          "callee": "connection.execute(\n                    \"SELECT memory_id, session_id, memory_class, memory_key, content_text, \"\n                    \"confidence, sensitivity, status, metadata_json, created_at, updated_at \"\n                    \"FROM memory_records WHERE status = 'active' \"\n                    \"ORDER BY created_at DESC\"\n                ).fetchall",
+          "lineNumber": 126
+        },
+        {
+          "caller": "list_memories",
+          "callee": "connection.execute",
+          "lineNumber": 126
+        },
+        {
+          "caller": "list_memories",
+          "callee": "connection.execute(\n                    \"SELECT memory_id, session_id, memory_class, memory_key, content_text, \"\n                    \"confidence, sensitivity, status, metadata_json, created_at, updated_at \"\n                    \"FROM memory_records WHERE status = 'active' AND session_id = ? \"\n                    \"ORDER BY created_at DESC\",\n                    (session_id,),\n                ).fetchall",
+          "lineNumber": 133
+        },
+        {
+          "caller": "list_memories",
+          "callee": "connection.execute",
+          "lineNumber": 133
+        },
+        {
+          "caller": "list_memories",
+          "callee": "tuple",
+          "lineNumber": 140
+        },
+        {
+          "caller": "list_memories",
+          "callee": "_record",
+          "lineNumber": 140
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "len",
+          "lineNumber": 152
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "ValueError",
+          "lineNumber": 153
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "struct.pack",
+          "lineNumber": 154
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "_pack_format",
+          "lineNumber": 154
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "self._database.connect",
+          "lineNumber": 155
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "connection.execute",
+          "lineNumber": 156
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "int",
+          "lineNumber": 169
+        },
+        {
+          "caller": "store_embedding",
+          "callee": "connection.commit",
+          "lineNumber": 174
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "self._database.connect",
+          "lineNumber": 177
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute(\n                        \"SELECT e.source_id, e.source_type, e.embedding_model_key, e.dimensions, \"\n                        \"e.embedding, e.content_text, e.created_at \"\n                        \"FROM memory_embeddings e \"\n                        \"JOIN memory_records m ON m.memory_id = e.source_id \"\n                        \"WHERE e.source_type = ? AND m.status = 'active'\",\n                        (source_type,),\n                    ).fetchall",
+          "lineNumber": 180
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute",
+          "lineNumber": 180
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute(\n                        \"SELECT e.source_id, e.source_type, e.embedding_model_key, e.dimensions, \"\n                        \"e.embedding, e.content_text, e.created_at \"\n                        \"FROM memory_embeddings e \"\n                        \"JOIN memory_records m ON m.memory_id = e.source_id \"\n                        \"WHERE e.source_type = ? AND e.embedding_model_key = ? AND m.status = 'active'\",\n                        (source_type, model_key),\n                    ).fetchall",
+          "lineNumber": 189
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute",
+          "lineNumber": 189
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute(\n                        \"SELECT source_id, source_type, embedding_model_key, dimensions, \"\n                        \"embedding, content_text, created_at \"\n                        \"FROM memory_embeddings WHERE source_type = ?\",\n                        (source_type,),\n                    ).fetchall",
+          "lineNumber": 199
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute",
+          "lineNumber": 199
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute(\n                        \"SELECT source_id, source_type, embedding_model_key, dimensions, \"\n                        \"embedding, content_text, created_at \"\n                        \"FROM memory_embeddings WHERE source_type = ? AND embedding_model_key = ?\",\n                        (source_type, model_key),\n                    ).fetchall",
+          "lineNumber": 206
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "connection.execute",
+          "lineNumber": 206
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "tuple",
+          "lineNumber": 212
+        },
+        {
+          "caller": "embeddings_for",
+          "callee": "_embedding",
+          "lineNumber": 212
+        },
+        {
+          "caller": "embedding",
+          "callee": "self._database.connect",
+          "lineNumber": 215
+        },
+        {
+          "caller": "embedding",
+          "callee": "connection.execute(\n                \"SELECT source_id, source_type, embedding_model_key, dimensions, \"\n                \"embedding, content_text, created_at \"\n                \"FROM memory_embeddings WHERE source_id = ? AND source_type = ?\",\n                (source_id, source_type),\n            ).fetchone",
+          "lineNumber": 216
+        },
+        {
+          "caller": "embedding",
+          "callee": "connection.execute",
+          "lineNumber": 216
+        },
+        {
+          "caller": "embedding",
+          "callee": "_embedding",
+          "lineNumber": 222
+        },
+        {
+          "caller": "delete_memory",
+          "callee": "self._database.connect",
+          "lineNumber": 226
+        },
+        {
+          "caller": "delete_memory",
+          "callee": "connection.execute(\n                \"SELECT 1 FROM memory_records WHERE memory_id = ?\", (memory_id,)\n            ).fetchone",
+          "lineNumber": 227
+        },
+        {
+          "caller": "delete_memory",
+          "callee": "connection.execute",
+          "lineNumber": 227
+        },
+        {
+          "caller": "delete_memory",
+          "callee": "connection.execute",
+          "lineNumber": 232
+        },
+        {
+          "caller": "delete_memory",
+          "callee": "connection.execute",
+          "lineNumber": 233
+        },
+        {
+          "caller": "delete_memory",
+          "callee": "connection.commit",
+          "lineNumber": 234
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "self._database.connect",
+          "lineNumber": 239
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "connection.execute(\n                \"SELECT memory_id FROM memory_records WHERE session_id = ?\", (session_id,)\n            ).fetchall",
+          "lineNumber": 240
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "connection.execute",
+          "lineNumber": 240
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "tuple",
+          "lineNumber": 243
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "str",
+          "lineNumber": 243
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "\",\".join",
+          "lineNumber": 245
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "connection.execute",
+          "lineNumber": 246
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "connection.execute",
+          "lineNumber": 250
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "connection.commit",
+          "lineNumber": 254
+        },
+        {
+          "caller": "delete_session_memories",
+          "callee": "len",
+          "lineNumber": 255
+        },
+        {
+          "caller": "delete_session_summary_embedding",
+          "callee": "self._database.connect",
+          "lineNumber": 259
+        },
+        {
+          "caller": "delete_session_summary_embedding",
+          "callee": "connection.execute",
+          "lineNumber": 260
+        },
+        {
+          "caller": "delete_session_summary_embedding",
+          "callee": "connection.commit",
+          "lineNumber": 264
+        },
+        {
+          "caller": "_pack_format",
+          "callee": "int",
+          "lineNumber": 268
+        },
+        {
+          "caller": "_record",
+          "callee": "json.loads",
+          "lineNumber": 276
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 276
+        },
+        {
+          "caller": "_record",
+          "callee": "isinstance",
+          "lineNumber": 277
+        },
+        {
+          "caller": "_record",
+          "callee": "MemoryRecord",
+          "lineNumber": 281
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 282
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 283
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 284
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 285
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 286
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 287
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 288
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 289
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 291
+        },
+        {
+          "caller": "_record",
+          "callee": "str",
+          "lineNumber": 292
+        },
+        {
+          "caller": "_embedding",
+          "callee": "int",
+          "lineNumber": 297
+        },
+        {
+          "caller": "_embedding",
+          "callee": "struct.unpack",
+          "lineNumber": 299
+        },
+        {
+          "caller": "_embedding",
+          "callee": "_pack_format",
+          "lineNumber": 299
+        },
+        {
+          "caller": "_embedding",
+          "callee": "bytes",
+          "lineNumber": 299
+        },
+        {
+          "caller": "_embedding",
+          "callee": "MemoryEmbedding",
+          "lineNumber": 300
+        },
+        {
+          "caller": "_embedding",
+          "callee": "str",
+          "lineNumber": 301
+        },
+        {
+          "caller": "_embedding",
+          "callee": "str",
+          "lineNumber": 302
+        },
+        {
+          "caller": "_embedding",
+          "callee": "str",
+          "lineNumber": 303
+        },
+        {
+          "caller": "_embedding",
+          "callee": "list",
+          "lineNumber": 305
+        },
+        {
+          "caller": "_embedding",
+          "callee": "str",
+          "lineNumber": 306
+        },
+        {
+          "caller": "_embedding",
+          "callee": "str",
+          "lineNumber": 307
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 3,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/storage/provider_settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 90,
+      "classes": [
+        {
+          "name": "ProviderSelection",
+          "startLine": 18,
+          "endLine": 23,
+          "methods": [],
+          "properties": [
+            "provider",
+            "text_model",
+            "realtime_model",
+            "access_path",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "ProviderSettingsRepository",
+          "startLine": 26,
+          "endLine": 104,
+          "methods": [
+            "__init__",
+            "selection",
+            "save",
+            "save_access_path",
+            "clear",
+            "set_provider"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ProviderSelection",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "ProviderSettingsRepository",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "selection",
+          "callee": "self._database.connect",
+          "lineNumber": 31
+        },
+        {
+          "caller": "selection",
+          "callee": "connection.execute(\n                \"SELECT setting_key, setting_value FROM provider_settings \"\n                \"WHERE setting_key IN (?, ?, ?, ?, ?)\",\n                (_TEXT_MODEL, _REALTIME_MODEL, _ACCESS_PATH, _REASONING_EFFORT, _PROVIDER),\n            ).fetchall",
+          "lineNumber": 32
+        },
+        {
+          "caller": "selection",
+          "callee": "connection.execute",
+          "lineNumber": 32
+        },
+        {
+          "caller": "selection",
+          "callee": "str",
+          "lineNumber": 37
+        },
+        {
+          "caller": "selection",
+          "callee": "str",
+          "lineNumber": 37
+        },
+        {
+          "caller": "selection",
+          "callee": "ProviderSelection",
+          "lineNumber": 38
+        },
+        {
+          "caller": "selection",
+          "callee": "values.get",
+          "lineNumber": 39
+        },
+        {
+          "caller": "selection",
+          "callee": "values.get",
+          "lineNumber": 40
+        },
+        {
+          "caller": "selection",
+          "callee": "values.get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "selection",
+          "callee": "values.get",
+          "lineNumber": 42
+        },
+        {
+          "caller": "selection",
+          "callee": "values.get",
+          "lineNumber": 43
+        },
+        {
+          "caller": "save",
+          "callee": "ValueError",
+          "lineNumber": 55
+        },
+        {
+          "caller": "save",
+          "callee": "self._database.connect",
+          "lineNumber": 62
+        },
+        {
+          "caller": "save",
+          "callee": "connection.execute",
+          "lineNumber": 68
+        },
+        {
+          "caller": "save",
+          "callee": "connection.commit",
+          "lineNumber": 75
+        },
+        {
+          "caller": "save",
+          "callee": "self.selection",
+          "lineNumber": 76
+        },
+        {
+          "caller": "save_access_path",
+          "callee": "ValueError",
+          "lineNumber": 80
+        },
+        {
+          "caller": "save_access_path",
+          "callee": "self._database.connect",
+          "lineNumber": 81
+        },
+        {
+          "caller": "save_access_path",
+          "callee": "connection.execute",
+          "lineNumber": 82
+        },
+        {
+          "caller": "save_access_path",
+          "callee": "connection.commit",
+          "lineNumber": 89
+        },
+        {
+          "caller": "save_access_path",
+          "callee": "self.selection",
+          "lineNumber": 90
+        },
+        {
+          "caller": "clear",
+          "callee": "self._database.connect",
+          "lineNumber": 93
+        },
+        {
+          "caller": "clear",
+          "callee": "connection.execute",
+          "lineNumber": 94
+        },
+        {
+          "caller": "clear",
+          "callee": "connection.commit",
+          "lineNumber": 98
+        },
+        {
+          "caller": "set_provider",
+          "callee": "provider.strip().lower",
+          "lineNumber": 101
+        },
+        {
+          "caller": "set_provider",
+          "callee": "provider.strip",
+          "lineNumber": 101
+        },
+        {
+          "caller": "set_provider",
+          "callee": "ValueError",
+          "lineNumber": 103
+        },
+        {
+          "caller": "set_provider",
+          "callee": "self.save",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    }
+  ]
+}

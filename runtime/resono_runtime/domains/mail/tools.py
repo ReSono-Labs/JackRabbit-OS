@@ -118,6 +118,12 @@ def _description(name: str) -> str:
         return "Create a pending email draft. Read the exact recipients, subject, and body to the user and ask whether it is okay to send. This does not send mail." + account_guidance
     if name == "email_send_pending":
         return "Send the exact pending email only after the user explicitly approves the reviewed draft in their latest Voice utterance."
+    if name in {"email_check", "email_get_unread", "email_search"}:
+        return (name.replace("email_", "").replace("_", " ").capitalize()
+                + " in Inbox by default. Use another folder only when the user explicitly asks for it."
+                + account_guidance)
+    if name == "email_contact_lookup":
+        return "Find senders from Inbox messages. Search another folder only when the user explicitly asks for it." + account_guidance
     return name.replace("email_", "").replace("_", " ").capitalize() + " using the local synchronized Mail service." + account_guidance
 
 

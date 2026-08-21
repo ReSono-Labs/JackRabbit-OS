@@ -1,0 +1,1490 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "RuntimeStartupLimiter",
+          "startLine": 14,
+          "endLine": 17,
+          "params": [
+            "context"
+          ]
+        },
+        {
+          "name": "mayStart",
+          "startLine": 19,
+          "endLine": 27,
+          "params": [
+            "now"
+          ]
+        },
+        {
+          "name": "recordFailure",
+          "startLine": 29,
+          "endLine": 40,
+          "params": [
+            "now"
+          ]
+        },
+        {
+          "name": "recordHealthy",
+          "startLine": 42,
+          "endLine": 44,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "RuntimeStartupLimiter",
+          "startLine": 6,
+          "endLine": 45,
+          "methods": [
+            "RuntimeStartupLimiter",
+            "mayStart",
+            "recordFailure",
+            "recordHealthy"
+          ],
+          "properties": [
+            "STORE",
+            "FIRST_FAILURE",
+            "FAILURE_COUNT",
+            "MAX_FAILURES",
+            "WINDOW_MILLIS",
+            "preferences"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "RuntimeStartupLimiter",
+          "callee": "context.createDeviceProtectedStorageContext().getSharedPreferences",
+          "lineNumber": 15
+        },
+        {
+          "caller": "RuntimeStartupLimiter",
+          "callee": "context.createDeviceProtectedStorageContext",
+          "lineNumber": 15
+        },
+        {
+          "caller": "mayStart",
+          "callee": "preferences.getLong",
+          "lineNumber": 20
+        },
+        {
+          "caller": "mayStart",
+          "callee": "preferences.getInt",
+          "lineNumber": 21
+        },
+        {
+          "caller": "mayStart",
+          "callee": "preferences.edit().clear().apply",
+          "lineNumber": 23
+        },
+        {
+          "caller": "mayStart",
+          "callee": "preferences.edit().clear",
+          "lineNumber": 23
+        },
+        {
+          "caller": "mayStart",
+          "callee": "preferences.edit",
+          "lineNumber": 23
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "preferences.getLong",
+          "lineNumber": 30
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "preferences.getInt",
+          "lineNumber": 31
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "preferences.edit()\n                .putLong(FIRST_FAILURE, first)\n                .putInt(FAILURE_COUNT, count + 1).apply",
+          "lineNumber": 36
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "preferences.edit()\n                .putLong(FIRST_FAILURE, first).putInt",
+          "lineNumber": 36
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "preferences.edit().putLong",
+          "lineNumber": 36
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "preferences.edit",
+          "lineNumber": 36
+        },
+        {
+          "caller": "recordHealthy",
+          "callee": "preferences.edit().clear().apply",
+          "lineNumber": 43
+        },
+        {
+          "caller": "recordHealthy",
+          "callee": "preferences.edit().clear",
+          "lineNumber": 43
+        },
+        {
+          "caller": "recordHealthy",
+          "callee": "preferences.edit",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "android/runtime-host/wheels/jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl",
+      "language": "whl",
+      "fileCategory": "code",
+      "totalLines": 1075,
+      "nonEmptyLines": 1075,
+      "metrics": {}
+    },
+    {
+      "path": "android/runtime-host/wheels/pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl",
+      "language": "whl",
+      "fileCategory": "code",
+      "totalLines": 5532,
+      "nonEmptyLines": 5520,
+      "metrics": {}
+    },
+    {
+      "path": "android/runtime-host/wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl",
+      "language": "whl",
+      "fileCategory": "code",
+      "totalLines": 1148,
+      "nonEmptyLines": 1145,
+      "metrics": {}
+    },
+    {
+      "path": "android/settings.gradle.kts",
+      "language": "kotlin",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 30,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "android/system/motor-service/build.gradle.kts",
+      "language": "kotlin",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 20,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "android/system/motor-service/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "fileCategory": "config",
+      "totalLines": 19,
+      "nonEmptyLines": 19,
+      "metrics": {}
+    },
+    {
+      "path": "android/system/motor-service/src/main/java/com/resonolabs/hardware/R1MotorService.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 233,
+      "nonEmptyLines": 208,
+      "functions": [
+        {
+          "name": "onCreate",
+          "startLine": 58,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "enforceAuthorizedCaller",
+          "startLine": 85,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "packageCertificateSha256",
+          "startLine": 99,
+          "endLine": 116,
+          "params": [
+            "packageName"
+          ]
+        },
+        {
+          "name": "rawPositionFor",
+          "startLine": 118,
+          "endLine": 125,
+          "params": [
+            "namedPosition"
+          ]
+        },
+        {
+          "name": "performMove",
+          "startLine": 127,
+          "endLine": 157,
+          "params": [
+            "namedPosition",
+            "rawPosition",
+            "callback"
+          ]
+        },
+        {
+          "name": "reportedPositionMatches",
+          "startLine": 159,
+          "endLine": 162,
+          "params": [
+            "reported",
+            "expectedRawPosition"
+          ]
+        },
+        {
+          "name": "requiresPrivacyWaypoint",
+          "startLine": 164,
+          "endLine": 169,
+          "params": [
+            "reported",
+            "targetRawPosition"
+          ]
+        },
+        {
+          "name": "moveAndConfirm",
+          "startLine": 171,
+          "endLine": 178,
+          "params": [
+            "rawPosition",
+            "stage"
+          ]
+        },
+        {
+          "name": "awaitReportedPosition",
+          "startLine": 184,
+          "endLine": 193,
+          "params": [
+            "expectedRawPosition"
+          ]
+        },
+        {
+          "name": "notifyState",
+          "startLine": 195,
+          "endLine": 198,
+          "params": [
+            "callback",
+            "state",
+            "position"
+          ]
+        },
+        {
+          "name": "bestEffortPrivacy",
+          "startLine": 200,
+          "endLine": 204,
+          "params": []
+        },
+        {
+          "name": "writeOrientation",
+          "startLine": 206,
+          "endLine": 211,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "readOrientation",
+          "startLine": 213,
+          "endLine": 219,
+          "params": []
+        },
+        {
+          "name": "onBind",
+          "startLine": 221,
+          "endLine": 221,
+          "params": [
+            "intent"
+          ]
+        },
+        {
+          "name": "onTaskRemoved",
+          "startLine": 223,
+          "endLine": 226,
+          "params": [
+            "rootIntent"
+          ]
+        },
+        {
+          "name": "onDestroy",
+          "startLine": 228,
+          "endLine": 232,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "R1MotorService",
+          "startLine": 28,
+          "endLine": 233,
+          "methods": [
+            "onCreate",
+            "enforceAuthorizedCaller",
+            "packageCertificateSha256",
+            "rawPositionFor",
+            "performMove",
+            "reportedPositionMatches",
+            "requiresPrivacyWaypoint",
+            "moveAndConfirm",
+            "awaitReportedPosition",
+            "notifyState",
+            "bestEffortPrivacy",
+            "writeOrientation",
+            "readOrientation",
+            "onBind",
+            "onTaskRemoved",
+            "onDestroy"
+          ],
+          "properties": [
+            "LOG_TAG",
+            "POSITION_OUTWARD",
+            "POSITION_HOME",
+            "POSITION_INWARD",
+            "STATE_MOVING",
+            "STATE_AT_POSITION",
+            "STATE_FAILED",
+            "R1_OUTWARD",
+            "R1_INWARD",
+            "R1_CLOSED",
+            "SETTLE_MILLIS",
+            "CONFIRM_WINDOW_MILLIS",
+            "CONFIRM_POLL_MILLIS",
+            "ORIENTATION",
+            "ENGINEERING_CLIENT",
+            "PRODUCTION_CLIENT",
+            "ENGINEERING_CERT_SHA256",
+            "moves",
+            "state",
+            "binder"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "onCreate",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "onBind",
+          "line": 221,
+          "isDefault": false
+        },
+        {
+          "name": "onTaskRemoved",
+          "line": 223,
+          "isDefault": false
+        },
+        {
+          "name": "onDestroy",
+          "line": 228,
+          "isDefault": false
+        },
+        {
+          "name": "R1MotorService",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "onCreate",
+          "callee": "super.onCreate",
+          "lineNumber": 59
+        },
+        {
+          "caller": "onCreate",
+          "callee": "moves.execute",
+          "lineNumber": 60
+        },
+        {
+          "caller": "moveTo",
+          "callee": "enforceAuthorizedCaller",
+          "lineNumber": 65
+        },
+        {
+          "caller": "moveTo",
+          "callee": "rawPositionFor",
+          "lineNumber": 66
+        },
+        {
+          "caller": "moveTo",
+          "callee": "notifyState",
+          "lineNumber": 68
+        },
+        {
+          "caller": "moveTo",
+          "callee": "moves.execute",
+          "lineNumber": 71
+        },
+        {
+          "caller": "moveTo",
+          "callee": "performMove",
+          "lineNumber": 71
+        },
+        {
+          "caller": "returnHome",
+          "callee": "enforceAuthorizedCaller",
+          "lineNumber": 75
+        },
+        {
+          "caller": "returnHome",
+          "callee": "moves.execute",
+          "lineNumber": 76
+        },
+        {
+          "caller": "returnHome",
+          "callee": "performMove",
+          "lineNumber": 76
+        },
+        {
+          "caller": "getState",
+          "callee": "enforceAuthorizedCaller",
+          "lineNumber": 80
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "Binder.getCallingUid",
+          "lineNumber": 86
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "getPackageManager().getPackagesForUid",
+          "lineNumber": 87
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "getPackageManager",
+          "lineNumber": 87
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "ENGINEERING_CLIENT.equals",
+          "lineNumber": 90
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "PRODUCTION_CLIENT.equals",
+          "lineNumber": 90
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "ENGINEERING_CERT_SHA256.equals",
+          "lineNumber": 91
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "packageCertificateSha256",
+          "lineNumber": 91
+        },
+        {
+          "caller": "enforceAuthorizedCaller",
+          "callee": "new SecurityException",
+          "lineNumber": 96
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "getPackageManager().getPackageInfo",
+          "lineNumber": 101
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "getPackageManager",
+          "lineNumber": 101
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "PackageManager.PackageInfoFlags.of",
+          "lineNumber": 102
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "signingInfo.hasMultipleSigners",
+          "lineNumber": 105
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "signingInfo.getApkContentsSigners",
+          "lineNumber": 106
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "signingInfo.getSigningCertificateHistory",
+          "lineNumber": 107
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "MessageDigest.getInstance(\"SHA-256\").digest",
+          "lineNumber": 109
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "MessageDigest.getInstance",
+          "lineNumber": 109
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "signatures[0].toByteArray",
+          "lineNumber": 109
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "new StringBuilder",
+          "lineNumber": 110
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "value.append",
+          "lineNumber": 111
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "String.format",
+          "lineNumber": 111
+        },
+        {
+          "caller": "packageCertificateSha256",
+          "callee": "value.toString",
+          "lineNumber": 112
+        },
+        {
+          "caller": "performMove",
+          "callee": "Log.i",
+          "lineNumber": 128
+        },
+        {
+          "caller": "performMove",
+          "callee": "notifyState",
+          "lineNumber": 130
+        },
+        {
+          "caller": "performMove",
+          "callee": "readOrientation",
+          "lineNumber": 134
+        },
+        {
+          "caller": "performMove",
+          "callee": "reportedPositionMatches",
+          "lineNumber": 135
+        },
+        {
+          "caller": "performMove",
+          "callee": "notifyState",
+          "lineNumber": 137
+        },
+        {
+          "caller": "performMove",
+          "callee": "requiresPrivacyWaypoint",
+          "lineNumber": 143
+        },
+        {
+          "caller": "performMove",
+          "callee": "moveAndConfirm",
+          "lineNumber": 144
+        },
+        {
+          "caller": "performMove",
+          "callee": "moveAndConfirm",
+          "lineNumber": 146
+        },
+        {
+          "caller": "performMove",
+          "callee": "notifyState",
+          "lineNumber": 148
+        },
+        {
+          "caller": "performMove",
+          "callee": "Log.e",
+          "lineNumber": 150
+        },
+        {
+          "caller": "performMove",
+          "callee": "exception.getClass().getSimpleName",
+          "lineNumber": 151
+        },
+        {
+          "caller": "performMove",
+          "callee": "exception.getClass",
+          "lineNumber": 151
+        },
+        {
+          "caller": "performMove",
+          "callee": "exception.getMessage",
+          "lineNumber": 152
+        },
+        {
+          "caller": "performMove",
+          "callee": "notifyState",
+          "lineNumber": 154
+        },
+        {
+          "caller": "performMove",
+          "callee": "bestEffortPrivacy",
+          "lineNumber": 155
+        },
+        {
+          "caller": "reportedPositionMatches",
+          "callee": "Integer.toString(expectedRawPosition).equals",
+          "lineNumber": 160
+        },
+        {
+          "caller": "reportedPositionMatches",
+          "callee": "Integer.toString",
+          "lineNumber": 160
+        },
+        {
+          "caller": "reportedPositionMatches",
+          "callee": "reported.trim",
+          "lineNumber": 161
+        },
+        {
+          "caller": "requiresPrivacyWaypoint",
+          "callee": "reportedPositionMatches",
+          "lineNumber": 165
+        },
+        {
+          "caller": "requiresPrivacyWaypoint",
+          "callee": "reportedPositionMatches",
+          "lineNumber": 167
+        },
+        {
+          "caller": "moveAndConfirm",
+          "callee": "writeOrientation",
+          "lineNumber": 172
+        },
+        {
+          "caller": "moveAndConfirm",
+          "callee": "Thread.sleep",
+          "lineNumber": 173
+        },
+        {
+          "caller": "moveAndConfirm",
+          "callee": "awaitReportedPosition",
+          "lineNumber": 174
+        },
+        {
+          "caller": "moveAndConfirm",
+          "callee": "reportedPositionMatches",
+          "lineNumber": 175
+        },
+        {
+          "caller": "moveAndConfirm",
+          "callee": "new IllegalStateException",
+          "lineNumber": 176
+        },
+        {
+          "caller": "awaitReportedPosition",
+          "callee": "System.nanoTime",
+          "lineNumber": 185
+        },
+        {
+          "caller": "awaitReportedPosition",
+          "callee": "readOrientation",
+          "lineNumber": 186
+        },
+        {
+          "caller": "awaitReportedPosition",
+          "callee": "reportedPositionMatches",
+          "lineNumber": 187
+        },
+        {
+          "caller": "awaitReportedPosition",
+          "callee": "System.nanoTime",
+          "lineNumber": 188
+        },
+        {
+          "caller": "awaitReportedPosition",
+          "callee": "Thread.sleep",
+          "lineNumber": 189
+        },
+        {
+          "caller": "awaitReportedPosition",
+          "callee": "readOrientation",
+          "lineNumber": 190
+        },
+        {
+          "caller": "notifyState",
+          "callee": "callback.onStateChanged",
+          "lineNumber": 197
+        },
+        {
+          "caller": "bestEffortPrivacy",
+          "callee": "writeOrientation",
+          "lineNumber": 202
+        },
+        {
+          "caller": "writeOrientation",
+          "callee": "new FileOutputStream",
+          "lineNumber": 207
+        },
+        {
+          "caller": "writeOrientation",
+          "callee": "output.write",
+          "lineNumber": 208
+        },
+        {
+          "caller": "writeOrientation",
+          "callee": "Integer.toString(value).getBytes",
+          "lineNumber": 208
+        },
+        {
+          "caller": "writeOrientation",
+          "callee": "Integer.toString",
+          "lineNumber": 208
+        },
+        {
+          "caller": "writeOrientation",
+          "callee": "output.flush",
+          "lineNumber": 209
+        },
+        {
+          "caller": "readOrientation",
+          "callee": "new BufferedReader",
+          "lineNumber": 214
+        },
+        {
+          "caller": "readOrientation",
+          "callee": "new InputStreamReader",
+          "lineNumber": 214
+        },
+        {
+          "caller": "readOrientation",
+          "callee": "new FileInputStream",
+          "lineNumber": 215
+        },
+        {
+          "caller": "readOrientation",
+          "callee": "input.readLine",
+          "lineNumber": 216
+        },
+        {
+          "caller": "readOrientation",
+          "callee": "value.trim",
+          "lineNumber": 217
+        },
+        {
+          "caller": "onTaskRemoved",
+          "callee": "moves.execute",
+          "lineNumber": 224
+        },
+        {
+          "caller": "onTaskRemoved",
+          "callee": "super.onTaskRemoved",
+          "lineNumber": 225
+        },
+        {
+          "caller": "onDestroy",
+          "callee": "moves.execute",
+          "lineNumber": 229
+        },
+        {
+          "caller": "onDestroy",
+          "callee": "moves.shutdown",
+          "lineNumber": 230
+        },
+        {
+          "caller": "onDestroy",
+          "callee": "super.onDestroy",
+          "lineNumber": 231
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 16,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "android/system/motor-service/src/test/java/com/resonolabs/hardware/R1MotorServiceTest.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "namedPositionsMatchPhysicallyObservedProductStates",
+          "startLine": 10,
+          "endLine": 15,
+          "params": []
+        },
+        {
+          "name": "exposedDirectionChangesRequireClosedWaypoint",
+          "startLine": 17,
+          "endLine": 22,
+          "params": []
+        },
+        {
+          "name": "reportedPositionRequiresExactConfirmedValue",
+          "startLine": 24,
+          "endLine": 28,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "R1MotorServiceTest",
+          "startLine": 9,
+          "endLine": 29,
+          "methods": [
+            "namedPositionsMatchPhysicallyObservedProductStates",
+            "exposedDirectionChangesRequireClosedWaypoint",
+            "reportedPositionRequiresExactConfirmedValue"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "namedPositionsMatchPhysicallyObservedProductStates",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "exposedDirectionChangesRequireClosedWaypoint",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "reportedPositionRequiresExactConfirmedValue",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "R1MotorServiceTest",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "assertEquals",
+          "lineNumber": 11
+        },
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "R1MotorService.rawPositionFor",
+          "lineNumber": 11
+        },
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "assertEquals",
+          "lineNumber": 12
+        },
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "R1MotorService.rawPositionFor",
+          "lineNumber": 12
+        },
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "assertEquals",
+          "lineNumber": 13
+        },
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "R1MotorService.rawPositionFor",
+          "lineNumber": 13
+        },
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "assertEquals",
+          "lineNumber": 14
+        },
+        {
+          "caller": "namedPositionsMatchPhysicallyObservedProductStates",
+          "callee": "R1MotorService.rawPositionFor",
+          "lineNumber": 14
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "assertTrue",
+          "lineNumber": 18
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "R1MotorService.requiresPrivacyWaypoint",
+          "lineNumber": 18
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "assertTrue",
+          "lineNumber": 19
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "R1MotorService.requiresPrivacyWaypoint",
+          "lineNumber": 19
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "assertFalse",
+          "lineNumber": 20
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "R1MotorService.requiresPrivacyWaypoint",
+          "lineNumber": 20
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "assertFalse",
+          "lineNumber": 21
+        },
+        {
+          "caller": "exposedDirectionChangesRequireClosedWaypoint",
+          "callee": "R1MotorService.requiresPrivacyWaypoint",
+          "lineNumber": 21
+        },
+        {
+          "caller": "reportedPositionRequiresExactConfirmedValue",
+          "callee": "assertTrue",
+          "lineNumber": 25
+        },
+        {
+          "caller": "reportedPositionRequiresExactConfirmedValue",
+          "callee": "R1MotorService.reportedPositionMatches",
+          "lineNumber": 25
+        },
+        {
+          "caller": "reportedPositionRequiresExactConfirmedValue",
+          "callee": "assertFalse",
+          "lineNumber": 26
+        },
+        {
+          "caller": "reportedPositionRequiresExactConfirmedValue",
+          "callee": "R1MotorService.reportedPositionMatches",
+          "lineNumber": 26
+        },
+        {
+          "caller": "reportedPositionRequiresExactConfirmedValue",
+          "callee": "assertFalse",
+          "lineNumber": 27
+        },
+        {
+          "caller": "reportedPositionRequiresExactConfirmedValue",
+          "callee": "R1MotorService.reportedPositionMatches",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "docs/planning/2026-08-20-slice-06-extensions-mail-orientation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 103,
+      "nonEmptyLines": 80,
+      "sections": [
+        {
+          "heading": "Slice 6 Orientation — Standard Extensions and Real Mail (pre-contract research)",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Entry-condition status",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "Donor findings — Mail vertical (strong reuse candidates)",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Donor findings — extension machinery (copy patterns, not files wholesale)",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Donor findings — editable workspace, lifecycle surfaces, bundled vs installed (2026-08-20 follow-up)",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Hard requirement (owner, 2026-08-20) — real on-device Mail client",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Open decisions for the BC-07 draft (candidate MDGs)",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Next step",
+          "level": 2,
+          "line": 101
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 339,
+      "nonEmptyLines": 237,
+      "sections": [
+        {
+          "heading": "R1 Camera, Motor State, and Preview Recovery Research",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Purpose",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Executive finding",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Evidence hierarchy",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "Physically confirmed",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "Implemented and locally validated, but not physically closed by its own report",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "Later exact regression audit",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Three-state physical contract",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Required state model",
+          "level": 2,
+          "line": 101
+        },
+        {
+          "heading": "Confirmed position",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Movement state",
+          "level": 3,
+          "line": 114
+        },
+        {
+          "heading": "Safe movement rules",
+          "level": 2,
+          "line": 128
+        },
+        {
+          "heading": "Preview-orientation defect and correction",
+          "level": 2,
+          "line": 141
+        },
+        {
+          "heading": "What was wrong",
+          "level": 3,
+          "line": 143
+        },
+        {
+          "heading": "Relative-rotation calculation",
+          "level": 3,
+          "line": 158
+        },
+        {
+          "heading": "Aspect-preserving 480×640 preview",
+          "level": 3,
+          "line": 178
+        },
+        {
+          "heading": "Still-image orientation is separate",
+          "level": 3,
+          "line": 194
+        },
+        {
+          "heading": "Camera selection after motor confirmation",
+          "level": 2,
+          "line": 198
+        },
+        {
+          "heading": "Preview lifecycle",
+          "level": 2,
+          "line": 208
+        },
+        {
+          "heading": "Real preview surface placement",
+          "level": 2,
+          "line": 238
+        },
+        {
+          "heading": "Voice session continuity while Camera is visible",
+          "level": 2,
+          "line": 260
+        },
+        {
+          "heading": "Automatic Creation QR recognition",
+          "level": 2,
+          "line": 276
+        },
+        {
+          "heading": "ReSono overlay research decision",
+          "level": 2,
+          "line": 304
+        },
+        {
+          "heading": "Surviving donor sources and identities",
+          "level": 2,
+          "line": 310
+        },
+        {
+          "heading": "Current recovery boundary",
+          "level": 2,
+          "line": 325
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": "runtime/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 25,
+      "nonEmptyLines": 17,
+      "sections": [
+        {
+          "heading": "On-device runtime",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 4,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/api/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/connectors/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/core/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/domains/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/bundled/resono-mail/plugin.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 11,
+      "nonEmptyLines": 11,
+      "sections": [
+        {
+          "heading": "$schema",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "version",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "description",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "author",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "license",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "keywords",
+          "level": 1,
+          "line": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/plugins/bundled/resono-mail/skills/voice-mail/SKILL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 22,
+      "nonEmptyLines": 15,
+      "sections": [
+        {
+          "heading": "Voice Mail",
+          "level": 1,
+          "line": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/providers/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/security/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/standards/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/standards/agent_plugins/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "runtime/resono_runtime/standards/agent_plugins/mcp.schema.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 120,
+      "nonEmptyLines": 120,
+      "sections": [
+        {
+          "heading": "$schema",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "$id",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "title",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "description",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "type",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "properties",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "required",
+          "level": 1,
+          "line": 19
+        },
+        {
+          "heading": "additionalProperties",
+          "level": 1,
+          "line": 14
+        },
+        {
+          "heading": "$defs",
+          "level": 1,
+          "line": 21
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    }
+  ]
+}
