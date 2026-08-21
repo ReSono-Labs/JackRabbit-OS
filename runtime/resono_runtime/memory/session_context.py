@@ -38,7 +38,7 @@ class SessionContext:
                 if len(content) > STARTUP_MEMORY_CHARACTER_LIMIT:
                     content = content[:STARTUP_MEMORY_CHARACTER_LIMIT] + "…"
                 lines.append(
-                    f"- ({record.memory_class}) {record.memory_key}: {content} "
+                    f"- ({record.domain}/{record.memory_type}) {record.memory_key}: {content} "
                     f"[confidence={record.confidence}]"
                 )
             sections.append("\n".join(lines))
@@ -77,7 +77,7 @@ class SessionContextBuilder:
         self._limit = startup_memory_limit
 
     def build(self, *, current_session_id: str | None = None) -> SessionContext:
-        memories = self._memories.list_memories()[: self._limit]
+        memories = self._memories.profile_memories(limit=self._limit)
         previous_summary = self._previous_completed_summary(current_session_id)
         return SessionContext(memories=memories, previous_summary=previous_summary)
 

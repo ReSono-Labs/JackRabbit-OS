@@ -62,3 +62,20 @@ def test_voice_context_is_bounded_while_notification_keeps_full_output(tmp_path:
     assert len(json.dumps(values["voice"]).encode()) < 65_536
     assert values["voice"]["output"]["resultTruncatedForVoice"] is True
     assert len(values["notification"]["output"]["result"]["body"]) == 80_000
+
+
+def test_native_notification_clock_starts_once_after_completed_run_is_viewed(tmp_path: Path) -> None:
+    database = RuntimeDatabase(tmp_path / "runtime.sqlite3")
+    database.migrate()
+    deliveries = AgentRunDeliveryRepository(database)
+    CompletionDispatcher(
+        deliveries=deliveries, voice_session_active=lambda _value: False,
+    ).record(_completed_run(database))
+
+    assert deliveries.visible_notification_run_ids() == ("run-1",)
+    assert deliveries.acknowledge_notification("run-1")
+    first = {item.channel: item.updated_at for item in deliveries.list_for_run("run-1")}
+    assert deliveries.acknowledge_notification("run-1")
+    second = {item.channel: item.updated_at for item in deliveries.list_for_run("run-1")}
+    assert first["notification"] == second["notification"]
+    assert deliveries.visible_notification_run_ids() == ("run-1",)

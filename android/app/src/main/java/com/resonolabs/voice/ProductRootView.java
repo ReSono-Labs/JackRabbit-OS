@@ -14,6 +14,8 @@ import com.resonolabs.feature.camera.CameraHandoffPage;
 import com.resonolabs.hardware.motor.R1MotorServiceClient;
 import com.resonolabs.ui.input.HardwareInputRouter;
 import com.resonolabs.ui.input.UiInputIntent;
+import com.resonolabs.feature.backgroundrun.BackgroundRunPanelView;
+import com.resonolabs.runtime.host.RuntimeBackgroundRunClient;
 
 final class ProductRootView extends FrameLayout {
     private final VoicePageView voice;
@@ -22,10 +24,12 @@ final class ProductRootView extends FrameLayout {
     private final ProductChromeView chrome;
     private final R1MotorServiceClient motor;
     private final CameraHandoffPage camera;
+    private final BackgroundRunPanelView runner;
     private boolean settingsOpen;
     private boolean cardsOpen;
     private boolean cameraOpen;
     private boolean cardContentOpen;
+    private boolean runnerOpen;
     private float gestureDownX;
     private float gestureDownY;
     private boolean horizontalGesture;
@@ -34,7 +38,8 @@ final class ProductRootView extends FrameLayout {
             Activity activity,
             Runnable restart,
             ManagementPairingSource managementPairing,
-            ManagementOpenAiSource openAiSource
+            ManagementOpenAiSource openAiSource,
+            RuntimeBackgroundRunClient backgroundRuns
     ) {
         super(activity);
         motor = new R1MotorServiceClient(activity);
@@ -43,18 +48,24 @@ final class ProductRootView extends FrameLayout {
         camera.setVisibility(GONE);
         cards = new CardsPageView(activity, this::openVoice, this::showCreation);
         cards.setVisibility(GONE);
-        chrome = new ProductChromeView(activity, this::openSettings, this::openVoice, this::openCards);
+        chrome = new ProductChromeView(activity, this::openSettings, this::openVoice,
+                this::openCards, this::openRunner);
+        runner = new BackgroundRunPanelView(activity, backgroundRuns, chrome::showRuns,
+                this::closeRunner);
+        runner.setVisibility(GONE);
         settings = new SettingsPanelView(activity, this::closeSettings, restart, managementPairing, openAiSource);
         settings.setVisibility(GONE);
         addView(voice, match());
         addView(cards, match());
         addView(camera, match());
+        addView(runner, match());
         LayoutParams chromeParams = new LayoutParams(LayoutParams.MATCH_PARENT, 142);
         addView(chrome, chromeParams);
         addView(settings, match());
         setFocusable(true);
         setFocusableInTouchMode(true);
         setContentDescription("ReSono R1 HOME");
+        runner.start();
     }
 
     private LayoutParams match() {
@@ -69,6 +80,18 @@ final class ProductRootView extends FrameLayout {
         chrome.setVisibility(GONE);
         settings.setVisibility(VISIBLE);
         settings.requestFocus();
+    }
+
+    private void openRunner() {
+        runnerOpen = true;
+        voice.setVisibility(GONE); cards.setVisibility(GONE); chrome.setVisibility(GONE);
+        runner.setVisibility(VISIBLE); runner.opened(); runner.requestFocus();
+    }
+
+    private void closeRunner() {
+        runnerOpen = false; runner.setVisibility(GONE); chrome.setVisibility(VISIBLE);
+        if (cardsOpen) { cards.setVisibility(VISIBLE); cards.start(); cards.requestFocus(); }
+        else { voice.setVisibility(VISIBLE); voice.requestFocus(); }
     }
 
     private void closeSettings() {
@@ -132,7 +155,7 @@ final class ProductRootView extends FrameLayout {
     }
 
     @Override public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (settingsOpen) return false;
+        if (settingsOpen || runnerOpen) return false;
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN -> {
                 gestureDownX = event.getX();
@@ -183,6 +206,7 @@ final class ProductRootView extends FrameLayout {
     }
 
     boolean navigateBack() {
+        if (runnerOpen) return runner.onInput(UiInputIntent.BACK);
         if (cameraOpen) {
             camera.stop();
             returnFromCamera();
@@ -194,7 +218,8 @@ final class ProductRootView extends FrameLayout {
     }
 
     private void dispatch(UiInputIntent intent) {
-        if (settingsOpen) settings.onInput(intent);
+        if (runnerOpen) runner.onInput(intent);
+        else if (settingsOpen) settings.onInput(intent);
         else if (cardsOpen) cards.onInput(intent);
         else voice.onInput(intent);
     }
@@ -203,6 +228,7 @@ final class ProductRootView extends FrameLayout {
         voice.close();
         cards.close();
         camera.close();
+        runner.stop();
         motor.close();
     }
 }

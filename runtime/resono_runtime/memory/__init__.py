@@ -1,17 +1,6 @@
-from .pipeline import FinalizeResult, MemoryPipeline
-from .retrieval import MemoryRetriever, RetrievalMatch
-from .service import MemoryService, SearchResult
-from .session_context import SessionContext, SessionContextBuilder
-from .tools import MemoryLookupTool
+"""Domain-memory package.
 
-__all__ = [
-    "FinalizeResult",
-    "MemoryLookupTool",
-    "MemoryPipeline",
-    "MemoryRetriever",
-    "MemoryService",
-    "RetrievalMatch",
-    "SearchResult",
-    "SessionContext",
-    "SessionContextBuilder",
-]
+Import concrete classes from their owning modules. Keeping this initializer
+side-effect free prevents the reviewer/contracts boundary from recursively
+loading the pipeline during runtime startup.
+"""

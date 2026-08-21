@@ -21,6 +21,7 @@ class QueryEmbedder(Protocol):
 class RetrievalMatch:
     memory: MemoryRecord
     score: float
+    match_methods: tuple[str, ...] = ()
 
 
 class MemoryRetriever:
@@ -36,7 +37,7 @@ class MemoryRetriever:
         self,
         *,
         memories: MemoryRepository,
-        embedder: QueryEmbedder,
+        embedder: QueryEmbedder | None,
         source_type: str = "memory",
         similarity_floor: float = EMBEDDING_SIMILARITY_FLOOR,
     ) -> None:
@@ -47,28 +48,47 @@ class MemoryRetriever:
 
     def retrieve(self, query: str, *, limit: int = DEFAULT_RETRIEVAL_LIMIT) -> list[RetrievalMatch]:
         normalized_limit = max(1, min(int(limit), MAX_RETRIEVAL_LIMIT))
-        query_embedding = self._embedder.embed(query)
-        candidates = self._memories.embeddings_for(
-            source_type=self._source_type,
-            model_key=getattr(self._embedder, "model_key", None),
-        )
-        ranked: list[tuple[float, str]] = []
-        for candidate in candidates:
-            if len(candidate.embedding) != len(query_embedding):
-                continue
-            if candidate.embedding_model_key != getattr(self._embedder, "model_key", candidate.embedding_model_key):
-                continue
-            score = cosine_similarity(query_embedding, candidate.embedding)
-            if score < self._floor:
-                continue
-            ranked.append((score, candidate.source_id))
-        ranked.sort(key=lambda item: item[0], reverse=True)
-        matches: list[RetrievalMatch] = []
-        for score, source_id in ranked[:normalized_limit]:
-            memory = self._memories.memory(source_id)
-            if memory is not None and memory.status == "active":
-                matches.append(RetrievalMatch(memory=memory, score=round(score, 8)))
-        return matches
+        scores: dict[str, float] = {}
+        methods: dict[str, set[str]] = {}
+        records: dict[str, MemoryRecord] = {}
+        for position, memory in enumerate(self._memories.lexical_memories(query, limit=25)):
+            records[memory.memory_id] = memory
+            scores[memory.memory_id] = max(scores.get(memory.memory_id, 0.0), 0.55 - position * 0.01)
+            methods.setdefault(memory.memory_id, set()).add("lexical")
+            if query.strip().lower() in (memory.memory_key.lower(), memory.content_text.lower()):
+                scores[memory.memory_id] = max(scores[memory.memory_id], 1.0)
+                methods[memory.memory_id].add("exact")
+        if self._embedder is not None:
+            query_embedding = self._embedder.embed(query)
+            candidates = self._memories.embeddings_for(
+                source_type=self._source_type,
+                model_key=getattr(self._embedder, "model_key", None),
+            )
+            for candidate in candidates:
+                if len(candidate.embedding) != len(query_embedding):
+                    continue
+                if candidate.embedding_model_key != getattr(
+                    self._embedder, "model_key", candidate.embedding_model_key
+                ):
+                    continue
+                score = cosine_similarity(query_embedding, candidate.embedding)
+                if score < self._floor:
+                    continue
+                memory = self._memories.domain_memory(candidate.source_id)
+                if memory is None or memory.status != "active":
+                    continue
+                records[memory.memory_id] = memory
+                scores[memory.memory_id] = max(scores.get(memory.memory_id, 0.0), score)
+                methods.setdefault(memory.memory_id, set()).add("semantic")
+        ranked_ids = sorted(scores, key=lambda item: scores[item], reverse=True)[:normalized_limit]
+        return [
+            RetrievalMatch(
+                memory=records[memory_id],
+                score=round(scores[memory_id], 8),
+                match_methods=tuple(sorted(methods[memory_id])),
+            )
+            for memory_id in ranked_ids
+        ]
 
 
 def cosine_similarity(left: list[float], right: list[float]) -> float:

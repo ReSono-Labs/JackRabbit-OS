@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":feature:voice"))
     implementation(project(":feature:cards"))
     implementation(project(":feature:camera"))
+    implementation(project(":feature:background-run"))
     implementation(project(":core:motor"))
     implementation(project(":runtime-host"))
     testImplementation("junit:junit:4.13.2")

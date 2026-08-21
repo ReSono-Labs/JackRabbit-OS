@@ -17,12 +17,18 @@ class ToolCatalog:
         self._source_tool_ids: dict[str, set[str]] = {}
         self._audience_router = audience_router
         self._invocation_authorizer = None
+        self._invocation_observer = None
         self._lock = RLock()
 
     def set_invocation_authorizer(self, authorizer) -> None:
         """Install the one trusted live-session authorization boundary."""
         with self._lock:
             self._invocation_authorizer = authorizer
+
+    def set_invocation_observer(self, observer) -> None:
+        """Install one post-dispatch observer for provider-neutral evidence capture."""
+        with self._lock:
+            self._invocation_observer = observer
 
     def register(self, definition: ToolDefinition) -> None:
         with self._lock:
@@ -110,10 +116,21 @@ class ToolCatalog:
         if not isinstance(arguments, dict) or not _matches_schema(arguments, definition.input_schema):
             return ToolInvocationResult("Tool arguments are invalid.", is_error=True)
         if definition.context_handler is not None:
-            return definition.context_handler(invocation_context, arguments)
-        if definition.agent_handler is not None:
-            return definition.agent_handler(agent, arguments)
-        return definition.handler(arguments)
+            result = definition.context_handler(invocation_context, arguments)
+        elif definition.agent_handler is not None:
+            result = definition.agent_handler(agent, arguments)
+        else:
+            result = definition.handler(arguments)
+        with self._lock:
+            observer = self._invocation_observer
+        if observer is not None:
+            try:
+                observer(invocation_context, definition.name, arguments, result)
+            except Exception:
+                # Evidence capture is observational and must never convert a
+                # successful domain-tool invocation into a failed invocation.
+                pass
+        return result
 
     def _definitions_for(self, agent: AgentKind) -> tuple[ToolDefinition, ...]:
         with self._lock:

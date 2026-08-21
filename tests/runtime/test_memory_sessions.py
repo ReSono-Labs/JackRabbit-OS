@@ -7,14 +7,12 @@ import unittest
 
 from resono_runtime.agents import MemoryReviewRunner
 from resono_runtime.api.events import RuntimeEventStream
-from resono_runtime.memory import (
-    MemoryLookupTool,
-    MemoryPipeline,
-    MemoryRetriever,
-    MemoryService,
-    SessionContextBuilder,
-)
+from resono_runtime.memory.pipeline import MemoryPipeline
 from resono_runtime.memory.retrieval import cosine_similarity
+from resono_runtime.memory.retrieval import MemoryRetriever
+from resono_runtime.memory.service import MemoryService
+from resono_runtime.memory.session_context import SessionContextBuilder
+from resono_runtime.memory.tools import MemoryLookupTool
 from resono_runtime.providers.openai import EmbeddingUnavailable
 from resono_runtime.security.credentials import ProviderCredentials
 from resono_runtime.storage.database import RuntimeDatabase
@@ -194,8 +192,11 @@ class TranscriptToMemoryProvenanceTest(MemorySessionTestBase):
 
         stored = self.memories.list_memories()
         self.assertEqual(2, len(stored))
-        classes = {m.memory_class for m in stored}
-        self.assertEqual({"relationship", "preference"}, classes)
+        classifications = {(m.domain, m.memory_type) for m in stored}
+        self.assertEqual(
+            {("relationship", "fact"), ("personal", "preference")},
+            classifications,
+        )
         for record in stored:
             self.assertEqual(session_id, record.session_id)
             self.assertEqual("active", record.status)
@@ -275,7 +276,7 @@ class RetrievalTest(MemorySessionTestBase):
         matches = retriever.retrieve("What time is the flight to Paris?")
         self.assertEqual([], matches)
 
-    def test_unembedded_memory_is_never_returned_as_semantic_match(self) -> None:
+    def test_unembedded_memory_is_returned_only_as_lexical_match(self) -> None:
         self.memories.store_memory(
             session_id=None,
             memory_class="preference",
@@ -285,7 +286,8 @@ class RetrievalTest(MemorySessionTestBase):
         embedder = _FakeEmbedder()
         retriever = MemoryRetriever(memories=self.memories, embedder=embedder)
         matches = retriever.retrieve("coffee morning")
-        self.assertEqual([], matches)
+        self.assertEqual(1, len(matches))
+        self.assertEqual(("lexical",), matches[0].match_methods)
 
     def test_deleted_memory_is_not_retrievable(self) -> None:
         record = self.memories.store_memory(
@@ -377,8 +379,8 @@ class DeletionAndCascadeTest(MemorySessionTestBase):
 class EmbeddingUnavailableTest(MemorySessionTestBase):
     def test_search_without_platform_key_reports_unavailable_not_faked(self) -> None:
         # Store a memory directly (no review needed) and search with no platform
-        # key. The service must report embeddings unavailable and return no
-        # matches rather than substituting a keyword/hash search.
+        # key. The service reports embeddings unavailable while retaining the
+        # deterministic lexical retrieval path over canonical memory.
         self.memories.store_memory(
             session_id=None,
             memory_class="preference",
@@ -389,7 +391,8 @@ class EmbeddingUnavailableTest(MemorySessionTestBase):
         service = self._service(bridge=bridge)
         search = service.search("coffee morning")
         self.assertFalse(search.embeddings_available)
-        self.assertEqual((), search.matches)
+        self.assertEqual(1, len(search.matches))
+        self.assertEqual(["lexical"], search.matches[0]["matchMethods"])
 
     def test_finalize_stores_memory_when_embedding_provider_is_unavailable(self) -> None:
         # Platform key present so the reviewer can run, but the embedder fails.
@@ -517,11 +520,13 @@ class StaleIndexRecoveryTest(MemorySessionTestBase):
         )
         bridge = _CredentialBridge("sk-test")
         service = self._service(bridge=bridge)
-        # Retrieval under the current model key yields nothing (stale index).
-        self.assertEqual((), service.search("coffee morning").matches)
+        # A stale semantic index does not disable deterministic lexical search.
+        before = service.search("coffee morning").matches
+        self.assertEqual(["lexical"], before[0]["matchMethods"])
         recovered = service.reindex()
         self.assertEqual(1, recovered)
-        self.assertGreaterEqual(len(service.search("coffee morning").matches), 1)
+        after = service.search("coffee morning").matches
+        self.assertIn("semantic", after[0]["matchMethods"])
 
 
 class SessionContextTest(MemorySessionTestBase):

@@ -27,6 +27,7 @@ include(
     ":feature:calendar",
     ":feature:tasks",
     ":feature:camera",
+    ":feature:background-run",
     ":runtime-host",
     ":system:motor-service",
 )

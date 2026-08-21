@@ -35,6 +35,17 @@ class BackgroundAgentRoutes:
 
     def handle_get(self, req: "RouteRequest", pairing: PairingAuthority | None) -> bool:
         path = req.path.split("?", 1)[0]
+        if path == "/v1/host/background-agent/notifications":
+            visible = self._deliveries.visible_notification_run_ids()
+            values = []
+            for run_id in visible:
+                try:
+                    run = self._runs.get(run_id)
+                except KeyError:
+                    continue
+                values.append(_run_view(run, self._runs.events(run_id)))
+            req.respond_json(200, {"runs": values})
+            return True
         if path == "/v1/voice/completions/next":
             session_id = req.headers.get("X-ReSono-Voice-Session", "").strip()
             delivery = self._deliveries.claim_voice(session_id)
@@ -79,6 +90,15 @@ class BackgroundAgentRoutes:
 
     def handle_post(self, req: "RouteRequest", pairing: PairingAuthority | None) -> bool:
         path = req.path.split("?", 1)[0]
+        native_prefix = "/v1/host/background-agent/notifications/"
+        if path.startswith(native_prefix) and path.endswith("/view"):
+            run_id = path[len(native_prefix):-len("/view")]
+            if not run_id or "/" in run_id:
+                return _not_found(req)
+            acknowledged = self._deliveries.acknowledge_notification(run_id)
+            req.respond_json(200 if acknowledged else 404,
+                             {"runId": run_id, "acknowledged": acknowledged})
+            return True
         if path == "/v1/voice/completions/ack":
             payload = req.request_json(max_bytes=4096)
             if payload is None:

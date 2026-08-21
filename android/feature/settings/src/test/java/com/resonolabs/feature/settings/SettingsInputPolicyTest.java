@@ -50,4 +50,11 @@ public final class SettingsInputPolicyTest {
         assertFalse(SettingsInputPolicy.consumeWheelWithoutAdjustment(
                 "Wi-Fi", UiInputIntent.NEXT));
     }
+
+    @Test public void aiArrowCyclesAndWrapsDeterministically() {
+        String[] values = new String[]{"none", "low", "medium", "high"};
+        assertEquals("low", SettingsPanelView.nextOption("none", values));
+        assertEquals("none", SettingsPanelView.nextOption("high", values));
+        assertEquals("none", SettingsPanelView.nextOption("missing", values));
+    }
 }

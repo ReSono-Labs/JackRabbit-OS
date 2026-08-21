@@ -20,11 +20,16 @@ from .storage.memory import MemoryRepository
 from .storage.skills import SkillCatalogRepository
 from .agents import AgentAudience, AgentAudienceRouter, AgentsSdkTextRunner, MemoryReviewRunner
 from .agents.context_builder import PrimaryContextBuilder
-from .memory import MemoryLookupTool, MemoryPipeline, MemoryService, SessionContextBuilder
+from .memory.evidence import VoiceToolEvidenceRecorder
+from .memory.pipeline import MemoryPipeline
+from .memory.service import MemoryService
+from .memory.session_context import SessionContextBuilder
+from .memory.tools import MemoryLookupTool, MemoryToolPackage
 from .providers.openai import OpenAISubscription
 from .storage.provider_catalog import ProviderCatalogRepository
 from .core.logging import runtime_logger
-from .tools import DEVICE_STATUS_TOOL_SET, MEMORY_TOOL_SET, ToolCatalog, register_device_status, register_memory_lookup
+from .tools import (DEVICE_STATUS_TOOL_SET, MEMORY_TOOL_SET, ToolCatalog,
+                    register_device_status, register_memory_tools)
 from .skills import SkillActivation
 from .skills.archives import SkillArchiveInspector
 from .skills.lifecycle import SkillLifecycle
@@ -136,8 +141,13 @@ class RuntimeApplication:
         self._voice_modes = VoiceModeService()
         self._tools = ToolCatalog(audience_router=self._audience_router)
         self._tools.set_invocation_authorizer(self._voice_modes.allows)
+        self._tools.set_invocation_observer(VoiceToolEvidenceRecorder(self._sessions))
         register_device_status(self._tools, self.health)
-        register_memory_lookup(self._tools, self._memory_lookup_tool)
+        register_memory_tools(self._tools, MemoryToolPackage(
+            lookup=self._memory_lookup_tool,
+            memories=self._memories,
+            sessions=self._sessions,
+        ))
         self._tools.register(self._skill_activation.tool_definition())
         self._mail_repository = MailRepository(self._database)
         self._mail_service = MailService(

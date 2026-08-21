@@ -18,11 +18,13 @@ import com.resonolabs.runtime.host.RuntimeHealthClient;
 import com.resonolabs.runtime.host.RuntimeManagementClient;
 import com.resonolabs.runtime.host.RuntimeService;
 import com.resonolabs.feature.settings.ManagementPairingState;
+import com.resonolabs.runtime.host.RuntimeBackgroundRunClient;
 
 public final class MainActivity extends Activity {
     private ProductRootView root;
     private RuntimeHealthClient runtimeHealth;
     private RuntimeManagementClient runtimeManagement;
+    private RuntimeBackgroundRunClient backgroundRuns;
 
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
@@ -30,6 +32,7 @@ public final class MainActivity extends Activity {
         RuntimeService.start(this);
         runtimeHealth = new RuntimeHealthClient();
         runtimeManagement = new RuntimeManagementClient();
+        backgroundRuns = new RuntimeBackgroundRunClient();
         runtimeHealth.checkUntilReady(this, health ->
                 android.util.Log.i("ReSonoRuntime", "HOME boundary status=" + health.status()));
         setShowWhenLocked(true);
@@ -47,12 +50,14 @@ public final class MainActivity extends Activity {
                                         pairing.expiresAt())
                         )
                 ),
-                runtimeManagement);
+                runtimeManagement,
+                backgroundRuns);
         setContentView(root);
         if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 41);
         }
         DisplayPolicy.apply(getWindow());
+        installFullscreenPolicy();
         enterProductFullscreen();
     }
 
@@ -60,6 +65,7 @@ public final class MainActivity extends Activity {
         if (root != null) root.close();
         if (runtimeHealth != null) runtimeHealth.close();
         if (runtimeManagement != null) runtimeManagement.close();
+        if (backgroundRuns != null) backgroundRuns.close();
         super.onDestroy();
     }
 
@@ -83,7 +89,10 @@ public final class MainActivity extends Activity {
 
     @Override public void onWindowFocusChanged(boolean focused) {
         super.onWindowFocusChanged(focused);
-        if (focused) DisplayPolicy.applyInputPolicy(getWindow());
+        if (focused) {
+            DisplayPolicy.applyInputPolicy(getWindow());
+            enterProductFullscreen();
+        }
     }
 
     @Override public boolean dispatchKeyEvent(KeyEvent event) {
@@ -117,5 +126,18 @@ public final class MainActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+    }
+
+    private void installFullscreenPolicy() {
+        View decor = getWindow().getDecorView();
+        decor.setOnApplyWindowInsetsListener((view, insets) -> {
+            int bars = WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars();
+            if (insets.isVisible(bars)) view.post(this::enterProductFullscreen);
+            return insets;
+        });
+        decor.setOnSystemUiVisibilityChangeListener(visibility -> {
+            int hidden = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+            if ((visibility & hidden) != hidden) decor.post(this::enterProductFullscreen);
+        });
     }
 }

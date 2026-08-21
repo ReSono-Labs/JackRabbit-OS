@@ -16,7 +16,8 @@ from resono_runtime.storage.lifecycle_repository import LifecycleRepository
 from resono_runtime.storage.memory import MemoryRepository
 from resono_runtime.storage.provider_settings import ProviderSettingsRepository
 from resono_runtime.storage.sessions import SessionTranscriptRepository
-from resono_runtime.memory import MemoryPipeline, MemoryService
+from resono_runtime.memory.pipeline import MemoryPipeline
+from resono_runtime.memory.service import MemoryService
 
 
 class _CredentialBridge:

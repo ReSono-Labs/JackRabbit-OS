@@ -47,8 +47,8 @@ class SessionTranscriptRepository:
         text_content: str,
     ) -> TranscriptEntry:
         normalized_role = role.strip().lower()
-        if normalized_role not in ("user", "assistant", "system"):
-            raise ValueError("role must be user, assistant, or system")
+        if normalized_role not in ("user", "assistant", "system", "tool"):
+            raise ValueError("role must be user, assistant, system, or tool")
         content = text_content.strip()
         if not content or len(content) > 16_384:
             raise ValueError("text_content must be between 1 and 16,384 characters")

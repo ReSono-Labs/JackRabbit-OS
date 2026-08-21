@@ -70,6 +70,12 @@ public final class SettingsPanelView extends View implements UiInputTarget {
     private ManagementPairingState managementState = ManagementPairingState.loading();
     private ManagementOpenAiState openAiState = ManagementOpenAiState.loading();
     private String openAiMessage = "";
+    private String draftProvider = "openai";
+    private String draftAccessPath = "platform";
+    private String draftTextModel;
+    private String draftRealtimeModel;
+    private String draftReasoning = "none";
+    private boolean aiDraftDirty;
     private boolean bluetoothReceiverRegistered;
     private final BroadcastReceiver bluetoothReceiver = new BroadcastReceiver() {
         @Override public void onReceive(Context context, Intent intent) {
@@ -238,26 +244,29 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         canvas.drawRoundRect(20f, 100f, 460f, 180f, 20f, 20f, paint);
         ReSonoTheme.text(canvas, paint, "PROVIDER", 44f, 138f, 19f,
                 ReSonoTheme.MUTED, Paint.Align.LEFT, true);
-                ReSonoTheme.text(canvas, paint, openAiState.selectedProviderLabel(), 44f, 170f, 35f,
+        ReSonoTheme.text(canvas, paint, providerLabel(draftProvider), 44f, 170f, 35f,
                 resonoAIColor(openAiState.connected() || openAiState.platformConnected() || openAiState.subscriptionConnected()),
                 Paint.Align.LEFT, true);
+        selectionArrow(canvas, 149f);
 
         paint.setColor(ReSonoTheme.PANEL_RAISED);
         canvas.drawRoundRect(20f, 196f, 460f, 275f, 20f, 20f, paint);
         ReSonoTheme.text(canvas, paint, "ACCESS PATH", 44f, 233f, 19f,
                 resonoAIColor(openAiState.connected()), Paint.Align.LEFT, true);
-        ReSonoTheme.text(canvas, paint, openAiState.accessPath(), 44f, 265f, 32f,
+        ReSonoTheme.text(canvas, paint, draftAccessPath, 44f, 265f, 32f,
                 ReSonoTheme.INK, Paint.Align.LEFT, true);
+        selectionArrow(canvas, 245f);
 
         paint.setColor(ReSonoTheme.PANEL_RAISED);
         canvas.drawRoundRect(20f, 292f, 460f, 370f, 20f, 20f, paint);
         ReSonoTheme.text(canvas, paint, "VOICE MODEL", 44f, 329f, 19f,
                 ReSonoTheme.MUTED, Paint.Align.LEFT, true);
         ReSonoTheme.text(canvas, paint,
-                openAiState.selectedRealtimeModel() == null || openAiState.selectedRealtimeModel().isBlank()
+                draftRealtimeModel == null || draftRealtimeModel.isBlank()
                         ? "—"
-                        : openAiState.selectedRealtimeModel(),
+                        : draftRealtimeModel,
                 44f, 361f, 32f, ReSonoTheme.INK, Paint.Align.LEFT, true);
+        selectionArrow(canvas, 341f);
 
         paint.setColor(ReSonoTheme.PANEL_RAISED);
         canvas.drawRoundRect(20f, 386f, 460f, 464f, 20f, 20f, paint);
@@ -265,17 +274,19 @@ public final class SettingsPanelView extends View implements UiInputTarget {
                 resonoAIColor(openAiState.selectedTextModel() != null),
                 Paint.Align.LEFT, true);
         ReSonoTheme.text(canvas, paint,
-                openAiState.selectedTextModel() == null || openAiState.selectedTextModel().isBlank()
+                draftTextModel == null || draftTextModel.isBlank()
                         ? "—"
-                        : openAiState.selectedTextModel(),
+                        : draftTextModel,
                 44f, 455f, 32f, ReSonoTheme.INK, Paint.Align.LEFT, true);
+        selectionArrow(canvas, 435f);
 
         paint.setColor(ReSonoTheme.PANEL_RAISED);
         canvas.drawRoundRect(20f, 480f, 460f, 540f, 20f, 20f, paint);
         ReSonoTheme.text(canvas, paint, "REASONING", 44f, 517f, 19f,
                 ReSonoTheme.MUTED, Paint.Align.LEFT, true);
-        ReSonoTheme.text(canvas, paint, openAiState.reasoningEffort() == null ? "none" : openAiState.reasoningEffort(),
+        ReSonoTheme.text(canvas, paint, draftReasoning,
                 44f, 549f, 32f, resonoAIColor(), Paint.Align.LEFT, true);
+        selectionArrow(canvas, 515f);
         if (openAiState.fallbackMessage() != null) {
             paint.setColor(ReSonoTheme.PANEL);
             canvas.drawRoundRect(20f, 560f, 460f, 602f, 18f, 18f, paint);
@@ -284,7 +295,12 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         }
         ReSonoTheme.text(canvas, paint, openAiMessage, 44f, 621f, 16f,
                 ReSonoTheme.MUTED, Paint.Align.LEFT, true);
-        button(canvas, "REFRESH", 20f, AI_REFRESH_TOP, 460f);
+        button(canvas, "SAVE", 20f, AI_REFRESH_TOP, 460f);
+    }
+
+    private void selectionArrow(Canvas canvas, float centerY) {
+        ReSonoTheme.text(canvas, paint, "›", 428f, centerY + 12f, 38f,
+                ReSonoTheme.CYAN, Paint.Align.CENTER, false);
     }
 
     private int resonoAIColor(boolean active) {
@@ -301,10 +317,110 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         invalidate();
         openAiSource.refresh(activity, state -> {
             openAiState = state;
+            syncAiDraft(state);
             openAiMessage = state.fallbackMessage() == null
                     ? "" : state.fallbackMessage();
             invalidate();
         });
+    }
+
+    private void syncAiDraft(ManagementOpenAiState state) {
+        draftProvider = state.provider();
+        draftAccessPath = state.accessPath();
+        draftTextModel = state.selectedTextModel();
+        draftRealtimeModel = state.selectedRealtimeModel();
+        draftReasoning = state.reasoningEffort() == null ? "none" : state.reasoningEffort();
+        aiDraftDirty = false;
+    }
+
+    private String providerLabel(String provider) {
+        String[] ids = openAiState.providerIds();
+        String[] names = openAiState.providerNames();
+        for (int i = 0; i < ids.length && i < names.length; i++) {
+            if (ids[i].equals(provider)) return names[i];
+        }
+        return provider;
+    }
+
+    static String nextOption(String current, String[] options) {
+        if (options == null || options.length == 0) return current;
+        for (int i = 0; i < options.length; i++) {
+            if (options[i].equals(current)) return options[(i + 1) % options.length];
+        }
+        return options[0];
+    }
+
+    private void cycleProvider() {
+        draftProvider = nextOption(draftProvider, openAiState.providerIds());
+        markAiDraftChanged();
+    }
+
+    private void cycleAccessPath() {
+        if (!openAiState.platformConnected() && !openAiState.subscriptionConnected()) {
+            openAiMessage = "Connect OpenAI in management first.";
+            invalidate();
+            return;
+        }
+        if (openAiState.platformConnected() && openAiState.subscriptionConnected()) {
+            draftAccessPath = nextOption(draftAccessPath, new String[]{"platform", "subscription"});
+        } else {
+            draftAccessPath = openAiState.platformConnected() ? "platform" : "subscription";
+        }
+        markAiDraftChanged();
+    }
+
+    private void cycleRealtimeModel() {
+        draftRealtimeModel = nextOption(draftRealtimeModel, openAiState.realtimeModels());
+        markAiDraftChanged();
+    }
+
+    private void cycleTextModel() {
+        draftTextModel = nextOption(draftTextModel, openAiState.textModels());
+        markAiDraftChanged();
+    }
+
+    private void cycleReasoning() {
+        draftReasoning = nextOption(draftReasoning, new String[]{"none", "low", "medium", "high"});
+        markAiDraftChanged();
+    }
+
+    private void markAiDraftChanged() {
+        aiDraftDirty = true;
+        openAiMessage = "Unsaved changes";
+        invalidate();
+    }
+
+    private void saveAiDraft() {
+        if (!aiDraftDirty) {
+            openAiMessage = "Settings are already saved.";
+            invalidate();
+            return;
+        }
+        openAiMessage = "Saving AI settings…";
+        invalidate();
+        openAiSource.setProvider(activity, draftProvider, providerState -> {
+            if (providerState.error()) { finishAiSave(providerState); return; }
+            openAiSource.setAccessPath(activity, draftAccessPath, accessState -> {
+                if (accessState.error()) { finishAiSave(accessState); return; }
+                openAiSource.setModels(
+                        activity,
+                        draftTextModel,
+                        draftRealtimeModel,
+                        draftReasoning,
+                        this::finishAiSave);
+            });
+        });
+    }
+
+    private void finishAiSave(ManagementOpenAiState state) {
+        openAiState = state;
+        if (state.error()) {
+            openAiMessage = state.fallbackMessage() == null ? "AI settings were not saved." : state.fallbackMessage();
+        } else {
+            syncAiDraft(state);
+            openAiMessage = "AI settings saved.";
+        }
+        invalidate();
     }
 
     private void pickProvider() {
@@ -764,22 +880,19 @@ public final class SettingsPanelView extends View implements UiInputTarget {
                 wifiScanner.refresh();
             }
         } else if ("AI".equals(openPage)) {
-            if (y >= AI_PROVIDER_TOP && y <= AI_PROVIDER_BOTTOM) {
-                if (!openAiState.platformConnected() && !openAiState.subscriptionConnected()) {
-                    connectOpenAiFromSettings();
-                } else {
-                    pickProvider();
-                }
-            } else if (y >= AI_ACCESS_TOP && y <= AI_ACCESS_BOTTOM) {
-                pickAccessPath();
-            } else if (y >= AI_VOICE_MODEL_TOP && y <= AI_VOICE_MODEL_BOTTOM) {
-                pickRealtimeModel();
-            } else if (y >= AI_TEXT_MODEL_TOP && y <= AI_TEXT_MODEL_BOTTOM) {
-                pickTextModel();
-            } else if (y >= AI_REASONING_TOP && y <= AI_REASONING_BOTTOM) {
-                pickReasoning();
+            boolean arrow = x >= 390f && x <= 460f;
+            if (arrow && y >= AI_PROVIDER_TOP && y <= AI_PROVIDER_BOTTOM) {
+                cycleProvider();
+            } else if (arrow && y >= AI_ACCESS_TOP && y <= AI_ACCESS_BOTTOM) {
+                cycleAccessPath();
+            } else if (arrow && y >= AI_VOICE_MODEL_TOP && y <= AI_VOICE_MODEL_BOTTOM) {
+                cycleRealtimeModel();
+            } else if (arrow && y >= AI_TEXT_MODEL_TOP && y <= AI_TEXT_MODEL_BOTTOM) {
+                cycleTextModel();
+            } else if (arrow && y >= AI_REASONING_TOP && y <= AI_REASONING_BOTTOM) {
+                cycleReasoning();
             } else if (y >= AI_REFRESH_TOP && y <= AI_REFRESH_TOP + 72f) {
-                refreshOpenAi();
+                saveAiDraft();
             }
         } else if (y >= 482f && y <= 584f) {
             if ("Sound".equals(openPage)) {
@@ -840,11 +953,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             return true;
         }
         if ("AI".equals(openPage) && intent == UiInputIntent.ACTIVATE) {
-            if (!openAiState.platformConnected() && !openAiState.subscriptionConnected()) {
-                connectOpenAiFromSettings();
-            } else {
-                pickProvider();
-            }
+            saveAiDraft();
             return true;
         }
         return false;

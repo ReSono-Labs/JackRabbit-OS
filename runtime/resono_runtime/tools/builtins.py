@@ -10,7 +10,7 @@ from .catalog import ToolCatalog
 from .definitions import ToolDefinition, ToolInvocationResult
 
 if TYPE_CHECKING:
-    from ..memory.tools import MemoryLookupTool
+    from ..memory.tools import MemoryLookupTool, MemoryToolPackage
 
 
 DEVICE_STATUS_NAME = "get_device_status"
@@ -59,3 +59,7 @@ def register_memory_lookup(catalog: ToolCatalog, memory_lookup: "MemoryLookupToo
             audience_resource=MEMORY_TOOL_SET,
         )
     )
+
+
+def register_memory_tools(catalog: ToolCatalog, package: "MemoryToolPackage") -> None:
+    package.register(catalog)

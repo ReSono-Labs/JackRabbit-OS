@@ -7,7 +7,7 @@ from urllib.parse import parse_qs
 from ..agents import AgentsSdkTextRunner
 from ..core.logging import runtime_logger
 from ..mcp import LocalMcpServer
-from ..memory import MemoryService
+from ..memory.service import MemoryService
 from ..providers.controller import ProviderController
 from ..providers.openai import OpenAIProviderError, OpenAISubscription
 from ..security.pairing import PairingAuthority, PairingDenied
@@ -680,10 +680,16 @@ def _memory_view(memory: object) -> dict[str, object]:
         "memoryId": memory.memory_id,
         "sessionId": memory.session_id,
         "memoryClass": memory.memory_class,
+        "domain": memory.domain,
+        "memoryType": memory.memory_type,
         "memoryKey": memory.memory_key,
         "content": memory.content_text,
         "confidence": memory.confidence,
         "sensitivity": memory.sensitivity,
         "createdAt": memory.created_at,
         "updatedAt": memory.updated_at,
+        "status": memory.status,
+        "currentVersion": memory.current_version,
+        "validFrom": memory.valid_from,
+        "validTo": memory.valid_to,
     }

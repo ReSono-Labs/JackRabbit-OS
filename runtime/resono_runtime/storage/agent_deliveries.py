@@ -112,3 +112,40 @@ class AgentRunDeliveryRepository:
             )
             connection.commit()
             return True
+
+    def visible_notification_run_ids(self, *, limit: int = 1) -> tuple[str, ...]:
+        """Return only the latest run when its native notification is visible."""
+        with self._database.connect() as connection:
+            rows = connection.execute(
+                "SELECT r.run_id FROM background_agent_runs r "
+                "LEFT JOIN background_agent_deliveries d "
+                "ON d.run_id=r.run_id AND d.channel='notification' "
+                "WHERE r.run_id=(SELECT run_id FROM background_agent_runs "
+                "ORDER BY created_at DESC LIMIT 1) AND ("
+                "r.state NOT IN ('completed','failed','cancelled') OR "
+                "(d.state='pending') OR "
+                "(d.state='delivered' AND julianday(d.updated_at) > julianday('now','-10 minutes'))) "
+                "LIMIT 1",
+            ).fetchall()
+        return tuple(str(row["run_id"]) for row in rows)
+
+    def acknowledge_notification(self, run_id: str) -> bool:
+        """Start the native ten-minute clear clock exactly once."""
+        with self._database.connect() as connection:
+            connection.execute("BEGIN IMMEDIATE")
+            row = connection.execute(
+                "SELECT state FROM background_agent_deliveries "
+                "WHERE run_id=? AND channel='notification'", (run_id,),
+            ).fetchone()
+            if row is None:
+                connection.rollback()
+                return False
+            if str(row["state"]) == "pending":
+                connection.execute(
+                    "UPDATE background_agent_deliveries SET state='delivered', "
+                    "updated_at=strftime('%Y-%m-%dT%H:%M:%fZ','now') "
+                    "WHERE run_id=? AND channel='notification' AND state='pending'",
+                    (run_id,),
+                )
+            connection.commit()
+        return True

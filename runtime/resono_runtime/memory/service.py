@@ -77,14 +77,17 @@ class MemoryService:
             settings=self._settings,
             subscription=self._subscription,
         )
-        if api_key is None:
-            return SearchResult(matches=(), embeddings_available=False)
-        embedder = self._embedding_factory(api_key, self._safety_source)
+        embedder = None
+        if api_key:
+            try:
+                embedder = self._embedding_factory(api_key, self._safety_source)
+            except EmbeddingUnavailable:
+                embedder = None
         retriever = MemoryRetriever(memories=self._memories, embedder=embedder)
         matches = retriever.retrieve(query, limit=limit)
         return SearchResult(
             matches=tuple(_match_payload(match) for match in matches),
-            embeddings_available=True,
+            embeddings_available=embedder is not None,
         )
 
     def reindex(self) -> int:
@@ -121,10 +124,13 @@ def _match_payload(match: RetrievalMatch) -> dict[str, Any]:
         "memoryId": memory.memory_id,
         "sessionId": memory.session_id,
         "memoryClass": memory.memory_class,
+        "domain": memory.domain,
+        "memoryType": memory.memory_type,
         "memoryKey": memory.memory_key,
         "content": memory.content_text,
         "confidence": memory.confidence,
         "sensitivity": memory.sensitivity,
         "score": match.score,
+        "matchMethods": list(match.match_methods),
         "updatedAt": memory.updated_at,
     }

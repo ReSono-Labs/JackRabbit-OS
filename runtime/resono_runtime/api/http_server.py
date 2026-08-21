@@ -16,7 +16,7 @@ from ..mcp import LocalMcpServer
 from ..storage.lifecycle_repository import LifecycleRepository
 from ..storage.sessions import SessionTranscriptRepository
 from ..agents import AgentsSdkTextRunner
-from ..memory import MemoryService
+from ..memory.service import MemoryService
 from ..providers.openai import OpenAISubscription
 from ..storage.profile_settings import UserProfileRepository
 from .skill_routes import SkillRoutes
