@@ -1,5 +1,6 @@
 from .activation import SKILL_LOAD_TOOL_NAME, SkillActivation, SkillDisclosure
 from .specification import SkillDocument, SkillSpecificationError, parse_skill, parse_skill_document
+from .documents import AgentInstructionDocuments, AgentInstructionsError
 
 __all__ = [
     "SKILL_LOAD_TOOL_NAME",
@@ -9,4 +10,6 @@ __all__ = [
     "SkillSpecificationError",
     "parse_skill",
     "parse_skill_document",
+    "AgentInstructionDocuments",
+    "AgentInstructionsError",
 ]

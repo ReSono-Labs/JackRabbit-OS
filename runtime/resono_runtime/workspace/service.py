@@ -68,6 +68,19 @@ class DurableWorkspace:
             if os.path.exists(temporary):
                 os.unlink(temporary)
 
+    def register_managed(self, source: Path, reference: str, *, media_type: str,
+                         artifact_role: str) -> WorkspaceEntry:
+        relative = normalized_ref(reference); target = self._safe_path(relative)
+        if source.resolve() != target.resolve(): raise WorkspaceError("managed workspace source does not match its reference")
+        payload = target.read_bytes(); self._repository.remove(reference)
+        return self._repository.save(workspace_id=secrets.token_hex(16), reference=reference,
+            display_name=target.name, media_type=media_type, byte_size=len(payload),
+            content_hash=hashlib.sha256(payload).hexdigest(), origin="managed_instruction",
+            origin_run_id=None, artifact_role=artifact_role)
+
+    def remove_managed(self, reference: str) -> None:
+        normalized_ref(reference); self._repository.remove(reference)
+
     def _safe_path(self, relative: str) -> Path:
         path = (self._root / relative).resolve(strict=False)
         try:

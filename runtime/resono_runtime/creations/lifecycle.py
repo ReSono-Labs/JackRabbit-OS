@@ -57,7 +57,7 @@ class CreationLifecycle:
             self._recovery.mark_backup_secured(operation)
             os.replace(staged, target)
             self._recovery.mark_activated(operation)
-            item = self._catalog.save(StoredCreation(inspection.creation_id, inspection.title, inspection.description, record.candidate_hash, target, "installed", 0, inspection.source_type, inspection.entry_url, inspection.icon_url, inspection.theme_color), action="replace" if current else "install", changed_by=changed_by, reason=reason)
+            item = self._catalog.save(StoredCreation(inspection.creation_id, inspection.title, inspection.description, record.candidate_hash, target, "enabled", 0, inspection.source_type, inspection.entry_url, inspection.icon_url, inspection.theme_color), action="replace" if current else "install", changed_by=changed_by, reason=reason)
             self._audiences.set_audience(_resource(item.creation_id), record.audience, changed_by=changed_by, reason=reason)
             self._recovery.complete(operation)
             return item

@@ -96,7 +96,7 @@ class PluginLifecycle:
             os.replace(staged, target)
             if operation is not None:
                 self._recovery.mark_activated(operation)
-            item = self._catalog.save(StoredPlugin(inspection.manifest.name, record.candidate_hash, target, "installed"), action="replace" if current else "install", changed_by=changed_by, reason=reason)
+            item = self._catalog.save(StoredPlugin(inspection.manifest.name, record.candidate_hash, target, "enabled"), action="replace" if current else "install", changed_by=changed_by, reason=reason)
             self._components.replace_for_plugin(item.name, _components(item.name, inspection))
             if self._cards is not None:
                 self._cards.replace(item.name, inspection.card, previous_card_ids, state=item.lifecycle_state, changed_by=changed_by, reason=reason)

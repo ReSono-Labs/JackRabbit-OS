@@ -30,8 +30,7 @@ from .storage.provider_catalog import ProviderCatalogRepository
 from .core.logging import runtime_logger
 from .tools import (DEVICE_STATUS_TOOL_SET, MEMORY_TOOL_SET, ToolCatalog,
                     register_device_status, register_memory_tools)
-from .skills import SkillActivation
-from .skills.archives import SkillArchiveInspector
+from .skills import SkillActivation, AgentInstructionDocuments
 from .skills.lifecycle import SkillLifecycle
 from .api.skill_routes import SkillRoutes
 from .api.mail_routes import MailRoutes
@@ -123,10 +122,6 @@ class RuntimeApplication:
             rollback_root=config.skill_rollback_path,
             recovery=import_recovery,
         )
-        self._skill_routes = SkillRoutes(
-            self._skill_lifecycle,
-            SkillArchiveInspector(config.skill_quarantine_path),
-        )
         self._session_context_builder = SessionContextBuilder(
             sessions=self._sessions,
             memories=self._memories,
@@ -184,10 +179,17 @@ class RuntimeApplication:
             config.user_workspace_path,
             WorkspaceRepository(self._database),
         )
+        self._instruction_documents = AgentInstructionDocuments(
+            voice_path=config.voice_instructions_path,
+            background_path=config.background_instructions_path,
+            background_workspace=self._workspace,
+        )
+        self._skill_routes = SkillRoutes(self._instruction_documents)
         register_workspace_tools(self._tools, self._workspace, self._run_workspaces)
         self._primary_contexts = PrimaryContextBuilder(
             tools=self._tools, skills=self._skill_activation,
             memory=self._session_context_builder,
+            background_instructions=self._instruction_documents.background_context,
         )
         self._agent_deliveries = AgentRunDeliveryRepository(self._database)
         self._background_agent_routes = BackgroundAgentRoutes(
@@ -287,7 +289,7 @@ class RuntimeApplication:
             goal_intake_tools=lambda: self._tools.realtime_definitions(
                 include_names=frozenset({"voice_mode_switch", "goal_start"}),
             ),
-            voice_skill_instructions=self._skill_activation.voice_instructions,
+            voice_skill_instructions=self._instruction_documents.voice_instructions,
             voice_modes=self._voice_modes,
         )
         self._text_runner = AgentsSdkTextRunner(
@@ -390,6 +392,7 @@ class RuntimeApplication:
             )
         self._catalog.bootstrap_defaults()
         self._skill_lifecycle.recover()
+        self._instruction_documents.recover()
         self._plugin_lifecycle.recover()
         self._creation_lifecycle.recover()
         self._background_agent.recover_interrupted()

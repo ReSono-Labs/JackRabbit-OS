@@ -140,7 +140,12 @@ final class CardsDeckView extends View {
                 accent, Paint.Align.LEFT, true);
         ReSonoTheme.text(canvas, paint, "READY", WIDTH - inset - 18f, top + 48f, 22f,
                 accent, Paint.Align.RIGHT, true);
-        drawDescription(canvas, item.optString("description", ""), inset + 20f, top + 92f,
+        String title = item.optString("title", "Creation").trim();
+        if (title.isEmpty()) title = "Creation";
+        if (title.length() > 28) title = title.substring(0, 27) + "…";
+        ReSonoTheme.text(canvas, paint, title, inset + 20f, top + 94f, 27f,
+                ReSonoTheme.INK, Paint.Align.LEFT, true);
+        drawDescription(canvas, item.optString("description", ""), inset + 20f, top + 136f,
                 WIDTH - inset * 2f - 40f);
     }
 

@@ -42,7 +42,7 @@ class SkillLifecycleTest(unittest.TestCase):
             reason="install",
         )
 
-        self.assertEqual("installed", stored.lifecycle_state)
+        self.assertEqual("enabled", stored.lifecycle_state)
         self.assertTrue((stored.install_path / "SKILL.md").is_file())
         resource = AudienceResource(AudienceResourceKind.SKILL, "planning")
         self.assertTrue(self.router.is_exposed(resource, AgentKind.VOICE))

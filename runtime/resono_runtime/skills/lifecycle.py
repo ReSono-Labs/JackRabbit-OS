@@ -126,7 +126,7 @@ class SkillLifecycle:
                 content_hash=pending_record.candidate_hash,
                 install_path=target,
                 source_filename=pending.candidate.source_filename,
-                state="installed",
+                state="enabled",
                 action="replace" if current is not None else "install",
                 changed_by=changed_by,
                 reason=reason,

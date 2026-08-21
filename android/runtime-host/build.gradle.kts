@@ -39,3 +39,7 @@ chaquopy {
         setSrcDirs(listOf(rootProject.file("../runtime")))
     }
 }
+
+dependencies {
+    testImplementation("junit:junit:4.13.2")
+}

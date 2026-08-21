@@ -9,6 +9,8 @@
 
 **Reading rule:** Owner-fixed decisions, the final implementation closure record, and later owner corrections control. Sections explicitly labelled historical, prototype, finding, review, or earlier checkpoint are retained as audit history only; they do not describe current behavior and cannot override the final closure record.
 
+**2026-08-21 Plugin import correction:** Browser Plugin uploads send the required `X-ReSono-Plugin-Filename` header. A confirmed valid Plugin import is atomically installed and immediately enters `enabled`; its audience, valid MCP definitions, and optional Card projection become active in the same lifecycle operation. The management surface therefore reports `Enabled` rather than leaving a newly imported Plugin in an inert `installed` state. Delete remains paired-session and CSRF protected, disables first, then removes owned MCP definitions, Cards, audience bindings, component/catalog records, installed files, and rollback files without requiring a restart.
+
 ## Outcome
 
 The R1 runs a real local Mail service for up to three independently configured mailboxes. The service synchronizes every server folder and all mail with each account at least every five minutes, persists the synchronized mailbox locally, and exposes a deliberately bounded Mail tool set to the real Voice agent. This contract builds the authenticated management APIs needed to configure accounts and report truthful connection/synchronization state, but it does not implement those controls in the current website. The management interface requires a separate full overhaul before these APIs receive their Browser Voice surfaces. It will never become a webmail client or display a mailbox/message list.
@@ -2616,6 +2618,10 @@ Creation source types without creating two catalogs:
 
 Both source types use the same catalog identity, overwrite preflight/confirm,
 enable/disable, generation refresh, Cards presentation, and delete lifecycle.
+Creation confirmation now completes in the `enabled` state for every Creation
+source type. Import therefore makes the Creation immediately available in Cards;
+the canonical lifecycle `disable` action remains the sole implementation behind
+management's **Turn off** control, and `enable` restores it without reinstalling.
 Deleting a linked Creation removes its descriptor and grants; it does not
 attempt to delete the publisher's remote site. Purging the linked origin's
 WebView DOM storage remains a required device acceptance item and must not be

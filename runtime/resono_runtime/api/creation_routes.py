@@ -43,16 +43,15 @@ class CreationRoutes:
 
     def handle_post(self, request: "RouteRequest", pairing: PairingAuthority | None) -> bool:
         path = request.path.split("?", 1)[0]
+        if path == "/v1/host/creations/qr/preflight":
+            return self._preflight_qr(request, require_session=False, pairing=pairing)
+        if path == "/v1/host/creations/confirm":
+            return self._confirm(request, require_session=False, pairing=pairing)
         if not path.startswith("/v1/management/creations"): return False
         if not _session(request, pairing, mutation=True): return True
         try:
             if path == "/v1/management/creations/qr/preflight":
-                payload = request.request_json(max_bytes=16 * 1024)
-                if payload is None: return True
-                inspection = self._descriptor_inspector.inspect(payload)
-                result = self._lifecycle.preflight(inspection, audience=AgentAudience(request.headers.get("X-ReSono-Agent-Audience", "")))
-                request.respond_json(200, {"state": result.state, "preflightToken": result.token, "candidate": _inspection_view(inspection, result.candidate_hash), "current": _view(self._lifecycle.get(result.identity)) if self._lifecycle.get(result.identity) else None})
-                return True
+                return self._preflight_qr(request, require_session=False, pairing=pairing)
             if path == "/v1/management/creations/preflight":
                 payload = request.request_bytes(max_bytes=16 * 1024 * 1024)
                 if payload is None: return True
@@ -70,6 +69,33 @@ class CreationRoutes:
             _require_standalone(self._lifecycle, creation_id)
             item = self._lifecycle.set_enabled(creation_id, action == "enable", changed_by="management-api", reason=f"{action}d from management")
             request.respond_json(200, _view(item))
+        except (CreationArchiveRejected, CreationLifecycleError, ValueError) as error:
+            _error(request, 409, "creation_import_conflict", str(error))
+        return True
+
+    def _preflight_qr(self, request: "RouteRequest", *, require_session: bool, pairing: PairingAuthority | None) -> bool:
+        try:
+            payload = request.request_json(max_bytes=16 * 1024)
+            if payload is None: return True
+            inspection = self._descriptor_inspector.inspect(payload)
+            audience = request.headers.get("X-ReSono-Agent-Audience", "both") or "both"
+            result = self._lifecycle.preflight(inspection, audience=AgentAudience(audience))
+            current = self._lifecycle.get(result.identity)
+            request.respond_json(200, {"state": result.state, "preflightToken": result.token,
+                "candidate": _inspection_view(inspection, result.candidate_hash),
+                "current": _view(current) if current else None})
+        except (CreationArchiveRejected, CreationLifecycleError, ValueError) as error:
+            _error(request, 409, "creation_import_conflict", str(error))
+        return True
+
+    def _confirm(self, request: "RouteRequest", *, require_session: bool, pairing: PairingAuthority | None) -> bool:
+        try:
+            payload = request.request_json(max_bytes=4096)
+            if payload is None: return True
+            item = self._lifecycle.confirm(str(payload.get("preflightToken", "")),
+                replace=payload.get("replace") is True, changed_by="native-r1",
+                reason="confirmed Creation import on R1")
+            request.respond_json(201, _view(item))
         except (CreationArchiveRejected, CreationLifecycleError, ValueError) as error:
             _error(request, 409, "creation_import_conflict", str(error))
         return True

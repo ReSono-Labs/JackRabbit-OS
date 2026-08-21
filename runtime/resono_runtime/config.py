@@ -61,6 +61,14 @@ class RuntimeConfig:
         return self.workspace_path / "skill-rollbacks"
 
     @property
+    def voice_instructions_path(self) -> Path:
+        return self.workspace_path / "voice" / "SKILLS.MD"
+
+    @property
+    def background_instructions_path(self) -> Path:
+        return self.user_workspace_path / "documents" / "SKILLS.MD"
+
+    @property
     def plugins_path(self) -> Path:
         return self.workspace_path / "plugins"
 
@@ -95,6 +103,8 @@ class RuntimeConfig:
             self.skills_path,
             self.skill_quarantine_path,
             self.skill_rollback_path,
+            self.voice_instructions_path.parent,
+            self.background_instructions_path.parent,
             self.plugins_path,
             self.plugin_quarantine_path,
             self.plugin_rollback_path,

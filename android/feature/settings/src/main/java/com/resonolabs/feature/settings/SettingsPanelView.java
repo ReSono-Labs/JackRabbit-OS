@@ -40,7 +40,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
     private static final float DESIGN_WIDTH = 480f;
     private static final float DESIGN_HEIGHT = 640f;
     private static final float ROW_TOP = 88f;
-    private static final float ROW_STEP = 76f;
+    private static final float ROW_STEP = 66f;
     private static final float AI_PROVIDER_TOP = 100f;
     private static final float AI_PROVIDER_BOTTOM = 180f;
     private static final float AI_ACCESS_TOP = 196f;
@@ -53,11 +53,12 @@ public final class SettingsPanelView extends View implements UiInputTarget {
     private static final float AI_REASONING_BOTTOM = 540f;
     private static final float AI_REFRESH_TOP = 556f;
     private static final List<String> ROWS = List.of(
-            "Wi-Fi", "Bluetooth", "Management", "AI", "Sound", "Display", "About");
+            "Wi-Fi", "Bluetooth", "Management", "AI", "Creations", "Sound", "Display", "About");
 
     private final Activity activity;
     private final Runnable close;
     private final Runnable restart;
+    private final Runnable openCreationImport;
     private final ManagementPairingSource managementPairing;
     private final ManagementOpenAiSource openAiSource;
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -90,12 +91,14 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             Activity activity,
             Runnable close,
             Runnable restart,
+            Runnable openCreationImport,
             ManagementPairingSource managementPairing,
             ManagementOpenAiSource openAiSource) {
         super(activity);
         this.activity = activity;
         this.close = close;
         this.restart = restart;
+        this.openCreationImport = openCreationImport;
         this.managementPairing = managementPairing;
         this.openAiSource = openAiSource;
         this.wifiScanner = new WifiNetworkScanner(activity, (state, networks) -> {
@@ -122,16 +125,16 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             float top = ROW_TOP + i * ROW_STEP;
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(ReSonoTheme.PANEL);
-            canvas.drawRoundRect(20f, top, 460f, top + 68f, 19f, 19f, paint);
+            canvas.drawRoundRect(20f, top, 460f, top + 58f, 17f, 17f, paint);
             if (i == selected) {
                 paint.setColor(ReSonoTheme.VIOLET);
                 // Fixed-size cursor only: changing the entire row luminance can
                 // drive Rabbit's MediaTek AAL/PQ backlight compensation.
-                canvas.drawRoundRect(20f, top + 8f, 25f, top + 60f, 3f, 3f, paint);
+                canvas.drawRoundRect(20f, top + 7f, 25f, top + 51f, 3f, 3f, paint);
             }
-            ReSonoTheme.text(canvas, paint, ROWS.get(i), 46f, top + 45f, 29f,
+            ReSonoTheme.text(canvas, paint, ROWS.get(i), 46f, top + 39f, 26f,
                 ReSonoTheme.INK, Paint.Align.LEFT, true);
-            ReSonoTheme.text(canvas, paint, "›", 430f, top + 46f, 36f,
+            ReSonoTheme.text(canvas, paint, "›", 430f, top + 40f, 34f,
                     ReSonoTheme.MUTED,
                     Paint.Align.CENTER, false);
         }
@@ -862,13 +865,9 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         if (openPage == null) {
             int row = (int) ((y - ROW_TOP) / ROW_STEP);
             float within = (y - ROW_TOP) % ROW_STEP;
-            if (row >= 0 && row < ROWS.size() && within <= 64f) {
+            if (row >= 0 && row < ROWS.size() && within <= 58f) {
                 selected = row;
-                openPage = ROWS.get(row);
-                if ("Wi-Fi".equals(openPage)) wifiScanner.refresh();
-                if ("Management".equals(openPage)) refreshManagement();
-                if ("AI".equals(openPage)) refreshOpenAi();
-                invalidate();
+                activateSelectedRow();
             }
         } else if ("Wi-Fi".equals(openPage)) {
             float networkTop = 148f;
@@ -925,11 +924,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             selected = Math.min(ROWS.size() - 1, selected + 1); invalidate(); return true;
         }
         if (openPage == null && intent == UiInputIntent.ACTIVATE) {
-            openPage = ROWS.get(selected);
-            if ("Wi-Fi".equals(openPage)) wifiScanner.refresh();
-            if ("Management".equals(openPage)) refreshManagement();
-            if ("AI".equals(openPage)) refreshOpenAi();
-            invalidate(); return true;
+            activateSelectedRow(); return true;
         }
         if ("Wi-Fi".equals(openPage) && intent == UiInputIntent.ACTIVATE) {
             if (!wifiNetworks.isEmpty()) selectNetwork(wifiNetworks.get(0));
@@ -957,6 +952,19 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             return true;
         }
         return false;
+    }
+
+    private void activateSelectedRow() {
+        String page = ROWS.get(selected);
+        if ("Creations".equals(page)) {
+            openCreationImport.run();
+            return;
+        }
+        openPage = page;
+        if ("Wi-Fi".equals(openPage)) wifiScanner.refresh();
+        if ("Management".equals(openPage)) refreshManagement();
+        if ("AI".equals(openPage)) refreshOpenAi();
+        invalidate();
     }
 
     @Override public void onWindowFocusChanged(boolean hasWindowFocus) {

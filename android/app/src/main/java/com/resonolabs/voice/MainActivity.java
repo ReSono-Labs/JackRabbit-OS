@@ -19,12 +19,14 @@ import com.resonolabs.runtime.host.RuntimeManagementClient;
 import com.resonolabs.runtime.host.RuntimeService;
 import com.resonolabs.feature.settings.ManagementPairingState;
 import com.resonolabs.runtime.host.RuntimeBackgroundRunClient;
+import com.resonolabs.runtime.host.RuntimeCreationImportClient;
 
 public final class MainActivity extends Activity {
     private ProductRootView root;
     private RuntimeHealthClient runtimeHealth;
     private RuntimeManagementClient runtimeManagement;
     private RuntimeBackgroundRunClient backgroundRuns;
+    private RuntimeCreationImportClient creationImports;
 
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
@@ -33,6 +35,7 @@ public final class MainActivity extends Activity {
         runtimeHealth = new RuntimeHealthClient();
         runtimeManagement = new RuntimeManagementClient();
         backgroundRuns = new RuntimeBackgroundRunClient();
+        creationImports = new RuntimeCreationImportClient();
         runtimeHealth.checkUntilReady(this, health ->
                 android.util.Log.i("ReSonoRuntime", "HOME boundary status=" + health.status()));
         setShowWhenLocked(true);
@@ -51,7 +54,8 @@ public final class MainActivity extends Activity {
                         )
                 ),
                 runtimeManagement,
-                backgroundRuns);
+                backgroundRuns,
+                creationImports);
         setContentView(root);
         if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 41);
@@ -66,6 +70,7 @@ public final class MainActivity extends Activity {
         if (runtimeHealth != null) runtimeHealth.close();
         if (runtimeManagement != null) runtimeManagement.close();
         if (backgroundRuns != null) backgroundRuns.close();
+        if (creationImports != null) creationImports.close();
         super.onDestroy();
     }
 

@@ -186,10 +186,14 @@ The app module composes these owners. It must not absorb Camera2, motor sysfs,
 or QR decoding into `ProductRootView`, `MainActivity`, Cards, Voice, or generic
 utility classes.
 
-### Gate C6: Rabbit Creation QR scanning
+### Gate C6: Settings-owned Rabbit Creation QR capture
 
-Only after stable preview/reopen:
+Owner correction on 2026-08-21: Creation QR installation is not part of the general Camera page. It is a removable Settings feature that opens a dedicated outward-facing still-capture screen.
 
+- compose `:feature:creation-import` from Settings and keep its QR implementation under `creationimport/qr/`;
+- reuse the existing Camera2 producer and motor contract without modifying the general Camera page;
+- capture one explicit still image rather than continuously analyzing preview frames;
+- return the motor to privacy after capture, cancellation, failure, or exit;
 - add a decoder behind a narrow `CreationQrDecoder` contract;
 - accept only the documented Rabbit descriptor JSON fields;
 - send decoded JSON to the existing authenticated
@@ -199,7 +203,7 @@ Only after stable preview/reopen:
 - reject malformed/non-HTTPS/private destinations through the runtime's
   existing descriptor inspector.
 
-Camera scanning and browser QR-image decoding must converge on the same runtime
+Device still-image and browser QR-image decoding must converge on the same runtime
 preflight contract.
 
 ### Gate C7: full-screen root navigation and connected-Voice proof

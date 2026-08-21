@@ -2,7 +2,11 @@ from __future__ import annotations
 
 from resono_runtime.agents.audience import AgentKind
 from resono_runtime.agents.delegation import DelegationRun
-from resono_runtime.realtime.modes import VoiceModeService, register_voice_mode_tool
+from resono_runtime.realtime.modes import (
+    PRIMARY_VOICE_INSTRUCTION,
+    VoiceModeService,
+    register_voice_mode_tool,
+)
 from resono_runtime.tools import ToolCatalog, register_device_status
 from resono_runtime.tools.definitions import ToolInvocationContext
 from resono_runtime.tools.delegation import register_goal_tools
@@ -49,6 +53,11 @@ def test_primary_and_goal_intake_use_distinct_canonical_projections() -> None:
         context=ToolInvocationContext(AgentKind.VOICE, voice_session_id="voice-1"),
     )
     assert denied.is_error
+
+
+def test_primary_instruction_keeps_skill_tests_out_of_goal_intake() -> None:
+    assert "installed Agent Skill requests" in PRIMARY_VOICE_INSTRUCTION
+    assert "word test is never evidence" in PRIMARY_VOICE_INSTRUCTION
 
 
 def test_duplicate_switch_replays_provider_update() -> None:

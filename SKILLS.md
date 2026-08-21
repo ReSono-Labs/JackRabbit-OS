@@ -546,10 +546,18 @@ Rabbit QR imports use decoded descriptor JSON and the same Creation lifecycle;
 the runtime does not decode QR image pixels. Run:
 
 ```bash
-PYTHONPATH=runtime python3 -m unittest \
+PYTHONPATH=runtime uv run \
+  --with pydantic==2.12.2 \
+  --with openai-agents==0.18.3 \
+  --with pyyaml \
+  python -m unittest \
   tests.runtime.test_creations \
   tests.runtime.test_build07_api_auth
 ```
+
+The plain system Python command is no longer sufficient because the canonical
+runtime agent and Skill imports require Pydantic, the OpenAI Agents SDK, and
+PyYAML even when the focused test is exercising Creation/API boundaries.
 
 Expected 2026-08-20 host result: `Ran 4 tests ... OK`. Physical acceptance must
 still prove a real Rabbit QR descriptor, linked HTTPS rendering, persistence,

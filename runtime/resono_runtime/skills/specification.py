@@ -41,7 +41,10 @@ def parse_skill_document(source: Path, *, expected_directory: str | None = None)
         raw = skill_source.read_text(encoding="utf-8")
     except UnicodeDecodeError as error:
         raise SkillSpecificationError("SKILL.md must be UTF-8") from error
-    frontmatter, instructions = _split_frontmatter(raw)
+    # Markdown files commonly arrive from Windows editors with CRLF line endings.
+    # Normalize text before checking the standard YAML frontmatter delimiters.
+    normalized = raw.replace("\r\n", "\n").replace("\r", "\n")
+    frontmatter, instructions = _split_frontmatter(normalized)
     try:
         parsed = yaml.safe_load(frontmatter)
     except yaml.YAMLError as error:

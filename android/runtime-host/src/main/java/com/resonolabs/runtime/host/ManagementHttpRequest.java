@@ -22,7 +22,7 @@ record ManagementHttpRequest(String method, String path, Map<String, String> hea
             throw new IOException("invalid request line");
         }
         String method = requestParts[0];
-        if (!method.equals("GET") && !method.equals("POST")) {
+        if (!method.equals("GET") && !method.equals("POST") && !method.equals("DELETE")) {
             throw new IOException("unsupported method");
         }
         String path = requestParts[1].split("\\?", 2)[0];

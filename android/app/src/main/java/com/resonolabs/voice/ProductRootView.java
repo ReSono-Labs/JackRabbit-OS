@@ -16,6 +16,8 @@ import com.resonolabs.ui.input.HardwareInputRouter;
 import com.resonolabs.ui.input.UiInputIntent;
 import com.resonolabs.feature.backgroundrun.BackgroundRunPanelView;
 import com.resonolabs.runtime.host.RuntimeBackgroundRunClient;
+import com.resonolabs.runtime.host.RuntimeCreationImportClient;
+import com.resonolabs.feature.creationimport.CreationImportView;
 
 final class ProductRootView extends FrameLayout {
     private final VoicePageView voice;
@@ -25,11 +27,13 @@ final class ProductRootView extends FrameLayout {
     private final R1MotorServiceClient motor;
     private final CameraHandoffPage camera;
     private final BackgroundRunPanelView runner;
+    private final CreationImportView creationImport;
     private boolean settingsOpen;
     private boolean cardsOpen;
     private boolean cameraOpen;
     private boolean cardContentOpen;
     private boolean runnerOpen;
+    private boolean creationImportOpen;
     private float gestureDownX;
     private float gestureDownY;
     private boolean horizontalGesture;
@@ -39,7 +43,8 @@ final class ProductRootView extends FrameLayout {
             Runnable restart,
             ManagementPairingSource managementPairing,
             ManagementOpenAiSource openAiSource,
-            RuntimeBackgroundRunClient backgroundRuns
+            RuntimeBackgroundRunClient backgroundRuns,
+            RuntimeCreationImportClient creationImports
     ) {
         super(activity);
         motor = new R1MotorServiceClient(activity);
@@ -53,12 +58,16 @@ final class ProductRootView extends FrameLayout {
         runner = new BackgroundRunPanelView(activity, backgroundRuns, chrome::showRuns,
                 this::closeRunner);
         runner.setVisibility(GONE);
-        settings = new SettingsPanelView(activity, this::closeSettings, restart, managementPairing, openAiSource);
+        creationImport = new CreationImportView(activity, motor, creationImports, this::closeCreationImport);
+        creationImport.setVisibility(GONE);
+        settings = new SettingsPanelView(activity, this::closeSettings, restart,
+                this::openCreationImport, managementPairing, openAiSource);
         settings.setVisibility(GONE);
         addView(voice, match());
         addView(cards, match());
         addView(camera, match());
         addView(runner, match());
+        addView(creationImport, match());
         LayoutParams chromeParams = new LayoutParams(LayoutParams.MATCH_PARENT, 142);
         addView(chrome, chromeParams);
         addView(settings, match());
@@ -108,6 +117,22 @@ final class ProductRootView extends FrameLayout {
         }
     }
 
+    private void openCreationImport() {
+        creationImportOpen = true;
+        settings.setVisibility(GONE);
+        creationImport.setVisibility(VISIBLE);
+        creationImport.start();
+        creationImport.requestFocus();
+    }
+
+    private void closeCreationImport() {
+        creationImportOpen = false;
+        creationImport.stop();
+        creationImport.setVisibility(GONE);
+        settings.setVisibility(VISIBLE);
+        settings.requestFocus();
+    }
+
     private void openCards() {
         cardsOpen = true;
         chrome.showCards(true);
@@ -155,7 +180,7 @@ final class ProductRootView extends FrameLayout {
     }
 
     @Override public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (settingsOpen || runnerOpen) return false;
+        if (settingsOpen || runnerOpen || creationImportOpen) return false;
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN -> {
                 gestureDownX = event.getX();
@@ -206,6 +231,7 @@ final class ProductRootView extends FrameLayout {
     }
 
     boolean navigateBack() {
+        if (creationImportOpen) return creationImport.onInput(UiInputIntent.BACK);
         if (runnerOpen) return runner.onInput(UiInputIntent.BACK);
         if (cameraOpen) {
             camera.stop();
@@ -218,7 +244,8 @@ final class ProductRootView extends FrameLayout {
     }
 
     private void dispatch(UiInputIntent intent) {
-        if (runnerOpen) runner.onInput(intent);
+        if (creationImportOpen) creationImport.onInput(intent);
+        else if (runnerOpen) runner.onInput(intent);
         else if (settingsOpen) settings.onInput(intent);
         else if (cardsOpen) cards.onInput(intent);
         else voice.onInput(intent);
@@ -228,6 +255,7 @@ final class ProductRootView extends FrameLayout {
         voice.close();
         cards.close();
         camera.close();
+        creationImport.close();
         runner.stop();
         motor.close();
     }

@@ -28,6 +28,17 @@ class SkillCatalogRepositoryTest(unittest.TestCase):
 
         self.assertEqual("planning", document.name)
 
+    def test_standalone_document_accepts_windows_line_endings(self) -> None:
+        document_path = Path(self._temporary.name) / "skills.md"
+        document_path.write_bytes(
+            b"---\r\nname: orange-spanish-test\r\n"
+            b"description: Run the orange Spanish test.\r\n---\r\nRespond with Naranja.\r\n"
+        )
+
+        document = parse_skill_document(document_path)
+
+        self.assertEqual("orange-spanish-test", document.name)
+
     def test_catalog_replaces_one_canonical_skill_row(self) -> None:
         self.catalog.save_current(
             name="planning",

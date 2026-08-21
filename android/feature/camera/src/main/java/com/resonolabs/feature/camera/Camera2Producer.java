@@ -91,6 +91,10 @@ public final class Camera2Producer implements AutoCloseable {
             CaptureRequest.Builder request = camera.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
             request.addTarget(reader.getSurface());
             request.set(CaptureRequest.JPEG_ORIENTATION, sensorOrientation);
+            request.set(CaptureRequest.JPEG_QUALITY, (byte) 95);
+            request.set(CaptureRequest.CONTROL_AF_MODE,
+                    CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+            request.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON);
             session.capture(request.build(), new CameraCaptureSession.CaptureCallback() {}, cameraHandler);
         } catch (CameraAccessException error) { fail("capture_failed"); }
     }
@@ -110,6 +114,9 @@ public final class Camera2Producer implements AutoCloseable {
             Surface surface = new Surface(texture);
             CaptureRequest.Builder request = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
             request.addTarget(surface);
+            request.set(CaptureRequest.CONTROL_AF_MODE,
+                    CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+            request.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON);
             camera.createCaptureSession(Arrays.asList(surface, reader.getSurface()), new CameraCaptureSession.StateCallback() {
                 @Override public void onConfigured(CameraCaptureSession value) {
                     if (closed || camera == null) { value.close(); return; }
