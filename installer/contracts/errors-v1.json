@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "errors": [
+    { "code": "JR-RELEASE-SCHEMA", "terminal": true },
+    { "code": "JR-RELEASE-SIGNATURE", "terminal": true },
+    { "code": "JR-RELEASE-DIGEST", "terminal": true },
+    { "code": "JR-PLAN-STARTING-CONTRACT", "terminal": true },
+    { "code": "JR-PLAN-PRODUCT", "terminal": true },
+    { "code": "JR-PLAN-SLOT", "terminal": true },
+    { "code": "JR-PLAN-LOCKED", "terminal": true },
+    { "code": "JR-PLAN-ARTIFACT", "terminal": true },
+    { "code": "JR-PLAN-ACTION", "terminal": true },
+    { "code": "JR-PLAN-TARGET", "terminal": true },
+    { "code": "JR-PLAN-MODE", "terminal": true },
+    { "code": "JR-PLAN-DATA-POLICY", "terminal": true },
+    { "code": "JR-PLAN-DUPLICATE", "terminal": true }
+  ]
+}

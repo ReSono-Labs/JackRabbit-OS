@@ -36,29 +36,35 @@ async def run_agent_turn(
     """
     from agents import Agent, ModelSettings, RunConfig, RunHooks, Runner, set_tracing_disabled
     from agents.models.openai_provider import OpenAIProvider
+    from openai import AsyncOpenAI, DefaultAsyncHttpxClient
     from openai.types.shared import Reasoning
 
     set_tracing_disabled(True)
-    provider = OpenAIProvider(api_key=api_key, base_url=base_url, use_responses=True)
-    model_settings = ModelSettings(
-        reasoning=Reasoning(effort=reasoning_effort, summary="auto")
-        if reasoning_effort != "none" else None,
-        store=False if base_url else None,
+    client = AsyncOpenAI(
+        api_key=api_key,
+        base_url=base_url,
+        http_client=DefaultAsyncHttpxClient(),
     )
-    agent = Agent(
-        name=agent_name,
-        instructions=instructions,
-        model=model,
-        model_settings=model_settings,
-        mcp_servers=[mcp_server] if mcp_server is not None else [],
-        output_type=output_type,
-    )
-    run_config = RunConfig(model_provider=provider)
-    class ObservationHooks(RunHooks):
-        async def on_llm_end(self, _context, _agent, response) -> None:
-            _observe((response,), observation_sink)
-
+    provider = OpenAIProvider(openai_client=client, use_responses=True)
     try:
+        model_settings = ModelSettings(
+            reasoning=Reasoning(effort=reasoning_effort, summary="auto")
+            if reasoning_effort != "none" else None,
+            store=False if base_url else None,
+        )
+        agent = Agent(
+            name=agent_name,
+            instructions=instructions,
+            model=model,
+            model_settings=model_settings,
+            mcp_servers=[mcp_server] if mcp_server is not None else [],
+            output_type=output_type,
+        )
+        run_config = RunConfig(model_provider=provider)
+        class ObservationHooks(RunHooks):
+            async def on_llm_end(self, _context, _agent, response) -> None:
+                _observe((response,), observation_sink)
+
         if base_url:
             streamed = Runner.run_streamed(
                 agent, input=input_text, run_config=run_config, max_turns=max_turns,
@@ -74,8 +80,9 @@ async def run_agent_turn(
             hooks=ObservationHooks(),
         )
         return result.final_output if output_type is not None else str(result.final_output)
-    except BaseException as error:
-        raise
+    finally:
+        await provider.aclose()
+        await client.close()
 
 
 def run_agent_turn_sync(**kwargs) -> str:

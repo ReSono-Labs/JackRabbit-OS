@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from resono_runtime.agents.audience import AgentKind
 from resono_runtime.background_agent.workspace import RunWorkspaceRegistry
 from resono_runtime.storage.database import RuntimeDatabase
@@ -62,3 +64,40 @@ def test_primary_voice_can_read_but_not_modify_agent_workspaces(tmp_path: Path) 
     }
     assert denied.is_error
     assert denied.text == "Tool is not granted."
+
+
+def test_releasing_run_workspace_preserves_published_artifact(tmp_path: Path) -> None:
+    database = RuntimeDatabase(tmp_path / "runtime.sqlite3")
+    database.migrate()
+    runs = RunWorkspaceRegistry(tmp_path / "runs")
+    run = runs.create("run-1", max_total_bytes=1024 * 1024)
+    run.write_text("work/report.md", "Durable result.")
+    durable = DurableWorkspace(tmp_path / "user", WorkspaceRepository(database))
+    durable.publish(
+        run.path_for_publication("work/report.md"),
+        "workspace://documents/report.md",
+        media_type="text/markdown",
+        origin_run_id=None,
+        artifact_role="result",
+    )
+
+    runs.release("run-1")
+    runs.release("run-1")
+
+    assert durable.read("workspace://documents/report.md") == b"Durable result."
+    assert not (tmp_path / "runs" / "run-1").exists()
+    with pytest.raises(KeyError):
+        runs.get("run-1")
+
+
+def test_release_cannot_escape_run_workspace_root(tmp_path: Path) -> None:
+    runs = RunWorkspaceRegistry(tmp_path / "runs")
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    marker = outside / "keep.txt"
+    marker.write_text("keep", encoding="utf-8")
+
+    with pytest.raises(Exception):
+        runs.release("../outside")
+
+    assert marker.read_text(encoding="utf-8") == "keep"

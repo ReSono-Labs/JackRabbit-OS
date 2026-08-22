@@ -800,3 +800,51 @@ Deployed reviewed constraint/UI candidate SHA-256:
 `08be0d29ba474411a02992b36c4445a14b3684e913e08b63a995e7c319e39e7f`.
 Recorded device evidence: install succeeded, PID `20916`, runtime ready, and
 ports `8765` and `8443` listening.
+
+### Background Agent isolated per-run async lifecycle
+
+Every prepared Background Agent run owns one fresh `AsyncExecutionRuntime`,
+event loop, provider, Agent, response stream, MCP session, execution context,
+and temporary workspace. The prepared-run close path closes that run's MCP
+gateway and event loop. Never move the event loop to `BackgroundRunFactory` or
+reuse it across goals: that uncommitted regression caused a later goal to fail
+before its first model turn with `Event loop is closed`. Completion preserves
+SQLite logs, safe reasoning summaries, the typed result, delivery state, and
+published `workspace://` artifacts. Published artifacts remain available to
+Voice through `workspace_list` and `workspace_read`.
+
+Every Agents SDK run must construct its own `AsyncOpenAI` client with its own
+async HTTP client and close both before the run-owned event loop closes. Do not
+use the Agents SDK provider's process-global shared async HTTP client across
+the R1's isolated per-run loops; that leaves loop-bound socket transports open
+and can later surface `Event loop is closed`. Prepared-run cleanup must also
+call `RunWorkspaceRegistry.release(run_id)` after gateway and loop cleanup so
+only the confined temporary run directory is deleted.
+
+Focused lifecycle gate:
+
+```bash
+PYTHONPATH=runtime uv run \
+  --with openai-agents==0.18.3 \
+  --with PyYAML --with jsonschema --with pytest -- \
+  python -m pytest -q \
+  tests/runtime/test_background_agent_execution.py \
+  tests/runtime/test_background_agent_service.py \
+  tests/runtime/test_workspace_voice_tools.py \
+  tests/runtime/test_background_agent_global_tools.py \
+  tests/runtime/test_agents_sdk_runner.py
+```
+
+Use the committed per-run lifecycle as the regression baseline.
+
+### Background Agent web-search transport
+
+`web_search` uses the OpenAI Agents SDK hosted `WebSearchTool`, the canonical
+credential resolver, dedicated `gpt-5.6-terra` search model, and low search
+context. Platform access uses the SDK Responses run; ChatGPT/Codex subscription
+access uses the SDK streamed Responses run required by that endpoint. Do not
+replace this with a hand-written request to the subscription Responses endpoint:
+that regression caused every physical search to fail with HTTP 400. The focused
+combined search and per-run lifecycle gate recorded on 2026-08-22 is `19 passed`.
+Each search request includes the current UTC date, and its short-lived SDK and
+HTTP clients are explicitly closed before the search event loop ends.

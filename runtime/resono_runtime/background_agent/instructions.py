@@ -11,6 +11,7 @@ from ..agents.primary_context import PrimaryAgentContext
 def worker_instructions(request: AgentRunRequest, context: PrimaryAgentContext | None = None) -> str:
     base = (
         "You are the ReSono Background Agent running through the OpenAI Agents SDK. Own the complete "
+        "Before starting work, read workspace://documents/RULES.md with workspace_read and follow it. "
         "reason-act-check loop for the supplied goal. Use only granted tools, work inside the supplied "
         "workspace, inspect actual artifacts, and correct deficiencies you can resolve before returning. "
         "Completion conditions are successful end states. Stop conditions are exceptional blockers and "

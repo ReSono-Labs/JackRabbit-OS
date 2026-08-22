@@ -162,7 +162,15 @@ class BackgroundAgentService:
                         )
                     self._record_completion(terminal)
                 finally:
-                    prepared.close()
+                    try:
+                        prepared.close()
+                    except Exception:
+                        # Cleanup failure is recorded without killing the single
+                        # worker or changing an already committed terminal result.
+                        self._log.exception(
+                            "background_agent.cleanup_failed",
+                            extra={"runId": request.run_id},
+                        )
             finally:
                 with self._lock:
                     origin = (request.invocation_type.value, request.origin_id)

@@ -75,11 +75,19 @@ class BackgroundRunFactory:
             )
         except Exception:
             self._gateway.close(request.run_id)
-            async_runtime.close()
+            try:
+                async_runtime.close()
+            finally:
+                self._workspaces.release(request.run_id)
             raise
         def close() -> None:
-            self._gateway.close(request.run_id)
-            async_runtime.close()
+            try:
+                self._gateway.close(request.run_id)
+            finally:
+                try:
+                    async_runtime.close()
+                finally:
+                    self._workspaces.release(request.run_id)
         return PreparedRun(execution, close)
 
     def close(self) -> None:

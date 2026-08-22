@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+from datetime import UTC, datetime
 
 from resono_runtime.providers.openai import OpenAISubscription, openai_provider_access
 from resono_runtime.security.credentials import ProviderCredentials
@@ -65,38 +66,49 @@ class OpenAIWebSearch:
 async def _run_search(*, query: str, api_key: str, base_url: str | None) -> dict[str, object]:
     from agents import Agent, ModelSettings, RunConfig, Runner, WebSearchTool, set_tracing_disabled
     from agents.models.openai_provider import OpenAIProvider
+    from openai import AsyncOpenAI, DefaultAsyncHttpxClient
 
     set_tracing_disabled(True)
-    provider = OpenAIProvider(api_key=api_key, base_url=base_url, use_responses=True)
-    agent = Agent(
-        name="ReSono Web Search",
-        instructions=_SEARCH_INSTRUCTIONS,
-        model=_SEARCH_MODEL,
-        model_settings=ModelSettings(store=False if base_url else None),
-        tools=[WebSearchTool(search_context_size="low")],
+    client = AsyncOpenAI(
+        api_key=api_key,
+        base_url=base_url,
+        http_client=DefaultAsyncHttpxClient(),
     )
-    run_config = RunConfig(model_provider=provider)
-    if base_url:
-        result = Runner.run_streamed(agent, input=query, run_config=run_config, max_turns=4)
-        async for _event in result.stream_events():
-            pass
-        if result.run_loop_exception is not None:
-            raise result.run_loop_exception
-    else:
-        result = await Runner.run(agent, input=query, run_config=run_config, max_turns=4)
+    provider = OpenAIProvider(openai_client=client, use_responses=True)
+    try:
+        agent = Agent(
+            name="ReSono Web Search",
+            instructions=_SEARCH_INSTRUCTIONS,
+            model=_SEARCH_MODEL,
+            model_settings=ModelSettings(store=False if base_url else None),
+            tools=[WebSearchTool(search_context_size="low")],
+        )
+        run_config = RunConfig(model_provider=provider)
+        dated_query = f"Current date: {datetime.now(UTC).date().isoformat()}\nSearch request: {query}"
+        if base_url:
+            result = Runner.run_streamed(agent, input=dated_query, run_config=run_config, max_turns=4)
+            async for _event in result.stream_events():
+                pass
+            if result.run_loop_exception is not None:
+                raise result.run_loop_exception
+        else:
+            result = await Runner.run(agent, input=dated_query, run_config=run_config, max_turns=4)
 
-    answer = str(result.final_output or "").strip()
-    citations = _citations_from_responses(result.raw_responses)
-    if not answer:
-        raise RuntimeError("OpenAI web search returned no answer.")
-    if not citations:
-        raise RuntimeError("OpenAI web search returned no citations.")
-    return {
-        "query": query,
-        "answer": answer,
-        "citations": citations,
-        "responseId": result.last_response_id,
-    }
+        answer = str(result.final_output or "").strip()
+        citations = _citations_from_responses(result.raw_responses)
+        if not answer:
+            raise RuntimeError("OpenAI web search returned no answer.")
+        if not citations:
+            raise RuntimeError("OpenAI web search returned no citations.")
+        return {
+            "query": query,
+            "answer": answer,
+            "citations": citations,
+            "responseId": result.last_response_id,
+        }
+    finally:
+        await provider.aclose()
+        await client.close()
 
 
 def _citations_from_responses(responses: list[object]) -> list[dict[str, str]]:

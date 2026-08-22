@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-08-22T15:41:05Z",
+  "sources": [
+    {
+      "id": "rabbit-flash-page",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/",
+      "revision": null,
+      "sha256": "6f1065f03bc1b83d72564ab958cc0bcff40b624b3ef77336e65f2f5e217fda4b",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "rabbit-device-detection",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/js/device-detection.js",
+      "revision": null,
+      "sha256": "def4ef4906f241a3c1b82a689ed41e845939ff7374c29464230a7ef28ecb20b8",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "rabbit-fastboot-operations",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/js/fastboot-ops.js",
+      "revision": null,
+      "sha256": "df12b1e327c8b464a2837550ceabd961ec0247f8d87f47992ba8c82634e76a45",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "rabbit-main",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/js/main.js",
+      "revision": null,
+      "sha256": "7a7e86f30681e8c8d718e73820e747ffc853e3a13dd9783978da18bc065479dc",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "fastboot-js",
+      "kind": "candidate-dependency",
+      "url": "https://github.com/kdrag0n/fastboot.js",
+      "revision": "5b613332aa9d66cca5bebb49f147cd084a76c464",
+      "artifact": "dist/fastboot.min.mjs",
+      "sha256": "bd8283520de10c4cb39139f2f98297a420b39e456c3241db2c7322a82bd2a6db",
+      "license": "MIT",
+      "disposition": "pinned-candidate-not-adopted"
+    },
+    {
+      "id": "mdn-browser-compat-data",
+      "kind": "reference-only",
+      "url": "https://github.com/mdn/browser-compat-data",
+      "revision": "493cef41d0f0de67c5eafe2cf84413850cd4de90",
+      "license": "CC0-1.0",
+      "disposition": "browser-capability-reference"
+    },
+    {
+      "id": "webusb-specification",
+      "kind": "reference-only",
+      "url": "https://wicg.github.io/webusb/",
+      "revision": null,
+      "license": "W3C-20150513",
+      "disposition": "protocol-reference"
+    },
+    {
+      "id": "web-serial-specification",
+      "kind": "reference-only",
+      "url": "https://wicg.github.io/serial/",
+      "revision": "2026-06-02",
+      "license": "W3C-20150513",
+      "disposition": "protocol-reference"
+    }
+  ]
+}

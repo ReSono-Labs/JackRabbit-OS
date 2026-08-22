@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path, PurePosixPath
+import shutil
 import tempfile
 import threading
 
@@ -97,7 +98,7 @@ class RunWorkspace:
 
 
 class RunWorkspaceRegistry:
-    """Owns live and retained run workspaces without leaking paths to callers."""
+    """Owns temporary workspaces for active background runs."""
 
     def __init__(self, root: Path) -> None:
         self._root = root.resolve()
@@ -106,8 +107,9 @@ class RunWorkspaceRegistry:
         self._root.mkdir(parents=True, exist_ok=True)
 
     def create(self, run_id: str, *, max_total_bytes: int) -> RunWorkspace:
+        path = self._run_path(run_id)
         workspace = RunWorkspace(
-            self._root / run_id, allowed_read=("work/",), allowed_write=("work/",),
+            path, allowed_read=("work/",), allowed_write=("work/",),
             max_files=max_total_bytes, max_file_bytes=max_total_bytes,
             max_total_bytes=max_total_bytes,
         )
@@ -117,11 +119,25 @@ class RunWorkspaceRegistry:
             self._items[run_id] = workspace
         return workspace
 
+    def release(self, run_id: str) -> None:
+        """Forget and delete only this run's temporary workspace.
+
+        Published artifacts live under DurableWorkspace and are never beneath
+        this registry root. Repeated cleanup is intentionally harmless.
+        """
+        path = self._run_path(run_id)
+        with self._lock:
+            self._items.pop(run_id, None)
+        if path.is_symlink():
+            raise WorkspaceViolation("run workspace symlinks are not allowed")
+        if path.exists():
+            shutil.rmtree(path)
+
     def get(self, run_id: str) -> RunWorkspace:
         with self._lock:
             workspace = self._items.get(run_id)
         if workspace is None:
-            path = self._root / run_id
+            path = self._run_path(run_id)
             if not path.is_dir() or path.is_symlink():
                 raise KeyError(run_id)
             workspace = RunWorkspace(path, allowed_read=("work/",), allowed_write=("work/",),
@@ -129,6 +145,16 @@ class RunWorkspaceRegistry:
                                      max_file_bytes=256 * 1024 * 1024,
                                      max_total_bytes=256 * 1024 * 1024)
         return workspace
+
+    def _run_path(self, run_id: str) -> Path:
+        if not isinstance(run_id, str) or not run_id or Path(run_id).name != run_id:
+            raise WorkspaceViolation("run ID is invalid")
+        path = (self._root / run_id).resolve(strict=False)
+        try:
+            path.relative_to(self._root)
+        except ValueError as error:
+            raise WorkspaceViolation("run workspace leaves its root") from error
+        return path
 
 
 def _normal_ref(ref: str) -> str:

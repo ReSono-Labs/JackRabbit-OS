@@ -96,3 +96,30 @@ def test_factory_failure_does_not_kill_worker(tmp_path: Path) -> None:
     second = service.submit(_request("goal-1"))
     _wait(runs, second.run_id, AgentRunState.COMPLETED)
     service.stop()
+
+
+def test_cleanup_failure_does_not_kill_worker(tmp_path: Path) -> None:
+    database = RuntimeDatabase(tmp_path / "runtime.sqlite3")
+    database.migrate()
+    runs = AgentRunRepository(database)
+    cleanups = 0
+
+    def factory(_request):
+        def cleanup():
+            nonlocal cleanups
+            cleanups += 1
+            if cleanups == 1:
+                raise RuntimeError("cleanup failed")
+        return PreparedRun(_CompletingLoop(runs), cleanup)
+
+    service = BackgroundAgentService(
+        settings=_Settings(), runs=runs, loop_factory=factory,
+        completion_dispatcher=_CompletionDispatcher(),
+    )
+    service.start()
+    first = service.submit(_request("goal-1"))
+    _wait(runs, first.run_id, AgentRunState.COMPLETED)
+    second = service.submit(_request("goal-2"))
+    _wait(runs, second.run_id, AgentRunState.COMPLETED)
+    service.stop()
+    assert cleanups == 2

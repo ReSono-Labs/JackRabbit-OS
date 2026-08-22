@@ -24,3 +24,8 @@ image/work/
 .idea/
 .vscode/
 .DS_Store
+
+# Installer-local generated output and transient caches
+/installer/dist/
+/installer/.cache/
+/installer/**/.cache/

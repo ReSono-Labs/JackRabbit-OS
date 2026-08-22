@@ -1,0 +1,17 @@
+{
+  "name": "@jackrabbit/installer",
+  "version": "0.1.0-dev",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "check:boundaries": "bash scripts/check-boundaries.sh",
+    "check:provenance": "node scripts/check-provenance.mjs",
+    "test": "bash tests/test-boundaries.sh"
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
+  }
+}
