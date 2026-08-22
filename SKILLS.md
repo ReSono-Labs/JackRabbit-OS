@@ -186,8 +186,8 @@ List of devices attached
 ```
 
 Observed values from this run:
-- versionName: `0.4.24-openai-settings-controls-debug`
-- versionCode: `29`
+- versionName: read from `android/app-version.properties` plus the debug-build suffix
+- versionCode: read from `android/app-version.properties`
 
 4. Bring HOME app to front (if needed):
 
@@ -370,7 +370,7 @@ Physical deployment evidence from 2026-08-20:
 
 - serial: `919109A5P1600502814D`
 - package: `com.resonolabs.voice.engineering`
-- installed version: code `29`, name `0.4.24-openai-settings-controls-debug`
+- installed version: must match `android/app-version.properties` plus the debug-build suffix
 - process after launch: running
 - device Wi-Fi management address: `https://192.168.1.196:8443/`
 - forwarded management root: HTTP 200

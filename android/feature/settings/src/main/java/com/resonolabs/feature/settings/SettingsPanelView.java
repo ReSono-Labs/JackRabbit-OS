@@ -649,10 +649,20 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             case "Sound" -> sound();
             case "Display" -> display();
             default -> new SettingValue[]{
-                    new SettingValue("DEVICE", "ReSono R1"),
-                    new SettingValue("BUILD", android.os.Build.VERSION.INCREMENTAL),
+                    new SettingValue("DEVICE", "Rabbit R1"),
+                    new SettingValue("VERSION", appVersion()),
                     new SettingValue("ANDROID", android.os.Build.VERSION.RELEASE)};
         };
+    }
+
+    private String appVersion() {
+        try {
+            String version = activity.getPackageManager()
+                    .getPackageInfo(activity.getPackageName(), 0).versionName;
+            return version == null || version.isBlank() ? "Unavailable" : version.replace('-', ' ');
+        } catch (android.content.pm.PackageManager.NameNotFoundException unavailable) {
+            return "Unavailable";
+        }
     }
 
     private SettingValue[] network() {

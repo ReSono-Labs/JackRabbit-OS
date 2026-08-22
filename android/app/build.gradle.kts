@@ -1,5 +1,9 @@
 plugins { id("com.android.application") }
 
+val appVersion = java.util.Properties().apply {
+    rootProject.file("app-version.properties").inputStream().use(::load)
+}
+
 android {
     namespace = "com.resonolabs.voice"
     compileSdk = 36
@@ -9,8 +13,8 @@ android {
         minSdk = 31
         targetSdk = 36
         ndk { abiFilters += listOf("arm64-v8a") }
-        versionCode = 29
-        versionName = "0.4.24-openai-settings-controls"
+        versionCode = appVersion.getProperty("VERSION_CODE").toInt()
+        versionName = appVersion.getProperty("VERSION_NAME")
     }
 
     buildTypes {
