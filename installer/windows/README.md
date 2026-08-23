@@ -1,5 +1,10 @@
 # Windows installer package
 
+Download `jackrabbit-current-v0.2.zip` from the
+[public Google Drive folder](https://drive.google.com/drive/folders/1iteItXoQ3cVqyN4DhChQ3EOBlv68f8wM?usp=drive_link),
+then extract the complete ZIP. Do not move this host directory away from the
+extracted bundle's sibling `release/` directory.
+
 `install.cmd` opens the prompt-driven Windows installer. Its host directory
 contains `jackrabbit-installer.exe`, Android Platform Tools `fastboot.exe`, and
 the two reviewed upstream driver packages. It uses the bundle's one shared

@@ -66,7 +66,7 @@ the displayed phrase exactly.
 |---|---|---|
 | `JR-CLI-COMMAND` | The requested CLI command is not part of the guided interface. | Start the package launcher, or use only `install`, `prepare`, `diagnose`, or `version` as shown by `--help`. |
 | `JR-CLI-ARGUMENT` | A supported CLI command received the wrong number of arguments. | Start the package launcher. For a manual invocation, pass exactly one complete `release/` directory to `install`. |
-| `JR-CLI-RELEASE-MISSING` | A required packaged image is absent. | Extract the complete package again. Do not copy images individually. |
+| `JR-CLI-RELEASE-MISSING` | A required packaged image is absent. | Download and extract the complete ZIP again. Keep `hosts/` and `release/` together; do not move or copy images individually. |
 | `JR-CLI-RELEASE-SIZE` | A packaged image has the wrong byte size. | Replace the entire package with an unmodified copy of the same release. |
 | `JR-CLI-RELEASE-HASH` | A packaged image does not match its required SHA-256. | Delete that extracted package and obtain a clean complete release. Do not continue. |
 | `JR-CLI-RELEASE-READ` | The installer could not read an image. | Check extraction, file permissions, available storage, and filesystem errors; then extract a clean package. |

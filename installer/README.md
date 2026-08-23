@@ -5,6 +5,12 @@ metadata for the current image set. Downloadable releases contain the images
 once and four small host launchers: Linux x64, Windows x64, macOS Apple Silicon,
 and macOS Intel.
 
+Download the complete `jackrabbit-current-v0.2.zip` from the
+[public Google Drive folder](https://drive.google.com/drive/folders/1iteItXoQ3cVqyN4DhChQ3EOBlv68f8wM?usp=drive_link).
+Extract the entire ZIP and keep its `release/` and `hosts/` directories together.
+See [`INSTALL.md`](INSTALL.md) for the verified download size, SHA-256, exact
+layout, and OS-specific start command.
+
 - `images/` — exact image and host-dependency manifests
 - `cli/` — the shared Rust flashing program
 - `linux-macos/` — Unix launchers and Linux USB rule

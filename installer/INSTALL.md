@@ -9,10 +9,38 @@ Installation erases all user data on the R1. Back up anything needed before
 starting. Keep the R1 charged, use a reliable data-capable USB cable, and do not
 unplug it while an image transfer is active.
 
-## Choose the package for the computer
+## Download and extract the complete bundle
 
-Download and extract the complete `jackrabbit-current-v0.2` bundle. Choose the
-host directory matching the computer:
+1. Open the [public JackRabbit Google Drive folder](https://drive.google.com/drive/folders/1iteItXoQ3cVqyN4DhChQ3EOBlv68f8wM?usp=drive_link).
+2. Download the file named exactly `jackrabbit-current-v0.2.zip`. Do not
+   download individual `.img` files or an individual OS folder.
+3. Confirm the downloaded ZIP is exactly `2,179,959,244` bytes. Its SHA-256 is
+   `5bdd9c63d3390783c4722d7a877806222f5370171b15b2b4b1880f1ff1c54207`.
+4. Make sure the computer has at least 8 GB free on the disk used for the
+   download and extraction.
+5. Extract the complete ZIP in any convenient local directory. Do not run it
+   from inside the ZIP.
+6. Open the extracted `jackrabbit-current-v0.2` folder. It must directly
+   contain `START-HERE.md`, `release/`, and `hosts/`.
+
+The ZIP does not need to be moved to a special installer directory. The
+installers are already inside it. The `hosts/PLATFORM` launchers locate images
+at `../../release` relative to themselves. Keep the extracted `hosts/` and
+`release/` directories together exactly as provided; moving either one breaks
+that verified path and causes installation to stop before writing.
+
+Optional checksum commands:
+
+```text
+Linux:   sha256sum jackrabbit-current-v0.2.zip
+macOS:   shasum -a 256 jackrabbit-current-v0.2.zip
+Windows: Get-FileHash .\jackrabbit-current-v0.2.zip -Algorithm SHA256
+```
+
+## Choose the installer for the computer
+
+Inside the extracted `jackrabbit-current-v0.2` folder, choose the host directory
+matching the computer:
 
 | Computer | Package directory | Start it with |
 |---|---|---|
@@ -21,8 +49,11 @@ host directory matching the computer:
 | macOS Intel | `hosts/macos-x64` | Double-click `install.command`, or run `./install.sh` |
 | Windows x64 | `hosts/windows-x64` | Double-click `install.cmd` |
 
-Do not run an installer from inside the ZIP file. Extract the entire package
-first and keep its files and directories together.
+The image files must be present on the local computer while flashing; fastboot
+cannot write them directly from Google Drive or another remote site. Downloading and extracting the complete
+bundle puts them in the correct location automatically. After installation has
+completed successfully and the R1 has booted, the extracted bundle may be
+deleted from the computer.
 
 ## Do not select or move image files
 

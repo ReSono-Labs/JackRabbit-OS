@@ -1,5 +1,10 @@
 # Linux and macOS installer package
 
+Download `jackrabbit-current-v0.2.zip` from the
+[public Google Drive folder](https://drive.google.com/drive/folders/1iteItXoQ3cVqyN4DhChQ3EOBlv68f8wM?usp=drive_link),
+then extract the complete ZIP. Do not move this host directory away from the
+extracted bundle's sibling `release/` directory.
+
 `install.sh` is the prompt-driven launcher shared by Linux and macOS. Each host
 directory contains this launcher, its native `jackrabbit-installer` binary, and
 the matching Android Platform Tools `fastboot` binary. All host directories use
@@ -17,7 +22,7 @@ to `install.sh`. Release packages provide separate native CLI builds for Apple
 Silicon (`macos-arm64`) and Intel (`macos-x64`); Google's bundled `fastboot` is
 universal.
 
-Run:
+From the matching extracted host directory, run:
 
 ```sh
 ./install.sh
