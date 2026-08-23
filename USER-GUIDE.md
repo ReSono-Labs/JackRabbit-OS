@@ -237,6 +237,55 @@ Reasoning Logs do not contain hidden chain-of-thought, tool arguments, or tool r
 - For MCP tools, confirm discovery succeeded and the intended agent audience is allowed.
 - Review import recovery or quarantine state if an earlier lifecycle action was interrupted.
 
+### An installed Creation does not open
+
+Known issue: the current CipherOS-derived JackRabbit image can have the AOSP
+WebView package installed and enabled while Android has selected no current
+WebView provider. The Creation may be installed correctly even though tapping
+its Card cannot open it.
+
+Connect the booted R1 to a computer with ADB access and run:
+
+```bash
+adb shell cmd webviewupdate set-webview-implementation com.android.webview
+adb shell dumpsys webviewupdate
+```
+
+If `adb` is not on `PATH`, substitute the path to the Android SDK
+`platform-tools/adb` executable. The first command must report `Success`. The
+verification output must report all of the following before opening the
+Creation again:
+
+```text
+Current WebView package ... com.android.webview
+Any WebView package installed: true
+Number of relros started: <non-zero count>
+Number of relros finished: <the same count>
+```
+
+The confirmed R1 reached `1` started and `1` finished.
+
+This changes Android's selected provider only. It does not erase data, reflash
+the R1, reinstall JackRabbit, or reinstall the Creation. If the verification
+still reports `Current WebView package is null`, preserve the complete output
+and report it rather than changing partitions manually.
+
+Confirmed physical-device symptom:
+`MissingWebViewPackageException: Failed to load WebView provider: No WebView installed`.
+The runtime catalog and audit records can still show the affected Creation as
+installed and enabled.
+
+The permanent correction belongs in the CipherOS-derived Android image's
+WebView provider policy, not in the JackRabbit APK. The current image retains
+`/product/app/webview/webview.apk` as `com.android.webview`, but Android's
+WebView update service can still start with no provider selected. Because the
+current image is assembled from binary partition images and no
+`config_webview_packages.xml` was found in the mounted system, product,
+system_ext, or vendor partitions, an exact source-file correction has not been
+verified. Do not add an APK workaround or claim an unverified file location.
+Until the image policy is corrected and first-boot tested, the ADB command
+above is the documented resolution for an already-installed device.
+
 ## Privacy reminders
 
 - Voice and agent requests send the data needed for the request to the selected OpenAI access path.

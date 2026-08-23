@@ -102,6 +102,17 @@ JackRabbit keeps these extension boundaries distinct:
 
 Imports enforce archive size, path, link, encryption, and compression constraints. JackRabbit does not claim an extension marketplace or a general arbitrary-code trust model.
 
+### Known issue: an installed Creation does not open
+
+The current CipherOS-derived image can retain `com.android.webview` while
+Android selects no active WebView provider. Creation installation still
+succeeds, but opening the installed Card fails. This is an image/provider-state
+issue, not a failed Creation import.
+
+The verified recovery for an already-installed R1 is documented under
+[Troubleshooting in Using JackRabbit](USER-GUIDE.md#an-installed-creation-does-not-open).
+It does not require reflashing or reinstalling the Creation.
+
 ## Background Agent
 
 <p align="center">
