@@ -5,7 +5,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const installerRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const stockR1Release = JSON.parse(await readFile(join(installerRoot, "contracts/current-release-v0.2.json"), "utf8"));
+const stockR1Release = JSON.parse(await readFile(join(installerRoot, "images/RELEASE.json"), "utf8"));
 const releaseRoot = resolve(process.argv[2] ?? "");
 
 function fail(code, message) {

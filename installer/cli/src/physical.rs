@@ -3,8 +3,7 @@ use crate::prompt;
 use serde::Deserialize;
 use std::io::{BufRead, IsTerminal, Write};
 
-const PROMPT_CONTRACT: &str = include_str!("../../contracts/preparation-prompts-v1.json");
-const OFFICIAL_ENTRY_URL: &str = "https://rabbit-hmi-oss.github.io/flashing/";
+const PROMPT_CONTRACT: &str = include_str!("../../images/PROMPTS.json");
 
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
@@ -133,13 +132,6 @@ fn load_contract() -> Result<PromptContract, CommandError> {
                 "the embedded physical prompt contract is incomplete",
             ));
         }
-        if prompt.id == "open-official-entry" && prompt.href.as_deref() != Some(OFFICIAL_ENTRY_URL)
-        {
-            return Err(CommandError::new(
-                "JR-CLI-PROMPT-CONTRACT",
-                "the official FASTBOOT entry URL is not the reviewed source",
-            ));
-        }
     }
     Ok(contract)
 }
@@ -159,7 +151,7 @@ mod tests {
         run(&mut Cursor::new("\n\n\n\n"), &mut output, None).unwrap();
         let text = String::from_utf8(output).unwrap();
         let positions: Vec<_> = [
-            "Request developer mode",
+            "Enable bootloader unlocking",
             "Back up the R1",
             "Prepare the hardware",
             "Let JackRabbit enter FASTBOOT",

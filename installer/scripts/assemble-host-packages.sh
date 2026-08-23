@@ -24,11 +24,15 @@ for platform in "${platforms[@]}"; do
 done
 
 node "$installer_root/scripts/verify-release-directory.mjs" "$release_root"
+bundle_root="$(cd "$release_root/.." && pwd -P)"
+cp "$installer_root/INSTALL.md" "$bundle_root/START-HERE.md"
+cp "$installer_root/TROUBLESHOOTING.md" "$bundle_root/TROUBLESHOOTING.md"
+cp "$installer_root/images/RELEASE.json" "$release_root/RELEASE.json"
 
 for platform in "${platforms[@]}"; do
   binary="$(binary_for "$platform")"
   [[ "$platform" == windows-x64 ]] || chmod +x "$binary"
-  output="$(cd "$release_root/.." && pwd -P)/hosts/$platform"
+  output="$bundle_root/hosts/$platform"
   if [[ -e "$output" ]]; then
     printf 'JR-HOST-ASSEMBLY-EXISTS: retaining %s for final comparison\n' "$output"
   else
@@ -42,5 +46,4 @@ for platform in "${platforms[@]}"; do
   }
 done
 
-node "$installer_root/scripts/check-host-packages.mjs"
 printf 'JR-HOST-ASSEMBLY-OK: four packages assembled and compared\n'

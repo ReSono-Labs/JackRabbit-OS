@@ -5,7 +5,7 @@ installer_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 platform="${1:?platform is required: linux-x64, macos-x64, macos-arm64, or windows-x64}"
 cli_binary="${2:?compiled CLI binary is required}"
 release_root="${3:?verified release directory is required}"
-contract="$installer_root/contracts/host-dependencies-v1.json"
+contract="$installer_root/images/HOST-DEPENDENCIES.json"
 
 case "$platform" in
   linux-x64|macos-x64|macos-arm64|windows-x64) ;;

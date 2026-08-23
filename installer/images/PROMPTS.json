@@ -5,15 +5,15 @@
       "id": "prepare-account",
       "phase": "prepare",
       "category": "PREPARE_ACCOUNT",
-      "title": "Request developer mode",
-      "reason": "Rabbit must approve developer mode before its supported bootloader-unlock setting is available.",
-      "action": "Use rabbit's official process, wait for approval, and enable bootloader unlocking in rabbithole before connecting the R1.",
-      "expected": "Rabbithole shows that developer mode is approved and bootloader unlocking is enabled.",
-      "warning": "Do not continue based only on submitting the request; wait for the actual approval state.",
+      "title": "Enable bootloader unlocking",
+      "reason": "Rabbit's supported bootloader-unlock setting must be enabled before installation.",
+      "action": "In rabbithole, open Settings > Developer > Device modification and turn on r1 bootloader unlock.",
+      "expected": "The r1 bootloader unlock switch is on. The change takes effect immediately.",
+      "warning": "Do not continue while the switch is off.",
       "verification": "external-user-attestation",
       "cancel": "Stop without connecting to or changing the R1.",
       "nextStates": ["back-up"],
-      "surfaces": ["web", "cli"],
+      "surfaces": ["cli"],
       "href": "https://www.rabbit.tech/support/article/unlock-bootloader-rabbit-r1",
       "linkLabel": "Open rabbit instructions"
     },
@@ -29,7 +29,7 @@
       "verification": "external-user-attestation",
       "cancel": "Stop without connecting to or changing the R1.",
       "nextStates": ["prepare-hardware"],
-      "surfaces": ["web", "cli"]
+      "surfaces": ["cli"]
     },
     {
       "id": "prepare-hardware",
@@ -42,24 +42,8 @@
       "warning": "Do not connect the cable until the installer asks for it.",
       "verification": "external-user-attestation",
       "cancel": "Leave the powered-off R1 disconnected.",
-      "nextStates": ["open-official-entry"],
-      "surfaces": ["web", "cli"]
-    },
-    {
-      "id": "open-official-entry",
-      "phase": "fastboot-entry",
-      "category": "OPEN_OFFICIAL_ENTRY",
-      "title": "Use rabbit's FASTBOOT entry",
-      "reason": "Native preloader entry is not enabled until it passes the exact host and device evidence gate.",
-      "action": "Open rabbit's official page and choose only Enter Fastboot Mode. Connect the powered-off R1 when that page asks.",
-      "expected": "The physical R1 screen says FASTBOOT.",
-      "warning": "Never choose Flash Stock ROM. Return here after FASTBOOT appears.",
-      "verification": "physical-observation-then-machine-probe",
-      "cancel": "Close the official page and leave the R1 unchanged if FASTBOOT does not appear.",
-      "nextStates": ["diagnose"],
-      "surfaces": ["web"],
-      "href": "https://rabbit-hmi-oss.github.io/flashing/",
-      "linkLabel": "Open official tool"
+      "nextStates": ["enter-fastboot-cli"],
+      "surfaces": ["cli"]
     },
     {
       "id": "enter-fastboot-cli",
