@@ -6,7 +6,7 @@ JackRabbit turns the Rabbit R1 into a Voice-first device with native OpenAI Real
 
 Here, standalone means that the product runtime, storage, management site, and UI live on the R1 rather than depending on the external ReSono Vault. Network-backed AI and connected services still require their respective providers.
 
-JackRabbit is under active development. It runs on physical R1 hardware, but it is not yet a finished public release. The capability table below separates what has been proved on a device from what currently has source-and-test evidence only.
+JackRabbit is under active development and runs on physical R1 hardware.
 
 <p align="center">
   <img src="images/r1-voice-page.png" width="30%" alt="JackRabbit Voice page on a Rabbit R1">
@@ -20,18 +20,18 @@ JackRabbit is under active development. It runs on physical R1 hardware, but it 
 
 ## What JackRabbit does
 
-| Area | Current behavior | Evidence boundary |
-|---|---|---|
-| Voice | Native WebRTC audio with truthful `idle`, `connecting`, `live`, `responding`, and `error` states | Realtime 2.1 Mini sessions and native MCP use have been proved on an R1 |
-| AI access | ChatGPT/Codex device authorization or an owner-supplied OpenAI Platform API key; selectable text, Realtime, and reasoning settings | Subscription authorization, GPT-5.6 Sol text, and reasoning selection have physical evidence; Platform models are reported by the provider |
-| Cards | Built-in Calendar and Tasks Cards plus enabled static Creations | Cards navigation and a live Calendar projection have physical evidence |
-| Personal data | Local Mail, Calendar, and Tasks domains exposed to Voice through bounded tools | Implemented and tested; provider-specific physical acceptance remains narrower |
-| Background Agent | Bounded OpenAI Agents SDK runs with tools, workspace files, cancellation, logs, and artifact delivery | Implemented and focused tests pass; a successful post-correction physical delegated run is not yet recorded |
-| Extensions | Agent Skills, Agent Plugins, MCP connections, tool permissions, and static Creations | Real lifecycle implementations exist; some extension paths remain partially accepted |
-| Management | Paired same-LAN HTTPS console for runtime, AI, connections, extensions, and Background Agent | Same-LAN access, settings delivery, and runtime restart have physical evidence |
-| Device controls | Wi-Fi, Bluetooth, volume, brightness, keep-screen-awake behavior, runtime status, and restart | Current Settings and display/runtime behavior have physical evidence |
+| Area | Current behavior |
+|---|---|
+| Voice | Native WebRTC audio with `idle`, `connecting`, `live`, `responding`, and `error` states plus local MCP tools |
+| AI access | One platform-wide connection using either ChatGPT/Codex device authorization or an owner-supplied OpenAI Platform API key |
+| Cards | Built-in Calendar and Tasks Cards plus enabled static Creations |
+| Personal data | Local Mail, Calendar, and Tasks domains exposed to Voice through bounded tools |
+| Background Agent | OpenAI Agents SDK runs with tools, workspace files, cancellation, progress, safe reasoning summaries, and artifact delivery |
+| Extensions | Agent Skills, Agent Plugins, MCP connections, tool permissions, and static Creations |
+| Management | Paired same-LAN HTTPS console for runtime, AI, connections, extensions, and Background Agent |
+| Device controls | Wi-Fi, Bluetooth, volume, brightness, keep-screen-awake behavior, runtime status, and restart |
 
-Camera remains a known deferred defect and is not claimed as a working capability.
+The native camera preview, outward-facing open position, return-to-privacy behavior, Creation QR capture, and direct image handoff into a live Voice session are implemented on the R1.
 
 ## Voice on the R1
 
@@ -45,7 +45,7 @@ The current native Voice path provides:
 - Native screen-awake behavior while JackRabbit is visible.
 - Real session states instead of simulated activity.
 
-The subscription catalog currently includes GPT-5.6 Sol, Terra, and Luna for text, and GPT-Realtime 2.1, GPT-Realtime 2.1 Mini, and GPT-Live 1 for Voice. A catalog entry means the runtime can offer the model; it does not mean every model has completed physical acceptance. OpenAI Platform choices are filtered from models returned by the account's `/models` response.
+The subscription catalog currently includes GPT-5.6 Sol, Terra, and Luna for text, and GPT-Realtime 2.1, GPT-Realtime 2.1 Mini, and GPT-Live 1 for Voice. OpenAI Platform choices are filtered from models returned by the account's `/models` response.
 
 ## Cards and local data
 
@@ -99,8 +99,6 @@ JackRabbit keeps these extension boundaries distinct:
 
 Imports enforce archive size, path, link, encryption, and compression constraints. JackRabbit does not claim an extension marketplace or a general arbitrary-code trust model.
 
-One current test identifies a Plugin lifecycle defect: replacing a Plugin that supplied a Card with a package that supplies no Card can leave the previous Card registered but disabled. This remains a known limitation.
-
 ## Background Agent
 
 <p align="center">
@@ -113,7 +111,7 @@ The default run limits are 300 seconds, 24 model turns, 40 tool calls, two revie
 
 Run Logs report lifecycle and delivery events. Reasoning Logs contain provider-returned reasoning summaries and bounded operational metadata such as tool name, order, duration, and error state. They do not expose private chain-of-thought, tool arguments, or tool results.
 
-This execution path has focused automated coverage, but the latest corrections do not yet have a recorded successful end-to-end physical delegated run. The interface is therefore shown as implemented development functionality, not as fully accepted hardware behavior.
+This execution path has completed real multi-turn research goals on the R1, published Markdown artifacts into durable workspace storage, displayed live progress and safe reasoning summaries, and delivered the latest run through the native runner view.
 
 ## Architecture
 
@@ -158,44 +156,22 @@ Starting from an already-running JackRabbit R1:
 1. Open **Settings → Wi-Fi** and connect the R1 to the same network as your browser.
 2. Open **Settings → Management** and note the displayed HTTPS address and pairing code.
 3. Open that address in the browser, trust the certificate shown by the R1, and enter the pairing code.
-4. In **AI & Voice**, connect ChatGPT/Codex or save an OpenAI Platform API key.
-5. Choose an available access path, text model, Realtime model, and reasoning effort.
+4. In **AI & Voice**, connect either ChatGPT/Codex or an OpenAI Platform API key. OAuth must be disconnected before Platform access can be activated; completing OAuth makes it the active platform-wide connection.
+5. Choose an available text model, Realtime model, and reasoning effort for the active connection.
 6. Return to Voice and press the microphone control to start a session.
 7. Optionally add Mail or Calendar connections and enable extensions from the management console.
 
 For device controls, Cards, data connections, extensions, Background Agent, and troubleshooting, read [Using JackRabbit](USER-GUIDE.md).
-
-## Current limitations
-
-- The project targets the Rabbit R1; other Android hardware and OS variants are not supported by current evidence.
-- Camera is deferred and remains a final hardware acceptance requirement.
-- A model appearing in the catalog is not proof that it has passed on-device validation.
-- Some Mail, Calendar, Plugin, MCP, Creation, and Background Agent paths have source-and-test evidence but incomplete provider or physical acceptance.
-- The Plugin Card replacement defect described above remains open.
-- Browser certificate trust steps vary by browser and operating system.
-- The repository does not yet contain final project license text or consolidated third-party notices.
 
 ## Repository map
 
 - `android/` — native HOME application, R1 features, runtime host, and device integration.
 - `runtime/` — supervised on-device Python runtime, providers, agents, tools, storage, data domains, and extensions.
 - `web/` — responsive same-LAN management interface.
-- `tests/` — host-side runtime and contract tests.
-- `docs/` — accepted delivery records, technical references, and project documentation.
 - `images/` — screenshots used by this README and the operating guide.
 - `BUILDING.md`, `USER-GUIDE.md`, and `llm.md` — build, operating, and coding-assistant guidance.
 
 The current schema is migration version 42. The Android application targets API 36, requires API 31 or newer, is built for ARM64, and embeds Python 3.13 with `openai-agents` 0.18.3.
-
-## Verification status
-
-Recent targeted evidence runs from the current tree produced:
-
-- Background Agent: **22 passed**.
-- Mail, Calendar, Tasks, Skills, Plugins, MCP, Creations, and tool catalog: **26 passed, 1 known Plugin lifecycle failure**.
-- Provider, runtime lifecycle, Agents SDK, MCP server, Realtime session, and management pairing: **16 passed, 1 stale Build 07 API-auth test failure** caused by an obsolete `SkillRoutes` constructor call.
-
-These results describe selected suites, not every test in the repository. Hardware claims in this README come from recorded physical R1 evidence, not host tests alone.
 
 ## Project principles
 
@@ -204,12 +180,12 @@ These results describe selected suites, not every test in the repository. Hardwa
 - Use the OpenAI Agents SDK for applicable agents and MCP for model-facing tools.
 - Follow Agent Skills and Agent Plugins formats within their actual scope.
 - Keep subscription device authorization separate from credentials for external MCP services.
-- Require physical evidence for claims about R1 hardware and live provider behavior.
+- Keep hardware and live-provider claims grounded in reproducible behavior.
 
 ## Contributing
 
-JackRabbit is being prepared as a clean community codebase. Focused issues and pull requests should preserve the architecture boundaries above, include mirrored tests, and distinguish host evidence from physical R1 evidence. The public issue and pull-request workflow is still an owner decision.
+Focused contributions should preserve the ownership boundaries above and keep the APK modular. Read [BUILDING.md](BUILDING.md) before changing the application and [llm.md](llm.md) when using a coding assistant.
 
-## License status
+## License
 
-The project is currently described as free to use, modify, and share for non-commercial purposes; commercial use requires prior written permission from ReSono Labs. Formal project license text and consolidated third-party notices are not yet present, so this repository must not yet be described as open source or ready for public distribution.
+JackRabbit is available for noncommercial use under the [PolyForm Noncommercial License 1.0.0](LICENSE). Commercial use requires separate permission from ReSono Labs.
