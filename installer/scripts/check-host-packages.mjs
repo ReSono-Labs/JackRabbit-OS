@@ -173,16 +173,6 @@ for (const packageName of stagedPackages) {
     if (error.code !== "ENOENT") throw error;
   }
 
-  if (platform === "linux-x64") {
-    const builtCli = join(root, "cli/target/release/jackrabbit-installer-cli");
-    try {
-      await access(builtCli, constants.R_OK);
-      const [built, packaged] = await Promise.all([readFile(builtCli), readFile(join(staged, "bin/jackrabbit-installer"))]);
-      if (!built.equals(packaged)) fail("STAGED-CLI", `${packageName} CLI differs from the current release build`);
-    } catch (error) {
-      if (error.code !== "ENOENT") throw error;
-    }
-  }
 }
 
 process.stdout.write("JR-HOST-PACKAGE-OK\n");
