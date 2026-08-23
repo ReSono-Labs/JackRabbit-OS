@@ -8,6 +8,9 @@ Here, standalone means that the product runtime, storage, management site, and U
 
 JackRabbit is under active development and runs on physical R1 hardware.
 
+Join the [JackRabbit community on Discord](https://discord.gg/HeKGmh5mC) for
+discussion, installation help, and contribution coordination.
+
 <p align="center">
   <img src="images/r1-voice-page.png" width="30%" alt="JackRabbit Voice page on a Rabbit R1">
   &nbsp;
@@ -185,6 +188,9 @@ The current schema is migration version 42. The Android application targets API 
 ## Contributing
 
 Focused contributions should preserve the ownership boundaries above and keep the APK modular. Read [BUILDING.md](BUILDING.md) before changing the application and [llm.md](llm.md) when using a coding assistant.
+
+Questions and contribution discussions are welcome in the
+[JackRabbit Discord community](https://discord.gg/HeKGmh5mC).
 
 ## License
 

@@ -110,3 +110,7 @@ Include:
 - whether the cable was disconnected or the host slept during the attempt.
 
 Do not publish the R1 serial number or account information.
+
+For community installation help, join the
+[JackRabbit Discord](https://discord.gg/HeKGmh5mC) and include the non-sensitive
+details listed above.
