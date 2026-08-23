@@ -9,11 +9,11 @@ Here, standalone means that the product runtime, storage, management site, and U
 JackRabbit is under active development. It runs on physical R1 hardware, but it is not yet a finished public release. The capability table below separates what has been proved on a device from what currently has source-and-test evidence only.
 
 <p align="center">
-  <img src="github_documents/images/r1-voice-page.png" width="30%" alt="JackRabbit Voice page on a Rabbit R1">
+  <img src="images/r1-voice-page.png" width="30%" alt="JackRabbit Voice page on a Rabbit R1">
   &nbsp;
-  <img src="github_documents/images/r1-cards-page.png" width="30%" alt="JackRabbit Cards page on a Rabbit R1">
+  <img src="images/r1-cards-page.png" width="30%" alt="JackRabbit Cards page on a Rabbit R1">
   &nbsp;
-  <img src="github_documents/images/r1-calendar-card.png" width="30%" alt="JackRabbit Calendar Card showing an upcoming event">
+  <img src="images/r1-calendar-card.png" width="30%" alt="JackRabbit Calendar Card showing an upcoming event">
 </p>
 
 <p align="center"><em>Voice, Cards, and a real Calendar event on the 480×640 R1 display.</em></p>
@@ -50,9 +50,9 @@ The subscription catalog currently includes GPT-5.6 Sol, Terra, and Luna for tex
 ## Cards and local data
 
 <p align="center">
-  <img src="github_documents/images/r1-settings-page.png" width="32%" alt="JackRabbit Settings page">
+  <img src="images/r1-settings-page.png" width="32%" alt="JackRabbit Settings page">
   &nbsp;
-  <img src="github_documents/images/web_management/Screenshot%20from%202026-08-22%2011-54-16.png" width="62%" alt="JackRabbit management Connections page showing Mail and Calendar">
+  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-16.png" width="62%" alt="JackRabbit management Connections page showing Mail and Calendar">
 </p>
 
 The Cards deck always includes Calendar and Tasks, followed by enabled Creations.
@@ -68,9 +68,9 @@ The management console owns account configuration and status. It does not expose
 The R1 serves its management console over HTTPS to a browser on the same local network. Pairing uses a six-digit, one-time code that expires after five minutes. A paired browser session lasts 30 minutes. State-changing requests are protected by the paired session, matching HTTPS origin, and CSRF token.
 
 <p align="center">
-  <img src="github_documents/images/web_management/Screenshot%20from%202026-08-22%2011-54-31.png" width="48%" alt="JackRabbit management Overview page">
+  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-31.png" width="48%" alt="JackRabbit management Overview page">
   &nbsp;
-  <img src="github_documents/images/web_management/Screenshot%20from%202026-08-22%2011-54-26.png" width="48%" alt="JackRabbit AI and Voice settings">
+  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-26.png" width="48%" alt="JackRabbit AI and Voice settings">
 </p>
 
 From the browser, the owner can:
@@ -81,12 +81,12 @@ From the browser, the owner can:
 - Import and manage Skills, Plugins, MCP connections, and Creations.
 - Configure the Background Agent and inspect run status and safe operational logs.
 
-See [Using JackRabbit](github_documents/USER-GUIDE.md) for the operating guide.
+See [Using JackRabbit](USER-GUIDE.md) for the operating guide.
 
 ## Skills, Plugins, MCP, Tools, and Creations
 
 <p align="center">
-  <img src="github_documents/images/web_management/Screenshot%20from%202026-08-22%2011-54-21.png" width="72%" alt="JackRabbit Library page with Skills, Plugins, MCP, Tools, and Creations">
+  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-21.png" width="72%" alt="JackRabbit Library page with Skills, Plugins, MCP, Tools, and Creations">
 </p>
 
 JackRabbit keeps these extension boundaries distinct:
@@ -104,7 +104,7 @@ One current test identifies a Plugin lifecycle defect: replacing a Plugin that s
 ## Background Agent
 
 <p align="center">
-  <img src="github_documents/images/web_management/Screenshot%20from%202026-08-22%2011-54-07.png" width="72%" alt="JackRabbit Background Agent settings and run logs">
+  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-07.png" width="72%" alt="JackRabbit Background Agent settings and run logs">
 </p>
 
 Voice can delegate a bounded goal to one on-device Background Agent worker. The worker uses the OpenAI Agents SDK rather than a second custom agent loop. Runs move through explicit states including queued, running, reviewing, repairing, completed, failed, and cancelled.
@@ -163,7 +163,7 @@ Starting from an already-running JackRabbit R1:
 6. Return to Voice and press the microphone control to start a session.
 7. Optionally add Mail or Calendar connections and enable extensions from the management console.
 
-For device controls, Cards, data connections, extensions, Background Agent, and troubleshooting, read [Using JackRabbit](github_documents/USER-GUIDE.md).
+For device controls, Cards, data connections, extensions, Background Agent, and troubleshooting, read [Using JackRabbit](USER-GUIDE.md).
 
 ## Current limitations
 
@@ -182,7 +182,8 @@ For device controls, Cards, data connections, extensions, Background Agent, and 
 - `web/` — responsive same-LAN management interface.
 - `tests/` — host-side runtime and contract tests.
 - `docs/` — accepted delivery records, technical references, and project documentation.
-- `github_documents/` — public project images and operating guide.
+- `images/` — screenshots used by this README and the operating guide.
+- `BUILDING.md`, `USER-GUIDE.md`, and `llm.md` — build, operating, and coding-assistant guidance.
 
 The current schema is migration version 42. The Android application targets API 36, requires API 31 or newer, is built for ARM64, and embeds Python 3.13 with `openai-agents` 0.18.3.
 

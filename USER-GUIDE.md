@@ -225,4 +225,4 @@ Reasoning Logs do not contain hidden chain-of-thought, tool arguments, or tool r
 - Treat imported packages and external MCP servers as third-party components and review their declared access before enabling them.
 - Management is local-network scoped, but it still exposes owner controls; pair only browsers you trust.
 
-Return to the [JackRabbit README](../README.md).
+Return to the [JackRabbit README](README.md).
