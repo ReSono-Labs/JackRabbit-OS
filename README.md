@@ -52,7 +52,7 @@ The subscription catalog currently includes GPT-5.6 Sol, Terra, and Luna for tex
 <p align="center">
   <img src="images/r1-settings-page.png" width="32%" alt="JackRabbit Settings page">
   &nbsp;
-  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-16.png" width="62%" alt="JackRabbit management Connections page showing Mail and Calendar">
+  <img src="images/web_management/connections.png" width="62%" alt="JackRabbit management Connections page showing Mail and Calendar">
 </p>
 
 The Cards deck always includes Calendar and Tasks, followed by enabled Creations.
@@ -68,9 +68,9 @@ The management console owns account configuration and status. It does not expose
 The R1 serves its management console over HTTPS to a browser on the same local network. Pairing uses a six-digit, one-time code that expires after five minutes. A paired browser session lasts 30 minutes. State-changing requests are protected by the paired session, matching HTTPS origin, and CSRF token.
 
 <p align="center">
-  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-31.png" width="48%" alt="JackRabbit management Overview page">
+  <img src="images/web_management/overview.png" width="48%" alt="JackRabbit management Overview page">
   &nbsp;
-  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-26.png" width="48%" alt="JackRabbit AI and Voice settings">
+  <img src="images/web_management/ai-voice.png" width="48%" alt="JackRabbit AI and Voice settings">
 </p>
 
 From the browser, the owner can:
@@ -86,7 +86,7 @@ See [Using JackRabbit](USER-GUIDE.md) for the operating guide.
 ## Skills, Plugins, MCP, Tools, and Creations
 
 <p align="center">
-  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-21.png" width="72%" alt="JackRabbit Library page with Skills, Plugins, MCP, Tools, and Creations">
+  <img src="images/web_management/library.png" width="72%" alt="JackRabbit Library page with Skills, Plugins, MCP, Tools, and Creations">
 </p>
 
 JackRabbit keeps these extension boundaries distinct:
@@ -104,7 +104,7 @@ One current test identifies a Plugin lifecycle defect: replacing a Plugin that s
 ## Background Agent
 
 <p align="center">
-  <img src="images/web_management/Screenshot%20from%202026-08-22%2011-54-07.png" width="72%" alt="JackRabbit Background Agent settings and run logs">
+  <img src="images/web_management/background-agent.png" width="72%" alt="JackRabbit Background Agent settings and run logs">
 </p>
 
 Voice can delegate a bounded goal to one on-device Background Agent worker. The worker uses the OpenAI Agents SDK rather than a second custom agent loop. Runs move through explicit states including queued, running, reviewing, repairing, completed, failed, and cancelled.
