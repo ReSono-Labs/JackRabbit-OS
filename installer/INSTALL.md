@@ -174,6 +174,12 @@ Image transfer complete.
 After that message, keep the R1 powered and allow the first boot to finish. A
 successful transfer and a successful Android first boot are separate events.
 
+After first boot, connect the R1 to Wi-Fi and pair its management console. The
+first management setup action is **Overview → Your Profile → Your name → Save
+name**. Confirm **Name saved.** before connecting ChatGPT/Platform access or
+starting Voice; JackRabbit uses this profile for its personalized Voice
+greeting.
+
 If the installer returns an error code instead, use
 [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md). Do not improvise partition commands.
 

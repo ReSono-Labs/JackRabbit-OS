@@ -159,10 +159,13 @@ Starting from an already-running JackRabbit R1:
 1. Open **Settings → Wi-Fi** and connect the R1 to the same network as your browser.
 2. Open **Settings → Management** and note the displayed HTTPS address and pairing code.
 3. Open that address in the browser, trust the certificate shown by the R1, and enter the pairing code.
-4. In **AI & Voice**, connect either ChatGPT/Codex or an OpenAI Platform API key. OAuth must be disconnected before Platform access can be activated; completing OAuth makes it the active platform-wide connection.
-5. Choose an available text model, Realtime model, and reasoning effort for the active connection.
-6. Return to Voice and press the microphone control to start a session.
-7. Optionally add Mail or Calendar connections and enable extensions from the management console.
+4. **Do not skip this:** on **Overview**, find **Your Profile**, enter your name
+   in **Your name**, and choose **Save name**. Confirm that the page reports
+   **Name saved.** JackRabbit uses this for your personalized Voice greeting.
+5. In **AI & Voice**, connect either ChatGPT/Codex or an OpenAI Platform API key. OAuth must be disconnected before Platform access can be activated; completing OAuth makes it the active platform-wide connection.
+6. Choose an available text model, Realtime model, and reasoning effort for the active connection.
+7. Return to Voice and press the microphone control to start a session.
+8. Optionally add Mail or Calendar connections and enable extensions from the management console.
 
 For device controls, Cards, data connections, extensions, Background Agent, and troubleshooting, read [Using JackRabbit](USER-GUIDE.md).
 

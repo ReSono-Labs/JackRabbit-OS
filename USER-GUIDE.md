@@ -31,7 +31,27 @@ A paired browser session lasts 30 minutes. If authorization expires, use **Refre
 
 The address is local to the active Wi-Fi or Ethernet network. A cellular address is not advertised as the management address.
 
+## Add your name before using Voice
+
+Do this immediately after pairing the management console and before configuring
+or using ChatGPT, Platform access, or Voice:
+
+1. Open **Overview** in the management console.
+2. Find the **Your Profile** card titled **How R1 addresses you**.
+3. Enter the name you want JackRabbit to use in **Your name**.
+4. Choose **Save name**.
+5. Do not continue until the card reports **Name saved.**
+
+Do not skip this setup step. JackRabbit reads this saved profile when creating
+the personalized greeting for a new Voice connection. If no name is saved, the
+personalized connection greeting is omitted. The name can be changed later from
+the same **Overview → Your Profile** card.
+
 ## Connect OpenAI access
+
+Before continuing, confirm **Overview → Your Profile** reports **Name saved.**
+If OpenAI access was connected first, return to Overview and save the name
+before starting Voice.
 
 Open **AI & Voice** in the management console.
 
