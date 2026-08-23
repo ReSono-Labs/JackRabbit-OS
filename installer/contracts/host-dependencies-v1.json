@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "platformToolsVersion": "37.0.1",
+  "platformTools": {
+    "linux-x64": {
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-linux.zip",
+      "sha256": "d230f13842f60f782a8645f9c813f8f845bf36089ea7289f28c48f17979313f1"
+    },
+    "macos-x64": {
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-darwin.zip",
+      "sha256": "ee39ad5967e95c2a07f04dbcbde96b1a0c916ba376096db5d2f498b7727a5d1d"
+    },
+    "macos-arm64": {
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-darwin.zip",
+      "sha256": "ee39ad5967e95c2a07f04dbcbde96b1a0c916ba376096db5d2f498b7727a5d1d"
+    },
+    "windows-x64": {
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-win.zip",
+      "sha256": "45f4d63113e895ebde0c90f194099a4676b6ac653bd28d54314a9e022bbc1a99"
+    }
+  },
+  "windowsDrivers": {
+    "rabbitMediaTekPreloader": {
+      "url": "https://github.com/rabbit-hmi-oss/firmware/releases/download/drivers/MediaTek-Preloader_USB_VCOM_drivers-signed.zip",
+      "sha256": "c83f7ba3e657abd3577640448009178d98c07a849f49bcdf5f59577158ea7dab",
+      "license": "NOASSERTION",
+      "distribution": "download-from-official-rabbit-release-during-package-build"
+    },
+    "googleUsbDriver": {
+      "url": "https://dl.google.com/android/repository/usb_driver_r13-windows.zip",
+      "sha256": "360b01d3dfb6c41621a3a64ae570dfac2c9a40cca1b5a1f136ae90d02f5e9e0b",
+      "fastbootIdentity": "USB\\VID_18D1&PID_4EE0",
+      "license": "Android SDK License",
+      "distribution": "download-from-google-during-package-build"
+    }
+  }
+}

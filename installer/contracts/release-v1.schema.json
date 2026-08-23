@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jackrabbit:installer:release:v1",
+  "title": "JackRabbit release manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releaseId", "profile", "dataPolicy", "startingContracts", "products", "slots", "artifacts", "operations", "recoveryRuleId"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "releaseId": { "$ref": "urn:jackrabbit:installer:operations:v1#/$defs/identifier" },
+    "profile": { "enum": ["bootstrap", "update", "restore"] },
+    "dataPolicy": { "enum": ["preserve", "erase"] },
+    "startingContracts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "urn:jackrabbit:installer:operations:v1#/$defs/identifier" }
+    },
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$" }
+    },
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["a", "b"] }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "size", "sha256", "representation", "expandedSize"],
+        "properties": {
+          "id": { "$ref": "urn:jackrabbit:installer:operations:v1#/$defs/identifier" },
+          "path": { "type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]{1,160}$" },
+          "size": { "type": "integer", "minimum": 1, "maximum": 8589934592 },
+          "sha256": { "$ref": "urn:jackrabbit:installer:operations:v1#/$defs/sha256" },
+          "representation": { "enum": ["raw", "android-sparse"] },
+          "expandedSize": { "type": "integer", "minimum": 1, "maximum": 8589934592 }
+        }
+      }
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "urn:jackrabbit:installer:operations:v1#/$defs/operation" }
+    },
+    "recoveryRuleId": { "$ref": "urn:jackrabbit:installer:operations:v1#/$defs/identifier" }
+  }
+}

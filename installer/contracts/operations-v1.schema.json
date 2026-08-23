@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jackrabbit:installer:operations:v1",
+  "title": "JackRabbit operation contract v1",
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "partition": {
+      "enum": ["boot", "system", "system_ext", "product", "vendor", "vbmeta", "vbmeta_system", "vbmeta_vendor", "userdata", "metadata"]
+    },
+    "mode": { "enum": ["bootloader", "fastbootd"] },
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "action", "mode", "target"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "action": { "enum": ["flash", "erase", "reboot"] },
+        "mode": { "$ref": "#/$defs/mode" },
+        "target": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{1,31}$" },
+        "artifactId": { "$ref": "#/$defs/identifier" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "action": { "const": "flash" } }, "required": ["action"] },
+          "then": {
+            "properties": { "artifactId": { "$ref": "#/$defs/identifier" } },
+            "required": ["artifactId"]
+          },
+          "else": { "not": { "required": ["artifactId"] } }
+        }
+      ]
+    }
+  }
+}

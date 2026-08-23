@@ -1,0 +1,20 @@
+{
+  "name": "@jackrabbit/installer",
+  "version": "0.1.0-dev",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "build:cli": "cargo build --locked --release --manifest-path cli/Cargo.toml",
+    "check:boundaries": "bash scripts/check-boundaries.sh",
+    "check:cli-build": "bash scripts/check-cli-build.sh",
+    "check:host-packages": "node scripts/check-host-packages.mjs",
+    "check:provenance": "node scripts/check-provenance.mjs",
+    "check:tracked-output": "bash scripts/check-tracked-output.sh",
+    "verify:release": "node scripts/verify-release-directory.mjs",
+    "test": "bash tests/test-boundaries.sh && cargo test --locked --manifest-path cli/Cargo.toml",
+    "test:isolated": "bash tests/test-isolated-build.sh"
+  }
+}

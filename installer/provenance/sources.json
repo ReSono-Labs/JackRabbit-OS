@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-08-22T16:40:51Z",
+  "sources": [
+    {
+      "id": "rabbit-flash-page",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/",
+      "revision": null,
+      "sha256": "6f1065f03bc1b83d72564ab958cc0bcff40b624b3ef77336e65f2f5e217fda4b",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "rabbit-device-detection",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/js/device-detection.js",
+      "revision": null,
+      "sha256": "def4ef4906f241a3c1b82a689ed41e845939ff7374c29464230a7ef28ecb20b8",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "rabbit-fastboot-operations",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/js/fastboot-ops.js",
+      "revision": null,
+      "sha256": "df12b1e327c8b464a2837550ceabd961ec0247f8d87f47992ba8c82634e76a45",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "rabbit-main",
+      "kind": "reference-only",
+      "url": "https://rabbit-hmi-oss.github.io/flashing/js/main.js",
+      "revision": null,
+      "sha256": "7a7e86f30681e8c8d718e73820e747ffc853e3a13dd9783978da18bc065479dc",
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "fastboot-js",
+      "kind": "runtime-dependency",
+      "url": "https://github.com/kdrag0n/fastboot.js",
+      "revision": "5b613332aa9d66cca5bebb49f147cd084a76c464",
+      "artifact": "dist/fastboot.min.mjs",
+      "sha256": "bd8283520de10c4cb39139f2f98297a420b39e456c3241db2c7322a82bd2a6db",
+      "version": "1.1.3",
+      "integrity": "sha512-WKgJR25RFS6zuIeHlg7hwNiX6MaGYRmDVR1w0ZZv7iXCfJueUVddb7+eCrG0GNzTyJDbTdetVN1R9Pls9r0DKA==",
+      "license": "MIT",
+      "disposition": "adopted-exact-web-writer"
+    },
+    {
+      "id": "zip-js",
+      "kind": "transitive-runtime-dependency",
+      "url": "https://www.npmjs.com/package/@zip.js/zip.js/v/2.2.27",
+      "revision": "2.2.27",
+      "integrity": "sha512-lQLsq41xUIGJnUizICgjLL+1hrnlLcqyWnQcaNi8FdsxfJl8y0bqdolDit8o65Huai+/GwXbCODMVu05kNU8mA==",
+      "license": "BSD-3-Clause",
+      "disposition": "adopted-transitive-exact"
+    },
+    {
+      "id": "rabbit-developer-mode",
+      "kind": "reference-only",
+      "url": "https://www.rabbit.tech/support/article/unlock-bootloader-rabbit-r1",
+      "revision": null,
+      "license": "NOASSERTION",
+      "disposition": "review-only-no-copy"
+    },
+    {
+      "id": "rabbit-r1-firmware-cipheros-route",
+      "kind": "donor-adaptation",
+      "url": "https://github.com/TurboTheTurtle/rabbit-r1-firmware",
+      "revision": "14b1ee3a1ee62dbed1a79ac49764c5dd22b0547b",
+      "sourcePath": "scripts/flash-cipheros.sh",
+      "license": "Apache-2.0",
+      "disposition": "adapted-closed-r1-route"
+    },
+    {
+      "id": "android-platform-tools-linux",
+      "kind": "release-tool-download",
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-linux.zip",
+      "revision": "37.0.1",
+      "sha256": "d230f13842f60f782a8645f9c813f8f845bf36089ea7289f28c48f17979313f1",
+      "license": "Google Android SDK terms and bundled NOTICE",
+      "disposition": "packaged-exact-host-runtime"
+    },
+    {
+      "id": "android-platform-tools-macos",
+      "kind": "release-tool-download",
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-darwin.zip",
+      "revision": "37.0.1",
+      "sha256": "ee39ad5967e95c2a07f04dbcbde96b1a0c916ba376096db5d2f498b7727a5d1d",
+      "license": "Google Android SDK terms and bundled NOTICE",
+      "disposition": "packaged-exact-host-runtime"
+    },
+    {
+      "id": "android-platform-tools-windows",
+      "kind": "release-tool-download",
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-win.zip",
+      "revision": "37.0.1",
+      "sha256": "45f4d63113e895ebde0c90f194099a4676b6ac653bd28d54314a9e022bbc1a99",
+      "license": "Google Android SDK terms and bundled NOTICE",
+      "disposition": "packaged-exact-host-runtime"
+    },
+    {
+      "id": "rabbit-mediatek-windows-driver",
+      "kind": "host-driver-download",
+      "url": "https://github.com/rabbit-hmi-oss/firmware/releases/download/drivers/MediaTek-Preloader_USB_VCOM_drivers-signed.zip",
+      "revision": "drivers-2025-03-20",
+      "sha256": "c83f7ba3e657abd3577640448009178d98c07a849f49bcdf5f59577158ea7dab",
+      "license": "NOASSERTION",
+      "disposition": "packaged-unmodified-official-rabbit-driver"
+    },
+    {
+      "id": "google-usb-driver-windows",
+      "kind": "host-driver-download",
+      "url": "https://dl.google.com/android/repository/usb_driver_r13-windows.zip",
+      "revision": "13",
+      "sha256": "360b01d3dfb6c41621a3a64ae570dfac2c9a40cca1b5a1f136ae90d02f5e9e0b",
+      "license": "Android SDK License",
+      "disposition": "packaged-exact-fastbootd-driver"
+    },
+    {
+      "id": "mdn-browser-compat-data",
+      "kind": "reference-only",
+      "url": "https://github.com/mdn/browser-compat-data",
+      "revision": "493cef41d0f0de67c5eafe2cf84413850cd4de90",
+      "license": "CC0-1.0",
+      "disposition": "browser-capability-reference"
+    },
+    {
+      "id": "webusb-specification",
+      "kind": "reference-only",
+      "url": "https://wicg.github.io/webusb/",
+      "revision": null,
+      "license": "W3C-20150513",
+      "disposition": "protocol-reference"
+    },
+    {
+      "id": "web-serial-specification",
+      "kind": "reference-only",
+      "url": "https://wicg.github.io/serial/",
+      "revision": "2026-06-02",
+      "license": "W3C-20150513",
+      "disposition": "protocol-reference"
+    },
+    {
+      "id": "serde",
+      "kind": "cli-runtime-dependency",
+      "url": "https://crates.io/crates/serde/1.0.229",
+      "revision": "1.0.229",
+      "integrity": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
+      "license": "MIT OR Apache-2.0",
+      "disposition": "adopted-exact"
+    },
+    {
+      "id": "serde-json",
+      "kind": "cli-runtime-dependency",
+      "url": "https://crates.io/crates/serde_json/1.0.151",
+      "revision": "1.0.151",
+      "integrity": "c841b55ecdae098c80dcae9cf767f6f8a0c2cdb3416bbef72181df4d0fe73f14",
+      "license": "MIT OR Apache-2.0",
+      "disposition": "adopted-exact"
+    },
+    {
+      "id": "fastboot-protocol-rust",
+      "kind": "cli-runtime-dependency",
+      "url": "https://crates.io/crates/fastboot-protocol/0.4.0",
+      "revision": "c84eee005cfadef7baa80a6cdbebb966de5f03e0",
+      "version": "0.4.0",
+      "integrity": "d68604b2b5b85058d350ce6ecc153ac0a30306118099dfef2a2012544d4fee2e",
+      "license": "MIT OR Apache-2.0",
+      "disposition": "adopted-read-only-cli-adapter"
+    },
+    {
+      "id": "nusb",
+      "kind": "cli-runtime-dependency",
+      "url": "https://crates.io/crates/nusb/0.2.7",
+      "revision": "bdc148c123c102785cd1d506b77bfeeb794ffeb1",
+      "version": "0.2.7",
+      "integrity": "18ef13beb3b3a8fc16fd7aea912ebd3d45dde00a9a5b968d0742297468065845",
+      "license": "Apache-2.0 OR MIT",
+      "disposition": "adopted-exact"
+    },
+    {
+      "id": "futures-rust",
+      "kind": "cli-runtime-dependency",
+      "url": "https://crates.io/crates/futures/0.3.34",
+      "revision": "705e6b5c0f06535b1aac1cb1989a172b3d45be8c",
+      "version": "0.3.34",
+      "integrity": "9a31d2a3fbaaeb2af2368bbdd904aa8e812d3c04a1ee10d3171f52d556e5d0a3",
+      "license": "MIT OR Apache-2.0",
+      "disposition": "adopted-exact"
+    },
+    {
+      "id": "serialport-rust",
+      "kind": "cli-runtime-dependency",
+      "url": "https://crates.io/crates/serialport/4.9.0",
+      "revision": "4.9.0",
+      "integrity": "a4d91116f97173694f1642263b2ff837f80d933aa837e2314969f6728f661df3",
+      "license": "MPL-2.0",
+      "disposition": "adopted-exact-preloader-transport"
+    },
+    {
+      "id": "actions-checkout",
+      "kind": "ci-build-dependency",
+      "url": "https://github.com/actions/checkout/tree/de0fac2e4500dabe0009e67214ff5f5447ce83dd",
+      "revision": "de0fac2e4500dabe0009e67214ff5f5447ce83dd",
+      "license": "MIT",
+      "disposition": "adopted-exact"
+    },
+    {
+      "id": "actions-setup-node",
+      "kind": "ci-build-dependency",
+      "url": "https://github.com/actions/setup-node/tree/48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e",
+      "revision": "48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e",
+      "license": "MIT",
+      "disposition": "adopted-exact"
+    },
+    {
+      "id": "dtolnay-rust-toolchain",
+      "kind": "ci-build-dependency",
+      "url": "https://github.com/dtolnay/rust-toolchain/tree/6c977a6ca4077a0ceb28ffbe03f59d46e9ac8772",
+      "revision": "6c977a6ca4077a0ceb28ffbe03f59d46e9ac8772",
+      "license": "MIT",
+      "disposition": "adopted-exact"
+    },
+    {
+      "id": "actions-upload-artifact",
+      "kind": "ci-build-dependency",
+      "url": "https://github.com/actions/upload-artifact/tree/ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "revision": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "license": "MIT",
+      "disposition": "adopted-exact"
+    }
+  ]
+}
