@@ -1,0 +1,9 @@
+# Rabbit R1 MediaTek preloader serial entry
+SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="2000", MODE="0666"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0e8d", ATTRS{idProduct}=="2000", MODE="0666"
+
+# Rabbit R1 bootloader FASTBOOT
+SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201c", MODE="0666"
+
+# Rabbit R1 userspace fastbootd
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="4ee0", MODE="0666"

@@ -1,41 +1,151 @@
 {
   "scriptCompleted": true,
   "stats": {
-    "filesScanned": 359,
-    "filesWithImports": 124,
-    "totalEdges": 508
+    "filesScanned": 555,
+    "filesWithImports": 150,
+    "totalEdges": 614
   },
   "importMap": {
     ".understand-anything/.understandignore": [],
     ".understand-anything/config.json": [],
     ".understand-anything/diff-overlay.json": [],
     ".understand-anything/fingerprints.json": [],
+    ".understand-anything/intermediate/assemble-review.json": [],
+    ".understand-anything/intermediate/assembled-graph.json": [],
+    ".understand-anything/intermediate/batch-1-part-1.json": [],
+    ".understand-anything/intermediate/batch-1-part-2.json": [],
+    ".understand-anything/intermediate/batch-10.json": [],
+    ".understand-anything/intermediate/batch-11.json": [],
+    ".understand-anything/intermediate/batch-12.json": [],
+    ".understand-anything/intermediate/batch-13.json": [],
+    ".understand-anything/intermediate/batch-14.json": [],
+    ".understand-anything/intermediate/batch-15.json": [],
+    ".understand-anything/intermediate/batch-16.json": [],
+    ".understand-anything/intermediate/batch-17-part-1.json": [],
+    ".understand-anything/intermediate/batch-17-part-2.json": [],
+    ".understand-anything/intermediate/batch-18.json": [],
+    ".understand-anything/intermediate/batch-19-part-1.json": [],
+    ".understand-anything/intermediate/batch-19-part-2.json": [],
+    ".understand-anything/intermediate/batch-2-part-1.json": [],
+    ".understand-anything/intermediate/batch-2-part-2.json": [],
+    ".understand-anything/intermediate/batch-2-part-3.json": [],
+    ".understand-anything/intermediate/batch-2-part-4.json": [],
+    ".understand-anything/intermediate/batch-2-part-5.json": [],
+    ".understand-anything/intermediate/batch-20-part-1.json": [],
+    ".understand-anything/intermediate/batch-20-part-2.json": [],
+    ".understand-anything/intermediate/batch-21.json": [],
+    ".understand-anything/intermediate/batch-3-part-1.json": [],
+    ".understand-anything/intermediate/batch-3-part-2.json": [],
+    ".understand-anything/intermediate/batch-3-part-3.json": [],
+    ".understand-anything/intermediate/batch-3-part-4.json": [],
+    ".understand-anything/intermediate/batch-3-part-5.json": [],
+    ".understand-anything/intermediate/batch-4-part-1.json": [],
+    ".understand-anything/intermediate/batch-4-part-2.json": [],
+    ".understand-anything/intermediate/batch-4-part-3.json": [],
+    ".understand-anything/intermediate/batch-4-part-4.json": [],
+    ".understand-anything/intermediate/batch-4-part-5.json": [],
+    ".understand-anything/intermediate/batch-5-part-1.json": [],
+    ".understand-anything/intermediate/batch-5-part-2.json": [],
+    ".understand-anything/intermediate/batch-6-part-1.json": [],
+    ".understand-anything/intermediate/batch-6-part-2.json": [],
+    ".understand-anything/intermediate/batch-6-part-3.json": [],
+    ".understand-anything/intermediate/batch-7-part-1.json": [],
+    ".understand-anything/intermediate/batch-7-part-2.json": [],
+    ".understand-anything/intermediate/batch-8.json": [],
+    ".understand-anything/intermediate/batch-9.json": [],
+    ".understand-anything/intermediate/batches.json": [],
+    ".understand-anything/intermediate/fingerprint-input.json": [],
+    ".understand-anything/intermediate/layers.json": [],
     ".understand-anything/intermediate/scan-result.json": [],
+    ".understand-anything/intermediate/tour.json": [],
     ".understand-anything/knowledge-graph.json": [],
     ".understand-anything/meta.json": [],
+    ".understand-anything/tmp/generate-batches-1-7.mjs": [],
+    ".understand-anything/tmp/generate-batches-15-21.mjs": [],
+    ".understand-anything/tmp/generate-batches-8-14.mjs": [],
+    ".understand-anything/tmp/ua-arch-analyze.js": [],
+    ".understand-anything/tmp/ua-arch-assign.js": [],
+    ".understand-anything/tmp/ua-arch-input.json": [],
+    ".understand-anything/tmp/ua-arch-prepare.js": [],
+    ".understand-anything/tmp/ua-arch-results.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-1.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-10.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-11.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-12.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-13.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-14.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-15.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-16.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-17.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-18.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-19.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-2.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-20.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-21.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-3.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-4.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-5.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-6.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-7.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-8.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-9.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-1.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-10.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-11.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-12.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-13.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-14.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-15.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-16.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-17.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-18.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-19.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-2.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-20.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-21.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-3.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-4.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-5.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-6.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-7.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-8.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-9.json": [],
+    ".understand-anything/tmp/ua-import-map-input.json": [],
+    ".understand-anything/tmp/ua-import-map-output.json": [],
+    ".understand-anything/tmp/ua-scan-files.json": [],
+    ".understand-anything/tmp/ua-tour-analyze.js": [],
+    ".understand-anything/tmp/ua-tour-input.json": [],
+    ".understand-anything/tmp/ua-tour-results.json": [],
     "android/app/build.gradle.kts": [],
     "android/app/proguard-rules.pro": [],
     "android/app/src/main/AndroidManifest.xml": [],
     "android/app/src/main/java/com/resonolabs/voice/MainActivity.java": [
       "android/core/power/src/main/java/com/resonolabs/ui/power/DisplayPolicy.java",
       "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingState.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealthClient.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementClient.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java"
     ],
     "android/app/src/main/java/com/resonolabs/voice/ProductChromeView.java": [
-      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java"
+      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/BackgroundRunSnapshot.java"
     ],
     "android/app/src/main/java/com/resonolabs/voice/ProductRootView.java": [
       "android/core/input/src/main/java/com/resonolabs/ui/input/HardwareInputRouter.java",
       "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
       "android/core/motor/src/main/java/com/resonolabs/hardware/motor/R1MotorServiceClient.java",
+      "android/feature/background-run/src/main/java/com/resonolabs/feature/backgroundrun/BackgroundRunPanelView.java",
       "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CameraHandoffPage.java",
       "android/feature/cards/src/main/java/com/resonolabs/feature/cards/CardsPageView.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportView.java",
       "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingSource.java",
       "android/feature/settings/src/main/java/com/resonolabs/feature/settings/SettingsPanelView.java",
       "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
-      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementOpenAiSource.java"
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementOpenAiSource.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java"
     ],
     "android/app/src/main/java/com/resonolabs/voice/ReSonoBootReceiver.java": [
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java"
@@ -59,6 +169,15 @@
     "android/core/power/build.gradle.kts": [],
     "android/core/power/src/main/java/com/resonolabs/ui/power/DisplayPolicy.java": [],
     "android/core/power/src/test/java/com/resonolabs/ui/power/DisplayPolicyTest.java": [],
+    "android/feature/background-run/build.gradle.kts": [],
+    "android/feature/background-run/src/main/AndroidManifest.xml": [],
+    "android/feature/background-run/src/main/java/com/resonolabs/feature/backgroundrun/BackgroundRunPanelView.java": [
+      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputTarget.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/BackgroundRunSnapshot.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java"
+    ],
     "android/feature/calendar/build.gradle.kts": [],
     "android/feature/calendar/src/main/java/com/resonolabs/feature/calendar/CalendarPageView.java": [
       "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
@@ -95,6 +214,27 @@
       "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java"
     ],
+    "android/feature/creation-import/build.gradle.kts": [],
+    "android/feature/creation-import/src/main/AndroidManifest.xml": [],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportState.java": [],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportView.java": [
+      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputTarget.java",
+      "android/core/motor/src/main/java/com/resonolabs/hardware/motor/MotorController.java",
+      "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CapturedImage.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrCaptureView.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrDecoder.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/ZxingCreationQrDecoder.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java"
+    ],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrCaptureView.java": [
+      "android/core/motor/src/main/java/com/resonolabs/hardware/motor/MotorController.java",
+      "android/feature/camera/src/main/java/com/resonolabs/feature/camera/Camera2Producer.java",
+      "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CapturedImage.java"
+    ],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrDecoder.java": [],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/ZxingCreationQrDecoder.java": [],
     "android/feature/settings/build.gradle.kts": [],
     "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingSource.java": [],
     "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingState.java": [],
@@ -135,6 +275,7 @@
     "android/README.md": [],
     "android/runtime-host/build.gradle.kts": [],
     "android/runtime-host/src/main/AndroidManifest.xml": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/BackgroundRunSnapshot.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementAssetStore.java": [],
@@ -146,6 +287,8 @@
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealth.java": [],
@@ -158,6 +301,7 @@
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeVoiceClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/TaskClient.java": [],
+    "android/runtime-host/src/test/java/com/resonolabs/runtime/host/ManagementHttpRequestTest.java": [],
     "android/runtime-host/wheels/jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl": [],
     "android/runtime-host/wheels/pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl": [],
     "android/runtime-host/wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl": [],
@@ -192,27 +336,122 @@
     "docs/planning/2026-08-20-primary-agent-delegation-placement.md": [],
     "docs/planning/2026-08-20-r1-direct-handoff-contract.md": [],
     "docs/planning/2026-08-20-slice-06-extensions-mail-orientation.md": [],
+    "docs/references/VOICE_RUNTIME_MODE_SWITCHING_DONOR.md": [],
     "docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md": [],
+    "examples/agent-plugins/resono-plugin-test/plugin.json": [],
+    "examples/agent-plugins/resono-plugin-test/skills/plugin-test/SKILL.md": [],
+    "installer/cli/README.md": [],
+    "installer/conformance/README.md": [],
+    "installer/conformance/update-plan-valid-v1.json": [],
+    "installer/contracts/errors-v1.json": [],
+    "installer/contracts/journal-v1.schema.json": [],
+    "installer/contracts/operations-v1.schema.json": [],
+    "installer/contracts/README.md": [],
+    "installer/contracts/recovery-v1.schema.json": [],
+    "installer/contracts/release-v1.schema.json": [],
+    "installer/contracts/signature-v1.schema.json": [],
+    "installer/contracts/support-v1.json": [],
+    "installer/deployment/README.md": [],
+    "installer/package.json": [],
+    "installer/provenance/browser-apis.md": [],
+    "installer/provenance/README.md": [],
+    "installer/provenance/sources.json": [],
+    "installer/README.md": [],
+    "installer/scripts/check-boundaries.sh": [],
+    "installer/scripts/check-provenance.mjs": [],
+    "installer/scripts/check-tracked-output.sh": [],
+    "installer/tests/test-boundaries.sh": [],
+    "installer/tests/test-isolated-build.sh": [],
+    "installer/VERSION": [],
+    "installer/vite.config.mjs": [],
+    "installer/web/index.html": [],
+    "installer/web/public/_headers": [],
+    "installer/web/README.md": [],
+    "installer/web/src/app/main.mjs": [
+      "installer/contracts/support-v1.json",
+      "installer/package.json",
+      "installer/web/src/app/session.mjs",
+      "installer/web/src/capability/probe-browser.mjs",
+      "installer/web/src/fastboot/read-r1-snapshot.mjs",
+      "installer/web/src/ui/render.mjs",
+      "installer/web/src/ui/styles.css"
+    ],
+    "installer/web/src/app/session.mjs": [],
+    "installer/web/src/capability/probe-browser.mjs": [],
+    "installer/web/src/fastboot/read-r1-snapshot.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/install/plan-release.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/preloader/enter-r1-fastboot.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/preparation/steps.mjs": [],
+    "installer/web/src/release/contract-validator.mjs": [],
+    "installer/web/src/release/verify-artifact.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/release/verify-manifest.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/ui/render.mjs": [
+      "installer/web/src/preparation/steps.mjs"
+    ],
+    "installer/web/src/ui/styles.css": [],
+    "installer/web/tests/artifact-verification.test.mjs": [
+      "installer/web/src/release/contract-validator.mjs",
+      "installer/web/src/release/verify-artifact.mjs"
+    ],
+    "installer/web/tests/enter-r1-fastboot.test.mjs": [
+      "installer/web/src/preloader/enter-r1-fastboot.mjs",
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/tests/manifest-verification.test.mjs": [
+      "installer/web/src/release/contract-validator.mjs",
+      "installer/web/src/release/verify-manifest.mjs"
+    ],
+    "installer/web/tests/offline-planner.test.mjs": [
+      "installer/web/src/install/plan-release.mjs",
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/tests/probe-browser.test.mjs": [
+      "installer/web/src/capability/probe-browser.mjs"
+    ],
+    "installer/web/tests/read-r1-snapshot.test.mjs": [
+      "installer/web/src/fastboot/read-r1-snapshot.mjs",
+      "installer/web/src/release/contract-validator.mjs"
+    ],
     "README.md": [],
     "runtime/README.md": [],
     "runtime/resono_runtime/__init__.py": [],
     "runtime/resono_runtime/agents/__init__.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/agents/memory_reviewer.py",
+      "runtime/resono_runtime/agents/primary_context.py",
       "runtime/resono_runtime/agents/routing.py",
       "runtime/resono_runtime/agents/runner.py",
       "runtime/resono_runtime/agents/sdk_runner.py"
     ],
     "runtime/resono_runtime/agents/audience.py": [],
+    "runtime/resono_runtime/agents/context_builder.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/agents/primary_context.py",
+      "runtime/resono_runtime/memory/session_context.py",
+      "runtime/resono_runtime/skills/activation.py",
+      "runtime/resono_runtime/tools/catalog.py"
+    ],
     "runtime/resono_runtime/agents/delegation.py": [],
     "runtime/resono_runtime/agents/memory_reviewer.py": [
       "runtime/resono_runtime/agents/sdk_runner.py",
       "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/memory/contracts.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/agents/primary_context.py": [],
     "runtime/resono_runtime/agents/routing.py": [
       "runtime/resono_runtime/agents/audience.py"
     ],
@@ -229,9 +468,11 @@
     "runtime/resono_runtime/api/background_agent_routes.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "runtime/resono_runtime/background_agent/progress.py",
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/background_agent/run_state.py",
       "runtime/resono_runtime/security/pairing.py",
+      "runtime/resono_runtime/storage/agent_deliveries.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py",
       "runtime/resono_runtime/tools/catalog.py"
@@ -266,7 +507,7 @@
       "runtime/resono_runtime/api/task_routes.py",
       "runtime/resono_runtime/api/tool_routes.py",
       "runtime/resono_runtime/mcp/__init__.py",
-      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/memory/service.py",
       "runtime/resono_runtime/providers/controller.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/security/pairing.py",
@@ -307,7 +548,7 @@
       "runtime/resono_runtime/api/tool_routes.py",
       "runtime/resono_runtime/core/logging.py",
       "runtime/resono_runtime/mcp/__init__.py",
-      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/memory/service.py",
       "runtime/resono_runtime/providers/controller.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/security/pairing.py",
@@ -316,11 +557,8 @@
       "runtime/resono_runtime/storage/sessions.py"
     ],
     "runtime/resono_runtime/api/skill_routes.py": [
-      "runtime/resono_runtime/agents/__init__.py",
       "runtime/resono_runtime/security/pairing.py",
-      "runtime/resono_runtime/skills/archives.py",
-      "runtime/resono_runtime/skills/lifecycle.py",
-      "runtime/resono_runtime/storage/skills.py"
+      "runtime/resono_runtime/skills/documents.py"
     ],
     "runtime/resono_runtime/api/task_routes.py": [
       "runtime/resono_runtime/domains/tasks/__init__.py"
@@ -331,6 +569,7 @@
     ],
     "runtime/resono_runtime/application.py": [
       "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/agents/context_builder.py",
       "runtime/resono_runtime/api/background_agent_routes.py",
       "runtime/resono_runtime/api/calendar_routes.py",
       "runtime/resono_runtime/api/connection_routes.py",
@@ -343,9 +582,11 @@
       "runtime/resono_runtime/api/skill_routes.py",
       "runtime/resono_runtime/api/task_routes.py",
       "runtime/resono_runtime/api/tool_routes.py",
+      "runtime/resono_runtime/background_agent/completion_dispatch.py",
       "runtime/resono_runtime/background_agent/composition.py",
       "runtime/resono_runtime/background_agent/mcp_gateway.py",
       "runtime/resono_runtime/background_agent/service.py",
+      "runtime/resono_runtime/background_agent/workspace.py",
       "runtime/resono_runtime/config.py",
       "runtime/resono_runtime/connections/records.py",
       "runtime/resono_runtime/connectors/calendar/__init__.py",
@@ -364,7 +605,11 @@
       "runtime/resono_runtime/domains/tasks/__init__.py",
       "runtime/resono_runtime/imports/__init__.py",
       "runtime/resono_runtime/mcp/__init__.py",
-      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/memory/evidence.py",
+      "runtime/resono_runtime/memory/pipeline.py",
+      "runtime/resono_runtime/memory/service.py",
+      "runtime/resono_runtime/memory/session_context.py",
+      "runtime/resono_runtime/memory/tools.py",
       "runtime/resono_runtime/plugins/archives.py",
       "runtime/resono_runtime/plugins/bundled_install.py",
       "runtime/resono_runtime/plugins/card_lifecycle.py",
@@ -372,12 +617,13 @@
       "runtime/resono_runtime/providers/controller.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/web_search.py",
+      "runtime/resono_runtime/realtime/__init__.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/security/pairing.py",
       "runtime/resono_runtime/skills/__init__.py",
-      "runtime/resono_runtime/skills/archives.py",
       "runtime/resono_runtime/skills/lifecycle.py",
       "runtime/resono_runtime/storage/agent_audiences.py",
+      "runtime/resono_runtime/storage/agent_deliveries.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py",
       "runtime/resono_runtime/storage/connection_credentials.py",
@@ -393,11 +639,14 @@
       "runtime/resono_runtime/storage/provider_settings.py",
       "runtime/resono_runtime/storage/sessions.py",
       "runtime/resono_runtime/storage/skills.py",
+      "runtime/resono_runtime/storage/workspace.py",
       "runtime/resono_runtime/tools/__init__.py",
       "runtime/resono_runtime/tools/calendar/__init__.py",
       "runtime/resono_runtime/tools/delegation.py",
       "runtime/resono_runtime/tools/tasks/__init__.py",
-      "runtime/resono_runtime/tools/web_search.py"
+      "runtime/resono_runtime/tools/web_search.py",
+      "runtime/resono_runtime/workspace/service.py",
+      "runtime/resono_runtime/workspace/tools.py"
     ],
     "runtime/resono_runtime/background_agent/__init__.py": [
       "runtime/resono_runtime/background_agent/run_contract.py",
@@ -407,19 +656,36 @@
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/storage/background_agent_settings.py"
     ],
+    "runtime/resono_runtime/background_agent/completion_dispatch.py": [
+      "runtime/resono_runtime/background_agent/run_contract.py",
+      "runtime/resono_runtime/storage/agent_deliveries.py",
+      "runtime/resono_runtime/storage/agent_runs.py"
+    ],
     "runtime/resono_runtime/background_agent/composition.py": [
+      "runtime/resono_runtime/agents/context_builder.py",
+      "runtime/resono_runtime/background_agent/execution.py",
       "runtime/resono_runtime/background_agent/mcp_gateway.py",
       "runtime/resono_runtime/background_agent/run_contract.py",
-      "runtime/resono_runtime/background_agent/run_loop.py",
       "runtime/resono_runtime/background_agent/sdk_executor.py",
       "runtime/resono_runtime/background_agent/service.py",
+      "runtime/resono_runtime/background_agent/workspace.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/background_agent/execution.py": [
+      "runtime/resono_runtime/agents/primary_context.py",
+      "runtime/resono_runtime/background_agent/instructions.py",
+      "runtime/resono_runtime/background_agent/output_contract.py",
+      "runtime/resono_runtime/background_agent/run_contract.py",
+      "runtime/resono_runtime/background_agent/run_state.py",
+      "runtime/resono_runtime/background_agent/sdk_executor.py",
+      "runtime/resono_runtime/storage/agent_runs.py"
+    ],
     "runtime/resono_runtime/background_agent/instructions.py": [
+      "runtime/resono_runtime/agents/primary_context.py",
       "runtime/resono_runtime/background_agent/run_contract.py"
     ],
     "runtime/resono_runtime/background_agent/mcp_gateway.py": [
@@ -427,16 +693,18 @@
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/background_agent/tool_supply.py",
       "runtime/resono_runtime/mcp/server.py",
+      "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/tools/catalog.py"
     ],
-    "runtime/resono_runtime/background_agent/run_contract.py": [],
-    "runtime/resono_runtime/background_agent/run_loop.py": [
-      "runtime/resono_runtime/background_agent/instructions.py",
-      "runtime/resono_runtime/background_agent/run_contract.py",
-      "runtime/resono_runtime/background_agent/run_state.py",
-      "runtime/resono_runtime/background_agent/sdk_executor.py",
-      "runtime/resono_runtime/storage/agent_runs.py"
+    "runtime/resono_runtime/background_agent/output_contract.py": [],
+    "runtime/resono_runtime/background_agent/progress.py": [
+      "runtime/resono_runtime/background_agent/run_contract.py"
     ],
+    "runtime/resono_runtime/background_agent/RULES.md": [],
+    "runtime/resono_runtime/background_agent/rules.py": [
+      "runtime/resono_runtime/workspace/service.py"
+    ],
+    "runtime/resono_runtime/background_agent/run_contract.py": [],
     "runtime/resono_runtime/background_agent/run_state.py": [
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/storage/agent_runs.py"
@@ -446,14 +714,17 @@
     ],
     "runtime/resono_runtime/background_agent/sdk_executor.py": [
       "runtime/resono_runtime/agents/sdk_runner.py",
+      "runtime/resono_runtime/background_agent/output_contract.py",
       "runtime/resono_runtime/storage/agent_runs.py"
     ],
     "runtime/resono_runtime/background_agent/service.py": [
       "runtime/resono_runtime/agents/delegation.py",
       "runtime/resono_runtime/background_agent/adapters.py",
+      "runtime/resono_runtime/background_agent/completion_dispatch.py",
+      "runtime/resono_runtime/background_agent/execution.py",
       "runtime/resono_runtime/background_agent/run_contract.py",
-      "runtime/resono_runtime/background_agent/run_loop.py",
       "runtime/resono_runtime/background_agent/run_state.py",
+      "runtime/resono_runtime/core/logging.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py"
     ],
@@ -621,22 +892,22 @@
       "runtime/resono_runtime/tools/__init__.py"
     ],
     "runtime/resono_runtime/mcp/tool_adapter.py": [],
-    "runtime/resono_runtime/memory/__init__.py": [
-      "runtime/resono_runtime/memory/pipeline.py",
-      "runtime/resono_runtime/memory/retrieval.py",
-      "runtime/resono_runtime/memory/service.py",
-      "runtime/resono_runtime/memory/session_context.py",
-      "runtime/resono_runtime/memory/tools.py"
-    ],
+    "runtime/resono_runtime/memory/__init__.py": [],
+    "runtime/resono_runtime/memory/contracts.py": [],
     "runtime/resono_runtime/memory/embedding_access.py": [
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/memory/evidence.py": [
+      "runtime/resono_runtime/storage/sessions.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
     "runtime/resono_runtime/memory/pipeline.py": [
       "runtime/resono_runtime/agents/memory_reviewer.py",
       "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/memory/contracts.py",
       "runtime/resono_runtime/memory/embedding_access.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
@@ -664,13 +935,18 @@
       "runtime/resono_runtime/storage/sessions.py"
     ],
     "runtime/resono_runtime/memory/tools.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/memory/contracts.py",
       "runtime/resono_runtime/memory/embedding_access.py",
       "runtime/resono_runtime/memory/retrieval.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/memory.py",
-      "runtime/resono_runtime/storage/provider_settings.py"
+      "runtime/resono_runtime/storage/provider_settings.py",
+      "runtime/resono_runtime/storage/sessions.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
     ],
     "runtime/resono_runtime/plugins/__init__.py": [],
     "runtime/resono_runtime/plugins/archives.py": [
@@ -709,6 +985,7 @@
       "runtime/resono_runtime/api/events.py",
       "runtime/resono_runtime/core/logging.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/realtime/modes.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/profile_settings.py",
       "runtime/resono_runtime/storage/provider_catalog.py",
@@ -743,12 +1020,21 @@
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/realtime/__init__.py": [
+      "runtime/resono_runtime/realtime/modes.py"
+    ],
+    "runtime/resono_runtime/realtime/modes.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
     "runtime/resono_runtime/security/__init__.py": [],
     "runtime/resono_runtime/security/credentials.py": [],
     "runtime/resono_runtime/security/outbound.py": [],
     "runtime/resono_runtime/security/pairing.py": [],
     "runtime/resono_runtime/skills/__init__.py": [
       "runtime/resono_runtime/skills/activation.py",
+      "runtime/resono_runtime/skills/documents.py",
       "runtime/resono_runtime/skills/specification.py"
     ],
     "runtime/resono_runtime/skills/activation.py": [
@@ -760,6 +1046,7 @@
       "runtime/resono_runtime/tools/definitions.py"
     ],
     "runtime/resono_runtime/skills/archives.py": [],
+    "runtime/resono_runtime/skills/documents.py": [],
     "runtime/resono_runtime/skills/lifecycle.py": [
       "runtime/resono_runtime/agents/__init__.py",
       "runtime/resono_runtime/imports/__init__.py",
@@ -777,6 +1064,9 @@
     "runtime/resono_runtime/storage/agent_audiences.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/agents/routing.py",
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/agent_deliveries.py": [
       "runtime/resono_runtime/storage/database.py"
     ],
     "runtime/resono_runtime/storage/agent_runs.py": [
@@ -836,7 +1126,14 @@
       "runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
       "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
       "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
-      "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py"
+      "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "runtime/resono_runtime/storage/migrations/v036_workspace.py",
+      "runtime/resono_runtime/storage/migrations/v037_workspace_tools.py",
+      "runtime/resono_runtime/storage/migrations/v038_goal_context.py",
+      "runtime/resono_runtime/storage/migrations/v039_agent_deliveries.py",
+      "runtime/resono_runtime/storage/migrations/v040_goal_provenance_and_delivery_lease.py",
+      "runtime/resono_runtime/storage/migrations/v041_goal_verification_contract.py",
+      "runtime/resono_runtime/storage/migrations/v042_domain_memory.py"
     ],
     "runtime/resono_runtime/storage/migrations/v005_runtime_foundation.py": [],
     "runtime/resono_runtime/storage/migrations/v006_agent_audiences.py": [],
@@ -869,6 +1166,13 @@
     "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py": [],
     "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py": [],
     "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py": [],
+    "runtime/resono_runtime/storage/migrations/v036_workspace.py": [],
+    "runtime/resono_runtime/storage/migrations/v037_workspace_tools.py": [],
+    "runtime/resono_runtime/storage/migrations/v038_goal_context.py": [],
+    "runtime/resono_runtime/storage/migrations/v039_agent_deliveries.py": [],
+    "runtime/resono_runtime/storage/migrations/v040_goal_provenance_and_delivery_lease.py": [],
+    "runtime/resono_runtime/storage/migrations/v041_goal_verification_contract.py": [],
+    "runtime/resono_runtime/storage/migrations/v042_domain_memory.py": [],
     "runtime/resono_runtime/storage/plugin_components.py": [
       "runtime/resono_runtime/storage/database.py"
     ],
@@ -887,6 +1191,10 @@
     ],
     "runtime/resono_runtime/storage/skills.py": [
       "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/workspace.py": [
+      "runtime/resono_runtime/storage/database.py",
+      "runtime/resono_runtime/workspace/contract.py"
     ],
     "runtime/resono_runtime/tools/__init__.py": [
       "runtime/resono_runtime/tools/builtins.py",
@@ -923,6 +1231,7 @@
     "runtime/resono_runtime/tools/delegation.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/agents/delegation.py",
+      "runtime/resono_runtime/background_agent/output_contract.py",
       "runtime/resono_runtime/tools/catalog.py",
       "runtime/resono_runtime/tools/definitions.py"
     ],
@@ -946,19 +1255,36 @@
       "runtime/resono_runtime/tools/catalog.py",
       "runtime/resono_runtime/tools/definitions.py"
     ],
+    "runtime/resono_runtime/workspace/__init__.py": [],
+    "runtime/resono_runtime/workspace/contract.py": [],
+    "runtime/resono_runtime/workspace/service.py": [
+      "runtime/resono_runtime/storage/workspace.py",
+      "runtime/resono_runtime/workspace/contract.py"
+    ],
+    "runtime/resono_runtime/workspace/tools.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/background_agent/workspace.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py",
+      "runtime/resono_runtime/workspace/service.py"
+    ],
     "skills.md": [],
     "SKILLS.md": [],
     "tests/runtime/test_agent_audiences.py": [],
+    "tests/runtime/test_agent_instruction_documents.py": [],
     "tests/runtime/test_agents_sdk_runner.py": [],
+    "tests/runtime/test_application_import.py": [],
     "tests/runtime/test_background_agent_contract.py": [],
+    "tests/runtime/test_background_agent_execution.py": [],
     "tests/runtime/test_background_agent_global_tools.py": [],
     "tests/runtime/test_background_agent_observability.py": [],
-    "tests/runtime/test_background_agent_recipes.py": [],
     "tests/runtime/test_background_agent_service.py": [],
+    "tests/runtime/test_background_completion_delivery.py": [],
     "tests/runtime/test_build07_api_auth.py": [],
     "tests/runtime/test_calendar_contract.py": [],
     "tests/runtime/test_connection_routes.py": [],
     "tests/runtime/test_creations.py": [],
+    "tests/runtime/test_domain_memory.py": [],
     "tests/runtime/test_import_preflight.py": [],
     "tests/runtime/test_import_recovery.py": [],
     "tests/runtime/test_mail_contract.py": [],
@@ -988,7 +1314,9 @@
     "tests/runtime/test_skill_specification.py": [],
     "tests/runtime/test_tasks_contract.py": [],
     "tests/runtime/test_tool_catalog.py": [],
+    "tests/runtime/test_voice_modes.py": [],
     "tests/runtime/test_web_search.py": [],
+    "tests/runtime/test_workspace_voice_tools.py": [],
     "web/design/base.css": [],
     "web/design/tokens.css": [],
     "web/management/app.js": [],

@@ -4,7 +4,7 @@
   "title": "JackRabbit release manifest v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "releaseId", "profile", "dataPolicy", "startingContracts", "artifacts", "operations", "recoveryRuleId"],
+  "required": ["schemaVersion", "releaseId", "profile", "dataPolicy", "startingContracts", "products", "slots", "artifacts", "operations", "recoveryRuleId"],
   "properties": {
     "schemaVersion": { "const": 1 },
     "releaseId": { "$ref": "urn:jackrabbit:installer:operations:v1#/$defs/identifier" },

@@ -9,3 +9,7 @@ parsing or trusting manifest metadata.
 
 Build Contract 03 defines only offline validation and planning. These schemas
 do not make a release, device, host, profile, or operation supported.
+
+`preparation-prompts-v1.json` is the one web/CLI physical-guidance source. Its
+schema fixes stable IDs, reasons, actions, observable outcomes, warnings,
+verification ownership, cancellation behavior, reviewed links, and next states.

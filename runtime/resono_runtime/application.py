@@ -179,11 +179,6 @@ class RuntimeApplication:
             config.user_workspace_path,
             WorkspaceRepository(self._database),
         )
-        from .background_agent.rules import install_background_rules
-        install_background_rules(
-            self._workspace,
-            config.user_workspace_path / "documents" / "RULES.md",
-        )
         self._instruction_documents = AgentInstructionDocuments(
             voice_path=config.voice_instructions_path,
             background_path=config.background_instructions_path,
@@ -341,6 +336,11 @@ class RuntimeApplication:
         self._log.info("runtime.start.begin")
         self._releases.prepare()
         self._database.migrate()
+        from .background_agent.rules import install_background_rules
+        install_background_rules(
+            self._workspace,
+            self._config.user_workspace_path / "documents" / "RULES.md",
+        )
         if self._audience_router.binding_for(CALENDAR_TOOL_SET) is None:
             self._audience_router.set_audience(
                 CALENDAR_TOOL_SET,

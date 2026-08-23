@@ -13,6 +13,12 @@
     { "code": "JR-PLAN-TARGET", "terminal": true },
     { "code": "JR-PLAN-MODE", "terminal": true },
     { "code": "JR-PLAN-DATA-POLICY", "terminal": true },
-    { "code": "JR-PLAN-DUPLICATE", "terminal": true }
+    { "code": "JR-PLAN-DUPLICATE", "terminal": true },
+    { "code": "JR-ARTIFACT-TYPE", "terminal": true },
+    { "code": "JR-ARTIFACT-SIZE", "terminal": true },
+    { "code": "JR-ARTIFACT-HASH", "terminal": true },
+    { "code": "JR-BUNDLE-MISSING", "terminal": true },
+    { "code": "JR-BUNDLE-UNEXPECTED", "terminal": true },
+    { "code": "JR-BUNDLE-DUPLICATE", "terminal": true }
   ]
 }

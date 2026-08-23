@@ -23,7 +23,10 @@
       "allOf": [
         {
           "if": { "properties": { "action": { "const": "flash" } }, "required": ["action"] },
-          "then": { "required": ["artifactId"] },
+          "then": {
+            "properties": { "artifactId": { "$ref": "#/$defs/identifier" } },
+            "required": ["artifactId"]
+          },
           "else": { "not": { "required": ["artifactId"] } }
         }
       ]

@@ -1,6 +1,6 @@
 {
-  "name": "ReSono Labs R1 Voice",
-  "description": "Standalone ReSono R1 HOME product combining a modular native Android interface, an embedded Python agent runtime, and a same-LAN management web surface. Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
+  "name": "ReSono-Labs-R1-Voice",
+  "description": "JackRabbit is a standalone, non-commercial community voice system for the Rabbit R1 that combines a native HOME application, OpenAI Realtime voice, an on-device runtime, local storage, and a browser-based management interface while preserving the working Rabbit/Cipher hardware foundation. Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
   "languages": [
     "aidl",
     "css",
@@ -18,12 +18,7 @@
     "whl",
     "xml"
   ],
-  "frameworks": [
-    "Android",
-    "Chaquopy",
-    "OpenAI Agents SDK",
-    "WebRTC"
-  ],
+  "frameworks": [],
   "files": [
     {
       "path": ".understand-anything/.understandignore",
@@ -46,31 +41,649 @@
     {
       "path": ".understand-anything/fingerprints.json",
       "language": "json",
-      "sizeLines": 10379,
+      "sizeLines": 26810,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/assemble-review.json",
+      "language": "json",
+      "sizeLines": 14,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/assembled-graph.json",
+      "language": "json",
+      "sizeLines": 35563,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-1-part-1.json",
+      "language": "json",
+      "sizeLines": 946,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-1-part-2.json",
+      "language": "json",
+      "sizeLines": 726,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-10.json",
+      "language": "json",
+      "sizeLines": 1336,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-11.json",
+      "language": "json",
+      "sizeLines": 393,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-12.json",
+      "language": "json",
+      "sizeLines": 70,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-13.json",
+      "language": "json",
+      "sizeLines": 46,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-14.json",
+      "language": "json",
+      "sizeLines": 75,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-15.json",
+      "language": "json",
+      "sizeLines": 265,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-16.json",
+      "language": "json",
+      "sizeLines": 647,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-17-part-1.json",
+      "language": "json",
+      "sizeLines": 749,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-17-part-2.json",
+      "language": "json",
+      "sizeLines": 1358,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-18.json",
+      "language": "json",
+      "sizeLines": 754,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-19-part-1.json",
+      "language": "json",
+      "sizeLines": 981,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-19-part-2.json",
+      "language": "json",
+      "sizeLines": 1433,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-2-part-1.json",
+      "language": "json",
+      "sizeLines": 794,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-2-part-2.json",
+      "language": "json",
+      "sizeLines": 1197,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-2-part-3.json",
+      "language": "json",
+      "sizeLines": 1227,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-2-part-4.json",
+      "language": "json",
+      "sizeLines": 1440,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-2-part-5.json",
+      "language": "json",
+      "sizeLines": 322,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-20-part-1.json",
+      "language": "json",
+      "sizeLines": 857,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-20-part-2.json",
+      "language": "json",
+      "sizeLines": 596,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-21.json",
+      "language": "json",
+      "sizeLines": 31,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-3-part-1.json",
+      "language": "json",
+      "sizeLines": 681,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-3-part-2.json",
+      "language": "json",
+      "sizeLines": 1204,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-3-part-3.json",
+      "language": "json",
+      "sizeLines": 1423,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-3-part-4.json",
+      "language": "json",
+      "sizeLines": 1470,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-3-part-5.json",
+      "language": "json",
+      "sizeLines": 446,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-4-part-1.json",
+      "language": "json",
+      "sizeLines": 882,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-4-part-2.json",
+      "language": "json",
+      "sizeLines": 1088,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-4-part-3.json",
+      "language": "json",
+      "sizeLines": 803,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-4-part-4.json",
+      "language": "json",
+      "sizeLines": 587,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-4-part-5.json",
+      "language": "json",
+      "sizeLines": 379,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-5-part-1.json",
+      "language": "json",
+      "sizeLines": 1139,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-5-part-2.json",
+      "language": "json",
+      "sizeLines": 953,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-6-part-1.json",
+      "language": "json",
+      "sizeLines": 1340,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-6-part-2.json",
+      "language": "json",
+      "sizeLines": 974,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-6-part-3.json",
+      "language": "json",
+      "sizeLines": 824,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-7-part-1.json",
+      "language": "json",
+      "sizeLines": 1063,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-7-part-2.json",
+      "language": "json",
+      "sizeLines": 977,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-8.json",
+      "language": "json",
+      "sizeLines": 1735,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batch-9.json",
+      "language": "json",
+      "sizeLines": 1580,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/batches.json",
+      "language": "json",
+      "sizeLines": 7289,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/fingerprint-input.json",
+      "language": "json",
+      "sizeLines": 365,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/layers.json",
+      "language": "json",
+      "sizeLines": 431,
       "fileCategory": "config"
     },
     {
       "path": ".understand-anything/intermediate/scan-result.json",
       "language": "json",
-      "sizeLines": 1141,
+      "sizeLines": 3179,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/intermediate/tour.json",
+      "language": "json",
+      "sizeLines": 74,
       "fileCategory": "config"
     },
     {
       "path": ".understand-anything/knowledge-graph.json",
       "language": "json",
-      "sizeLines": 14244,
+      "sizeLines": 36161,
       "fileCategory": "config"
     },
     {
       "path": ".understand-anything/meta.json",
       "language": "json",
-      "sizeLines": 5,
+      "sizeLines": 6,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/generate-batches-1-7.mjs",
+      "language": "javascript",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/generate-batches-15-21.mjs",
+      "language": "javascript",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/generate-batches-8-14.mjs",
+      "language": "javascript",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-arch-analyze.js",
+      "language": "javascript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-arch-assign.js",
+      "language": "javascript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-arch-input.json",
+      "language": "json",
+      "sizeLines": 11837,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-arch-prepare.js",
+      "language": "javascript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-arch-results.json",
+      "language": "json",
+      "sizeLines": 1669,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-1.json",
+      "language": "json",
+      "sizeLines": 263,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-10.json",
+      "language": "json",
+      "sizeLines": 79,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-11.json",
+      "language": "json",
+      "sizeLines": 46,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-12.json",
+      "language": "json",
+      "sizeLines": 42,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-13.json",
+      "language": "json",
+      "sizeLines": 28,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-14.json",
+      "language": "json",
+      "sizeLines": 42,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-15.json",
+      "language": "json",
+      "sizeLines": 146,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-16.json",
+      "language": "json",
+      "sizeLines": 181,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-17.json",
+      "language": "json",
+      "sizeLines": 181,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-18.json",
+      "language": "json",
+      "sizeLines": 181,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-19.json",
+      "language": "json",
+      "sizeLines": 181,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-2.json",
+      "language": "json",
+      "sizeLines": 326,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-20.json",
+      "language": "json",
+      "sizeLines": 181,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-21.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-3.json",
+      "language": "json",
+      "sizeLines": 256,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-4.json",
+      "language": "json",
+      "sizeLines": 330,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-5.json",
+      "language": "json",
+      "sizeLines": 218,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-6.json",
+      "language": "json",
+      "sizeLines": 224,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-7.json",
+      "language": "json",
+      "sizeLines": 161,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-8.json",
+      "language": "json",
+      "sizeLines": 135,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-analyzer-input-9.json",
+      "language": "json",
+      "sizeLines": 64,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-1.json",
+      "language": "json",
+      "sizeLines": 1410,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-10.json",
+      "language": "json",
+      "sizeLines": 3986,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-11.json",
+      "language": "json",
+      "sizeLines": 794,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-12.json",
+      "language": "json",
+      "sizeLines": 191,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-13.json",
+      "language": "json",
+      "sizeLines": 299,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-14.json",
+      "language": "json",
+      "sizeLines": 71,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-15.json",
+      "language": "json",
+      "sizeLines": 3331,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-16.json",
+      "language": "json",
+      "sizeLines": 1102,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-17.json",
+      "language": "json",
+      "sizeLines": 4656,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-18.json",
+      "language": "json",
+      "sizeLines": 1489,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-19.json",
+      "language": "json",
+      "sizeLines": 6789,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-2.json",
+      "language": "json",
+      "sizeLines": 9533,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-20.json",
+      "language": "json",
+      "sizeLines": 5741,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-21.json",
+      "language": "json",
+      "sizeLines": 35,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-3.json",
+      "language": "json",
+      "sizeLines": 13814,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-4.json",
+      "language": "json",
+      "sizeLines": 7624,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-5.json",
+      "language": "json",
+      "sizeLines": 2577,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-6.json",
+      "language": "json",
+      "sizeLines": 4794,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-7.json",
+      "language": "json",
+      "sizeLines": 3486,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-8.json",
+      "language": "json",
+      "sizeLines": 4916,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-file-extract-results-9.json",
+      "language": "json",
+      "sizeLines": 2372,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-import-map-input.json",
+      "language": "json",
+      "sizeLines": 2159,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-import-map-output.json",
+      "language": "json",
+      "sizeLines": 1000,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-scan-files.json",
+      "language": "json",
+      "sizeLines": 2188,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-tour-analyze.js",
+      "language": "javascript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-tour-input.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-tour-results.json",
+      "language": "json",
+      "sizeLines": 6860,
       "fileCategory": "config"
     },
     {
       "path": "android/app/build.gradle.kts",
       "language": "kotlin",
-      "sizeLines": 47,
+      "sizeLines": 49,
       "fileCategory": "code"
     },
     {
@@ -88,19 +701,19 @@
     {
       "path": "android/app/src/main/java/com/resonolabs/voice/MainActivity.java",
       "language": "java",
-      "sizeLines": 121,
+      "sizeLines": 148,
       "fileCategory": "code"
     },
     {
       "path": "android/app/src/main/java/com/resonolabs/voice/ProductChromeView.java",
       "language": "java",
-      "sizeLines": 83,
+      "sizeLines": 124,
       "fileCategory": "code"
     },
     {
       "path": "android/app/src/main/java/com/resonolabs/voice/ProductRootView.java",
       "language": "java",
-      "sizeLines": 208,
+      "sizeLines": 262,
       "fileCategory": "code"
     },
     {
@@ -224,6 +837,24 @@
       "fileCategory": "code"
     },
     {
+      "path": "android/feature/background-run/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/background-run/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/feature/background-run/src/main/java/com/resonolabs/feature/backgroundrun/BackgroundRunPanelView.java",
+      "language": "java",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
       "path": "android/feature/calendar/build.gradle.kts",
       "language": "kotlin",
       "sizeLines": 17,
@@ -244,7 +875,7 @@
     {
       "path": "android/feature/camera/src/main/java/com/resonolabs/feature/camera/Camera2Producer.java",
       "language": "java",
-      "sizeLines": 174,
+      "sizeLines": 181,
       "fileCategory": "code"
     },
     {
@@ -286,7 +917,7 @@
     {
       "path": "android/feature/cards/src/main/java/com/resonolabs/feature/cards/CardsDeckView.java",
       "language": "java",
-      "sizeLines": 182,
+      "sizeLines": 187,
       "fileCategory": "code"
     },
     {
@@ -299,6 +930,48 @@
       "path": "android/feature/cards/src/main/java/com/resonolabs/feature/cards/CreationWebViewHost.java",
       "language": "java",
       "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/creation-import/build.gradle.kts",
+      "language": "kotlin",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/creation-import/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 2,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportState.java",
+      "language": "java",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportView.java",
+      "language": "java",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrCaptureView.java",
+      "language": "java",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrDecoder.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/ZxingCreationQrDecoder.java",
+      "language": "java",
+      "sizeLines": 64,
       "fileCategory": "code"
     },
     {
@@ -328,7 +1001,7 @@
     {
       "path": "android/feature/settings/src/main/java/com/resonolabs/feature/settings/SettingsPanelView.java",
       "language": "java",
-      "sizeLines": 881,
+      "sizeLines": 998,
       "fileCategory": "code"
     },
     {
@@ -340,7 +1013,7 @@
     {
       "path": "android/feature/settings/src/test/java/com/resonolabs/feature/settings/SettingsInputPolicyTest.java",
       "language": "java",
-      "sizeLines": 53,
+      "sizeLines": 60,
       "fileCategory": "code"
     },
     {
@@ -388,7 +1061,7 @@
     {
       "path": "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
       "language": "java",
-      "sizeLines": 503,
+      "sizeLines": 622,
       "fileCategory": "code"
     },
     {
@@ -424,7 +1097,7 @@
     {
       "path": "android/runtime-host/build.gradle.kts",
       "language": "kotlin",
-      "sizeLines": 41,
+      "sizeLines": 45,
       "fileCategory": "code"
     },
     {
@@ -432,6 +1105,12 @@
       "language": "xml",
       "sizeLines": 20,
       "fileCategory": "config"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/BackgroundRunSnapshot.java",
+      "language": "java",
+      "sizeLines": 47,
+      "fileCategory": "code"
     },
     {
       "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java",
@@ -484,7 +1163,7 @@
     {
       "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java",
       "language": "java",
-      "sizeLines": 157,
+      "sizeLines": 159,
       "fileCategory": "code"
     },
     {
@@ -497,6 +1176,18 @@
       "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java",
       "language": "java",
       "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java",
+      "language": "java",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java",
+      "language": "java",
+      "sizeLines": 70,
       "fileCategory": "code"
     },
     {
@@ -562,13 +1253,19 @@
     {
       "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeVoiceClient.java",
       "language": "java",
-      "sizeLines": 304,
+      "sizeLines": 369,
       "fileCategory": "code"
     },
     {
       "path": "android/runtime-host/src/main/java/com/resonolabs/runtime/host/TaskClient.java",
       "language": "java",
       "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/runtime-host/src/test/java/com/resonolabs/runtime/host/ManagementHttpRequestTest.java",
+      "language": "java",
+      "sizeLines": 35,
       "fileCategory": "code"
     },
     {
@@ -598,7 +1295,7 @@
     {
       "path": "android/scripts/build_debug.sh",
       "language": "shell",
-      "sizeLines": 39,
+      "sizeLines": 40,
       "fileCategory": "script"
     },
     {
@@ -610,7 +1307,7 @@
     {
       "path": "android/scripts/check_runtime_package.sh",
       "language": "shell",
-      "sizeLines": 84,
+      "sizeLines": 85,
       "fileCategory": "script"
     },
     {
@@ -622,7 +1319,7 @@
     {
       "path": "android/settings.gradle.kts",
       "language": "kotlin",
-      "sizeLines": 32,
+      "sizeLines": 34,
       "fileCategory": "code"
     },
     {
@@ -700,7 +1397,7 @@
     {
       "path": "docs/planning/2026-08-20-build-contract-07-extensions-mail.md",
       "language": "markdown",
-      "sizeLines": 2763,
+      "sizeLines": 2769,
       "fileCategory": "docs"
     },
     {
@@ -730,7 +1427,7 @@
     {
       "path": "docs/planning/2026-08-20-camera-recovery-contract.md",
       "language": "markdown",
-      "sizeLines": 333,
+      "sizeLines": 337,
       "fileCategory": "docs"
     },
     {
@@ -760,7 +1457,7 @@
     {
       "path": "docs/planning/2026-08-20-primary-agent-delegation-placement.md",
       "language": "markdown",
-      "sizeLines": 600,
+      "sizeLines": 91,
       "fileCategory": "docs"
     },
     {
@@ -776,10 +1473,298 @@
       "fileCategory": "docs"
     },
     {
+      "path": "docs/references/VOICE_RUNTIME_MODE_SWITCHING_DONOR.md",
+      "language": "markdown",
+      "sizeLines": 244,
+      "fileCategory": "docs"
+    },
+    {
       "path": "docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md",
       "language": "markdown",
       "sizeLines": 339,
       "fileCategory": "docs"
+    },
+    {
+      "path": "examples/agent-plugins/resono-plugin-test/plugin.json",
+      "language": "json",
+      "sizeLines": 10,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/agent-plugins/resono-plugin-test/skills/plugin-test/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 10,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/cli/README.md",
+      "language": "markdown",
+      "sizeLines": 8,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/conformance/README.md",
+      "language": "markdown",
+      "sizeLines": 9,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/conformance/update-plan-valid-v1.json",
+      "language": "json",
+      "sizeLines": 34,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/contracts/errors-v1.json",
+      "language": "json",
+      "sizeLines": 24,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/contracts/journal-v1.schema.json",
+      "language": "json",
+      "sizeLines": 30,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/contracts/operations-v1.schema.json",
+      "language": "json",
+      "sizeLines": 35,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/contracts/README.md",
+      "language": "markdown",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/contracts/recovery-v1.schema.json",
+      "language": "json",
+      "sizeLines": 30,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/contracts/release-v1.schema.json",
+      "language": "json",
+      "sizeLines": 55,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/contracts/signature-v1.schema.json",
+      "language": "json",
+      "sizeLines": 15,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/contracts/support-v1.json",
+      "language": "json",
+      "sizeLines": 7,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/deployment/README.md",
+      "language": "markdown",
+      "sizeLines": 6,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/package.json",
+      "language": "json",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/provenance/browser-apis.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/provenance/README.md",
+      "language": "markdown",
+      "sizeLines": 12,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/provenance/sources.json",
+      "language": "json",
+      "sizeLines": 103,
+      "fileCategory": "config"
+    },
+    {
+      "path": "installer/README.md",
+      "language": "markdown",
+      "sizeLines": 39,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/scripts/check-boundaries.sh",
+      "language": "shell",
+      "sizeLines": 92,
+      "fileCategory": "script"
+    },
+    {
+      "path": "installer/scripts/check-provenance.mjs",
+      "language": "javascript",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/scripts/check-tracked-output.sh",
+      "language": "shell",
+      "sizeLines": 17,
+      "fileCategory": "script"
+    },
+    {
+      "path": "installer/tests/test-boundaries.sh",
+      "language": "shell",
+      "sizeLines": 113,
+      "fileCategory": "script"
+    },
+    {
+      "path": "installer/tests/test-isolated-build.sh",
+      "language": "shell",
+      "sizeLines": 20,
+      "fileCategory": "script"
+    },
+    {
+      "path": "installer/VERSION",
+      "language": "unknown",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/vite.config.mjs",
+      "language": "javascript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/index.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "installer/web/public/_headers",
+      "language": "unknown",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/README.md",
+      "language": "markdown",
+      "sizeLines": 7,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "installer/web/src/app/main.mjs",
+      "language": "javascript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/app/session.mjs",
+      "language": "javascript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/capability/probe-browser.mjs",
+      "language": "javascript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/fastboot/read-r1-snapshot.mjs",
+      "language": "javascript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/install/plan-release.mjs",
+      "language": "javascript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/preloader/enter-r1-fastboot.mjs",
+      "language": "javascript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/preparation/steps.mjs",
+      "language": "javascript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/release/contract-validator.mjs",
+      "language": "javascript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/release/verify-artifact.mjs",
+      "language": "javascript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/release/verify-manifest.mjs",
+      "language": "javascript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/ui/render.mjs",
+      "language": "javascript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/src/ui/styles.css",
+      "language": "css",
+      "sizeLines": 42,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "installer/web/tests/artifact-verification.test.mjs",
+      "language": "javascript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/tests/enter-r1-fastboot.test.mjs",
+      "language": "javascript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/tests/manifest-verification.test.mjs",
+      "language": "javascript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/tests/offline-planner.test.mjs",
+      "language": "javascript",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/tests/probe-browser.test.mjs",
+      "language": "javascript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "installer/web/tests/read-r1-snapshot.test.mjs",
+      "language": "javascript",
+      "sizeLines": 87,
+      "fileCategory": "code"
     },
     {
       "path": "README.md",
@@ -802,7 +1787,7 @@
     {
       "path": "runtime/resono_runtime/agents/__init__.py",
       "language": "python",
-      "sizeLines": 21,
+      "sizeLines": 25,
       "fileCategory": "code"
     },
     {
@@ -812,15 +1797,27 @@
       "fileCategory": "code"
     },
     {
+      "path": "runtime/resono_runtime/agents/context_builder.py",
+      "language": "python",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
       "path": "runtime/resono_runtime/agents/delegation.py",
       "language": "python",
-      "sizeLines": 48,
+      "sizeLines": 59,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/agents/memory_reviewer.py",
       "language": "python",
-      "sizeLines": 308,
+      "sizeLines": 424,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/agents/primary_context.py",
+      "language": "python",
+      "sizeLines": 45,
       "fileCategory": "code"
     },
     {
@@ -838,7 +1835,7 @@
     {
       "path": "runtime/resono_runtime/agents/sdk_runner.py",
       "language": "python",
-      "sizeLines": 91,
+      "sizeLines": 106,
       "fileCategory": "code"
     },
     {
@@ -850,7 +1847,7 @@
     {
       "path": "runtime/resono_runtime/api/background_agent_routes.py",
       "language": "python",
-      "sizeLines": 187,
+      "sizeLines": 251,
       "fileCategory": "code"
     },
     {
@@ -868,7 +1865,7 @@
     {
       "path": "runtime/resono_runtime/api/creation_routes.py",
       "language": "python",
-      "sizeLines": 140,
+      "sizeLines": 166,
       "fileCategory": "code"
     },
     {
@@ -904,13 +1901,13 @@
     {
       "path": "runtime/resono_runtime/api/routes.py",
       "language": "python",
-      "sizeLines": 689,
+      "sizeLines": 695,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/api/skill_routes.py",
       "language": "python",
-      "sizeLines": 158,
+      "sizeLines": 52,
       "fileCategory": "code"
     },
     {
@@ -928,7 +1925,7 @@
     {
       "path": "runtime/resono_runtime/application.py",
       "language": "python",
-      "sizeLines": 418,
+      "sizeLines": 480,
       "fileCategory": "code"
     },
     {
@@ -940,37 +1937,67 @@
     {
       "path": "runtime/resono_runtime/background_agent/adapters.py",
       "language": "python",
-      "sizeLines": 54,
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/completion_dispatch.py",
+      "language": "python",
+      "sizeLines": 89,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/background_agent/composition.py",
       "language": "python",
-      "sizeLines": 68,
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/execution.py",
+      "language": "python",
+      "sizeLines": 73,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/background_agent/instructions.py",
       "language": "python",
-      "sizeLines": 55,
+      "sizeLines": 47,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/background_agent/mcp_gateway.py",
       "language": "python",
-      "sizeLines": 44,
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/output_contract.py",
+      "language": "python",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/progress.py",
+      "language": "python",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/RULES.md",
+      "language": "markdown",
+      "sizeLines": 4,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "runtime/resono_runtime/background_agent/rules.py",
+      "language": "python",
+      "sizeLines": 23,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/background_agent/run_contract.py",
       "language": "python",
-      "sizeLines": 114,
-      "fileCategory": "code"
-    },
-    {
-      "path": "runtime/resono_runtime/background_agent/run_loop.py",
-      "language": "python",
-      "sizeLines": 94,
+      "sizeLines": 162,
       "fileCategory": "code"
     },
     {
@@ -988,31 +2015,31 @@
     {
       "path": "runtime/resono_runtime/background_agent/sdk_executor.py",
       "language": "python",
-      "sizeLines": 113,
+      "sizeLines": 147,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/background_agent/service.py",
       "language": "python",
-      "sizeLines": 134,
+      "sizeLines": 196,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/background_agent/tool_supply.py",
       "language": "python",
-      "sizeLines": 71,
+      "sizeLines": 92,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/background_agent/workspace.py",
       "language": "python",
-      "sizeLines": 92,
+      "sizeLines": 171,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/config.py",
       "language": "python",
-      "sizeLines": 95,
+      "sizeLines": 115,
       "fileCategory": "code"
     },
     {
@@ -1258,7 +2285,7 @@
     {
       "path": "runtime/resono_runtime/mcp/server.py",
       "language": "python",
-      "sizeLines": 146,
+      "sizeLines": 148,
       "fileCategory": "code"
     },
     {
@@ -1270,7 +2297,13 @@
     {
       "path": "runtime/resono_runtime/memory/__init__.py",
       "language": "python",
-      "sizeLines": 17,
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/memory/contracts.py",
+      "language": "python",
+      "sizeLines": 39,
       "fileCategory": "code"
     },
     {
@@ -1280,21 +2313,27 @@
       "fileCategory": "code"
     },
     {
+      "path": "runtime/resono_runtime/memory/evidence.py",
+      "language": "python",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
       "path": "runtime/resono_runtime/memory/pipeline.py",
       "language": "python",
-      "sizeLines": 144,
+      "sizeLines": 213,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/memory/retrieval.py",
       "language": "python",
-      "sizeLines": 83,
+      "sizeLines": 103,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/memory/service.py",
       "language": "python",
-      "sizeLines": 130,
+      "sizeLines": 136,
       "fileCategory": "code"
     },
     {
@@ -1306,7 +2345,7 @@
     {
       "path": "runtime/resono_runtime/memory/tools.py",
       "language": "python",
-      "sizeLines": 167,
+      "sizeLines": 324,
       "fileCategory": "code"
     },
     {
@@ -1372,7 +2411,7 @@
     {
       "path": "runtime/resono_runtime/providers/controller.py",
       "language": "python",
-      "sizeLines": 435,
+      "sizeLines": 465,
       "fileCategory": "code"
     },
     {
@@ -1396,7 +2435,7 @@
     {
       "path": "runtime/resono_runtime/providers/openai/platform.py",
       "language": "python",
-      "sizeLines": 257,
+      "sizeLines": 260,
       "fileCategory": "code"
     },
     {
@@ -1408,7 +2447,19 @@
     {
       "path": "runtime/resono_runtime/providers/openai/web_search.py",
       "language": "python",
-      "sizeLines": 119,
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/realtime/__init__.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/realtime/modes.py",
+      "language": "python",
+      "sizeLines": 191,
       "fileCategory": "code"
     },
     {
@@ -1438,7 +2489,7 @@
     {
       "path": "runtime/resono_runtime/skills/__init__.py",
       "language": "python",
-      "sizeLines": 12,
+      "sizeLines": 15,
       "fileCategory": "code"
     },
     {
@@ -1454,6 +2505,12 @@
       "fileCategory": "code"
     },
     {
+      "path": "runtime/resono_runtime/skills/documents.py",
+      "language": "python",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
       "path": "runtime/resono_runtime/skills/lifecycle.py",
       "language": "python",
       "sizeLines": 273,
@@ -1462,7 +2519,7 @@
     {
       "path": "runtime/resono_runtime/skills/specification.py",
       "language": "python",
-      "sizeLines": 106,
+      "sizeLines": 109,
       "fileCategory": "code"
     },
     {
@@ -1508,9 +2565,15 @@
       "fileCategory": "code"
     },
     {
+      "path": "runtime/resono_runtime/storage/agent_deliveries.py",
+      "language": "python",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
       "path": "runtime/resono_runtime/storage/agent_runs.py",
       "language": "python",
-      "sizeLines": 169,
+      "sizeLines": 200,
       "fileCategory": "code"
     },
     {
@@ -1552,13 +2615,13 @@
     {
       "path": "runtime/resono_runtime/storage/memory.py",
       "language": "python",
-      "sizeLines": 308,
+      "sizeLines": 572,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/storage/migrations/__init__.py",
       "language": "python",
-      "sizeLines": 79,
+      "sizeLines": 93,
       "fileCategory": "code"
     },
     {
@@ -1748,6 +2811,48 @@
       "fileCategory": "code"
     },
     {
+      "path": "runtime/resono_runtime/storage/migrations/v036_workspace.py",
+      "language": "python",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v037_workspace_tools.py",
+      "language": "python",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v038_goal_context.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v039_agent_deliveries.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v040_goal_provenance_and_delivery_lease.py",
+      "language": "python",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v041_goal_verification_contract.py",
+      "language": "python",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/storage/migrations/v042_domain_memory.py",
+      "language": "python",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
       "path": "runtime/resono_runtime/storage/plugin_components.py",
       "language": "python",
       "sizeLines": 48,
@@ -1790,15 +2895,21 @@
       "fileCategory": "code"
     },
     {
+      "path": "runtime/resono_runtime/storage/workspace.py",
+      "language": "python",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
       "path": "runtime/resono_runtime/tools/__init__.py",
       "language": "python",
-      "sizeLines": 14,
+      "sizeLines": 16,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/tools/builtins.py",
       "language": "python",
-      "sizeLines": 61,
+      "sizeLines": 65,
       "fileCategory": "code"
     },
     {
@@ -1828,19 +2939,19 @@
     {
       "path": "runtime/resono_runtime/tools/catalog.py",
       "language": "python",
-      "sizeLines": 108,
+      "sizeLines": 161,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/tools/definitions.py",
       "language": "python",
-      "sizeLines": 69,
+      "sizeLines": 73,
       "fileCategory": "code"
     },
     {
       "path": "runtime/resono_runtime/tools/delegation.py",
       "language": "python",
-      "sizeLines": 91,
+      "sizeLines": 118,
       "fileCategory": "code"
     },
     {
@@ -1874,6 +2985,30 @@
       "fileCategory": "code"
     },
     {
+      "path": "runtime/resono_runtime/workspace/__init__.py",
+      "language": "python",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/workspace/contract.py",
+      "language": "python",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/workspace/service.py",
+      "language": "python",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "runtime/resono_runtime/workspace/tools.py",
+      "language": "python",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
       "path": "skills.md",
       "language": "markdown",
       "sizeLines": 3,
@@ -1882,7 +3017,7 @@
     {
       "path": "SKILLS.md",
       "language": "markdown",
-      "sizeLines": 664,
+      "sizeLines": 850,
       "fileCategory": "docs"
     },
     {
@@ -1892,15 +3027,33 @@
       "fileCategory": "code"
     },
     {
+      "path": "tests/runtime/test_agent_instruction_documents.py",
+      "language": "python",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
       "path": "tests/runtime/test_agents_sdk_runner.py",
       "language": "python",
       "sizeLines": 123,
       "fileCategory": "code"
     },
     {
+      "path": "tests/runtime/test_application_import.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
       "path": "tests/runtime/test_background_agent_contract.py",
       "language": "python",
-      "sizeLines": 47,
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_background_agent_execution.py",
+      "language": "python",
+      "sizeLines": 91,
       "fileCategory": "code"
     },
     {
@@ -1912,19 +3065,19 @@
     {
       "path": "tests/runtime/test_background_agent_observability.py",
       "language": "python",
-      "sizeLines": 49,
-      "fileCategory": "code"
-    },
-    {
-      "path": "tests/runtime/test_background_agent_recipes.py",
-      "language": "python",
-      "sizeLines": 73,
+      "sizeLines": 111,
       "fileCategory": "code"
     },
     {
       "path": "tests/runtime/test_background_agent_service.py",
       "language": "python",
-      "sizeLines": 84,
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_background_completion_delivery.py",
+      "language": "python",
+      "sizeLines": 81,
       "fileCategory": "code"
     },
     {
@@ -1948,7 +3101,13 @@
     {
       "path": "tests/runtime/test_creations.py",
       "language": "python",
-      "sizeLines": 91,
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_domain_memory.py",
+      "language": "python",
+      "sizeLines": 82,
       "fileCategory": "code"
     },
     {
@@ -2008,7 +3167,7 @@
     {
       "path": "tests/runtime/test_memory_sessions.py",
       "language": "python",
-      "sizeLines": 638,
+      "sizeLines": 643,
       "fileCategory": "code"
     },
     {
@@ -2038,7 +3197,7 @@
     {
       "path": "tests/runtime/test_plugin_lifecycle.py",
       "language": "python",
-      "sizeLines": 90,
+      "sizeLines": 89,
       "fileCategory": "code"
     },
     {
@@ -2068,7 +3227,7 @@
     {
       "path": "tests/runtime/test_runtime_http_finalize.py",
       "language": "python",
-      "sizeLines": 183,
+      "sizeLines": 184,
       "fileCategory": "code"
     },
     {
@@ -2092,7 +3251,7 @@
     {
       "path": "tests/runtime/test_skill_catalog.py",
       "language": "python",
-      "sizeLines": 64,
+      "sizeLines": 75,
       "fileCategory": "code"
     },
     {
@@ -2104,7 +3263,7 @@
     {
       "path": "tests/runtime/test_skill_routes.py",
       "language": "python",
-      "sizeLines": 93,
+      "sizeLines": 26,
       "fileCategory": "code"
     },
     {
@@ -2126,9 +3285,21 @@
       "fileCategory": "code"
     },
     {
+      "path": "tests/runtime/test_voice_modes.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
       "path": "tests/runtime/test_web_search.py",
       "language": "python",
-      "sizeLines": 107,
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/runtime/test_workspace_voice_tools.py",
+      "language": "python",
+      "sizeLines": 103,
       "fileCategory": "code"
     },
     {
@@ -2152,7 +3323,7 @@
     {
       "path": "web/management/background-agent.js",
       "language": "javascript",
-      "sizeLines": 16,
+      "sizeLines": 17,
       "fileCategory": "code"
     },
     {
@@ -2170,7 +3341,7 @@
     {
       "path": "web/management/management.css",
       "language": "css",
-      "sizeLines": 32,
+      "sizeLines": 34,
       "fileCategory": "markup"
     },
     {
@@ -2180,40 +3351,150 @@
       "fileCategory": "docs"
     }
   ],
-  "totalFiles": 359,
+  "totalFiles": 555,
   "filteredByIgnore": 0,
-  "estimatedComplexity": "large",
+  "estimatedComplexity": "very-large",
   "importMap": {
     ".understand-anything/.understandignore": [],
     ".understand-anything/config.json": [],
     ".understand-anything/diff-overlay.json": [],
     ".understand-anything/fingerprints.json": [],
+    ".understand-anything/intermediate/assemble-review.json": [],
+    ".understand-anything/intermediate/assembled-graph.json": [],
+    ".understand-anything/intermediate/batch-1-part-1.json": [],
+    ".understand-anything/intermediate/batch-1-part-2.json": [],
+    ".understand-anything/intermediate/batch-10.json": [],
+    ".understand-anything/intermediate/batch-11.json": [],
+    ".understand-anything/intermediate/batch-12.json": [],
+    ".understand-anything/intermediate/batch-13.json": [],
+    ".understand-anything/intermediate/batch-14.json": [],
+    ".understand-anything/intermediate/batch-15.json": [],
+    ".understand-anything/intermediate/batch-16.json": [],
+    ".understand-anything/intermediate/batch-17-part-1.json": [],
+    ".understand-anything/intermediate/batch-17-part-2.json": [],
+    ".understand-anything/intermediate/batch-18.json": [],
+    ".understand-anything/intermediate/batch-19-part-1.json": [],
+    ".understand-anything/intermediate/batch-19-part-2.json": [],
+    ".understand-anything/intermediate/batch-2-part-1.json": [],
+    ".understand-anything/intermediate/batch-2-part-2.json": [],
+    ".understand-anything/intermediate/batch-2-part-3.json": [],
+    ".understand-anything/intermediate/batch-2-part-4.json": [],
+    ".understand-anything/intermediate/batch-2-part-5.json": [],
+    ".understand-anything/intermediate/batch-20-part-1.json": [],
+    ".understand-anything/intermediate/batch-20-part-2.json": [],
+    ".understand-anything/intermediate/batch-21.json": [],
+    ".understand-anything/intermediate/batch-3-part-1.json": [],
+    ".understand-anything/intermediate/batch-3-part-2.json": [],
+    ".understand-anything/intermediate/batch-3-part-3.json": [],
+    ".understand-anything/intermediate/batch-3-part-4.json": [],
+    ".understand-anything/intermediate/batch-3-part-5.json": [],
+    ".understand-anything/intermediate/batch-4-part-1.json": [],
+    ".understand-anything/intermediate/batch-4-part-2.json": [],
+    ".understand-anything/intermediate/batch-4-part-3.json": [],
+    ".understand-anything/intermediate/batch-4-part-4.json": [],
+    ".understand-anything/intermediate/batch-4-part-5.json": [],
+    ".understand-anything/intermediate/batch-5-part-1.json": [],
+    ".understand-anything/intermediate/batch-5-part-2.json": [],
+    ".understand-anything/intermediate/batch-6-part-1.json": [],
+    ".understand-anything/intermediate/batch-6-part-2.json": [],
+    ".understand-anything/intermediate/batch-6-part-3.json": [],
+    ".understand-anything/intermediate/batch-7-part-1.json": [],
+    ".understand-anything/intermediate/batch-7-part-2.json": [],
+    ".understand-anything/intermediate/batch-8.json": [],
+    ".understand-anything/intermediate/batch-9.json": [],
+    ".understand-anything/intermediate/batches.json": [],
+    ".understand-anything/intermediate/fingerprint-input.json": [],
+    ".understand-anything/intermediate/layers.json": [],
     ".understand-anything/intermediate/scan-result.json": [],
+    ".understand-anything/intermediate/tour.json": [],
     ".understand-anything/knowledge-graph.json": [],
     ".understand-anything/meta.json": [],
+    ".understand-anything/tmp/generate-batches-1-7.mjs": [],
+    ".understand-anything/tmp/generate-batches-15-21.mjs": [],
+    ".understand-anything/tmp/generate-batches-8-14.mjs": [],
+    ".understand-anything/tmp/ua-arch-analyze.js": [],
+    ".understand-anything/tmp/ua-arch-assign.js": [],
+    ".understand-anything/tmp/ua-arch-input.json": [],
+    ".understand-anything/tmp/ua-arch-prepare.js": [],
+    ".understand-anything/tmp/ua-arch-results.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-1.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-10.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-11.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-12.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-13.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-14.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-15.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-16.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-17.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-18.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-19.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-2.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-20.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-21.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-3.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-4.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-5.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-6.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-7.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-8.json": [],
+    ".understand-anything/tmp/ua-file-analyzer-input-9.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-1.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-10.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-11.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-12.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-13.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-14.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-15.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-16.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-17.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-18.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-19.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-2.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-20.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-21.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-3.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-4.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-5.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-6.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-7.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-8.json": [],
+    ".understand-anything/tmp/ua-file-extract-results-9.json": [],
+    ".understand-anything/tmp/ua-import-map-input.json": [],
+    ".understand-anything/tmp/ua-import-map-output.json": [],
+    ".understand-anything/tmp/ua-scan-files.json": [],
+    ".understand-anything/tmp/ua-tour-analyze.js": [],
+    ".understand-anything/tmp/ua-tour-input.json": [],
+    ".understand-anything/tmp/ua-tour-results.json": [],
     "android/app/build.gradle.kts": [],
     "android/app/proguard-rules.pro": [],
     "android/app/src/main/AndroidManifest.xml": [],
     "android/app/src/main/java/com/resonolabs/voice/MainActivity.java": [
       "android/core/power/src/main/java/com/resonolabs/ui/power/DisplayPolicy.java",
       "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingState.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealthClient.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeManagementClient.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java"
     ],
     "android/app/src/main/java/com/resonolabs/voice/ProductChromeView.java": [
-      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java"
+      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/BackgroundRunSnapshot.java"
     ],
     "android/app/src/main/java/com/resonolabs/voice/ProductRootView.java": [
       "android/core/input/src/main/java/com/resonolabs/ui/input/HardwareInputRouter.java",
       "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
       "android/core/motor/src/main/java/com/resonolabs/hardware/motor/R1MotorServiceClient.java",
+      "android/feature/background-run/src/main/java/com/resonolabs/feature/backgroundrun/BackgroundRunPanelView.java",
       "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CameraHandoffPage.java",
       "android/feature/cards/src/main/java/com/resonolabs/feature/cards/CardsPageView.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportView.java",
       "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingSource.java",
       "android/feature/settings/src/main/java/com/resonolabs/feature/settings/SettingsPanelView.java",
       "android/feature/voice/src/main/java/com/resonolabs/feature/voice/VoicePageView.java",
-      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementOpenAiSource.java"
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementOpenAiSource.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java"
     ],
     "android/app/src/main/java/com/resonolabs/voice/ReSonoBootReceiver.java": [
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeService.java"
@@ -2237,6 +3518,15 @@
     "android/core/power/build.gradle.kts": [],
     "android/core/power/src/main/java/com/resonolabs/ui/power/DisplayPolicy.java": [],
     "android/core/power/src/test/java/com/resonolabs/ui/power/DisplayPolicyTest.java": [],
+    "android/feature/background-run/build.gradle.kts": [],
+    "android/feature/background-run/src/main/AndroidManifest.xml": [],
+    "android/feature/background-run/src/main/java/com/resonolabs/feature/backgroundrun/BackgroundRunPanelView.java": [
+      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputTarget.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/BackgroundRunSnapshot.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java"
+    ],
     "android/feature/calendar/build.gradle.kts": [],
     "android/feature/calendar/src/main/java/com/resonolabs/feature/calendar/CalendarPageView.java": [
       "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
@@ -2273,6 +3563,27 @@
       "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
       "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java"
     ],
+    "android/feature/creation-import/build.gradle.kts": [],
+    "android/feature/creation-import/src/main/AndroidManifest.xml": [],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportState.java": [],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/CreationImportView.java": [
+      "android/core/design/src/main/java/com/resonolabs/ui/design/ReSonoTheme.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputIntent.java",
+      "android/core/input/src/main/java/com/resonolabs/ui/input/UiInputTarget.java",
+      "android/core/motor/src/main/java/com/resonolabs/hardware/motor/MotorController.java",
+      "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CapturedImage.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrCaptureView.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrDecoder.java",
+      "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/ZxingCreationQrDecoder.java",
+      "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java"
+    ],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrCaptureView.java": [
+      "android/core/motor/src/main/java/com/resonolabs/hardware/motor/MotorController.java",
+      "android/feature/camera/src/main/java/com/resonolabs/feature/camera/Camera2Producer.java",
+      "android/feature/camera/src/main/java/com/resonolabs/feature/camera/CapturedImage.java"
+    ],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/CreationQrDecoder.java": [],
+    "android/feature/creation-import/src/main/java/com/resonolabs/feature/creationimport/qr/ZxingCreationQrDecoder.java": [],
     "android/feature/settings/build.gradle.kts": [],
     "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingSource.java": [],
     "android/feature/settings/src/main/java/com/resonolabs/feature/settings/ManagementPairingState.java": [],
@@ -2313,6 +3624,7 @@
     "android/README.md": [],
     "android/runtime-host/build.gradle.kts": [],
     "android/runtime-host/src/main/AndroidManifest.xml": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/BackgroundRunSnapshot.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CalendarEventClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/CreationCatalogClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementAssetStore.java": [],
@@ -2324,6 +3636,8 @@
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementRuntimeProxy.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsIdentity.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/ManagementTlsKeyManager.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeBackgroundRunClient.java": [],
+    "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCreationImportClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialBridge.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeCredentialStore.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeHealth.java": [],
@@ -2336,6 +3650,7 @@
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeStartupLimiter.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/RuntimeVoiceClient.java": [],
     "android/runtime-host/src/main/java/com/resonolabs/runtime/host/TaskClient.java": [],
+    "android/runtime-host/src/test/java/com/resonolabs/runtime/host/ManagementHttpRequestTest.java": [],
     "android/runtime-host/wheels/jiter-0.16.0-cp313-cp313-android_31_arm64_v8a.whl": [],
     "android/runtime-host/wheels/pydantic_core-2.41.4-cp313-cp313-android_31_arm64_v8a.whl": [],
     "android/runtime-host/wheels/rpds_py-0.25.1-cp313-cp313-android_31_arm64_v8a.whl": [],
@@ -2370,27 +3685,122 @@
     "docs/planning/2026-08-20-primary-agent-delegation-placement.md": [],
     "docs/planning/2026-08-20-r1-direct-handoff-contract.md": [],
     "docs/planning/2026-08-20-slice-06-extensions-mail-orientation.md": [],
+    "docs/references/VOICE_RUNTIME_MODE_SWITCHING_DONOR.md": [],
     "docs/research/R1_CAMERA_MOTOR_AND_PREVIEW_RECOVERY.md": [],
+    "examples/agent-plugins/resono-plugin-test/plugin.json": [],
+    "examples/agent-plugins/resono-plugin-test/skills/plugin-test/SKILL.md": [],
+    "installer/cli/README.md": [],
+    "installer/conformance/README.md": [],
+    "installer/conformance/update-plan-valid-v1.json": [],
+    "installer/contracts/errors-v1.json": [],
+    "installer/contracts/journal-v1.schema.json": [],
+    "installer/contracts/operations-v1.schema.json": [],
+    "installer/contracts/README.md": [],
+    "installer/contracts/recovery-v1.schema.json": [],
+    "installer/contracts/release-v1.schema.json": [],
+    "installer/contracts/signature-v1.schema.json": [],
+    "installer/contracts/support-v1.json": [],
+    "installer/deployment/README.md": [],
+    "installer/package.json": [],
+    "installer/provenance/browser-apis.md": [],
+    "installer/provenance/README.md": [],
+    "installer/provenance/sources.json": [],
+    "installer/README.md": [],
+    "installer/scripts/check-boundaries.sh": [],
+    "installer/scripts/check-provenance.mjs": [],
+    "installer/scripts/check-tracked-output.sh": [],
+    "installer/tests/test-boundaries.sh": [],
+    "installer/tests/test-isolated-build.sh": [],
+    "installer/VERSION": [],
+    "installer/vite.config.mjs": [],
+    "installer/web/index.html": [],
+    "installer/web/public/_headers": [],
+    "installer/web/README.md": [],
+    "installer/web/src/app/main.mjs": [
+      "installer/contracts/support-v1.json",
+      "installer/package.json",
+      "installer/web/src/app/session.mjs",
+      "installer/web/src/capability/probe-browser.mjs",
+      "installer/web/src/fastboot/read-r1-snapshot.mjs",
+      "installer/web/src/ui/render.mjs",
+      "installer/web/src/ui/styles.css"
+    ],
+    "installer/web/src/app/session.mjs": [],
+    "installer/web/src/capability/probe-browser.mjs": [],
+    "installer/web/src/fastboot/read-r1-snapshot.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/install/plan-release.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/preloader/enter-r1-fastboot.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/preparation/steps.mjs": [],
+    "installer/web/src/release/contract-validator.mjs": [],
+    "installer/web/src/release/verify-artifact.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/release/verify-manifest.mjs": [
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/src/ui/render.mjs": [
+      "installer/web/src/preparation/steps.mjs"
+    ],
+    "installer/web/src/ui/styles.css": [],
+    "installer/web/tests/artifact-verification.test.mjs": [
+      "installer/web/src/release/contract-validator.mjs",
+      "installer/web/src/release/verify-artifact.mjs"
+    ],
+    "installer/web/tests/enter-r1-fastboot.test.mjs": [
+      "installer/web/src/preloader/enter-r1-fastboot.mjs",
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/tests/manifest-verification.test.mjs": [
+      "installer/web/src/release/contract-validator.mjs",
+      "installer/web/src/release/verify-manifest.mjs"
+    ],
+    "installer/web/tests/offline-planner.test.mjs": [
+      "installer/web/src/install/plan-release.mjs",
+      "installer/web/src/release/contract-validator.mjs"
+    ],
+    "installer/web/tests/probe-browser.test.mjs": [
+      "installer/web/src/capability/probe-browser.mjs"
+    ],
+    "installer/web/tests/read-r1-snapshot.test.mjs": [
+      "installer/web/src/fastboot/read-r1-snapshot.mjs",
+      "installer/web/src/release/contract-validator.mjs"
+    ],
     "README.md": [],
     "runtime/README.md": [],
     "runtime/resono_runtime/__init__.py": [],
     "runtime/resono_runtime/agents/__init__.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/agents/memory_reviewer.py",
+      "runtime/resono_runtime/agents/primary_context.py",
       "runtime/resono_runtime/agents/routing.py",
       "runtime/resono_runtime/agents/runner.py",
       "runtime/resono_runtime/agents/sdk_runner.py"
     ],
     "runtime/resono_runtime/agents/audience.py": [],
+    "runtime/resono_runtime/agents/context_builder.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/agents/primary_context.py",
+      "runtime/resono_runtime/memory/session_context.py",
+      "runtime/resono_runtime/skills/activation.py",
+      "runtime/resono_runtime/tools/catalog.py"
+    ],
     "runtime/resono_runtime/agents/delegation.py": [],
     "runtime/resono_runtime/agents/memory_reviewer.py": [
       "runtime/resono_runtime/agents/sdk_runner.py",
       "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/memory/contracts.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/agents/primary_context.py": [],
     "runtime/resono_runtime/agents/routing.py": [
       "runtime/resono_runtime/agents/audience.py"
     ],
@@ -2407,9 +3817,11 @@
     "runtime/resono_runtime/api/background_agent_routes.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/background_agent/mcp_gateway.py",
+      "runtime/resono_runtime/background_agent/progress.py",
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/background_agent/run_state.py",
       "runtime/resono_runtime/security/pairing.py",
+      "runtime/resono_runtime/storage/agent_deliveries.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py",
       "runtime/resono_runtime/tools/catalog.py"
@@ -2444,7 +3856,7 @@
       "runtime/resono_runtime/api/task_routes.py",
       "runtime/resono_runtime/api/tool_routes.py",
       "runtime/resono_runtime/mcp/__init__.py",
-      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/memory/service.py",
       "runtime/resono_runtime/providers/controller.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/security/pairing.py",
@@ -2485,7 +3897,7 @@
       "runtime/resono_runtime/api/tool_routes.py",
       "runtime/resono_runtime/core/logging.py",
       "runtime/resono_runtime/mcp/__init__.py",
-      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/memory/service.py",
       "runtime/resono_runtime/providers/controller.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/security/pairing.py",
@@ -2494,11 +3906,8 @@
       "runtime/resono_runtime/storage/sessions.py"
     ],
     "runtime/resono_runtime/api/skill_routes.py": [
-      "runtime/resono_runtime/agents/__init__.py",
       "runtime/resono_runtime/security/pairing.py",
-      "runtime/resono_runtime/skills/archives.py",
-      "runtime/resono_runtime/skills/lifecycle.py",
-      "runtime/resono_runtime/storage/skills.py"
+      "runtime/resono_runtime/skills/documents.py"
     ],
     "runtime/resono_runtime/api/task_routes.py": [
       "runtime/resono_runtime/domains/tasks/__init__.py"
@@ -2509,6 +3918,7 @@
     ],
     "runtime/resono_runtime/application.py": [
       "runtime/resono_runtime/agents/__init__.py",
+      "runtime/resono_runtime/agents/context_builder.py",
       "runtime/resono_runtime/api/background_agent_routes.py",
       "runtime/resono_runtime/api/calendar_routes.py",
       "runtime/resono_runtime/api/connection_routes.py",
@@ -2521,9 +3931,11 @@
       "runtime/resono_runtime/api/skill_routes.py",
       "runtime/resono_runtime/api/task_routes.py",
       "runtime/resono_runtime/api/tool_routes.py",
+      "runtime/resono_runtime/background_agent/completion_dispatch.py",
       "runtime/resono_runtime/background_agent/composition.py",
       "runtime/resono_runtime/background_agent/mcp_gateway.py",
       "runtime/resono_runtime/background_agent/service.py",
+      "runtime/resono_runtime/background_agent/workspace.py",
       "runtime/resono_runtime/config.py",
       "runtime/resono_runtime/connections/records.py",
       "runtime/resono_runtime/connectors/calendar/__init__.py",
@@ -2542,7 +3954,11 @@
       "runtime/resono_runtime/domains/tasks/__init__.py",
       "runtime/resono_runtime/imports/__init__.py",
       "runtime/resono_runtime/mcp/__init__.py",
-      "runtime/resono_runtime/memory/__init__.py",
+      "runtime/resono_runtime/memory/evidence.py",
+      "runtime/resono_runtime/memory/pipeline.py",
+      "runtime/resono_runtime/memory/service.py",
+      "runtime/resono_runtime/memory/session_context.py",
+      "runtime/resono_runtime/memory/tools.py",
       "runtime/resono_runtime/plugins/archives.py",
       "runtime/resono_runtime/plugins/bundled_install.py",
       "runtime/resono_runtime/plugins/card_lifecycle.py",
@@ -2550,12 +3966,13 @@
       "runtime/resono_runtime/providers/controller.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/web_search.py",
+      "runtime/resono_runtime/realtime/__init__.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/security/pairing.py",
       "runtime/resono_runtime/skills/__init__.py",
-      "runtime/resono_runtime/skills/archives.py",
       "runtime/resono_runtime/skills/lifecycle.py",
       "runtime/resono_runtime/storage/agent_audiences.py",
+      "runtime/resono_runtime/storage/agent_deliveries.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py",
       "runtime/resono_runtime/storage/connection_credentials.py",
@@ -2571,11 +3988,14 @@
       "runtime/resono_runtime/storage/provider_settings.py",
       "runtime/resono_runtime/storage/sessions.py",
       "runtime/resono_runtime/storage/skills.py",
+      "runtime/resono_runtime/storage/workspace.py",
       "runtime/resono_runtime/tools/__init__.py",
       "runtime/resono_runtime/tools/calendar/__init__.py",
       "runtime/resono_runtime/tools/delegation.py",
       "runtime/resono_runtime/tools/tasks/__init__.py",
-      "runtime/resono_runtime/tools/web_search.py"
+      "runtime/resono_runtime/tools/web_search.py",
+      "runtime/resono_runtime/workspace/service.py",
+      "runtime/resono_runtime/workspace/tools.py"
     ],
     "runtime/resono_runtime/background_agent/__init__.py": [
       "runtime/resono_runtime/background_agent/run_contract.py",
@@ -2585,19 +4005,36 @@
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/storage/background_agent_settings.py"
     ],
+    "runtime/resono_runtime/background_agent/completion_dispatch.py": [
+      "runtime/resono_runtime/background_agent/run_contract.py",
+      "runtime/resono_runtime/storage/agent_deliveries.py",
+      "runtime/resono_runtime/storage/agent_runs.py"
+    ],
     "runtime/resono_runtime/background_agent/composition.py": [
+      "runtime/resono_runtime/agents/context_builder.py",
+      "runtime/resono_runtime/background_agent/execution.py",
       "runtime/resono_runtime/background_agent/mcp_gateway.py",
       "runtime/resono_runtime/background_agent/run_contract.py",
-      "runtime/resono_runtime/background_agent/run_loop.py",
       "runtime/resono_runtime/background_agent/sdk_executor.py",
       "runtime/resono_runtime/background_agent/service.py",
+      "runtime/resono_runtime/background_agent/workspace.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/background_agent/execution.py": [
+      "runtime/resono_runtime/agents/primary_context.py",
+      "runtime/resono_runtime/background_agent/instructions.py",
+      "runtime/resono_runtime/background_agent/output_contract.py",
+      "runtime/resono_runtime/background_agent/run_contract.py",
+      "runtime/resono_runtime/background_agent/run_state.py",
+      "runtime/resono_runtime/background_agent/sdk_executor.py",
+      "runtime/resono_runtime/storage/agent_runs.py"
+    ],
     "runtime/resono_runtime/background_agent/instructions.py": [
+      "runtime/resono_runtime/agents/primary_context.py",
       "runtime/resono_runtime/background_agent/run_contract.py"
     ],
     "runtime/resono_runtime/background_agent/mcp_gateway.py": [
@@ -2605,16 +4042,18 @@
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/background_agent/tool_supply.py",
       "runtime/resono_runtime/mcp/server.py",
+      "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/tools/catalog.py"
     ],
-    "runtime/resono_runtime/background_agent/run_contract.py": [],
-    "runtime/resono_runtime/background_agent/run_loop.py": [
-      "runtime/resono_runtime/background_agent/instructions.py",
-      "runtime/resono_runtime/background_agent/run_contract.py",
-      "runtime/resono_runtime/background_agent/run_state.py",
-      "runtime/resono_runtime/background_agent/sdk_executor.py",
-      "runtime/resono_runtime/storage/agent_runs.py"
+    "runtime/resono_runtime/background_agent/output_contract.py": [],
+    "runtime/resono_runtime/background_agent/progress.py": [
+      "runtime/resono_runtime/background_agent/run_contract.py"
     ],
+    "runtime/resono_runtime/background_agent/RULES.md": [],
+    "runtime/resono_runtime/background_agent/rules.py": [
+      "runtime/resono_runtime/workspace/service.py"
+    ],
+    "runtime/resono_runtime/background_agent/run_contract.py": [],
     "runtime/resono_runtime/background_agent/run_state.py": [
       "runtime/resono_runtime/background_agent/run_contract.py",
       "runtime/resono_runtime/storage/agent_runs.py"
@@ -2624,14 +4063,17 @@
     ],
     "runtime/resono_runtime/background_agent/sdk_executor.py": [
       "runtime/resono_runtime/agents/sdk_runner.py",
+      "runtime/resono_runtime/background_agent/output_contract.py",
       "runtime/resono_runtime/storage/agent_runs.py"
     ],
     "runtime/resono_runtime/background_agent/service.py": [
       "runtime/resono_runtime/agents/delegation.py",
       "runtime/resono_runtime/background_agent/adapters.py",
+      "runtime/resono_runtime/background_agent/completion_dispatch.py",
+      "runtime/resono_runtime/background_agent/execution.py",
       "runtime/resono_runtime/background_agent/run_contract.py",
-      "runtime/resono_runtime/background_agent/run_loop.py",
       "runtime/resono_runtime/background_agent/run_state.py",
+      "runtime/resono_runtime/core/logging.py",
       "runtime/resono_runtime/storage/agent_runs.py",
       "runtime/resono_runtime/storage/background_agent_settings.py"
     ],
@@ -2799,22 +4241,22 @@
       "runtime/resono_runtime/tools/__init__.py"
     ],
     "runtime/resono_runtime/mcp/tool_adapter.py": [],
-    "runtime/resono_runtime/memory/__init__.py": [
-      "runtime/resono_runtime/memory/pipeline.py",
-      "runtime/resono_runtime/memory/retrieval.py",
-      "runtime/resono_runtime/memory/service.py",
-      "runtime/resono_runtime/memory/session_context.py",
-      "runtime/resono_runtime/memory/tools.py"
-    ],
+    "runtime/resono_runtime/memory/__init__.py": [],
+    "runtime/resono_runtime/memory/contracts.py": [],
     "runtime/resono_runtime/memory/embedding_access.py": [
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/memory/evidence.py": [
+      "runtime/resono_runtime/storage/sessions.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
     "runtime/resono_runtime/memory/pipeline.py": [
       "runtime/resono_runtime/agents/memory_reviewer.py",
       "runtime/resono_runtime/api/events.py",
+      "runtime/resono_runtime/memory/contracts.py",
       "runtime/resono_runtime/memory/embedding_access.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
@@ -2842,13 +4284,18 @@
       "runtime/resono_runtime/storage/sessions.py"
     ],
     "runtime/resono_runtime/memory/tools.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/memory/contracts.py",
       "runtime/resono_runtime/memory/embedding_access.py",
       "runtime/resono_runtime/memory/retrieval.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
       "runtime/resono_runtime/providers/openai/subscription.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/memory.py",
-      "runtime/resono_runtime/storage/provider_settings.py"
+      "runtime/resono_runtime/storage/provider_settings.py",
+      "runtime/resono_runtime/storage/sessions.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
     ],
     "runtime/resono_runtime/plugins/__init__.py": [],
     "runtime/resono_runtime/plugins/archives.py": [
@@ -2887,6 +4334,7 @@
       "runtime/resono_runtime/api/events.py",
       "runtime/resono_runtime/core/logging.py",
       "runtime/resono_runtime/providers/openai/__init__.py",
+      "runtime/resono_runtime/realtime/modes.py",
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/profile_settings.py",
       "runtime/resono_runtime/storage/provider_catalog.py",
@@ -2921,12 +4369,21 @@
       "runtime/resono_runtime/security/credentials.py",
       "runtime/resono_runtime/storage/provider_settings.py"
     ],
+    "runtime/resono_runtime/realtime/__init__.py": [
+      "runtime/resono_runtime/realtime/modes.py"
+    ],
+    "runtime/resono_runtime/realtime/modes.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py"
+    ],
     "runtime/resono_runtime/security/__init__.py": [],
     "runtime/resono_runtime/security/credentials.py": [],
     "runtime/resono_runtime/security/outbound.py": [],
     "runtime/resono_runtime/security/pairing.py": [],
     "runtime/resono_runtime/skills/__init__.py": [
       "runtime/resono_runtime/skills/activation.py",
+      "runtime/resono_runtime/skills/documents.py",
       "runtime/resono_runtime/skills/specification.py"
     ],
     "runtime/resono_runtime/skills/activation.py": [
@@ -2938,6 +4395,7 @@
       "runtime/resono_runtime/tools/definitions.py"
     ],
     "runtime/resono_runtime/skills/archives.py": [],
+    "runtime/resono_runtime/skills/documents.py": [],
     "runtime/resono_runtime/skills/lifecycle.py": [
       "runtime/resono_runtime/agents/__init__.py",
       "runtime/resono_runtime/imports/__init__.py",
@@ -2955,6 +4413,9 @@
     "runtime/resono_runtime/storage/agent_audiences.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/agents/routing.py",
+      "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/agent_deliveries.py": [
       "runtime/resono_runtime/storage/database.py"
     ],
     "runtime/resono_runtime/storage/agent_runs.py": [
@@ -3014,7 +4475,14 @@
       "runtime/resono_runtime/storage/migrations/v032_background_agent_runs.py",
       "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py",
       "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py",
-      "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py"
+      "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py",
+      "runtime/resono_runtime/storage/migrations/v036_workspace.py",
+      "runtime/resono_runtime/storage/migrations/v037_workspace_tools.py",
+      "runtime/resono_runtime/storage/migrations/v038_goal_context.py",
+      "runtime/resono_runtime/storage/migrations/v039_agent_deliveries.py",
+      "runtime/resono_runtime/storage/migrations/v040_goal_provenance_and_delivery_lease.py",
+      "runtime/resono_runtime/storage/migrations/v041_goal_verification_contract.py",
+      "runtime/resono_runtime/storage/migrations/v042_domain_memory.py"
     ],
     "runtime/resono_runtime/storage/migrations/v005_runtime_foundation.py": [],
     "runtime/resono_runtime/storage/migrations/v006_agent_audiences.py": [],
@@ -3047,6 +4515,13 @@
     "runtime/resono_runtime/storage/migrations/v033_background_agent_settings.py": [],
     "runtime/resono_runtime/storage/migrations/v034_background_agent_recipes.py": [],
     "runtime/resono_runtime/storage/migrations/v035_background_agent_global_tools.py": [],
+    "runtime/resono_runtime/storage/migrations/v036_workspace.py": [],
+    "runtime/resono_runtime/storage/migrations/v037_workspace_tools.py": [],
+    "runtime/resono_runtime/storage/migrations/v038_goal_context.py": [],
+    "runtime/resono_runtime/storage/migrations/v039_agent_deliveries.py": [],
+    "runtime/resono_runtime/storage/migrations/v040_goal_provenance_and_delivery_lease.py": [],
+    "runtime/resono_runtime/storage/migrations/v041_goal_verification_contract.py": [],
+    "runtime/resono_runtime/storage/migrations/v042_domain_memory.py": [],
     "runtime/resono_runtime/storage/plugin_components.py": [
       "runtime/resono_runtime/storage/database.py"
     ],
@@ -3065,6 +4540,10 @@
     ],
     "runtime/resono_runtime/storage/skills.py": [
       "runtime/resono_runtime/storage/database.py"
+    ],
+    "runtime/resono_runtime/storage/workspace.py": [
+      "runtime/resono_runtime/storage/database.py",
+      "runtime/resono_runtime/workspace/contract.py"
     ],
     "runtime/resono_runtime/tools/__init__.py": [
       "runtime/resono_runtime/tools/builtins.py",
@@ -3101,6 +4580,7 @@
     "runtime/resono_runtime/tools/delegation.py": [
       "runtime/resono_runtime/agents/audience.py",
       "runtime/resono_runtime/agents/delegation.py",
+      "runtime/resono_runtime/background_agent/output_contract.py",
       "runtime/resono_runtime/tools/catalog.py",
       "runtime/resono_runtime/tools/definitions.py"
     ],
@@ -3124,19 +4604,36 @@
       "runtime/resono_runtime/tools/catalog.py",
       "runtime/resono_runtime/tools/definitions.py"
     ],
+    "runtime/resono_runtime/workspace/__init__.py": [],
+    "runtime/resono_runtime/workspace/contract.py": [],
+    "runtime/resono_runtime/workspace/service.py": [
+      "runtime/resono_runtime/storage/workspace.py",
+      "runtime/resono_runtime/workspace/contract.py"
+    ],
+    "runtime/resono_runtime/workspace/tools.py": [
+      "runtime/resono_runtime/agents/audience.py",
+      "runtime/resono_runtime/background_agent/workspace.py",
+      "runtime/resono_runtime/tools/catalog.py",
+      "runtime/resono_runtime/tools/definitions.py",
+      "runtime/resono_runtime/workspace/service.py"
+    ],
     "skills.md": [],
     "SKILLS.md": [],
     "tests/runtime/test_agent_audiences.py": [],
+    "tests/runtime/test_agent_instruction_documents.py": [],
     "tests/runtime/test_agents_sdk_runner.py": [],
+    "tests/runtime/test_application_import.py": [],
     "tests/runtime/test_background_agent_contract.py": [],
+    "tests/runtime/test_background_agent_execution.py": [],
     "tests/runtime/test_background_agent_global_tools.py": [],
     "tests/runtime/test_background_agent_observability.py": [],
-    "tests/runtime/test_background_agent_recipes.py": [],
     "tests/runtime/test_background_agent_service.py": [],
+    "tests/runtime/test_background_completion_delivery.py": [],
     "tests/runtime/test_build07_api_auth.py": [],
     "tests/runtime/test_calendar_contract.py": [],
     "tests/runtime/test_connection_routes.py": [],
     "tests/runtime/test_creations.py": [],
+    "tests/runtime/test_domain_memory.py": [],
     "tests/runtime/test_import_preflight.py": [],
     "tests/runtime/test_import_recovery.py": [],
     "tests/runtime/test_mail_contract.py": [],
@@ -3166,7 +4663,9 @@
     "tests/runtime/test_skill_specification.py": [],
     "tests/runtime/test_tasks_contract.py": [],
     "tests/runtime/test_tool_catalog.py": [],
+    "tests/runtime/test_voice_modes.py": [],
     "tests/runtime/test_web_search.py": [],
+    "tests/runtime/test_workspace_voice_tools.py": [],
     "web/design/base.css": [],
     "web/design/tokens.css": [],
     "web/management/app.js": [],

@@ -39,8 +39,7 @@ expect_fail() {
 new_fixture() {
   local name="$1"
   local fixture="$scratch_root/$name/installer"
-  mkdir -p "$scratch_root/$name"
-  cp -R "$installer_root" "$fixture"
+  bash "$installer_root/scripts/copy-source-tree.sh" "$installer_root" "$fixture"
   printf '%s\n' "$fixture"
 }
 
@@ -51,6 +50,14 @@ printf 'ok - pinned provenance ledger\n'
 
 isolated_fixture="$(new_fixture isolated)"
 expect_pass "isolated installer copy" "$isolated_fixture"
+for generated_path in node_modules dist cli/target .cache; do
+  if [[ -e "$isolated_fixture/$generated_path" ]]; then
+    printf 'not ok - source allowlist copied generated path: %s\n' "$generated_path" >&2
+    exit 1
+  fi
+done
+pass_count=$((pass_count + 1))
+printf 'ok - source allowlist excludes generated trees\n'
 
 missing_fixture="$(new_fixture missing-required)"
 rm -- "$missing_fixture/contracts/README.md"
@@ -94,7 +101,7 @@ expect_fail "nested Git metadata" "$git_fixture" "NESTED-GIT"
 dist_fixture="$(new_fixture generated-dist)"
 mkdir -p "$dist_fixture/dist"
 printf '%s\n' 'generated' > "$dist_fixture/dist/output.bin"
-expect_fail "generated output in source" "$dist_fixture" "DIST"
+expect_pass "ignored generated output" "$dist_fixture"
 
 wrong_root="$scratch_root/not-installer"
 mkdir -p "$wrong_root"

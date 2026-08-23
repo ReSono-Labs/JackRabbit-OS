@@ -27,5 +27,7 @@ image/work/
 
 # Installer-local generated output and transient caches
 /installer/dist/
+/installer/node_modules/
+/installer/cli/target/
 /installer/.cache/
 /installer/**/.cache/

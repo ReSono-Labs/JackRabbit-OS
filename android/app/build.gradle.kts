@@ -1,6 +1,8 @@
+import java.util.Properties
+
 plugins { id("com.android.application") }
 
-val appVersion = java.util.Properties().apply {
+val appVersion = Properties().apply {
     rootProject.file("app-version.properties").inputStream().use(::load)
 }
 

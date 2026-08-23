@@ -194,7 +194,7 @@ class OpenAIProviderTest(unittest.TestCase):
         self.assertEqual("gpt-realtime-2.1", status["selection"]["realtime"])
 
     @patch("resono_runtime.providers.controller.OpenAIPlatform", _OpenAI)
-    def test_disconnect_selected_platform_falls_back_to_connected_subscription(self) -> None:
+    def test_platform_connection_is_rejected_while_subscription_is_active(self) -> None:
         subscription = type(
             "Subscription",
             (),
@@ -210,9 +210,10 @@ class OpenAIProviderTest(unittest.TestCase):
             safety_source="local-install",
             subscription=subscription,
         )
-        controller.connect_platform("sk-test-value-long-enough")
+        with self.assertRaisesRegex(RuntimeError, "Disconnect ChatGPT"):
+            controller.connect_platform("sk-test-value-long-enough")
 
-        status = controller.disconnect_platform()
+        status = controller.status()
 
         self.assertFalse(status["connections"]["platform"])
         self.assertTrue(status["connections"]["subscription"])

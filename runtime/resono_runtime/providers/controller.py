@@ -83,6 +83,10 @@ class ProviderController:
         platform_connected = self._credentials.has_platform_key()
         subscription_connected = bool(self._subscription and self._subscription.status()["connected"])
         access_path = selection.access_path
+        if subscription_connected and access_path != "subscription":
+            self._settings.save_access_path("subscription")
+            selection = self._settings.selection()
+            access_path = "subscription"
         connected = subscription_connected if access_path == "subscription" else platform_connected
 
         models = self._available_models(
@@ -123,6 +127,12 @@ class ProviderController:
 
     def connect_platform(self, key: str) -> dict[str, object]:
         self._assert_active_provider()
+        if self._subscription is not None and self._subscription.status()["connected"]:
+            raise OpenAIProviderError(
+                "access_path_conflict",
+                "Disconnect ChatGPT before connecting an OpenAI Platform API key.",
+                status=409,
+            )
         candidate = OpenAIPlatform(key.strip(), safety_source=self._safety_source)
         models = candidate.list_models()
         if not models.realtime:
@@ -134,7 +144,11 @@ class ProviderController:
         self._credentials.connect_platform(key.strip())
         self._models = models
         selection = self._settings.selection()
-        text_model = _select_default(models.text, selection.text_model)
+        text_model = _select_default(
+            models.text,
+            selection.text_model,
+            preferred="gpt-5.6-sol",
+        )
         realtime_model = _select_default(models.realtime, selection.realtime_model, preferred="gpt-realtime-2.1")
         self._settings.save(text_model=text_model, realtime_model=realtime_model)
         self._settings.save_access_path("platform")
@@ -172,7 +186,11 @@ class ProviderController:
                     self._models = self._platform().list_models()
                 self._settings.save_access_path("platform")
                 self._settings.save(
-                    text_model=_select_default(self._models.text, None),
+                    text_model=_select_default(
+                        self._models.text,
+                        None,
+                        preferred="gpt-5.6-sol",
+                    ),
                     realtime_model=_select_default(self._models.realtime, None, preferred="gpt-realtime-2.1"),
                 )
             else:
@@ -250,6 +268,12 @@ class ProviderController:
     def select_access_path(self, access_path: str) -> dict[str, object]:
         self._assert_active_provider()
         if access_path == "platform":
+            if self._subscription is not None and self._subscription.status()["connected"]:
+                raise OpenAIProviderError(
+                    "access_path_conflict",
+                    "Disconnect ChatGPT before using the OpenAI Platform API.",
+                    status=409,
+                )
             if not self._credentials.has_platform_key():
                 raise OpenAIProviderError("credential_unavailable", "Connect OpenAI first.", status=409)
             if not self._models.realtime:
@@ -267,7 +291,11 @@ class ProviderController:
 
         self._settings.save_access_path(access_path)
         self._settings.save(
-            text_model=_select_default(models.text, None),
+            text_model=_select_default(
+                models.text,
+                None,
+                preferred="gpt-5.6-sol" if access_path == "platform" else None,
+            ),
             realtime_model=_select_default(models.realtime, None),
         )
         self._events.publish("provider.access_selected", {"provider": "openai", "accessPath": access_path})

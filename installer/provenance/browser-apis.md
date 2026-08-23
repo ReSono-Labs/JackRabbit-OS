@@ -21,7 +21,7 @@ The 2026-08-22 live Rabbit reference used:
 
 1. Web Serial filter USB VID `0x0e8d`, PID `0x2000`.
 2. Port open at 115200 baud.
-3. One UTF-8/ASCII `FASTBOOT` write (seven bytes).
+3. One UTF-8/ASCII `FASTBOOT` write (eight bytes).
 4. Writer release and deterministic port close.
 5. A separate physical-screen check and WebUSB selection using VID `0x0e8d`,
    PID `0x201c`.
