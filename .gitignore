@@ -31,3 +31,11 @@ image/work/
 /installer/cli/target/
 /installer/.cache/
 /installer/**/.cache/
+
+# Local engineering material is not part of the public application source.
+/.understand-anything/
+/docs/
+/examples/
+/tests/
+/SKILLS.md
+/skills.md

@@ -1,7 +1,0 @@
-{
-  "schemaVersion": 1,
-  "integratedPreloaderEntry": [],
-  "readOnlyFastboot": [],
-  "install": [],
-  "note": "No host/browser tuple is physically accepted yet. These lists record acceptance evidence; runtime safety remains enforced by browser capability, device, unlock, package-integrity, and operation gates."
-}
