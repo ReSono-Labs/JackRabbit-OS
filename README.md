@@ -188,4 +188,19 @@ Focused contributions should preserve the ownership boundaries above and keep th
 
 ## License
 
-JackRabbit is available for noncommercial use under the [PolyForm Noncommercial License 1.0.0](LICENSE). Commercial use requires separate permission from ReSono Labs.
+JackRabbit is source-available under the
+[PolyForm Noncommercial License 1.0.0](LICENSE). Community members may use,
+study, modify, fork, and share JackRabbit and modified versions for
+noncommercial purposes, subject to the license and its required notices.
+
+Commercial use is not permitted. This includes selling JackRabbit, including it
+in a paid product or service, monetizing its distribution, or using it for an
+anticipated commercial application. JackRabbit is and will remain a
+noncommercial community project: ReSono Labs will not sell JackRabbit, offer a
+commercial license for it, or authorize commercial use or monetized
+distribution.
+
+This is a source-available noncommercial license, not an OSI-approved license.
+Third-party components remain subject to their own licenses. JackRabbit is an
+independent community project and is not affiliated with, endorsed by, or
+sponsored by rabbit inc.

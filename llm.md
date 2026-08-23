@@ -6,7 +6,11 @@ This document gives a coding assistant the minimum complete context needed to wo
 
 JackRabbit is a standalone, Voice-first software platform for the Rabbit R1. The Android application replaces the normal HOME experience, hosts an embedded Python runtime, provides native OpenAI Realtime Voice over WebRTC, displays Cards, and serves a same-LAN management website from the device.
 
-The project is source-available for noncommercial use under the license in `LICENSE`.
+The project is source-available for noncommercial use under `LICENSE` and is
+not licensed under an OSI-approved license. Community modification and sharing
+are allowed only for noncommercial purposes. Commercial use, paid licensing,
+and monetized distribution are not part of this project and must not be implied
+in code, documentation, packaging, or contributor guidance.
 
 ## Product composition
 
