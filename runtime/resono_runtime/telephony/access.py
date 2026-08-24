@@ -68,3 +68,23 @@ class TelephonyAccess:
                 "voiceRegistered": False,
                 "callState": "",
             }
+
+    def call(self, number: str) -> dict[str, object]:
+        bridge = self._bridge
+        if bridge is None:
+            return {"ok": False, "error": "telephony unavailable"}
+        try:
+            ok = bool(bridge.placeCall(number))
+            return {"ok": ok, "error": None if ok else "call failed"}
+        except Exception as exc:
+            return {"ok": False, "error": f"call error: {exc}"}
+
+    def sms(self, to: str, text: str) -> dict[str, object]:
+        bridge = self._bridge
+        if bridge is None:
+            return {"ok": False, "error": "telephony unavailable"}
+        try:
+            ok = bool(bridge.sendSms(to, text))
+            return {"ok": ok, "error": None if ok else "sms failed"}
+        except Exception as exc:
+            return {"ok": False, "error": f"sms error: {exc}"}
