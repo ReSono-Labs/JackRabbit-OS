@@ -2,6 +2,10 @@
 
 **A standalone, non-commercial community voice system for the Rabbit R1.**
 
+> **Installing from the stock Rabbit R1 image?** Read the complete
+> [stock-R1 installation instructions](installer/INSTALL.md) before starting.
+> Do not begin the installation until you have reviewed the document fully.
+
 JackRabbit turns the Rabbit R1 into a Voice-first device with native OpenAI Realtime conversations, an on-device agent runtime, local data, Cards, and a same-LAN management console. It keeps live microphone and speaker traffic in the native Android WebRTC path while the local runtime owns agents, tools, configuration, storage, and extensions.
 
 Here, standalone means that the product runtime, storage, management site, and UI live on the R1 rather than depending on the external ReSono Vault. Network-backed AI and connected services still require their respective providers.
