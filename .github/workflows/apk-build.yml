@@ -1,0 +1,86 @@
+name: Build debug APK
+
+# Builds a debug APK on every push (any branch) so a testable app artifact is
+# always available without a local Android toolchain. Mirrors the reference
+# Linux build env in BUILDING.md / android/scripts/build_debug.sh.
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      # build_debug.sh overrides JAVA_HOME itself; it hardcodes the SDK path.
+      ANDROID_HOME: /tmp/r1-android-sdk
+      ANDROID_SDK_ROOT: /tmp/r1-android-sdk
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Symlink JDK into the path build_debug.sh expects (/tmp/r1-jdk17)
+        run: ln -s "$JAVA_HOME" /tmp/r1-jdk17
+      - name: Verify JDK path
+        run: /tmp/r1-jdk17/bin/java -version
+
+      - name: Install Android SDK (cmdline-tools) into /tmp/r1-android-sdk
+        run: |
+          mkdir -p /tmp/r1-android-sdk/cmdline-tools
+          curl -fsSL -o /tmp/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+          unzip -q /tmp/cmdline-tools.zip -d /tmp/r1-android-sdk/cmdline-tools
+          mv /tmp/r1-android-sdk/cmdline-tools/cmdline-tools /tmp/r1-android-sdk/cmdline-tools/latest
+      - name: Accept licenses + install platform-tools, platform 36, build-tools 36.0.0
+        run: |
+          yes | /tmp/r1-android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/tmp/r1-android-sdk --licenses >/dev/null || true
+          /tmp/r1-android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/tmp/r1-android-sdk \
+            "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+      - name: Verify SDK pieces
+        run: |
+          ls /tmp/r1-android-sdk/platform-tools/adb
+          ls /tmp/r1-android-sdk/platforms/android-36
+          ls /tmp/r1-android-sdk/build-tools/36.0.0
+
+      - name: Install Gradle 9.5.0 into /tmp/gradle-9.5.0
+        run: |
+          curl -fsSL -o /tmp/gradle-9.5.0-bin.zip https://services.gradle.org/distributions/gradle-9.5.0-bin.zip
+          unzip -q /tmp/gradle-9.5.0-bin.zip -d /tmp
+          /tmp/gradle-9.5.0/bin/gradle --version | head -5
+
+      - name: Install Python 3.13.2 (python-build-standalone) for Chaquopy
+        run: |
+          mkdir -p /tmp/resono-python /tmp/compile-python
+          curl -fsSL -o /tmp/cpython.tgz \
+            https://github.com/astral-sh/python-build-standalone/releases/download/20250115/cpython-3.13.2%2B20250115-x86_64-unknown-linux-gnu-install_only.tar.gz
+          tar -xzf /tmp/cpython.tgz -C /tmp/compile-python
+          mkdir -p /tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu
+          cp -a /tmp/compile-python/python/. /tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu/
+          /tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu/bin/python3.13 --version
+
+      - name: Caches (gradle + chaquopy python)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            android/runtime-host/build/python
+          key: gradle-${{ runner.os }}-${{ hashFiles('android/**/*.gradle*', 'runtime/requirements*.txt') }}
+          restore-keys: gradle-${{ runner.os }}-
+
+      - name: Build debug APK + run boundary/runtime checks
+        run: ./android/scripts/build_debug.sh
+        env:
+          RESONO_BUILD_PYTHON: /tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu/bin/python3.13
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk-${{ github.ref_name }}
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
