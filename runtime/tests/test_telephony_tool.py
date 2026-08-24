@@ -29,7 +29,12 @@ def test_telephony_package_registers_exact_contract_set():
     package = TelephonyToolPackage(TelephonyAccess(FakeBridge()))
     package.register(catalog)
     definitions = package.definitions()
-    assert len(definitions) == 1
-    assert definitions[0].name == "get_phone_status"
-    assert definitions[0].tool_id == "builtin.telephony.get_phone_status.v1"
-    assert definitions[0].effect_class == "read"
+    names = {d.name for d in definitions}
+    assert len(definitions) == 4
+    assert names == {"get_phone_status", "place_call", "send_sms", "confirm_action"}
+    status = next(d for d in definitions if d.name == "get_phone_status")
+    assert status.tool_id == "builtin.telephony.get_phone_status.v1"
+    assert status.effect_class == "read"
+    for mutate_name in ("place_call", "send_sms", "confirm_action"):
+        d = next(x for x in definitions if x.name == mutate_name)
+        assert d.effect_class == "mutate"
