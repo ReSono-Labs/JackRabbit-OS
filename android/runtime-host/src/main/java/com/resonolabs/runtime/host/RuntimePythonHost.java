@@ -13,12 +13,13 @@ final class RuntimePythonHost {
             String rootPath,
             String localApiToken,
             RuntimeCredentialBridge credentials,
-            Runnable restartRequest) {
+            Runnable restartRequest,
+            Object telephonyBridge) {
         if (running) return;
         if (!Python.isStarted()) Python.start(new AndroidPlatform(context));
         Python.getInstance()
                 .getModule("resono_runtime.entrypoint")
-                .callAttr("start", rootPath, localApiToken, credentials, restartRequest);
+                .callAttr("start", rootPath, localApiToken, credentials, restartRequest, telephonyBridge);
         running = true;
     }
 

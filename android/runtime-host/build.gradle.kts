@@ -41,5 +41,6 @@ chaquopy {
 }
 
 dependencies {
+    implementation(project(":feature:telephony"))
     testImplementation("junit:junit:4.13.2")
 }
