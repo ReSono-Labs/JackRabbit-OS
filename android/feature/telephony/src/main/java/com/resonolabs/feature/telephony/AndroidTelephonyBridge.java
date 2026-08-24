@@ -110,7 +110,7 @@ public final class AndroidTelephonyBridge implements TelephonyBridge {
             case TelephonyManager.NETWORK_TYPE_GPRS: return "GPRS";
             case TelephonyManager.NETWORK_TYPE_GSM: return "GSM";
             case TelephonyManager.NETWORK_TYPE_CDMA: return "CDMA";
-            default: return TelephonyManager.getNetworkTypeName(type);
+            default: return "type=" + type;
         }
     }
 }
