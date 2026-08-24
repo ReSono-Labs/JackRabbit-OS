@@ -30,6 +30,8 @@ from .storage.provider_catalog import ProviderCatalogRepository
 from .core.logging import runtime_logger
 from .tools import (DEVICE_STATUS_TOOL_SET, MEMORY_TOOL_SET, ToolCatalog,
                     register_device_status, register_memory_tools)
+from .telephony.access import TelephonyAccess
+from .tools.telephony import register_telephony_status
 from .skills import SkillActivation, AgentInstructionDocuments
 from .skills.lifecycle import SkillLifecycle
 from .api.skill_routes import SkillRoutes
@@ -89,6 +91,7 @@ class RuntimeApplication:
         config: RuntimeConfig,
         credential_bridge: object,
         restart_request: object | None = None,
+        telephony_bridge: object | None = None,
     ) -> None:
         self._config = config
         self._database = RuntimeDatabase(config.database_path)
@@ -138,6 +141,7 @@ class RuntimeApplication:
         self._tools.set_invocation_authorizer(self._voice_modes.allows)
         self._tools.set_invocation_observer(VoiceToolEvidenceRecorder(self._sessions))
         register_device_status(self._tools, self.health)
+        register_telephony_status(self._tools, TelephonyAccess(telephony_bridge))
         register_memory_tools(self._tools, MemoryToolPackage(
             lookup=self._memory_lookup_tool,
             memories=self._memories,
