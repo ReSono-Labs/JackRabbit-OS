@@ -19,6 +19,36 @@ Keep the complete code and message when reporting a problem.
 Never use an arbitrary internet command or manually choose a partition to work
 around an installer failure.
 
+## What the terminal shows while the installer works
+
+The installer prints a line for each major action, so you can tell progress is
+moving. A quiet terminal does not mean it stopped; a few short waits are
+intentionally silent and last for a stated number of seconds.
+
+- `Verifying 1/12: images/...` through `12/12` appears once per image as the
+  package checks its recorded images against the signed release. No R1 is
+  touched yet.
+- The `JackRabbit R1 setup ... Step N of 4` screens are preparation prompts.
+  Nothing is written while you read them.
+- `Waiting up to 60 seconds for the R1. Connect it now.` is the connect window.
+  It stays quiet while it watches for the preloader, FASTBOOT, or fastbootd;
+  that silence is normal and lasts at most 60 seconds. If the terminal has not
+  advanced past it after a full 60 seconds, see the
+  `JR-CLI-FASTBOOT-ENTRY-TIMEOUT` row below.
+- `FASTBOOT entry command sent. Waiting for the R1 FASTBOOT screen…` means the
+  powered-off preloader was found and the eight-byte entry command was sent.
+  Watch the R1 for its FASTBOOT screen.
+- `[N/22] ...` lines are the numbered write and verify steps. A blank R1 display
+  while `super` is written (`[10/22]`) is expected; keep the cable connected and
+  follow the terminal, not the device screen.
+- Around a reboot into fastbootd or bootloader FASTBOOT, the terminal can pause
+  silently for up to 90 seconds while it waits for the R1 to reconnect in the
+  requested mode (`JR-CLI-MODE-TIMEOUT` guards this). The R1 changing USB
+  identity during that pause is normal.
+
+If you are unsure whether a transfer is still active, start with the "First
+decide whether a transfer is still active" section above.
+
 ## Common situations
 
 ### The R1 already shows FASTBOOT or fastbootd
@@ -52,7 +82,9 @@ USB interfaces, so one working mode does not prove the next driver is installed.
 
 Close every browser flasher and Android tool that could own the R1, disconnect
 and reconnect the cable, and rerun `install.command`. macOS needs no packaged
-R1 driver.
+R1 driver. On macOS a single powered-off R1 in preloader mode briefly lists as
+both `/dev/cu.usbmodemN` and `/dev/tty.usbmodemN`; the installer treats these as
+one device, so a lone R1 is enough and this pair should not be taken as two R1s.
 
 ### An entry was typed incorrectly
 
@@ -75,7 +107,7 @@ the displayed phrase exactly.
 | `JR-CLI-USB-PERMISSION` | Linux denied access to an R1 USB identity. | Run `./install.sh`, allow the udev-rule setup, reconnect when prompted, and retry the same flow. |
 | `JR-CLI-FASTBOOT-ENTRY-TIMEOUT` | No supported R1 preloader, FASTBOOT, or fastbootd identity appeared within 60 seconds. | Confirm the R1 is powered off or already in a supported fastboot mode, use a data cable, connect exactly when prompted, and rerun. |
 | `JR-CLI-PRELOADER-ENUMERATE` | The host could not enumerate serial devices. | Close competing serial tools, check the OS driver/permission setup, reconnect, and rerun. |
-| `JR-CLI-PRELOADER-COUNT` | More than one exact R1 preloader appeared. | Disconnect all R1 devices except the intended one. |
+| `JR-CLI-PRELOADER-COUNT` | More than one distinct R1 preloader appeared. | Disconnect every R1 except the intended one. On macOS a lone R1 that briefly lists two `tty`/`cu` node names is one device and is handled; only a truly second R1 triggers this. |
 | `JR-CLI-PRELOADER-OPEN` | The exact R1 preloader port could not be opened. | Close Rabbit's flasher and serial tools; on Linux rerun `install.sh`; on Windows repair the packaged drivers. |
 | `JR-CLI-PRELOADER-WRITE` | The eight-byte R1 FASTBOOT-entry command could not be sent. | Reconnect the powered-off R1 with a reliable data cable and rerun the package. |
 | `JR-CLI-PRODUCT` | The connected fastboot device is not the reviewed R1 product. | Stop. Connect only the Rabbit R1 intended for installation. |
