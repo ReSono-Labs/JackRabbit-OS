@@ -1,4 +1,4 @@
-from resono_runtime.tools import ToolCatalog, register_telephony_status
+from resono_runtime.tools import ToolCatalog, TelephonyToolPackage
 from resono_runtime.telephony.access import TelephonyAccess
 
 
@@ -14,6 +14,6 @@ class FakeBridge:
 
 def test_registered_tool_returns_snapshot_end_to_end():
     catalog = ToolCatalog()
-    register_telephony_status(catalog, TelephonyAccess(FakeBridge()))
+    TelephonyToolPackage(TelephonyAccess(FakeBridge())).register(catalog)
     result = catalog.invoke("get_phone_status", {})
     assert result is not None and result.is_error is False
