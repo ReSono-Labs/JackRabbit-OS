@@ -50,14 +50,43 @@ pub fn try_enter() -> Result<bool, CommandError> {
 }
 
 fn select_exact(candidates: &[String]) -> Result<Option<&str>, CommandError> {
-    match candidates {
+    let distinct = dedupe_logical(candidates);
+    match distinct.as_slice() {
         [] => Ok(None),
         [only] => Ok(Some(only)),
         _ => Err(CommandError::new(
             "JR-CLI-PRELOADER-COUNT",
-            "more than one exact R1 preloader device appeared; disconnect every R1 and retry with one device",
+            format!(
+                "more than one exact R1 preloader device appeared ({}); disconnect every R1 and retry with one device",
+                distinct.len()
+            ),
         )),
     }
+}
+
+/// Collapse macOS `tty.*`/`cu.*` device-node pairs for the same physical serial
+/// line into a single logical device. A USB CDC preloader registers both
+/// `/dev/cu.usbmodemNNN` and `/dev/tty.usbmodemNNN`; they are one R1, not two.
+/// Truly distinct devices keep distinct names and still count separately.
+fn dedupe_logical<'a>(candidates: &'a [String]) -> Vec<&'a str> {
+    let mut distinct: Vec<&'a str> = Vec::new();
+    for candidate in candidates {
+        let key = logical_device_key(candidate);
+        if !distinct
+            .iter()
+            .any(|existing| logical_device_key(existing) == key)
+        {
+            distinct.push(candidate);
+        }
+    }
+    distinct
+}
+
+fn logical_device_key(path: &str) -> &str {
+    let name = path.rsplit('/').next().unwrap_or(path);
+    name.strip_prefix("cu.")
+        .or_else(|| name.strip_prefix("tty."))
+        .unwrap_or(name)
 }
 
 #[cfg(test)]
@@ -74,5 +103,28 @@ mod tests {
         assert_eq!(select_exact(&[]).unwrap(), None);
         assert_eq!(select_exact(&["r1".into()]).unwrap(), Some("r1"));
         assert!(select_exact(&["one".into(), "two".into()]).is_err());
+    }
+
+    #[test]
+    fn macos_tty_cu_pair_is_one_logical_device() {
+        // Regression: a single R1 registers both /dev/cu.usbmodem31201 and
+        // /dev/tty.usbmodem31201 on macOS; the installer must treat them as one R1.
+        let candidates = [
+            "/dev/cu.usbmodem31201".to_string(),
+            "/dev/tty.usbmodem31201".to_string(),
+        ];
+        let result = select_exact(&candidates).unwrap();
+        assert_eq!(result, Some("/dev/cu.usbmodem31201"));
+    }
+
+    #[test]
+    fn two_distinct_devices_still_fail() {
+        // Two genuinely different R1s must still be rejected.
+        let candidates = [
+            "/dev/cu.usbmodem31201".to_string(),
+            "/dev/cu.usbmodem31202".to_string(),
+        ];
+        let error = select_exact(&candidates).unwrap_err();
+        assert_eq!(error.code(), "JR-CLI-PRELOADER-COUNT");
     }
 }
