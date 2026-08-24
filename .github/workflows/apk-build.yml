@@ -79,6 +79,9 @@ jobs:
           key: gradle-${{ runner.os }}-${{ hashFiles('android/**/*.gradle*', 'runtime/requirements*.txt') }}
           restore-keys: gradle-${{ runner.os }}-
 
+      - name: Install ripgrep (required by check_boundaries.sh / check_runtime_package.sh)
+        run: sudo apt-get update && sudo apt-get install -y ripgrep && rg --version | head -1
+
       - name: Build debug APK + run boundary/runtime checks
         run: ./android/scripts/build_debug.sh
         env:
