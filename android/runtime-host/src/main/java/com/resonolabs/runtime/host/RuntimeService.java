@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.resonolabs.feature.telephony.AndroidTelephonyBridge;
+
 import java.io.File;
 
 public final class RuntimeService extends Service {
@@ -75,7 +77,8 @@ public final class RuntimeService extends Service {
 
     private void startPython() {
         File root = new File(runtimeStorage.getFilesDir(), "runtime");
-        python.start(this, root.getAbsolutePath(), localApiToken, credentials, this::scheduleRuntimeRestart);
+        AndroidTelephonyBridge telephonyBridge = new AndroidTelephonyBridge(this);
+        python.start(this, root.getAbsolutePath(), localApiToken, credentials, this::scheduleRuntimeRestart, telephonyBridge);
     }
 
     private void scheduleRuntimeRestart() {
