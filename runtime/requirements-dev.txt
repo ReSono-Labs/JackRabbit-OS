@@ -1,0 +1,9 @@
+# Python runtime test dependencies. The runtime itself pins deps in the
+# Android Chaquopy build; this is the local dev/test mirror.
+pytest>=8
+jsonschema>=4
+httpx>=0.27
+openai-agents>=0.18
+openai>=1.40
+aiosqlite>=0.20
+pyyaml>=6
