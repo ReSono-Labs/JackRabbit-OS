@@ -16,6 +16,7 @@ def start(
     local_api_token: str,
     credential_bridge: object,
     restart_request: object | None = None,
+    telephony_bridge: object | None = None,
 ) -> None:
     global _application
     with _lock:
@@ -28,6 +29,7 @@ def start(
             config,
             credential_bridge=credential_bridge,
             restart_request=restart_request,
+            telephony_bridge=telephony_bridge,
         )
         application.start()
         _application = application
