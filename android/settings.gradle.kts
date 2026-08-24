@@ -22,6 +22,7 @@ include(
     ":core:power",
     ":core:motor",
     ":feature:settings",
+    ":feature:telephony",
     ":feature:voice",
     ":feature:cards",
     ":feature:calendar",
