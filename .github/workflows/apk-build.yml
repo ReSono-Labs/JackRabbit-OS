@@ -1,11 +1,17 @@
 name: Build debug APK
 
-# Builds a debug APK on every push (any branch) so a testable app artifact is
-# always available without a local Android toolchain. Mirrors the reference
-# Linux build env in BUILDING.md / android/scripts/build_debug.sh.
+# Builds a debug APK on push so a testable app artifact is always available
+# without a local Android toolchain. Mirrors the reference Linux build env in
+# BUILDING.md / android/scripts/build_debug.sh.
+#
+# Isolated to the telephony feature branch on purpose: builds only fire when
+# this branch is pushed, and the APK is uploaded as an artifact on the run page
+# (never published to main / no GitHub Release).
 
 on:
   push:
+    branches:
+      - feature/telephony-bridge
   workflow_dispatch:
 
 jobs:
@@ -57,7 +63,7 @@ jobs:
         run: |
           mkdir -p /tmp/resono-python /tmp/compile-python
           curl -fsSL -o /tmp/cpython.tgz \
-            https://github.com/astral-sh/python-build-standalone/releases/download/20250115/cpython-3.13.2%2B20250115-x86_64-unknown-linux-gnu-install_only.tar.gz
+            https://github.com/astral-sh/python-build-standalone/releases/download/20250212/cpython-3.13.2%2B20250212-x86_64-unknown-linux-gnu-install_only.tar.gz
           tar -xzf /tmp/cpython.tgz -C /tmp/compile-python
           mkdir -p /tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu
           cp -a /tmp/compile-python/python/. /tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu/
