@@ -1,6 +1,8 @@
 package com.resonolabs.feature.telephony;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
@@ -9,12 +11,16 @@ import android.telephony.TelephonyManager;
 /** {@link TelephonyBridge} backed by the Android telephony framework. */
 public final class AndroidTelephonyBridge implements TelephonyBridge {
 
+    private final Context appContext;
     private final TelephonyManager telephonyManager;
     private final SubscriptionManager subscriptionManager;
+    private final android.telephony.SmsManager smsManager;
 
     public AndroidTelephonyBridge(Context context) {
+        this.appContext = context.getApplicationContext();
         this.telephonyManager = context.getSystemService(TelephonyManager.class);
         this.subscriptionManager = context.getSystemService(SubscriptionManager.class);
+        this.smsManager = android.telephony.SmsManager.getDefault();
     }
 
     @Override
@@ -69,6 +75,29 @@ public final class AndroidTelephonyBridge implements TelephonyBridge {
             case TelephonyManager.CALL_STATE_RINGING: return "RINGING";
             case TelephonyManager.CALL_STATE_OFFHOOK: return "OFFHOOK";
             default: return "UNKNOWN";
+        }
+    }
+
+    @Override
+    public boolean placeCall(String number) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_CALL,
+                    Uri.parse("tel:" + number));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            appContext.startActivity(intent);
+            return true;
+        } catch (SecurityException | android.content.ActivityNotFoundException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean sendSms(String to, String text) {
+        try {
+            smsManager.sendTextMessage(to, null, text, null, null);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 
