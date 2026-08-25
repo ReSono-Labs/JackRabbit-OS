@@ -28,7 +28,7 @@ def _urllib_transport(method: str, url: str, body: dict[str, object] | None,
         method=method,
         headers={
             "Content-Type": "application/json",
-            "X-Companion-Token": token,
+            "X-Auth-Token": token,
         },
     )
     try:
@@ -37,9 +37,10 @@ def _urllib_transport(method: str, url: str, body: dict[str, object] | None,
             payload = json.loads(raw.decode()) if raw else {}
             return int(response.status), payload if isinstance(payload, dict) else {}
     except urllib.error.HTTPError as error:
-        return int(error.code), {}
-    except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError):
-        return 0, {}
+        detail = error.read(512).decode("utf-8", errors="replace")
+        return int(error.code), {"error": detail}
+    except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError) as error:
+        return 0, {"error": str(error)}
 
 
 class CompanionSync:
@@ -91,11 +92,16 @@ class CompanionSync:
             return False
         tasks = [{"taskId": item.task_id, "text": item.text, "status": item.status}
                  for item in self._repository.list()]
-        status, _ = self._transport("POST", f"{base_url}/tasks/sync/push", {"tasks": tasks}, token)
-        if status != 200:
+        push_status, push_payload = self._transport(
+            "POST", f"{base_url}/tasks/sync/push", {"tasks": tasks}, token)
+        if push_status != 200:
+            self._log.warning("companion.sync.push_failed status=%s detail=%s",
+                              push_status, push_payload.get("error", ""))
             return False
         status, payload = self._transport("POST", f"{base_url}/tasks/sync/pull", {}, token)
         if status != 200:
+            self._log.warning("companion.sync.pull_failed status=%s detail=%s",
+                              status, payload.get("error", ""))
             return False
         additions = payload.get("additions")
         if not isinstance(additions, list):
@@ -120,9 +126,16 @@ class CompanionSync:
         return True
 
     def _run(self) -> None:
+        base_url, _ = self._settings()
+        if base_url:
+            self._log.info("companion.sync.enabled", extra={"url": base_url})
+        else:
+            self._log.info("companion.sync.disabled")
         while not self._stop.is_set():
             try:
-                self.sync_once()
-            except Exception:  # noqa: BLE001 — a bad cycle must never kill the thread
-                pass
+                ok = self.sync_once()
+                if not ok:
+                    self._log.warning("companion.sync.cycle_incomplete")
+            except Exception as error:  # noqa: BLE001 — a bad cycle must never kill the thread
+                self._log.warning("companion.sync.cycle_failed error=%s", error)
             self._stop.wait(self._interval)
