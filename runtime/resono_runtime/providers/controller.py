@@ -383,6 +383,7 @@ class ProviderController:
                     ),
                 )
             greeting_text = self._profile.connect_greeting_text() if self._profile else ""
+            live_transport_name = "platform"
             if is_live_model(selection.realtime_model) and selection.access_path == "subscription":
                 live_instructions = "\n\n".join(
                     value for value in (PRIMARY_VOICE_INSTRUCTION, instructions_extra) if value

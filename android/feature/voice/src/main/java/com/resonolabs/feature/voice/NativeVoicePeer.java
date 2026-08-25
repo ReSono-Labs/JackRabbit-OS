@@ -20,8 +20,6 @@ import org.webrtc.MediaConstraints;
 import org.webrtc.MediaStream;
 import org.webrtc.PeerConnection;
 import org.webrtc.PeerConnectionFactory;
-import org.webrtc.RTCStatsCollectorCallback;
-import org.webrtc.RTCStatsReport;
 import org.webrtc.RtpReceiver;
 import org.webrtc.SdpObserver;
 import org.webrtc.SessionDescription;
@@ -291,47 +289,6 @@ public final class NativeVoicePeer {
         return sent;
     }
 
-    /** TEMP DEBUG: dump inbound/outbound audio RTP stats every 2s so we can tell
-     *  whether the AVAS broker is streaming output audio over the audio track. */
-    private void startStatsMonitor() {
-        handler.postDelayed(new Runnable() {
-            @Override public void run() {
-                if (closed || peer == null) return;
-                try {
-                    peer.getStats(new RTCStatsCollectorCallback() {
-                        @Override public void onStatsDelivered(RTCStatsReport report) {
-                            long inPackets = -1, inBytes = -1, outPackets = -1;
-                            double audioLevel = -1;
-                            for (org.webrtc.RTCStats stats : report.getStatsMap().values()) {
-                                if (!"inbound-rtp".equals(stats.getType())
-                                        && !"outbound-rtp".equals(stats.getType())) continue;
-                                Object kind = stats.getMembers().get("kind");
-                                if (!"audio".equals(kind)) continue;
-                                Object packets = stats.getMembers().get("packetsReceived");
-                                if (packets == null) packets = stats.getMembers().get("packetsSent");
-                                Object bytes = stats.getMembers().get("bytesReceived");
-                                if (bytes == null) bytes = stats.getMembers().get("bytesSent");
-                                Object level = stats.getMembers().get("audioLevel");
-                                if ("inbound-rtp".equals(stats.getType())) {
-                                    inPackets = packets == null ? -1 : ((Number) packets).longValue();
-                                    inBytes = bytes == null ? -1 : ((Number) bytes).longValue();
-                                    audioLevel = level == null ? -1 : ((Number) level).doubleValue();
-                                } else {
-                                    outPackets = packets == null ? -1 : ((Number) packets).longValue();
-                                }
-                            }
-                            Log.i(LOG_TAG, String.format(
-                                    "RTP stats: in_pkts=%d in_bytes=%d audioLevel=%.3f out_pkts=%d",
-                                    inPackets, inBytes, audioLevel, outPackets));
-                        }
-                    });
-                } catch (Exception exception) {
-                    Log.w(LOG_TAG, "getStats failed: " + exception);
-                }
-                handler.postDelayed(this, 2000);
-            }
-        }, 2000);
-    }
 
     public void close() {
         if (closed) return;
@@ -452,7 +409,6 @@ public final class NativeVoicePeer {
         }
         @Override public void onIceConnectionChange(PeerConnection.IceConnectionState state) {
             Log.i(LOG_TAG, "WebRTC ICE state=" + state);
-            if (state == PeerConnection.IceConnectionState.CONNECTED) startStatsMonitor();
             if (isIceConnectivityFailure(state)) fail("ice-failed");
         }
         @Override public void onIceConnectionReceivingChange(boolean receiving) {}
