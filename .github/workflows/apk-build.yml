@@ -90,6 +90,12 @@ jobs:
           printf "%s" "$ANDROID_DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
           chmod 600 "$HOME/.android/debug.keystore"
 
+      - name: Show restored debug signing key
+        run: |
+          ls -l "$HOME/.android/debug.keystore"
+          "$JAVA_HOME/bin/keytool" -list -v -keystore "$HOME/.android/debug.keystore" -storepass android 2>&1 \
+            | grep -iE "Alias name|SHA256:|Owner:"
+
       - name: Build debug APK + run boundary/runtime checks
         run: ./android/scripts/build_debug.sh
         env:
