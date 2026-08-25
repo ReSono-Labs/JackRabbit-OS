@@ -95,6 +95,15 @@ jobs:
         env:
           RESONO_BUILD_PYTHON: /tmp/resono-python/cpython-3.13.2-linux-x86_64-gnu/bin/python3.13
 
+      - name: Verify APK signing certificate digest
+        run: |
+          APK=android/app/build/outputs/apk/debug/app-debug.apk
+          DIGEST=$("$ANDROID_SDK_ROOT"/build-tools/36.0.0/apksigner verify --print-certs "$APK" \
+            | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')
+          echo "certificate digest: $DIGEST"
+          [ "$DIGEST" = "a3390000a4b6c8bf43774cc235bd967e4c80a9dae30c0e8714c79c01a9b9836a" ] \
+            || { echo "cert digest mismatch: expected a339...9836a, got $DIGEST" >&2; exit 1; }
+
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
