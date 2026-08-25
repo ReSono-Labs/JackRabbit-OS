@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  background: radial-gradient(ellipse at 0% 40%, rgba(30,80,180,0.35) 0%, rgba(15,40,90,0.1) 40%, transparent 65%);
+  overflow: hidden; position: relative;
+  transition: background 0.8s ease;
+}
+
+
+/* Durum bazlı glow renkleri */
+body.listening { --glow-color: rgba(64, 153, 255, 0.15); background: radial-gradient(ellipse at 0% 40%, rgba(30,80,180,0.7) 0%, rgba(15,40,90,0.35) 40%, #060e1a 65%); }
+body.thinking { --glow-color: rgba(251, 191, 36, 0.12); background: radial-gradient(ellipse at 0% 40%, rgba(200,150,20,0.6) 0%, rgba(100,70,10,0.25) 40%, #060e1a 65%); }
+body.responding { --glow-color: rgba(168, 85, 247, 0.12); background: radial-gradient(ellipse at 0% 40%, rgba(150,60,210,0.6) 0%, rgba(70,25,120,0.25) 40%, #060e1a 65%); }
+body.idle { --glow-color: rgba(122, 138, 158, 0.06); background: radial-gradient(ellipse at 0% 40%, rgba(80,90,110,0.1) 0%, transparent 50%, #060e1a 65%); }
+body.error { --glow-color: rgba(248, 113, 113, 0.1); background: radial-gradient(ellipse at 0% 40%, rgba(180,50,50,0.25) 0%, transparent 50%, #060e1a 65%); }
+
+.ai-listening-card { width: 100%; height: 100%; position: relative; }
+
+/* Gözler — ekranın %40 yüksekliğinde */
+.sensor-container {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.sensor-eye {
+  width: 44px; height: 110px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  transform: translate3d(0,0,0);
+}
+
+.sensor-eye:nth-child(2) { animation-delay: 0.3s !important; }
+
+/* Glow ambiyans */
+
+/* === DURUMLAR === */
+
+/* IDLE = GRİ */
+.ai-listening-card.idle .sensor-eye {
+  height: 60px;
+  background: linear-gradient(180deg, #0a111c 0%, #112238 100%);
+  box-shadow: inset 0 0 10px rgba(122,138,158,0.2);
+  opacity: 0.4;
+  animation: float-idle 4s ease-in-out infinite alternate;
+}
+@keyframes float-idle { 0%{transform:translateY(3px)} 100%{transform:translateY(-3px)} }
+
+/* LİSTENİNG = CYAN (kullanıcı konuşuyor) */
+.ai-listening-card.listening .sensor-eye {
+  height: 110px;
+  background: linear-gradient(180deg, #0f1c32 0%, #1e457d 50%, #307ce6 100%);
+  border-color: rgba(120,190,255,0.4);
+  animation: breathe-blue 3s ease-in-out infinite alternate;
+}
+@keyframes breathe-blue {
+  0% { box-shadow: inset 0 0 15px 5px rgba(64,153,255,0.5), 0 0 10px rgba(40,130,255,0.3); }
+  100% { box-shadow: inset 0 0 25px 8px rgba(64,153,255,0.9), 0 0 30px rgba(40,130,255,0.6); }
+}
+
+/* THINKING = AMBER (mic açık, kullanıcı susuyor / Lili düşünüyor) */
+.ai-listening-card.thinking .sensor-eye {
+  height: 110px;
+  background: linear-gradient(180deg, #33270a 0%, #7d601e 50%, #e6a830 100%);
+  border-color: rgba(251,191,36,0.4);
+  animation: ponder-amber 2s ease-in-out infinite;
+}
+@keyframes ponder-amber {
+  0%,100% { box-shadow: inset 0 0 20px 5px rgba(251,191,36,0.8), 0 0 20px rgba(251,191,36,0.6); }
+  50% { box-shadow: inset 0 0 10px 2px rgba(251,191,36,0.5), 0 0 10px rgba(251,191,36,0.55); }
+}
+
+/* RESPONDING = MOR (Lili konuşuyor) */
+.ai-listening-card.responding .sensor-eye {
+  height: 110px;
+  background: linear-gradient(180deg, #240a33 0%, #581e7d 50%, #b830e6 100%);
+  border-color: rgba(220,120,255,0.4);
+  animation: bounce-purple 1.8s ease-in-out infinite;
+}
+@keyframes bounce-purple {
+  0%,100% { box-shadow: inset 0 0 20px 5px rgba(168,85,247,0.7), 0 0 20px rgba(168,85,247,0.5); }
+  30% { box-shadow: inset 0 0 25px 8px rgba(168,85,247,0.9), 0 0 30px rgba(168,85,247,0.7); }
+  60% { box-shadow: inset 0 0 18px 4px rgba(168,85,247,0.6), 0 0 15px rgba(168,85,247,0.4); }
+}
+
+/* ERROR = KIRMIZI */
+.ai-listening-card.error .sensor-eye {
+  height: 40px;
+  background: linear-gradient(180deg, #330a0a 0%, #7d1e1e 100%);
+  box-shadow: 0 0 15px rgba(248,113,113,0.4);
+}
+
+/* BLINK */
+.ai-listening-card.blink .sensor-eye { height: 4px !important; }
+
+/* === ALT YAZILAR (absolute, scroll yok) === */
+.state-title {
+  position: absolute;
+  bottom: 70px;
+  left: 20px; right: 20px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.state-status {
+  position: absolute;
+  bottom: 45px;
+  left: 20px; right: 20px;
+  text-align: center;
+  color: #7a8a9e;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+<div class="ai-listening-card listening">
+  <div class="sensor-container">
+    <div class="sensor-eye"></div>
+    <div class="sensor-eye"></div>
+  </div>
+  <div class="state-title" id="aiTitle">Seni dinliyorum...</div>
+  <div class="state-status" id="statusText">Dinleniyor...</div>
+</div>
+
+<script>
+const stateConfig = {
+  idle: { title: "Beklemede", status: "Hazır" },
+  listening: { title: "Seni dinliyorum...", status: "Dinleniyor..." },
+  thinking: { title: "Sessizlik...", status: "Seni bekliyorum..." },
+  responding: { title: "Konuşuyorum...", status: "Konuşuyor..." },
+  error: { title: "Bir hata oluştu", status: "Bağlantı koptu" }
+};
+
+const titleEl = document.getElementById('aiTitle');
+const statusTextEl = document.getElementById('statusText');
+const card = document.querySelector('.ai-listening-card');
+
+function setAiState(newState) {
+  if (!stateConfig[newState]) return;
+  titleEl.textContent = stateConfig[newState].title;
+  statusTextEl.textContent = stateConfig[newState].status;
+  // Card class'ını değiştir (CSS animasyonları tetikler)
+  document.body.className = newState;
+  card.className = 'ai-listening-card ' + newState;
+}
+
+// LiliBridge'den çağrılır
+window.setEyeState = function(state) {
+  setAiState(state);
+};
+
+    // Otomatik blink
+    setInterval(function() {
+        if (Math.random() > 0.3) {
+            card.classList.add('blink');
+            setTimeout(function() { card.classList.remove('blink'); }, 150);
+        }
+    }, 4000);
+    </script>
+</body>
+</html>
