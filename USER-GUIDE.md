@@ -149,13 +149,20 @@ Open **Library** in Management. Its tabs separate Skills, Plugins, MCP, Tools, a
 
 ### Skills
 
-Skills are `SKILL.md` instruction documents assigned to Voice or Background Agent. Import the appropriate document, review its destination, and confirm replacement when that agent already has a document.
+The current Skills tab imports one exact `SKILLS.MD` instruction document for
+Voice and one for Background Agent. Choose the destination, review it, and
+confirm replacement when that destination already has a document. This
+owner-managed instruction document is distinct from a standard Agent Skill:
+standard Skills use `SKILL.md` and are currently loaded through Agent Plugin
+packages.
 
 ### Plugins
 
 Plugin packages declare their identity and components in `plugin.json` and can include Skills, MCP connections, and Cards. JackRabbit preflights imports before confirmation, records component ownership, and supports enable, disable, replacement, and removal.
 
-Known limitation: replacing a Plugin that previously supplied a Card with one that supplies no Card can leave the old Card registered in a disabled state.
+Known limitation: replacing a Plugin that previously supplied a Card with one
+that supplies no Card can leave the old Card registered in a disabled state.
+Deleting the Plugin removes its owned Card normally.
 
 ### MCP and Tools
 
@@ -168,6 +175,9 @@ The Tools tab shows built-in and discovered tools and their current audience.
 Creations are bounded static ZIP packages containing an `index.html`. After a Creation passes inspection and is enabled, it appears in the native Cards deck and renders inside a confined WebView.
 
 The native Settings page also exposes Creation import. QR descriptors can identify Creation sources; linked sources must use public HTTPS URLs. Imports reject unsafe paths, symbolic links, encrypted entries, and archives outside the configured size and compression limits.
+
+To build a Skill, Plugin, MCP integration, built-in Tool, standalone Creation,
+or Plugin-owned Card, read the [Extension Development Guide](EXTENSION-DEVELOPMENT.md).
 
 ## Use Background Agent
 

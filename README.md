@@ -92,14 +92,21 @@ See [Using JackRabbit](USER-GUIDE.md) for the operating guide.
 
 ## Skills, Plugins, MCP, Tools, and Creations
 
+> **Building an extension or integration?** Read the
+> [Extension Development Guide](EXTENSION-DEVELOPMENT.md) before choosing a
+> Skill, Plugin, MCP server, built-in Tool, Creation, or native feature. It
+> documents the formats JackRabbit actually accepts, including Plugin-owned
+> Cards.
+
 <p align="center">
   <img src="images/web_management/library.png" width="72%" alt="JackRabbit Library page with Skills, Plugins, MCP, Tools, and Creations">
 </p>
 
 JackRabbit keeps these extension boundaries distinct:
 
-- **Skills** are standard `SKILL.md` instruction packages for Voice or Background Agent.
-- **Plugins** use an Agent Plugins `plugin.json` manifest and may contain Skills and MCP declarations. Imports are preflighted before confirmation and support enable, disable, replacement, removal, quarantine, and interrupted-operation recovery.
+- **Agent instructions** are exact `SKILLS.MD` documents assigned to Voice or Background Agent from the current Library UI.
+- **Skills** use the open Agent Skills `SKILL.md` format. JackRabbit currently loads packaged Skills through Agent Plugins.
+- **Plugins** use the open Agent Plugins `plugin.json` format and may contain Skills, MCP declarations, and one JackRabbit Card extension. Imports are preflighted before confirmation and support enable, disable, replacement, removal, quarantine, and interrupted-operation recovery.
 - **MCP** is the model-facing tool boundary. JackRabbit has a local MCP server and manages outbound MCP connections, discovered tools, audiences, and permission intersections.
 - **Tools** are visible according to their declared Voice, Background Agent, or shared audience.
 - **Creations** are bounded static ZIP packages with an `index.html`. Enabled Creations appear as Cards in a confined native WebView. QR descriptors may identify Creation sources, and linked sources must use public HTTPS URLs.
@@ -190,7 +197,9 @@ For device controls, Cards, data connections, extensions, Background Agent, and 
 - `runtime/` — supervised on-device Python runtime, providers, agents, tools, storage, data domains, and extensions.
 - `web/` — responsive same-LAN management interface.
 - `images/` — screenshots used by this README and the operating guide.
-- `BUILDING.md`, `USER-GUIDE.md`, and `llm.md` — build, operating, and coding-assistant guidance.
+- `BUILDING.md` and `USER-GUIDE.md` — build and operating guidance.
+- `CONTRIBUTING.md` and `EXTENSION-DEVELOPMENT.md` — contribution flow and extension package contracts.
+- `llm.md` — coding-assistant architecture guidance.
 
 The current schema is migration version 42. The Android application targets API 36, requires API 31 or newer, is built for ARM64, and embeds Python 3.13 with `openai-agents` 0.18.3.
 
@@ -205,7 +214,12 @@ The current schema is migration version 42. The Android application targets API 
 
 ## Contributing
 
-Focused contributions should preserve the ownership boundaries above and keep the APK modular. Read [BUILDING.md](BUILDING.md) before changing the application and [llm.md](llm.md) when using a coding assistant.
+Start with [Contributing to JackRabbit](CONTRIBUTING.md). It explains branch and
+pull-request flow, ownership boundaries, testing expectations, and how to
+choose the correct extension point. Read [BUILDING.md](BUILDING.md) before
+changing the application, the [Extension Development Guide](EXTENSION-DEVELOPMENT.md)
+before building an integration, and [llm.md](llm.md) when using a coding
+assistant.
 
 Questions and contribution discussions are welcome in the
 [JackRabbit Discord community](https://discord.gg/HeKGmh5mC).
