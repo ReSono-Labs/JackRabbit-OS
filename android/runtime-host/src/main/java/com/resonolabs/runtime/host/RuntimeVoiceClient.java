@@ -6,6 +6,7 @@ import android.util.Log;
 import android.os.Handler;
 import android.os.Looper;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -22,7 +23,7 @@ public final class RuntimeVoiceClient implements AutoCloseable {
     private static final String LOG_TAG = "RuntimeVoiceClient";
 
     public interface Callback {
-        void onAnswer(String sdp, String sessionId, JSONObject connectGreetingEvent);
+        void onAnswer(String sdp, String sessionId, JSONObject connectGreetingEvent, boolean live, String greetingText, String transport);
         void onFailure(String reason);
     }
 
@@ -38,6 +39,11 @@ public final class RuntimeVoiceClient implements AutoCloseable {
 
     public interface CompletionCallback {
         void onResult(JSONObject completion);
+        void onFailure(String reason);
+    }
+
+    public interface DelegationCallback {
+        void onResult(String output);
         void onFailure(String reason);
     }
 
@@ -116,6 +122,17 @@ public final class RuntimeVoiceClient implements AutoCloseable {
         worker.execute(() -> requestTool(application, voiceSessionId, toolCallId, userUtterance, userUtteranceId, name, arguments, callback));
     }
 
+    /** Execute an AVAS delegation (free-form request handed to the client).
+     *  Lists the granted on-device tools, picks a best-effort match, and runs
+     *  it through the same local MCP boundary the realtime model uses.
+     *  goal_start requires the session to be in goal_intake mode first, so the
+     *  mode switch is issued ahead of it when selected. */
+    public void callDelegation(Context context, String voiceSessionId, String delegationItemId,
+                               String requestText, DelegationCallback callback) {
+        Context application = context.getApplicationContext();
+        worker.execute(() -> requestDelegation(application, voiceSessionId, delegationItemId, requestText, callback));
+    }
+
     private void requestTool(Context context, String voiceSessionId, String toolCallId, String userUtterance, long userUtteranceId, String name, JSONObject arguments, ToolCallback callback) {
         try {
             String token = new RuntimeSecretStore(context).loadLocalApiToken();
@@ -157,6 +174,168 @@ public final class RuntimeVoiceClient implements AutoCloseable {
         } catch (Exception ignored) {
             deliverToolFailure(callback, "mcp-unavailable");
         }
+    }
+
+    private void requestDelegation(Context context, String voiceSessionId, String delegationItemId,
+                                   String requestText, DelegationCallback callback) {
+        try {
+            String token = new RuntimeSecretStore(context).loadLocalApiToken();
+            JSONObject initialized = new JSONObject()
+                    .put("jsonrpc", "2.0")
+                    .put("id", 1)
+                    .put("method", "initialize")
+                    .put("params", new JSONObject()
+                            .put("protocolVersion", MCP_VERSION)
+                            .put("capabilities", new JSONObject())
+                            .put("clientInfo", new JSONObject()
+                                    .put("name", "resono-r1-voice")
+                                    .put("version", "0.1.0")));
+            McpResponse init = postMcp(token, initialized, null, false);
+            if (init.sessionId == null || init.sessionId.isBlank()) {
+                deliverDelegationFailure(callback, "mcp-initialize-failed");
+                return;
+            }
+            postMcp(token, new JSONObject()
+                    .put("jsonrpc", "2.0")
+                    .put("method", "notifications/initialized"), init.sessionId, true);
+            McpResponse list = postMcp(token, new JSONObject()
+                    .put("jsonrpc", "2.0")
+                    .put("id", 2)
+                    .put("method", "tools/list"), init.sessionId, false);
+            JSONObject listResult = list.payload.optJSONObject("result");
+            JSONArray tools = listResult == null ? null : listResult.optJSONArray("tools");
+            DelegationToolCall selected = selectDelegationTool(requestText, tools);
+            if (selected == null) {
+                deliverDelegationFailure(callback, "no-matching-tool");
+                return;
+            }
+            if ("goal_start".equals(selected.name)) {
+                McpResponse modeSwitch = postMcp(token, new JSONObject()
+                        .put("jsonrpc", "2.0")
+                        .put("id", 3)
+                        .put("method", "tools/call")
+                        .put("params", new JSONObject()
+                                .put("name", "voice_mode_switch")
+                                .put("arguments", new JSONObject().put("modeKey", "goal_intake"))),
+                        init.sessionId, false);
+                JSONObject modeResult = modeSwitch.payload.optJSONObject("result");
+                if (modeResult == null || modeResult.optBoolean("isError", false)) {
+                    deliverDelegationFailure(callback, "mode-switch-failed");
+                    return;
+                }
+            }
+            McpResponse call = postMcp(token, new JSONObject()
+                    .put("jsonrpc", "2.0")
+                    .put("id", 4)
+                    .put("method", "tools/call")
+                    .put("params", new JSONObject()
+                            .put("name", selected.name)
+                            .put("arguments", selected.arguments)),
+                    init.sessionId, false, voiceSessionId, delegationItemId, requestText, 0);
+            JSONObject callResult = call.payload.optJSONObject("result");
+            if (callResult == null) {
+                deliverDelegationFailure(callback, "tool-call-failed");
+                return;
+            }
+            String output = extractToolOutput(callResult);
+            if (!closed.get()) main.post(() -> callback.onResult(output));
+        } catch (Exception error) {
+            Log.w(LOG_TAG, "delegation execution failed", error);
+            deliverDelegationFailure(callback, "delegation-unavailable");
+        }
+    }
+
+    private static final class DelegationToolCall {
+        final String name;
+        final JSONObject arguments;
+        DelegationToolCall(String name, JSONObject arguments) { this.name = name; this.arguments = arguments; }
+    }
+
+    private static DelegationToolCall selectDelegationTool(String requestText, JSONArray tools) {
+        if (tools == null) return null;
+        // ROOT lowercase turns Turkish İ into "i\u0307" (i + combining dot);
+        // collapse it so "İnternet" matches the "internet" keyword.
+        String text = (requestText == null ? "" : requestText)
+                .toLowerCase(java.util.Locale.ROOT)
+                .replace("i\u0307", "i");
+        if (containsName(tools, "goal_start") && containsAny(text,
+                "background", "arka plan", "agent", "goal", "görev")) {
+            return new DelegationToolCall("goal_start", goalStartArguments(requestText));
+        }
+        if (containsName(tools, "web_search") && containsAny(text,
+                "web", "search", "internet", "google", " ara", "sorgula")) {
+            try {
+                return new DelegationToolCall("web_search",
+                        new JSONObject().put("query", requestText == null ? "" : requestText));
+            } catch (Exception ignored) { return null; }
+        }
+        if (containsName(tools, "get_device_status") && containsAny(text,
+                "durum", "status", "sağlık", "health", "battery", "pil")) {
+            return new DelegationToolCall("get_device_status", new JSONObject());
+        }
+        if (containsName(tools, "memory_lookup") && containsAny(text,
+                "hatırla", "remember", "memory", "anı", "geçmiş")) {
+            try {
+                return new DelegationToolCall("memory_lookup",
+                        new JSONObject().put("query", requestText == null ? "" : requestText));
+            } catch (Exception ignored) { return null; }
+        }
+        return null;
+    }
+
+    private static boolean containsName(JSONArray tools, String name) {
+        for (int i = 0; i < tools.length(); i++) {
+            JSONObject tool = tools.optJSONObject(i);
+            if (tool != null && name.equals(tool.optString("name", ""))) return true;
+        }
+        return false;
+    }
+
+    /** Keyword match that avoids substring false positives (e.g. "anı" inside
+     *  "kullanım"). Multi-word needles match as phrases; single-word needles
+     *  match only at token starts, which still covers Turkish inflections
+     *  ("hatırla" matches "hatırladın", but not "kullanım"). */
+    private static boolean containsAny(String text, String... needles) {
+        String[] tokens = text.split("[^a-z0-9çğıöşü]+");
+        for (String needle : needles) {
+            if (needle.indexOf(' ') >= 0) {
+                if (text.contains(needle)) return true;
+                continue;
+            }
+            for (String token : tokens) {
+                if (token.startsWith(needle)) return true;
+            }
+        }
+        return false;
+    }
+
+    private static JSONObject goalStartArguments(String requestText) {
+        try {
+            String text = requestText == null ? "" : requestText.trim();
+            if (text.isEmpty()) text = "Complete the user's request.";
+            return new JSONObject()
+                    .put("originalRequest", text)
+                    .put("objective", text)
+                    .put("successCriteria", new JSONArray().put(
+                            "The task described in the original request is completed successfully and its result is verified."))
+                    .put("verificationMethod", "Review the final result and confirm it satisfies the original request.")
+                    .put("completionConditions", new JSONArray().put(
+                            "A final result is produced and reported to the user."))
+                    .put("stopConditions", new JSONArray());
+        } catch (Exception ignored) {
+            return new JSONObject();
+        }
+    }
+
+    private static String extractToolOutput(JSONObject result) {
+        boolean isError = result.optBoolean("isError", false);
+        JSONArray content = result.optJSONArray("content");
+        String text = "";
+        if (content != null && content.length() > 0) {
+            text = content.optJSONObject(0).optString("text", "");
+        }
+        if (text.isBlank()) text = result.toString();
+        return isError ? "Error: " + text : text;
     }
 
     private McpResponse postMcp(
@@ -247,7 +426,7 @@ public final class RuntimeVoiceClient implements AutoCloseable {
             if (status != 200) {
                 JSONObject error = payload.optJSONObject("error");
                 String code = error == null ? "session-failed" : error.optString("code", "session-failed");
-                String detail = error == null ? null : error.optString("message", null);
+                String detail = error == null ? payload.optString("message", null) : error.optString("message", null);
                 Log.w(LOG_TAG, "voice call rejected code=" + code + " detail=" + detail);
                 if (detail == null && error != null) {
                     Object details = error.opt("details");
@@ -281,8 +460,11 @@ public final class RuntimeVoiceClient implements AutoCloseable {
             String sessionId = payload.optString("sessionId", "");
             final String finalSessionId = sessionId;
             final org.json.JSONObject finalGreeting = greeting;
+            final boolean finalLive = payload.optBoolean("live", false);
+            final String finalGreetingText = payload.optString("greetingText", "");
+            final String finalTransport = payload.optString("transport", "");
             if (!closed.get()) {
-                main.post(() -> callback.onAnswer(answer, finalSessionId, finalGreeting));
+                main.post(() -> callback.onAnswer(answer, finalSessionId, finalGreeting, finalLive, finalGreetingText, finalTransport));
             }
         } catch (Exception ignored) {
             Log.w(LOG_TAG, "voice call request failed", ignored);
@@ -354,6 +536,10 @@ public final class RuntimeVoiceClient implements AutoCloseable {
     }
 
     private void deliverToolFailure(ToolCallback callback, String reason) {
+        if (!closed.get()) main.post(() -> callback.onFailure(reason));
+    }
+
+    private void deliverDelegationFailure(DelegationCallback callback, String reason) {
         if (!closed.get()) main.post(() -> callback.onFailure(reason));
     }
 

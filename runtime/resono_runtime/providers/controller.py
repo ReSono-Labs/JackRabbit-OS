@@ -7,6 +7,7 @@ import threading
 from resono_runtime.core.logging import runtime_logger
 
 from .openai import OpenAIPlatform, OpenAIProviderError, OpenAISubscription, ProviderModels
+from .openai.live_transport import create_codex_live_call, create_product_live_call, is_live_model
 from ..realtime.modes import PRIMARY_VOICE_INSTRUCTION
 from ..api.events import RuntimeEventStream
 from ..security.credentials import ProviderCredentials
@@ -25,6 +26,9 @@ class RealtimeCall:
     sdp: str
     connect_greeting_event: dict[str, object] | None
     session_id: str
+    live: bool = False
+    greeting_text: str = ""
+    transport: str = "platform"
 
 
 class ProviderController:
@@ -353,6 +357,7 @@ class ProviderController:
                 "provider": "openai",
                 "accessPath": selection.access_path,
                 "model": selection.realtime_model,
+                "transport": "live-webrtc" if is_live_model(selection.realtime_model) else "realtime-webrtc",
                 "sdpLen": len(offer_sdp),
             },
         )
@@ -377,33 +382,63 @@ class ProviderController:
                         else lambda: ()
                     ),
                 )
-            answer = OpenAIPlatform(access_token, safety_source=self._safety_source).create_realtime_call(
-                offer_sdp=offer_sdp,
-                model=selection.realtime_model,
-                instructions_extra=instructions_extra,
-                extra_tools=extra_tools,
-                tool_definitions=tool_definitions,
-            )
+            greeting_text = self._profile.connect_greeting_text() if self._profile else ""
+            if is_live_model(selection.realtime_model) and selection.access_path == "subscription":
+                live_instructions = "\n\n".join(
+                    value for value in (PRIMARY_VOICE_INSTRUCTION, instructions_extra) if value
+                )
+                live_transport_name = "codex"
+                # Product Voice backend has no post-connect session.update,
+                # so the greeting must ride in the call-time instructions.
+                product_instructions = live_instructions
+                if greeting_text:
+                    product_instructions = "\n\n".join((
+                        live_instructions,
+                        f'Say exactly: "{greeting_text}" Then stop and wait for the user.',
+                    ))
+                try:
+                    live_transport_name = "product"
+                    answer = create_product_live_call(
+                        access_token=access_token,
+                        offer_sdp=offer_sdp,
+                        thread_id=session_id,
+                        instructions=product_instructions,
+                    )
+                except RuntimeError:
+                    self._log.warning(
+                        "provider.realtime.live_product_failed — falling back to codex broker"
+                    )
+                    live_transport_name = "codex"
+                    answer = create_codex_live_call(
+                        access_token=access_token,
+                        offer_sdp=offer_sdp,
+                        thread_id=session_id,
+                        instructions=live_instructions,
+                    )
+            else:
+                answer = OpenAIPlatform(access_token, safety_source=self._safety_source).create_realtime_call(
+                    offer_sdp=offer_sdp,
+                    model=selection.realtime_model,
+                    instructions_extra=instructions_extra,
+                    extra_tools=extra_tools,
+                    tool_definitions=tool_definitions,
+                )
             self._log.info("provider.realtime.success", extra={"provider": "openai", "model": selection.realtime_model})
-        except OpenAIProviderError as error:
+        except (OpenAIProviderError, RuntimeError) as error:
             if self._voice_modes is not None:
                 self._voice_modes.close_session(session_id)
+            code = error.code if isinstance(error, OpenAIProviderError) else "live_transport_failed"
+            status = error.status if isinstance(error, OpenAIProviderError) else 502
+            details = error.details if isinstance(error, OpenAIProviderError) else {}
             self._log.warning(
                 "provider.realtime.failed provider=%s model=%s code=%s status=%s details=%s",
-                "openai",
-                selection.realtime_model,
-                error.code,
-                error.status,
-                error.details or {},
+                "openai", selection.realtime_model, code, status, details,
             )
             self._events.publish(
                 "voice.connect_failed",
                 {
-                    "provider": "openai",
-                    "model": selection.realtime_model,
-                    "code": error.code,
-                    "message": str(error),
-                    "details": error.details or {},
+                    "provider": "openai", "model": selection.realtime_model,
+                    "code": code, "message": str(error), "details": details,
                 },
             )
             raise
@@ -414,7 +449,14 @@ class ProviderController:
         with self._active_sessions_lock:
             self._active_sessions.add(session_id)
         greeting = self._profile.connect_greeting_event() if self._profile else None
-        return RealtimeCall(answer, greeting, session_id)
+        return RealtimeCall(
+            answer,
+            greeting,
+            session_id,
+            live=is_live_model(selection.realtime_model),
+            greeting_text=greeting_text,
+            transport=("live-" + live_transport_name) if is_live_model(selection.realtime_model) else "platform",
+        )
 
     def is_active_realtime_session(self, session_id: str) -> bool:
         with self._active_sessions_lock: return bool(session_id) and session_id in self._active_sessions

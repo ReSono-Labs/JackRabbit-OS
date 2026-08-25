@@ -46,13 +46,18 @@ class UserProfileRepository:
             connection.commit()
         return self.profile()
 
-    def connect_greeting_event(self) -> dict[str, object] | None:
+    def connect_greeting_text(self) -> str:
         display_name = self.profile().display_name
         if not display_name:
-            return None
+            return ""
         hour = datetime.now().astimezone().hour
         daypart = "morning" if hour < 12 else "afternoon" if hour < 18 else "evening"
-        greeting = f"Good {daypart} {display_name}, what can I help you with this {daypart}?"
+        return f"Good {daypart} {display_name}, what can I help you with this {daypart}?"
+
+    def connect_greeting_event(self) -> dict[str, object] | None:
+        greeting = self.connect_greeting_text()
+        if not greeting:
+            return None
         return {
             "type": "response.create",
             "response": {

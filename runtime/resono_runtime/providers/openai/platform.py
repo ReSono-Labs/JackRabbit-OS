@@ -8,6 +8,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from resono_runtime.core.logging import runtime_logger
+from .live_transport import is_live_model, live_session_payload
 
 
 _LOG = runtime_logger()
@@ -77,15 +78,21 @@ class OpenAIPlatform:
         if not (model.startswith("gpt-realtime") or model == "gpt-live-1") or len(model) > 128:
             raise OpenAIProviderError("unsupported_model", "Select an available Realtime model.", status=400)
         boundary = f"resono-{secrets.token_hex(16)}"
-        session = json.dumps(
-            _realtime_session(
-                model,
-                instructions_extra=instructions_extra,
-                extra_tools=extra_tools,
-                tool_definitions=tool_definitions,
-            ),
-            separators=(",", ":"),
-        )
+        if is_live_model(model):
+            session = live_session_payload(
+                model=model,
+                instructions=instructions_extra,
+            )
+        else:
+            session = json.dumps(
+                _realtime_session(
+                    model,
+                    instructions_extra=instructions_extra,
+                    extra_tools=extra_tools,
+                    tool_definitions=tool_definitions,
+                ),
+                separators=(",", ":"),
+            )
         body = _multipart(boundary, (("sdp", offer_sdp), ("session", session)))
         answer = self._request(
             "POST",
