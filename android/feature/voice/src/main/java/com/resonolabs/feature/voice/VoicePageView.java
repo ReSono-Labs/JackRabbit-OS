@@ -128,6 +128,30 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
         sessionState.connecting();
         invalidate();
         runtimeClient = new RuntimeVoiceClient();
+        transport = "webrtc";
+        // Probe for the provider's voice transport: WebSocket providers (Gemini
+        // Live) return a session descriptor; OpenAI returns realtime_unavailable
+        // and the WebRTC SDP flow below is used unchanged.
+        runtimeClient.createVoiceSession(activity, new RuntimeVoiceClient.VoiceSessionCallback() {
+            @Override public void onResult(JSONObject descriptor) {
+                activity.runOnUiThread(() -> {
+                    if ("websocket".equals(descriptor.optString("transport", ""))) {
+                        transport = "websocket";
+                        beginWebSocketSession(descriptor);
+                    } else {
+                        beginWebRtcSession();
+                    }
+                });
+            }
+
+            @Override public void onFailure(String reason) {
+                activity.runOnUiThread(() -> beginWebRtcSession());
+            }
+        });
+    }
+
+    private void beginWebRtcSession() {
+        if (runtimeClient == null) return;
         peer = new NativeVoicePeer(activity, new NativeVoicePeer.Listener() {
             @Override public void onOffer(String sdp) {
                 activity.runOnUiThread(() -> requestAnswer(sdp));
@@ -155,6 +179,53 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
             }
         });
         peer.createOffer();
+    }
+
+    private void beginWebSocketSession(JSONObject descriptor) {
+        if (runtimeClient == null) return;
+        sessionId = descriptor.optString("sessionId", "");
+        pendingConnectGreeting = descriptor.optJSONObject("connectGreetingEvent");
+        wsPeer = new WebSocketVoicePeer(activity, descriptor, new WebSocketVoicePeer.Listener() {
+            @Override public void onLive() {
+                activity.runOnUiThread(() -> {
+                    sessionState.live();
+                    transcript = "I’m listening";
+                    if (pendingConnectGreeting != null && wsPeer != null) {
+                        responseCoordinator.request(pendingConnectGreeting);
+                        pendingConnectGreeting = null;
+                    }
+                    invalidate();
+                });
+            }
+
+            @Override public void onTranscript(String text) {
+                activity.runOnUiThread(() -> {
+                    transcript = text;
+                    recordTranscript("assistant", "gemini.transcript", text);
+                    invalidate();
+                });
+            }
+
+            @Override public void onFunctionCall(String callId, String name, JSONObject arguments) {
+                activity.runOnUiThread(() -> callGeminiTool(callId, name, arguments));
+            }
+
+            @Override public void onTurnComplete() {
+                activity.runOnUiThread(this::invalidate);
+            }
+
+            @Override public void onInterrupted() {
+                activity.runOnUiThread(() -> {
+                    transcript = "Listening…";
+                    invalidate();
+                });
+            }
+
+            @Override public void onFailure(String reason) {
+                activity.runOnUiThread(() -> fail(reason));
+            }
+        });
+        wsPeer.connect();
     }
 
     private void requestAnswer(String offer) {
@@ -229,10 +300,14 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
     private void stopSession() {
         removeCallbacks(completionPoll);
         clearPendingModeTool();
-        // Close WebRTC peer immediately for instant audio stop
+        // Close the transport peer immediately for instant audio stop
         if (peer != null) {
             peer.close();
             peer = null;
+        }
+        if (wsPeer != null) {
+            wsPeer.close();
+            wsPeer = null;
         }
 
         // Hand any captured transcript to the runtime for review before teardown.
@@ -306,8 +381,11 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
         responseCoordinator.close();
         toolCallQueue.close();
         if (peer != null) peer.close();
+        if (wsPeer != null) wsPeer.close();
         if (runtimeClient != null) runtimeClient.close();
         peer = null;
+        wsPeer = null;
+        transport = "webrtc";
         runtimeClient = null;
         pendingConnectGreeting = null;
     }
@@ -483,6 +561,48 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
         });
     }
 
+    private void callGeminiTool(String callId, String name, JSONObject arguments) {
+        if (runtimeClient == null || wsPeer == null) return;
+        final JSONObject toolArguments = arguments == null ? new JSONObject() : arguments;
+        toolCallQueue.enqueue(completion -> {
+            if (runtimeClient == null || wsPeer == null) {
+                completion.complete();
+                return;
+            }
+            runtimeClient.callTool(activity, sessionId, callId, lastUserUtterance, userUtteranceId, name, toolArguments, new RuntimeVoiceClient.ToolCallback() {
+                @Override public void onResult(String output, JSONObject sessionUpdate) {
+                    sendGeminiToolResult(callId, name, output);
+                    completion.complete();
+                }
+
+                @Override public void onFailure(String reason) {
+                    sendGeminiToolResult(callId, name,
+                            "{\"isError\":true,\"message\":\"The on-device tool is unavailable.\"}");
+                    completion.complete();
+                }
+            });
+        });
+    }
+
+    private void sendGeminiToolResult(String callId, String name, String output) {
+        if (wsPeer == null) return;
+        try {
+            JSONObject response;
+            try {
+                response = new JSONObject(output);
+            } catch (Exception ignored) {
+                response = new JSONObject().put("output", output);
+            }
+            if (!wsPeer.sendToolResult(callId, name, response)) {
+                fail("event-invalid");
+                return;
+            }
+            invalidate();
+        } catch (Exception ignored) {
+            fail("event-invalid");
+        }
+    }
+
     private void beginModeUpdate(
             String callId,
             String output,
@@ -593,12 +713,13 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
 
     @Override public boolean isAvailable() {
         VoiceSessionStateTracker.State state = sessionState.state();
-        return peer != null && sessionId != null && !sessionId.isBlank()
+        boolean transportAlive = "websocket".equals(transport) ? wsPeer != null : peer != null;
+        return transportAlive && sessionId != null && !sessionId.isBlank()
                 && (state == VoiceSessionStateTracker.State.LIVE || state == VoiceSessionStateTracker.State.RESPONDING);
     }
 
     @Override public boolean submitImage(byte[] image, String mimeType, String filename) {
-        if (!isAvailable() || image == null || image.length == 0
+        if (!"webrtc".equals(transport) || !isAvailable() || image == null || image.length == 0
                 || image.length > 160 * 1024
                 || mimeType == null || !mimeType.startsWith("image/")) return false;
         try {
