@@ -45,6 +45,7 @@ from .v042_domain_memory import apply as apply_v042
 from .v043_mcp_connection_routing import apply as apply_v043
 from .v044_provider_directory_connections import apply as apply_v044
 from .v045_provider_keys import apply as apply_v045
+from .v046_provider_endpoint_corrections import apply as apply_v046
 
 
 @dataclass(frozen=True, slots=True)
@@ -95,5 +96,6 @@ MIGRATIONS = (
     Migration(43, apply_v043),
     Migration(44, apply_v044),
     Migration(45, apply_v045),
+    Migration(46, apply_v046),
 )
 LATEST_VERSION = MIGRATIONS[-1].version

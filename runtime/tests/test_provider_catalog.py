@@ -24,8 +24,8 @@ def test_catalog_seeds_providers_with_styles(tmp_path):
         ("opencode-go", "https://opencode.ai/zen/go/v1", "chat", True),
         ("opencode-zen", "https://opencode.ai/zen/v1", "chat", True),
         ("openrouter", "https://openrouter.ai/api/v1", "chat", True),
-        ("glm", "https://open.bigmodel.cn/api/paas/v4", "chat", True),
-        ("kimi", "https://api.moonshot.cn/v1", "chat", True),
+        ("glm", "https://api.z.ai/api/coding/paas/v4", "chat", True),
+        ("kimi", "https://api.kimi.com/coding/v1", "chat", True),
         ("local", "http://127.0.0.1:11434/v1", "chat", False),
     ):
         descriptor = by_id.get(provider_id)
