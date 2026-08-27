@@ -12,6 +12,7 @@ on:
   push:
     branches:
       - feature/telephony-bridge
+      - feature/agent-model-provider
   workflow_dispatch:
 
 jobs:
