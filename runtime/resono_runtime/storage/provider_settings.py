@@ -76,8 +76,8 @@ class ProviderSettingsRepository:
         return self.selection()
 
     def save_access_path(self, access_path: str) -> ProviderSelection:
-        if access_path not in ("platform", "subscription"):
-            raise ValueError("OpenAI access path is invalid")
+        if access_path not in ("platform", "subscription", "key"):
+            raise ValueError("Provider access path is invalid")
         with self._database.connect() as connection:
             connection.execute(
                 "INSERT INTO provider_settings(setting_key, setting_value, updated_at) "

@@ -7,6 +7,9 @@ from dataclasses import dataclass
 class ProviderDescriptor:
     provider_id: str
     name: str
+    base_url: str | None = None
+    api_style: str = "chat"
+    key_required: bool = True
 
 
 class ProviderCatalogRepository:
@@ -28,10 +31,21 @@ class ProviderCatalogRepository:
     def providers(self) -> tuple[ProviderDescriptor, ...]:
         with self._database.connect() as connection:
             rows = connection.execute(
-                "SELECT provider_id, provider_name FROM provider_directory "
-                "WHERE enabled = 1 ORDER BY sort_order ASC, provider_id ASC"
+                "SELECT provider_id, provider_name, base_url, api_style, key_required "
+                "FROM provider_directory WHERE enabled = 1 "
+                "ORDER BY sort_order ASC, provider_id ASC"
             ).fetchall()
-        return tuple(ProviderDescriptor(str(row["provider_id"]), str(row["provider_name"])) for row in rows)
+        return tuple(_descriptor(row) for row in rows)
+
+    def descriptor(self, provider_id: str) -> ProviderDescriptor | None:
+        normalized = _normalize_provider(provider_id)
+        with self._database.connect() as connection:
+            row = connection.execute(
+                "SELECT provider_id, provider_name, base_url, api_style, key_required "
+                "FROM provider_directory WHERE enabled = 1 AND provider_id = ?",
+                (normalized,),
+            ).fetchone()
+        return _descriptor(row) if row is not None else None
 
     def provider_exists(self, provider_id: str) -> bool:
         normalized = _normalize_provider(provider_id)
@@ -111,3 +125,13 @@ class ProviderCatalogRepository:
 
 def _normalize_provider(value: str) -> str:
     return value.strip().lower()
+
+
+def _descriptor(row: object) -> ProviderDescriptor:
+    return ProviderDescriptor(
+        str(row["provider_id"]),
+        str(row["provider_name"]),
+        row["base_url"],
+        str(row["api_style"]),
+        bool(row["key_required"]),
+    )

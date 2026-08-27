@@ -17,6 +17,8 @@ Module ownership:
 - `agents/sdk_runner.py` — the single Agents SDK execution path every agent runner uses.
 - `mcp/client.py` — outbound MCP clients for `streamable-http`, `sse`, and `stdio` transports plus the transport-agnostic `client_for` factory.
 - `mcp/lifecycle.py` — `McpLifecycle` owns MCP install, discover, enable, remove, tool projection, and per-audience connection routing.
+- `providers/compatible.py` — OpenAI-compatible third-party provider backend (key validation via `GET /models`, live model listing).
+- `providers/access.py` — the provider-neutral key/base-URL/API-style resolver every text-agent consumer uses; OpenAI's platform/subscription paths are unchanged.
 
 Run the host-side runtime tests:
 

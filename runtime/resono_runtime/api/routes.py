@@ -538,6 +538,37 @@ class RuntimeRoutes:
                 else:
                     req.respond_json(400, {"error": {"code": "invalid_request", "message": str(error)}})
             return
+        if path.startswith("/v1/management/providers/") and pairing is not None and providers is not None:
+            if req.browser_session(pairing, mutation=True) is None:
+                return
+            payload = req.request_json()
+            if payload is None:
+                return
+            try:
+                if path == "/v1/management/providers/connect":
+                    result = providers.connect_provider(str(payload.get("provider", "")), str(payload.get("apiKey", "")))
+                elif path == "/v1/management/providers/disconnect":
+                    result = providers.disconnect_provider(str(payload.get("provider", "")))
+                elif path == "/v1/management/providers/provider":
+                    result = providers.select_provider(str(payload.get("provider", "")))
+                elif path == "/v1/management/providers/models":
+                    result = providers.select_models(
+                        text_model=_optional_string(payload.get("textModel")),
+                        realtime_model=_optional_string(payload.get("realtimeModel")),
+                        reasoning_effort=_optional_string(payload.get("reasoningEffort")),
+                    )
+                elif path == "/v1/management/providers/refresh":
+                    result = providers.status(refresh=True)
+                else:
+                    req.respond_json(404, {"error": {"code": "not_found", "message": "Not found."}})
+                    return
+                req.respond_json(200, result)
+            except (ValueError, OpenAIProviderError) as error:
+                if isinstance(error, OpenAIProviderError):
+                    req.provider_error(error)
+                else:
+                    req.respond_json(400, {"error": {"code": "invalid_request", "message": str(error)}})
+            return
         if path.startswith("/v1/host/openai/") and providers is not None:
             payload = req.request_json()
             if payload is None:
@@ -559,6 +590,35 @@ class RuntimeRoutes:
                     result = providers.status(refresh=True)
                 elif path == "/v1/host/openai/access":
                     result = providers.select_access_path(str(payload.get("accessPath", "")))
+                else:
+                    req.respond_json(404, {"error": {"code": "not_found", "message": "Not found."}})
+                    return
+                req.respond_json(200, result)
+            except (ValueError, OpenAIProviderError) as error:
+                if isinstance(error, OpenAIProviderError):
+                    req.provider_error(error)
+                else:
+                    req.respond_json(400, {"error": {"code": "invalid_request", "message": str(error)}})
+            return
+        if path.startswith("/v1/host/providers/") and providers is not None:
+            payload = req.request_json()
+            if payload is None:
+                return
+            try:
+                if path == "/v1/host/providers/connect":
+                    result = providers.connect_provider(str(payload.get("provider", "")), str(payload.get("apiKey", "")))
+                elif path == "/v1/host/providers/disconnect":
+                    result = providers.disconnect_provider(str(payload.get("provider", "")))
+                elif path == "/v1/host/providers/provider":
+                    result = providers.select_provider(str(payload.get("provider", "")))
+                elif path == "/v1/host/providers/models":
+                    result = providers.select_models(
+                        text_model=_optional_string(payload.get("textModel")),
+                        realtime_model=_optional_string(payload.get("realtimeModel")),
+                        reasoning_effort=_optional_string(payload.get("reasoningEffort")),
+                    )
+                elif path == "/v1/host/providers/refresh":
+                    result = providers.status(refresh=True)
                 else:
                     req.respond_json(404, {"error": {"code": "not_found", "message": "Not found."}})
                     return

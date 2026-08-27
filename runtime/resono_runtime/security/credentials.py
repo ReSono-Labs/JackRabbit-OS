@@ -74,6 +74,19 @@ class ConnectionCredentialEnvelopes:
             raise CredentialUnavailable("Connection credential is unavailable.")
         return str(value)
 
+    def seal_provider_key(self, provider_id: str, plaintext: str) -> str:
+        if not plaintext.strip() or not provider_id.strip():
+            raise ValueError("Provider key cannot be empty.")
+        return str(self._bridge.sealConnectionCredential(_provider_record_name(provider_id), plaintext))
+
+    def open_provider_key(self, provider_id: str, envelope: str) -> str:
+        if not envelope:
+            raise CredentialUnavailable("Provider credential is unavailable.")
+        value = self._bridge.openConnectionCredential(_provider_record_name(provider_id), envelope)
+        if not value:
+            raise CredentialUnavailable("Provider credential is unavailable.")
+        return str(value)
+
 
 def _record_name(connection_id: str) -> str:
     from uuid import UUID
@@ -82,3 +95,10 @@ def _record_name(connection_id: str) -> str:
     if normalized != connection_id:
         raise ValueError("Connection ID must be a canonical UUID.")
     return f"connection:{normalized}:credential"
+
+
+def _provider_record_name(provider_id: str) -> str:
+    normalized = provider_id.strip().lower()
+    if not normalized or any(character.isspace() for character in normalized):
+        raise ValueError("Provider ID is invalid.")
+    return f"provider:{normalized}:credential"

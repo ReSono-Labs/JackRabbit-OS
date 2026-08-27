@@ -7,10 +7,12 @@ import threading
 from resono_runtime.core.logging import runtime_logger
 
 from .openai import OpenAIPlatform, OpenAIProviderError, OpenAISubscription, ProviderModels
+from .compatible import CompatibleProvider, CompatibleProviderError
 from ..realtime.modes import PRIMARY_VOICE_INSTRUCTION
 from ..api.events import RuntimeEventStream
-from ..security.credentials import ProviderCredentials
+from ..security.credentials import ConnectionCredentialEnvelopes, ProviderCredentials
 from ..storage.provider_catalog import ProviderCatalogRepository
+from ..storage.provider_keys import ProviderKeyRepository
 from ..storage.provider_settings import ProviderSettingsRepository
 from ..storage.profile_settings import UserProfileRepository
 from ..storage.sessions import SessionTranscriptRepository
@@ -43,6 +45,8 @@ class ProviderController:
         subscription: OpenAISubscription | None = None,
         profile: UserProfileRepository | None = None,
         catalog: ProviderCatalogRepository | None = None,
+        provider_keys: ProviderKeyRepository | None = None,
+        credential_envelopes: ConnectionCredentialEnvelopes | None = None,
         sessions: SessionTranscriptRepository | None = None,
         session_context: "SessionContextBuilder | None" = None,
         memory_lookup_tool_def: dict[str, object] | None = None,
@@ -58,6 +62,8 @@ class ProviderController:
         self._subscription = subscription
         self._profile = profile
         self._catalog = catalog
+        self._provider_keys = provider_keys
+        self._credential_envelopes = credential_envelopes
         self._sessions = sessions
         self._session_context = session_context
         self._memory_lookup_tool_def = memory_lookup_tool_def
@@ -79,6 +85,32 @@ class ProviderController:
             provider = "openai"
             self._settings.set_provider(provider)
             selection = self._settings.selection()
+
+        if provider != "openai":
+            connected = self._provider_key(provider) is not None
+            models = self._available_models(
+                provider=provider,
+                access_path="key",
+                refresh=refresh,
+                connected=connected,
+            )
+            text_model = _select_default(models.text, selection.text_model) if connected else None
+            return {
+                "provider": provider,
+                "providers": providers,
+                "accessPath": "key",
+                "connected": connected,
+                "connections": {"key": connected},
+                "models": {
+                    "text": list(models.text) if connected else [],
+                    "realtime": [],
+                },
+                "selection": {
+                    "text": text_model,
+                    "realtime": None,
+                    "reasoning": selection.reasoning_effort,
+                },
+            }
 
         platform_connected = self._credentials.has_platform_key()
         subscription_connected = bool(self._subscription and self._subscription.status()["connected"])
@@ -200,6 +232,65 @@ class ProviderController:
         )
         return result
 
+    def connect_provider(self, provider: str, key: str) -> dict[str, object]:
+        provider_id = _normalize_provider(provider)
+        if provider_id == "openai":
+            raise OpenAIProviderError(
+                "invalid_provider", "OpenAI uses the platform connection.", status=400
+            )
+        self._assert_active_provider(provider_id)
+        descriptor = self._descriptor(provider_id)
+        candidate = CompatibleProvider(
+            descriptor.base_url,
+            key.strip(),
+            api_style=descriptor.api_style,
+        )
+        try:
+            models = candidate.list_models()
+        except CompatibleProviderError as error:
+            raise OpenAIProviderError(error.code, str(error), status=error.status) from error
+        self._provider_keys.put(
+            provider_id,
+            self._credential_envelopes.seal_provider_key(provider_id, key.strip()),
+        )
+        self._models = ProviderModels(tuple(models), ())
+        selection = self._settings.selection()
+        catalog_models = self._catalog_models("key", provider_id)
+        text_model = _select_default(
+            tuple(models),
+            selection.text_model,
+            preferred=catalog_models.text[0] if catalog_models.text else None,
+        )
+        self._settings.save(text_model=text_model, realtime_model=None)
+        self._settings.save_access_path("key")
+        self._events.publish("provider.connected", {"provider": provider_id, "accessPath": "key"})
+        self._log.info("provider.key_connected", extra={"provider": provider_id, "models": len(models)})
+        return self.status()
+
+    def disconnect_provider(self, provider: str) -> dict[str, object]:
+        provider_id = _normalize_provider(provider)
+        if provider_id == "openai":
+            raise OpenAIProviderError(
+                "invalid_provider", "OpenAI uses the platform connection.", status=400
+            )
+        self._assert_active_provider(provider_id)
+        self._provider_keys.delete(provider_id)
+        self._models = ProviderModels((), ())
+        self._settings.clear()
+        subscription_connected = bool(self._subscription and self._subscription.status()["connected"])
+        if subscription_connected:
+            self._settings.save_access_path("subscription")
+            fallback = self._catalog_models("subscription", "openai")
+            self._settings.save(
+                text_model=_select_default(fallback.text, None),
+                realtime_model=_select_default(fallback.realtime, None),
+            )
+        else:
+            self._settings.set_provider("openai")
+            self._settings.save_access_path("platform")
+        self._events.publish("provider.disconnected", {"provider": provider_id})
+        return self.status()
+
     def select_models(
         self,
         *,
@@ -209,6 +300,28 @@ class ProviderController:
     ) -> dict[str, object]:
         self._assert_active_provider()
         selection = self._settings.selection()
+        provider = _normalize_provider(selection.provider)
+        if provider != "openai":
+            if self._provider_key(provider) is None:
+                raise OpenAIProviderError(
+                    "credential_unavailable", f"Connect {provider} first.", status=409
+                )
+            if realtime_model is not None:
+                raise OpenAIProviderError(
+                    "realtime_unavailable",
+                    "Realtime models are only available with OpenAI.",
+                    status=400,
+                )
+            models = self._models if self._models.text else self._catalog_models("key", provider)
+            if text_model is not None and text_model not in models.text:
+                raise OpenAIProviderError("unsupported_model", "Select an available text model.", status=400)
+            self._settings.save(
+                text_model=text_model,
+                realtime_model=None,
+                reasoning_effort=reasoning_effort,
+            )
+            self._events.publish("provider.models_selected", {"provider": provider})
+            return self.status()
         if selection.access_path == "subscription":
             if self._subscription is None or not self._subscription.status()["connected"]:
                 raise OpenAIProviderError("credential_unavailable", "Connect ChatGPT first.", status=409)
@@ -252,7 +365,10 @@ class ProviderController:
         )
         self._models = ProviderModels((), ())
 
-        prefer_access = "subscription" if self._subscription and self._subscription.status()["connected"] else "platform"
+        if provider_id == "openai":
+            prefer_access = "subscription" if self._subscription and self._subscription.status()["connected"] else "platform"
+        else:
+            prefer_access = "key"
         self._settings.save_access_path(prefer_access)
 
         self._events.publish(
@@ -267,6 +383,12 @@ class ProviderController:
 
     def select_access_path(self, access_path: str) -> dict[str, object]:
         self._assert_active_provider()
+        if _normalize_provider(self._settings.selection().provider) != "openai":
+            raise OpenAIProviderError(
+                "invalid_access_path",
+                "API-key providers use the key access path.",
+                status=400,
+            )
         if access_path == "platform":
             if self._subscription is not None and self._subscription.status()["connected"]:
                 raise OpenAIProviderError(
@@ -303,6 +425,12 @@ class ProviderController:
 
     def create_realtime_call(self, offer_sdp: str) -> RealtimeCall:
         self._assert_active_provider()
+        if _normalize_provider(self._settings.selection().provider) != "openai":
+            raise OpenAIProviderError(
+                "realtime_unavailable",
+                "Voice calls are only available with OpenAI in this build.",
+                status=409,
+            )
         selection = self._settings.selection()
         if selection.access_path == "subscription":
             if self._subscription is None:
@@ -440,10 +568,35 @@ class ProviderController:
     def _provider_ids(self) -> tuple[str, ...]:
         return tuple(item["id"] for item in self._provider_list())
 
-    def _assert_active_provider(self) -> None:
+    def _assert_active_provider(self, provider_id: str | None = None) -> None:
         provider = _normalize_provider(self._settings.selection().provider)
         if provider not in self._provider_ids():
-            raise OpenAIProviderError("provider_unavailable", "OpenAI provider is not active.", status=400)
+            raise OpenAIProviderError("provider_unavailable", "Provider is not active.", status=400)
+        if provider_id is not None and provider != _normalize_provider(provider_id):
+            raise OpenAIProviderError(
+                "provider_unavailable",
+                f"Select {provider_id} before connecting it.",
+                status=400,
+            )
+
+    def _descriptor(self, provider_id: str) -> object:
+        descriptor = self._catalog.descriptor(provider_id) if self._catalog is not None else None
+        if descriptor is None or not descriptor.base_url:
+            raise OpenAIProviderError(
+                "provider_unavailable", "Provider is not configured.", status=400
+            )
+        return descriptor
+
+    def _provider_key(self, provider_id: str) -> str | None:
+        if self._provider_keys is None:
+            return None
+        return self._provider_keys.get(provider_id)
+
+    def _provider_key_value(self, provider_id: str) -> str | None:
+        envelope = self._provider_key(provider_id)
+        if envelope is None or self._credential_envelopes is None:
+            return None
+        return self._credential_envelopes.open_provider_key(provider_id, envelope)
 
     def _catalog_models(self, access_path: str, provider: str) -> ProviderModels:
         provider_id = _normalize_provider(provider)
@@ -478,6 +631,23 @@ class ProviderController:
             return self._catalog_models("platform", provider)
         if access_path == "subscription":
             return self._catalog_models("subscription", provider) if connected else ProviderModels((), ())
+        if access_path == "key":
+            if connected and (refresh or not self._models.text):
+                descriptor = self._descriptor(provider)
+                try:
+                    live = CompatibleProvider(
+                        descriptor.base_url,
+                        self._provider_key_value(provider),
+                        api_style=descriptor.api_style,
+                    ).list_models()
+                except CompatibleProviderError:
+                    live = ()
+                self._models = ProviderModels(tuple(live), ())
+            if not connected:
+                return ProviderModels((), ())
+            if self._models.text:
+                return self._models
+            return self._catalog_models("key", provider)
         return ProviderModels((), ())
 
 

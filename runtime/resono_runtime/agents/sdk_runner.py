@@ -25,6 +25,7 @@ async def run_agent_turn(
     mcp_server: object | None = None,
     observation_sink: Callable[[AgentTurnObservation], None] | None = None,
     output_type: type[Any] | None = None,
+    use_responses: bool = True,
 ) -> Any:
     """Run one OpenAI Agents SDK turn and return the final output text.
 
@@ -45,7 +46,7 @@ async def run_agent_turn(
         base_url=base_url,
         http_client=DefaultAsyncHttpxClient(),
     )
-    provider = OpenAIProvider(openai_client=client, use_responses=True)
+    provider = OpenAIProvider(openai_client=client, use_responses=use_responses)
     try:
         model_settings = ModelSettings(
             reasoning=Reasoning(effort=reasoning_effort, summary="auto")

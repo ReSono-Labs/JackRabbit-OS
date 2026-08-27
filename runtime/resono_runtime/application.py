@@ -13,6 +13,7 @@ from .mcp import LocalMcpServer, McpLifecycle
 from .storage.database import RuntimeDatabase
 from .storage.agent_audiences import AgentAudienceRepository
 from .storage.lifecycle_repository import LifecycleRepository
+from .storage.provider_keys import ProviderKeyRepository
 from .storage.provider_settings import ProviderSettingsRepository
 from .storage.profile_settings import UserProfileRepository
 from .storage.sessions import SessionTranscriptRepository
@@ -143,6 +144,8 @@ class RuntimeApplication:
             lookup=self._memory_lookup_tool,
             memories=self._memories,
             sessions=self._sessions,
+            provider_keys=provider_key_repository,
+            credential_envelopes=connection_envelopes,
         ))
         self._tools.register(self._skill_activation.tool_definition())
         self._mail_repository = MailRepository(self._database)
@@ -275,6 +278,7 @@ class RuntimeApplication:
             CreationArchiveInspector(config.creation_quarantine_path),
             CreationDescriptorInspector(config.creation_quarantine_path),
         )
+        provider_key_repository = ProviderKeyRepository(self._database)
         self._providers = ProviderController(
             credentials=credentials,
             settings=provider_settings,
@@ -300,6 +304,9 @@ class RuntimeApplication:
             events=self._events,
             local_api_token=config.local_api_token,
             subscription=self._subscription,
+            catalog=self._catalog,
+            credential_envelopes=connection_envelopes,
+            provider_keys=provider_key_repository,
         )
         self._memory_reviewer = MemoryReviewRunner(
             credentials=credentials,
