@@ -298,7 +298,7 @@ public final class WebSocketVoicePeer {
                                             .put("response", response == null ? new JSONObject() : response))));
             socket.send(responseObject.toString());
             return true;
-        } catch (RuntimeException error) {
+        } catch (JSONException | RuntimeException error) {
             fail("tool-send-failed");
             return false;
         }

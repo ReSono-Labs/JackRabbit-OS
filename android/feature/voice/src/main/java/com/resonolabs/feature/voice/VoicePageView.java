@@ -213,7 +213,7 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
             }
 
             @Override public void onTurnComplete() {
-                activity.runOnUiThread(this::invalidate);
+                activity.runOnUiThread(() -> invalidate());
             }
 
             @Override public void onInterrupted() {
