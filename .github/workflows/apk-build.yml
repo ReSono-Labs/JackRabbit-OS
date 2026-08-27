@@ -1,0 +1,100 @@
+name: Build debug APK
+
+# Builds a debug APK on push so a testable app artifact is always available
+# without a local Android toolchain. Runs inside the jackrabbit-apk-builder
+# container (android/Dockerfile, published to GHCR by apk-builder-image.yml),
+# which mirrors the reference Linux build env in BUILDING.md.
+#
+# The shared debug signing key travels as the ANDROID_DEBUG_KEYSTORE_BASE64
+# repo secret: the runner decodes it, and the container mounts it read-only
+# at ~/.android/debug.keystore. The key is never baked into the image.
+#
+# Isolated to the listed feature branches on purpose: builds only fire when
+# these branches are pushed, and the APK is uploaded as an artifact on the run
+# page (never published to main / no GitHub Release).
+
+on:
+  push:
+    branches:
+      - feature/telephony-bridge
+      - feature/agent-model-provider
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  # Needed so the job's GITHUB_TOKEN may pull the private builder image.
+  # (The org's default token grants contents:read only.)
+  packages: read
+
+env:
+  # Immutable tag from apk-builder-image.yml. Owner is lowercased because
+  # GHCR image names must be lowercase.
+  APK_BUILDER_IMAGE: ghcr.io/resono-labs/jackrabbit-apk-builder:v1
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry (pull APK builder image)
+        # Standard GHCR pattern: the repo token may pull the repo's own
+        # packages, so the image can stay private.
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore shared debug signing key
+        env:
+          ANDROID_DEBUG_KEYSTORE_BASE64: ${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}
+        run: |
+          mkdir -p "$HOME/.android"
+          printf "%s" "$ANDROID_DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
+          chmod 600 "$HOME/.android/debug.keystore"
+
+      - name: Show restored debug signing key (in builder container)
+        run: |
+          docker run --rm \
+            -v "$HOME/.android":/root/.android:ro \
+            "$APK_BUILDER_IMAGE" sh -c \
+            'keytool -list -v -keystore /root/.android/debug.keystore -storepass android 2>&1 | grep -iE "Alias name|SHA256:|Owner:"'
+
+      - name: Caches (gradle + chaquopy python, on the runner, mounted into the container)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            android/runtime-host/build/python
+          key: gradle-${{ runner.os }}-${{ hashFiles('android/**/*.gradle*', 'runtime/requirements*.txt') }}
+          restore-keys: gradle-${{ runner.os }}-
+
+      - name: Build debug APK + run boundary/runtime checks (in builder container)
+        run: |
+          mkdir -p "$HOME/.gradle"
+          docker run --rm \
+            -v "$HOME/.android":/root/.android:ro \
+            -v "$HOME/.gradle":/root/.gradle \
+            -v "$PWD":/src -w /src \
+            "$APK_BUILDER_IMAGE" ./android/scripts/build_debug.sh
+
+      - name: Report APK signing certificate digest
+        # Print the v2/v3 signer cert digest (apksigner is authoritative). Do
+        # not hard-fail: the maintainer's stated a339... has not matched recent
+        # builds, so the device install is the decisive check. Surface digest.
+        run: |
+          docker run --rm \
+            -v "$PWD":/src -w /src \
+            "$APK_BUILDER_IMAGE" sh -c \
+            '"$ANDROID_SDK_ROOT"/build-tools/36.0.0/apksigner verify --print-certs android/app/build/outputs/apk/debug/app-debug.apk'
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

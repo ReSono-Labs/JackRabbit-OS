@@ -1,0 +1,13 @@
+# Keep the build context small: the image never copies project source
+# (it is mounted at runtime), so exclude caches and generated output.
+.git
+**/build/
+**/.gradle/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+.DS_Store
+*.zip
+*.apk
+installer/cli/target/
+installer/dist/

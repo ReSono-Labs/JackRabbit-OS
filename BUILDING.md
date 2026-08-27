@@ -20,7 +20,67 @@ All three directories are required to build the complete application.
 
 Do not commit SDK paths, signing keys, API keys, OAuth tokens, certificates, or device credentials.
 
-## Build
+## Docker build (recommended)
+
+No local Linux toolchain required: the pinned builder image
+(`ghcr.io/resono-labs/jackrabbit-apk-builder`, built from `android/Dockerfile`)
+contains the exact JDK 17 / Android SDK 36 / Gradle 9.5.0 / CPython 3.13.2
+environment CI uses, in the layout `build_debug.sh` expects. It works on
+macOS and Windows (Docker Desktop) and produces the same APK as CI.
+
+Requirements:
+
+- Docker (Docker Desktop on macOS)
+
+From the repository root, run:
+
+```bash
+./android/scripts/build_apk_docker.sh
+```
+
+The result is written to the same location as a native build:
+
+```text
+android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+The script mounts your `~/.android/debug.keystore` into the container
+read-only and shares `~/.gradle` so dependency downloads are cached between
+runs. Override the image tag with `APK_BUILDER_IMAGE`.
+
+### Debug signing
+
+The debug APK is signed with the `sharedDebug` signing config in
+`android/app/build.gradle.kts`, which reads `~/.android/debug.keystore`
+(alias `androiddebugkey`, store password `android`).
+
+- **CI**: the key is stored as the `ANDROID_DEBUG_KEYSTORE_BASE64` repository
+  secret on GitHub. The workflow decodes it onto the runner, then the builder
+  container mounts it read-only. The key is never committed (`.gitignore`
+  covers `*.keystore`) and is never baked into the Docker image.
+- **Local**: place the shared key at `~/.android/debug.keystore` so test
+  installs upgrade cleanly over previous builds. Without it,
+  `build_apk_docker.sh` generates a fresh local key and warns that builds
+  signed with it will not upgrade over shared-key builds.
+- The shared key itself is a development convenience, not a release secret.
+  Release signing (e.g. Play App Signing) is a separate, more restricted flow.
+
+### Updating the builder image
+
+Toolchain versions are pinned as `ARG`s at the top of `android/Dockerfile`.
+After bumping one, publish a new image and point the build at it:
+
+1. Push the change (or run the workflow directly), then run the
+   **Publish APK builder image** workflow from any branch
+   (`workflow_dispatch`) — it builds `android/Dockerfile` for
+   `linux/amd64` and pushes `ghcr.io/resono-labs/jackrabbit-apk-builder:v1`
+   (bump to `v2` for a breaking toolchain change).
+2. Update `APK_BUILDER_IMAGE` in `.github/workflows/apk-build.yml` to the new
+   immutable tag.
+3. Local builds pull `latest` by default, so they pick up the new image
+   automatically.
+
+## Build (native Linux)
 
 From the repository root, run:
 

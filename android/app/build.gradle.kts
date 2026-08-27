@@ -19,8 +19,21 @@ android {
         versionName = appVersion.getProperty("VERSION_NAME")
     }
 
+    signingConfigs {
+        create("sharedDebug") {
+            // Explicitly consume the shared Android debug keystore restored in CI
+            // (~/.android/debug.keystore) instead of relying on Gradle's implicit
+            // default, which regenerates a fresh key when the file is absent.
+            storeFile = file(System.getProperty("user.home") + "/.android/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         debug {
+            signingConfig = signingConfigs.getByName("sharedDebug")
             applicationIdSuffix = ".engineering"
             versionNameSuffix = "-debug"
         }
