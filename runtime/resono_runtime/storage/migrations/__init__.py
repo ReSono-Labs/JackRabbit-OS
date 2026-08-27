@@ -42,6 +42,7 @@ from .v039_agent_deliveries import apply as apply_v039
 from .v040_goal_provenance_and_delivery_lease import apply as apply_v040
 from .v041_goal_verification_contract import apply as apply_v041
 from .v042_domain_memory import apply as apply_v042
+from .v043_mcp_connection_routing import apply as apply_v043
 
 
 @dataclass(frozen=True, slots=True)
@@ -89,5 +90,6 @@ MIGRATIONS = (
     Migration(40, apply_v040),
     Migration(41, apply_v041),
     Migration(42, apply_v042),
+    Migration(43, apply_v043),
 )
 LATEST_VERSION = MIGRATIONS[-1].version

@@ -62,6 +62,7 @@ from .tools.tasks import TASKS_TOOL_SET, TasksToolPackage
 from .api.task_routes import TaskRoutes
 from .storage.connection_credentials import ConnectionCredentialRepository
 from .storage.mcp_connections import McpConnectionRepository
+from .storage.mcp_routing import McpRoutingRepository
 from .connections.records import ConnectionRepository
 from .providers.openai.web_search import OpenAIWebSearch
 from .tools.web_search import WEB_SEARCH_TOOL_SET, register_web_search
@@ -236,6 +237,7 @@ class RuntimeApplication:
             self._tools,
             ConnectionCredentialRepository(self._database),
             connection_envelopes,
+            McpRoutingRepository(self._database),
         )
         self._mcp_routes = McpRoutes(self._outbound_mcp)
         self._tool_routes = ToolRoutes(self._tools)

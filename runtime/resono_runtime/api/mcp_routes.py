@@ -82,6 +82,12 @@ class McpRoutes:
                     raise ValueError("credentialHeaders must be an object.")
                 self._lifecycle.set_credentials(connection_id, headers)
                 item = self._lifecycle.get(connection_id)
+            elif action == "select":
+                audience_value = payload.get("audience")
+                if not isinstance(audience_value, str) or audience_value not in {"voice", "text", "both"}:
+                    raise ValueError("audience must be one of voice, text, both.")
+                self._lifecycle.select_connection(AgentAudience(audience_value), connection_id)
+                item = self._lifecycle.get(connection_id)
             else:
                 raise ValueError("MCP action is unsupported.")
             request.respond_json(200, _view(item, self._lifecycle))
@@ -117,6 +123,7 @@ def _view(item: object, lifecycle: McpLifecycle) -> dict[str, object]:
         "serverName": item.server_name,
         "serverVersion": item.server_version,
         "lastDiscoveredAt": item.last_discovered_at,
+        "activeAudiences": [audience.value for audience in lifecycle.audiences_for(item.connection_id)],
         "tools": [
             {"name": tool.tool_name, "exposedName": tool.exposed_name, "description": tool.description, "enabled": tool.enabled, "effect": tool.effect_class}
             for tool in lifecycle.tools(item.connection_id)

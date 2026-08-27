@@ -15,8 +15,9 @@ from ..connections.records import ConnectionRepository
 from ..security.credentials import ConnectionCredentialEnvelopes
 from ..storage.connection_credentials import ConnectionCredentialRepository
 from ..storage.mcp_connections import McpConnectionRepository, StoredMcpConnection, StoredMcpTool
+from ..storage.mcp_routing import McpRoutingRepository
 from ..tools import ToolCatalog, ToolDefinition, ToolInvocationResult
-from .client import McpConnectionError, StreamableHttpMcpClient
+from .client import SUPPORTED_TRANSPORTS, McpConnectionError, McpTransportClient, client_for
 from .connections import McpConnectionConfiguration, validate_connection_configuration
 from .tool_adapter import normalize_tools
 
@@ -32,6 +33,7 @@ class McpLifecycle:
         tools: ToolCatalog,
         credential_repository: ConnectionCredentialRepository,
         credential_envelopes: ConnectionCredentialEnvelopes,
+        routing: McpRoutingRepository,
     ) -> None:
         self._repository = repository
         self._connections = connections
@@ -39,6 +41,7 @@ class McpLifecycle:
         self._tools = tools
         self._credential_repository = credential_repository
         self._credential_envelopes = credential_envelopes
+        self._routing = routing
 
     def restore(self) -> None:
         for connection in self._repository.list():
@@ -84,7 +87,7 @@ class McpLifecycle:
                 json.dumps(_credential_headers(credential_headers), sort_keys=True, separators=(",", ":")),
             )
         digest = hashlib.sha256(_canonical(configuration)).hexdigest()
-        supported = parsed.transport == "streamable-http"
+        supported = parsed.transport in SUPPORTED_TRANSPORTS
         record = StoredMcpConnection(
             connection_id=connection_id,
             display_name=display_name.strip(),
@@ -115,10 +118,11 @@ class McpLifecycle:
     def discover(self, connection_id: str, *, changed_by: str, reason: str) -> StoredMcpConnection:
         record = self._required(connection_id)
         configuration = validate_connection_configuration(record.configuration)
-        if configuration.transport != "streamable-http":
-            raise ValueError("Only Streamable HTTP MCP discovery is supported.")
-        client = self._client(connection_id, configuration)
+        if configuration.transport not in SUPPORTED_TRANSPORTS:
+            raise ValueError("MCP transport is not supported by this build.")
+        client = None
         try:
+            client = self._client(connection_id, configuration)
             initialized = client.initialize()
             discovered = normalize_tools(connection_id, client.discover_tools())
         except McpConnectionError as error:
@@ -128,7 +132,8 @@ class McpLifecycle:
             self._project(failed)
             raise
         finally:
-            client.close()
+            if client is not None:
+                client.close()
         stored = tuple(
             StoredMcpTool(
                 connection_id=connection_id,
@@ -163,8 +168,8 @@ class McpLifecycle:
 
     def set_enabled(self, connection_id: str, enabled: bool, *, changed_by: str, reason: str) -> StoredMcpConnection:
         record = self._required(connection_id)
-        if enabled and record.transport != "streamable-http":
-            raise ValueError("This MCP transport is not supported by this build.")
+        if enabled and record.transport not in SUPPORTED_TRANSPORTS:
+            raise ValueError("MCP transport is not supported by this build.")
         state = "connected" if enabled else "disabled"
         saved = self._repository.save(self._state(record, state, None), action=state, changed_by=changed_by, reason=reason)
         self._save_connection_projection(
@@ -182,7 +187,20 @@ class McpLifecycle:
             self._audiences.remove_resource(self._resource(connection_id), changed_by=changed_by, reason=reason)
             self._connections.remove(connection_id)
             self._credential_repository.delete(connection_id)
+            self._routing.remove_connection(connection_id)
         return removed
+
+    def select_connection(self, audience: AgentAudience, connection_id: str) -> str:
+        record = self._required(connection_id)
+        if record.lifecycle_state == "failed":
+            raise ValueError("Failed MCP connections cannot be routed.")
+        return self._routing.select(audience, connection_id)
+
+    def active_connection(self, audience: AgentAudience) -> str | None:
+        return self._routing.active(audience)
+
+    def audiences_for(self, connection_id: str) -> tuple[AgentAudience, ...]:
+        return self._routing.audiences_for(connection_id)
 
     def _save_connection_projection(
         self,
@@ -231,14 +249,14 @@ class McpLifecycle:
             audience_resource=self._resource(connection.connection_id),
         )
 
-    def _client(self, connection_id: str, configuration: McpConnectionConfiguration) -> StreamableHttpMcpClient:
+    def _client(self, connection_id: str, configuration: McpConnectionConfiguration) -> McpTransportClient:
         envelope = self._credential_repository.get_envelope(connection_id)
         headers: dict[str, str] | None = None
         if envelope is not None:
             plaintext = self._credential_envelopes.open(connection_id, envelope)
             value = json.loads(plaintext)
             headers = _credential_headers(value)
-        return StreamableHttpMcpClient(configuration, credential_headers=headers)
+        return client_for(configuration, credential_headers=headers)
 
     def _required(self, connection_id: str) -> StoredMcpConnection:
         record = self._repository.get(connection_id)
