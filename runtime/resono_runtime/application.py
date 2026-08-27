@@ -109,6 +109,7 @@ class RuntimeApplication:
         self._subscription = OpenAISubscription(credentials)
         self._catalog = ProviderCatalogRepository(self._database)
         self._sessions = SessionTranscriptRepository(self._database)
+        provider_key_repository = ProviderKeyRepository(self._database)
         self._memories = MemoryRepository(self._database)
         self._skills = SkillCatalogRepository(self._database)
         import_recovery = ImportRecovery(self._database)
@@ -282,7 +283,6 @@ class RuntimeApplication:
             CreationArchiveInspector(config.creation_quarantine_path),
             CreationDescriptorInspector(config.creation_quarantine_path),
         )
-        provider_key_repository = ProviderKeyRepository(self._database)
         self._providers = ProviderController(
             credentials=credentials,
             settings=provider_settings,
