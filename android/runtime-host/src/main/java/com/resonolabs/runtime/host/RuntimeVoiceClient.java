@@ -41,9 +41,46 @@ public final class RuntimeVoiceClient implements AutoCloseable {
         void onFailure(String reason);
     }
 
+    public interface VoiceSessionCallback {
+        void onResult(JSONObject descriptor);
+        void onFailure(String reason);
+    }
+
     public void pollCompletion(Context context, String voiceSessionId, CompletionCallback callback) {
         Context application = context.getApplicationContext();
         worker.execute(() -> requestCompletion(application, voiceSessionId, callback));
+    }
+
+    /** Start a WebSocket voice session (Gemini Live today) and return its session descriptor. */
+    public void createVoiceSession(Context context, VoiceSessionCallback callback) {
+        Context application = context.getApplicationContext();
+        worker.execute(() -> requestVoiceSession(application, callback));
+    }
+
+    private void requestVoiceSession(Context context, VoiceSessionCallback callback) {
+        HttpURLConnection connection = null;
+        try {
+            String token = new RuntimeSecretStore(context).loadLocalApiToken();
+            connection = (HttpURLConnection) new URL(
+                    "http://127.0.0.1:8765/v1/voice/sessions").openConnection();
+            connection.setRequestMethod("POST");
+            connection.setConnectTimeout(1500);
+            connection.setReadTimeout(30_000);
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.getOutputStream().write("{}".getBytes(StandardCharsets.UTF_8));
+            int status = connection.getResponseCode();
+            InputStream source = status >= 400 ? connection.getErrorStream() : connection.getInputStream();
+            JSONObject payload = new JSONObject(new String(
+                    source == null ? new byte[0] : source.readNBytes(262_144), StandardCharsets.UTF_8));
+            if (status != 200) throw new IllegalStateException("voice-session-" + status);
+            if (!closed.get()) main.post(() -> callback.onResult(payload));
+        } catch (Exception error) {
+            if (!closed.get()) main.post(() -> callback.onFailure("voice-session-unavailable"));
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
     }
 
     public void acknowledgeCompletion(Context context, String voiceSessionId, String runId) {
