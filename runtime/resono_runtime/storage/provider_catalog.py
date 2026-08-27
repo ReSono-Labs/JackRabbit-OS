@@ -10,6 +10,8 @@ class ProviderDescriptor:
     base_url: str | None = None
     api_style: str = "chat"
     key_required: bool = True
+    voice: str = "none"
+    auth_header: str | None = None
 
 
 class ProviderCatalogRepository:
@@ -31,7 +33,7 @@ class ProviderCatalogRepository:
     def providers(self) -> tuple[ProviderDescriptor, ...]:
         with self._database.connect() as connection:
             rows = connection.execute(
-                "SELECT provider_id, provider_name, base_url, api_style, key_required "
+                "SELECT provider_id, provider_name, base_url, api_style, key_required, voice, auth_header "
                 "FROM provider_directory WHERE enabled = 1 "
                 "ORDER BY sort_order ASC, provider_id ASC"
             ).fetchall()
@@ -41,7 +43,7 @@ class ProviderCatalogRepository:
         normalized = _normalize_provider(provider_id)
         with self._database.connect() as connection:
             row = connection.execute(
-                "SELECT provider_id, provider_name, base_url, api_style, key_required "
+                "SELECT provider_id, provider_name, base_url, api_style, key_required, voice, auth_header "
                 "FROM provider_directory WHERE enabled = 1 AND provider_id = ?",
                 (normalized,),
             ).fetchone()
@@ -134,4 +136,6 @@ def _descriptor(row: object) -> ProviderDescriptor:
         row["base_url"],
         str(row["api_style"]),
         bool(row["key_required"]),
+        str(row["voice"]),
+        row["auth_header"],
     )

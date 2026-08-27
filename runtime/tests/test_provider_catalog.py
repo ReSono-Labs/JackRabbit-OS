@@ -20,19 +20,23 @@ def test_catalog_seeds_providers_with_styles(tmp_path):
     assert "openai" in by_id
     assert by_id["openai"].api_style == "responses"
 
-    for provider_id, expected_url, expected_style, key_required in (
-        ("opencode-go", "https://opencode.ai/zen/go/v1", "chat", True),
-        ("opencode-zen", "https://opencode.ai/zen/v1", "chat", True),
-        ("openrouter", "https://openrouter.ai/api/v1", "chat", True),
-        ("glm", "https://api.z.ai/api/coding/paas/v4", "chat", True),
-        ("kimi", "https://api.kimi.com/coding/v1", "chat", True),
-        ("local", "http://127.0.0.1:11434/v1", "chat", False),
+    for provider_id, expected_url, expected_style, key_required, voice in (
+        ("opencode-go", "https://opencode.ai/zen/go/v1", "chat", True, "none"),
+        ("opencode-zen", "https://opencode.ai/zen/v1", "chat", True, "none"),
+        ("openrouter", "https://openrouter.ai/api/v1", "chat", True, "none"),
+        ("glm", "https://api.z.ai/api/coding/paas/v4", "chat", True, "none"),
+        ("kimi", "https://api.kimi.com/coding/v1", "chat", True, "none"),
+        ("local", "http://127.0.0.1:11434/v1", "chat", False, "none"),
+        ("gemini", "https://generativelanguage.googleapis.com/v1beta", "chat", True, "websocket"),
     ):
         descriptor = by_id.get(provider_id)
         assert descriptor is not None, f"{provider_id} not seeded"
         assert descriptor.base_url == expected_url, provider_id
         assert descriptor.api_style == expected_style, provider_id
         assert descriptor.key_required is key_required, provider_id
+        assert descriptor.voice == voice, provider_id
+    assert by_id["openai"].voice == "webrtc"
+    assert by_id["gemini"].auth_header == "x-goog-api-key"
 
 
 def test_catalog_descriptor_lookup(tmp_path):
@@ -53,7 +57,9 @@ def test_catalog_seeds_text_models_for_opencode_plans(tmp_path):
     assert "claude-opus-4-8" in zen_models
 
 
-def test_catalog_realtime_kind_stays_openai_only(tmp_path):
+def test_catalog_realtime_models(tmp_path):
     repo = _repo(tmp_path)
     assert repo.models("opencode-go", "key", "realtime") == ()
     assert repo.models("openrouter", "key", "realtime") == ()
+    gemini_realtime = repo.models("gemini", "key", "realtime")
+    assert "gemini-3.1-flash-live-preview" in gemini_realtime

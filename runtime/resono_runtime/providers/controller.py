@@ -95,6 +95,7 @@ class ProviderController:
                 connected=connected,
             )
             text_model = _select_default(models.text, selection.text_model) if connected else None
+            realtime_model = _select_default(models.realtime, selection.realtime_model) if connected else None
             return {
                 "provider": provider,
                 "providers": providers,
@@ -103,11 +104,11 @@ class ProviderController:
                 "connections": {"key": connected},
                 "models": {
                     "text": list(models.text) if connected else [],
-                    "realtime": [],
+                    "realtime": list(models.realtime) if connected else [],
                 },
                 "selection": {
                     "text": text_model,
-                    "realtime": None,
+                    "realtime": realtime_model,
                     "reasoning": selection.reasoning_effort,
                 },
             }
@@ -244,6 +245,7 @@ class ProviderController:
             descriptor.base_url,
             key.strip(),
             api_style=descriptor.api_style,
+            auth_header=descriptor.auth_header,
         )
         try:
             models = candidate.list_models()
@@ -253,15 +255,25 @@ class ProviderController:
             provider_id,
             self._credential_envelopes.seal_provider_key(provider_id, key.strip()),
         )
-        self._models = ProviderModels(tuple(models), ())
         selection = self._settings.selection()
         catalog_models = self._catalog_models("key", provider_id)
-        text_model = _select_default(
-            tuple(models),
-            selection.text_model,
-            preferred=catalog_models.text[0] if catalog_models.text else None,
-        )
-        self._settings.save(text_model=text_model, realtime_model=None)
+        voice_capability = getattr(descriptor, "voice", "none")
+        if voice_capability == "websocket":
+            # Voice-only provider (Gemini Live): no text models today.
+            self._models = ProviderModels((), catalog_models.realtime)
+            self._settings.save(
+                text_model=None,
+                realtime_model=_select_default(catalog_models.realtime, selection.realtime_model),
+            )
+        else:
+            self._models = ProviderModels(tuple(models), ())
+            text_model = _select_default(
+                tuple(models),
+                selection.text_model,
+                preferred=catalog_models.text[0] if catalog_models.text else None,
+            )
+            realtime_model = _select_default(catalog_models.realtime, selection.realtime_model)
+            self._settings.save(text_model=text_model, realtime_model=realtime_model)
         self._settings.save_access_path("key")
         self._events.publish("provider.connected", {"provider": provider_id, "accessPath": "key"})
         self._log.info("provider.key_connected", extra={"provider": provider_id, "models": len(models)})
@@ -306,18 +318,25 @@ class ProviderController:
                 raise OpenAIProviderError(
                     "credential_unavailable", f"Connect {provider} first.", status=409
                 )
+            descriptor = self._descriptor(provider)
+            models = self._catalog_models("key", provider)
+            if self._models.text and getattr(descriptor, "voice", "none") != "websocket":
+                models = self._models
+            supports_realtime = getattr(descriptor, "voice", "none") == "websocket"
             if realtime_model is not None:
-                raise OpenAIProviderError(
-                    "realtime_unavailable",
-                    "Realtime models are only available with OpenAI.",
-                    status=400,
-                )
-            models = self._models if self._models.text else self._catalog_models("key", provider)
+                if not supports_realtime:
+                    raise OpenAIProviderError(
+                        "realtime_unavailable",
+                        "Realtime models are only available on voice providers.",
+                        status=400,
+                    )
+                if realtime_model not in models.realtime:
+                    raise OpenAIProviderError("unsupported_model", "Select an available realtime model.", status=400)
             if text_model is not None and text_model not in models.text:
                 raise OpenAIProviderError("unsupported_model", "Select an available text model.", status=400)
             self._settings.save(
-                text_model=text_model,
-                realtime_model=None,
+                text_model=text_model if text_model is not None or supports_realtime else text_model,
+                realtime_model=realtime_model if supports_realtime else None,
                 reasoning_effort=reasoning_effort,
             )
             self._events.publish("provider.models_selected", {"provider": provider})
@@ -423,25 +442,10 @@ class ProviderController:
         self._events.publish("provider.access_selected", {"provider": "openai", "accessPath": access_path})
         return self.status()
 
-    def create_realtime_call(self, offer_sdp: str) -> RealtimeCall:
-        self._assert_active_provider()
-        if _normalize_provider(self._settings.selection().provider) != "openai":
-            raise OpenAIProviderError(
-                "realtime_unavailable",
-                "Voice calls are only available with OpenAI in this build.",
-                status=409,
-            )
-        selection = self._settings.selection()
-        if selection.access_path == "subscription":
-            if self._subscription is None:
-                raise OpenAIProviderError("credential_unavailable", "Connect ChatGPT first.", status=409)
-            access_token = self._subscription.access_token()
-        else:
-            if not self._credentials.has_platform_key():
-                raise OpenAIProviderError("credential_unavailable", "Connect OpenAI first.", status=409)
-            access_token = self._credentials.platform_key()
-        if not selection.realtime_model:
-            raise OpenAIProviderError("model_required", "Choose a Realtime model first.", status=409)
+    def _voice_session_prep(
+        self,
+    ) -> tuple[str, str, tuple[dict[str, object], ...] | None, tuple[dict[str, object], ...]]:
+        """Mint the voice session id and assemble memory/tool context shared by every transport."""
         # The voice session id is minted server-side before the call so the
         # session-start memory context can exclude this session when selecting
         # the previous session summary, and so the client can post the captured
@@ -471,6 +475,103 @@ class ProviderController:
             tool_definitions = self._voice_tools()
         elif self._memory_lookup_tool_def is not None:
             extra_tools = (self._memory_lookup_tool_def,)
+        return session_id, instructions_extra, tool_definitions, extra_tools
+
+    def create_voice_session(self) -> dict[str, object]:
+        """Start a WebSocket voice session for the active provider (Gemini Live today)."""
+        self._assert_active_provider()
+        provider = _normalize_provider(self._settings.selection().provider)
+        descriptor = self._descriptor(provider)
+        if descriptor.voice != "websocket":
+            raise OpenAIProviderError(
+                "realtime_unavailable",
+                "This provider does not support WebSocket voice sessions.",
+                status=409,
+            )
+        selection = self._settings.selection()
+        key = self._provider_key_value(provider)
+        if not key:
+            raise OpenAIProviderError("credential_unavailable", f"Connect {provider} first.", status=409)
+        if not selection.realtime_model:
+            raise OpenAIProviderError("model_required", "Choose a realtime model first.", status=409)
+        session_id, instructions_extra, tool_definitions, extra_tools = self._voice_session_prep()
+        full_instructions = "\n\n".join(
+            value for value in (PRIMARY_VOICE_INSTRUCTION, instructions_extra) if value
+        )
+        try:
+            from ..providers.gemini.live import AUDIO_IN_MIME, AUDIO_OUT_MIME, build_setup, session_url
+
+            if self._voice_modes is not None:
+                self._voice_modes.open_session(
+                    session_id,
+                    primary_instructions=full_instructions,
+                    primary_tools=(
+                        self._voice_tools
+                        if self._voice_tools is not None
+                        else lambda: extra_tools
+                    ),
+                    goal_intake_tools=(
+                        self._goal_intake_tools
+                        if self._goal_intake_tools is not None
+                        else lambda: ()
+                    ),
+                )
+            setup = build_setup(
+                model=selection.realtime_model,
+                instructions=full_instructions,
+                tool_definitions=tool_definitions if tool_definitions is not None else (),
+            )
+            url = session_url(key)
+        except Exception:
+            if self._voice_modes is not None:
+                self._voice_modes.close_session(session_id)
+            raise
+        self._events.publish(
+            "voice.connecting",
+            {"provider": provider, "model": selection.realtime_model},
+        )
+        self._events.publish(
+            "voice.session_created",
+            {"provider": provider, "model": selection.realtime_model, "sessionId": session_id},
+        )
+        with self._active_sessions_lock:
+            self._active_sessions.add(session_id)
+        greeting = self._profile.connect_greeting_event() if self._profile else None
+        self._log.info(
+            "provider.voice_session_created",
+            extra={"provider": provider, "transport": "websocket", "model": selection.realtime_model},
+        )
+        return {
+            "transport": "websocket",
+            "provider": provider,
+            "model": selection.realtime_model,
+            "url": url,
+            "setup": setup,
+            "audio": {"input": {"mimeType": AUDIO_IN_MIME}, "output": {"mimeType": AUDIO_OUT_MIME}},
+            "sessionId": session_id,
+            "connectGreetingEvent": greeting,
+        }
+
+    def create_realtime_call(self, offer_sdp: str) -> RealtimeCall:
+        self._assert_active_provider()
+        if _normalize_provider(self._settings.selection().provider) != "openai":
+            raise OpenAIProviderError(
+                "realtime_unavailable",
+                "Voice calls are only available with OpenAI in this build.",
+                status=409,
+            )
+        selection = self._settings.selection()
+        if selection.access_path == "subscription":
+            if self._subscription is None:
+                raise OpenAIProviderError("credential_unavailable", "Connect ChatGPT first.", status=409)
+            access_token = self._subscription.access_token()
+        else:
+            if not self._credentials.has_platform_key():
+                raise OpenAIProviderError("credential_unavailable", "Connect OpenAI first.", status=409)
+            access_token = self._credentials.platform_key()
+        if not selection.realtime_model:
+            raise OpenAIProviderError("model_required", "Choose a Realtime model first.", status=409)
+        session_id, instructions_extra, tool_definitions, extra_tools = self._voice_session_prep()
         self._events.publish(
             "voice.connecting",
             {"provider": "openai", "model": selection.realtime_model},
@@ -632,19 +733,23 @@ class ProviderController:
         if access_path == "subscription":
             return self._catalog_models("subscription", provider) if connected else ProviderModels((), ())
         if access_path == "key":
+            descriptor = self._descriptor(provider) if connected else None
             if connected and (refresh or not self._models.text):
-                descriptor = self._descriptor(provider)
                 try:
                     live = CompatibleProvider(
                         descriptor.base_url,
                         self._provider_key_value(provider),
                         api_style=descriptor.api_style,
+                        auth_header=descriptor.auth_header,
                     ).list_models()
                 except CompatibleProviderError:
                     live = ()
                 self._models = ProviderModels(tuple(live), ())
             if not connected:
                 return ProviderModels((), ())
+            if getattr(descriptor, "voice", "none") == "websocket":
+                # Voice-only provider: catalog realtime models; no text models.
+                return ProviderModels((), self._catalog_models("key", provider).realtime)
             if self._models.text:
                 return self._models
             return self._catalog_models("key", provider)

@@ -13,8 +13,9 @@ MODELS = ("deepseek-v4-pro", "deepseek-v4-flash", "glm-5.2")
 class FakeCompatibleServer:
     """Serves GET /models and POST /v1/chat/completions (echo)."""
 
-    def __init__(self, *, require_key: bool = True) -> None:
+    def __init__(self, *, require_key: bool = True, auth_header: str | None = None) -> None:
         self.require_key = require_key
+        self.auth_header = auth_header
         self._server = ThreadingHTTPServer(("127.0.0.1", 0), self._make_handler())
         self._server.daemon_threads = True
         self._thread = threading.Thread(target=self._server.serve_forever, daemon=True)
@@ -29,7 +30,11 @@ class FakeCompatibleServer:
                 pass
 
             def _authorized(self) -> bool:
-                return (not impl.require_key) or self.headers.get("Authorization") == f"Bearer {VALID_KEY}"
+                if not impl.require_key:
+                    return True
+                header = impl.auth_header or "Authorization"
+                expected = f"Bearer {VALID_KEY}" if impl.auth_header is None else VALID_KEY
+                return self.headers.get(header) == expected
 
             def do_GET(self):
                 if self.path.split("?")[0].endswith("/models"):

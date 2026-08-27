@@ -295,6 +295,13 @@ class RuntimeRoutes:
             else:
                 req.respond_json(result.status, result.payload, headers=headers)
             return
+        if path == "/v1/voice/sessions" and providers is not None:
+            try:
+                session = providers.create_voice_session()
+                req.respond_json(200, session)
+            except OpenAIProviderError as error:
+                req.provider_error(error)
+            return
         if path == "/v1/voice/calls" and providers is not None:
             payload = req.request_json(max_bytes=300_000)
             if payload is None:

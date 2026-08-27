@@ -33,6 +33,7 @@ class CompatibleProvider:
         *,
         api_style: str = "chat",
         timeout: float = REQUEST_TIMEOUT,
+        auth_header: str | None = None,
     ) -> None:
         parsed = urlsplit(base_url)
         if parsed.scheme not in {"http", "https"} or not parsed.hostname:
@@ -44,12 +45,15 @@ class CompatibleProvider:
         self._parsed = parsed
         self._api_key = api_key
         self._timeout = timeout
+        self._auth_header = auth_header
 
     def list_models(self) -> tuple[str, ...]:
         connection = self._connection()
         headers = {"Accept": "application/json"}
         if self._api_key:
-            headers["Authorization"] = f"Bearer {self._api_key}"
+            headers[self._auth_header or "Authorization"] = (
+                self._api_key if self._auth_header else f"Bearer {self._api_key}"
+            )
         try:
             connection.request("GET", self._path("/models"), headers=headers)
             response = connection.getresponse()
