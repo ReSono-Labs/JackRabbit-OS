@@ -149,8 +149,6 @@ class RuntimeApplication:
             lookup=self._memory_lookup_tool,
             memories=self._memories,
             sessions=self._sessions,
-            provider_keys=provider_key_repository,
-            credential_envelopes=connection_envelopes,
         ))
         self._tools.register(self._skill_activation.tool_definition())
         self._mail_repository = MailRepository(self._database)
@@ -301,6 +299,8 @@ class RuntimeApplication:
             ),
             voice_skill_instructions=self._instruction_documents.voice_instructions,
             voice_modes=self._voice_modes,
+            credential_envelopes=connection_envelopes,
+            provider_keys=provider_key_repository,
         )
         self._text_runner = AgentsSdkTextRunner(
             credentials=credentials,
