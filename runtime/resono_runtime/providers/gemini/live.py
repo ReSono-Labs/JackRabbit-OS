@@ -57,11 +57,11 @@ def build_setup(
     if vad == "CLIENT_AUTOMATIC":
         speech_config["audioVad"] = {"useClientImprovedAudioVad": True}
     setup: dict[str, object] = {
-        "model": model,
+        # BidiGenerateContent requires the "models/" resource prefix.
+        "model": model if model.startswith("models/") else f"models/{model}",
         "generationConfig": {
             "responseModalities": ["AUDIO"],
             "speechConfig": speech_config,
-            "mediaResolution": {"maxSampleRate": 24000},
         },
         "systemInstruction": {"parts": [{"text": instructions}]} if instructions else None,
     }
@@ -94,15 +94,21 @@ def function_declarations(tool_definitions: tuple[dict[str, object], ...]) -> li
 
 
 def realtime_audio_frame(chunk_b64: str, *, mime: str = AUDIO_IN_MIME) -> dict[str, object]:
+    """One realtime audio input frame (Blob shape; mediaChunks is deprecated)."""
     return {
         "realtimeInput": {
-            "mediaChunks": [{"mimeType": mime, "data": chunk_b64}]
+            "audio": {"mimeType": mime, "data": chunk_b64}
         }
     }
 
 
 def audio_stream_end() -> dict[str, object]:
     return {"realtimeInput": {"audioStreamEnd": True}}
+
+
+def realtime_text_frame(text: str) -> dict[str, object]:
+    """Text input over the live channel (real-time text stream)."""
+    return {"realtimeInput": {"text": text}}
 
 
 def tool_response(function_id: str, name: str, response: object) -> dict[str, object]:
@@ -162,6 +168,13 @@ def parse_server_message(payload: dict[str, object]) -> dict[str, object]:
             "text": "\n".join(text_parts),
             "function_calls": calls,
             "grounding": isinstance(content.get("groundingMetadata"), dict),
+        }
+    if "sessionResumptionUpdate" in payload:
+        details = payload["sessionResumptionUpdate"]
+        return {
+            "type": "session_resumption",
+            "handle": str(details.get("newHandle")) if isinstance(details, dict) else "",
+            "resumable": bool(details.get("resumable", False)) if isinstance(details, dict) else False,
         }
     if "goAway" in payload:
         details = payload["goAway"]

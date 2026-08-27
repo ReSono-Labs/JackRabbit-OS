@@ -41,7 +41,7 @@ def test_build_setup_shape_with_tools_and_instructions():
         ),
     )
     inner = setup["setup"]
-    assert inner["model"] == "gemini-3.1-flash-live-preview"
+    assert inner["model"] == "models/gemini-3.1-flash-live-preview"
     assert inner["generationConfig"]["responseModalities"] == ["AUDIO"]
     assert inner["systemInstruction"]["parts"][0]["text"] == "You are terse."
     assert inner["tools"][0]["functionDeclarations"][0]["name"] == "get_device_status"
@@ -66,7 +66,8 @@ def test_function_declarations_dedupes_and_skips_empty():
 
 def test_client_frame_builders():
     frame = realtime_audio_frame(base64.b64encode(b"x" * 16).decode())
-    assert frame["realtimeInput"]["mediaChunks"][0]["mimeType"] == AUDIO_IN_MIME
+    assert frame["realtimeInput"]["audio"]["mimeType"] == AUDIO_IN_MIME
+    assert frame["realtimeInput"]["audio"]["data"]
     assert audio_stream_end() == {"realtimeInput": {"audioStreamEnd": True}}
     response = tool_response("id-1", "get_device_status", {"ok": True})
     assert response["toolResponse"]["functionResponses"][0]["name"] == "get_device_status"

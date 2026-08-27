@@ -245,7 +245,7 @@ public final class WebSocketVoicePeer {
             try {
                 chunk.put("mimeType", "audio/pcm;rate=16000");
                 chunk.put("data", Base64.encodeToString(buffer, 0, read, Base64.NO_WRAP));
-                input.put("mediaChunks", new JSONArray().put(chunk));
+                input.put("audio", chunk); // Blob shape; mediaChunks is deprecated
                 frame.put("realtimeInput", input);
             } catch (JSONException error) {
                 continue;
