@@ -29,6 +29,8 @@ public final class VoicePageView extends View implements AutoCloseable, VoiceSes
     private final VoiceSessionStateTracker sessionState = new VoiceSessionStateTracker();
     private RuntimeVoiceClient runtimeClient;
     private NativeVoicePeer peer;
+    private WebSocketVoicePeer wsPeer;
+    private String transport = "webrtc";
     private String transcript = "Tap to start a conversation";
     private String failure = "";
     private JSONObject pendingConnectGreeting;
