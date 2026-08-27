@@ -1,0 +1,59 @@
+name: Publish APK builder image
+
+# Builds android/Dockerfile (the pinned Linux toolchain for debug APK builds)
+# and publishes it to ghcr.io. Run manually after a toolchain bump; also runs
+# on main when the Dockerfile or this workflow changes.
+#
+# The image contains no signing material by design: the debug keystore is
+# mounted read-only at runtime (see apk-build.yml and BUILDING.md).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - android/Dockerfile
+      - .dockerignore
+      - .github/workflows/apk-builder-image.yml
+
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: android/Dockerfile
+          # amd64 only: the Chaquopy build Python is released for linux x86_64
+          # (this is also the GitHub runner arch). Apple Silicon Macs run the
+          # amd64 image through Docker's emulation, which is fine for builds.
+          platforms: linux/amd64
+          push: true
+          build-args: IMAGE_VERSION=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # v1 is an immutable tag: bump v1 -> v2 here after toolchain
+          # changes, then update APK_BUILDER_IMAGE in apk-build.yml.
+          tags: |
+            ghcr.io/resono-labs/jackrabbit-apk-builder:sha-${{ github.sha }}
+            ghcr.io/resono-labs/jackrabbit-apk-builder:v1
+            ghcr.io/resono-labs/jackrabbit-apk-builder:latest
