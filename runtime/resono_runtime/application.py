@@ -59,6 +59,7 @@ from .connectors.calendar import CaldavCalendarProviderClient, IcsCalendarProvid
 from .tools.calendar import CALENDAR_TOOL_SET, CalendarToolPackage
 from .domains.tasks import TaskRepository, TaskService
 from .tools.tasks import TASKS_TOOL_SET, TasksToolPackage
+from .companion_sync import CompanionSync
 from .api.task_routes import TaskRoutes
 from .storage.connection_credentials import ConnectionCredentialRepository
 from .storage.mcp_connections import McpConnectionRepository
@@ -167,6 +168,10 @@ class RuntimeApplication:
         self._task_repository = TaskRepository(self._database)
         self._task_service = TaskService(self._task_repository)
         self._task_routes = TaskRoutes(self._task_repository)
+        self._companion_sync = CompanionSync(
+            self._task_repository,
+            settings_path=config.user_workspace_path / "companion.json",
+        )
         TasksToolPackage(self._task_service).register(self._tools)
         self._connections = ConnectionRepository(self._database)
         self._connection_routes = ConnectionRoutes(self._connections)
@@ -441,6 +446,7 @@ class RuntimeApplication:
         self._background_agent.start()
         self._mail_scheduler.start()
         self._calendar_scheduler.start()
+        self._companion_sync.start()
         self._events.publish(
             "runtime.ready",
             {"status": "ready", "startCount": int(record.value)},
@@ -452,6 +458,7 @@ class RuntimeApplication:
         self._background_agent.stop()
         self._mail_scheduler.stop()
         self._calendar_scheduler.stop()
+        self._companion_sync.stop()
         if self._server is not None:
             self._server.stop()
             self._server = None

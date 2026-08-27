@@ -3,6 +3,7 @@ package com.resonolabs.feature.voice;
 import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
+import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.os.Handler;
 import android.os.Looper;
@@ -39,6 +40,7 @@ public final class NativeVoicePeer {
 
     private static final Object FACTORY_LOCK = new Object();
     private static boolean initialized;
+    private static final int PCM_SAMPLE_RATE = 24_000;
 
     private final Context context;
     private final Listener listener;
@@ -52,6 +54,7 @@ public final class NativeVoicePeer {
     private DataChannel dataChannel;
     private AudioManager audioManager;
     private AudioFocusRequest audioFocusRequest;
+    private android.media.AudioTrack pcmTrack;
     private int previousAudioMode = AudioManager.MODE_NORMAL;
     private boolean previousSpeakerphoneOn;
     private boolean closed;
@@ -107,6 +110,10 @@ public final class NativeVoicePeer {
 
             DataChannel.Init init = new DataChannel.Init();
             init.ordered = true;
+            // The Voice backends (product /realtime/wm and Codex AVAS) expect a
+            // pre-negotiated stream id 0; in-band negotiation gets the channel closed.
+            init.negotiated = true;
+            init.id = 0;
             dataChannel = peer.createDataChannel("oai-events", init);
             if (dataChannel == null) throw new IllegalStateException("data channel creation failed");
             dataChannel.registerObserver(new DataObserver());
@@ -121,43 +128,212 @@ public final class NativeVoicePeer {
             fail("answer-invalid");
             return;
         }
+        applyAnswerVariant(sdp, "original");
+    }
+
+    /**
+     * The AVAS broker answer fails to parse in the M144 WebRTC SDK
+     * ("SessionDescription is NULL."), while the structurally identical realtime
+     * 2.1 answer parses. On failure we retry with bisected variants to isolate
+     * the offending attribute.
+     */
+    private void applyAnswerVariant(String sdp, String label) {
+        if (closed || peer == null) {
+            fail("answer-rejected");
+            return;
+        }
+        Log.i(LOG_TAG, "applying remote answer variant=" + label + " len=" + sdp.length());
         peer.setRemoteDescription(new SimpleSdpObserver() {
             @Override
             public void onSetSuccess() {
-                Log.i(LOG_TAG, "remote WebRTC answer accepted");
+                Log.i(LOG_TAG, "remote WebRTC answer accepted variant=" + label);
             }
 
             @Override
             public void onSetFailure(String error) {
-                Log.w(LOG_TAG, "remote WebRTC answer rejected");
+                Log.w(LOG_TAG, "remote WebRTC answer rejected variant=" + label + " error=" + error);
+                String next = nextVariant(sdp, label);
+                if (next != null) {
+                    applyAnswerVariant(next, nextLabel(label));
+                    return;
+                }
                 fail("answer-rejected");
             }
         }, new SessionDescription(SessionDescription.Type.ANSWER, sdp));
     }
 
-    public boolean sendRealtimeEvent(JSONObject event) {
-        if (closed || dataChannel == null || dataChannel.state() != DataChannel.State.OPEN) return false;
-        byte[] bytes = event.toString().getBytes(StandardCharsets.UTF_8);
-        return dataChannel.send(new DataChannel.Buffer(ByteBuffer.wrap(bytes), false));
+    private static String nextVariant(String sdp, String label) {
+        String nl = sdp.contains("\r\n") ? "\r\n" : "\n";
+        switch (label) {
+            case "original":
+                // The runtime strips the trailing CRLF from the broker answer
+                // while the realtime-2.1 path preserves it; the M144 parser
+                // rejects an SDP without a final line terminator.
+                return sdp.endsWith(nl) ? null : sdp + nl;
+            case "trailing-nl":
+                return sdp.replace("a=setup:passive", "a=setup:active");
+            case "flip-active":
+                return sdp.replaceAll("(?m)^a=setup:[a-zA-Z]+\r?\n", "");
+            case "strip-setup": {
+                // Remove the a=sendrecv line from the application (SCTP) section only.
+                int idx = sdp.indexOf("m=application");
+                if (idx <= 0) return null;
+                String head = sdp.substring(0, idx);
+                String tail = sdp.substring(idx);
+                String stripped = tail.replace(nl + "a=sendrecv" + nl, nl);
+                if (stripped.equals(tail)) return null;
+                return head + stripped;
+            }
+            case "app-no-sendrecv": {
+                // Remove setup + sendrecv from the application section.
+                int idx = sdp.indexOf("m=application");
+                if (idx <= 0) return null;
+                String head = sdp.substring(0, idx);
+                String tail = sdp.substring(idx);
+                String stripped = tail
+                        .replaceAll("(?m)^a=setup:[a-zA-Z]+\r?\n", "")
+                        .replace(nl + "a=sendrecv" + nl, nl);
+                if (stripped.equals(tail)) return null;
+                return head + stripped;
+            }
+            case "app-min": {
+                // Keep only the essential SCTP attributes.
+                int idx = sdp.indexOf("m=application");
+                if (idx <= 0) return null;
+                String head = sdp.substring(0, idx);
+                String tail = sdp.substring(idx);
+                String stripped = tail
+                        .replaceAll("(?m)^a=setup:[a-zA-Z]+\r?\n", "")
+                        .replace(nl + "a=sendrecv" + nl, nl)
+                        .replaceAll("(?m)^a=candidate:.*\r?\n", "");
+                if (stripped.equals(tail)) return null;
+                return head + stripped;
+            }
+            case "app-no-sctp": {
+                // Drop sctp-port and max-message-size from the application section.
+                int idx = sdp.indexOf("m=application");
+                if (idx <= 0) return null;
+                String head = sdp.substring(0, idx);
+                String tail = sdp.substring(idx);
+                String stripped = tail
+                        .replaceAll("(?m)^a=sctp-port:.*\r?\n", "")
+                        .replaceAll("(?m)^a=max-message-size:.*\r?\n", "");
+                if (stripped.equals(tail)) return null;
+                return head + stripped;
+            }
+            default:
+                return null;
+        }
     }
+
+    private static String nextLabel(String label) {
+        switch (label) {
+            case "original": return "trailing-nl";
+            case "trailing-nl": return "flip-active";
+            case "flip-active": return "strip-setup";
+            case "strip-setup": return "app-no-sendrecv";
+            case "app-no-sendrecv": return "app-min";
+            case "app-min": return "app-no-sctp";
+            case "app-no-sctp": return "audio-only";
+            case "audio-only": return "no-candidates";
+            case "no-candidates": return "no-ssrc";
+            case "no-ssrc": return "no-extmap";
+            case "no-extmap": return "no-rtcp-rsize";
+            default: return "";
+        }
+    }
+
+    /**
+     * AVAS (gpt-live-1) streams model audio as base64 PCM 24 kHz mono
+     * {@code output_audio.delta} events over the data channel instead of RTP,
+     * so it is decoded here and played through a dedicated AudioTrack.
+     */
+    public synchronized void playPcm(byte[] pcm) {
+        if (closed || pcm == null || pcm.length == 0) return;
+        try {
+            if (pcmTrack == null) {
+                int minBuf = android.media.AudioTrack.getMinBufferSize(
+                        PCM_SAMPLE_RATE, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT);
+                pcmTrack = new android.media.AudioTrack.Builder()
+                        .setAudioAttributes(new AudioAttributes.Builder()
+                                .setUsage(AudioAttributes.USAGE_MEDIA)
+                                .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                                .build())
+                        .setAudioFormat(new AudioFormat.Builder()
+                                .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+                                .setSampleRate(PCM_SAMPLE_RATE)
+                                .setChannelMask(AudioFormat.CHANNEL_OUT_MONO)
+                                .build())
+                        .setBufferSizeInBytes(Math.max(minBuf * 4, 8192))
+                        .setTransferMode(android.media.AudioTrack.MODE_STREAM)
+                        .build();
+                pcmTrack.play();
+            }
+            if (pcmTrack.getPlayState() != android.media.AudioTrack.PLAYSTATE_PLAYING) pcmTrack.play();
+            pcmTrack.write(pcm, 0, pcm.length);
+        } catch (Exception exception) {
+            Log.w(LOG_TAG, "PCM playback failed: " + exception);
+        }
+    }
+
+    public boolean sendRealtimeEvent(JSONObject event) {
+        if (closed || dataChannel == null || dataChannel.state() != DataChannel.State.OPEN) {
+            Log.w(LOG_TAG, "sendRealtimeEvent dropped, channel state="
+                    + (dataChannel == null ? "null" : String.valueOf(dataChannel.state())));
+            return false;
+        }
+        byte[] bytes = event.toString().getBytes(StandardCharsets.UTF_8);
+        Log.i(LOG_TAG, "-> data channel send: " + event.toString().replace("\r", " ").replace("\n", " "));
+        boolean sent = dataChannel.send(new DataChannel.Buffer(ByteBuffer.wrap(bytes), false));
+        Log.i(LOG_TAG, "-> data channel send result=" + sent);
+        return sent;
+    }
+
 
     public void close() {
         if (closed) return;
         closed = true;
         handler.removeCallbacksAndMessages(null);
         if (audioTrack != null) audioTrack.setEnabled(false);
+        if (pcmTrack != null) {
+            try {
+                pcmTrack.pause();
+                pcmTrack.flush();
+                pcmTrack.release();
+            } catch (Exception ignored) {
+            }
+            pcmTrack = null;
+        }
         if (dataChannel != null) {
             dataChannel.unregisterObserver();
             dataChannel.close();
-            dataChannel.dispose();
         }
-        if (peer != null) {
-            peer.close();
-            peer.dispose();
-        }
-        if (audioTrack != null) audioTrack.dispose();
-        if (audioSource != null) audioSource.dispose();
-        if (factory != null) factory.dispose();
+        // Teardown the native WebRTC objects off the signaling thread. The
+        // setRemoteDescription / createOffer failure callbacks run on the
+        // signaling thread; disposing peer/factory synchronously there destroys
+        // a mutex the signaling thread may still lock (FORTIFY abort: pthread
+        // mutex_lock on a destroyed mutex). Post the disposal to the main looper
+        // and let the signaling thread unwind first.
+        final DataChannel channelToDispose = dataChannel;
+        final PeerConnection peerToDispose = peer;
+        final AudioTrack trackToDispose = audioTrack;
+        final AudioSource sourceToDispose = audioSource;
+        final PeerConnectionFactory factoryToDispose = factory;
+        peer = null;
+        dataChannel = null;
+        audioTrack = null;
+        audioSource = null;
+        factory = null;
+        handler.post(() -> {
+            if (channelToDispose != null) channelToDispose.dispose();
+            if (peerToDispose != null) {
+                peerToDispose.close();
+                peerToDispose.dispose();
+            }
+            if (trackToDispose != null) trackToDispose.dispose();
+            if (sourceToDispose != null) sourceToDispose.dispose();
+            if (factoryToDispose != null) factoryToDispose.dispose();
+        });
         if (audioDevice != null) audioDevice.release();
         if (audioManager != null) {
             if (audioFocusRequest != null) audioManager.abandonAudioFocusRequest(audioFocusRequest);
@@ -184,7 +360,8 @@ public final class NativeVoicePeer {
             fail("local-sdp-missing");
             return;
         }
-        Log.i(LOG_TAG, "local WebRTC offer ready");
+        Log.i(LOG_TAG, "local WebRTC offer ready full="
+                + local.description.replace("\r\n", " | ").replace("\n", " | "));
         listener.onOffer(local.description);
     }
 
@@ -266,6 +443,8 @@ public final class NativeVoicePeer {
             ByteBuffer source = buffer.data.slice();
             byte[] bytes = new byte[source.remaining()];
             source.get(bytes);
+            Log.i(LOG_TAG, "<- data channel recv: " + new String(bytes, StandardCharsets.UTF_8)
+                    .replace("\r", " ").replace("\n", " "));
             listener.onRealtimeEvent(new String(bytes, StandardCharsets.UTF_8));
         }
     }

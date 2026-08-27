@@ -307,6 +307,9 @@ class RuntimeRoutes:
                         "sdp": call.sdp,
                         "connectGreetingEvent": call.connect_greeting_event,
                         "sessionId": call.session_id,
+                        "live": call.live,
+                        "transport": call.transport,
+                        "greetingText": call.greeting_text,
                     },
                 )
             except OpenAIProviderError as error:

@@ -59,6 +59,25 @@ class TaskRepository:
                 "taskId": task_id, "proposed": payload, "expiresAt": expires_at.isoformat(),
                 "confirmationRequired": True}
 
+    def add_synced(self, text: str) -> Task | None:
+        """Insert an open task on behalf of the companion server sync.
+
+        Uses the exact same record shape as the reviewed add flow; only the
+        entry point differs because companion additions carry no Voice review.
+        """
+        value = (text or "").strip()
+        if not value:
+            raise ValueError("text is required.")
+        now = datetime.now(UTC).isoformat()
+        task_id = str(uuid4())
+        with self._database.connect() as connection:
+            connection.execute(
+                "INSERT INTO tasks(task_id, task_text, status, created_at, updated_at) VALUES (?, ?, 'open', ?, ?)",
+                (task_id, value, now, now),
+            )
+            connection.commit()
+        return self.get(task_id)
+
     def claim(self, *, action_id: str, content_hash: str, voice_session_id: str,
               approval_utterance_id: int) -> dict[str, object]:
         now = datetime.now(UTC).isoformat()
