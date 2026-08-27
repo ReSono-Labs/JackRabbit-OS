@@ -73,7 +73,7 @@ def test_create_voice_session_returns_websocket_descriptor(controller):
     assert session["model"] == "gemini-3.1-flash-live-preview"
     assert session["url"].startswith("wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent")
     assert "key=" in session["url"]
-    assert session["setup"]["setup"]["model"] == "gemini-3.1-flash-live-preview"
+    assert session["setup"]["setup"]["model"] == "models/gemini-3.1-flash-live-preview"
     assert session["audio"]["input"]["mimeType"] == "audio/pcm;rate=16000"
     assert session["audio"]["output"]["mimeType"] == "audio/pcm;rate=24000"
     assert session["sessionId"]
