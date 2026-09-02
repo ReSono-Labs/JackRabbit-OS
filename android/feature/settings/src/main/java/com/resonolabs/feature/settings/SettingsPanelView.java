@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -63,10 +64,14 @@ public final class SettingsPanelView extends View implements UiInputTarget {
     private final ManagementOpenAiSource openAiSource;
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final WifiNetworkScanner wifiScanner;
+    private final WifiCaptivePortalMonitor wifiPortalMonitor;
     private int selected;
     private String openPage;
     private String wifiScanState = "Tap refresh to scan";
     private List<WifiNetworkScanner.Network> wifiNetworks = List.of();
+    private boolean wifiCaptivePortal;
+    private int wifiActionSelected = SettingsInputPolicy.NO_WIFI_ACTION_SELECTED;
+    private String wifiActionStatus = "";
     private String bluetoothStatus = "Ready";
     private ManagementPairingState managementState = ManagementPairingState.loading();
     private ManagementOpenAiState openAiState = ManagementOpenAiState.loading();
@@ -104,6 +109,14 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         this.wifiScanner = new WifiNetworkScanner(activity, (state, networks) -> {
             wifiScanState = state;
             wifiNetworks = List.copyOf(networks);
+            invalidate();
+        });
+        this.wifiPortalMonitor = new WifiCaptivePortalMonitor(activity, active -> {
+            if (wifiCaptivePortal != active) {
+                wifiActionSelected = SettingsInputPolicy.NO_WIFI_ACTION_SELECTED;
+            }
+            wifiCaptivePortal = active;
+            if (!active) wifiActionStatus = "";
             invalidate();
         });
         setContentDescription("In-app device settings");
@@ -191,9 +204,17 @@ public final class SettingsPanelView extends View implements UiInputTarget {
 
     private void drawWifiPage(Canvas canvas) {
         SettingValue[] values = network();
-        ReSonoTheme.text(canvas, paint, values[0].value + "  •  " + values[1].value,
+        String internet = wifiCaptivePortal ? "Sign-in required" : values[1].value;
+        ReSonoTheme.text(canvas, paint, values[0].value + "  •  " + internet,
                 24f, 91f, 20f, ReSonoTheme.MUTED, Paint.Align.LEFT, true);
-        String wifiHint = wifiNetworks.isEmpty() ? wifiScanState : "TAP A NETWORK TO CONNECT";
+        String wifiHint;
+        if (!wifiActionStatus.isBlank()) {
+            wifiHint = wifiActionStatus;
+        } else if (wifiCaptivePortal) {
+            wifiHint = "Sign-in required";
+        } else {
+            wifiHint = wifiNetworks.isEmpty() ? wifiScanState : "Tap a network to connect";
+        }
         ReSonoTheme.text(canvas, paint, wifiHint.toUpperCase(), 24f, 127f, 17f,
                 ReSonoTheme.CYAN, Paint.Align.LEFT, true);
         float top = 148f;
@@ -216,7 +237,12 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             }
             top += 59f;
         }
-        button(canvas, "SCAN AGAIN", 20f, 532f, 460f);
+        if (wifiCaptivePortal) {
+            wifiActionButton(canvas, "OPEN SIGN-IN", 20f, 232f, wifiActionSelected == 0);
+            wifiActionButton(canvas, "SCAN AGAIN", 248f, 460f, wifiActionSelected == 1);
+        } else {
+            button(canvas, "SCAN AGAIN", 20f, 532f, 460f);
+        }
     }
 
     private void drawManagementPage(Canvas canvas) {
@@ -761,6 +787,15 @@ public final class SettingsPanelView extends View implements UiInputTarget {
                 ReSonoTheme.CYAN, Paint.Align.CENTER, true);
     }
 
+    private void wifiActionButton(
+            Canvas canvas, String label, float left, float right, boolean selected) {
+        button(canvas, label, left, 532f, right);
+        if (!selected) return;
+        paint.setColor(ReSonoTheme.VIOLET);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawRoundRect(left, 546f, left + 5f, 590f, 3f, 3f, paint);
+    }
+
     private void adjustVolume(boolean increase) {
         AudioManager audio = activity.getSystemService(AudioManager.class);
         if (audio != null) audio.adjustStreamVolume(AudioManager.STREAM_MUSIC,
@@ -860,6 +895,32 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         invalidate();
     }
 
+    private void performWifiAction(SettingsInputPolicy.WifiAction action) {
+        if (action == SettingsInputPolicy.WifiAction.CONNECT_FIRST_NETWORK) {
+            if (!wifiNetworks.isEmpty()) selectNetwork(wifiNetworks.get(0));
+        } else if (action == SettingsInputPolicy.WifiAction.OPEN_SIGN_IN) {
+            openWifiSignIn();
+        } else if (action == SettingsInputPolicy.WifiAction.SCAN_AGAIN) {
+            wifiActionStatus = "";
+            wifiScanner.refresh();
+        }
+    }
+
+    private void openWifiSignIn() {
+        if (!wifiCaptivePortal) return;
+        try {
+            activity.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+            wifiActionStatus = "Opened system Wi-Fi settings";
+        } catch (ActivityNotFoundException missing) {
+            wifiActionStatus = "Wi-Fi settings unavailable";
+        } catch (SecurityException denied) {
+            wifiActionStatus = "System denied Wi-Fi settings";
+        } catch (RuntimeException failed) {
+            wifiActionStatus = "Could not open Wi-Fi settings";
+        }
+        invalidate();
+    }
+
     private static String quote(String value) { return '"' + value.replace("\"", "\\\"") + '"'; }
 
     @Override public boolean onTouchEvent(MotionEvent event) {
@@ -885,8 +946,16 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             float within = (y - networkTop) % 59f;
             if (y >= networkTop && row >= 0 && row < Math.min(6, wifiNetworks.size()) && within <= 52f) {
                 selectNetwork(wifiNetworks.get(row));
-            } else if (y >= 520f && y <= 620f) {
-                wifiScanner.refresh();
+            } else {
+                SettingsInputPolicy.WifiAction action = SettingsInputPolicy.wifiTouchAction(
+                        wifiCaptivePortal, x, y);
+                if (action != SettingsInputPolicy.WifiAction.NONE) {
+                    if (wifiCaptivePortal) {
+                        wifiActionSelected = action == SettingsInputPolicy.WifiAction.OPEN_SIGN_IN
+                                ? 0 : 1;
+                    }
+                    performWifiAction(action);
+                }
             }
         } else if ("AI".equals(openPage)) {
             boolean arrow = x >= 390f && x <= 460f;
@@ -936,8 +1005,16 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         if (openPage == null && intent == UiInputIntent.ACTIVATE) {
             activateSelectedRow(); return true;
         }
+        if ("Wi-Fi".equals(openPage) && wifiCaptivePortal
+                && (intent == UiInputIntent.PREVIOUS || intent == UiInputIntent.NEXT)) {
+            wifiActionSelected = SettingsInputPolicy.wifiSelectionAfterWheel(
+                    true, wifiActionSelected, intent);
+            invalidate();
+            return true;
+        }
         if ("Wi-Fi".equals(openPage) && intent == UiInputIntent.ACTIVATE) {
-            if (!wifiNetworks.isEmpty()) selectNetwork(wifiNetworks.get(0));
+            performWifiAction(SettingsInputPolicy.wifiActivateAction(
+                    wifiCaptivePortal, !wifiNetworks.isEmpty(), wifiActionSelected));
             return true;
         }
         if (SettingsInputPolicy.consumeWheelWithoutAdjustment(openPage, intent)) {
@@ -971,7 +1048,10 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             return;
         }
         openPage = page;
-        if ("Wi-Fi".equals(openPage)) wifiScanner.refresh();
+        if ("Wi-Fi".equals(openPage)) {
+            wifiActionSelected = SettingsInputPolicy.NO_WIFI_ACTION_SELECTED;
+            wifiScanner.refresh();
+        }
         if ("Management".equals(openPage)) refreshManagement();
         if ("AI".equals(openPage)) refreshOpenAi();
         invalidate();
@@ -984,6 +1064,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
 
     @Override protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        wifiPortalMonitor.start();
         if (bluetoothReceiverRegistered) return;
         IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         if (android.os.Build.VERSION.SDK_INT >= 33) {
@@ -996,6 +1077,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
 
     @Override protected void onDetachedFromWindow() {
         wifiScanner.close();
+        wifiPortalMonitor.close();
         if (bluetoothReceiverRegistered) {
             try { activity.unregisterReceiver(bluetoothReceiver); }
             catch (IllegalArgumentException ignored) { }
