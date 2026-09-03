@@ -211,7 +211,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
         if (!wifiActionStatus.isBlank()) {
             wifiHint = wifiActionStatus;
         } else if (wifiCaptivePortal) {
-            wifiHint = "Sign-in required";
+            wifiHint = "Sign in via system Wi-Fi";
         } else {
             wifiHint = wifiNetworks.isEmpty() ? wifiScanState : "Tap a network to connect";
         }
@@ -227,7 +227,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             String name = network.ssid().length() > 24 ? network.ssid().substring(0, 23) + "…" : network.ssid();
             ReSonoTheme.text(canvas, paint, name, 38f, top + 34f, 22f,
                     ReSonoTheme.INK, Paint.Align.LEFT, true);
-            String detail = network.connected() ? "CONNECTED" : (network.secured() ? "SECURE" : "OPEN");
+            String detail = wifiNetworkDetail(network.connected(), network.secured(), wifiCaptivePortal);
             ReSonoTheme.text(canvas, paint, detail, 425f, top + 32f, 14f,
                     network.connected() ? 0xff57d6a7 : ReSonoTheme.MUTED, Paint.Align.RIGHT, true);
             for (int bar = 0; bar < 4; bar++) {
@@ -238,11 +238,16 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             top += 59f;
         }
         if (wifiCaptivePortal) {
-            wifiActionButton(canvas, "OPEN SIGN-IN", 20f, 232f, wifiActionSelected == 0);
+            wifiActionButton(canvas, "WI-FI SETTINGS", 20f, 232f, wifiActionSelected == 0);
             wifiActionButton(canvas, "SCAN AGAIN", 248f, 460f, wifiActionSelected == 1);
         } else {
             button(canvas, "SCAN AGAIN", 20f, 532f, 460f);
         }
+    }
+
+    static String wifiNetworkDetail(boolean connected, boolean secured, boolean captivePortal) {
+        if (connected) return captivePortal ? "NEEDS SIGN-IN" : "CONNECTED";
+        return secured ? "SECURE" : "OPEN";
     }
 
     private void drawManagementPage(Canvas canvas) {

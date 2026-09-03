@@ -63,6 +63,20 @@ public final class SettingsInputPolicyTest {
         assertEquals(2, SettingsInputPolicy.wifiActionCount(true));
     }
 
+    @Test public void wifiConnectedNetworkDetailDistinguishesSignInRequired() {
+        assertEquals("NEEDS SIGN-IN", SettingsPanelView.wifiNetworkDetail(true, false, true));
+        assertEquals("NEEDS SIGN-IN", SettingsPanelView.wifiNetworkDetail(true, true, true));
+        assertEquals("CONNECTED", SettingsPanelView.wifiNetworkDetail(true, false, false));
+        assertEquals("CONNECTED", SettingsPanelView.wifiNetworkDetail(true, true, false));
+    }
+
+    @Test public void wifiDisconnectedNetworkDetailPreservesSecurityLabels() {
+        assertEquals("SECURE", SettingsPanelView.wifiNetworkDetail(false, true, false));
+        assertEquals("SECURE", SettingsPanelView.wifiNetworkDetail(false, true, true));
+        assertEquals("OPEN", SettingsPanelView.wifiNetworkDetail(false, false, false));
+        assertEquals("OPEN", SettingsPanelView.wifiNetworkDetail(false, false, true));
+    }
+
     @Test public void wifiHardwareIndexMapsToPortalActions() {
         assertEquals(SettingsInputPolicy.WifiAction.SCAN_AGAIN,
                 SettingsInputPolicy.wifiActionAt(false, 0));
