@@ -228,8 +228,11 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             ReSonoTheme.text(canvas, paint, name, 38f, top + 34f, 22f,
                     ReSonoTheme.INK, Paint.Align.LEFT, true);
             String detail = wifiNetworkDetail(network.connected(), network.secured(), wifiCaptivePortal);
+            int detailColor = wifiNeedsSignIn(network.connected(), wifiCaptivePortal)
+                    ? ReSonoTheme.AMBER
+                    : network.connected() ? 0xff57d6a7 : ReSonoTheme.MUTED;
             ReSonoTheme.text(canvas, paint, detail, 425f, top + 32f, 14f,
-                    network.connected() ? 0xff57d6a7 : ReSonoTheme.MUTED, Paint.Align.RIGHT, true);
+                    detailColor, Paint.Align.RIGHT, true);
             for (int bar = 0; bar < 4; bar++) {
                 paint.setColor(bar < network.signalLevel() ? ReSonoTheme.CYAN : 0xff3d3a4d);
                 canvas.drawRoundRect(432f + bar * 6f, top + 39f - bar * 4f,
@@ -238,7 +241,7 @@ public final class SettingsPanelView extends View implements UiInputTarget {
             top += 59f;
         }
         if (wifiCaptivePortal) {
-            wifiActionButton(canvas, "WI-FI SETTINGS", 20f, 232f, wifiActionSelected == 0);
+            wifiActionButton(canvas, "SIGN IN", 20f, 232f, wifiActionSelected == 0);
             wifiActionButton(canvas, "SCAN AGAIN", 248f, 460f, wifiActionSelected == 1);
         } else {
             button(canvas, "SCAN AGAIN", 20f, 532f, 460f);
@@ -246,8 +249,13 @@ public final class SettingsPanelView extends View implements UiInputTarget {
     }
 
     static String wifiNetworkDetail(boolean connected, boolean secured, boolean captivePortal) {
-        if (connected) return captivePortal ? "NEEDS SIGN-IN" : "CONNECTED";
+        if (wifiNeedsSignIn(connected, captivePortal)) return "NEEDS SIGN-IN";
+        if (connected) return "CONNECTED";
         return secured ? "SECURE" : "OPEN";
+    }
+
+    static boolean wifiNeedsSignIn(boolean connected, boolean captivePortal) {
+        return connected && captivePortal;
     }
 
     private void drawManagementPage(Canvas canvas) {

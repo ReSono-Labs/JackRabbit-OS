@@ -77,6 +77,13 @@ public final class SettingsInputPolicyTest {
         assertEquals("OPEN", SettingsPanelView.wifiNetworkDetail(false, false, true));
     }
 
+    @Test public void wifiSignInNeedsAttentionOnlyOnTheConnectedCaptiveNetwork() {
+        assertTrue(SettingsPanelView.wifiNeedsSignIn(true, true));
+        assertFalse(SettingsPanelView.wifiNeedsSignIn(true, false));
+        assertFalse(SettingsPanelView.wifiNeedsSignIn(false, true));
+        assertFalse(SettingsPanelView.wifiNeedsSignIn(false, false));
+    }
+
     @Test public void wifiHardwareIndexMapsToPortalActions() {
         assertEquals(SettingsInputPolicy.WifiAction.SCAN_AGAIN,
                 SettingsInputPolicy.wifiActionAt(false, 0));
