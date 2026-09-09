@@ -67,6 +67,16 @@ runtime investigation; it does not invalidate the verified physical key route.
 Audible interruption, wake behavior, and the ten-minute idle deadline remain
 unverified on the device.
 
+Diagnostic v37 was then built from `b5a048fa42cc0a3e71784212c95944e40bde1acc`
+by [GitHub Actions](https://github.com/ReSono-Labs/JackRabbit-OS/actions/runs/34307108235).
+It passed the same 118 Android tests and build/package checks. Its APK SHA256 is
+`62465b634bfd4d4bb1e973d5e76b47833f684be16fd63dde774ba9208ad64687` and its
+certificate matches the shared signing key above. A data-preserving upgrade
+succeeded with UID, first-install time, CE/DE data inodes, and the selected
+physical key layout unchanged. The added logs contain only per-press aggregate
+frame/byte/peak/stale-frame counts, event types, and coordinator state counts.
+This build adds evidence collection without a speculative multi-turn fix.
+
 ## Required physical and live-service checks
 
 All checks below remain pending until performed on an R1 with the user's configured provider. Do not infer acceptance from mocked or host events.
