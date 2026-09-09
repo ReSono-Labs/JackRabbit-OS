@@ -40,6 +40,9 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
     private long cancelledInputThroughNanos;
     private long connectDeadline;
     private long operationDeadline;
+    private long inputMaxQueueMillis;
+    private long inputMaxSendMillis;
+    private long inputPeakBufferedBytes;
     private String activeResponseId = "";
     private final java.util.Set<String> rejectedResponses = new java.util.HashSet<>();
     private final java.util.Map<String, Long> responseRounds = new java.util.HashMap<>();
@@ -249,17 +252,20 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         drainScheduled.set(false);
         if (!ready || peer == null) return;
         try {
-            for (int count = 0; count < 12 && peer.bufferedAmount() < 16_384; count++) {
+            for (int count = 0; count < 12; count++) {
                 RealtimeAudioInput.Entry entry = audioInput.peek();
                 if (entry == null) break;
                 if (entry.isEnd()) {
                     audioInput.poll();
                     inputCoordinator.endInput();
-                    logInputState("input end");
+                    logInputState("input end maxQueueMillis=" + inputMaxQueueMillis
+                            + " maxSendMillis=" + inputMaxSendMillis
+                            + " peakBufferedBytes=" + inputPeakBufferedBytes);
                     inputSegmentStarted = false;
                     continue;
                 }
                 if (!inputSegmentStarted) {
+                    inputMaxQueueMillis = inputMaxSendMillis = inputPeakBufferedBytes = 0;
                     inputCoordinator.beginInput();
                     suppressedInput = entry.captureTimeNanos() <= cancelledInputThroughNanos;
                     if (suppressedInput) {
@@ -270,11 +276,19 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
                 byte[] pcm = entry.pcm();
                 JSONObject append = new JSONObject().put("type", "input_audio_buffer.append")
                         .put("audio", android.util.Base64.encodeToString(pcm, android.util.Base64.NO_WRAP));
-                // Generated tails share the ordered append path and its audio timeline.
-                // Keep their encoded message plus the existing backlog within one window.
-                if (entry.isSyntheticSilence()
-                        && peer.bufferedAmount() + append.toString().length() > 16_384) break;
-                if (!peer.sendRealtimeEvent(append)) {
+                // One budget owner bounds both the transport window and generated tails.
+                if (!audioInput.canAppend(entry, append.toString().length(), peer.bufferedAmount())) break;
+                if (!entry.isSyntheticSilence()) {
+                    inputMaxQueueMillis = Math.max(inputMaxQueueMillis,
+                            Math.max(0, System.nanoTime() - entry.captureTimeNanos()) / 1_000_000L);
+                }
+                inputPeakBufferedBytes = Math.max(inputPeakBufferedBytes, peer.bufferedAmount());
+                long sendStarted = SystemClock.elapsedRealtime();
+                boolean sent = peer.sendRealtimeEvent(append);
+                inputMaxSendMillis = Math.max(inputMaxSendMillis,
+                        SystemClock.elapsedRealtime() - sendStarted);
+                inputPeakBufferedBytes = Math.max(inputPeakBufferedBytes, peer.bufferedAmount());
+                if (!sent) {
                     fail("audio-send-failed");
                     return;
                 }
@@ -448,6 +462,9 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         try {
             JSONObject event = new JSONObject(json);
             String type = event.optString("type");
+            if ("session.created".equals(type) || "session.updated".equals(type)) {
+                logSessionConfiguration(event.optJSONObject("session"));
+            }
             if (type.equals("input_audio_buffer.speech_started")
                     || type.equals("input_audio_buffer.speech_stopped")
                     || type.equals("input_audio_buffer.committed")
@@ -557,6 +574,21 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         Log.i(LOG_TAG, "PTT " + stage + " " + inputCoordinator.diagnosticState()
                 + " responseInFlight=" + responseCoordinator.isInFlight()
                 + " suppressed=" + suppressedInput);
+    }
+
+    private void logSessionConfiguration(JSONObject session) {
+        if (session == null) return;
+        String model = session.optString("model", "");
+        if (!model.matches("[A-Za-z0-9._:-]{1,128}")) model = "unreported";
+        JSONArray tools = session.optJSONArray("tools");
+        boolean webSearch = false;
+        for (int i = 0; tools != null && i < tools.length(); i++) {
+            JSONObject tool = tools.optJSONObject(i);
+            if (tool != null && "web_search".equals(tool.optString("name"))) webSearch = true;
+        }
+        Log.i(LOG_TAG, "PTT session model=" + model
+                + " toolCount=" + (tools == null ? "unreported" : tools.length())
+                + " webSearch=" + (tools == null ? "unreported" : webSearch));
     }
 
     public void stopSession() {

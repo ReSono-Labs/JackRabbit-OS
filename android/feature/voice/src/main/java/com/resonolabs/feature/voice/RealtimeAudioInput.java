@@ -9,6 +9,7 @@ import java.util.ArrayDeque;
  */
 final class RealtimeAudioInput {
     static final int MAX_BUFFERED_BYTES = 1_440_000;
+    private static final int MAX_TRANSPORT_BUFFERED_BYTES = 128 * 1024;
     // Cover the provider's 1200 ms server-VAD window with 300 ms of margin.
     // These are generated samples, not additional capture or a wall-clock delay.
     private static final int END_SILENCE_BYTES = 72_000;
@@ -153,6 +154,21 @@ final class RealtimeAudioInput {
             return generatedEndSilence;
         }
         return entry;
+    }
+
+    /**
+     * Admit a complete encoded append without waiting for the channel to empty.
+     * Generated tails also share the remaining capture budget; the reserved END
+     * workspace lets one block advance even when a later capture fills its queue.
+     */
+    synchronized boolean canAppend(Entry entry, int encodedBytes,
+                                   long dataChannelBufferedBytes) {
+        if (failed || entry.isEnd()) return false;
+        long limit = MAX_TRANSPORT_BUFFERED_BYTES;
+        if (entry.isSyntheticSilence()) {
+            limit = Math.min(limit, MAX_BUFFERED_BYTES - (long) queuedBytes);
+        }
+        return encodedBytes > 0 && Math.max(0L, dataChannelBufferedBytes) <= limit - encodedBytes;
     }
 
     /** Call only after the peeked append/END was handled successfully by the session. */

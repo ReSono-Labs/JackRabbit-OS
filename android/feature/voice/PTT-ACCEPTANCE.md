@@ -7,6 +7,7 @@
 - `NativeVoicePeer` captures 24 kHz mono PCM16 with the pinned WebRTC ADM. A receive-only RTP transceiver carries speaker audio. PCM appends and commits use the same ordered data channel, avoiding a cross-channel release barrier.
 - `RealtimeAudioInput` bounds candidate and confirmed PCM plus the conservative data-channel backlog allowance to 1,440,000 bytes. A closed gate rejects later frames. PCM never passes through Python or MCP.
 - Each authorized-audio END lazily emits 1500 ms of digital silence before the existing commit path, covering the configured 1200 ms server-VAD stop window. Blocks are at most 12,000 PCM bytes and use the same ordered append path and byte timeline. No microphone capture or wall-clock sleep produces this tail. Pending END markers reserve 16 KiB when admitting later captured PCM; the virtual tails are counters, not retained 72 KiB audio arrays. The 30-second limit concerns captured PCM, not the summed sample duration of generated tails, and is not an absolute Java heap limit.
+- Encoded audio appends use a bounded 128 KiB transport window. Generated tails are additionally limited by the capture budget remaining after queued PCM, so a nearly full later capture cannot lose its reserved END workspace. Successful send admission precedes removal from the audio queue.
 - Server VAD stays enabled with automatic response creation off and speech interruption on. Input, response, and cancellation coordinators handle commit races, valid speech, response IDs, and originating round tokens.
 - Connection and stalled transmission have 30-second limits. Processing has a two-minute watchdog; valid speech and playback suspend the idle timer. Idle disconnection waits ten minutes after the last active round/playback.
 - Losing the input window releases a physical hold without stopping playback or the session. It prevents a missing key-up from leaving PTT recording active. Continuous input remains active.
@@ -136,6 +137,45 @@ device key layout remained unchanged. The post-install R1 screenshot confirmed
 that the menu is below the system indicator's maximum bounds, with
 `Continuous: Off` and `MIC: CLOSED`. This is idle-layout evidence; recording-time
 visual/touch acceptance and multi-turn audible acceptance remain pending.
+
+## v39 follow-up evidence and v40 correction
+
+The user subsequently accepted physical hold-to-speak and release-to-close, but
+reported delayed interruption during a reply, failed web search, and an
+unacceptable permanent top gap. Four consecutive voiced input commits and
+responses used the already-connected peer. The persisted conversation retained
+earlier context; there was no per-press session reset in this reproduction.
+The configured access path was subscription with `gpt-realtime-2.1`, following
+the unchanged canonical model resolver. No server model acknowledgement was
+logged by v39, so configuration alone is not direct evidence of the model
+reported by the server.
+
+During one reply, the interval from physical key-down to the server's
+`speech_started` and output clear was 3.815 seconds. Release left 77,280 bytes
+of captured PCM queued, and the input END took another 4.015 seconds. The
+former 16 KiB send window required a 16,047-byte encoded silence message to
+wait until almost all prior data drained. This motivates v40's larger bounded
+window; it does not prove the network or JNI will sustain the required rate.
+Three new transport regressions fail under the old policy and pass under the
+new policy. The full Voice suite passes 98 tests. New per-input diagnostics
+record maximum queue age, synchronous send duration and buffered bytes.
+Session acknowledgements log only the reported model, tool count and presence
+of `web_search`; absent fields are explicitly reported as unknown.
+
+Two real `web_search` calls failed inside the existing search executor, and
+their error outputs triggered Realtime continuations. Tool registration,
+audience and MCP dispatch remained intact. The legacy exception wrapper hid
+the underlying cause. V40 adds bounded failure classifications without query,
+answer, exception-message or credential logging; this is diagnostic work,
+not yet a verified repair of the live search failure.
+
+V40 removes the permanent top inset and restores compact fullscreen geometry.
+On this R1 build, SystemUI privacy animations force status bars visible despite
+the app's fullscreen request. A separately reviewed device-wide configuration
+can suppress this scheduler's privacy and charging animations while retaining
+permissions and privacy records. No such setting is applied without explicit
+authorization of its device-wide scope. Signed deployment, live search
+diagnosis and physical latency/display acceptance remain pending.
 
 ## Required physical and live-service checks
 
