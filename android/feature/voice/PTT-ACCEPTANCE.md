@@ -29,7 +29,18 @@ The [GitHub Actions build](https://github.com/ReSono-Labs/JackRabbit-OS/actions/
 
 On 2026-09-09, `adb install -r` succeeded on the connected Rabbit R1 (Android 36). The package UID, first-install time, data directory, and credential/device-encrypted data inodes were unchanged; existing camera and microphone grants were retained. The new foreground microphone/media playback permissions were granted. On launch, the screen showed `Continuous: Off` and `MIC: CLOSED`; AppOps reported no running recording and the current recording configuration was empty. The runtime service was active and the Voice session service was absent, as expected for disconnected standby.
 
-An ADB-injected three-second `KEYCODE_DPAD_CENTER` hold did not start a Voice session. InputDispatcher recorded the injected events, the application remained focused and running, and no recording or Voice service started. The device was awake with keyguard showing, occluded, non-secure, and input-restricted. These observations do not establish why the injected input was ineffective or whether the physical side button has the same result. No subsequent continuous-mode or live-speech checks were claimed; physical input confirmation is required before completing the matrix below.
+An initial ADB-injected three-second `KEYCODE_DPAD_CENTER` hold with the default `UNKNOWN` input source did not start Voice. Repeating the same key and duration with explicit `keyboard` source did start it: the screen showed `MIC: OPEN` / `Release to send`, AppOps reported recording, and the Voice foreground service started. After release, the UI showed `MIC: CLOSED` and the same service remained. The device was awake with keyguard showing, occluded, non-secure, and input-restricted; the source comparison does not establish the exact system interception path or the physical side button's final key mapping.
+
+The configured real provider accepted the WebRTC answer, ICE reached `CONNECTED` / `COMPLETED`, and the data channel opened. In the connected PTT state, AppOps no longer reported running capture and the retained recorder configuration was explicitly inactive. Hardware AEC and NS both reported active and available. Connection initialization briefly started another recorder after release (the final AppOps duration was 207 ms), so these samples do not establish instantaneous hardware shutdown or the 50 ms input-gating target. Echo quality and actual speech delivery still require physical testing.
+
+The following checks used ADB `keyboard` input and system recording state, not a physical button or an acoustic latency measurement:
+
+- A 100 ms tap retained the same Voice service and left recording inactive. This tap did not establish audible cancellation during playback.
+- Tapping `Continuous` enabled recording: the screen showed `MIC: OPEN`, AppOps was running, and the recorder was active.
+- A 500 ms key hold and release returned to `Continuous: Off` / `MIC: CLOSED`, with AppOps no longer running and the recorder inactive; the same Voice service remained.
+- A subsequent one-second silence check was invalid because the foreground had changed to Android Settings. Automated input stopped without changing that page. The Voice service remained in the background with recording inactive. User/environment input during the continuous-mode check also prevented using initial connection time as an idle-timeout baseline.
+
+Physical side-button behavior, actual spoken turns, audible interruption, and the ten-minute idle deadline remain unverified on the device.
 
 ## Required physical and live-service checks
 
