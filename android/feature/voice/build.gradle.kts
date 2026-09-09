@@ -18,4 +18,5 @@ dependencies {
     implementation(project(":runtime-host"))
     implementation("io.github.webrtc-sdk:android:144.7559.09")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20160810")
 }

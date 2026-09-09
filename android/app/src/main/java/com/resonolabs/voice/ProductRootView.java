@@ -34,6 +34,7 @@ final class ProductRootView extends FrameLayout {
     private boolean cardContentOpen;
     private boolean runnerOpen;
     private boolean creationImportOpen;
+    private boolean voiceOwnsSideButton;
     private float gestureDownX;
     private float gestureDownY;
     private boolean horizontalGesture;
@@ -219,8 +220,37 @@ final class ProductRootView extends FrameLayout {
     boolean onHardwareKey(KeyEvent event) {
         UiInputIntent intent = HardwareInputRouter.keyIntent(event.getKeyCode());
         if (intent == null) return false;
+        if (intent == UiInputIntent.ACTIVATE) {
+            // The release belongs to its press even after navigation changes the visible page.
+            if (voiceOwnsSideButton || voice.isSideButtonPressed()) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) return true;
+                voiceOwnsSideButton = false;
+                return voice.onSideButton(event);
+            }
+            if (cameraOpen) return false;
+            if (creationImportOpen) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) creationImport.onInput(intent);
+                return true;
+            }
+            if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
+                voiceOwnsSideButton = true;
+                settingsOpen = false;
+                settings.setVisibility(GONE);
+                runnerOpen = false;
+                runner.setVisibility(GONE);
+                chrome.setVisibility(VISIBLE);
+                openVoice();
+                return voice.onSideButton(event);
+            }
+            return true;
+        }
         if (event.getAction() == KeyEvent.ACTION_DOWN) dispatch(intent);
         return true;
+    }
+
+    void releaseVoicePressForLifecycle() {
+        voiceOwnsSideButton = false;
+        voice.releaseSideButtonForLifecycle();
     }
 
     boolean onHardwareMotion(MotionEvent event) {

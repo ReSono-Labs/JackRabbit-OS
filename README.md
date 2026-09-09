@@ -47,6 +47,8 @@ Voice is page one and Cards is page two. The native application is the device HO
 The current native Voice path provides:
 
 - OpenAI Realtime audio over WebRTC, without routing high-rate audio through Python or MCP.
+- Physical push to talk with release to send, quick-tap answer cancellation, and a screen switch for continuous conversation.
+- Explicit microphone/playback states, bounded connection audio buffering, and ten-minute idle disconnection after the response finishes.
 - Runtime-selected access, text model, Realtime model, reasoning effort, and personalized greeting.
 - Local MCP tools in the same live Voice session.
 - Native screen-awake behavior while JackRabbit is visible.
@@ -186,7 +188,7 @@ Starting from an already-running JackRabbit R1:
    **Name saved.** JackRabbit uses this for your personalized Voice greeting.
 5. In **AI & Voice**, connect either ChatGPT/Codex or an OpenAI Platform API key. OAuth must be disconnected before Platform access can be activated; completing OAuth makes it the active platform-wide connection.
 6. Choose an available text model, Realtime model, and reasoning effort for the active connection.
-7. Return to Voice and press the microphone control to start a session.
+7. Hold the side button to speak, then release to send. Use the Voice page's Continuous control for hands-free conversation.
 8. Optionally add Mail or Calendar connections and enable extensions from the management console.
 
 For device controls, Cards, data connections, extensions, Background Agent, and troubleshooting, read [Using JackRabbit](USER-GUIDE.md).

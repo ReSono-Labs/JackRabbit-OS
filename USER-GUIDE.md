@@ -10,7 +10,7 @@ JackRabbit is the R1 HOME surface. Voice is the first page and Cards is the seco
 
 - Use the touch screen for buttons, tabs, lists, and sliders.
 - Use the scroll wheel for supported list navigation.
-- Use the side button for the context-sensitive action exposed by the current page.
+- Hold the side button to speak; release to send. A quick tap stops the current Voice answer. Camera and QR capture retain their own controls.
 - Use the power button normally. JackRabbit keeps the screen awake while its activity is visible.
 
 Open the gear icon at the upper right for Settings. The running-person icon at the top opens the native Background Agent run surface.
@@ -86,15 +86,17 @@ Subscription choices come from JackRabbit's current catalog. Platform choices ar
 
 ## Start and stop Voice
 
-1. Return to the native **Voice** page.
-2. Press the central microphone control.
-3. Watch the state label:
-   - `connecting` means the WebRTC session is being established.
-   - `live` means the session can receive speech.
-   - `responding` means the assistant is producing its response.
-   - `error` means the session did not continue; the page should display a truthful failure state.
-4. Speak normally while the session is live.
-5. Press the active Voice control to end the session.
+1. Hold the physical side button and speak. The first press starts a connection. The highlighted microphone confirms the press; **MIC: OPEN** confirms that recording has started.
+2. Release to close the microphone and send the captured speech. **Sending** means submission is still in progress; **Sent. Thinking…** follows the provider's input acknowledgement. Speech can also receive a reply during a pause while the button remains held.
+3. During an answer, hold to ask another question. Holding alone keeps playback running; detected speech can interrupt it. A quick tap (under 200 ms) stops the current answer and its pending follow-ups. It keeps the session connected and does not cancel independent background goals.
+4. Use **Continuous: Off/On** to switch to continuous conversation in the same session. Pressing the physical side button switches back to push to talk. Outside continuous mode, release always closes microphone input, even while the assistant continues speaking.
+5. Use **End session** to disconnect immediately. Otherwise the session ends after ten idle minutes, counted after speech, processing, and playback finish. Silent presses and background polling do not restart this timer.
+
+Unsent speech is bounded to 30 seconds of PCM, including a conservative transport backlog allowance. Connection and stalled sending also time out after 30 seconds. A sending failure can include partially delivered audio; follow the displayed message and press again to retry. A new session can use the existing prior-session summary and approved memories; it does not restore a complete audio session.
+
+The foreground Voice service keeps an active session and playback alive when the screen locks or the page closes. If its input window loses focus during a physical hold, the held segment is released so a missing key-up cannot leave the microphone open. Continuous conversation remains active. Process termination or microphone/audio-focus loss requires a new explicit start.
+
+The push-to-talk path has host protocol tests and an Android build. Initial-word capture, hardware echo cancellation, lock-screen behavior, and interruption latency still require physical R1 and live-provider acceptance.
 
 The native Android path owns microphone and speaker media. Python and MCP carry agent state and tool calls, not the high-rate audio stream.
 
