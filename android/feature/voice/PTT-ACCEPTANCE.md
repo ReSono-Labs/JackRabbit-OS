@@ -19,6 +19,18 @@ The tested Android dependency is `io.github.webrtc-sdk:android:144.7559.09`. Its
 
 On 2026-09-09, the Android suite passed 118 tests (86 Voice tests), with no failures, errors, or skips. The three provider payload tests also passed. The final APK build, standalone boundary check, embedded-runtime check, and signature verification passed using an isolated macOS JDK 17 / Gradle 9.5 / Android 36 toolchain with the authoritative Gradle tasks. The APK has version code 36 and uses a temporary local debug signing key; it was not installed on a device.
 
+## Shared-signing build and device upgrade
+
+The [GitHub Actions build](https://github.com/ReSono-Labs/JackRabbit-OS/actions/runs/34302564943) for commit `2e1bbb6f21330191d99bbfdafe567cd843e85edb` passed the authoritative Linux build, Android tests, and package boundary checks. Its downloaded APK was independently verified before installation:
+
+- Package: `com.resonolabs.voice.engineering`, version code 36, version name `0.4.29-Carrot1-debug`.
+- Signing certificate SHA256: `a3390000a4b6c8bf43774cc235bd967e4c80a9dae30c0e8714c79c01a9b9836a`, matching the R1's installed v35.
+- APK SHA256: `261cecb42841a9ea912e9bd5401f130e0c720a93e2faf27abbeec660c164b9c9`.
+
+On 2026-09-09, `adb install -r` succeeded on the connected Rabbit R1 (Android 36). The package UID, first-install time, data directory, and credential/device-encrypted data inodes were unchanged; existing camera and microphone grants were retained. The new foreground microphone/media playback permissions were granted. On launch, the screen showed `Continuous: Off` and `MIC: CLOSED`; AppOps reported no running recording and the current recording configuration was empty. The runtime service was active and the Voice session service was absent, as expected for disconnected standby.
+
+An ADB-injected three-second `KEYCODE_DPAD_CENTER` hold did not start a Voice session. InputDispatcher recorded the injected events, the application remained focused and running, and no recording or Voice service started. The device was awake with keyguard showing, occluded, non-secure, and input-restricted. These observations do not establish why the injected input was ineffective or whether the physical side button has the same result. No subsequent continuous-mode or live-speech checks were claimed; physical input confirmation is required before completing the matrix below.
+
 ## Required physical and live-service checks
 
 All checks below remain pending until performed on an R1 with the user's configured provider. Do not infer acceptance from mocked or host events.
