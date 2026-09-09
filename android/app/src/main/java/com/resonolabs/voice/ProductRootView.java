@@ -3,6 +3,7 @@ package com.resonolabs.voice;
 import android.app.Activity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.resonolabs.feature.voice.VoicePageView;
@@ -14,6 +15,7 @@ import com.resonolabs.feature.camera.CameraHandoffPage;
 import com.resonolabs.hardware.motor.R1MotorServiceClient;
 import com.resonolabs.ui.input.HardwareInputRouter;
 import com.resonolabs.ui.input.UiInputIntent;
+import com.resonolabs.ui.design.ReSonoTheme;
 import com.resonolabs.feature.backgroundrun.BackgroundRunPanelView;
 import com.resonolabs.runtime.host.RuntimeBackgroundRunClient;
 import com.resonolabs.runtime.host.RuntimeCreationImportClient;
@@ -38,6 +40,7 @@ final class ProductRootView extends FrameLayout {
     private float gestureDownX;
     private float gestureDownY;
     private boolean horizontalGesture;
+    private int systemTopInset;
 
     ProductRootView(
             Activity activity,
@@ -48,6 +51,7 @@ final class ProductRootView extends FrameLayout {
             RuntimeCreationImportClient creationImports
     ) {
         super(activity);
+        setBackgroundColor(ReSonoTheme.BACKGROUND);
         motor = new R1MotorServiceClient(activity);
         voice = new VoicePageView(activity, this::openCameraHandoff);
         camera = new CameraHandoffPage(activity, motor, voice, this::returnFromCamera);
@@ -80,6 +84,27 @@ final class ProductRootView extends FrameLayout {
 
     private LayoutParams match() {
         return new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+    }
+
+    void setSystemTopInset(int inset) {
+        int top = Math.max(0, inset);
+        if (systemTopInset == top) return;
+        systemTopInset = top;
+        requestLayout();
+    }
+
+    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        int top = Math.min(systemTopInset, height);
+        int chromeHeight = Math.round(142f * (height - top) / 640f);
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if (child == camera || child == creationImport) continue;
+            LayoutParams params = (LayoutParams) child.getLayoutParams();
+            params.topMargin = top;
+            if (child == chrome) params.height = chromeHeight;
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     private void openSettings() {

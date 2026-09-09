@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.KeyEvent;
@@ -138,6 +139,11 @@ public final class MainActivity extends Activity {
     private void installFullscreenPolicy() {
         View decor = getWindow().getDecorView();
         decor.setOnApplyWindowInsetsListener((view, insets) -> {
+            int top = insets.getInsetsIgnoringVisibility(
+                    WindowInsets.Type.statusBars() | WindowInsets.Type.displayCutout()).top;
+            Rect privacyBounds = insets.getPrivacyIndicatorBounds();
+            if (privacyBounds != null) top = Math.max(top, privacyBounds.bottom);
+            root.setSystemTopInset(top);
             int bars = WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars();
             if (insets.isVisible(bars)) view.post(this::enterProductFullscreen);
             return insets;
@@ -146,5 +152,6 @@ public final class MainActivity extends Activity {
             int hidden = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
             if ((visibility & hidden) != hidden) decor.post(this::enterProductFullscreen);
         });
+        decor.requestApplyInsets();
     }
 }

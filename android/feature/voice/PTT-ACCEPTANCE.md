@@ -93,8 +93,38 @@ the observed server VAD behavior modeled: manual commit clears buffered bytes
 without ending VAD. The old implementation answered only the first of three
 turns; the corrected implementation answers each turn once, including delayed
 acknowledgements and cancellation followed by a new hold. The local APK build
-and boundary checks passed. Shared-signing deployment and physical v38 acceptance
-remain pending.
+and boundary checks passed. The final Voice suite passed 95 tests, including
+15 audio-queue tests and four multi-turn integration tests.
+
+The shared-signed v38 APK was built from
+`e1e6e32a64c0bdc2c00ce38ccd6ed342454fcc7c` by
+[GitHub Actions](https://github.com/ReSono-Labs/JackRabbit-OS/actions/runs/34311518991).
+Its APK SHA256 is
+`21c0e20d67973213d1725ff6c715daf8a4af81d879217a56ef28d89371bdbcab`, and its
+certificate matches the shared signing key above. A data-preserving upgrade
+succeeded with UID, first-install time, CE/DE data inodes, and the selected
+physical key layout unchanged. Physical v38 multi-turn acceptance remains
+pending.
+
+## System microphone indicator layout
+
+An R1 screenshot showed the system microphone indicator at the top-right of
+the screen, overlapping the device-settings icon. A transient status bar also
+overlapped the Voice title. The app drew its navigation from window coordinate
+zero while requesting edge-to-edge fullscreen, without reserving system space.
+The indicator appearing during capture and disappearing afterwards is expected;
+its overlap with app controls is not.
+
+The v39 layout reserves the system's stable top inset and maximum privacy
+indicator bounds for the product pages. Header and page content share the same
+vertical scale, with matching touch-coordinate transforms. Visibility changes
+do not move the content. Camera and creation-import fullscreen layouts retain
+their existing geometry. The app Java compilation, APK build and both package
+boundary checks passed for v39; the 127 existing Android test results remained
+up to date with zero failures. The R1 reports a 48-pixel stable top inset even
+with its status bar hidden. At 480 by 640 pixels, the new menu drawing occupies
+approximately y73–106, below the system indicator's maximum y48 boundary.
+Physical layout verification remains pending.
 
 ## Required physical and live-service checks
 
