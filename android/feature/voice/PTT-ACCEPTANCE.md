@@ -124,7 +124,18 @@ boundary checks passed for v39; the 127 existing Android test results remained
 up to date with zero failures. The R1 reports a 48-pixel stable top inset even
 with its status bar hidden. At 480 by 640 pixels, the new menu drawing occupies
 approximately y73–106, below the system indicator's maximum y48 boundary.
-Physical layout verification remains pending.
+
+The shared-signed v39 APK was built from
+`f2f4f13a455cb62695d44b2145c183a389e52631` by
+[GitHub Actions](https://github.com/ReSono-Labs/JackRabbit-OS/actions/runs/34312653562).
+Its APK SHA256 is
+`a36594ba53b6e63dfb74b1b8ca3977c29b6eba5ef675782117a74db23d412ca9`.
+The matching certificate and package/version were verified before a successful
+data-preserving upgrade. UID, first-install time, CE/DE data inodes and the
+device key layout remained unchanged. The post-install R1 screenshot confirmed
+that the menu is below the system indicator's maximum bounds, with
+`Continuous: Off` and `MIC: CLOSED`. This is idle-layout evidence; recording-time
+visual/touch acceptance and multi-turn audible acceptance remain pending.
 
 ## Required physical and live-service checks
 
