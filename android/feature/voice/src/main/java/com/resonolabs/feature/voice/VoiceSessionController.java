@@ -270,6 +270,10 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
                 byte[] pcm = entry.pcm();
                 JSONObject append = new JSONObject().put("type", "input_audio_buffer.append")
                         .put("audio", android.util.Base64.encodeToString(pcm, android.util.Base64.NO_WRAP));
+                // Generated tails share the ordered append path and its audio timeline.
+                // Keep their encoded message plus the existing backlog within one window.
+                if (entry.isSyntheticSilence()
+                        && peer.bufferedAmount() + append.toString().length() > 16_384) break;
                 if (!peer.sendRealtimeEvent(append)) {
                     fail("audio-send-failed");
                     return;
@@ -277,6 +281,7 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
                 audioInput.poll();
                 sendTimeout.audioProgress(SystemClock.elapsedRealtime());
                 inputCoordinator.onAudioAppended(pcm.length);
+                if (entry.isSyntheticSilence()) logInputState("ending silence bytes=" + pcm.length);
                 if (!suppressedInput) sending = true;
             }
         } catch (Exception error) {

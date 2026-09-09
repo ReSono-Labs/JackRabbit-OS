@@ -14,7 +14,7 @@ public final class RealtimeAudioInputTest {
         assertNull(input.peek());
         input.release(true, 300);
         assertArrayEquals(AUDIO, input.poll().pcm());
-        assertTrue(input.poll().isEnd());
+        assertSilenceThenEnd(input);
         assertNull(input.poll());
         input.release(true, 301);
         assertNull(input.poll());
@@ -30,7 +30,7 @@ public final class RealtimeAudioInputTest {
         input.release(false, 150);
         assertArrayEquals(AUDIO, input.poll().pcm());
         assertArrayEquals(new byte[] {5, 6}, input.poll().pcm());
-        assertTrue(input.poll().isEnd());
+        assertSilenceThenEnd(input);
         assertNull(input.poll());
         assertEquals(0, input.queuedBytes());
     }
@@ -43,7 +43,7 @@ public final class RealtimeAudioInputTest {
         input.beginCandidate(100);
         input.offer(AUDIO, 110, 0);
         input.release(false, 150);
-        assertTrue(input.poll().isEnd());
+        assertSilenceThenEnd(input);
         assertNull(input.poll());
     }
 
@@ -56,7 +56,7 @@ public final class RealtimeAudioInputTest {
         input.release(true, 350);
         assertEquals(110, input.poll().captureTimeNanos());
         assertEquals(310, input.poll().captureTimeNanos());
-        assertTrue(input.poll().isEnd());
+        assertSilenceThenEnd(input);
         assertNull(input.poll());
     }
 
@@ -124,7 +124,116 @@ public final class RealtimeAudioInputTest {
         input.setContinuous(false, 120);
         assertEquals(RealtimeAudioInput.OfferResult.IGNORED, input.offer(AUDIO, 130, 0));
         assertArrayEquals(AUDIO, input.poll().pcm());
-        assertTrue(input.poll().isEnd());
+        assertSilenceThenEnd(input);
         assertNull(input.poll());
+    }
+
+    @Test public void nextPressCannotOvertakePreviousVadEndingSilence() {
+        RealtimeAudioInput input = new RealtimeAudioInput();
+        input.beginCandidate(100);
+        input.offer(AUDIO, 110, 0);
+        input.release(true, 300);
+        input.beginCandidate(400);
+        input.offer(new byte[] {5, 6}, 410, 0);
+        input.release(true, 600);
+        assertArrayEquals(AUDIO, input.poll().pcm());
+        assertSilenceThenEnd(input);
+        assertArrayEquals(new byte[] {5, 6}, input.poll().pcm());
+        assertSilenceThenEnd(input);
+        assertNull(input.poll());
+        assertEquals(0, input.queuedBytes());
+    }
+
+    @Test public void fullThirtySecondsCanReleaseWithoutAllocatingTheWholeSilenceTail() {
+        RealtimeAudioInput input = new RealtimeAudioInput();
+        input.beginCandidate(100);
+        assertEquals(RealtimeAudioInput.OfferResult.ACCEPTED,
+                input.offer(new byte[1_440_000], 110, 0));
+        input.release(true, 300);
+        assertFalse(input.failed());
+        assertEquals(1_440_000, input.queuedBytes());
+        assertEquals(1_440_000, input.poll().pcm().length);
+        assertSilenceThenEnd(input);
+        assertFalse(input.hasPending());
+        assertEquals(0, input.queuedBytes());
+    }
+
+    @Test public void queuedEndReservesWorkspaceBeforeAcceptingAnotherFullCapture() {
+        RealtimeAudioInput input = new RealtimeAudioInput();
+        input.beginCandidate(100);
+        input.offer(AUDIO, 110, 0);
+        input.release(true, 300);
+        input.beginCandidate(400);
+        assertEquals(RealtimeAudioInput.OfferResult.OVERFLOW,
+                input.offer(new byte[1_440_000 - AUDIO.length], 410, 0));
+        assertEquals(AUDIO.length, input.queuedBytes());
+    }
+
+    @Test public void reservedWorkspaceDrainsEarlierTailWithoutConsumingTheNextCapture() {
+        RealtimeAudioInput input = new RealtimeAudioInput();
+        input.beginCandidate(100);
+        input.offer(AUDIO, 110, 0);
+        input.release(true, 300);
+        byte[] nextCapture = new byte[1_440_000 - 16_384 - AUDIO.length];
+        input.beginCandidate(400);
+        assertEquals(RealtimeAudioInput.OfferResult.ACCEPTED, input.offer(nextCapture, 410, 0));
+        input.confirmCandidate();
+
+        RealtimeAudioInput.Entry first = input.poll();
+        assertFalse(first.isSyntheticSilence());
+        assertArrayEquals(AUDIO, first.pcm());
+        assertEquals(nextCapture.length, input.queuedBytes());
+        assertSilenceThenEnd(input);
+        assertEquals(nextCapture.length, input.queuedBytes());
+        RealtimeAudioInput.Entry second = input.poll();
+        assertFalse(second.isSyntheticSilence());
+        assertArrayEquals(nextCapture, second.pcm());
+        assertEquals(0, input.queuedBytes());
+        assertNull(input.peek());
+    }
+
+    @Test public void resetDiscardsPeekedTailAndRestoresTheFullCaptureCapacity() {
+        RealtimeAudioInput input = new RealtimeAudioInput();
+        input.beginCandidate(100);
+        input.offer(AUDIO, 110, 0);
+        input.release(true, 300);
+        assertFalse(input.poll().isSyntheticSilence());
+        RealtimeAudioInput.Entry oldTail = input.peek();
+        assertTrue(oldTail.isSyntheticSilence());
+
+        input.reset();
+        assertNull(input.peek());
+        input.beginCandidate(400);
+        assertEquals(RealtimeAudioInput.OfferResult.ACCEPTED,
+                input.offer(new byte[1_440_000], 410, 0));
+        input.confirmCandidate();
+        RealtimeAudioInput.Entry next = input.peek();
+        assertNotSame(oldTail, next);
+        assertFalse(next.isSyntheticSilence());
+        assertEquals(1_440_000, next.pcm().length);
+        assertSame(next, input.poll());
+        assertNull(input.peek());
+        assertEquals(0, input.queuedBytes());
+    }
+
+    private static void assertSilenceThenEnd(RealtimeAudioInput input) {
+        int silenceBytes = 0;
+        int queuedBytes = input.queuedBytes();
+        while (true) {
+            RealtimeAudioInput.Entry entry = input.peek();
+            assertNotNull(entry);
+            assertSame(entry, input.peek());
+            assertSame(entry, input.poll());
+            assertEquals(queuedBytes, input.queuedBytes());
+            if (entry.isEnd()) break;
+            assertTrue(entry.isSyntheticSilence());
+            byte[] pcm = entry.pcm();
+            assertTrue("Bound each encoded data-channel message", pcm.length <= 12_000);
+            assertArrayEquals(new byte[pcm.length], pcm);
+            silenceBytes += pcm.length;
+        }
+        // 24 kHz mono PCM16 must cover the configured 1200 ms VAD silence window.
+        assertTrue("End must close server VAD before the next turn", silenceBytes >= 57_600);
+        assertTrue("Ending silence must remain bounded", silenceBytes <= 96_000);
     }
 }

@@ -9,18 +9,32 @@ import java.util.ArrayDeque;
  */
 final class RealtimeAudioInput {
     static final int MAX_BUFFERED_BYTES = 1_440_000;
+    // Cover the provider's 1200 ms server-VAD window with 300 ms of margin.
+    // These are generated samples, not additional capture or a wall-clock delay.
+    private static final int END_SILENCE_BYTES = 72_000;
+    private static final int END_SILENCE_CHUNK_BYTES = 12_000;
+    private static final int END_TRANSMISSION_RESERVE_BYTES = 16_384;
     enum OfferResult { ACCEPTED, IGNORED, OVERFLOW }
 
     static final class Entry {
         private final byte[] pcm;
         private final long captureTimeNanos;
+        private final boolean syntheticSilence;
+        private int endSilenceBytesRemaining;
 
         private Entry(byte[] pcm, long captureTimeNanos) {
+            this(pcm, captureTimeNanos, false);
+        }
+
+        private Entry(byte[] pcm, long captureTimeNanos, boolean syntheticSilence) {
             this.pcm = pcm == null ? null : pcm.clone();
             this.captureTimeNanos = captureTimeNanos;
+            this.syntheticSilence = syntheticSilence;
+            endSilenceBytesRemaining = pcm == null ? END_SILENCE_BYTES : 0;
         }
 
         boolean isEnd() { return pcm == null; }
+        boolean isSyntheticSilence() { return syntheticSilence; }
         byte[] pcm() { return pcm == null ? null : pcm.clone(); }
         long captureTimeNanos() { return captureTimeNanos; }
     }
@@ -36,6 +50,8 @@ final class RealtimeAudioInput {
     private boolean streamHasAudio;
     private boolean failed;
     private int queuedBytes;
+    private int pendingEnds;
+    private Entry generatedEndSilence;
 
     /** Opens a separate candidate without losing already authorized stream audio. */
     synchronized void beginCandidate(long nowNanos) {
@@ -63,7 +79,10 @@ final class RealtimeAudioInput {
         candidate.clear();
         gate = Gate.CLOSED;
         previousStream = false;
-        if (streamHasAudio) ready.addLast(new Entry(null, nowNanos));
+        if (streamHasAudio) {
+            ready.addLast(new Entry(null, nowNanos));
+            pendingEnds++;
+        }
         streamHasAudio = false;
     }
 
@@ -85,6 +104,8 @@ final class RealtimeAudioInput {
         previousStream = false;
         streamHasAudio = false;
         queuedBytes = 0;
+        pendingEnds = 0;
+        generatedEndSilence = null;
         failed = false;
     }
 
@@ -100,6 +121,9 @@ final class RealtimeAudioInput {
         if (pcm == null || pcm.length == 0) return OfferResult.IGNORED;
         if ((pcm.length & 1) != 0) throw new IllegalArgumentException("PCM16 requires complete samples");
         long remaining = MAX_BUFFERED_BYTES - (long) queuedBytes - pcm.length;
+        // A later capture cannot occupy the workspace needed to finish an earlier END.
+        // Virtual tails cost only a counter; materialize at most one small block at a time.
+        if (pendingEnds > 0) remaining -= END_TRANSMISSION_RESERVE_BYTES;
         if (remaining < 0 || Math.max(0L, dataChannelBufferedBytes) > remaining) {
             gate = Gate.CLOSED;
             failed = true;
@@ -117,13 +141,32 @@ final class RealtimeAudioInput {
         return OfferResult.ACCEPTED;
     }
 
-    synchronized Entry peek() { return failed ? null : ready.peekFirst(); }
+    synchronized Entry peek() {
+        if (failed) return null;
+        Entry entry = ready.peekFirst();
+        if (entry != null && entry.isEnd() && entry.endSilenceBytesRemaining > 0) {
+            if (generatedEndSilence == null) {
+                generatedEndSilence = new Entry(new byte[Math.min(
+                        END_SILENCE_CHUNK_BYTES, entry.endSilenceBytesRemaining)],
+                        entry.captureTimeNanos, true);
+            }
+            return generatedEndSilence;
+        }
+        return entry;
+    }
 
     /** Call only after the peeked append/END was handled successfully by the session. */
     synchronized Entry poll() {
-        if (failed) return null;
-        Entry entry = ready.pollFirst();
-        if (entry != null && !entry.isEnd()) queuedBytes -= entry.pcm.length;
+        Entry entry = peek();
+        if (entry == null) return null;
+        if (entry.isSyntheticSilence()) {
+            ready.peekFirst().endSilenceBytesRemaining -= entry.pcm.length;
+            generatedEndSilence = null;
+            return entry;
+        }
+        ready.pollFirst();
+        if (entry.isEnd()) pendingEnds--;
+        else queuedBytes -= entry.pcm.length;
         return entry;
     }
 

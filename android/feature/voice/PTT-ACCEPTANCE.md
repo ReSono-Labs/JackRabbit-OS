@@ -6,6 +6,7 @@
 - `SideButtonGesture` classifies the first 200 ms as a local candidate. A tap discards candidate audio; a hold promotes it without directly stopping output.
 - `NativeVoicePeer` captures 24 kHz mono PCM16 with the pinned WebRTC ADM. A receive-only RTP transceiver carries speaker audio. PCM appends and commits use the same ordered data channel, avoiding a cross-channel release barrier.
 - `RealtimeAudioInput` bounds candidate and confirmed PCM plus the conservative data-channel backlog allowance to 1,440,000 bytes. A closed gate rejects later frames. PCM never passes through Python or MCP.
+- Each authorized-audio END lazily emits 1500 ms of digital silence before the existing commit path, covering the configured 1200 ms server-VAD stop window. Blocks are at most 12,000 PCM bytes and use the same ordered append path and byte timeline. No microphone capture or wall-clock sleep produces this tail. Pending END markers reserve 16 KiB when admitting later captured PCM; the virtual tails are counters, not retained 72 KiB audio arrays. The 30-second limit concerns captured PCM, not the summed sample duration of generated tails, and is not an absolute Java heap limit.
 - Server VAD stays enabled with automatic response creation off and speech interruption on. Input, response, and cancellation coordinators handle commit races, valid speech, response IDs, and originating round tokens.
 - Connection and stalled transmission have 30-second limits. Processing has a two-minute watchdog; valid speech and playback suspend the idle timer. Idle disconnection waits ten minutes after the last active round/playback.
 - Losing the input window releases a physical hold without stopping playback or the session. It prevents a missing key-up from leaving PTT recording active. Continuous input remains active.
@@ -76,6 +77,24 @@ succeeded with UID, first-install time, CE/DE data inodes, and the selected
 physical key layout unchanged. The added logs contain only per-press aggregate
 frame/byte/peak/stale-frame counts, event types, and coordinator state counts.
 This build adds evidence collection without a speculative multi-turn fix.
+
+The user's v37 reproduction confirmed the multi-turn failure. Subsequent holds
+captured and transmitted nonzero PCM (including 188,640 and 129,120 bytes), with
+no stale frames. Both manual commits succeeded, but no new `speech_started`
+arrived, so the client classified the items as silent, deleted them, and returned
+to standby. The original VAD interval stopped only when a later captured pause
+supplied enough silence; one new turn then worked before manual commit caused
+the same pattern again. Manual commit and microphone closure do not themselves
+terminate that provider VAD interval.
+
+The v38 correction inserts the digital-silence boundary described above. The
+regression uses the real audio queue and input/response coordinators with only
+the observed server VAD behavior modeled: manual commit clears buffered bytes
+without ending VAD. The old implementation answered only the first of three
+turns; the corrected implementation answers each turn once, including delayed
+acknowledgements and cancellation followed by a new hold. The local APK build
+and boundary checks passed. Shared-signing deployment and physical v38 acceptance
+remain pending.
 
 ## Required physical and live-service checks
 

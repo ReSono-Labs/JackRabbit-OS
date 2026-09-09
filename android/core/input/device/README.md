@@ -53,7 +53,11 @@ device-specific path, and JackRabbit's MainActivity returned to the foreground.
 Real physical events then showed device3, scan116, `DPAD_CENTER` DOWN/repeat/UP.
 The user confirmed that the first PTT turn worked, but later holds received no
 answer. Key routing is verified; multi-turn Voice acceptance is blocked by that
-separate runtime failure.
+separate runtime failure. Diagnostic v37 subsequently traced that failure to
+manual commit leaving server VAD active, causing later valid input to be treated
+as silence. The Voice input boundary correction is tracked in the
+[PTT acceptance record](../../../feature/voice/PTT-ACCEPTANCE.md); it requires an
+APK update and does not change this verified device layout.
 
 Screen-off wake behavior, camera behavior, and recovery controls must also be
 checked. The R1's D-pad wake resource is enabled, but the system's
