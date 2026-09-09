@@ -174,8 +174,71 @@ On this R1 build, SystemUI privacy animations force status bars visible despite
 the app's fullscreen request. A separately reviewed device-wide configuration
 can suppress this scheduler's privacy and charging animations while retaining
 permissions and privacy records. No such setting is applied without explicit
-authorization of its device-wide scope. Signed deployment, live search
-diagnosis and physical latency/display acceptance remain pending.
+authorization of its device-wide scope.
+
+The shared-signing [v40 build](https://github.com/ReSono-Labs/JackRabbit-OS/actions/runs/34316139425)
+at `77827f5c72a28786ca4e1ef93431118167c56f4a` passed and was installed with
+`adb install -r`. Package version 40, the existing shared signer, UID, first
+installation time, data-directory inodes and physical key layout were verified.
+Both new search diagnostic markers are present in the APK's embedded Python
+bytecode. The authoritative host build passes its boundary checks; Android test
+results total 130 with zero failures, and 15 focused search-diagnostic tests pass.
+
+After explicit authorization of the device-wide scope, this R1's
+`privacy/enable_immersive_indicator` was set from absent to `false` and read back
+at 2026-09-09 13:49 Beijing time. The `camera_mic_icons_enabled` key remains
+absent and SystemUI still reports `micCameraAvailable: true`. Restoration deletes
+only `privacy/enable_immersive_indicator` to return to its original absent state;
+the APK does not apply this device setting. A post-install screenshot confirms
+compact fullscreen standby with `MIC: CLOSED`, and AppOps reports no active
+recording.
+
+Two subsequent physical holds were observed at 13:53:09 and 13:53:23. Each
+recording screenshot shows `MIC: OPEN`, with AppOps and the recording monitor
+both active and unsilenced. Screenshots taken five seconds after each release
+show `MIC: CLOSED` and inactive capture. All four samples retain compact
+fullscreen geometry without a system status bar, privacy capsule or dot;
+SystemUI's animation scheduler reports Idle with no persistent dot.
+
+The same live session acknowledges `gpt-realtime-2.1`, 30 tools and
+`webSearch=true`, directly confirming the configured Realtime model and tool
+registration. Two search failures are now classified as
+`phase=validate reason=missing_citations`: the executor obtained nonempty
+output but extracted no URL citations. The generic "rejected" wrapper is
+misleading for this local validation failure. Whether the response omitted
+citations or supplied them only in stream events requires additional evidence.
+
+Across four warm inputs, maximum real-PCM queue ages were 41, 2662, 43 and
+42 milliseconds; tail transmission still stalled in some rounds. The last
+release reached local input END in 61 milliseconds, but server speech-stop
+arrived another 2.145 seconds later. Three observed interruptions cleared
+server playback 1–2 milliseconds after `speech_started`. Key-down to that
+event also includes the user's unknown speech onset, so it is not a pure
+transport latency measurement. A physical tap produced server output clear
+228 milliseconds after key-up; local audible stop latency is not measured.
+These observations establish multi-turn progress but do not close the
+remaining latency or live-search acceptance checks.
+
+## v41 follow-up
+
+When the cached transport water level rejects an append, the native owner
+thread now refreshes the actual data-channel buffered amount and checks the
+same budget again. Capture still reads only the volatile snapshot; neither
+the 128 KiB window nor VAD policy changes. A separate per-input `PTT transport`
+record reports cache overestimation, refresh duration and blocked-check timing.
+`blockedChecks` counts cache rejections, including ones released by a fresh
+read; the retry gap only covers consecutive blocked checks, not end-to-end
+voice latency. Live measurements are needed to establish whether stale cache,
+actual transport backlog or main-thread scheduling caused the observed stalls.
+
+Search validation errors now preserve their accurate no-answer/no-citation
+classification. A missing-citation failure additionally logs fixed integer
+counts of search calls, terminal annotations and streamed annotations. No
+query, answer, source URL or credentials are logged. A real-SDK mocked-stream
+test demonstrates that completed item metadata can contain citations absent
+from terminal response output; that is a diagnostic fixture, not yet evidence
+of this device's cause. The search model, request parameters and success
+conditions remain unchanged pending the next live result.
 
 ## Required physical and live-service checks
 

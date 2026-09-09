@@ -215,6 +215,14 @@ public final class NativeVoicePeer {
     /** Thread-safe conservative snapshot; no JNI work on the capture thread. */
     public long bufferedAmount() { return dataChannelBufferedBytes; }
 
+    /** Refresh on the native owner's thread; other threads retain snapshot-only access. */
+    long refreshBufferedAmount() {
+        if (Looper.myLooper() == handler.getLooper() && !closed && dataChannel != null) {
+            dataChannelBufferedBytes = dataChannel.bufferedAmount();
+        }
+        return dataChannelBufferedBytes;
+    }
+
     /** Closes admission synchronously, even if stopping the native recorder takes longer. */
     public void setCaptureEnabled(boolean enabled) {
         synchronized (captureLock) {
@@ -455,7 +463,7 @@ public final class NativeVoicePeer {
             if (closed || !bufferedUpdatePosted.compareAndSet(false, true)) return;
             handler.post(() -> {
                 bufferedUpdatePosted.set(false);
-                if (!closed && dataChannel != null) dataChannelBufferedBytes = dataChannel.bufferedAmount();
+                refreshBufferedAmount();
             });
         }
         @Override public void onStateChange() {

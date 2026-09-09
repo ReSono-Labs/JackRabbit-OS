@@ -43,6 +43,11 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
     private long inputMaxQueueMillis;
     private long inputMaxSendMillis;
     private long inputPeakBufferedBytes;
+    private long inputBlockedChecks;
+    private long inputLastBlockedCheckMillis;
+    private long inputMaxBlockedRetryGapMillis;
+    private long inputMaxCachedOverestimateBytes;
+    private long inputMaxBufferedRefreshMillis;
     private String activeResponseId = "";
     private final java.util.Set<String> rejectedResponses = new java.util.HashSet<>();
     private final java.util.Map<String, Long> responseRounds = new java.util.HashMap<>();
@@ -261,11 +266,17 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
                     logInputState("input end maxQueueMillis=" + inputMaxQueueMillis
                             + " maxSendMillis=" + inputMaxSendMillis
                             + " peakBufferedBytes=" + inputPeakBufferedBytes);
+                    Log.i(LOG_TAG, "PTT transport blockedChecks=" + inputBlockedChecks
+                            + " maxBlockedRetryGapMillis=" + inputMaxBlockedRetryGapMillis
+                            + " maxCachedOverestimateBytes=" + inputMaxCachedOverestimateBytes
+                            + " maxRefreshMillis=" + inputMaxBufferedRefreshMillis);
                     inputSegmentStarted = false;
                     continue;
                 }
                 if (!inputSegmentStarted) {
                     inputMaxQueueMillis = inputMaxSendMillis = inputPeakBufferedBytes = 0;
+                    inputBlockedChecks = inputLastBlockedCheckMillis = inputMaxBlockedRetryGapMillis = 0;
+                    inputMaxCachedOverestimateBytes = inputMaxBufferedRefreshMillis = 0;
                     inputCoordinator.beginInput();
                     suppressedInput = entry.captureTimeNanos() <= cancelledInputThroughNanos;
                     if (suppressedInput) {
@@ -277,7 +288,25 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
                 JSONObject append = new JSONObject().put("type", "input_audio_buffer.append")
                         .put("audio", android.util.Base64.encodeToString(pcm, android.util.Base64.NO_WRAP));
                 // One budget owner bounds both the transport window and generated tails.
-                if (!audioInput.canAppend(entry, append.toString().length(), peer.bufferedAmount())) break;
+                int encodedBytes = append.toString().length();
+                long cachedBufferedBytes = peer.bufferedAmount();
+                if (!audioInput.canAppend(entry, encodedBytes, cachedBufferedBytes)) {
+                    long checkStarted = SystemClock.elapsedRealtime();
+                    if (inputLastBlockedCheckMillis != 0) {
+                        inputMaxBlockedRetryGapMillis = Math.max(inputMaxBlockedRetryGapMillis,
+                                checkStarted - inputLastBlockedCheckMillis);
+                    }
+                    inputLastBlockedCheckMillis = checkStarted;
+                    inputBlockedChecks++;
+                    // A deferred buffered-amount callback must not keep a drained channel blocked.
+                    long currentBufferedBytes = peer.refreshBufferedAmount();
+                    inputMaxBufferedRefreshMillis = Math.max(inputMaxBufferedRefreshMillis,
+                            SystemClock.elapsedRealtime() - checkStarted);
+                    inputMaxCachedOverestimateBytes = Math.max(inputMaxCachedOverestimateBytes,
+                            Math.max(0L, cachedBufferedBytes - currentBufferedBytes));
+                    if (!audioInput.canAppend(entry, encodedBytes, currentBufferedBytes)) break;
+                }
+                inputLastBlockedCheckMillis = 0;
                 if (!entry.isSyntheticSilence()) {
                     inputMaxQueueMillis = Math.max(inputMaxQueueMillis,
                             Math.max(0, System.nanoTime() - entry.captureTimeNanos()) / 1_000_000L);

@@ -144,20 +144,80 @@ def test_stream_failure_reports_sdk_type_without_response_body(sdk_search, diagn
                         exception="ModelBehaviorError")
 
 
-@pytest.mark.parametrize("answer,citations,reason", [
-    ("", True, "missing_answer"),
-    (PRIVATE_RESULT, False, "missing_citations"),
+@pytest.mark.parametrize("answer,citations,reason,message", [
+    ("", True, "missing_answer", "OpenAI web search returned no answer."),
+    (PRIVATE_RESULT, False, "missing_citations", "OpenAI web search returned no citations."),
 ])
 def test_incomplete_results_have_distinct_safe_reasons(
-    sdk_search, diagnostic_log, answer, citations, reason,
+    sdk_search, diagnostic_log, answer, citations, reason, message,
 ):
     search, _, _ = sdk_search(lambda _request: httpx.Response(
         200, json=response_payload(answer=answer, citations=citations),
     ))
-    with pytest.raises(RuntimeError, match=r"^OpenAI web search was rejected\.$"):
+    with pytest.raises(RuntimeError) as caught:
         search.search(PRIVATE_QUERY)
+    assert str(caught.value) == message
     assert_safe_failure(diagnostic_log, phase="validate", reason=reason,
                         exception="SearchResultError")
+    if reason == "missing_citations":
+        assert ("web_search.citation_shape responses=1 outputs=1 messages=1 web_search=0 "
+                "completed_search=0 annotations=0 urls=0 stream_annotation_urls=0 "
+                "stream_item_urls=0 action_search=0 action_open_page=0 "
+                "action_find_in_page=0 action_other=0 sources=0") in diagnostic_log.getvalue()
+    else:
+        assert "web_search.citation_shape" not in diagnostic_log.getvalue()
+
+
+def test_stream_counters_expose_metadata_missing_from_terminal(sdk_search, diagnostic_log):
+    cited_item = response_payload()["output"][0]
+    search_item = {
+        "id": "ws_test", "type": "web_search_call", "status": "completed",
+        "action": {"type": "search", "query": PRIVATE_QUERY, "sources": [
+            {"type": "url", "url": "https://example.com/stream-source"},
+        ]},
+    }
+    terminal = response_payload(citations=False)
+    terminal["output"].insert(0, search_item)
+    events = [
+        {"type": "response.output_text.annotation.added", "sequence_number": 0,
+         "item_id": "msg_test", "output_index": 1, "content_index": 0,
+         "annotation_index": 0, "annotation": cited_item["content"][0]["annotations"][0]},
+        {"type": "response.output_item.done", "sequence_number": 1,
+         "output_index": 1, "item": cited_item},
+        {"type": "response.completed", "sequence_number": 2, "response": terminal},
+    ]
+    stream = "".join("data: " + json.dumps(event) + "\n\n" for event in events)
+    search, _, _ = sdk_search(lambda _request: httpx.Response(
+        200, headers={"content-type": "text/event-stream"}, content=stream,
+    ), subscription=True)
+    with pytest.raises(RuntimeError) as caught:
+        search.search(PRIVATE_QUERY)
+    assert str(caught.value) == "OpenAI web search returned no citations."
+    assert_safe_failure(diagnostic_log, phase="validate", reason="missing_citations",
+                        exception="SearchResultError")
+    assert ("web_search.citation_shape responses=1 outputs=2 messages=1 web_search=1 "
+            "completed_search=1 annotations=0 urls=0 stream_annotation_urls=1 "
+            "stream_item_urls=1 action_search=1 action_open_page=0 "
+            "action_find_in_page=0 action_other=0 sources=1") in diagnostic_log.getvalue()
+    assert "https://example.com/stream-source" not in diagnostic_log.getvalue()
+
+
+def test_search_feed_sources_are_counted_but_not_reclassified_as_citations(sdk_search, diagnostic_log):
+    payload = response_payload(citations=False)
+    payload["output"].insert(0, {
+        "id": "ws_feed", "type": "web_search_call", "status": "completed",
+        "action": {"type": "search", "query": PRIVATE_QUERY,
+                   "sources": [{"type": "url", "url": "oai-weather"}]},
+    })
+    search, _, _ = sdk_search(lambda _request: streamed(payload), subscription=True)
+    with pytest.raises(RuntimeError) as caught:
+        search.search(PRIVATE_QUERY)
+    assert str(caught.value) == "OpenAI web search returned no citations."
+    assert ("web_search.citation_shape responses=1 outputs=2 messages=1 web_search=1 "
+            "completed_search=1 annotations=0 urls=0 stream_annotation_urls=0 "
+            "stream_item_urls=0 action_search=1 action_open_page=0 "
+            "action_find_in_page=0 action_other=0 sources=1") in diagnostic_log.getvalue()
+    assert "oai-weather" not in diagnostic_log.getvalue()
 
 
 def test_access_failure_is_logged_and_preserves_original_error(monkeypatch, diagnostic_log):
