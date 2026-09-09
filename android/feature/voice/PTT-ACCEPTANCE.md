@@ -240,6 +240,16 @@ from terminal response output; that is a diagnostic fixture, not yet evidence
 of this device's cause. The search model, request parameters and success
 conditions remain unchanged pending the next live result.
 
+The authoritative v41 build passed with fresh Native/Controller compilation,
+98 executed Voice tests and 130 total Android tests with no failures. The 17
+focused search tests pass. Independent review found no blocking issues in
+the audio or search changes. The [shared-signing v41 build](https://github.com/ReSono-Labs/JackRabbit-OS/actions/runs/34317678704)
+at `62ff1cbf812f4e4ccbf8e4f364f83da23e77834f` was installed with data, package
+identity and physical key layout preserved. Embedded Python diagnostic markers
+and the shared signing certificate were verified. The approved privacy setting
+remains `false` and `camera_mic_icons_enabled` remains absent. V41 live-search
+and transport measurements are pending; no new visual behavior was introduced.
+
 ## Required physical and live-service checks
 
 All checks below remain pending until performed on an R1 with the user's configured provider. Do not infer acceptance from mocked or host events.
