@@ -40,7 +40,21 @@ The following checks used ADB `keyboard` input and system recording state, not a
 - A 500 ms key hold and release returned to `Continuous: Off` / `MIC: CLOSED`, with AppOps no longer running and the recorder inactive; the same Voice service remained.
 - A subsequent one-second silence check was invalid because the foreground had changed to Android Settings. Automated input stopped without changing that page. The Voice service remained in the background with recording inactive. User/environment input during the continuous-mode check also prevented using initial connection time as an idle-timeout baseline.
 
-Physical side-button behavior, actual spoken turns, audible interruption, and the ten-minute idle deadline remain unverified on the device.
+Physical side-button acceptance subsequently failed: the user confirmed that a
+short press turns the display off and a long press opens the power menu.
+InputReader identifies the keypad as `mtk-kpd`, using `Generic.kl` with scan code
+116 mapped to `POWER`; KeyGestureController recorded its power-toggle gesture.
+The APK's `DPAD_CENTER`/`ENTER` routing therefore does not receive the physical
+side button. This is a system input mapping defect, not a signing failure.
+
+The prepared [device-specific key layout](../../core/input/device/README.md)
+retains volume-down and maps only that keypad's side button to `DPAD_CENTER`
+with `WAKE`. The actual framework parser supports this flag. The alternative
+modifier-remapping API was ruled out because the exact native implementation
+filters for alphabetic keyboards, which excludes `mtk-kpd`. The layout has not
+yet been installed; device configuration and restart require separate explicit
+authorization. Actual spoken turns, audible interruption, wake behavior, and
+the ten-minute idle deadline remain unverified on the device.
 
 ## Required physical and live-service checks
 

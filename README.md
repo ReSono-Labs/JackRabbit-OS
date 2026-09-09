@@ -47,7 +47,7 @@ Voice is page one and Cards is page two. The native application is the device HO
 The current native Voice path provides:
 
 - OpenAI Realtime audio over WebRTC, without routing high-rate audio through Python or MCP.
-- Physical push to talk with release to send, quick-tap answer cancellation, and a screen switch for continuous conversation.
+- Push to talk with release to send, quick-tap answer cancellation, and a screen switch for continuous conversation. Physical input requires the [R1 side-button key layout](android/core/input/device/README.md).
 - Explicit microphone/playback states, bounded connection audio buffering, and ten-minute idle disconnection after the response finishes.
 - Runtime-selected access, text model, Realtime model, reasoning effort, and personalized greeting.
 - Local MCP tools in the same live Voice session.

@@ -1,0 +1,4 @@
+# Rabbit R1 built-in keypad. Install as a device-specific key layout only.
+# Keep volume input unchanged; route the physical side button to JackRabbit PTT.
+key 114 VOLUME_DOWN
+key 116 DPAD_CENTER WAKE

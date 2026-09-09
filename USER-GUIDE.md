@@ -11,7 +11,14 @@ JackRabbit is the R1 HOME surface. Voice is the first page and Cards is the seco
 - Use the touch screen for buttons, tabs, lists, and sliders.
 - Use the scroll wheel for supported list navigation.
 - Hold the side button to speak; release to send. A quick tap stops the current Voice answer. Camera and QR capture retain their own controls.
-- Use the power button normally. JackRabbit keeps the screen awake while its activity is visible.
+- JackRabbit keeps the screen awake while its activity is visible.
+
+The physical side button requires the R1 push-to-talk key layout to be installed.
+If a short press turns the screen off or a long press opens the power menu, the
+device still uses its old power-key mapping; an APK upgrade alone does not
+change it. See the [device configuration notes](android/core/input/device/README.md).
+With the PTT layout, that same button no longer performs the Android screen-off
+and power-menu gestures.
 
 Open the gear icon at the upper right for Settings. The running-person icon at the top opens the native Background Agent run surface.
 
@@ -96,7 +103,7 @@ Unsent speech is bounded to 30 seconds of PCM, including a conservative transpor
 
 The foreground Voice service keeps an active session and playback alive when the screen locks or the page closes. If its input window loses focus during a physical hold, the held segment is released so a missing key-up cannot leave the microphone open. Continuous conversation remains active. Process termination or microphone/audio-focus loss requires a new explicit start.
 
-The push-to-talk path has host protocol tests and an Android build. Initial-word capture, hardware echo cancellation, lock-screen behavior, and interruption latency still require physical R1 and live-provider acceptance.
+The push-to-talk path has host protocol tests, a signed Android build, and live connection/recording-gate checks using injected keyboard input. Physical acceptance found the legacy power-key mapping described above; the prepared device-specific layout still needs deployment and validation. Initial-word capture, hardware echo cancellation, lock-screen behavior, and interruption latency also require physical R1 acceptance.
 
 The native Android path owns microphone and speaker media. Python and MCP carry agent state and tool calls, not the high-rate audio stream.
 
