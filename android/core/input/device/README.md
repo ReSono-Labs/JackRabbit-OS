@@ -43,9 +43,20 @@ layout, and do not change other key remappings.
 The physical POWER failure and the incorrect original fallback are confirmed.
 The inspected R1 also has a modifier-remapping API, but its native implementation
 applies mappings only to alphabetic keyboards; it does not cover `mtk-kpd`.
-This device-specific layout has not yet been deployed. Physical press/release,
-screen-off wake behavior, camera behavior, and recovery controls must be checked
-after installation. The R1's D-pad wake resource is enabled, but the system's
+On 2026-09-09, the user authorized installation and a device restart. The layout
+was installed at `/data/system/devices/keylayout/mtk-kpd.kl`, with SHA256
+`e21334b506a037d0949fe560738ee2970a6fd2bca019a4f39b90559c5f941c8b`,
+system:system ownership, mode0644, and the `system_data_file` SELinux label.
+SELinux remained Enforcing and the original `Generic.kl` hash was unchanged.
+After one restart, InputReader confirmed that `mtk-kpd` selected this exact
+device-specific path, and JackRabbit's MainActivity returned to the foreground.
+Real physical events then showed device3, scan116, `DPAD_CENTER` DOWN/repeat/UP.
+The user confirmed that the first PTT turn worked, but later holds received no
+answer. Key routing is verified; multi-turn Voice acceptance is blocked by that
+separate runtime failure.
+
+Screen-off wake behavior, camera behavior, and recovery controls must also be
+checked. The R1's D-pad wake resource is enabled, but the system's
 noninteractive path can consume the press used to wake the display; do not
 promise that the first hold from screen-off also starts recording before
 physical verification. No PMIC reset behavior is inferred from an Android key map.

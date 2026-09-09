@@ -94,6 +94,7 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         this.responseCoordinator = new RealtimeResponseCoordinator(
                 event -> {
                     if (peer == null || !peer.sendRealtimeEvent(event)) return false;
+                    logInputState("response.create sent");
                     operationDeadline = SystemClock.elapsedRealtime() + 120_000L;
                     return true;
                 },
@@ -108,9 +109,14 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
                 },
                 () -> fail("event-invalid"));
         inputCoordinator = new RealtimeInputCoordinator(
-                event -> peer != null && peer.sendRealtimeEvent(event),
+                event -> {
+                    boolean sent = peer != null && peer.sendRealtimeEvent(event);
+                    Log.i(LOG_TAG, "PTT input command=" + event.optString("type") + " sent=" + sent);
+                    return sent;
+                },
                 new RealtimeInputCoordinator.Listener() {
                     @Override public void onCommitted(String itemId, boolean voiced) {
+                        logInputState("commit acknowledged voiced=" + voiced);
                         sending = false;
                         sendTimeout.audioProgress(SystemClock.elapsedRealtime());
                         if (voiced) {
@@ -171,6 +177,7 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         audioInput.beginCandidate(System.nanoTime());
         responseCoordinator.setHeld(true);
         setCapture(true);
+        logInputState("key down ready=" + ready);
         main.postDelayed(holdCheck, Math.max(0,
                 eventTimeMillis + SideButtonGesture.HOLD_MILLIS - SystemClock.uptimeMillis()));
         invalidate();
@@ -183,6 +190,7 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         if (event == SideButtonGesture.Event.RELEASE) audioInput.confirmCandidate();
         audioInput.release(event == SideButtonGesture.Event.RELEASE, System.nanoTime());
         setCapture(false);
+        logInputState("key up gesture=" + event + " queuedBytes=" + audioInput.queuedBytes());
         if (event == SideButtonGesture.Event.TAP || event == SideButtonGesture.Event.CANCEL) {
             interruptRound();
         }
@@ -247,6 +255,7 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
                 if (entry.isEnd()) {
                     audioInput.poll();
                     inputCoordinator.endInput();
+                    logInputState("input end");
                     inputSegmentStarted = false;
                     continue;
                 }
@@ -434,6 +443,17 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         try {
             JSONObject event = new JSONObject(json);
             String type = event.optString("type");
+            if (type.equals("input_audio_buffer.speech_started")
+                    || type.equals("input_audio_buffer.speech_stopped")
+                    || type.equals("input_audio_buffer.committed")
+                    || type.equals("input_audio_buffer.cleared")
+                    || type.equals("conversation.item.deleted")
+                    || type.equals("response.created") || type.equals("response.done")
+                    || type.equals("output_audio_buffer.started")
+                    || type.equals("output_audio_buffer.stopped")
+                    || type.equals("output_audio_buffer.cleared") || type.equals("error")) {
+                logInputState("received " + type);
+            }
             if ("error".equals(type) && cancellationCoordinator.onError(event.optJSONObject("error"))) return;
             long eventGeneration = generation;
             if (inputCoordinator.onEvent(event) && "error".equals(type)) {
@@ -526,6 +546,12 @@ public final class VoiceSessionController implements AutoCloseable, VoiceSession
         } catch (Exception ignored) {
             fail("event-invalid");
         }
+    }
+
+    private void logInputState(String stage) {
+        Log.i(LOG_TAG, "PTT " + stage + " " + inputCoordinator.diagnosticState()
+                + " responseInFlight=" + responseCoordinator.isInFlight()
+                + " suppressed=" + suppressedInput);
     }
 
     public void stopSession() {

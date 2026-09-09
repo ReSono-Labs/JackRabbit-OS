@@ -138,6 +138,13 @@ final class RealtimeInputCoordinator {
         return silentItemIds.contains(itemId);
     }
 
+    /** Counters and gates only; never expose item identities or user content. */
+    String diagnosticState() {
+        return "appended=" + appendedBytes + " committed=" + committedBytes
+                + " pendingCommits=" + pendingCommits.size() + " speechItems=" + speechItems.size()
+                + " silentItems=" + silentItemIds.size() + " speaking=" + isSpeaking();
+    }
+
     /** Returns true only for owned events or an exactly correlated expected error. */
     boolean onEvent(JSONObject event) {
         if (closed || event == null) return false;

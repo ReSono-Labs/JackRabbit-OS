@@ -51,10 +51,21 @@ The prepared [device-specific key layout](../../core/input/device/README.md)
 retains volume-down and maps only that keypad's side button to `DPAD_CENTER`
 with `WAKE`. The actual framework parser supports this flag. The alternative
 modifier-remapping API was ruled out because the exact native implementation
-filters for alphabetic keyboards, which excludes `mtk-kpd`. The layout has not
-yet been installed; device configuration and restart require separate explicit
-authorization. Actual spoken turns, audible interruption, wake behavior, and
-the ten-minute idle deadline remain unverified on the device.
+filters for alphabetic keyboards, which excludes `mtk-kpd`. Following explicit
+user authorization on 2026-09-09, the layout was installed at
+`/data/system/devices/keylayout/mtk-kpd.kl` with its reviewed SHA256,
+system:system ownership, mode0644, and the `system_data_file` label. SELinux
+remained Enforcing and the original `Generic.kl` was unchanged. This correction
+does not rebuild or replace the shared-signed v36 APK. After one restart,
+InputReader confirmed that `mtk-kpd` selected this exact device-specific path,
+and MainActivity returned to the foreground. Real physical events showed
+device3, scan116, `DPAD_CENTER` DOWN/repeat/UP. The user confirmed that the first
+press while disconnected produced a successful spoken turn, but subsequent
+holds received no answer. Recording was inactive after release, with the same
+Voice service retained. This is a failed multi-turn acceptance result requiring
+runtime investigation; it does not invalidate the verified physical key route.
+Audible interruption, wake behavior, and the ten-minute idle deadline remain
+unverified on the device.
 
 ## Required physical and live-service checks
 

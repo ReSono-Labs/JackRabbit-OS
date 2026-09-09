@@ -67,6 +67,11 @@ public final class NativeVoicePeer {
     private volatile boolean playbackEnabled = true;
     private volatile long dataChannelBufferedBytes;
     private long captureOpenedAtNanos;
+    // Per-press aggregate diagnostics only: never retain audio or transcript content.
+    private long captureFrameCount;
+    private long captureByteCount;
+    private long staleCaptureFrameCount;
+    private int capturePeak;
     private boolean recordingRequested;
     private volatile long recordingGeneration;
     private boolean capturing;
@@ -214,7 +219,15 @@ public final class NativeVoicePeer {
     public void setCaptureEnabled(boolean enabled) {
         synchronized (captureLock) {
             if (closed || failurePosted.get()) return;
-            if (enabled && !captureEnabled) captureOpenedAtNanos = System.nanoTime();
+            if (enabled && !captureEnabled) {
+                captureOpenedAtNanos = System.nanoTime();
+                captureFrameCount = captureByteCount = staleCaptureFrameCount = 0;
+                capturePeak = 0;
+            } else if (!enabled && captureEnabled) {
+                Log.i(LOG_TAG, "PTT capture closed frames=" + captureFrameCount
+                        + " bytes=" + captureByteCount + " staleFrames=" + staleCaptureFrameCount
+                        + " peak=" + capturePeak);
+            }
             captureEnabled = enabled;
         }
         onMain(this::updateCapture);
@@ -252,12 +265,21 @@ public final class NativeVoicePeer {
             }
             // The SDK supplies a CLOCK_MONOTONIC timestamp, or zero when unavailable.
             long timestamp = captureTimeNanos > 0 ? captureTimeNanos : System.nanoTime();
-            if (timestamp < captureOpenedAtNanos) return captureTimeNanos;
+            if (timestamp < captureOpenedAtNanos) {
+                staleCaptureFrameCount++;
+                return captureTimeNanos;
+            }
             byte[] pcm = new byte[bytesRead];
             ByteBuffer source = buffer.duplicate();
             source.position(0);
             source.limit(bytesRead);
             source.get(pcm);
+            captureFrameCount++;
+            captureByteCount += bytesRead;
+            for (int offset = 0; offset < pcm.length; offset += 2) {
+                int sample = (short) ((pcm[offset] & 0xff) | (pcm[offset + 1] << 8));
+                capturePeak = Math.max(capturePeak, Math.abs(sample));
+            }
             listener.onAudioFrame(pcm, timestamp);
         }
         return captureTimeNanos;
