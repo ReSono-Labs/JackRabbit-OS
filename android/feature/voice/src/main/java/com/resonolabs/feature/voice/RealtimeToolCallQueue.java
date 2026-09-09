@@ -15,14 +15,17 @@ final class RealtimeToolCallQueue {
     private final ArrayDeque<Invocation> pending = new ArrayDeque<>();
     private boolean running;
     private boolean closed = true;
+    private long generation;
 
     void reset() {
+        generation++;
         pending.clear();
         running = false;
         closed = false;
     }
 
     void close() {
+        generation++;
         closed = true;
         pending.clear();
         running = false;
@@ -39,15 +42,18 @@ final class RealtimeToolCallQueue {
         Invocation invocation = pending.pollFirst();
         if (invocation == null) return;
         running = true;
+        final long invocationGeneration = generation;
         final boolean[] completed = {false};
         try {
             invocation.execute(() -> {
                 if (completed[0]) return;
                 completed[0] = true;
+                if (invocationGeneration != generation) return;
                 running = false;
                 startNext();
             });
         } catch (Exception ignored) {
+            if (completed[0] || invocationGeneration != generation) return;
             completed[0] = true;
             running = false;
             startNext();

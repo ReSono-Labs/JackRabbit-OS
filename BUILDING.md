@@ -104,6 +104,19 @@ android/app-version.properties
 
 Increase `VERSION_CODE` for every new installable build. Keep `VERSION_NAME` under the current Carrot1 release identity until the project owner changes it.
 
+## Physical R1 side-button setup
+
+The APK handles `DPAD_CENTER` press and release for PTT. A device whose
+`mtk-kpd` keypad still falls back to `Generic.kl` emits `POWER`, which Android
+handles before the application. Rebuilding or resigning the APK does not change
+this mapping.
+
+The device-specific configuration and deployment/rollback boundaries are in
+[`android/core/input/device/`](android/core/input/device/README.md). Install it
+only as an explicitly authorized device configuration update, or include it at
+the documented device-specific location in an installer image. Do not replace
+the generic layout or infer physical acceptance from injected key events.
+
 ## Local toolchain override
 
 The project build script uses the repository's configured Android toolchain. If the local Gradle native runtime must be initialized explicitly, use JDK 17 and then rerun the authoritative build:

@@ -228,8 +228,8 @@ def _realtime_session(
                 "transcription": {"model": "gpt-4o-mini-transcribe"},
                 "turn_detection": {
                     "type": "server_vad",
-                    "create_response": True,
-                    "interrupt_response": False,
+                    "create_response": False,
+                    "interrupt_response": True,
                     "threshold": 0.92,
                     "prefix_padding_ms": 500,
                     "silence_duration_ms": 1_200,

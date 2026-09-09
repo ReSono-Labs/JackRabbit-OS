@@ -1,5 +1,8 @@
 package com.resonolabs.feature.voice;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /** Canonical native projection of the Browser Voice Realtime state rules. */
 final class VoiceSessionStateTracker {
     enum State { IDLE, CONNECTING, LIVE, RESPONDING, ERROR }
@@ -7,12 +10,14 @@ final class VoiceSessionStateTracker {
     private State state = State.IDLE;
     private int pendingToolCalls;
     private boolean toolFollowUpPending;
+    private final Set<String> playingResponses = new HashSet<>();
 
     State state() {
         return state;
     }
 
     void connecting() {
+        clearPlayback();
         pendingToolCalls = 0;
         toolFollowUpPending = false;
         state = State.CONNECTING;
@@ -22,13 +27,37 @@ final class VoiceSessionStateTracker {
         state = State.LIVE;
     }
 
+    void cancelRound() {
+        pendingToolCalls = 0;
+        toolFollowUpPending = false;
+        if (state == State.RESPONDING) state = State.LIVE;
+    }
+
+    void playbackStarted(String responseId) {
+        if (responseId != null && !responseId.isEmpty()) playingResponses.add(responseId);
+    }
+
+    void playbackStopped(String responseId) {
+        playingResponses.remove(responseId);
+    }
+
+    void clearPlayback() {
+        playingResponses.clear();
+    }
+
+    boolean isPlaying() {
+        return !playingResponses.isEmpty();
+    }
+
     void idle() {
+        clearPlayback();
         pendingToolCalls = 0;
         toolFollowUpPending = false;
         state = State.IDLE;
     }
 
     void error() {
+        clearPlayback();
         pendingToolCalls = 0;
         toolFollowUpPending = false;
         state = State.ERROR;

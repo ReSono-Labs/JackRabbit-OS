@@ -270,7 +270,9 @@ public final class RuntimeVoiceClient implements AutoCloseable {
                 return;
             }
             String answer = payload.optString("sdp", "");
+            String sessionId = payload.optString("sessionId", "");
             if (!answer.startsWith("v=0")) {
+                discardSession(context, sessionId);
                 deliverFailure(callback, "answer-invalid");
                 return;
             }
@@ -278,12 +280,12 @@ public final class RuntimeVoiceClient implements AutoCloseable {
             if (greeting == null) {
                 greeting = new JSONObject();
             }
-            String sessionId = payload.optString("sessionId", "");
             final String finalSessionId = sessionId;
             final org.json.JSONObject finalGreeting = greeting;
-            if (!closed.get()) {
-                main.post(() -> callback.onAnswer(answer, finalSessionId, finalGreeting));
-            }
+            main.post(() -> {
+                if (closed.get()) discardSession(context, finalSessionId);
+                else callback.onAnswer(answer, finalSessionId, finalGreeting);
+            });
         } catch (Exception ignored) {
             Log.w(LOG_TAG, "voice call request failed", ignored);
             deliverFailure(callback, "runtime-unavailable");
@@ -300,6 +302,16 @@ public final class RuntimeVoiceClient implements AutoCloseable {
     ) {
         Context application = context.getApplicationContext();
         worker.execute(() -> requestFinalize(application, sessionId, entries, callback));
+    }
+
+    /** Release a call which completed after its native owner stopped or timed out. */
+    public static void discardSession(Context context, String sessionId) {
+        if (sessionId == null || sessionId.isBlank()) return;
+        RuntimeVoiceClient cleanup = new RuntimeVoiceClient();
+        cleanup.finalizeVoiceSession(context, sessionId, new org.json.JSONArray(), new FinalizeCallback() {
+            @Override public void onResult(JSONObject response) { cleanup.close(); }
+            @Override public void onFailure(String reason) { cleanup.close(); }
+        });
     }
 
     private void requestFinalize(

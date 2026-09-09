@@ -37,6 +37,7 @@ chaquopy {
     }
     sourceSets.getByName("main") {
         setSrcDirs(listOf(rootProject.file("../runtime")))
+        exclude("tests/**")
     }
 }
 

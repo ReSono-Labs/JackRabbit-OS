@@ -97,6 +97,8 @@ public final class MainActivity extends Activity {
         if (focused) {
             DisplayPolicy.applyInputPolicy(getWindow());
             enterProductFullscreen();
+        } else if (root != null) {
+            root.releaseVoicePressForLifecycle();
         }
     }
 
