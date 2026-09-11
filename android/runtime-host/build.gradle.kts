@@ -33,6 +33,7 @@ chaquopy {
             install("jsonschema==4.25.1")
             install("PyYAML==6.0.3")
             install("openai-agents==0.18.3")
+            install("tzdata==2026.3")
         }
     }
     sourceSets.getByName("main") {
