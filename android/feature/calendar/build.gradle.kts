@@ -14,4 +14,5 @@ dependencies {
     implementation(project(":core:design"))
     implementation(project(":core:input"))
     implementation(project(":runtime-host"))
+    testImplementation("junit:junit:4.13.2")
 }
