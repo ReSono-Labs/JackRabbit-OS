@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from email.utils import parseaddr
 from typing import Iterable
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import httpx
 
@@ -147,13 +148,19 @@ class IcsCalendarProviderClient:
 
     def _parse_datetime(self, *, value: str, key: str) -> tuple[datetime, bool]:
         decoded = self._decode_value(value)
-        if "VALUE=DATE" in key:
+        parameters = dict(part.split("=", 1) for part in key.split(";")[1:] if "=" in part)
+        if parameters.get("VALUE") == "DATE":
             parsed_date = datetime.strptime(decoded, "%Y%m%d").date()
             return datetime.combine(parsed_date, datetime.min.time(), tzinfo=UTC), True
         if decoded.endswith("Z"):
             return datetime.strptime(decoded, "%Y%m%dT%H%M%SZ").replace(tzinfo=UTC), False
         parsed = datetime.strptime(decoded, "%Y%m%dT%H%M%S")
-        return parsed.replace(tzinfo=UTC), False
+        timezone_id = parameters.get("TZID")
+        try:
+            timezone = ZoneInfo(timezone_id.strip('"')) if timezone_id is not None else UTC
+        except ZoneInfoNotFoundError as error:
+            raise ValueError("Unsupported calendar time zone.") from error
+        return parsed.replace(tzinfo=timezone), False
 
     @staticmethod
     def _normalize_organizer(value: str | None) -> str | None:
